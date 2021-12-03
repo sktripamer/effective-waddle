@@ -5,11 +5,11 @@ import SetPasswordForm from "../components/SetPasswordForm";
 
 export default function SetPassword() {
   if (typeof window !== "undefined"){
-    const params = new URLSearchParams(window.location.search);
-  }
+  const params = new URLSearchParams(window.location.search);
+  
   const resetKey = params.get('key') || '';
   const login = params.get('login') || '';
-
+  }
   return (
     <Layout>
       <h1>Set Password</h1>

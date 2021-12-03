@@ -4,7 +4,9 @@ import Layout from "../components/Layout";
 import SetPasswordForm from "../components/SetPasswordForm";
 
 export default function SetPassword() {
-  const params = new URLSearchParams(window.location.search);
+  if (typeof window !== "undefined"){
+    const params = new URLSearchParams(window.location.search);
+  }
   const resetKey = params.get('key') || '';
   const login = params.get('login') || '';
 

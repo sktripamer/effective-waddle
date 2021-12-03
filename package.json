@@ -1,0 +1,28 @@
+{
+  "name": "headless-wp-cookie-auth-gatsby",
+  "version": "1.0.0",
+  "private": true,
+  "description": "headless-wp-cookie-auth-gatsby",
+  "author": "Kellen Mace",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.3.20",
+    "cross-fetch": "^3.1.4",
+    "dotenv": "^8.6.0",
+    "gatsby": "^3.6.2",
+    "gatsby-plugin-sharp": "^3.8.0",
+    "gatsby-source-wordpress": "^5.8.0",
+    "gatsby-transformer-sharp": "^3.8.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}

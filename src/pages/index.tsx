@@ -86,10 +86,10 @@ const IndexPage = () => {
       useEffect(() => {
         
     
-        if (loggedIn) {
+        if (!loading && loggedIn) {
         setLoggedIn(true);
         }
-      }, [loggedIn]);
+      }, [loggedIn, loading]);
 
 
       return (

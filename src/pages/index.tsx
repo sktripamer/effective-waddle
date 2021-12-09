@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import { isEmpty } from 'lodash';
 import Layout from "../components/Layout";
 import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
-import useAuth from "../hooks/useAuth";
+//import useAuth from "../hooks/useAuth";
+import UnAuthContent from "../components/UnAuthContent";
 import SignUpForm from "../components/SignUpForm";
 
 // markup
 const IndexPage = () => {
-  const { loggedIn, loading } = useAuth();
+  //const { loggedIn, loading } = useAuth();
 	//const [loggedIn, setLoggedIn] = useState(false);
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  //const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
 	const [successMessage, setSuccessMessage] = useState("");
 	const [showAlertBar, setShowAlertBar] = useState(true);
@@ -68,7 +69,8 @@ const IndexPage = () => {
       totalTime,
       }) => {
       setVideoDetails({ currentTime, isPlaying, speed, totalTime });
-      if (currentTime > 3 && isLoggedIn === false ) {
+     // if (currentTime > 3 && isLoggedIn === false ) {
+      if (currentTime > 3) {
         console.log('yes')
         setPlaying({status: false, time: 2.99, speed: speed})
         setSuccessMessage('3 seconds now')
@@ -83,13 +85,13 @@ const IndexPage = () => {
   
 
 
-      useEffect(() => {
+      // useEffect(() => {
         
     
-        if (!loading && loggedIn) {
-        setLoggedIn(true);
-        }
-      }, [loggedIn, loading]);
+      //   if (!loading && loggedIn) {
+      //   setLoggedIn(true);
+      //   }
+      // }, [loggedIn, loading]);
 
 
       return (
@@ -98,7 +100,9 @@ const IndexPage = () => {
       <div class='rev-player'>
       {"" !== successMessage
             ? showAlertBar && (
-              <SignUpForm/>
+              <UnAuthContent>
+              <SignUpForm />
+            </UnAuthContent>
            
     
               )

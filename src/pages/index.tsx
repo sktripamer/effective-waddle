@@ -3,8 +3,8 @@ import { isEmpty } from 'lodash';
 import Layout from "../components/Layout";
 import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
 //import useAuth from "../hooks/useAuth";
-import UnAuthContent from "../components/UnAuthContent";
-import SignUpForm from "../components/SignUpForm";
+//import UnAuthContent from "../components/UnAuthContent";
+//import SignUpForm from "../components/SignUpForm";
 
 // markup
 const IndexPage = () => {
@@ -100,10 +100,10 @@ const IndexPage = () => {
       <div class='rev-player'>
       {"" !== successMessage
             ? showAlertBar && (
-              <UnAuthContent>
-              <SignUpForm />
-            </UnAuthContent>
-           
+            //   <UnAuthContent>
+            //   <SignUpForm />
+            // </UnAuthContent>
+            <div class='aaa'>aaa</div>
     
               )
             : ""}

@@ -76,7 +76,7 @@ const IndexPage = () => {
       }
       console.log(currentTime)
       console.log(isPlaying)
-      
+      console.log(useAuth())
   
       };
 

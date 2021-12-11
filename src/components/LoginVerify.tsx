@@ -16,5 +16,10 @@ export default function LoginVerify() {
     return <p>logged in</p>;
   }
 
+
+  if (!loggedIn) {
+    return <p>not logged in</p>;
+  }
+
   return <p>Loading...</p>;
 }

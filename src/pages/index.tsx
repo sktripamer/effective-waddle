@@ -4,10 +4,27 @@ import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
 import useAuth from "../hooks/useAuth";
 //import UnAuthContent from "../components/UnAuthContent";
 import SignUpForm from "../components/SignUpForm";
+import { useQuery, gql, ApolloError } from "@apollo/client";
+
+
+export const GET_USER = gql`
+  query getUser {
+    viewer {
+      id
+      databaseId
+      firstName
+      lastName
+      email
+      capabilities
+    }
+  }
+`;
 
 // markup
 const IndexPage = () => {
-  const { loggedIn } = useAuth();
+  const { data, loading, error } = useQuery(GET_USER);
+  const user = data?.viewer;
+  const loggedIn = Boolean(user);
 	//const [loggedIn, setLoggedIn] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
@@ -68,8 +85,8 @@ const IndexPage = () => {
       totalTime,
       }) => {
       setVideoDetails({ currentTime, isPlaying, speed, totalTime });
-      if (currentTime > 3 && isLoggedIn === false ) {
-    //if (currentTime > 3 ) {
+     // if (currentTime > 3 && isLoggedIn === false ) {
+    if (currentTime > 3 ) {
         console.log('yes')
         setPlaying({status: false, time: 2.99, speed: speed})
         setSuccessMessage('3 seconds now')

@@ -5,6 +5,7 @@ import useAuth from "../hooks/useAuth";
 //import UnAuthContent from "../components/UnAuthContent";
 import SignUpForm from "../components/SignUpForm";
 import UnAuthContent from "../components/UnAuthContent";
+import LoginVerify from "../components/LoginVerify";
 
 // markup
 const IndexPage = () => {
@@ -96,9 +97,9 @@ const IndexPage = () => {
 
       return (
         <Layout>
-              <UnAuthContent>
-        <SignUpForm />
-      </UnAuthContent>
+          
+        <LoginVerify />
+    
       <div class='rev-player'>
       {"" !== successMessage
             ? showAlertBar && (

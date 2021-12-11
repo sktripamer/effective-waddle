@@ -4,27 +4,11 @@ import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
 import useAuth from "../hooks/useAuth";
 //import UnAuthContent from "../components/UnAuthContent";
 import SignUpForm from "../components/SignUpForm";
-import { useQuery, gql, ApolloError } from "@apollo/client";
-
-
-export const GET_USER = gql`
-  query getUser {
-    viewer {
-      id
-      databaseId
-      firstName
-      lastName
-      email
-      capabilities
-    }
-  }
-`;
+import UnAuthContent from "../components/UnAuthContent";
 
 // markup
 const IndexPage = () => {
-  const { data, loading, error } = useQuery(GET_USER);
-  const user = data?.viewer;
-  const loggedIn = Boolean(user);
+  const { loggedIn, loading } = useAuth();
 	//const [loggedIn, setLoggedIn] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
@@ -112,7 +96,9 @@ const IndexPage = () => {
 
       return (
         <Layout>
-           
+              <UnAuthContent>
+        <SignUpForm />
+      </UnAuthContent>
       <div class='rev-player'>
       {"" !== successMessage
             ? showAlertBar && (

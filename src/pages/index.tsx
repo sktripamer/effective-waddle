@@ -5,11 +5,32 @@ import useAuth from "../hooks/useAuth";
 //import UnAuthContent from "../components/UnAuthContent";
 import SignUpForm from "../components/SignUpForm";
 import UnAuthContent from "../components/UnAuthContent";
-import LoginVerify from "../components/LoginVerify";
-
+//import LoginVerify from "../components/LoginVerify";
+import { useBetween } from "use-between";
 // markup
 const IndexPage = () => {
-  const { loggedIn, loading } = useAuth();
+
+  function LoginVerify() {
+    const { loggedIn, loading } = useAuth();
+  
+    // Navigate authenticated users to Members page.
+    useEffect(() => {
+      if (!loading && !loggedIn) {
+  
+      }
+    }, [loggedIn, loading]);
+  
+    if (loggedIn) {
+      return <p>logged in</p>;
+    }
+  
+  
+    if (!loggedIn) {
+      return <p>not logged in</p>;
+    }
+  
+    return <p>Loading...</p>;
+  }
 	//const [loggedIn, setLoggedIn] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
@@ -78,7 +99,7 @@ const IndexPage = () => {
       }
       console.log(currentTime)
       console.log(isPlaying)
-      console.log(loggedIn)
+
   
       };
 
@@ -86,13 +107,7 @@ const IndexPage = () => {
   
 
 
-      useEffect(() => {
-        
-    
-        if (loggedIn) {
-        setLoggedIn(true);
-        }
-      }, [loggedIn]);
+
 
 
       return (

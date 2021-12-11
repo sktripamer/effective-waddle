@@ -7,13 +7,12 @@ export default function LoginVerify() {
 
   // Navigate authenticated users to Members page.
   useEffect(() => {
-    if (!loading && loggedIn) {
-
+    if (!loading && !loggedIn) {
 
     }
   }, [loggedIn, loading]);
 
-  if (!loggedIn) {
+  if (loggedIn) {
     return <p>logged in</p>;
   }
 

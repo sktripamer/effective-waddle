@@ -7,7 +7,7 @@ import SignUpForm from "../components/SignUpForm";
 
 // markup
 const IndexPage = () => {
-  const { loggedIn, loading } = useAuth();
+  const { loggedIn } = useAuth();
 	//const [loggedIn, setLoggedIn] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
@@ -87,10 +87,10 @@ const IndexPage = () => {
       useEffect(() => {
         
     
-        if (!loading && loggedIn) {
+        if (loggedIn) {
         setLoggedIn(true);
         }
-      }, [loggedIn, loading]);
+      }, [loggedIn]);
 
 
       return (

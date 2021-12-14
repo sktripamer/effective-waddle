@@ -12,7 +12,7 @@ module.exports = {
       options: {
         url: process.env.GATSBY_WORDPRESS_API_URL,
         type: {
-          Page: {
+          Customer: {
             exclude: true,
           },
         },

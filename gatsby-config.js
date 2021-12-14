@@ -13,5 +13,15 @@ module.exports = {
         url: process.env.GATSBY_WORDPRESS_API_URL,
       },
     },
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        type: {
+          Customer: {
+            exclude: true,
+          },
+        },
+      },
+    },
   ],
 };

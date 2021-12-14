@@ -8,16 +8,11 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-source-wordpress",
-      options: {
-        url: process.env.GATSBY_WORDPRESS_API_URL,
-      },
-    },
-    {
       resolve: `gatsby-source-wordpress`,
       options: {
+        url: process.env.GATSBY_WORDPRESS_API_URL,
         type: {
-          Customer: {
+          Page: {
             exclude: true,
           },
         },

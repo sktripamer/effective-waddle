@@ -4,10 +4,21 @@ import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
 import useAuth from "../hooks/useAuth";
 //import UnAuthContent from "../components/UnAuthContent";
 import SignUpForm from "../components/SignUpForm";
+import RegisterOpt from "../components/RegisterOpt";
 import UnAuthContent from "../components/UnAuthContent";
 //import LoginVerify from "../components/LoginVerify";
 import { useBetween } from "use-between";
 // markup
+
+const useShareableState = () => {
+
+  const [count, setCount] = useState(false);
+  return {
+    count,
+    setCount
+  };
+};
+
 const IndexPage = () => {
 
   function LoginVerify() {
@@ -31,8 +42,8 @@ const IndexPage = () => {
   
     return <p>Loading...</p>;
   }
-	//const [loggedIn, setLoggedIn] = useState(false);
-  const [isLoggedIn, setLoggedIn] = useState(false);
+	const [loggedIn, setLoggedIn] = useState(false);
+  //const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
 	const [successMessage, setSuccessMessage] = useState("");
 	const [showAlertBar, setShowAlertBar] = useState(true);
@@ -112,7 +123,7 @@ const IndexPage = () => {
 
       return (
         <Layout>
-          
+        <RegisterOpt setLoggedIn={setLoggedIn} />  
         <LoginVerify />
     
       <div class='rev-player'>

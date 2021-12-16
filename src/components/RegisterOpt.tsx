@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { gql , useMutation } from "@apollo/client";
 import { isEmpty, remove } from 'lodash';
 import MessageAlert from "./MessageAlert";
-
+import { FormikStepper, FormikStep, InputField } from "formik-stepper";
 
 export const REGISTER_CUSTOMER = gql`
 mutation RegisterCustomer( $input: RegisterCustomerInput! ) {
@@ -217,11 +217,11 @@ const RegisterOpt = ({ setLoggedIn }) => {
           : ""}
   
         {/* Register Form */}
-        <form className="mt-1" onSubmit={(event) => handleRegister(event)}>
+        {/* <form className="mt-1" onSubmit={(event) => handleRegister(event)}>
           {/* Username */}
-          <div className="form-group">
+          {/* <div className="form-group">
             <label className="lead mt-1" htmlFor="description">
-              Username
+              phone
             </label>
             <input
               type="text"
@@ -231,10 +231,10 @@ const RegisterOpt = ({ setLoggedIn }) => {
               value={description}
               onChange={(event) => setDescription(event.target.value)}
             />
-          </div>
+          </div> */}
   
           {/* Username */}
-          <div className="form-group">
+          {/* <div className="form-group">
             <label className="lead mt-1" htmlFor="email">
               Email
             </label>
@@ -246,8 +246,64 @@ const RegisterOpt = ({ setLoggedIn }) => {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
             />
-          </div>
-  
+          </div> */}
+            
+          <FormikStepper
+            /// Accept all Formik props
+            onSubmit={(event) => handleRegister(event)} /// onSubmit Function
+            initialValues={{
+              phone: "",
+              email: "",
+            }}
+            labelsColor="secondary" /// The text label color can be root variables or css => #fff
+            withStepperLine /// false as default and If it is false, it hides stepper line
+            nextBtnLabel="step" /// Next as default
+            prevBtnLabel="return" /// Prev as default
+            submitBtnLabel="Done" /// Submit as default
+            nextBtnColor="primary" /// as default and The color can be root variables or css => #fff
+            prevBtnColor="danger" /// as default and The color can be root variables or css => #fff
+            submitBtnColor="success" /// as default and The color can be root variables or css => #fff
+          >
+            {/*  First Step */}
+            <FormikStep
+              label="Profile Info" /// The text label of Step
+              withIcons="fa fa-user" // to add icon into the circle must add icon as class Name like Fontawesome
+              withNumbers /// If true, it hides the icon and shows the step number
+              iconColor="white" /// The color can be root variables or css => #fff
+              circleColor="danger" /// The color can be root variables or css => #fff
+            >
+             
+             <input
+              type="email"
+              className="form-control"
+              id="email"
+              placeholder="Enter email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+            </FormikStep>
+            {/* Second Step */}
+            <FormikStep
+              label="Login Info"
+              withIcons="fa fa-lock"
+              iconColor="white"
+              circleColor="danger"
+            >
+              <input
+              type="text"
+              className="form-control"
+              id="description"
+              placeholder="Enter phone"
+              value={description}
+              onChange={(event) => setDescription(event.target.value)}
+            />
+              {/* <InputField name="phone" label="Phone" type="number" /> */}
+
+            </FormikStep>
+          </FormikStepper>
+
+
+
           {/* Password */}
           {/* <div className="form-group">
             <label className="lead mt-1" htmlFor="password">
@@ -264,7 +320,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
           </div> */}
   
           {/* Submit Button */}
-          <div className="form-group">
+          {/* <div className="form-group">
             <button
               className="btn btn-dark"
               disabled={registerLoading ? "disabled" : ""}
@@ -275,7 +331,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
           </div>
   
           {/*	Loading */}
-          {registerLoading ? (
+          {/* {registerLoading ? (
             <img
               className="woo-next-cart-item-spinner"
               //src={cartSpinnerGif}
@@ -284,7 +340,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
           ) : (
             ""
           )}
-        </form>
+        </form> */}
       </div>
     );
   };

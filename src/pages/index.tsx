@@ -123,7 +123,7 @@ const IndexPage = () => {
 
       return (
         <Layout>
-        <RegisterOpt setLoggedIn={setLoggedIn} />  
+        
         <LoginVerify />
     
       <div class='rev-player'>
@@ -132,7 +132,7 @@ const IndexPage = () => {
                 
         
              
-              <SignUpForm />
+              <RegisterOpt setLoggedIn={setLoggedIn} />  
     
               )
             : ""}

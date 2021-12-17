@@ -145,7 +145,9 @@ const RegisterOpt = ({ setLoggedIn }) => {
      * @return {void}
      */
     const handleRegister = async (event) => {
+      console.log(event)
       if (undefined !== window) {
+        
         event.preventDefault();
   
         // Validation and Sanitization.
@@ -250,7 +252,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
             
           <FormikStepper
             /// Accept all Formik props
-            onSubmit={(event) => handleRegister(event)} /// onSubmit Function
+            onSubmit={handleRegister} /// onSubmit Function
             initialValues={{
               phone: "",
               email: "",

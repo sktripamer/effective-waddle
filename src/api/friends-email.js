@@ -14,25 +14,25 @@ const custobj = await getCustomerObj(emails[0],emails[1],emails[2],emails[3]);
 }
 
 
-async function getCustomerObj(email1, email2, email3, id) {
+async function getCustomerObj(emails1, emails2, emails3, id) {
     try {
 
         const bodied ={
             "acf": {
-                "email1": emails[0],
-                "email2": emails[1],
-                "email3": emails[2],
+                "email1": emails1,
+                "email2": emails2,
+                "email3": emails3,
                   }
           } 
       // Retrieve email and username of the currently logged in user.
       // getUserFromDB() is *your* implemention of getting user info from the DB
 
-      const request = await fetch('https://portal.revrevdev.xyz/wp-json/wp/v2/users/26', {
+      const request = await fetch('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + id, {
         method: 'POST',
         headers: {
             'Authorization': "Basic YWRtaW46YWZhOSBvNTJSIG9uNWsgUVdHTCA4M0dMIHVlR3I="
           },
-          body:'{"acf":{"email1":"sktripamer2@gmail.com","email2":"sktripamer2@gmail.com","email3":"sktripamer2@gmail.com"}}',
+          body: JSON.stringify(bodied),
       });
       const customerobj = (await request.json());
       // Update your user in DB to store the customerID
@@ -40,6 +40,6 @@ async function getCustomerObj(email1, email2, email3, id) {
       return customerobj;
     } catch (error) {
 
-      return error;
+      return null;
     }
   }

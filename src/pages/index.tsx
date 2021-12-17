@@ -20,10 +20,30 @@ const useShareableState = () => {
   };
 };
 
+const LoginVerify = () => {
+  if (undefined !== window) {
+
+    let authTokenData = localStorage.getItem("auth");
+
+    if (!isEmpty(authTokenData)) {
+
+      authTokenData = JSON.parse(authTokenData);
+
+      if (!isEmpty(authTokenData.authToken)) {
+       return true
+      } else {
+       return false
+      }
+    } else {
+      return false
+    }
+  } // // this will fire only when loadDataOnlyOnce-reference changes
+}
+
 const IndexPage = () => {
 
 
-	const [loggedIn, setLoggedIn] = useState({});
+	const [loggedIn, setLoggedIn] = useState(LoginVerify());
   const [loggedIn2, setLoggedIn2] = useState(false);
   //const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
@@ -31,30 +51,30 @@ const IndexPage = () => {
 	const [showAlertBar, setShowAlertBar] = useState(true);
   const isBrowser = typeof window !== "undefined";
   
-  // const useMountEffect = (fun) => useEffect(fun, [setLoggedIn])
+  // const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])
   // Check if the user is validated already.
   // useMountEffect(LoginVerify)
-  useEffect(() => {
-    if (undefined !== window) {
-      console.log('heyyy')
-      console.log(loggedIn)
-      let authTokenData = localStorage.getItem("auth");
+//   useEffect(() => {
+//     if (undefined !== window) {
+//       console.log('heyyy')
+//       console.log(loggedIn)
+//       let authTokenData = localStorage.getItem("auth");
   
-      if (!isEmpty(authTokenData)) {
-        console.log('heyyy1')
-        console.log(loggedIn)
-        authTokenData = JSON.parse(authTokenData);
+//       if (!isEmpty(authTokenData)) {
+//         console.log('heyyy1')
+//         console.log(loggedIn)
+//         authTokenData = JSON.parse(authTokenData);
   
-        if (!isEmpty(authTokenData.authToken)) {
-          setLoggedIn(true)
-          console.log('heyyy2')
-          console.log(loggedIn)
-        } else {
-          console.log('empty')
-        }
-      }
-    } // // this will fire only when loadDataOnlyOnce-reference changes
-}, [loggedIn, setLoggedIn]);
+//         if (!isEmpty(authTokenData.authToken)) {
+//           setLoggedIn(true)
+//           console.log('heyyy2')
+//           console.log(loggedIn)
+//         } else {
+//           console.log('empty')
+//         }
+//       }
+//     } // // this will fire only when loadDataOnlyOnce-reference changes
+// }, [loggedIn, setLoggedIn]);
 
 
 

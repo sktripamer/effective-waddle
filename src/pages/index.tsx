@@ -53,7 +53,22 @@ const LoginVerify = () => {
     }
   } // // this will fire only when loadDataOnlyOnce-reference changes
 }
+const step2verify = () => {
+  if (typeof window !== "undefined") {
 
+    let authTokenData = localStorage.getItem("s2");
+
+    if (!isEmpty(authTokenData)) {
+
+       
+       return true
+     
+      
+    } else {
+      return false
+    }
+  } // // this will fire only when loadDataOnlyOnce-reference changes
+}
 
 
 const validationSchema = Yup.object().shape({
@@ -194,7 +209,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
       } = data;
 
       handleRegisterSuccess();
-      setVideoTime(1)
+   
       const authData = {
         authToken: customer.jwtAuthToken,
         user: customer,
@@ -275,7 +290,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
     setSuccessMessage(
       "Please click the link in your email to verify your email and continue watching"
     );
-    setVideoTime(1)
+    localStorage.setItem("s2", "y");
     setVideoStatus(0)
     setPlaying({status: true, time: 2.99, speed: 1})
   };
@@ -590,7 +605,7 @@ const IndexPage = () => {
         setPlaying({status: false, time: 2.99, speed: speed})
         setVideoStatus(1)
       } 
-      if (currentTime > 6  && currentVideoState()==1) {
+      if (currentTime > 6  && step2verify()===true) {
         console.log('yes2')
         setPlaying({status: false, time: 5.99, speed: speed})
         setVideoStatus(2)

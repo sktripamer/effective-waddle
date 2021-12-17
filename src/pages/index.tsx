@@ -98,7 +98,32 @@ const validationSchema = Yup.object().shape({
     .oneOf([true], "The terms and conditions must be accepted."),
 });
 
-
+const validationSchema2 = Yup.object().shape({
+  // firstName: Yup.string().required("The First Name field is required"),
+  // phonefield: Yup.string().required("The phone field is required"),
+  // email: Yup.string()
+  //   .email("The email must be a valid email address.")
+  //   .required("The Email field is required"),
+    email1: Yup.string()
+    .email("The email must be a valid email address.")
+    .required("The Email field is required"),
+    email2: Yup.string()
+    .email("The email must be a valid email address.")
+    .required("The Email field is required"),
+    email3: Yup.string()
+    .email("The email must be a valid email address.")
+    .required("The Email field is required"),
+  // password: Yup.string()
+  //   .required("The Password field is required")
+  //   .matches(
+  //     /^(?=.*[A-Za-z])(?=.*\d)(?=.*)[A-Za-z\d]{8,}$/,
+  //     `Must Contain 8 Characters, One Uppercase, One Lowercase,
+  //     One Number and one special case Character [@$!%*#?&-_]`
+  //   ),
+  privacy: Yup.boolean()
+    .isTrue()
+    .oneOf([true], "The terms and conditions must be accepted."),
+});
 export const REGISTER_CUSTOMER = gql`
 mutation RegisterCustomer( $input: RegisterCustomerInput! ) {
     registerCustomer( input:$input ) {
@@ -468,7 +493,7 @@ const StepTwo = () => {
       email2: "",
       email3: "",
     }}
-    validationSchema={validationSchema}
+    validationSchema={validationSchema2}
     labelsColor="secondary" /// The text label color can be root variables or css => #fff
     withStepperLine /// false as default and If it is false, it hides stepper line
     nextBtnLabel="step" /// Next as default

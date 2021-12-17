@@ -472,6 +472,8 @@ const StepTwo = () => {
     setSubmitting(false);
 
 
+    
+
     const bodied ={
         "acf": {
             "email1": values.email1,
@@ -485,12 +487,15 @@ const StepTwo = () => {
     const modify = await  fetch('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + atob(JSON.parse(localStorage.auth).user.id).split(':')[1], {
         method: 'POST',
         headers: {
-          'Authorization': "Basic YWRtaW46YWZhOSBvNTJSIG9uNWsgUVdHTCA4M0dMIHVlR3I="
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Authorization': "Basic YWRtaW46YWZhOSBvNTJSIG9uNWsgUVdHTCA4M0dMIHVlR3I=",
         },
          body: JSON.stringify(bodied),
       
       })
-    await modify.json();
+   
+ const intent2 = (await modify.json());
+ console.log(intent2)
  
     setVideoTime(2)
     setPlaying({status: true, time: 5.99, speed: 1})

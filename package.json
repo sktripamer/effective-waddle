@@ -27,7 +27,7 @@
     "gatsby-transformer-sharp": "^3.8.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "use-between": "^1.0.1"
+    "use-between": "^1.0.1",
     "yup": "^0.32.11"
   }
 }

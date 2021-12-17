@@ -21,7 +21,7 @@ const emails = req.body.split('@@')
       
       })
    await request.json();
-res.status(200)
+   return res.status(200).json('good')
 
 
 }

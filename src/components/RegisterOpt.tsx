@@ -2,7 +2,27 @@ import React, { useState } from "react";
 import { gql , useMutation } from "@apollo/client";
 import { isEmpty, remove } from 'lodash';
 import MessageAlert from "./MessageAlert";
+import * as Yup from "yup";
 import { FormikStepper, FormikStep, InputField } from "formik-stepper";
+
+const validationSchema = Yup.object().shape({
+  // firstName: Yup.string().required("The First Name field is required"),
+  phonefield: Yup.string().required("The phone field is required"),
+  email: Yup.string()
+    .email("The email must be a valid email address.")
+    .required("The Email field is required"),
+  // password: Yup.string()
+  //   .required("The Password field is required")
+  //   .matches(
+  //     /^(?=.*[A-Za-z])(?=.*\d)(?=.*)[A-Za-z\d]{8,}$/,
+  //     `Must Contain 8 Characters, One Uppercase, One Lowercase,
+  //     One Number and one special case Character [@$!%*#?&-_]`
+  //   ),
+  privacy: Yup.boolean()
+    .isTrue()
+    .oneOf([true], "The terms and conditions must be accepted."),
+});
+
 
 export const REGISTER_CUSTOMER = gql`
 mutation RegisterCustomer( $input: RegisterCustomerInput! ) {
@@ -144,6 +164,12 @@ const RegisterOpt = ({ setLoggedIn }) => {
      * @param {object} event Event Object.
      * @return {void}
      */
+
+     const onSubmit = async ( values, { setSubmitting } ) => {
+      console.log(values);
+      setSubmitting(false); //// Important
+  };
+
     const handleRegister = async (event) => {
       console.log(event)
       if (undefined !== window) {
@@ -250,13 +276,14 @@ const RegisterOpt = ({ setLoggedIn }) => {
             />
           </div> */}
             
-          <FormikStepper
+            <FormikStepper
             /// Accept all Formik props
-            onSubmit={handleRegister} /// onSubmit Function
+            onSubmit={onSubmit} /// onSubmit Function
             initialValues={{
-              phone: "",
+              phonefield: "",
               email: "",
             }}
+            validationSchema={validationSchema}
             labelsColor="secondary" /// The text label color can be root variables or css => #fff
             withStepperLine /// false as default and If it is false, it hides stepper line
             nextBtnLabel="step" /// Next as default
@@ -274,15 +301,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
               iconColor="white" /// The color can be root variables or css => #fff
               circleColor="danger" /// The color can be root variables or css => #fff
             >
-             
-             <input
-              type="email"
-              className="form-control"
-              id="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
+              <InputField name="email" label="Email" type="email" />
             </FormikStep>
             {/* Second Step */}
             <FormikStep
@@ -291,19 +310,12 @@ const RegisterOpt = ({ setLoggedIn }) => {
               iconColor="white"
               circleColor="danger"
             >
-              <input
-              type="text"
-              className="form-control"
-              id="description"
-              placeholder="Enter phone"
-              value={description}
-              onChange={(event) => setDescription(event.target.value)}
-            />
-              {/* <InputField name="phone" label="Phone" type="number" /> */}
-
+               <InputField name="phonefield" label="Phone" />
+            
             </FormikStep>
           </FormikStepper>
 
+         
 
 
           {/* Password */}

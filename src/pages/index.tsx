@@ -52,7 +52,7 @@ const IndexPage = () => {
 	const [successMessage, setSuccessMessage] = useState("");
 	const [showAlertBar, setShowAlertBar] = useState(true);
   const isBrowser = typeof window !== "undefined";
-  const useMountEffect = (fun) => useEffect(fun, [])
+  const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])
   // Check if the user is validated already.
   useMountEffect(LoginVerify)
 

@@ -11,17 +11,17 @@ const emails = req.body.split('@@')
       
 
       try {
-    const request = await  fetch('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + emails[3], {
+    const modify = await  fetch('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + emails[3], {
         method: 'POST',
-        headers: new Headers({
+        headers: {
           'Content-Type': 'application/json;charset=UTF-8',
           'Authorization': "Basic YWRtaW46YWZhOSBvNTJSIG9uNWsgUVdHTCA4M0dMIHVlR3I=",
-        }),
+        },
          body: JSON.stringify(bodied),
       
       })
-   await request.json();
-   return res.status(200).json('good')
+      const customer = (await modify.json());
+   return res.status(200).json(customer)
     } catch (e) {
         return res.status(500).json(e)
     }

@@ -168,6 +168,9 @@ const RegisterOpt = ({ setLoggedIn }) => {
      const onSubmit = async ( values, { setSubmitting } ) => {
       console.log(values);
       setSubmitting(false); //// Important
+      setEmail(values.email);
+      setDescription(values.phonefield);
+       register();
   };
 
     const handleRegister = async (event) => {

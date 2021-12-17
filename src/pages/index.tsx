@@ -13,7 +13,34 @@ import { useBetween } from "use-between";
 import MessageAlert from "../components/MessageAlert";
 import * as Yup from "yup";
 import { FormikStepper, FormikStep, InputField } from "formik-stepper";
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  HatenaShareButton,
+  InstapaperShareButton,
+  LineShareButton,
+  LinkedinShareButton,
+  LivejournalShareButton,
+  MailruShareButton,
+  OKShareButton,
+  PinterestShareButton,
+  PocketShareButton,
+  RedditShareButton,
+  TelegramShareButton,
+  TumblrShareButton,
+  TwitterShareButton,
+  ViberShareButton,
+  VKShareButton,
+  WhatsappShareButton,
+  WorkplaceShareButton
+} from "react-share";
 // markup
+
+import FacebookIcon from "../images/FacebookIcon";
+import TwitterIcon from "../images/TwitterIcon"
+import WhatsappIcon from "../images/WhatsappIcon"
+import LinkedinIcon from "../images/LinkedinIcon"
+import EmailIcon from "../images/EmailIcon"
 
 const useShareableState = () => {
 
@@ -70,6 +97,23 @@ const step2verify = () => {
   } // // this will fire only when loadDataOnlyOnce-reference changes
 }
 
+
+const step3verify = () => {
+  if (typeof window !== "undefined") {
+
+    let authTokenData = localStorage.getItem("s3");
+
+    if (!isEmpty(authTokenData)) {
+
+       
+       return true
+     
+      
+    } else {
+      return false
+    }
+  } // // this will fire only when loadDataOnlyOnce-reference changes
+}
 
 const validationSchema = Yup.object().shape({
   // firstName: Yup.string().required("The First Name field is required"),
@@ -497,6 +541,7 @@ const StepTwo = () => {
  const intent2 = (await modify.json());
  console.log(intent2)
  localStorage.removeItem("s2")
+ localStorage.setItem("s3", "y")
     setVideoTime(2)
     setPlaying({status: true, time: 5.99, speed: 1})
     setVideoStatus(0)
@@ -543,6 +588,94 @@ const StepTwo = () => {
 
 }
 
+
+const StepThree = () => {
+  const {playing, setPlaying } = useBetween(useShareableState);
+  const {videoStatus, setVideoStatus } = useBetween(useShareableState);
+  const {videoTime, setVideoTime } = useBetween(useShareableState);
+  const shareUrl = 'revrevdev.xyz';
+  const title = 'rev';
+
+  function handleSubmit(e) {
+    e.preventDefault();
+ 
+
+    localStorage.removeItem("s3")
+    localStorage.setItem("s4", "y")
+       setVideoTime(3)
+       setPlaying({status: true, time: 8.99, speed: 1})
+       setVideoStatus(0)
+  }
+
+
+
+  return (
+<div className="sharesection">
+    <div className="Demo__container">
+    <div className="Demo__some-network">
+      <FacebookShareButton
+        url={shareUrl}
+        quote={title}
+        className="Demo__some-network__share-button"
+      >
+        <FacebookIcon size={32} round />
+      </FacebookShareButton>
+
+    </div>
+
+
+    <div className="Demo__some-network">
+      <TwitterShareButton
+        url={shareUrl}
+        title={title}
+        className="Demo__some-network__share-button"
+      >
+        <TwitterIcon size={32} round />
+      </TwitterShareButton>
+
+      <div className="Demo__some-network__share-count">&nbsp;</div>
+    </div>
+
+    <div className="Demo__some-network">
+      <WhatsappShareButton
+        url={shareUrl}
+        title={title}
+        separator=":: "
+        className="Demo__some-network__share-button"
+      >
+        <WhatsappIcon size={32} round />
+      </WhatsappShareButton>
+
+      <div className="Demo__some-network__share-count">&nbsp;</div>
+    </div>
+
+    <div className="Demo__some-network">
+      <LinkedinShareButton url={shareUrl} className="Demo__some-network__share-button">
+        <LinkedinIcon size={32} round />
+      </LinkedinShareButton>
+    </div>
+
+
+    <div className="Demo__some-network">
+      <EmailShareButton
+        url={shareUrl}
+        subject={title}
+        body="body"
+        className="Demo__some-network__share-button"
+      >
+        <EmailIcon size={32} round />
+      </EmailShareButton>
+    </div>
+   
+  </div>
+  <button onClick={handleSubmit}>
+  Continue
+</button>
+</div>
+  )
+
+
+}
 
 
 const IndexPage = () => {
@@ -657,6 +790,11 @@ const IndexPage = () => {
         setPlaying({status: false, time: 5.99, speed: speed})
         setVideoStatus(2)
       }
+      if (currentTime > 9  && step3verify()===true) {
+        console.log('yes3')
+        setPlaying({status: false, time: 8.99, speed: speed})
+        setVideoStatus(3)
+      }
       console.log(currentTime)
       console.log(isPlaying)
       console.log(loggedIn)
@@ -689,6 +827,14 @@ const IndexPage = () => {
                 
 
               <StepTwo />  
+    
+              )
+            : ""}
+             {3 == videoStatus
+            ? showAlertBar && (
+                
+
+              <StepThree />  
     
               )
             : ""}

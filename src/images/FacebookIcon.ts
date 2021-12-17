@@ -1,4 +1,4 @@
-import createIcon from './hocs/createIcon';
+import createIcon from '../hocs/createIcon';
 
 const FacebookIcon = createIcon({
   color: '#3b5998',

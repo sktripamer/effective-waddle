@@ -576,7 +576,6 @@ const IndexPage = () => {
       isPlaying,
       speed,
       totalTime,
-      videoTime,
       }) => {
       setVideoDetails({ currentTime, isPlaying, speed, totalTime });
       if (currentTime > 3 && LoginVerify() === false ) {
@@ -594,6 +593,7 @@ const IndexPage = () => {
       console.log(isPlaying)
       console.log(loggedIn)
       console.log(videoTime)
+      console.log(videoStatus)
       };
 
 

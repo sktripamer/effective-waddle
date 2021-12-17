@@ -161,14 +161,8 @@ const IndexPage = () => {
       {"" !== successMessage
             ? showAlertBar && (
                 
-              <input
-              type="email"
-              className="form-control"
-              id="email"
-              placeholder="Enter email"
-            />
-             
-              // <RegisterOpt setLoggedIn={setLoggedIn} />  
+
+              <RegisterOpt setLoggedIn={setLoggedIn} />  
     
               )
             : ""}

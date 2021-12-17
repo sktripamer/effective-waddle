@@ -22,13 +22,7 @@ const useShareableState = () => {
 
 const IndexPage = () => {
   
-  
 
-
-
-  function LoginVerify() {
-
-  }
 	const [loggedIn, setLoggedIn] = useState(false);
   const [loggedIn2, setLoggedIn2] = useState(false);
   //const [isLoggedIn, setLoggedIn] = useState(false);
@@ -36,6 +30,7 @@ const IndexPage = () => {
 	const [successMessage, setSuccessMessage] = useState("");
 	const [showAlertBar, setShowAlertBar] = useState(true);
   const isBrowser = typeof window !== "undefined";
+  
   // const useMountEffect = (fun) => useEffect(fun, [setLoggedIn])
   // Check if the user is validated already.
   // useMountEffect(LoginVerify)
@@ -57,7 +52,7 @@ const IndexPage = () => {
         }
       }
     } // // this will fire only when loadDataOnlyOnce-reference changes
-}, [loggedIn, setLoggedIn]);
+}, [loggedIn]);
 
 	const videoLink = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
   const [playing, setPlaying] = useState({

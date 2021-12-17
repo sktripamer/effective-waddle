@@ -10,7 +10,7 @@ const emails = req.body.split('@@')
       } 
       
 
-
+      try {
     const request = await  fetch('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + emails[3], {
         method: 'POST',
         headers: new Headers({
@@ -22,6 +22,8 @@ const emails = req.body.split('@@')
       })
    await request.json();
    return res.status(200).json('good')
-
+    } catch (e) {
+        return res.status(500).json(e)
+    }
 
 }

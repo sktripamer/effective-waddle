@@ -26,33 +26,7 @@ const IndexPage = () => {
 
 
 
- // function LoginVerify() {
-   // const { loggedIn, loading } = useAuth();
-  
-    // Navigate authenticated users to Members page.
-
-  
-    // if (loggedIn) {
-    //   return <p>logged in</p>;
-    // }
-  
-  
-    // if (!loggedIn) {
-    //   return <p>not logged in</p>;
-    // }
-  
-    // return <p>Loading...</p>;
-  //}
-	const [loggedIn, setLoggedIn] = useState(null);
-  const [loggedIn2, setLoggedIn2] = useState(false);
-  //const [isLoggedIn, setLoggedIn] = useState(false);
-	const [activate, setActivate] = useState(false);
-	const [successMessage, setSuccessMessage] = useState("");
-	const [showAlertBar, setShowAlertBar] = useState(true);
-  const isBrowser = typeof window !== "undefined";
-  // Check if the user is validated already.
-  useEffect(() => {
-  
+  function LoginVerify() {
     if (undefined !== window) {
       console.log('heyyy')
       console.log(loggedIn)
@@ -70,7 +44,17 @@ const IndexPage = () => {
         }
       }
     }
-  }, []);
+  }
+	const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn2, setLoggedIn2] = useState(false);
+  //const [isLoggedIn, setLoggedIn] = useState(false);
+	const [activate, setActivate] = useState(false);
+	const [successMessage, setSuccessMessage] = useState("");
+	const [showAlertBar, setShowAlertBar] = useState(true);
+  const isBrowser = typeof window !== "undefined";
+  const useMountEffect = (fun) => useEffect(fun, [])
+  // Check if the user is validated already.
+  useMountEffect(LoginVerify)
 
 
 	const videoLink = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'

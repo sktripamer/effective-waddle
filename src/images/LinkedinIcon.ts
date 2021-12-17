@@ -1,4 +1,4 @@
-import createIcon from './hocs/createIcon';
+import createIcon from '../hocs/createIcon';
 
 const LinkedinIcon = createIcon({
   color: '#007fb1',

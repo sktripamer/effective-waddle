@@ -274,6 +274,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
       "Please click the link in your email to verify your email and continue watching"
     );
     setVideoTime(1)
+    setVideoStatus(0)
     setPlaying({status: true, time: 2.99, speed: 1})
   };
 
@@ -434,6 +435,7 @@ const StepTwo = () => {
     await request.json();
     setVideoTime(2)
     setPlaying({status: true, time: 5.99, speed: 1})
+    setVideoStatus(0)
     //// Important
     // setEmail(values.email);
     // setDescription(values.phonefield);

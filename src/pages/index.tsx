@@ -134,7 +134,7 @@ const IndexPage = () => {
       totalTime,
       }) => {
       setVideoDetails({ currentTime, isPlaying, speed, totalTime });
-      if (currentTime > 3 && loggedIn === false ) {
+      if (currentTime > 3 && LoginVerify() === false ) {
     //if (currentTime > 3 ) {
         console.log('yes')
         setPlaying({status: false, time: 2.99, speed: speed})

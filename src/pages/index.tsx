@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
 import useAuth from "../hooks/useAuth";
 //import UnAuthContent from "../components/UnAuthContent";
+import { isEmpty, remove } from 'lodash';
 import SignUpForm from "../components/SignUpForm";
 import RegisterOpt from "../components/RegisterOpt";
 import UnAuthContent from "../components/UnAuthContent";
@@ -19,7 +20,29 @@ const useShareableState = () => {
   };
 };
 
+export const isUserValidated = () => {
+  let userLoggedInData = "";
+
+  if (undefined !== window) {
+    let authTokenData = localStorage.getItem("auth");
+
+    if (!isEmpty(authTokenData)) {
+      authTokenData = JSON.parse(authTokenData);
+
+      if (!isEmpty(authTokenData.authToken)) {
+        userLoggedInData = authTokenData;
+      }
+    }
+  }
+
+  return userLoggedInData;
+};
+
 const IndexPage = () => {
+  
+  
+
+
 
   function LoginVerify() {
     const { loggedIn, loading } = useAuth();
@@ -47,6 +70,18 @@ const IndexPage = () => {
 	const [activate, setActivate] = useState(false);
 	const [successMessage, setSuccessMessage] = useState("");
 	const [showAlertBar, setShowAlertBar] = useState(true);
+  const isBrowser = typeof window !== "undefined";
+  // Check if the user is validated already.
+  if (isBrowser) {
+    const userValidated = isUserValidated();
+
+    // Redirect the user to My Account page if user is already validated.
+    if (!isEmpty(userValidated)) {
+      setLoggedIn(true);
+    }
+  }
+
+
 	const videoLink = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
   const [playing, setPlaying] = useState({
 		time: 0,

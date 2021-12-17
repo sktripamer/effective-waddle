@@ -470,11 +470,28 @@ const StepTwo = () => {
   const onSubmit = async ( values, { setSubmitting } ) => {
     console.log(values);
     setSubmitting(false);
-    const request = await fetch('/api/friends-email', {
-      method: 'POST',
-      body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + atob(JSON.parse(localStorage.auth).user.id).split(':')[1],
-    });
-    await request.json();
+
+
+    const bodied ={
+        "acf": {
+            "email1": values.email1,
+            "email2": values.email2,
+            "email3": values.email3,
+              }
+      } 
+      
+
+
+    const modify = await  fetch('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + atob(JSON.parse(localStorage.auth).user.id).split(':')[1], {
+        method: 'POST',
+        headers: {
+          'Authorization': "Basic YWRtaW46YWZhOSBvNTJSIG9uNWsgUVdHTCA4M0dMIHVlR3I="
+        },
+         body: JSON.stringify(bodied),
+      
+      })
+    await modify.json();
+ 
     setVideoTime(2)
     setPlaying({status: true, time: 5.99, speed: 1})
     setVideoStatus(0)

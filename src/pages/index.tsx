@@ -21,7 +21,7 @@ const useShareableState = () => {
 };
 
 const LoginVerify = () => {
-  if (undefined !== window) {
+  if (typeof window !== "undefined") {
 
     let authTokenData = localStorage.getItem("auth");
 

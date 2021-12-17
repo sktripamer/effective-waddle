@@ -1,4 +1,5 @@
 export default async function handler(req, res) {
+    try {
 const emails = req.body.split('@@')
 
     const bodied ={
@@ -10,7 +11,7 @@ const emails = req.body.split('@@')
       } 
       
 
-      try {
+
     const modify = await  fetch('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + emails[3], {
         method: 'POST',
         headers: {
@@ -21,9 +22,9 @@ const emails = req.body.split('@@')
       
       })
       const customer = (await modify.json());
-   return res.status(200).json(customer)
+   return res.status(200).json({customer})
     } catch (e) {
-        return res.status(500).json(e)
+        return res.status(500).json({e})
     }
 
 }

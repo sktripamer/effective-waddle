@@ -44,27 +44,27 @@ const IndexPage = () => {
 
 
 
-  function LoginVerify() {
-    const { loggedIn, loading } = useAuth();
+  // function LoginVerify() {
+  //   const { loggedIn, loading } = useAuth();
   
-    // Navigate authenticated users to Members page.
-    useEffect(() => {
-      if (!loading && !loggedIn) {
+  //   // Navigate authenticated users to Members page.
+  //   useEffect(() => {
+  //     if (!loading && !loggedIn) {
   
-      }
-    }, [loggedIn, loading]);
+  //     }
+  //   }, [loggedIn, loading]);
   
-    if (loggedIn) {
-      return <p>logged in</p>;
-    }
+  //   if (loggedIn) {
+  //     return <p>logged in</p>;
+  //   }
   
   
-    if (!loggedIn) {
-      return <p>not logged in</p>;
-    }
+  //   if (!loggedIn) {
+  //     return <p>not logged in</p>;
+  //   }
   
-    return <p>Loading...</p>;
-  }
+  //   return <p>Loading...</p>;
+  // }
 	const [loggedIn, setLoggedIn] = useState(false);
   //const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
@@ -77,7 +77,7 @@ const IndexPage = () => {
 
     // Redirect the user to My Account page if user is already validated.
     if (!isEmpty(userValidated)) {
-    //  setLoggedIn(true);
+      setLoggedIn(true);
     }
   }
 
@@ -158,8 +158,7 @@ const IndexPage = () => {
 
       return (
         <Layout>
-        
-        <LoginVerify />
+
     
       <div class='rev-player'>
       {"" !== successMessage

@@ -27,6 +27,19 @@ const IndexPage = () => {
 
 
   function LoginVerify() {
+
+  }
+	const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn2, setLoggedIn2] = useState(false);
+  //const [isLoggedIn, setLoggedIn] = useState(false);
+	const [activate, setActivate] = useState(false);
+	const [successMessage, setSuccessMessage] = useState("");
+	const [showAlertBar, setShowAlertBar] = useState(true);
+  const isBrowser = typeof window !== "undefined";
+  // const useMountEffect = (fun) => useEffect(fun, [setLoggedIn])
+  // Check if the user is validated already.
+  // useMountEffect(LoginVerify)
+  useEffect(() => {
     if (undefined !== window) {
       console.log('heyyy')
       console.log(loggedIn)
@@ -43,19 +56,8 @@ const IndexPage = () => {
           console.log(loggedIn)
         }
       }
-    }
-  }
-	const [loggedIn, setLoggedIn] = useState(false);
-  const [loggedIn2, setLoggedIn2] = useState(false);
-  //const [isLoggedIn, setLoggedIn] = useState(false);
-	const [activate, setActivate] = useState(false);
-	const [successMessage, setSuccessMessage] = useState("");
-	const [showAlertBar, setShowAlertBar] = useState(true);
-  const isBrowser = typeof window !== "undefined";
-  const useMountEffect = (fun) => useEffect(fun, [setLoggedIn])
-  // Check if the user is validated already.
-  useMountEffect(LoginVerify)
-
+    } // // this will fire only when loadDataOnlyOnce-reference changes
+}, [setLoggedIn]);
 
 	const videoLink = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
   const [playing, setPlaying] = useState({

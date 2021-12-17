@@ -583,15 +583,16 @@ const IndexPage = () => {
         console.log('yes')
         setPlaying({status: false, time: 2.99, speed: speed})
         setVideoStatus(1)
-      } else if (currentTime > 6  && videoTime==1) {
-        console.log('yes')
+      } 
+      if (currentTime > 6  && videoTime==1) {
+        console.log('yes2')
         setPlaying({status: false, time: 5.99, speed: speed})
         setVideoStatus(2)
       }
       console.log(currentTime)
       console.log(isPlaying)
       console.log(loggedIn)
-      
+      console.log(videoTime)
       };
 
 

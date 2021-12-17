@@ -44,6 +44,7 @@ const IndexPage = () => {
     // return <p>Loading...</p>;
   //}
 	const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn2, setLoggedIn2] = useState(false);
   //const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
 	const [successMessage, setSuccessMessage] = useState("");
@@ -54,18 +55,18 @@ const IndexPage = () => {
   
     if (undefined !== window) {
       console.log('heyyy')
-      console.log(loggedIn)
+      console.log(loggedIn2)
       let authTokenData = localStorage.getItem("auth");
   
       if (!isEmpty(authTokenData)) {
         console.log('heyyy1')
-        console.log(loggedIn)
+        console.log(loggedIn2)
         authTokenData = JSON.parse(authTokenData);
   
         if (!isEmpty(authTokenData.authToken)) {
-          setLoggedIn(true)
+          setLoggedIn2(true)
           console.log('heyyy2')
-          console.log(loggedIn)
+          console.log(loggedIn2)
         }
       }
     }

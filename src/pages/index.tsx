@@ -57,7 +57,7 @@ const IndexPage = () => {
         }
       }
     } // // this will fire only when loadDataOnlyOnce-reference changes
-}, [setLoggedIn]);
+}, [loggedIn, setLoggedIn]);
 
 	const videoLink = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
   const [playing, setPlaying] = useState({
@@ -141,9 +141,14 @@ const IndexPage = () => {
       {"" !== successMessage
             ? showAlertBar && (
                 
-        
+              <input
+              type="email"
+              className="form-control"
+              id="email"
+              placeholder="Enter email"
+            />
              
-              <RegisterOpt setLoggedIn={setLoggedIn} />  
+              // <RegisterOpt setLoggedIn={setLoggedIn} />  
     
               )
             : ""}

@@ -77,7 +77,7 @@ const IndexPage = () => {
 
     // Redirect the user to My Account page if user is already validated.
     if (!isEmpty(userValidated)) {
-      setLoggedIn(true);
+    //  setLoggedIn(true);
     }
   }
 

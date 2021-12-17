@@ -192,7 +192,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
       } = data;
 
       handleRegisterSuccess();
-
+      setVideoTime(1)
       const authData = {
         authToken: customer.jwtAuthToken,
         user: customer,
@@ -227,34 +227,34 @@ const RegisterOpt = ({ setLoggedIn }) => {
      register();
 };
 
-  const handleRegister = async (event) => {
-    console.log(event)
-    if (undefined !== window) {
+  // const handleRegister = async (event) => {
+  //   console.log(event)
+  //   if (undefined !== window) {
       
-      event.preventDefault();
+  //     event.preventDefault();
 
-      // Validation and Sanitization.
-      // const validationResult = validateAndSanitizeRegisterForm({
-      //   //username,
-      //   email,
-      //   description
-      //   //password,
-      // });
+  //     // Validation and Sanitization.
+  //     // const validationResult = validateAndSanitizeRegisterForm({
+  //     //   //username,
+  //     //   email,
+  //     //   description
+  //     //   //password,
+  //     // });
 
-      // If the data is valid.
-     // if (validationResult.isValid) {
-        //setUsername(validationResult.sanitizedData.username);
-        //setPassword(validationResult.sanitizedData.password);
-       // setEmail(validationResult.sanitizedData.email);
-       // setDescription(validationResult.sanitizedData.description);
-       setEmail(email);
-       setDescription(description);
-        register();
-      // } else {
-      //   setClientSideError(validationResult);
-      // }
-    }
-  };
+  //     // If the data is valid.
+  //    // if (validationResult.isValid) {
+  //       //setUsername(validationResult.sanitizedData.username);
+  //       //setPassword(validationResult.sanitizedData.password);
+  //      // setEmail(validationResult.sanitizedData.email);
+  //      // setDescription(validationResult.sanitizedData.description);
+  //      setEmail(email);
+  //      setDescription(description);
+  //       register();
+  //     // } else {
+  //     //   setClientSideError(validationResult);
+  //     // }
+  //   }
+  // };
 
   /**
    * Handle Register success.
@@ -576,6 +576,7 @@ const IndexPage = () => {
       isPlaying,
       speed,
       totalTime,
+      videoTime,
       }) => {
       setVideoDetails({ currentTime, isPlaying, speed, totalTime });
       if (currentTime > 3 && LoginVerify() === false ) {

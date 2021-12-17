@@ -20,7 +20,7 @@ const emails = req.body.split('@@')
          body: JSON.stringify(bodied),
       
       })
-   const intent2 = (await request.json());
+   await request.json();
 res.status(200)
 
 

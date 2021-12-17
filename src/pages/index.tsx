@@ -20,24 +20,6 @@ const useShareableState = () => {
   };
 };
 
-export const isUserValidated = () => {
-  let userLoggedInData = "";
-
-  if (undefined !== window) {
-    let authTokenData = localStorage.getItem("auth");
-
-    if (!isEmpty(authTokenData)) {
-      authTokenData = JSON.parse(authTokenData);
-
-      if (!isEmpty(authTokenData.authToken)) {
-        userLoggedInData = authTokenData;
-      }
-    }
-  }
-
-  return userLoggedInData;
-};
-
 const IndexPage = () => {
   
   
@@ -48,16 +30,7 @@ const IndexPage = () => {
    // const { loggedIn, loading } = useAuth();
   
     // Navigate authenticated users to Members page.
-    useEffect(() => {
-      if (isBrowser) {
-        const userValidated = isUserValidated();
-    
-        // Redirect the user to My Account page if user is already validated.
-        if (!isEmpty(userValidated)) {  
-          setLoggedIn(true);
-        }
-      }
-    }, []);
+
   
     // if (loggedIn) {
     //   return <p>logged in</p>;
@@ -77,7 +50,19 @@ const IndexPage = () => {
 	const [showAlertBar, setShowAlertBar] = useState(true);
   const isBrowser = typeof window !== "undefined";
   // Check if the user is validated already.
-
+  useEffect(() => {
+    if (undefined !== window) {
+      let authTokenData = localStorage.getItem("auth");
+  
+      if (!isEmpty(authTokenData)) {
+        authTokenData = JSON.parse(authTokenData);
+  
+        if (!isEmpty(authTokenData.authToken)) {
+          setLoggedIn(true)
+        }
+      }
+    }
+  }, []);
 
 
 	const videoLink = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'

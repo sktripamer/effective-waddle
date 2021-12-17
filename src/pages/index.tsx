@@ -51,7 +51,9 @@ const IndexPage = () => {
   const isBrowser = typeof window !== "undefined";
   // Check if the user is validated already.
   useEffect(() => {
+  
     if (undefined !== window) {
+      console.log('heyyy')
       let authTokenData = localStorage.getItem("auth");
   
       if (!isEmpty(authTokenData)) {

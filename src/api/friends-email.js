@@ -40,6 +40,6 @@ async function getCustomerObj(emails1, emails2, emails3, id) {
       return customerobj;
     } catch (error) {
 
-      return null;
+      return error;
     }
   }

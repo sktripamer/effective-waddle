@@ -54,6 +54,8 @@ const LoginVerify = () => {
   } // // this will fire only when loadDataOnlyOnce-reference changes
 }
 
+
+
 const validationSchema = Yup.object().shape({
   // firstName: Yup.string().required("The First Name field is required"),
   phonefield: Yup.string().required("The phone field is required"),
@@ -493,6 +495,10 @@ const IndexPage = () => {
   const isBrowser = typeof window !== "undefined";
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
   const {videoTime, setVideoTime } = useBetween(useShareableState);
+
+  const currentVideoState = () => {
+    return videoTime;
+  }
   // const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])
   // Check if the user is validated already.
   // useMountEffect(LoginVerify)
@@ -584,7 +590,7 @@ const IndexPage = () => {
         setPlaying({status: false, time: 2.99, speed: speed})
         setVideoStatus(1)
       } 
-      if (currentTime > 6  && videoTime==1) {
+      if (currentTime > 6  && currentVideoState()==1) {
         console.log('yes2')
         setPlaying({status: false, time: 5.99, speed: speed})
         setVideoStatus(2)
@@ -593,7 +599,7 @@ const IndexPage = () => {
       console.log(isPlaying)
       console.log(loggedIn)
       console.log(videoTime)
-      console.log(videoStatus)
+      console.log(currentVideoState())
       };
 
 

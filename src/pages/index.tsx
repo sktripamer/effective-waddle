@@ -60,15 +60,15 @@ const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("The email must be a valid email address.")
     .required("The Email field is required"),
-    email1: Yup.string()
-    .email("The email must be a valid email address.")
-    .required("The Email field is required"),
-    email2: Yup.string()
-    .email("The email must be a valid email address.")
-    .required("The Email field is required"),
-    email3: Yup.string()
-    .email("The email must be a valid email address.")
-    .required("The Email field is required"),
+    // email1: Yup.string()
+    // .email("The email must be a valid email address.")
+    // .required("The Email field is required"),
+    // email2: Yup.string()
+    // .email("The email must be a valid email address.")
+    // .required("The Email field is required"),
+    // email3: Yup.string()
+    // .email("The email must be a valid email address.")
+    // .required("The Email field is required"),
   // password: Yup.string()
   //   .required("The Password field is required")
   //   .matches(
@@ -133,14 +133,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
   const {videoTime, setVideoTime } = useBetween(useShareableState);
   // Check if the user is validated already.
-  if (isBrowser) {
-    const userValidated = isUserValidated();
 
-    // Redirect the user to My Account page if user is already validated.
-    if (!isEmpty(userValidated)) {
-      // @TODO
-    }
-  }
 
   /**
    * Hide the Status bar on cross button click.

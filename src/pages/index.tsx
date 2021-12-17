@@ -44,27 +44,32 @@ const IndexPage = () => {
 
 
 
-  // function LoginVerify() {
-  //   const { loggedIn, loading } = useAuth();
+ // function LoginVerify() {
+   // const { loggedIn, loading } = useAuth();
   
-  //   // Navigate authenticated users to Members page.
-  //   useEffect(() => {
-  //     if (!loading && !loggedIn) {
+    // Navigate authenticated users to Members page.
+    useEffect(() => {
+      if (isBrowser) {
+        const userValidated = isUserValidated();
+    
+        // Redirect the user to My Account page if user is already validated.
+        if (!isEmpty(userValidated)) {  
+          setLoggedIn(true);
+        }
+      }
+    }, []);
   
-  //     }
-  //   }, [loggedIn, loading]);
-  
-  //   if (loggedIn) {
-  //     return <p>logged in</p>;
-  //   }
+    // if (loggedIn) {
+    //   return <p>logged in</p>;
+    // }
   
   
-  //   if (!loggedIn) {
-  //     return <p>not logged in</p>;
-  //   }
+    // if (!loggedIn) {
+    //   return <p>not logged in</p>;
+    // }
   
-  //   return <p>Loading...</p>;
-  // }
+    // return <p>Loading...</p>;
+  //}
 	const [loggedIn, setLoggedIn] = useState(false);
   //const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
@@ -72,14 +77,7 @@ const IndexPage = () => {
 	const [showAlertBar, setShowAlertBar] = useState(true);
   const isBrowser = typeof window !== "undefined";
   // Check if the user is validated already.
-  if (isBrowser) {
-    const userValidated = isUserValidated();
 
-    // Redirect the user to My Account page if user is already validated.
-    if (!isEmpty(userValidated)) {
-      setLoggedIn(true);
-    }
-  }
 
 
 	const videoLink = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'

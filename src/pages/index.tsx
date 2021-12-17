@@ -21,9 +21,9 @@ const useShareableState = () => {
 };
 
 const IndexPage = () => {
-  
 
-	const [loggedIn, setLoggedIn] = useState(false);
+
+	const [loggedIn, setLoggedIn] = useState({});
   const [loggedIn2, setLoggedIn2] = useState(false);
   //const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
@@ -49,10 +49,15 @@ const IndexPage = () => {
           setLoggedIn(true)
           console.log('heyyy2')
           console.log(loggedIn)
+        } else {
+          console.log('empty')
         }
       }
     } // // this will fire only when loadDataOnlyOnce-reference changes
-}, [loggedIn]);
+}, [loggedIn, setLoggedIn]);
+
+
+
 
 	const videoLink = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
   const [playing, setPlaying] = useState({

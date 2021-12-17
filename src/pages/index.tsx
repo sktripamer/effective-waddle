@@ -22,9 +22,12 @@ const useShareableState = () => {
 		status: false,
 		speed: 1,
 	  });
+    const [videoStatus, setVideoStatus] = useState(0)
   return {
    playing,
-    setPlaying
+    setPlaying,
+    videoStatus,
+    setVideoStatus
   };
 };
 
@@ -115,6 +118,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
   const [showAlertBar, setShowAlertBar] = useState(true);
   const isBrowser = typeof window !== "undefined";
   const {playing, setPlaying } = useBetween(useShareableState);
+  const {videoStatus, setVideoStatus } = useBetween(useShareableState);
   // Check if the user is validated already.
   if (isBrowser) {
     const userValidated = isUserValidated();
@@ -263,6 +267,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
     setSuccessMessage(
       "Please click the link in your email to verify your email and continue watching"
     );
+    setVideoStatus(2)
     setPlaying({status: true, time: 2.99, speed: 1})
   };
 
@@ -408,6 +413,15 @@ const RegisterOpt = ({ setLoggedIn }) => {
 };
 
 
+const StepTwo = () => {
+  const {playing, setPlaying } = useBetween(useShareableState);
+  const {videoStatus, setVideoStatus } = useBetween(useShareableState);
+
+
+}
+
+
+
 const IndexPage = () => {
 
 
@@ -418,7 +432,7 @@ const IndexPage = () => {
 	const [successMessage, setSuccessMessage] = useState("");
 	const [showAlertBar, setShowAlertBar] = useState(true);
   const isBrowser = typeof window !== "undefined";
-  
+  const {videoStatus, setVideoStatus } = useBetween(useShareableState);
   // const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])
   // Check if the user is validated already.
   // useMountEffect(LoginVerify)
@@ -508,7 +522,7 @@ const IndexPage = () => {
     //if (currentTime > 3 ) {
         console.log('yes')
         setPlaying({status: false, time: 2.99, speed: speed})
-        setSuccessMessage('3 seconds now')
+        setVideoStatus(1)
       }
       console.log(currentTime)
       console.log(isPlaying)
@@ -528,7 +542,7 @@ const IndexPage = () => {
 
     
       <div class='rev-player'>
-      {"" !== successMessage
+      {1 == videoStatus
             ? showAlertBar && (
                 
 

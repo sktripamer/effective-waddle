@@ -43,7 +43,7 @@ const IndexPage = () => {
   
     // return <p>Loading...</p>;
   //}
-	const [loggedIn, setLoggedIn] = useState(false);
+	const [loggedIn, setLoggedIn] = useState(null);
   const [loggedIn2, setLoggedIn2] = useState(false);
   //const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
@@ -55,18 +55,18 @@ const IndexPage = () => {
   
     if (undefined !== window) {
       console.log('heyyy')
-      console.log(loggedIn2)
+      console.log(loggedIn)
       let authTokenData = localStorage.getItem("auth");
   
       if (!isEmpty(authTokenData)) {
         console.log('heyyy1')
-        console.log(loggedIn2)
+        console.log(loggedIn)
         authTokenData = JSON.parse(authTokenData);
   
         if (!isEmpty(authTokenData.authToken)) {
-          setLoggedIn2(true)
+          setLoggedIn(true)
           console.log('heyyy2')
-          console.log(loggedIn2)
+          console.log(loggedIn)
         }
       }
     }
@@ -136,7 +136,7 @@ const IndexPage = () => {
       }
       console.log(currentTime)
       console.log(isPlaying)
-      console.log(loggedIn2)
+      console.log(loggedIn)
       
       };
 

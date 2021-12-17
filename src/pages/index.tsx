@@ -54,13 +54,18 @@ const IndexPage = () => {
   
     if (undefined !== window) {
       console.log('heyyy')
+      console.log(loggedIn)
       let authTokenData = localStorage.getItem("auth");
   
       if (!isEmpty(authTokenData)) {
+        console.log('heyyy1')
+        console.log(loggedIn)
         authTokenData = JSON.parse(authTokenData);
   
         if (!isEmpty(authTokenData.authToken)) {
           setLoggedIn(true)
+          console.log('heyyy2')
+          console.log(loggedIn)
         }
       }
     }

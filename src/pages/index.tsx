@@ -496,7 +496,7 @@ const StepTwo = () => {
    
  const intent2 = (await modify.json());
  console.log(intent2)
- 
+ localStorage.removeItem("s2")
     setVideoTime(2)
     setPlaying({status: true, time: 5.99, speed: 1})
     setVideoStatus(0)

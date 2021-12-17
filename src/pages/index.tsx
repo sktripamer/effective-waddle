@@ -23,11 +23,14 @@ const useShareableState = () => {
 		speed: 1,
 	  });
     const [videoStatus, setVideoStatus] = useState(0)
+    const [videoTime, setVideoTime] = useState(0)
   return {
    playing,
     setPlaying,
     videoStatus,
-    setVideoStatus
+    setVideoStatus,
+    videoTime,
+    setVideoTime
   };
 };
 
@@ -55,6 +58,15 @@ const validationSchema = Yup.object().shape({
   // firstName: Yup.string().required("The First Name field is required"),
   phonefield: Yup.string().required("The phone field is required"),
   email: Yup.string()
+    .email("The email must be a valid email address.")
+    .required("The Email field is required"),
+    email1: Yup.string()
+    .email("The email must be a valid email address.")
+    .required("The Email field is required"),
+    email2: Yup.string()
+    .email("The email must be a valid email address.")
+    .required("The Email field is required"),
+    email3: Yup.string()
     .email("The email must be a valid email address.")
     .required("The Email field is required"),
   // password: Yup.string()
@@ -119,6 +131,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
   const isBrowser = typeof window !== "undefined";
   const {playing, setPlaying } = useBetween(useShareableState);
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
+  const {videoTime, setVideoTime } = useBetween(useShareableState);
   // Check if the user is validated already.
   if (isBrowser) {
     const userValidated = isUserValidated();
@@ -267,7 +280,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
     setSuccessMessage(
       "Please click the link in your email to verify your email and continue watching"
     );
-    setVideoStatus(2)
+    setVideoTime(1)
     setPlaying({status: true, time: 2.99, speed: 1})
   };
 
@@ -416,6 +429,57 @@ const RegisterOpt = ({ setLoggedIn }) => {
 const StepTwo = () => {
   const {playing, setPlaying } = useBetween(useShareableState);
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
+  const {videoTime, setVideoTime } = useBetween(useShareableState);
+
+  const onSubmit = async ( values, { setSubmitting } ) => {
+    console.log(values);
+    setSubmitting(false);
+    const request = await fetch('/api/friends-email', {
+      method: 'POST',
+      body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + atob(JSON.parse(localStorage.auth).user.id).split(':')[1],
+    });
+    await request.json();
+    setVideoTime(2)
+    setPlaying({status: true, time: 5.99, speed: 1})
+    //// Important
+    // setEmail(values.email);
+    // setDescription(values.phonefield);
+
+};
+
+  return (
+    <FormikStepper
+    /// Accept all Formik props
+    onSubmit={onSubmit} /// onSubmit Function
+    initialValues={{
+      email1: "",
+      email2: "",
+      email3: "",
+    }}
+    validationSchema={validationSchema}
+    labelsColor="secondary" /// The text label color can be root variables or css => #fff
+    withStepperLine /// false as default and If it is false, it hides stepper line
+    nextBtnLabel="step" /// Next as default
+    prevBtnLabel="return" /// Prev as default
+    submitBtnLabel="Done" /// Submit as default
+    nextBtnColor="primary" /// as default and The color can be root variables or css => #fff
+    prevBtnColor="danger" /// as default and The color can be root variables or css => #fff
+    submitBtnColor="success" /// as default and The color can be root variables or css => #fff
+  >
+    {/*  First Step */}
+    <FormikStep
+      label="Profile Info" /// The text label of Step
+      withIcons="fa fa-user" // to add icon into the circle must add icon as class Name like Fontawesome
+      withNumbers /// If true, it hides the icon and shows the step number
+      iconColor="white" /// The color can be root variables or css => #fff
+      circleColor="danger" /// The color can be root variables or css => #fff
+    >
+      <InputField name="email1" label="Email" type="email" />
+      <InputField name="email2" label="Email" type="email" />
+      <InputField name="email3" label="Email" type="email" />
+    </FormikStep>
+  </FormikStepper>
+  )
 
 
 }
@@ -433,6 +497,7 @@ const IndexPage = () => {
 	const [showAlertBar, setShowAlertBar] = useState(true);
   const isBrowser = typeof window !== "undefined";
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
+  const {videoTime, setVideoTime } = useBetween(useShareableState);
   // const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])
   // Check if the user is validated already.
   // useMountEffect(LoginVerify)
@@ -523,6 +588,10 @@ const IndexPage = () => {
         console.log('yes')
         setPlaying({status: false, time: 2.99, speed: speed})
         setVideoStatus(1)
+      } else if (currentTime > 6  && videoTime==1) {
+        console.log('yes')
+        setPlaying({status: false, time: 5.99, speed: speed})
+        setVideoStatus(2)
       }
       console.log(currentTime)
       console.log(isPlaying)
@@ -547,6 +616,14 @@ const IndexPage = () => {
                 
 
               <RegisterOpt setLoggedIn={setLoggedIn} />  
+    
+              )
+            : ""}
+             {2 == videoStatus
+            ? showAlertBar && (
+                
+
+              <StepTwo />  
     
               )
             : ""}

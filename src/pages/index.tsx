@@ -513,13 +513,13 @@ const StepTwo = () => {
 
 
 
-  async function createIntent() {
+  async function createIntent(createtoken) {
     try {
       // Retrieve email and username of the currently logged in user.
       // getUserFromDB() is *your* implemention of getting user info from the DB
       const request = await fetch('/api/friends-email', {
         method: 'POST',
-        body: 'A',
+        body: createtoken,
       });
       const intent = (await request.json());
       // Update your user in DB to store the customerID
@@ -536,18 +536,20 @@ const StepTwo = () => {
     console.log(values);
     setSubmitting(false);
 
-    const intent = await createIntent();
-    console.log(intent)
     
 
-//     const bodied ={
-//         "acf": {
-//             "email1": values.email1,
-//             "email2": values.email2,
-//             "email3": values.email3,
-//               }
-//       } 
+    const bodied ={
+        "acf": {
+            "email1": values.email1,
+            "email2": values.email2,
+            "email3": values.email3,
+              }
+      } 
       
+
+      const intent = await createIntent(values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken);
+      console.log(intent)
+
 //     //   const response = await window
 //     //   .fetch('/api/friends-email', {
 //     //     method: `POST`,

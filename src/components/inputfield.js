@@ -27,7 +27,7 @@ const isUserValidated = () => {
       authTokenData = JSON.parse(authTokenData);
 
       if (!isEmpty(authTokenData.user.email)) {
-        userLoggedInData = authTokenData;
+        userLoggedInData = authTokenData.user.email;
       }
     }
   }

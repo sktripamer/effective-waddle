@@ -797,7 +797,7 @@ const elements = useElements();
 //     });
 // }, []);
 
-const radioHandler = (status: React.SetStateAction<number>) => {
+const radioHandler = (status) => {
   setStatus(status);
 };
 
@@ -808,7 +808,7 @@ async function createIntent() {
     // getUserFromDB() is *your* implemention of getting user info from the DB
     const form = nameForm.current
     const email = form['firstname'].value
-    const request = await fetch('/api/payment-intent', {
+    const request = await fetch('/api/create-intent', {
       method: 'POST',
       body: email,
     });

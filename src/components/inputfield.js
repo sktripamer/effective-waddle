@@ -1,9 +1,10 @@
 
 import React, { Component, useState } from 'react';
-
+import { isEmpty, remove } from 'lodash';
 
 export default function InputField2({name,label}) {
-  const [state, setState] = useState('')
+  
+  const [state, setState] = useState(isUserValidated)
   return (
     <div>
      <label>{label}</label>
@@ -15,3 +16,21 @@ export default function InputField2({name,label}) {
   );
 
 }
+
+const isUserValidated = () => {
+  let userLoggedInData = "";
+
+  if (undefined !== window) {
+    let authTokenData = localStorage.getItem("auth");
+
+    if (!isEmpty(authTokenData)) {
+      authTokenData = JSON.parse(authTokenData);
+
+      if (!isEmpty(authTokenData.user.email)) {
+        userLoggedInData = authTokenData;
+      }
+    }
+  }
+
+  return userLoggedInData;
+};

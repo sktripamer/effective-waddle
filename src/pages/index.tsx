@@ -526,27 +526,27 @@ const StepTwo = () => {
               }
       } 
       
-      const response = await window
-      .fetch('/api/friends-email', {
-        method: `POST`,
-        headers: {
-          "content-type": "application/json",
-        },
-        body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken,
-      })
-      .then(res => res.json())
-    console.log(response)
+    //   const response = await window
+    //   .fetch('/api/friends-email', {
+    //     method: `POST`,
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken,
+    //   })
+    //   .then(res => res.json())
+    // console.log(response)
 
-//       const request = await fetch('/api/friends-email', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json'
-//         },
-//         body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken
-//       })
+      const request = await fetch('/api/friends-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken
+      })
    
-//  const intent2 = (await request.json());
-//  console.log(intent2)
+ const intent2 = (await request.json());
+ console.log(intent2)
  localStorage.removeItem("s2")
  localStorage.setItem("s3", "y")
     setVideoTime(2)

@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
 import useAuth from "../hooks/useAuth";
 //import UnAuthContent from "../components/UnAuthContent";
-import {loadStripe} from '@stripe/stripe-js';
+import {loadStripe, StripeConstructorOptions} from '@stripe/stripe-js';
 import {
   CardElement,
   Elements,
@@ -229,7 +229,7 @@ export const isUserValidated = () => {
     return userLoggedInData;
   };
   
-  export const setAuth = (authData) => {
+  export const setAuth = (authData: { authToken: any; user: any; }) => {
     localStorage.setItem("auth", JSON.stringify(authData));
   };
 
@@ -265,7 +265,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
    *
    * @param {Object} validationResult Validation result data.
    */
-  const setClientSideError = (validationResult) => {
+  const setClientSideError = (validationResult: { errors: { email: React.SetStateAction<string>; }; }) => {
     // if (validationResult.errors.password) {
     //   setErrorMessage(validationResult.errors.password);
     // }
@@ -333,7 +333,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
    * @return {void}
    */
 
-   const onSubmit = async ( values, { setSubmitting } ) => {
+   const onSubmit = async ( values: { email: React.SetStateAction<string>; phonefield: React.SetStateAction<string>; }, { setSubmitting }: any ) => {
     console.log(values);
     setSubmitting(false); //// Important
     setEmail(values.email);
@@ -541,7 +541,7 @@ const StepTwo = () => {
 
 
 
-  async function createIntent(createtoken) {
+  async function createIntent(createtoken: string) {
     try {
       // Retrieve email and username of the currently logged in user.
       // getUserFromDB() is *your* implemention of getting user info from the DB
@@ -560,7 +560,7 @@ const StepTwo = () => {
     }
   }
 
-  const onSubmit = async ( values, { setSubmitting } ) => {
+  const onSubmit = async ( values: { email1: string; email2: string; email3: string; }, { setSubmitting }: any ) => {
     console.log(values);
     setSubmitting(false);
 
@@ -658,7 +658,7 @@ const StepThree = () => {
   const shareUrl = 'revrevdev.xyz';
   const title = 'rev';
 
-  function handleSubmit(e) {
+  function handleSubmit(e: { preventDefault: () => void; }) {
     e.preventDefault();
  
 
@@ -797,7 +797,7 @@ const elements = useElements();
 //     });
 // }, []);
 
-const radioHandler = (status) => {
+const radioHandler = (status: React.SetStateAction<number>) => {
   setStatus(status);
 };
 
@@ -891,12 +891,12 @@ const cardStyle = {
 // }
 
 
-const handleChange = async (event) => {
+const handleChange = async (event: { empty: boolean | ((prevState: boolean) => boolean); error: { message: any; }; }) => {
   setDisabled(event.empty);
   setError(event.error ? event.error.message : "");
 };
 
-const handleSubmit = async (ev) => {
+const handleSubmit = async (ev: { preventDefault: () => void; }) => {
   ev.preventDefault();
   setProcessing(true);
   const intent = await createIntent();
@@ -973,7 +973,7 @@ const IndexPage = (stripeAccount ) => {
  // const promise, setStripePromise] = useState(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
   //const stripePromise = useMemo(() => loadStripe(PUBLISHABLE_KEY))
   const promise = useMemo(
-    () => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3', { stripeAccount }),
+    () => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3', stripeAccount),
     [stripeAccount],
   )
 	const [loggedIn, setLoggedIn] = useState(LoginVerify());
@@ -1038,7 +1038,7 @@ const IndexPage = (stripeAccount ) => {
       });
   
       
-      const handlePlayPause = (status) => () => {
+      const handlePlayPause = (status: any) => () => {
       setPlaying({
         status,
         time: videoProgressFunctions.getCurrentTime?.() || playing.time,
@@ -1046,7 +1046,7 @@ const IndexPage = (stripeAccount ) => {
       });
       };
   
-      const handlePlaybackSpeedChange = (speed) => () => {
+      const handlePlaybackSpeedChange = (speed: any) => () => {
       setPlaying({
         speed,
         time: videoProgressFunctions.getCurrentTime?.() || playing.time,

@@ -38,7 +38,7 @@ const saveFriends = async (req, res) => {
 //   // catch (ex) {   res.status(500).send(ex.message); }
 
 try {
-    const customerID = await getCustomer();
+    const customerID = await getCustomer(req.body);
 
     res.status(200).json({customerID})
   } catch (e) {
@@ -49,16 +49,19 @@ try {
 
 }
 
-async function getCustomer() {
-
+async function getCustomer(token) {
+  const emails = token.split('@@')
     const data = {
         "acf": {
-            "email1": 'test123@gmail.com',
-            "email2": 'test123@gmail.com',
-            "email3": 'test123@gmail.com',
+            "email1": emails[0],
+            "email2": emails[1],
+            "email3": emails[2],
               }
       }
-      
+    let decoded;  
+       try { 
+        decoded = jwt.verify(emails[3], 'sAd}aBA(Lm{&Z))WK|whV|nBU=zf6J^hshgMMfkU;Hmc Ky/5mRx2G^4/LsE-q`|',{ ignoreExpiration: true});
+       }  catch (ex) {   return ex; }
       let axiosConfig = {
         headers: {
             'Content-Type': 'application/json',
@@ -66,7 +69,7 @@ async function getCustomer() {
         }
       };
       
-      axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users/35', JSON.stringify(data), axiosConfig)
+      axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + decoded.data.user.id, JSON.stringify(data), axiosConfig)
       .then((res) => {
        return res;
       })

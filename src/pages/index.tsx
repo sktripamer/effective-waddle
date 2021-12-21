@@ -511,42 +511,64 @@ const StepTwo = () => {
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
   const {videoTime, setVideoTime } = useBetween(useShareableState);
 
+
+
+  async function createIntent() {
+    try {
+      // Retrieve email and username of the currently logged in user.
+      // getUserFromDB() is *your* implemention of getting user info from the DB
+      const request = await fetch('/api/friends-email', {
+        method: 'POST',
+        body: 'A',
+      });
+      const intent = (await request.json());
+      // Update your user in DB to store the customerID
+      // updateUserInDB() is *your* implementation of updating a user in the DB
+      return intent;
+    } catch (error) {
+      console.log('Failed to set emails');
+      console.log(error);
+      return null;
+    }
+  }
+
   const onSubmit = async ( values, { setSubmitting } ) => {
     console.log(values);
     setSubmitting(false);
 
-
+    const intent = await createIntent();
+    console.log(intent)
     
 
-    const bodied ={
-        "acf": {
-            "email1": values.email1,
-            "email2": values.email2,
-            "email3": values.email3,
-              }
-      } 
+//     const bodied ={
+//         "acf": {
+//             "email1": values.email1,
+//             "email2": values.email2,
+//             "email3": values.email3,
+//               }
+//       } 
       
-    //   const response = await window
-    //   .fetch('/api/friends-email', {
-    //     method: `POST`,
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken,
-    //   })
-    //   .then(res => res.json())
-    // console.log(response)
+//     //   const response = await window
+//     //   .fetch('/api/friends-email', {
+//     //     method: `POST`,
+//     //     headers: {
+//     //       "content-type": "application/json",
+//     //     },
+//     //     body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken,
+//     //   })
+//     //   .then(res => res.json())
+//     // console.log(response)
 
-      const request = await fetch('/api/friends-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken
-      })
+//       const request = await fetch('/api/friends-email', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         },
+//         body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken
+//       })
    
- const intent2 = (await request.json());
- console.log(intent2)
+//  const intent2 = (await request.json());
+//  console.log(intent2)
  localStorage.removeItem("s2")
  localStorage.setItem("s3", "y")
     setVideoTime(2)

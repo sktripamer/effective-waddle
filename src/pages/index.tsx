@@ -972,7 +972,8 @@ const IndexPage = () => {
   const isBrowser = typeof window !== "undefined";
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
   const {videoTime, setVideoTime } = useBetween(useShareableState);
-
+  const stripe = useStripe();
+  const elements = useElements();
   const currentVideoState = () => {
     return videoTime;
   }

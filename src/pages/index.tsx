@@ -526,20 +526,27 @@ const StepTwo = () => {
               }
       } 
       
-
-
-    const modify = await  fetch('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + atob(JSON.parse(localStorage.auth).user.id).split(':')[1], {
-        method: 'POST',
+      const response = await window
+      .fetch('/api/friends-email', {
+        method: `POST`,
         headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          'Authorization': "Basic YWRtaW46YWZhOSBvNTJSIG9uNWsgUVdHTCA4M0dMIHVlR3I=",
+          "content-type": "application/json",
         },
-         body: JSON.stringify(bodied),
-      
+        body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken,
       })
+      .then(res => res.json())
+    console.log(response)
+
+//       const request = await fetch('/api/friends-email', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         },
+//         body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken
+//       })
    
- const intent2 = (await modify.json());
- console.log(intent2)
+//  const intent2 = (await request.json());
+//  console.log(intent2)
  localStorage.removeItem("s2")
  localStorage.setItem("s3", "y")
     setVideoTime(2)
@@ -549,6 +556,9 @@ const StepTwo = () => {
     // setEmail(values.email);
     // setDescription(values.phonefield);
 
+
+
+    
 };
 
   return (

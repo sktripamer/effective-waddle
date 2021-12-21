@@ -3,6 +3,13 @@ import Layout from "../components/Layout";
 import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
 import useAuth from "../hooks/useAuth";
 //import UnAuthContent from "../components/UnAuthContent";
+import {loadStripe} from '@stripe/stripe-js';
+import {
+  CardElement,
+  Elements,
+  useStripe,
+  useElements,
+} from '@stripe/react-stripe-js';
 import { isEmpty, remove } from 'lodash';
 import { gql , useMutation } from "@apollo/client";
 import SignUpForm from "../components/SignUpForm";
@@ -962,7 +969,7 @@ return (
 
 const IndexPage = () => {
 
-
+  const promise = loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3');
 	const [loggedIn, setLoggedIn] = useState(LoginVerify());
   const [loggedIn2, setLoggedIn2] = useState(false);
   //const [isLoggedIn, setLoggedIn] = useState(false);
@@ -972,8 +979,6 @@ const IndexPage = () => {
   const isBrowser = typeof window !== "undefined";
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
   const {videoTime, setVideoTime } = useBetween(useShareableState);
-  const stripe = useStripe();
-  const elements = useElements();
   const currentVideoState = () => {
     return videoTime;
   }
@@ -1129,9 +1134,9 @@ const IndexPage = () => {
               {4 == videoStatus
             ? showAlertBar && (
                 
-
+              <Elements stripe={promise}>
               <StepFour />  
-    
+              </Elements>
               )
             : ""}
       {  typeof window !== 'undefined' && CustomizableVideoPlayer && <CustomizableVideoPlayer url={videoLink} playing={playing} getVideoProgressDetails={storeVideoDetailFunctions} onVideoProgress={handleVideoProgress} /> }

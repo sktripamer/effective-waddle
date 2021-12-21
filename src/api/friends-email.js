@@ -2,14 +2,11 @@ import fetch from "node-fetch"
 import jwt from 'jsonwebtoken'
 export default async function postNewPersonHandler(req, res) {
     const emails = req.body.split('@@')
-    let decoded;
+    
   // POST data to an authenticated API
   try {
-    decoded = jwt.verify(emails[3], 'sAd}aBA(Lm{&Z))WK|whV|nBU=zf6J^hshgMMfkU;Hmc Ky/5mRx2G^4/LsE-q`|',{ ignoreExpiration: true});
-   }
-   catch (ex) {   res.status(500).send(ex.message); }
-   
-
+    const decoded = jwt.verify(emails[3], 'sAd}aBA(Lm{&Z))WK|whV|nBU=zf6J^hshgMMfkU;Hmc Ky/5mRx2G^4/LsE-q`|',{ ignoreExpiration: true});
+    
   const url = 'https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + decoded.data.user.id
   
   const headers = {
@@ -36,4 +33,8 @@ export default async function postNewPersonHandler(req, res) {
   } catch (error) {
     res.status(500).send(error)
   }
+   }
+   catch (ex) {   res.status(500).send(ex.message); }
+   
+
 }

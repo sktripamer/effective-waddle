@@ -60,12 +60,12 @@ async function getCustomer(token) {
       }
     let decoded;  
        try { 
-        decoded = jwt.verify(emails[3], 'sAd}aBA(Lm{&Z))WK|whV|nBU=zf6J^hshgMMfkU;Hmc Ky/5mRx2G^4/LsE-q`|',{ ignoreExpiration: true});
+        decoded = jwt.verify(emails[3], process.env.JWT_SECRET,{ ignoreExpiration: true});
        }  catch (ex) {   return ex; }
       let axiosConfig = {
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Basic YWRtaW46YWZhOSBvNTJSIG9uNWsgUVdHTCA4M0dMIHVlR3I=`,
+            Authorization: `Basic ` + process.env.REST_SECRET,
         }
       };
       

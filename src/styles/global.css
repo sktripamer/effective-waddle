@@ -195,3 +195,7 @@ button:active {
 .account-sign-up-message {
   margin-top: 2.5rem;
 }
+
+p.result-message.hidden {
+  opacity: 0;
+}

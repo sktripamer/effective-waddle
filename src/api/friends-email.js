@@ -1,6 +1,6 @@
 import fetch from "node-fetch"
 import jwt from 'jsonwebtoken'
-export default async function postNewPersonHandler(req, res) {
+const saveFriends = async (req, res) => {
    // const emails = req.body.split('@@')
     
   // POST data to an authenticated API
@@ -38,3 +38,5 @@ export default async function postNewPersonHandler(req, res) {
    
 
 }
+
+export default saveFriends

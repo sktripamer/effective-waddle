@@ -16,7 +16,7 @@ import SignUpForm from "../components/SignUpForm";
 //import RegisterOpt from "../components/RegisterOpt";
 import UnAuthContent from "../components/UnAuthContent";
 //import LoginVerify from "../components/LoginVerify";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+
 import InputField2 from '../components/inputfield';
 
 

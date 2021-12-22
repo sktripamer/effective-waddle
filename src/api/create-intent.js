@@ -95,7 +95,7 @@ const createCustomer = async (emailSend, uID) => {
     const customerID = await stripe.customers.create({
       email: emailSend
     });
-    const cID = customerID.id;
+    const cID = await customerID.id;
     await setCustomer(uID, cID);
    return cID;
 
@@ -107,7 +107,7 @@ const createCustomer = async (emailSend, uID) => {
 
 
 const createIntent = async (cID) => {
-    
+
     try {
     const paymentIntent = await stripe.paymentIntents.create({
         amount: 500,

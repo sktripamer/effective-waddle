@@ -57,26 +57,26 @@ async function getEmail(token) {
          
     //      }  catch (ex) {   return ex; }
 
-    //      const url = 'https://portal.revrevdev.xyz/wp-json/wp/v2/users/45'
+         const url = 'https://portal.revrevdev.xyz/wp-json/wp/v2/users/45'
   
-    //      const headers = {
-    //        "Content-Type": "application/json",
-    //        Authorization: `Basic ` + process.env.REST_SECRET,
-    //      }
+         const headers = {
+           "Content-Type": "application/json",
+           Authorization: `Basic ` + process.env.REST_SECRET,
+         }
          
        
-    //      try {
-    //        const result = await fetch(url, {
-    //          method: "GET",
-    //          headers: headers,
-    //        })  .then(response => response.json())
-    //      .then(data => {
-    //          return data.user_email;
-    //      });
-    //      } catch (error) {
-    //        res.status(500).send(error)
-    //      }
-return "hey";
+         try {
+           const result = await fetch(url, {
+             method: "GET",
+             headers: headers,
+           })  .then(response => response.json())
+         .then(data => {
+             return data.user_email;
+         });
+         } catch (error) {
+           res.status(500).send(error)
+         }
+
 }
 
         //  let axiosConfig = {

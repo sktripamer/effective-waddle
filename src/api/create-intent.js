@@ -59,7 +59,7 @@ try {
 // }
 
 
-function setCustomer(uID, cID) {
+async function setCustomer(uID, cID) {
       const data = {
           "acf": {
               "customer_id": cID,
@@ -74,7 +74,7 @@ function setCustomer(uID, cID) {
         
         axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, JSON.stringify(data), axiosConfig)
         .then((res) => {
-         return;
+         return res;
         })
         .catch((err) => {
          return err;
@@ -115,7 +115,7 @@ const createIntent = async (cID, uID) => {
         customer: cID,
         setup_future_usage: "on_session",
       });
-      //setCustomer(cID, uID);
+      await setCustomer(cID, uID);
       return paymentIntent;
     } catch (error) {
         return error;

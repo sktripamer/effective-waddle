@@ -11,7 +11,11 @@ const getMail = async (req, res) => {
 //const { amount, currency = "usd" } = JSON.parse(body);
 
 try {
-  const customerID = await getCustomer( req.body);
+    const emails = req.body.split('@@')
+    jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true}, function(err, decoded) {
+        //return decoded.data.user.user_email;
+        res.status(200).json(decoded.data.user.user_email)
+      });
 //   const paymentIntent = await stripe.paymentIntents.create({
 //     amount: 500,
 //     currency: 'usd',
@@ -19,7 +23,7 @@ try {
 //     setup_future_usage: "on_session",
 //   });
 
-  res.status(200).json({body:customerID})
+  //res.status(200).json({body:customerID})
 } catch (e) {
   res.json({body: 'error ' + e})
 }

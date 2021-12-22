@@ -31,9 +31,9 @@ async function getCustomer(token) {
       let decoded;  
          try { 
           decoded = jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true});
-          return decoded.data.user.user_email;
+         
          }  catch (ex) {   return ex; }
-
+         return decoded.data.user.user_email;
       }
 
 

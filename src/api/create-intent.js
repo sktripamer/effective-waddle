@@ -48,36 +48,59 @@ async function getCustomer(emailSend) {
   }
   
 }
-  
+
 async function getEmail(token) {
-    // const emails = token.split('@@')
+    //const emails = token.split('@@')
+
     //   let decoded;  
     //      try { 
-    //       decoded = jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true});
-         
+    //       decoded = jwt.verify(emails[3], process.env.JWT_SECRET,{ ignoreExpiration: true});
     //      }  catch (ex) {   return ex; }
-
-         const url = 'https://portal.revrevdev.xyz/wp-json/wp/v2/users/45'
+        let axiosConfig = {
+          headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Basic ` + process.env.REST_SECRET,
+          }
+        };
+        
+        axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/45', axiosConfig)
+        .then((res) => {
+         return JSON.stringify(res);
+        })
+        .catch((err) => {
+         return err;
+        })
+      }
   
-         const headers = {
-           "Content-Type": "application/json",
-           Authorization: `Basic ` + process.env.REST_SECRET,
-         }
+// async function getEmail(token) {
+//     // const emails = token.split('@@')
+//     //   let decoded;  
+//     //      try { 
+//     //       decoded = jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true});
+         
+//     //      }  catch (ex) {   return ex; }
+
+//          const url = 'https://portal.revrevdev.xyz/wp-json/wp/v2/users/45'
+  
+//          const headers = {
+//            "Content-Type": "application/json",
+//            Authorization: `Basic ` + process.env.REST_SECRET,
+//          }
          
        
-         try {
-           const result = await fetch(url, {
-             method: "GET",
-             headers: headers,
-           })  .then(response => response.json())
-         .then(data => {
-             return data.user_email;
-         });
-         } catch (error) {
-           res.status(500).send(error)
-         }
-
-}
+//          try {
+//            const result = await fetch(url, {
+//              method: "GET",
+//              headers: headers,
+//            })  .then(response => response.json())
+//          .then(data => {
+//              return data.user_email;
+//          });
+//          } catch (error) {
+//            res.status(500).send(error)
+//          }
+// return "hey";
+// }
 
         //  let axiosConfig = {
         //     headers: {

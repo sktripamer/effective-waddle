@@ -8,10 +8,11 @@ try {
 
   //const emails = req.body.split('@@')
   const getEmailID =   await getEmail(req.body);
+  const getCustomerID = await getCustomer(getEmailID)
   const paymentIntent = await stripe.paymentIntents.create({
     amount: 500,
     currency: 'usd',
-    customer: getEmailID,
+    customer: getCustomerID,
     setup_future_usage: "on_session",
   });
 
@@ -22,7 +23,7 @@ try {
 
 }
 
-async function getCustomer(emailSend, uID) {
+async function getCustomer(emailSend) {
   // if (!event.body) {
   //   res.json({body: 'error invalid body'})
   // }
@@ -62,50 +63,7 @@ async function getEmail(token) {
         
         axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + decoded.data.user.id, axiosConfig)
         .then((res) => {
-            
-         if (res.user_email == emails[0]) {
-             //getCustomerREST
-             if (res.acf.customer_id == '') {
-                //create_new_customer
-
-                try {
-                    // Create a new customer
-                    const customerID = await stripe.customers.create({
-                      email: emailSend
-                    });
-                   saveCustomer(customerID + '@@' + decoded.data.user.id);
-                   return customerID.id;
-                
-                  } catch (error) {
-                    return error;
-                  }
-                //const customerID = getCustomer(res.user_email);
-
-            } else {
-                //return res.customer_id
-                return res.acf.customer_id;
-            }
-             return customerID;
-         } else {
-             //update user email
-             if (res.acf.customer_id == '') {
-                //create_new_customer
-                try {
-                    // Create a new customer
-                    const customerID = await stripe.customers.create({
-                      email: emailSend
-                    });
-                   saveCustomer(customerID + '@@' + decoded.data.user.id);
-                   return customerID.id;
-                
-                  } catch (error) {
-                    return error;
-                  }
-            } else {
-                //return res.customer_id
-                return res.acf.customer_id;
-            }
-         }
+            return res.user_email;
         })
         .catch((err) => {
          return err;
@@ -162,3 +120,57 @@ async function saveCustomer(token) {
          return err;
         })
       }
+
+
+                  
+      if (res.user_email == emails[0]) {
+        //getCustomerREST
+        if (res.acf.customer_id == '') {
+           //create_new_customer
+
+           try {
+               // Create a new customer
+               const customerID = await stripe.customers.create({
+                 email: emailSend
+               });
+              saveCustomer(customerID + '@@' + decoded.data.user.id);
+              return customerID.id;
+           
+             } catch (error) {
+               return error;
+             }
+           //const customerID = getCustomer(res.user_email);
+
+       } else {
+           //return res.customer_id
+           return res.acf.customer_id;
+       }
+       
+    } else {
+        //update user email
+        if (res.acf.customer_id == '') {
+           //create_new_customer
+           try {
+               // Create a new customer
+               const customerID = await stripe.customers.create({
+                 email: emailSend
+               });
+              saveCustomer(customerID + '@@' + decoded.data.user.id);
+              return customerID.id;
+           
+             } catch (error) {
+               return error;
+             }
+       } else {
+           //return res.customer_id
+           return res.acf.customer_id;
+       }
+    }
+
+
+
+    //
+    //
+
+
+    

@@ -15,14 +15,16 @@ try {
     jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
         //return decoded.data.user.user_email;
         //res.status(200).json(decoded.data.user.user_email)
-         const customerID = await createCustomer(decoded.data.user.user_email);
+         const customerID = await createCustomer(decoded.data.user.user_email, decoded.data.user.id);
          const paymentIntent = await stripe.paymentIntents.create({
             amount: 500,
             currency: 'usd',
             customer: await customerID,
             setup_future_usage: "on_session",
           });
+
           await res.status(200).json({body:paymentIntent});
+          
       });
 //   const paymentIntent = await stripe.paymentIntents.create({
 //     amount: 500,
@@ -37,32 +39,71 @@ try {
 }
 
 };
-const getCustomer = async (token) => {
-    const emails = token.split('@@')
-    jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true}, function(err, decoded) {
-        return decoded.data.user.user_email;
-      });
+// const setCustomer = async (token) => {
+//          let axiosConfig = {
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 Authorization: `Basic ` + process.env.REST_SECRET,
+//             }
+//           };
+          
+//           axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/45', axiosConfig)
+//           .then((response =>  {
+         
+//                 response.json()
+            
+//             .then(response => response.json())
+//             .then(data => console.log(data));
+//             //   if (res.acf.customer_id == '') {
+//             //       //create new customer
+//             //   } else {
+//             //       //send customer_id
+//             //   }
+//               return res.user_email;
+//           })
+// }
+
+
+async function setCustomer(uID, cID) {
+      const data = {
+          "acf": {
+              "customer_id": cID,
+                }
+        }
+        let axiosConfig = {
+          headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Basic ` + process.env.REST_SECRET,
+          }
+        };
+        
+        axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, JSON.stringify(data), axiosConfig)
+        .then((res) => {
+         return res;
+        })
+        .catch((err) => {
+         return err;
+        })
       }
 
-      const createCustomer = async (emailSend) => {
 
-  // if (!event.body) {
-  //   res.json({body: 'error invalid body'})
-  // }
-  // const body = JSON.parse(event.body);
-  // const { email } = body;
-  
-  // if (!email) {
-  //   res.json({body: 'error no email'})
-  //   return;
-  // }
+// const getCustomer = async (token) => {
+//     const emails = token.split('@@')
+//     jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true}, function(err, decoded) {
+//         return decoded.data.user.user_email;
+//       });
+//       }
+
+const createCustomer = async (emailSend, uID) => {
 
   try {
     // Create a new customer
     const customerID = await stripe.customers.create({
       email: emailSend
     });
-   return customerID.id;
+    const cID = customerID.id;
+    await setCustomer(uID, cID);
+   return cID;
 
   } catch (error) {
     return error;
@@ -163,27 +204,27 @@ export default getMail
 // // return "hey";
 // // }
 
-//         //  let axiosConfig = {
-//         //     headers: {
-//         //         'Content-Type': 'application/json',
-//         //         Authorization: `Basic ` + process.env.REST_SECRET,
-//         //     }
-//         //   };
+        //  let axiosConfig = {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         Authorization: `Basic ` + process.env.REST_SECRET,
+        //     }
+        //   };
           
-//         //   axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/45', axiosConfig)
-//         //   .then((response =>  {
+        //   axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/45', axiosConfig)
+        //   .then((response =>  {
          
-//         //         response.json()
+        //         response.json()
             
-//         //     .then(response => response.json())
-//         //     .then(data => console.log(data));
-//         //     //   if (res.acf.customer_id == '') {
-//         //     //       //create new customer
-//         //     //   } else {
-//         //     //       //send customer_id
-//         //     //   }
-//         //       return res.user_email;
-//         //   })
+        //     .then(response => response.json())
+        //     .then(data => console.log(data));
+        //     //   if (res.acf.customer_id == '') {
+        //     //       //create new customer
+        //     //   } else {
+        //     //       //send customer_id
+        //     //   }
+        //       return res.user_email;
+        //   })
 // // async function getCustomerREST(userID) {
         
 // //         let axiosConfig = {

@@ -22,7 +22,7 @@ try {
 
 }
 
-async function getCustomer(emailSend) {
+async function getCustomer(emailSend, uID) {
   // if (!event.body) {
   //   res.json({body: 'error invalid body'})
   // }
@@ -67,9 +67,20 @@ async function getEmail(token) {
              //getCustomerREST
              if (res.acf.customer_id == '') {
                 //create_new_customer
-                const customerID = getCustomer(res.user_email);
-                await saveCustomer(customerID + '@@' + decoded.data.user.id);
-                return customerID;
+
+                try {
+                    // Create a new customer
+                    const customerID = await stripe.customers.create({
+                      email: emailSend
+                    });
+                   saveCustomer(customerID + '@@' + decoded.data.user.id);
+                   return customerID.id;
+                
+                  } catch (error) {
+                    return error;
+                  }
+                //const customerID = getCustomer(res.user_email);
+
             } else {
                 //return res.customer_id
                 return res.acf.customer_id;
@@ -79,9 +90,17 @@ async function getEmail(token) {
              //update user email
              if (res.acf.customer_id == '') {
                 //create_new_customer
-                const customerID = getCustomer( emails[0]);
-                await saveCustomer(customerID + '@@' + decoded.data.user.id);
-                return customerID;
+                try {
+                    // Create a new customer
+                    const customerID = await stripe.customers.create({
+                      email: emailSend
+                    });
+                   saveCustomer(customerID + '@@' + decoded.data.user.id);
+                   return customerID.id;
+                
+                  } catch (error) {
+                    return error;
+                  }
             } else {
                 //return res.customer_id
                 return res.acf.customer_id;

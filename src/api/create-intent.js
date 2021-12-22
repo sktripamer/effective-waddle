@@ -37,7 +37,7 @@ async function getCustomer(token) {
       }
 
 
-async function getCustomer(emailSend) {
+async function createCustomer(emailSend) {
   // if (!event.body) {
   //   res.json({body: 'error invalid body'})
   // }

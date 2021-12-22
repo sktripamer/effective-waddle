@@ -12,9 +12,9 @@ try {
         const emails = req.body.split('@@')
         jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
          const customerID = await createCustomer(emails[0]);
-         const paymentIntent = await createIntent(customerID, decoded.data.user.id);
+        // const paymentIntent = await createIntent(customerID, decoded.data.user.id);
          
-        await res.status(200).json({body:paymentIntent});
+        await res.status(200).json({body:customerID});
           
     });
   } catch (e) {
@@ -32,7 +32,8 @@ const createCustomer = async (cID) => {
         {type: 'card'}
       );
       
-      return customerID.customer.data[0].id;
+     // return customerID.customer.data[0].id;
+     return customerID;
   
     } catch (error) {
       return error;

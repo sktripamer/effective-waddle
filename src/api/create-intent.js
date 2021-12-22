@@ -58,8 +58,8 @@ try {
 //           })
 // }
 
+const setCustomer = async (uID, cID) => {
 
-async function setCustomer(uID, cID) {
       const data = {
           "acf": {
               "customer_id": cID,

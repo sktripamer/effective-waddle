@@ -1,6 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 import jwt from 'jsonwebtoken'
 import axios from 'axios'
+import fetch from 'node-fetch'
  export default async function handler(req, res) {
 //const { amount, currency = "usd" } = JSON.parse(body);
 
@@ -55,25 +56,47 @@ async function getEmail(token) {
           decoded = jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true});
          
          }  catch (ex) {   return ex; }
-         let axiosConfig = {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Basic ` + process.env.REST_SECRET,
-            }
-          };
+
+         const url = 'https://portal.revrevdev.xyz/wp-json/wp/v2/users/45'
+  
+         const headers = {
+           "Content-Type": "application/json",
+           Authorization: `Basic ` + process.env.REST_SECRET,
+         }
+         
+       
+         try {
+           const result = await fetch(url, {
+             method: "GET",
+             headers: headers,
+           })  .then(response => response.json())
+         .then(data => {
+             return data.user_email;
+         });
+         } catch (error) {
+           res.status(500).send(error)
+         }
+        //  let axiosConfig = {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         Authorization: `Basic ` + process.env.REST_SECRET,
+        //     }
+        //   };
           
-          axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/45', axiosConfig)
-          .then((res) => {
-              if (res.acf.customer_id == '') {
-                  //create new customer
-              } else {
-                  //send customer_id
-              }
-              return res.user_email;
-          })
-          .catch((err) => {
-           return err;
-          })
+        //   axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/45', axiosConfig)
+        //   .then((response =>  {
+         
+        //         response.json()
+            
+        //     .then(response => response.json())
+        //     .then(data => console.log(data));
+        //     //   if (res.acf.customer_id == '') {
+        //     //       //create new customer
+        //     //   } else {
+        //     //       //send customer_id
+        //     //   }
+        //       return res.user_email;
+        //   })
 }
 
 

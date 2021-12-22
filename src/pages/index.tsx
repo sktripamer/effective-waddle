@@ -915,6 +915,15 @@ const handleSubmit = async (ev: { preventDefault: () => void; }) => {
     setError(null);
     setProcessing(false);
     setSucceeded(true);
+    //fetch wth intent.body.customer
+    const request = await fetch('/api/set-payment-method', {
+      method: 'POST',
+      body: intent.body.customer + "@@" + JSON.parse(localStorage.auth).authToken,
+    });
+    await request.json();
+    // Update your user in DB to store the customerID
+    // updateUserInDB() is *your* implementation of updating a user in the DB
+   
         localStorage.removeItem("s4")
     localStorage.setItem("s5", "y")
        setVideoTime(4)

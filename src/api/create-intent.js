@@ -57,8 +57,8 @@ try {
 //               return res.user_email;
 //           })
 // }
+async function setCustomer(uID, cID) {
 
-const setCustomer = async (uID, cID) => {
 
       const data = {
           "acf": {
@@ -115,7 +115,7 @@ const createIntent = async (cID, uID) => {
         customer: cID,
         setup_future_usage: "on_session",
       });
-      await setCustomer(cID, uID);
+    setCustomer(cID, uID);
       return paymentIntent;
     } catch (error) {
         return error;

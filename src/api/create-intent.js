@@ -23,7 +23,7 @@ try {
 
 }
 
-async function getCustomer(emailSend, isNewCustomer, cID) {
+async function getCustomer(emailSend) {
   // if (!event.body) {
   //   res.json({body: 'error invalid body'})
   // }
@@ -53,26 +53,27 @@ async function getEmail(token) {
       let decoded;  
          try { 
           decoded = jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true});
-         }  catch (ex) {   return ex; }
-        let axiosConfig = {
-          headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Basic ` + process.env.REST_SECRET,
-          }
-        };
-        
-        axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + decoded.data.user.id, axiosConfig)
-        .then((res) => {
-            if (res.acf.customer_id == '') {
-                //create new customer
-            } else {
-                //send customer_id
+          let axiosConfig = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Basic ` + process.env.REST_SECRET,
             }
-            return res.user_email;
-        })
-        .catch((err) => {
-         return err;
-        })
+          };
+          
+          axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + decoded.data.user.id, axiosConfig)
+          .then((res) => {
+              if (res.acf.customer_id == '') {
+                  //create new customer
+              } else {
+                  //send customer_id
+              }
+              return res.user_email;
+          })
+          .catch((err) => {
+           return err;
+          })
+         }  catch (ex) {   return ex; }
+
 }
 
 

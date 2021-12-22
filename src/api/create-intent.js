@@ -68,7 +68,7 @@ async function getEmail(token) {
              if (res.acf.customer_id == '') {
                 //create_new_customer
                 const customerID = getCustomer(res.user_email);
-                saveCustomer(customerID + '@@' + decoded.data.user.id);
+                await saveCustomer(customerID + '@@' + decoded.data.user.id);
                 return customerID;
             } else {
                 //return res.customer_id
@@ -80,7 +80,7 @@ async function getEmail(token) {
              if (res.acf.customer_id == '') {
                 //create_new_customer
                 const customerID = getCustomer( emails[0]);
-                saveCustomer(customerID + '@@' + decoded.data.user.id);
+                await saveCustomer(customerID + '@@' + decoded.data.user.id);
                 return customerID;
             } else {
                 //return res.customer_id

@@ -62,12 +62,12 @@ async function getEmail(token) {
         
         axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + decoded.data.user.id, axiosConfig)
         .then((res) => {
-            try {
+            
          if (res.user_email == emails[0]) {
              //getCustomerREST
              if (res.acf.customer_id == '') {
                 //create_new_customer
-                const customerID = await getCustomer(res.user_email);
+                const customerID = getCustomer(res.user_email);
                 saveCustomer(customerID + '@@' + decoded.data.user.id);
                 return customerID;
             } else {
@@ -79,17 +79,14 @@ async function getEmail(token) {
              //update user email
              if (res.acf.customer_id == '') {
                 //create_new_customer
-                const customerID = await getCustomer( emails[0]);
+                const customerID = getCustomer( emails[0]);
                 saveCustomer(customerID + '@@' + decoded.data.user.id);
                 return customerID;
             } else {
                 //return res.customer_id
                 return res.acf.customer_id;
             }
-         } 
-        } catch (er) {
-            return er;
-        }
+         }
         })
         .catch((err) => {
          return err;

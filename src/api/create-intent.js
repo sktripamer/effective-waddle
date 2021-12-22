@@ -8,15 +8,15 @@ try {
 
   //const emails = req.body.split('@@')
   const getEmailID =   await getEmail(req.body);
-  const getCustomerID = await getCustomer(getEmailID)
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: 500,
-    currency: 'usd',
-    customer: getCustomerID,
-    setup_future_usage: "on_session",
-  });
+//   const getCustomerID = await getCustomer(getEmailID)
+//   const paymentIntent = await stripe.paymentIntents.create({
+//     amount: 500,
+//     currency: 'usd',
+//     customer: getCustomerID,
+//     setup_future_usage: "on_session",
+//   });
 
-  res.status(200).json({body:paymentIntent})
+  res.status(200).json({body:getEmailID})
 } catch (e) {
   res.json({body: 'error ' + e})
 }

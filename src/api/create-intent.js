@@ -16,7 +16,7 @@ try {
         //return decoded.data.user.user_email;
         //res.status(200).json(decoded.data.user.user_email)
          const customerID = await createCustomer(decoded.data.user.user_email);
-         res.status(200).json(customerID);
+        await res.status(200).json(customerID);
       });
 //   const paymentIntent = await stripe.paymentIntents.create({
 //     amount: 500,

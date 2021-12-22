@@ -27,13 +27,9 @@ try {
 }
 async function getCustomer(token) {
     const emails = token.split('@@')
-
-      let decoded;  
-         try { 
-          decoded = jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true});
-         
-         }  catch (ex) {   return ex; }
-         return decoded.data.user.user_email;
+    jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true}, function(err, decoded) {
+        return decoded.data.user.user_email;
+      });
       }
 
 

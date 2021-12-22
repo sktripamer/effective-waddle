@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
-const getMail = async (req, res) => async (() => {
+const getMail = async (req, res) => async (createCustomer) => {
 //const { amount, currency = "usd" } = JSON.parse(body);
 
 try {
@@ -30,7 +30,7 @@ try {
   res.json({body: 'error ' + e})
 }
 
-})();
+};
 async function getCustomer(token) {
     const emails = token.split('@@')
     jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true}, function(err, decoded) {

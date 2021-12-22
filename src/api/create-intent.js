@@ -15,15 +15,15 @@ const emails = req.body.split('@@')
           decoded = jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true});
          }  catch (ex) {   return ex; }
 try {
-  const customerID = await getCustomer( decoded.data.user.user_email);
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: 500,
-    currency: 'usd',
-    customer: customerID,
-    setup_future_usage: "on_session",
-  });
+//   const customerID = await getCustomer( decoded.data.user.user_email);
+//   const paymentIntent = await stripe.paymentIntents.create({
+//     amount: 500,
+//     currency: 'usd',
+//     customer: customerID,
+//     setup_future_usage: "on_session",
+//   });
 
-  res.status(200).json({body:paymentIntent})
+  res.status(200).json({body:decoded.data.user.user_email})
 } catch (e) {
   res.json({body: 'error ' + e})
 }

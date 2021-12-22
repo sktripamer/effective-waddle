@@ -62,7 +62,7 @@ async function getEmail(token) {
             }
           };
           
-          axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + decoded.data.user.id, axiosConfig)
+          axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/45', axiosConfig)
           .then((res) => {
               if (res.acf.customer_id == '') {
                   //create new customer

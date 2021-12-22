@@ -95,9 +95,7 @@ const createCustomer = async (emailSend, uID) => {
     const customerID = await stripe.customers.create({
       email: emailSend
     });
-    const cID = await customerID.id;
-    await setCustomer(uID, cID);
-   return cID;
+    return customerID.id;
 
   } catch (error) {
     return error;

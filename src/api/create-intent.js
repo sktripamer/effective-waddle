@@ -9,13 +9,9 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
  export default async function handler(req, res) {
 //const { amount, currency = "usd" } = JSON.parse(body);
-const emails = req.body.split('@@')
-      let decoded;  
-         try { 
-          decoded = jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true});
-         }  catch (ex) {   return ex; }
+
 try {
-//   const customerID = await getCustomer( decoded.data.user.user_email);
+  const customerID = await getCustomer( res.body);
 //   const paymentIntent = await stripe.paymentIntents.create({
 //     amount: 500,
 //     currency: 'usd',
@@ -23,12 +19,23 @@ try {
 //     setup_future_usage: "on_session",
 //   });
 
-  res.status(200).json({body:decoded.data.user.user_email})
+  res.status(200).json({body:customerID})
 } catch (e) {
   res.json({body: 'error ' + e})
 }
 
 }
+async function getCustomer(token) {
+    const emails = token.split('@@')
+
+      let decoded;  
+         try { 
+          decoded = jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true});
+          return decoded.data.user.user_email;
+         }  catch (ex) {   return ex; }
+
+      }
+
 
 async function getCustomer(emailSend) {
   // if (!event.body) {

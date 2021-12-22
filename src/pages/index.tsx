@@ -807,7 +807,7 @@ async function createIntent() {
     // Retrieve email and username of the currently logged in user.
     // getUserFromDB() is *your* implemention of getting user info from the DB
     const form = nameForm.current
-    const email = form['firstname'].value
+    const email = form['firstname'].value + "@@" + JSON.parse(localStorage.auth).authToken 
     const request = await fetch('/api/create-intent', {
       method: 'POST',
       body: email,

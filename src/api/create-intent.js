@@ -22,7 +22,7 @@ try {
             customer: await customerID,
             setup_future_usage: "on_session",
           });
-          await res.status(200).json(paymentIntent);
+          await res.status(200).json({body:paymentIntent});
       });
 //   const paymentIntent = await stripe.paymentIntents.create({
 //     amount: 500,

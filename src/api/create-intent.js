@@ -53,7 +53,9 @@ async function getEmail(token) {
       let decoded;  
          try { 
           decoded = jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true});
-          let axiosConfig = {
+         
+         }  catch (ex) {   return ex; }
+         let axiosConfig = {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Basic ` + process.env.REST_SECRET,
@@ -72,8 +74,6 @@ async function getEmail(token) {
           .catch((err) => {
            return err;
           })
-         }  catch (ex) {   return ex; }
-
 }
 
 

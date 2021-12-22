@@ -16,7 +16,8 @@ try {
         //return decoded.data.user.user_email;
         //res.status(200).json(decoded.data.user.user_email)
          const customerID = await createCustomer(decoded.data.user.user_email, decoded.data.user.id);
-         const paymentIntent = await createIntent(customerID);
+         const paymentIntent = await createIntent(customerID, decoded.data.user.id);
+         
         await res.status(200).json({body:paymentIntent});
           
       });
@@ -58,7 +59,7 @@ try {
 // }
 
 
-async function setCustomer(uID, cID) {
+function setCustomer(uID, cID) {
       const data = {
           "acf": {
               "customer_id": cID,
@@ -73,7 +74,7 @@ async function setCustomer(uID, cID) {
         
         axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, JSON.stringify(data), axiosConfig)
         .then((res) => {
-         return res;
+         return;
         })
         .catch((err) => {
          return err;
@@ -95,6 +96,7 @@ const createCustomer = async (emailSend, uID) => {
     const customerID = await stripe.customers.create({
       email: emailSend
     });
+    
     return customerID.id;
 
   } catch (error) {
@@ -104,7 +106,7 @@ const createCustomer = async (emailSend, uID) => {
 }
 
 
-const createIntent = async (cID) => {
+const createIntent = async (cID, uID) => {
 
     try {
     const paymentIntent = await stripe.paymentIntents.create({
@@ -113,6 +115,7 @@ const createIntent = async (cID) => {
         customer: cID,
         setup_future_usage: "on_session",
       });
+      setCustomer(cID, uID);
       return paymentIntent;
     } catch (error) {
         return error;

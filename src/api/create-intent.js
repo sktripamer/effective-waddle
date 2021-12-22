@@ -1,5 +1,5 @@
 // const stripe = require("stripe")(process.env.STRIPE_SECRET);
-// import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 // import axios from 'axios'
 // import fetch from 'node-fetch'
 //  export default async function handler(req, res) {

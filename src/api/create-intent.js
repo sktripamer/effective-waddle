@@ -7,7 +7,7 @@
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
- export default async function handler(req, res) {
+const getMail = async (req, res) => {
 //const { amount, currency = "usd" } = JSON.parse(body);
 
 try {
@@ -62,7 +62,7 @@ async function createCustomer(emailSend) {
   
 }
   
-
+export default getMail
 
 // try {
 

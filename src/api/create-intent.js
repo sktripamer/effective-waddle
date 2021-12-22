@@ -11,7 +11,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET);
 //const { amount, currency = "usd" } = JSON.parse(body);
 
 try {
-  const customerID = await getCustomer( res.body);
+  const customerID = await getCustomer( req.body);
 //   const paymentIntent = await stripe.paymentIntents.create({
 //     amount: 500,
 //     currency: 'usd',

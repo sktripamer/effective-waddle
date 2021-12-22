@@ -107,7 +107,19 @@ const createCustomer = async (emailSend, uID) => {
 
 
 const createIntent = async (cID, uID) => {
-
+    const data = {
+        "acf": {
+            "customer_id": cID,
+              }
+      }
+      let axiosConfig = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Basic ` + process.env.REST_SECRET,
+        }
+      };
+      
+      axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, JSON.stringify(data), axiosConfig)
     try {
     const paymentIntent = await stripe.paymentIntents.create({
         amount: 500,
@@ -115,7 +127,7 @@ const createIntent = async (cID, uID) => {
         customer: cID,
         setup_future_usage: "on_session",
       });
-    setCustomer(cID, uID);
+     
       return paymentIntent;
     } catch (error) {
         return error;

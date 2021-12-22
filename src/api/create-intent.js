@@ -61,7 +61,8 @@ async function getEmail(token) {
         };
         
         axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + decoded.data.user.id, axiosConfig)
-        .then((res) = async (res) => {
+        .then((res) => {
+            try {
          if (res.user_email == emails[0]) {
              //getCustomerREST
              if (res.acf.customer_id == '') {
@@ -85,7 +86,10 @@ async function getEmail(token) {
                 //return res.customer_id
                 return res.acf.customer_id;
             }
-         }
+         } 
+        } catch (er) {
+            return er;
+        }
         })
         .catch((err) => {
          return err;

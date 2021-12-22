@@ -23,7 +23,7 @@ try {
 
 }
 
-async function getCustomer(emailSend) {
+async function getCustomer(emailSend, isNewCustomer, cID) {
   // if (!event.body) {
   //   res.json({body: 'error invalid body'})
   // }
@@ -63,6 +63,11 @@ async function getEmail(token) {
         
         axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + decoded.data.user.id, axiosConfig)
         .then((res) => {
+            if (res.acf.customer_id == '') {
+                //create new customer
+            } else {
+                //send customer_id
+            }
             return res.user_email;
         })
         .catch((err) => {
@@ -123,49 +128,49 @@ async function saveCustomer(token) {
 
 
                   
-      if (res.user_email == emails[0]) {
-        //getCustomerREST
-        if (res.acf.customer_id == '') {
-           //create_new_customer
+    //   if (res.user_email == emails[0]) {
+    //     //getCustomerREST
+    //     if (res.acf.customer_id == '') {
+    //        //create_new_customer
 
-           try {
-               // Create a new customer
-               const customerID = await stripe.customers.create({
-                 email: emailSend
-               });
-              saveCustomer(customerID + '@@' + decoded.data.user.id);
-              return customerID.id;
+    //        try {
+    //            // Create a new customer
+    //            const customerID = await stripe.customers.create({
+    //              email: emailSend
+    //            });
+    //           saveCustomer(customerID + '@@' + decoded.data.user.id);
+    //           return customerID.id;
            
-             } catch (error) {
-               return error;
-             }
-           //const customerID = getCustomer(res.user_email);
+    //          } catch (error) {
+    //            return error;
+    //          }
+    //        //const customerID = getCustomer(res.user_email);
 
-       } else {
-           //return res.customer_id
-           return res.acf.customer_id;
-       }
+    //    } else {
+    //        //return res.customer_id
+    //        return res.acf.customer_id;
+    //    }
        
-    } else {
-        //update user email
-        if (res.acf.customer_id == '') {
-           //create_new_customer
-           try {
-               // Create a new customer
-               const customerID = await stripe.customers.create({
-                 email: emailSend
-               });
-              saveCustomer(customerID + '@@' + decoded.data.user.id);
-              return customerID.id;
+    // } else {
+    //     //update user email
+    //     if (res.acf.customer_id == '') {
+    //        //create_new_customer
+    //        try {
+    //            // Create a new customer
+    //            const customerID = await stripe.customers.create({
+    //              email: emailSend
+    //            });
+    //           saveCustomer(customerID + '@@' + decoded.data.user.id);
+    //           return customerID.id;
            
-             } catch (error) {
-               return error;
-             }
-       } else {
-           //return res.customer_id
-           return res.acf.customer_id;
-       }
-    }
+    //          } catch (error) {
+    //            return error;
+    //          }
+    //    } else {
+    //        //return res.customer_id
+    //        return res.acf.customer_id;
+    //    }
+    // }
 
 
 

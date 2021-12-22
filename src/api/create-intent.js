@@ -16,14 +16,8 @@ try {
         //return decoded.data.user.user_email;
         //res.status(200).json(decoded.data.user.user_email)
          const customerID = await createCustomer(decoded.data.user.user_email, decoded.data.user.id);
-         const paymentIntent = await stripe.paymentIntents.create({
-            amount: 500,
-            currency: 'usd',
-            customer: await customerID,
-            setup_future_usage: "on_session",
-          });
-
-          await res.status(200).json({body:paymentIntent});
+         const paymentIntent = await createIntent(customerID);
+        await res.status(200).json({body:paymentIntent});
           
       });
 //   const paymentIntent = await stripe.paymentIntents.create({
@@ -110,6 +104,23 @@ const createCustomer = async (emailSend, uID) => {
   }
   
 }
+
+
+const createIntent = async (cID) => {
+    
+    try {
+    const paymentIntent = await stripe.paymentIntents.create({
+        amount: 500,
+        currency: 'usd',
+        customer: cID,
+        setup_future_usage: "on_session",
+      });
+      return paymentIntent;
+    } catch (error) {
+        return error;
+    }
+    
+  }
   
 export default getMail
 

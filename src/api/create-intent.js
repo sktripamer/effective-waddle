@@ -56,6 +56,13 @@ async function getEmail(token) {
     //      try { 
     //       decoded = jwt.verify(emails[3], process.env.JWT_SECRET,{ ignoreExpiration: true});
     //      }  catch (ex) {   return ex; }
+    
+    const url = 'https://portal.revrevdev.xyz/wp-json/wp/v2/users/45'
+  
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Basic ` + process.env.REST_SECRET,
+    }
     try {
        await fetch(url, {
           method: "GET",
@@ -77,12 +84,12 @@ async function getEmail(token) {
          
 //     //      }  catch (ex) {   return ex; }
 
-//          const url = 'https://portal.revrevdev.xyz/wp-json/wp/v2/users/45'
+         const url = 'https://portal.revrevdev.xyz/wp-json/wp/v2/users/45'
   
-//          const headers = {
-//            "Content-Type": "application/json",
-//            Authorization: `Basic ` + process.env.REST_SECRET,
-//          }
+         const headers = {
+           "Content-Type": "application/json",
+           Authorization: `Basic ` + process.env.REST_SECRET,
+         }
          
        
 

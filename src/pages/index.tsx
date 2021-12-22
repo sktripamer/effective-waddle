@@ -823,6 +823,27 @@ async function createIntent() {
   }
 }
 
+async function setPayment(cID) {
+  try {
+    // Retrieve email and username of the currently logged in user.
+    // getUserFromDB() is *your* implemention of getting user info from the DB
+
+    const email = cID + "@@" + JSON.parse(localStorage.auth).authToken 
+    const request = await fetch('/api/set-payment-method', {
+      method: 'POST',
+      body: email,
+    });
+    const intent = (await request.json());
+    // Update your user in DB to store the customerID
+    // updateUserInDB() is *your* implementation of updating a user in the DB
+    return intent;
+  } catch (error) {
+    console.log('Failed to create intent');
+    console.log(error);
+    return null;
+  }
+}
+
 
 // async function getCustomerObj() {
 //   try {
@@ -916,11 +937,8 @@ const handleSubmit = async (ev: { preventDefault: () => void; }) => {
     setProcessing(false);
     setSucceeded(true);
     //fetch wth intent.body.customer
-    const request = await fetch('/api/set-payment-method', {
-      method: 'POST',
-      body: intent.body.customer + "@@" + JSON.parse(localStorage.auth).authToken,
-    });
-    await request.json();
+    const spm = await setPayment(intent.body.customer);
+    console.log(spm)
     // Update your user in DB to store the customerID
     // updateUserInDB() is *your* implementation of updating a user in the DB
    

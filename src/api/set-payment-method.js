@@ -16,10 +16,10 @@ try {
         //     {type: 'card'}
         // );
         jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
-        const customerID = await createCustomer(emails[0]);
-        const paymentIntent = await createIntent(customerID, decoded.data.user.id);
+        const customerID = await createCustomer(emails[0], decoded.data.user.id);
+        //const paymentIntent = await createIntent(customerID, decoded.data.user.id);
          
-      return await res.status(200).json(paymentIntent);
+      return await res.status(200).json(customerID);
      // return res.status(200).json({customerID})
    });
   } catch (e) {
@@ -28,7 +28,7 @@ try {
 
 }
 
-const createCustomer = async (cID) => {
+const createCustomer = async (cID, uID) => {
 
     try {
       // get payment method
@@ -36,7 +36,19 @@ const createCustomer = async (cID) => {
         cID,
         {type: 'card'}
       );
+      const data = {
+        "acf": {
+            "payment_method": cID,
+              }
+      }
+      let axiosConfig = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Basic ` + process.env.REST_SECRET,
+        }
+      };
       
+      axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, JSON.stringify(data), axiosConfig)
       return customerID.data[0].id;
      //return customerID;
   

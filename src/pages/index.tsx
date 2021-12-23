@@ -62,13 +62,16 @@ const useShareableState = () => {
 	  });
     const [videoStatus, setVideoStatus] = useState(0)
     const [videoTime, setVideoTime] = useState(0)
+    const [boxVisible, setBoxVisible] = useState("hidden");
   return {
    playing,
     setPlaying,
     videoStatus,
     setVideoStatus,
     videoTime,
-    setVideoTime
+    setVideoTime,
+    boxVisible,
+    setBoxVisible
   };
 };
 
@@ -243,6 +246,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
   const [successMessage, setSuccessMessage] = useState("");
   const [showAlertBar, setShowAlertBar] = useState(true);
   const isBrowser = typeof window !== "undefined";
+  const { boxVisible, setBoxVisible } = useBetween(useShareableState);
   const {playing, setPlaying } = useBetween(useShareableState);
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
   const {videoTime, setVideoTime } = useBetween(useShareableState);
@@ -389,7 +393,8 @@ const RegisterOpt = ({ setLoggedIn }) => {
     );
     localStorage.setItem("s2", "y");
     setVideoStatus(0)
-    setPlaying({status: true, time: 2.99, speed: 1})
+    setBoxVisible('release')
+    setPlaying({status: true, time: playing.time, speed: 1})
   };
 
   return (
@@ -1010,6 +1015,7 @@ const IndexPage = () => {
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
   const {videoTime, setVideoTime } = useBetween(useShareableState);
   const [titleText, setTitleText] = useState(30);
+  const { boxVisible, setBoxVisible } = useBetween(useShareableState);
   const currentVideoState = () => {
     return videoTime;
   }
@@ -1099,6 +1105,7 @@ const IndexPage = () => {
       }) => {
       setVideoDetails({ currentTime, isPlaying, speed, totalTime });
       if (currentTime > 3 && LoginVerify() === false ) {
+      setBoxVisible('reveal')
     //if (currentTime > 3 ) {
         console.log('yes')
         if (Math.floor(33 - currentTime) !== titleText ) {
@@ -1143,7 +1150,7 @@ const IndexPage = () => {
 
     
       <div className='rev-player'>
-        <div className='rev-optin'>
+      <div className={`rev-optin ${boxVisible}`}>
           <div className='time-remaining'>{titleText}</div>
       {1 == videoStatus
             ? showAlertBar && (

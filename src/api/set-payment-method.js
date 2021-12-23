@@ -38,7 +38,7 @@ const createCustomer = async (cID, uID) => {
       );
       const data = {
         "acf": {
-            "payment_method": cID,
+            "payment_method": customerID.data[0].id,
               }
       }
       let axiosConfig = {

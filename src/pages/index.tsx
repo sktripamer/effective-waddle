@@ -63,6 +63,12 @@ const useShareableState = () => {
     const [videoStatus, setVideoStatus] = useState(0)
     const [videoTime, setVideoTime] = useState(0)
     const [boxVisible, setBoxVisible] = useState("hidden");
+    const [videoDetails, setVideoDetails] = useState({
+      currentTime: 0,
+      isPlaying: 0,
+      speed: 1,
+      totalTime: 0,
+      });
   return {
    playing,
     setPlaying,
@@ -71,7 +77,9 @@ const useShareableState = () => {
     videoTime,
     setVideoTime,
     boxVisible,
-    setBoxVisible
+    setBoxVisible,
+    videoDetails,
+    setVideoDetails
   };
 };
 
@@ -250,6 +258,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
   const {playing, setPlaying } = useBetween(useShareableState);
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
   const {videoTime, setVideoTime } = useBetween(useShareableState);
+  const { videoDetails, setVideoDetails } =  useBetween(useShareableState);
   // Check if the user is validated already.
 
 
@@ -394,7 +403,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
     localStorage.setItem("s2", "y");
     setVideoStatus(0)
     setBoxVisible('release')
-    setPlaying({status: true, time: playing.time, speed: 1})
+    setPlaying({status: true, time: videoDetails.currentTime, speed: 1})
   };
 
   return (
@@ -1061,13 +1070,7 @@ const IndexPage = () => {
       getPlaybackSpeed: null,
       });
     
-      const [videoDetails, setVideoDetails] = useState({
-      currentTime: 0,
-      isPlaying: 0,
-      speed: 1,
-      totalTime: 0,
-      });
-  
+      const { videoDetails, setVideoDetails } =  useBetween(useShareableState);
       
       const handlePlayPause = (status: any) => () => {
       setPlaying({

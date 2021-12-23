@@ -1009,6 +1009,7 @@ const IndexPage = () => {
   const isBrowser = typeof window !== "undefined";
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
   const {videoTime, setVideoTime } = useBetween(useShareableState);
+  const [titleText, setTitleText] = useState(30);
   const currentVideoState = () => {
     return videoTime;
   }
@@ -1100,6 +1101,9 @@ const IndexPage = () => {
       if (currentTime > 3 && LoginVerify() === false ) {
     //if (currentTime > 3 ) {
         console.log('yes')
+        if (Math.floor(33 - currentTime) !== titleText ) {
+          setTitleText(Math.floor(33.99 - currentTime));
+        }
         if (currentTime > 33) {
         setPlaying({status: false, time: 32.99, speed: speed})
         }
@@ -1138,7 +1142,9 @@ const IndexPage = () => {
         <Layout>
 
     
-      <div class='rev-player'>
+      <div className='rev-player'>
+        <div className='rev-optin'>
+          <div className='time-remaining'>{titleText}</div>
       {1 == videoStatus
             ? showAlertBar && (
                 
@@ -1171,6 +1177,7 @@ const IndexPage = () => {
               </Elements>
               )
             : ""}
+            </div>
       {  typeof window !== 'undefined' && CustomizableVideoPlayer && <CustomizableVideoPlayer url={videoLink} playing={playing} getVideoProgressDetails={storeVideoDetailFunctions} onVideoProgress={handleVideoProgress} /> }
     </div>
 

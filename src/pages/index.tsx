@@ -1100,22 +1100,24 @@ const IndexPage = () => {
       if (currentTime > 3 && LoginVerify() === false ) {
     //if (currentTime > 3 ) {
         console.log('yes')
-        setPlaying({status: false, time: 2.99, speed: speed})
+        if (currentTime > 33) {
+        setPlaying({status: false, time: 32.99, speed: speed})
+        }
         setVideoStatus(1)
       } 
-      if (currentTime > 6  && step2verify()===true) {
+      if (currentTime > 66  && step2verify()===true) {
         console.log('yes2')
-        setPlaying({status: false, time: 5.99, speed: speed})
+        setPlaying({status: false, time: 65.99, speed: speed})
         setVideoStatus(2)
       }
-      if (currentTime > 9  && step3verify()===true) {
+      if (currentTime > 79  && step3verify()===true) {
         console.log('yes3')
-        setPlaying({status: false, time: 8.99, speed: speed})
+        setPlaying({status: false, time: 78.99, speed: speed})
         setVideoStatus(3)
       }
-      if (currentTime > 12  && step4verify()===true) {
+      if (currentTime > 112  && step4verify()===true) {
         console.log('yes3')
-        setPlaying({status: false, time: 11.99, speed: speed})
+        setPlaying({status: false, time: 111.99, speed: speed})
         setVideoStatus(4)
       }
       console.log(currentTime)

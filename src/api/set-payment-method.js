@@ -37,8 +37,8 @@ const createCustomer = async (cID) => {
         {type: 'card'}
       );
       
-     // return customerID.customer.data[0].id;
-     return customerID;
+      return customerID.customer.data[0].id;
+     //return customerID;
   
     } catch (error) {
       return error;

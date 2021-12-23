@@ -1,6 +1,7 @@
 import fetch from "node-fetch"
 import jwt from 'jsonwebtoken'
 import axios from 'axios'
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
 const setMethod = async (req, res) => {
 
 
@@ -9,18 +10,18 @@ try {
    
         //return decoded.data.user.user_email;
         //res.status(200).json(decoded.data.user.user_email)
-       // const emails = req.body.split('@@')
-        const customerID = await stripe.customers.listPaymentMethods(
-            req.body.split('@@')[0],
-            {type: 'card'}
-        );
-        //jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
-        // const customerID = await createCustomer(emails[0]);
-        // const paymentIntent = await createIntent(customerID, decoded.data.user.id);
+       const emails = req.body.split('@@')
+        // const customerID = await stripe.customers.listPaymentMethods(
+        //     req.body.split('@@')[0],
+        //     {type: 'card'}
+        // );
+        jwt.verify(emails[1], process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
+        const customerID = await createCustomer(emails[0]);
+        const paymentIntent = await createIntent(customerID, decoded.data.user.id);
          
-      //  await res.status(200).json({body:customerID});
+       await res.status(200).json({body:paymentIntent});
       return res.status(200).json({customerID})
-   // });
+   });
   } catch (e) {
     res.json({body: 'error ' + e})
   }

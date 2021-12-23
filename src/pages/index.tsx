@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import Layout from "../components/Layout";
-import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
+//import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
 import useAuth from "../hooks/useAuth";
 //import UnAuthContent from "../components/UnAuthContent";
 import {loadStripe, StripeConstructorOptions} from '@stripe/stripe-js';
@@ -1188,7 +1188,7 @@ const IndexPage = () => {
               )
             : ""}
             </div>
-      {  typeof window !== 'undefined' && CustomizableVideoPlayer && <CustomizableVideoPlayer url={videoLink} playing={playing} getVideoProgressDetails={storeVideoDetailFunctions} onVideoProgress={handleVideoProgress} /> }
+      {/* {  typeof window !== 'undefined' && CustomizableVideoPlayer && <CustomizableVideoPlayer url={videoLink} playing={playing} getVideoProgressDetails={storeVideoDetailFunctions} onVideoProgress={handleVideoProgress} /> } */}
     </div>
 
           

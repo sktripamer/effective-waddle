@@ -1044,6 +1044,7 @@
     const {videoTime, setVideoTime } = useBetween(useShareableState);
     const [titleText, setTitleText] = useState(30);
     const { boxVisible, setBoxVisible } = useBetween(useShareableState);
+    
     const currentVideoState = () => {
       return videoTime;
     }
@@ -1167,6 +1168,9 @@
         };
         const onTimeUpdate = (event: CustomEvent<number>) => {
           console.log(event.detail);
+          if (event.detail > 5) {
+            setPaused(false)
+          }
         };
 
 
@@ -1213,6 +1217,7 @@
               </div>
         {  typeof window !== 'undefined' && Player && <Player
         onVmCurrentTimeChange={onTimeUpdate}
+        paused={paused}
       theme="dark"
       style={{ '--vm-player-theme': '#e86c8b' }}
     >

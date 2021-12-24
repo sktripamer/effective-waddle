@@ -13,6 +13,8 @@ import {
 } from '@stripe/react-stripe-js';
 import { isEmpty, remove } from 'lodash';
 import { gql , useMutation } from "@apollo/client";
+
+import '@vime/core/themes/default.css';
 import SignUpForm from "../components/SignUpForm";
 //import RegisterOpt from "../components/RegisterOpt";
 import UnAuthContent from "../components/UnAuthContent";

@@ -7,6 +7,7 @@ import {
   Control,
   ControlGroup,
   Icon,
+  Time,
   ScrubberControl,
   ClickToPlay,
   PlaybackControl,
@@ -1238,6 +1239,7 @@ const IndexPage = () => {
           <ControlGroup space="top">
             <PlaybackControl />
             <VolumeControl />
+            <Time label="Time"/>
             <ControlSpacer />
             <CaptionControl />
 

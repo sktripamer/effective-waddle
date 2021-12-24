@@ -1189,8 +1189,7 @@ const IndexPage = () => {
               )
             : ""}
             </div>
-      {/* {  typeof window !== 'undefined' && CustomizableVideoPlayer && <CustomizableVideoPlayer url={videoLink} playing={playing} getVideoProgressDetails={storeVideoDetailFunctions} onVideoProgress={handleVideoProgress} /> } */}
-      <Player
+      {  typeof window !== 'undefined' && Player && <Player
     theme="dark"
     style={{ '--vm-player-theme': '#e86c8b' }}
   >
@@ -1212,7 +1211,8 @@ const IndexPage = () => {
     </Video>
 
     <DefaultUi />
-  </Player>
+  </Player> }
+ 
     </div>
 
           

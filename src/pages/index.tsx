@@ -1254,7 +1254,7 @@
         currentTime={currentTime}
         ref={player}
       theme="dark"
-      style={{ '--vm-player-theme': '#e86c8b' }}
+      style={{ '--vm-player-theme': '#CD5C5C' }}
     >
       <Video
         crossOrigin
@@ -1274,7 +1274,7 @@
       </Video>
       <Ui>
       <ClickToPlay />
-          <Controls fullWidth>
+          {/* <Controls fullWidth>
             <ControlGroup>
               <ScrubberControl />
             </ControlGroup>
@@ -1282,7 +1282,7 @@
             <ControlGroup space="top">
               <PlaybackControl />
               <VolumeControl />
-              <TimeProgress separator="/" />
+              <TimeProgress separator="/"/>
               <ControlSpacer />
               <CaptionControl />
 
@@ -1296,7 +1296,7 @@
 
 
             </ControlGroup>
-          </Controls>
+          </Controls> */}
         </Ui>
     </Player> }
   

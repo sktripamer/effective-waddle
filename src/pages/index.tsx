@@ -1272,9 +1272,9 @@
           label="English" 
         />
       </Video>
-      <Ui>
+      {/* <Ui>
       <ClickToPlay />
-          {/* <Controls fullWidth>
+          <Controls fullWidth>
             <ControlGroup>
               <ScrubberControl />
             </ControlGroup>
@@ -1296,8 +1296,8 @@
 
 
             </ControlGroup>
-          </Controls> */}
-        </Ui>
+          </Controls>
+        </Ui> */}
     </Player> }
   
       </div>

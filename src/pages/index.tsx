@@ -1045,6 +1045,7 @@
     const {videoTime, setVideoTime } = useBetween(useShareableState);
     const [titleText, setTitleText] = useState(30);
     const { boxVisible, setBoxVisible } = useBetween(useShareableState);
+    const [currentTime, setCurrentTime] = useState(0);
     
     const currentVideoState = () => {
       return videoTime;
@@ -1168,35 +1169,38 @@
           setPaused(!paused);
         };
         const onTimeUpdate = (event: CustomEvent<number>) => {
-          const currentTime = event.detail;
-          console.log(currentTime);
+          
+          const currentTimeb = event.detail;
+          setCurrentTime(currentTimeb);
+          console.log(currentTimeb);
           // if (event.detail > 5) {
           //   console.log('hey')
           //   player.current!.pause()
           // }
-          if (currentTime > 3 && LoginVerify() === false ) {
+          if (currentTimeb > 3 && LoginVerify() === false ) {
             setBoxVisible('reveal')
           //if (currentTime > 3 ) {
               console.log('yes')
-              if (Math.floor(33 - currentTime) !== titleText ) {
-                setTitleText(Math.floor(33.99 - currentTime));
+              if (Math.floor(33 - currentTimeb) !== titleText ) {
+                setTitleText(Math.floor(33.99 - currentTimeb));
               }
-              if (currentTime > 33) {
+              if (currentTimeb > 33) {
+                setCurrentTime(32.99);
                 player.current!.pause()
               }
               setVideoStatus(1)
             } 
-            if (currentTime > 66  && step2verify()===true) {
+            if (currentTimeb > 66  && step2verify()===true) {
               console.log('yes2')
               player.current!.pause()
               setVideoStatus(2)
             }
-            if (currentTime > 79  && step3verify()===true) {
+            if (currentTimeb > 79  && step3verify()===true) {
               console.log('yes3')
               player.current!.pause()
               setVideoStatus(3)
             }
-            if (currentTime > 112  && step4verify()===true) {
+            if (currentTimeb > 112  && step4verify()===true) {
               console.log('yes3')
               player.current!.pause()
               setVideoStatus(4)
@@ -1247,6 +1251,7 @@
               </div>
         {  typeof window !== 'undefined' && Player && <Player
         onVmCurrentTimeChange={onTimeUpdate}
+        currentTime={currentTime}
         ref={player}
       theme="dark"
       style={{ '--vm-player-theme': '#e86c8b' }}

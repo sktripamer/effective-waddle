@@ -4,6 +4,7 @@
     Ui,
     Video,
     Controls,
+    Poster,
     Control,
     ControlGroup,
     Icon,

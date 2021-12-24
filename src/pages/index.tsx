@@ -1220,7 +1220,15 @@
 
       
         <div className={`rev-player ${playerSize}`}>
-        <div className={`rev-optin ${boxVisible}`}>
+
+        {  typeof window !== 'undefined' && Player && <Player
+        onVmCurrentTimeChange={onTimeUpdate}
+        currentTime={currentTime}
+        ref={player}
+      theme="dark"
+      style={{ '--vm-player-theme': '#CD5C5C' }}
+    >
+              <div className={`rev-optin ${boxVisible}`}>
             <div className='time-remaining'>{titleText}</div>
         {1 == videoStatus
               ? showAlertBar && (
@@ -1255,13 +1263,6 @@
                 )
               : ""}
               </div>
-        {  typeof window !== 'undefined' && Player && <Player
-        onVmCurrentTimeChange={onTimeUpdate}
-        currentTime={currentTime}
-        ref={player}
-      theme="dark"
-      style={{ '--vm-player-theme': '#CD5C5C' }}
-    >
       <Video
         crossOrigin
         poster="https://media.vimejs.com/poster.png"
@@ -1305,6 +1306,7 @@
             </ControlGroup>
           </Controls>
         </Ui>
+        
     </Player> }
   
       </div>

@@ -1240,14 +1240,15 @@ const IndexPage = () => {
             <VolumeControl />
             <ControlSpacer />
             <CaptionControl />
+
             <Control
       label="testelement"
-     
-      pressed={paused}
      onClick={onClick}
     >
       <Icon name="fullscreen" library="material"/>
     </Control>
+
+
           </ControlGroup>
         </Controls>
       </Ui>

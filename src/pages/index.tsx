@@ -1038,6 +1038,7 @@
     const [activate, setActivate] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
     const [paused, setPaused] = useState(true);
+    const player = useRef<HTMLVmPlayerElement>(null);
     const [showAlertBar, setShowAlertBar] = useState(true);
     const isBrowser = typeof window !== "undefined";
     const {videoStatus, setVideoStatus } = useBetween(useShareableState);
@@ -1170,7 +1171,7 @@
           console.log(event.detail);
           if (event.detail > 5) {
             console.log('hey')
-            setPaused(true)
+            player.pause()
           }
         };
 
@@ -1218,7 +1219,7 @@
               </div>
         {  typeof window !== 'undefined' && Player && <Player
         onVmCurrentTimeChange={onTimeUpdate}
-        paused={paused}
+        ref={player}
       theme="dark"
       style={{ '--vm-player-theme': '#e86c8b' }}
     >

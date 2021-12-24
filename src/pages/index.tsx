@@ -1246,7 +1246,7 @@ const IndexPage = () => {
       pressed={paused}
      onClick={onClick}
     >
-      <Icon name="play" library="material"/>
+      <Icon name="fullscreen-enter" library="material"/>
     </Control>
 
 

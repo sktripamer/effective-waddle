@@ -1243,9 +1243,10 @@ const IndexPage = () => {
 
             <Control
       label="testelement"
+      pressed={paused}
      onClick={onClick}
     >
-      <Icon name="fullscreen" library="material"/>
+      <Icon name="play" library="material"/>
     </Control>
 
 

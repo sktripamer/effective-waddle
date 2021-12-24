@@ -1171,7 +1171,7 @@
           console.log(event.detail);
           if (event.detail > 5) {
             console.log('hey')
-            player.pause()
+            player.current!.pause()
           }
         };
 

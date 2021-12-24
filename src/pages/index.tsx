@@ -6,6 +6,7 @@ import {
   Controls,
   ControlGroup,
   ScrubberControl,
+  ClickToPlay,
   PlaybackControl,
   VolumeControl,
   ControlSpacer,

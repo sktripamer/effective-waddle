@@ -1037,7 +1037,7 @@
     //const [isLoggedIn, setLoggedIn] = useState(false);
     const [activate, setActivate] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
-    const [paused, setPaused] = useState(false);
+    const [paused, setPaused] = useState(true);
     const [showAlertBar, setShowAlertBar] = useState(true);
     const isBrowser = typeof window !== "undefined";
     const {videoStatus, setVideoStatus } = useBetween(useShareableState);
@@ -1169,6 +1169,7 @@
         const onTimeUpdate = (event: CustomEvent<number>) => {
           console.log(event.detail);
           if (event.detail > 5) {
+            console.log('hey')
             setPaused(false)
           }
         };

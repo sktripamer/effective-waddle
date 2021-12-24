@@ -8,6 +8,8 @@ import {
   ScrubberControl,
   PlaybackControl,
   VolumeControl,
+  ControlSpacer,
+  CaptionControl,
 } from '@vime/react';
 import Layout from "../components/Layout";
 //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
@@ -1219,6 +1221,7 @@ const IndexPage = () => {
       />
     </Video>
     <Ui>
+    <ClickToPlay />
         <Controls fullWidth>
           <ControlGroup>
             <ScrubberControl />
@@ -1227,6 +1230,8 @@ const IndexPage = () => {
           <ControlGroup space="top">
             <PlaybackControl />
             <VolumeControl />
+            <ControlSpacer />
+            <CaptionControl />
           </ControlGroup>
         </Controls>
       </Ui>

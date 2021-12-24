@@ -3,7 +3,7 @@
     Player,
     Ui,
     Video,
-    DefaultUI,
+    DefaultUi,
     Controls,
     Control,
     ControlGroup,

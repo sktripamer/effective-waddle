@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
+import { Player, Video, DefaultUi } from '@vime/react';
 import Layout from "../components/Layout";
 //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
 import useAuth from "../hooks/useAuth";
@@ -1189,6 +1190,29 @@ const IndexPage = () => {
             : ""}
             </div>
       {/* {  typeof window !== 'undefined' && CustomizableVideoPlayer && <CustomizableVideoPlayer url={videoLink} playing={playing} getVideoProgressDetails={storeVideoDetailFunctions} onVideoProgress={handleVideoProgress} /> } */}
+      <Player
+    theme="dark"
+    style={{ '--vm-player-theme': '#e86c8b' }}
+  >
+    <Video
+      crossOrigin
+      poster="https://media.vimejs.com/poster.png"
+    >
+      <source 
+        data-src="https://media.vimejs.com/720p.mp4" 
+        type="video/mp4"
+      />
+      <track 
+        default 
+        kind="subtitles" 
+        src="https://media.vimejs.com/subs/english.vtt" 
+        srclang="en" 
+        label="English" 
+      />
+    </Video>
+
+    <DefaultUi />
+  </Player>
     </div>
 
           

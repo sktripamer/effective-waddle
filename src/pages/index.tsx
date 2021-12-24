@@ -1168,11 +1168,39 @@
           setPaused(!paused);
         };
         const onTimeUpdate = (event: CustomEvent<number>) => {
-          console.log(event.detail);
-          if (event.detail > 5) {
-            console.log('hey')
-            player.current!.pause()
-          }
+          const currentTime = event.detail;
+          console.log(currentTime);
+          // if (event.detail > 5) {
+          //   console.log('hey')
+          //   player.current!.pause()
+          // }
+          if (currentTime > 3 && LoginVerify() === false ) {
+            setBoxVisible('reveal')
+          //if (currentTime > 3 ) {
+              console.log('yes')
+              if (Math.floor(33 - currentTime) !== titleText ) {
+                setTitleText(Math.floor(33.99 - currentTime));
+              }
+              if (currentTime > 33) {
+                player.current!.pause()
+              }
+              setVideoStatus(1)
+            } 
+            if (currentTime > 66  && step2verify()===true) {
+              console.log('yes2')
+              player.current!.pause()
+              setVideoStatus(2)
+            }
+            if (currentTime > 79  && step3verify()===true) {
+              console.log('yes3')
+              player.current!.pause()
+              setVideoStatus(3)
+            }
+            if (currentTime > 112  && step4verify()===true) {
+              console.log('yes3')
+              player.current!.pause()
+              setVideoStatus(4)
+            }
         };
 
 

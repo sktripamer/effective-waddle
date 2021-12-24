@@ -3,6 +3,7 @@
     Player,
     Ui,
     Video,
+    DefaultUI,
     Controls,
     Control,
     ControlGroup,
@@ -1250,55 +1251,28 @@
               : ""}
               </div>
         {  typeof window !== 'undefined' && Player && <Player
-        onVmCurrentTimeChange={onTimeUpdate}
-        currentTime={currentTime}
-        ref={player}
-      theme="dark"
-      style={{ '--vm-player-theme': '#CD5C5C' }}
+    theme="dark"
+    style={{ '--vm-player-theme': '#9c3650' }}
+  >
+    <Video
+      crossOrigin
+      poster="https://media.vimejs.com/poster.png"
     >
-      <Video
-        crossOrigin
-        poster="https://media.vimejs.com/poster.png"
-      >
-        <source 
-          data-src="https://media.vimejs.com/720p.mp4" 
-          type="video/mp4"
-        />
-        <track 
-          default 
-          kind="subtitles" 
-          src="https://media.vimejs.com/subs/english.vtt" 
-          srclang="en" 
-          label="English" 
-        />
-      </Video>
-      {/* <Ui>
-      <ClickToPlay />
-          <Controls fullWidth>
-            <ControlGroup>
-              <ScrubberControl />
-            </ControlGroup>
-                
-            <ControlGroup space="top">
-              <PlaybackControl />
-              <VolumeControl />
-              <TimeProgress separator="/"/>
-              <ControlSpacer />
-              <CaptionControl />
+      <source 
+        data-src="https://media.vimejs.com/720p.mp4" 
+        type="video/mp4"
+      />
+      <track 
+        default 
+        kind="subtitles" 
+        src="https://media.vimejs.com/subs/english.vtt" 
+        srclang="en" 
+        label="English" 
+      />
+    </Video>
 
-              <Control
-        label="testelement"
-        pressed={paused}
-      onClick={onClick}
-      >
-        <Icon name="fullscreen-enter" library="material"/>
-      </Control>
-
-
-            </ControlGroup>
-          </Controls>
-        </Ui> */}
-    </Player> }
+    <DefaultUi />
+  </Player> }
   
       </div>
 

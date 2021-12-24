@@ -4,7 +4,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 		  module: {
 			rules: [
 			  {
-				test: /custom-react-player/,
+				test: /@vime/,
 				use: loaders.null(),
 			  },
 			],

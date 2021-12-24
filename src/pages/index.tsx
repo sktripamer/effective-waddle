@@ -1036,6 +1036,7 @@ const IndexPage = () => {
   //const [isLoggedIn, setLoggedIn] = useState(false);
 	const [activate, setActivate] = useState(false);
 	const [successMessage, setSuccessMessage] = useState("");
+  const [paused, setPaused] = useState(false);
 	const [showAlertBar, setShowAlertBar] = useState(true);
   const isBrowser = typeof window !== "undefined";
   const {videoStatus, setVideoStatus } = useBetween(useShareableState);
@@ -1160,7 +1161,9 @@ const IndexPage = () => {
 
 
   
-
+      const onClick = () => {
+        setPaused(!paused);
+      };
 
 
 
@@ -1240,7 +1243,9 @@ const IndexPage = () => {
             <Control
       label="testelement"
     >
-       <Icon name="play" library="material"  />
+       <Icon name="fullscreen" library="material"  />
+       pressed={paused}
+      onClick={onClick}
     </Control>
           </ControlGroup>
         </Controls>

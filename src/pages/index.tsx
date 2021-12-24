@@ -4,7 +4,9 @@ import {
   Ui,
   Video,
   Controls,
+  Control,
   ControlGroup,
+  Icon,
   ScrubberControl,
   ClickToPlay,
   PlaybackControl,
@@ -65,6 +67,8 @@ import TwitterIcon from "../images/TwitterIcon"
 import WhatsappIcon from "../images/WhatsappIcon"
 import LinkedinIcon from "../images/LinkedinIcon"
 import EmailIcon from "../images/EmailIcon"
+
+
 
 const useShareableState = () => {
 
@@ -1233,6 +1237,11 @@ const IndexPage = () => {
             <VolumeControl />
             <ControlSpacer />
             <CaptionControl />
+            <Control
+      label="testelement"
+    >
+       <Icon name="play" library="material"  />
+    </Control>
           </ControlGroup>
         </Controls>
       </Ui>

@@ -1,5 +1,14 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
-import { Player, Video, DefaultUi } from '@vime/react';
+import {
+  Player,
+  Ui,
+  Video,
+  Controls,
+  ControlGroup,
+  ScrubberControl,
+  PlaybackControl,
+  VolumeControl,
+} from '@vime/react';
 import Layout from "../components/Layout";
 //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
 import useAuth from "../hooks/useAuth";
@@ -13,8 +22,6 @@ import {
 } from '@stripe/react-stripe-js';
 import { isEmpty, remove } from 'lodash';
 import { gql , useMutation } from "@apollo/client";
-
-import '@vime/core/themes/default.css';
 import SignUpForm from "../components/SignUpForm";
 //import RegisterOpt from "../components/RegisterOpt";
 import UnAuthContent from "../components/UnAuthContent";
@@ -1211,8 +1218,18 @@ const IndexPage = () => {
         label="English" 
       />
     </Video>
+    <Ui>
+        <Controls fullWidth>
+          <ControlGroup>
+            <ScrubberControl />
+          </ControlGroup>
 
-    <DefaultUi />
+          <ControlGroup space="top">
+            <PlaybackControl />
+            <VolumeControl />
+          </ControlGroup>
+        </Controls>
+      </Ui>
   </Player> }
  
     </div>

@@ -1047,7 +1047,7 @@
     const [titleText, setTitleText] = useState(30);
     const { boxVisible, setBoxVisible } = useBetween(useShareableState);
     const [currentTime, setCurrentTime] = useState(0);
-    
+    const [playerSize, setPlayerSize] = useState("regular");
     const currentVideoState = () => {
       return videoTime;
     }
@@ -1168,6 +1168,11 @@
     
         const onClick = () => {
           setPaused(!paused);
+          if (playerSize === "regular") {
+            setPlayerSize("large")
+          } else {
+            setPlayerSize("regular")
+          }
         };
         const onTimeUpdate = (event: CustomEvent<number>) => {
           
@@ -1214,7 +1219,7 @@
           <Layout>
 
       
-        <div className='rev-player'>
+        <div className={`rev-player ${playerSize}`}>
         <div className={`rev-optin ${boxVisible}`}>
             <div className='time-remaining'>{titleText}</div>
         {1 == videoStatus

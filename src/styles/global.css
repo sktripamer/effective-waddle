@@ -101,18 +101,31 @@ a {
 }
 
 main {
-  margin: 0 auto 4rem;
+  /* margin: 0 auto 4rem;
   max-width: 1000px;
-  padding: 4rem 1rem 0;
+  padding: 4rem 1rem 0; */
 }
 
 @media (min-width: 850px) {
   main {
-    padding-left: 4rem;
-    padding-right: 4rem;
+    /* padding-left: 4rem;
+    padding-right: 4rem; */
   }
 }
-
+.regular {
+  margin: 0 auto;
+  max-width: 1300px;
+  transition: .25s ease-out all;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.large {
+  margin: 0 auto;
+  max-width: 100%;
+  transition: .25s ease-out all;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 .header {
   border-bottom: 2px solid var(--color-gray-9);
 }

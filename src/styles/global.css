@@ -167,7 +167,7 @@ main {
 }
 
 
-.star-spinner > .spinner {
+.star-spinner > .spinnerz {
 	height: 50%;
 	width: auto;
 	position: absolute;
@@ -192,7 +192,7 @@ animation: breathe 30s linear forwards;
 	margin: auto;
 	
 }
-.outer-star > .spinner:after {
+.outer-star > .spinnerz:after {
 	content:'';
 	height: 100%;
 	width: auto;
@@ -206,7 +206,7 @@ animation: breathe 30s linear forwards;
 	    background-position: center;
 	background-image: url("https://portal.revrevdev.xyz/wp-content/uploads/starline.svg");
 }
-.inner-star > .spinner:after {
+.inner-star > .spinnerz:after {
 		height: 100%;
 	width: auto;
 	position: absolute;

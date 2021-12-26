@@ -106,12 +106,9 @@ main {
   padding: 4rem 1rem 0; */
 }
 
-@media (min-width: 850px) {
-  main {
-    /* padding-left: 4rem;
-    padding-right: 4rem; */
-  }
-  .regular {
+@media (max-width: 850px) {
+
+  div.regular {
 
     padding-left: 1rem;
     padding-right: 1rem;

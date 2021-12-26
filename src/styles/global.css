@@ -190,8 +190,7 @@ div.large {
 
 
 .inner-star {
-clip-path: polygon(0 79%, 100% 79%, 100% 100%, 0% 100%);
-animation: breathe 30s linear forwards;
+
 		height: 100%;
 	width: auto;
 	position: absolute;
@@ -201,6 +200,12 @@ animation: breathe 30s linear forwards;
 	right: 0;
 	margin: auto;
 	
+}
+
+.inner-star>.spinnerz:after {
+  clip-path: polygon(0 90%, 100% 90%, 100% 100%, 0% 100%);
+  animation: breathe 30s linear forwards;
+
 }
 .outer-star > .spinnerz:after {
 	content:'';

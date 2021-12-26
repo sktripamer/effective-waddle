@@ -166,6 +166,69 @@ main {
   color: #fff;
 }
 
+
+.star-spinner > .spinner {
+	height: 50%;
+	width: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+
+.inner-star {
+clip-path: polygon(0 79%, 100% 79%, 100% 100%, 0% 100%);
+animation: breathe 30s linear forwards;
+		height: 100%;
+	width: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	
+}
+.outer-star > .spinner:after {
+	content:'';
+	height: 100%;
+	width: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background-repeat: no-repeat;
+	    background-position: center;
+	background-image: url("https://portal.revrevdev.xyz/wp-content/uploads/starline.svg");
+}
+.inner-star > .spinner:after {
+		height: 100%;
+	width: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background-repeat: no-repeat;
+	    background-position: center;
+	content:'';
+	background-image: url("https://portal.revrevdev.xyz/wp-content/uploads/starfill.svg");
+}
+@keyframes breathe {
+  to {
+		clip-path: polygon(0 22%, 100% 22%, 100% 100%, 0% 100%);
+	}
+	
+}
+
+
+
 .header {
   border-bottom: 2px solid var(--color-gray-9);
 }

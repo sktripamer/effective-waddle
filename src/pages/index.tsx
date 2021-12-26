@@ -1229,6 +1229,19 @@
       style={{ '--vm-player-theme': '#CD5C5C' }}
     >
               <div className={`rev-optin ${boxVisible}`}>
+<div className='time-section'>
+              <div className='time-remaining'>{titleText}</div>
+                <div class="star-spinner">
+	<div class="outer-star">
+<div class="spinner">
+		</div>
+	</div>
+	<div class="inner-star">
+		<div class="spinner">
+		</div>
+	</div>
+</div>
+</div>
             <div className='time-remaining'>{titleText}</div>
         {1 == videoStatus
               ? showAlertBar && (

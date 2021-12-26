@@ -111,6 +111,11 @@ main {
     /* padding-left: 4rem;
     padding-right: 4rem; */
   }
+  .regular {
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 }
 .regular {
   margin: 0 auto;
@@ -161,9 +166,13 @@ main {
 }
 
 .time-remaining {
-  z-index: 1;
-  position: relative;
   color: #fff;
+  z-index: 21;
+  height: 10vh;
+  position: absolute;
+  font-size: 6vh;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 
@@ -194,27 +203,25 @@ animation: breathe 30s linear forwards;
 }
 .outer-star > .spinnerz:after {
 	content:'';
-	height: 100%;
-	width: auto;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
+  height: 10vh;
+  z-index: 1;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  width: auto;
 	background-repeat: no-repeat;
 	    background-position: center;
 	background-image: url("https://portal.revrevdev.xyz/wp-content/uploads/starline.svg");
 }
 .inner-star > .spinnerz:after {
-		height: 100%;
-	width: auto;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
+	height: 10vh;
+    z-index: 1;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    width: auto;
 	background-repeat: no-repeat;
 	    background-position: center;
 	content:'';

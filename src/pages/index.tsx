@@ -1223,6 +1223,7 @@
 
         {  typeof window !== 'undefined' && Player && <Player
         onVmCurrentTimeChange={onTimeUpdate}
+        playsinline
         currentTime={currentTime}
         ref={player}
       theme="dark"

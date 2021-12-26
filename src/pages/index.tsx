@@ -1233,16 +1233,16 @@
               <div className='time-remaining'>{titleText}</div>
                 <div class="star-spinner">
 	<div class="outer-star">
-<div class="spinner">
+<div class="spinnerz">
 		</div>
 	</div>
 	<div class="inner-star">
-		<div class="spinner">
+		<div class="spinnerz">
 		</div>
 	</div>
 </div>
 </div>
-            <div className='time-remaining'>{titleText}</div>
+
         {1 == videoStatus
               ? showAlertBar && (
                   

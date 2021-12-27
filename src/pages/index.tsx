@@ -493,7 +493,7 @@
             validationSchema={validationSchema}
             labelsColor="secondary" /// The text label color can be root variables or css => #fff
            // withStepperLine /// false as default and If it is false, it hides stepper line
-            nextBtnLabel="Keep Watching" /// Next as default
+            nextBtnLabel="Next" /// Next as default
             prevBtnLabel="Change Email" /// Prev as default
             submitBtnLabel="Keep Watching" /// Submit as default
             nextBtnColor="primary" /// as default and The color can be root variables or css => #fff
@@ -502,7 +502,12 @@
           >
             {/*  First Step */}
             <FormikStep>
-              <InputField name="email" label="Email" type="email" />
+            <div class="input-wrap">
+            <InputField name="email" label="Email" type="email" />
+  <label id="label">Keep watching</label>
+</div>
+
+            
             </FormikStep>
             {/* Second Step */}
             <FormikStep>

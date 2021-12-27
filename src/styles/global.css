@@ -298,7 +298,14 @@ form textarea {
   margin: 0.1rem 0 1rem;
   width: 100%;
 }
-
+.input-wrap > div > div > input.form-control.form-control {
+  padding: 0 10px;
+  width: 300px;
+  height: 48px;
+  border: 6px solid #454545;
+  border-radius: 3px;
+  flex: none;
+}
 form input:focus {
   outline: none;
   border-color: var(--color-yellow-6);

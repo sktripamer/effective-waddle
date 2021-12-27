@@ -164,9 +164,9 @@ div.large {
 
 .register-form.col-md-6 {
   flex: 0 0 100%;
-  max-width: 100%;
-  margin-top: 11vh;
+  max-width: 90%;
   text-align: center;
+  margin: 11vh auto 0 auto;
 }
 
 .register-form {
@@ -297,7 +297,6 @@ form textarea {
   border-radius: var(--border-radius);
   margin: 0.1rem 0 1rem;
   width: 100%;
-  max-width: 300px;
 }
 
 form input:focus {

@@ -180,7 +180,9 @@ div.large {
   transform: translate(-50%, 0%);
 }
 
-
+.spinnerz {
+  margin-top: 20px;
+}
 .star-spinner > .spinnerz {
 	height: 50%;
 	width: auto;

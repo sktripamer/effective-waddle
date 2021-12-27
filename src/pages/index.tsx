@@ -428,7 +428,7 @@
     return (
       <div className="register-form col-md-6">
         {/* Title */}
-        <h4 className="mb-2">Enter your email to keep watching</h4>
+        <h4 className="mb-2">Time's almost up!</h4>
 
         {/* Error Message */}
         {"" !== errorMessage
@@ -492,31 +492,20 @@
             }}
             validationSchema={validationSchema}
             labelsColor="secondary" /// The text label color can be root variables or css => #fff
-            withStepperLine /// false as default and If it is false, it hides stepper line
-            nextBtnLabel="step" /// Next as default
-            prevBtnLabel="return" /// Prev as default
-            submitBtnLabel="Done" /// Submit as default
+           // withStepperLine /// false as default and If it is false, it hides stepper line
+            nextBtnLabel="Keep Watching" /// Next as default
+            prevBtnLabel="Change Email" /// Prev as default
+            submitBtnLabel="Keep Watching" /// Submit as default
             nextBtnColor="primary" /// as default and The color can be root variables or css => #fff
             prevBtnColor="danger" /// as default and The color can be root variables or css => #fff
             submitBtnColor="success" /// as default and The color can be root variables or css => #fff
           >
             {/*  First Step */}
-            <FormikStep
-              label="Profile Info" /// The text label of Step
-              withIcons="fa fa-user" // to add icon into the circle must add icon as class Name like Fontawesome
-              withNumbers /// If true, it hides the icon and shows the step number
-              iconColor="white" /// The color can be root variables or css => #fff
-              circleColor="danger" /// The color can be root variables or css => #fff
-            >
+            <FormikStep>
               <InputField name="email" label="Email" type="email" />
             </FormikStep>
             {/* Second Step */}
-            <FormikStep
-              label="Login Info"
-              withIcons="fa fa-lock"
-              iconColor="white"
-              circleColor="danger"
-            >
+            <FormikStep>
               <InputField name="phonefield" label="Phone" />
             
             </FormikStep>

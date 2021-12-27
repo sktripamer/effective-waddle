@@ -162,6 +162,13 @@ div.large {
   background: linear-gradient(68deg, rgba(35,35,35,1) 50%, rgb(35 35 35 / 5%) 100%)
 }
 
+.register-form.col-md-6 {
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-top: 11vh;
+  text-align: center;
+}
+
 .register-form {
   z-index: 1;
 }
@@ -306,7 +313,12 @@ form input:focus {
   margin-top: -35px;
 }
 .register-form h4 {
-  color: #fff;
+  color: #e0e0e0;
+  font-family: Verdana;
+  text-shadow: -1px -1px 1px #111, 2px 2px 1px #3c3c3c;
+  font-weight: BOLD;
+  font-size: 28px;
+  font-style: italic;
 }
 button {
   display: block;

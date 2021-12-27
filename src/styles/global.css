@@ -235,7 +235,7 @@ div.large {
 }
 @keyframes breathe {
   to {
-		clip-path: polygon(0 32%, 100% 32%, 100% 100%, 0% 100%);
+		clip-path: polygon(0 24%,100% 24%,100% 100%,0 100%);
 	}
 	
 }

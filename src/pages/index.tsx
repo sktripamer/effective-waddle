@@ -504,7 +504,6 @@
             <FormikStep>
             <div class="input-wrap">
             <InputField name="email" label="Email" type="email" />
-  <label id="label">Keep watching</label>
 </div>
 
             
@@ -1217,7 +1216,8 @@
 
         {  typeof window !== 'undefined' && Player && <Player
         onVmCurrentTimeChange={onTimeUpdate}
-        playsinline
+        playsinline={true}
+        controls={false}
         currentTime={currentTime}
         ref={player}
       theme="dark"

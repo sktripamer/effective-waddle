@@ -177,12 +177,12 @@ div.large {
   text-shadow: #bbb 0 0 1px, #fff 0 -1px 2px, #313131ed 0 -3px 2px, rgb(0 0 0 / 95%) 0 10px 15px;
   color: hsl(0deg 0% 100% / 50%);
   z-index: 21;
-  height: 8vh;
   position: absolute;
-  font-size: 5vh;
+  font-size: 4rem;
+  height: 6rem;
   left: 50%;
   FONT-WEIGHT: bold;
-  letter-spacing: -4px;
+  letter-spacing: -0.3rem;
   margin-left: -2px;
   transform: translate(-50%, 0%);
 }
@@ -222,7 +222,7 @@ div.large {
 }
 .outer-star > .spinnerz:after {
 	content:'';
-  height: 8vh;
+  height: 6rem;
   z-index: 1;
   left: 0;
   margin: auto;
@@ -234,7 +234,7 @@ div.large {
 	background-image: url("https://portal.revrevdev.xyz/wp-content/uploads/starline.svg");
 }
 .inner-star > .spinnerz:after {
-	height: 8vh;
+	height: 6rem;
     z-index: 1;
     left: 0;
     margin: auto;

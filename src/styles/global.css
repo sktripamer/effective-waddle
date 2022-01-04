@@ -141,7 +141,7 @@ div.large {
   left: 0px;
   max-width: 600px;
   background-image:url("https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg");
-  z-index: 100;
+  z-index: 20;
   transition: .8s all;
   background-position: top right;
   background-repeat: no-repeat;

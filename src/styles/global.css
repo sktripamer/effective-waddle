@@ -147,9 +147,12 @@ div.register-form h4 {
   div.time-remaining {
     font-size: 1.8rem;
     letter-spacing: -0.1rem;
-    margin-left:0px;
+    margin-left: 4px;
     left: 5%;
 
+  }
+  div.input-wrap>div>div>input.form-control.form-control {
+    height: 34px;
   }
   div.rev-optin>div.register-form.col-md-6 {
     margin: 1.5rem auto 0;
@@ -221,6 +224,7 @@ div.register-form h4 {
   FONT-WEIGHT: bold;
   letter-spacing: -0.3rem;
   margin-left: -2px;
+  transform: translate(-50%);
 }
 
 .spinnerz {

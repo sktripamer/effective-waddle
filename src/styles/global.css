@@ -369,9 +369,12 @@ text.keep-watching {
   background-image: url("https://portal.revrevdev.xyz/wp-content/uploads/continue.svg");
   background-repeat: no-repeat;
   background-position: center;
+  transition: opacity 0.4s ease;
+  opacity: 1;
+  animation: floating 2s infinite ease-out;
 }
 
-input:focus + svg {
+input:focus + .svg-img-item {
   opacity: 0;
 }
 @keyframes floating {

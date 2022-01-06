@@ -510,8 +510,9 @@
             </FormikStep>
             {/* Second Step */}
             <FormikStep>
+            <div class="input-wrap">
               <InputField name="phonefield" label="Phone" />
-            
+              </div>
             </FormikStep>
           </FormikStepper>
 
@@ -640,6 +641,7 @@
   };
 
     return (
+      
       <FormikStepper
       /// Accept all Formik props
       onSubmit={onSubmit} /// onSubmit Function
@@ -699,6 +701,7 @@
 
     return (
   <div className="sharesection">
+
       <div className="Demo__container">
       <div className="Demo__some-network">
         <FacebookShareButton

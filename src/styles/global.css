@@ -387,7 +387,7 @@ form input:focus {
 div.input-group {
   margin-bottom: 35px;
   flex-wrap: nowrap;
-  flex-direction: row-reverse;
+ 
 }
 
 .text-danger {

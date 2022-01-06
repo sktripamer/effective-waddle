@@ -347,7 +347,6 @@ form textarea {
   border-radius: 3px;
   flex: none;
   transition: .2s .15s all;
-  display: none;
 }
 
 .input-wrap>div>div>input.form-control.form-control:focus {
@@ -365,8 +364,15 @@ text.keep-watching {
   z-index: 121;
 }
 
+.svg-img-item {
+  width: 30%;
+  background-image: url("https://portal.revrevdev.xyz/wp-content/uploads/continue.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 input:focus + svg {
-  /* opacity: 0; */
+  opacity: 0;
 }
 @keyframes floating {
   0%, 100% {

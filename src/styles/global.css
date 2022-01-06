@@ -133,20 +133,26 @@ div.rev-optin {
 .rev-optin > div.register-form.col-md-6 {
   margin: 7.5rem auto 0;
 }
-
+.input-wrap {
+  margin-top: 20px;
+}
 @media (max-width: 750px) {
   div.inner-star>.spinnerz:after, div.outer-star>.spinnerz:after {
     height: 2.8rem;
+    background-position: 5%;
   }
-
+div.register-form h4 {
+  font-size: 16px;
+}
   div.time-remaining {
     font-size: 1.8rem;
     letter-spacing: -0.1rem;
     margin-left:0px;
+    left: 5%;
 
   }
   div.rev-optin>div.register-form.col-md-6 {
-    margin: 4rem auto 0;
+    margin: 1.5rem auto 0;
   }
 }
 .regular {
@@ -215,7 +221,6 @@ div.rev-optin {
   FONT-WEIGHT: bold;
   letter-spacing: -0.3rem;
   margin-left: -2px;
-  transform: translate(-50%, 0%);
 }
 
 .spinnerz {
@@ -317,7 +322,7 @@ fieldset {
 }
 
 form label {
-  display: block;
+  display: none;
   font-size: 0.9rem;
 }
 

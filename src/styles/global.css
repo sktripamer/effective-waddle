@@ -337,6 +337,28 @@ form textarea {
   border-radius: 3px;
   flex: none;
 }
+text.keep-watching {
+  text-shadow: 1px 1px 1px #664200;
+}
+.input-group > svg {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  margin-right: -10px;
+  margin-left: 10px;
+  animation: floating 1.3s infinite ease-out;
+  z-index: 1;
+}
+@keyframes floating {
+  0%, 100% {
+    margin-right: -10px;
+    margin-left: 10px;
+  }
+  50% {
+    margin-right: 10px;
+    margin-left: -10px;
+  }
+}
+
 form input:focus {
   outline: none;
   border-color: var(--color-yellow-6);

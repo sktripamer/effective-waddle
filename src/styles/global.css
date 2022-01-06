@@ -149,6 +149,7 @@ div.register-form h4 {
     letter-spacing: -0.1rem;
     margin-left: 4px;
     left: 5%;
+    transform: none;
 
   }
   div.input-wrap>div>div>input.form-control.form-control {

@@ -361,7 +361,7 @@ text.keep-watching {
   margin-right: -10px;
   margin-left: 10px;
   animation: floating 2s infinite ease-out;
-  z-index: 121;
+  
 }
 
 .svg-img-item {
@@ -372,6 +372,7 @@ text.keep-watching {
   transition: opacity 0.4s ease;
   opacity: 1;
   animation: floating 2s infinite ease-out;
+  z-index: 20;
 }
 
 input:focus + .svg-img-item {

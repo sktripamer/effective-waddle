@@ -125,7 +125,7 @@ div.large {
 div.rev-optin {
   max-width: 700px;
 
-  width: 70%;
+  width: 80%;
 }
 
 }
@@ -331,7 +331,7 @@ form textarea {
 }
 .input-wrap > div > div > input.form-control.form-control {
   padding: 0 10px;
-  width: 80%;
+  width: 70%;
   height: 48px;
   border: 6px solid #454545;
   border-radius: 3px;

@@ -347,6 +347,7 @@ form textarea {
   border-radius: 3px;
   flex: none;
   transition: .2s .15s all;
+  display: none;
 }
 
 .input-wrap>div>div>input.form-control.form-control:focus {

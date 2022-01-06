@@ -336,6 +336,11 @@ form textarea {
   border: 6px solid #454545;
   border-radius: 3px;
   flex: none;
+  transition: .2s .15s all;
+}
+
+.input-wrap>div>div>input.form-control.form-control:focus {
+  width: 100%;
 }
 text.keep-watching {
   text-shadow: 1px 1px 1px #664200;
@@ -346,7 +351,7 @@ text.keep-watching {
   margin-right: -10px;
   margin-left: 10px;
   animation: floating 2s infinite ease-out;
-  z-index: 1;
+  z-index: 21;
 }
 
 input:focus + svg {
@@ -371,6 +376,7 @@ form input:focus {
 div.input-group {
   margin-bottom: 35px;
   flex-wrap: nowrap;
+  flex-direction: row-reverse;
 }
 
 .text-danger {

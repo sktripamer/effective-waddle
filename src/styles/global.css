@@ -125,7 +125,7 @@ div.large {
 div.rev-optin {
   max-width: 700px;
 
-  width: 80%;
+  width: 70%;
 }
 
 }
@@ -145,7 +145,7 @@ div.rev-optin {
     margin-left:0px;
 
   }
-  div.register-form.col-md-6 {
+  div.rev-optin>div.register-form.col-md-6 {
     margin: 4rem auto 0;
   }
 }

@@ -130,18 +130,24 @@ div.rev-optin {
 
 }
 
+.rev-optin > div.register-form.col-md-6 {
+  margin: 7.5rem auto 0;
+}
+
 @media (max-width: 750px) {
   div.inner-star>.spinnerz:after, div.outer-star>.spinnerz:after {
-    height: 4rem;
+    height: 2.8rem;
   }
 
   div.time-remaining {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     letter-spacing: -0.1rem;
     margin-left:0px;
 
   }
-
+  div.register-form.col-md-6 {
+    margin: 4rem auto 0;
+  }
 }
 .regular {
   margin: 0 auto;
@@ -325,7 +331,7 @@ form textarea {
 }
 .input-wrap > div > div > input.form-control.form-control {
   padding: 0 10px;
-  width: 300px;
+  width: 80%;
   height: 48px;
   border: 6px solid #454545;
   border-radius: 3px;
@@ -336,8 +342,9 @@ form input:focus {
   border-color: var(--color-yellow-6);
 }
 
-.input-group {
+div.input-group {
   margin-bottom: 35px;
+  flex-wrap: nowrap;
 }
 
 .text-danger {

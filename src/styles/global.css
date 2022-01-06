@@ -362,11 +362,11 @@ text.keep-watching {
   margin-right: -10px;
   margin-left: 10px;
   animation: floating 2s infinite ease-out;
-  z-index: 21;
+  z-index: 121;
 }
 
 input:focus + svg {
-  opacity: 0;
+  /* opacity: 0; */
 }
 @keyframes floating {
   0%, 100% {

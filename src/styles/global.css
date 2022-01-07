@@ -109,7 +109,7 @@ main {
 @media (max-width: 850px) {
 
   div.spinnerz {
-    margin-top:10px;
+    margin-top:5px;
   }
 
   div.regular {
@@ -154,7 +154,7 @@ button.ml-auto.btn.btn-success:after {
   top: 2px;
 }
 .rev-optin > div.register-form.col-md-6 {
-  margin: 7.5rem auto 0;
+  margin: 5.5rem auto 0;
   max-width: 100%;
 }
 .input-wrap {
@@ -233,6 +233,7 @@ div.steptwo > form > div.form-group > div.input-group > input.form-control.form-
 }
 div.rev-optin>div.register-form.col-md-6.steptwo {
   margin: 0;
+  margin-top: -8px;
 }
 
 }
@@ -301,7 +302,7 @@ div.rev-optin>div.register-form.col-md-6.steptwo {
   color: hsl(0deg 0% 100% / 50%);
   z-index: 21;
   position: absolute;
-  font-size: 4rem;
+  font-size: 3rem;
   height: 6rem;
   left: 50%;
   FONT-WEIGHT: bold;
@@ -311,7 +312,7 @@ div.rev-optin>div.register-form.col-md-6.steptwo {
 }
 
 .spinnerz {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 .star-spinner > .spinnerz {
 	height: 50%;
@@ -345,7 +346,7 @@ div.rev-optin>div.register-form.col-md-6.steptwo {
 }
 .outer-star > .spinnerz:after {
 	content:'';
-  height: 6rem;
+  height: 4.6rem;
   z-index: 1;
   left: 0;
   margin: auto;
@@ -357,7 +358,7 @@ div.rev-optin>div.register-form.col-md-6.steptwo {
 	background-image: url("https://portal.revrevdev.xyz/wp-content/uploads/starline.svg");
 }
 .inner-star > .spinnerz:after {
-	height: 6rem;
+  height: 4.6rem;
     z-index: 1;
     left: 0;
     margin: auto;
@@ -445,7 +446,9 @@ text.keep-watching {
   animation: floating 2s infinite ease-out;
   
 }
-
+div.stepper-horizontal {
+  display: none;
+}
 .svg-img-item {
   width: 30%;
   background-image: url("https://portal.revrevdev.xyz/wp-content/uploads/continue.svg");
@@ -488,9 +491,19 @@ div.input-group {
 }
 small.form-text.text-danger {
   position: absolute;
+  margin-top: -1px;
+}
+input.form-control.form-control {
+  padding: 0 10px;
+  width: 100%;
+  height: 48px;
+  border: 6px solid #454545;
+  border-radius: 3px;
+  flex: none;
+  transition: .2s .15s all;
 }
 .w-100.d-flex.justify-content-between {
-  margin-top: 30px;
+  margin-top: 0;
 }
 .register-form h4 {
   color: #e0e0e0;

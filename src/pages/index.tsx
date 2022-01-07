@@ -1206,11 +1206,24 @@
               }
               setVideoStatus(1)
             } 
-            if (currentTimeb > 66  && step2verify()===true) {
-              console.log('yes2')
-              player.current!.pause()
-              setVideoStatus(2)
-            }
+            if (currentTimeb > 36 && step2verify() === true ) {
+              setBoxVisible('reveal')
+            //if (currentTime > 3 ) {
+                console.log('yes2')
+                if (Math.floor(66 - currentTimeb) !== titleText ) {
+                  setTitleText(Math.floor(66.99 - currentTimeb));
+                }
+                if (currentTimeb > 66) {
+                  setCurrentTime(65.99);
+                  player.current!.pause()
+                }
+                setVideoStatus(1)
+              } 
+            // if (currentTimeb > 66  && step2verify()===true) {
+            //   console.log('yes2')
+            //   player.current!.pause()
+            //   setVideoStatus(2)
+            // }
             if (currentTimeb > 79  && step3verify()===true) {
               console.log('yes3')
               player.current!.pause()

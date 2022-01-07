@@ -151,12 +151,19 @@ div.rev-optin {
 div.rev-optin-mobile > h4.mb-2 {
   color: #e0e0e0;
   font-family: Verdana;
-  font-size: 28px;
+  font-size: 24px;
   font-style: italic;
   font-weight: 700;
   text-shadow: -1px -1px 1px #111, 2px 2px 1px #3c3c3c;
   text-align: center;
-  margin-top: 3em;
+  margin-top: 4em;
+}
+
+div.rev-optin-mobile > div.time-section >div.star-spinner > div.outer-star>.spinnerz:after {
+  margin-top: -100px;
+}
+div.rev-optin-mobile > div.time-section > .time-remaining {
+  margin-top: -100px;
 }
 @media (max-width: 750px) {
   div.rev-optin > div.time-section > div.star-spinner > div.inner-star>.spinnerz:after, div.rev-optin > div.time-section >div.star-spinner > div.outer-star>.spinnerz:after {
@@ -167,7 +174,7 @@ div.rev-optin-mobile > h4.mb-2 {
     display:block;
   }
 div.register-form h4 {
-  font-size: 16px;
+  display: none;
 }
 div.rev-optin > div.time-section > div.time-remaining {
 display:none;

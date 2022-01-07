@@ -674,9 +674,9 @@
         iconColor="white" /// The color can be root variables or css => #fff
         circleColor="danger" /// The color can be root variables or css => #fff
       >
-        <InputField name="email1" label="Email" type="email" />
-        <InputField name="email2" label="Email" type="email" />
-        <InputField name="email3" label="Email" type="email" />
+        <InputField placeholder="Your Friend's Email" name="email1" label="Email" type="email" />
+        <InputField placeholder="Your Family's Email" name="email2" label="Email" type="email" />
+        <InputField placeholder="Your Coworker's Email" name="email3" label="Email" type="email" />
       </FormikStep>
     </FormikStepper>
     </div>

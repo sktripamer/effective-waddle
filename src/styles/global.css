@@ -124,7 +124,7 @@ div.large {
 
 div.rev-optin {
   max-width: 700px;
-
+  z-index: 121;
   width: 90%;
 }
 
@@ -233,7 +233,6 @@ div.steptwo > form > div.form-group > div.input-group > input.form-control.form-
 }
 div.rev-optin>div.register-form.col-md-6.steptwo {
   margin: 0;
-  margin-top: -8px;
 }
 
 }
@@ -483,7 +482,18 @@ form input:focus {
   border-color: var(--color-yellow-6);
 }
 .rev-player {
-  margin-top: 20px;
+  padding-top: 40px;
+    padding-bottom: 630px;
+    position: relative;
+    z-index: 2;
+}
+main {
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/g.png), linear-gradient( 
+68deg, rgba(255,21,21,1) 0%, rgba(94,0,255,1) 100%);
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 50px;
 }
 div.input-group {
   flex-wrap: nowrap;

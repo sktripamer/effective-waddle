@@ -395,7 +395,9 @@ form input:focus {
   outline: none;
   border-color: var(--color-yellow-6);
 }
-
+.rev-player {
+  margin-top: 50px;
+}
 div.input-group {
   flex-wrap: nowrap;
   flex-direction: row-reverse;

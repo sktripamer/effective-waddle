@@ -565,7 +565,8 @@
     const {playing, setPlaying } = useBetween(useShareableState);
     const {videoStatus, setVideoStatus } = useBetween(useShareableState);
     const {videoTime, setVideoTime } = useBetween(useShareableState);
-
+    const { boxVisible, setBoxVisible } = useBetween(useShareableState);
+    const { videoDetails, setVideoDetails } =  useBetween(useShareableState);
 
 
     async function createIntent(createtoken: string) {
@@ -628,9 +629,9 @@
   //  console.log(intent2)
   localStorage.removeItem("s2")
   localStorage.setItem("s3", "y")
-      setVideoTime(2)
-      setPlaying({status: true, time: 5.99, speed: 1})
-      setVideoStatus(0)
+  setVideoStatus(0)
+  setBoxVisible('release')
+  setPlaying({status: true, time: videoDetails.currentTime, speed: 1})
       //// Important
       // setEmail(values.email);
       // setDescription(values.phonefield);
@@ -1128,7 +1129,6 @@
         setVideoDetails({ currentTime, isPlaying, speed, totalTime });
         if (currentTime > 3 && LoginVerify() === false ) {
         setBoxVisible('reveal')
-      //if (currentTime > 3 ) {
           console.log('yes')
           if (Math.floor(33 - currentTime) !== titleText ) {
             setTitleText(Math.floor(33.99 - currentTime));
@@ -1138,11 +1138,22 @@
           }
           setVideoStatus(1)
         } 
-        if (currentTime > 66  && step2verify()===true) {
-          console.log('yes2')
-          setPlaying({status: false, time: 65.99, speed: speed})
-          setVideoStatus(2)
-        }
+        if (currentTime > 36 && LoginVerify() === false ) {
+          setBoxVisible('reveal')
+            console.log('yes2')
+            if (Math.floor(66 - currentTime) !== titleText ) {
+              setTitleText(Math.floor(66.99 - currentTime));
+            }
+            if (currentTime > 66) {
+            setPlaying({status: false, time: 65.99, speed: speed})
+            }
+            setVideoStatus(2)
+          } 
+        // if (currentTime > 66  && step2verify()===true) {
+        //   console.log('yes2')
+        //   setPlaying({status: false, time: 65.99, speed: speed})
+        //   setVideoStatus(2)
+        // }
         if (currentTime > 79  && step3verify()===true) {
           console.log('yes3')
           setPlaying({status: false, time: 78.99, speed: speed})

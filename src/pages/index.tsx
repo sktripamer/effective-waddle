@@ -1221,10 +1221,6 @@
 <div className="spinnerz">
 		</div>
 	</div>
-	<div className="inner-star">
-		<div className="spinnerz">
-		</div>
-	</div>
 </div>
 </div>
 <h4 className="mb-2">Time's almost up!</h4>

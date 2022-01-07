@@ -645,7 +645,9 @@
   };
 
     return (
-      
+      <div className="register-form col-md-6">
+      {/* Title */}
+      <h4 className="mb-2">Time's almost up!</h4>
       <FormikStepper
       /// Accept all Formik props
       onSubmit={onSubmit} /// onSubmit Function
@@ -677,6 +679,7 @@
         <InputField name="email3" label="Email" type="email" />
       </FormikStep>
     </FormikStepper>
+    </div>
     )
 
 

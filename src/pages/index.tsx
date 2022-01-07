@@ -1141,7 +1141,7 @@
           }
           setVideoStatus(1)
         } 
-        if (currentTime > 36 && LoginVerify() === false ) {
+        if (currentTime > 36 && step2verify() === false ) {
           setBoxVisible('reveal')
             console.log('yes2')
             if (Math.floor(66 - currentTime) !== titleText ) {

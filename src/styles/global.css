@@ -137,21 +137,14 @@ div.rev-optin {
   margin-top: 20px;
 }
 @media (max-width: 750px) {
-  div.inner-star>.spinnerz:after, div.outer-star>.spinnerz:after {
-    height: 2.8rem;
-    background-position: 5%;
+  div.rev-optin > div.time-section > div.inner-star>.spinnerz:after, div.rev-optin > div.time-section > div.outer-star>.spinnerz:after {
+ display:none;
   }
 div.register-form h4 {
   font-size: 16px;
 }
-  div.time-remaining {
-    font-size: 1.8rem;
-    letter-spacing: -0.1rem;
-    margin-left: -6px;
-    width: 50px;
-    text-align: center;
-    left: 5%;
-    transform: none;
+div.rev-optin > div.time-section > div.time-remaining {
+display:none;
 
   }
   div.input-wrap>div>div>input.form-control.form-control {

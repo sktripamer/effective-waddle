@@ -133,6 +133,13 @@ button.btn.btn-danger {
   background: none;
   border: 2px solid rgb(255 0 129);
 }
+button.ml-auto.btn.btn-primary:after {
+  content: " \203A";
+  font-size: 30px;
+  line-height: 0px;
+  position: relative;
+  top: 2px;
+}
 button.ml-auto.btn.btn-success {
   background: linear-gradient( 
 90deg, rgba(255,34,51,1) 0%, rgba(255,34,120,1) 100%);

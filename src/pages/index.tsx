@@ -1213,8 +1213,22 @@
 
         return (
           <Layout>
-
-      
+<div className={`rev-optin-mobile ${boxVisible}`}>
+      <div className='time-section'>
+              <div className='time-remaining'>{titleText}</div>
+                <div className="star-spinner">
+	<div className="outer-star">
+<div className="spinnerz">
+		</div>
+	</div>
+	<div className="inner-star">
+		<div className="spinnerz">
+		</div>
+	</div>
+</div>
+</div>
+<h4 className="mb-2">Time's almost up!</h4>
+</div>
         <div className={`rev-player ${playerSize}`}>
 
         {  typeof window !== 'undefined' && Player && <Player
@@ -1229,13 +1243,13 @@
               <div className={`rev-optin ${boxVisible}`}>
 <div className='time-section'>
               <div className='time-remaining'>{titleText}</div>
-                <div class="star-spinner">
-	<div class="outer-star">
-<div class="spinnerz">
+                <div className="star-spinner">
+	<div className="outer-star">
+<div className="spinnerz">
 		</div>
 	</div>
-	<div class="inner-star">
-		<div class="spinnerz">
+	<div className="inner-star">
+		<div className="spinnerz">
 		</div>
 	</div>
 </div>

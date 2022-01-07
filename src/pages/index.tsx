@@ -1217,7 +1217,7 @@
                   setCurrentTime(65.99);
                   player.current!.pause()
                 }
-                setVideoStatus(1)
+                setVideoStatus(2)
               } 
             // if (currentTimeb > 66  && step2verify()===true) {
             //   console.log('yes2')

@@ -136,9 +136,35 @@ div.rev-optin {
 .input-wrap {
   margin-top: 20px;
 }
+
+.rev-optin-mobile.reveal {
+  opacity: 1;
+}
+.rev-optin-mobile.hidden {
+  opacity: 0;
+}
+
+.rev-optin-mobile {
+  transition: .8s all;
+  display:none;
+}
+div.rev-optin-mobile > h4.mb-2 {
+  color: #e0e0e0;
+  font-family: Verdana;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 700;
+  text-shadow: -1px -1px 1px #111, 2px 2px 1px #3c3c3c;
+  text-align: center;
+  margin-top: 3em;
+}
 @media (max-width: 750px) {
   div.rev-optin > div.time-section > div.star-spinner > div.inner-star>.spinnerz:after, div.rev-optin > div.time-section >div.star-spinner > div.outer-star>.spinnerz:after {
  display:none;
+  }
+  .rev-optin-mobile {
+
+    display:block;
   }
 div.register-form h4 {
   font-size: 16px;

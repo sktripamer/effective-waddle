@@ -79,6 +79,7 @@
       status: false,
       speed: 1,
       });
+      const player = useRef<HTMLVmPlayerElement>(null);
       const [videoStatus, setVideoStatus] = useState(0)
       const [videoTime, setVideoTime] = useState(0)
       const [boxVisible, setBoxVisible] = useState("hidden");
@@ -89,6 +90,7 @@
         totalTime: 0,
         });
     return {
+      player,
     playing,
       setPlaying,
       videoStatus,
@@ -275,6 +277,7 @@
     const isBrowser = typeof window !== "undefined";
     const { boxVisible, setBoxVisible } = useBetween(useShareableState);
     const {playing, setPlaying } = useBetween(useShareableState);
+    const {player } = useBetween(useShareableState);
     const {videoStatus, setVideoStatus } = useBetween(useShareableState);
     const {videoTime, setVideoTime } = useBetween(useShareableState);
     const { videoDetails, setVideoDetails } =  useBetween(useShareableState);
@@ -422,7 +425,7 @@
       localStorage.setItem("s2", "y");
       setVideoStatus(0)
       setBoxVisible('release')
-      setPlaying({status: true, time: videoDetails.currentTime, speed: 1})
+      player.current!.play();
     };
 
     return (
@@ -1036,7 +1039,7 @@
     const [activate, setActivate] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
     const [paused, setPaused] = useState(true);
-    const player = useRef<HTMLVmPlayerElement>(null);
+    const {player } = useBetween(useShareableState);
     const [showAlertBar, setShowAlertBar] = useState(true);
     const isBrowser = typeof window !== "undefined";
     const {videoStatus, setVideoStatus } = useBetween(useShareableState);

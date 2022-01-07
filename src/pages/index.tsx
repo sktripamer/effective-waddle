@@ -175,7 +175,7 @@
 
   const validationSchema = Yup.object().shape({
     // firstName: Yup.string().required("The First Name field is required"),
-    phonefield: Yup.string().required("The phone field is required"),
+    phonefield: Yup.string().required("Your phone number is required"),
     email: Yup.string()
       .email("The email must be a valid email address.")
       .required("The Email field is required"),
@@ -494,7 +494,7 @@
             labelsColor="secondary" /// The text label color can be root variables or css => #fff
            // withStepperLine /// false as default and If it is false, it hides stepper line
             nextBtnLabel="Next" /// Next as default
-            prevBtnLabel="Change Email" /// Prev as default
+            prevBtnLabel="Back" /// Prev as default
             submitBtnLabel="Keep Watching" /// Submit as default
             nextBtnColor="primary" /// as default and The color can be root variables or css => #fff
             prevBtnColor="danger" /// as default and The color can be root variables or css => #fff
@@ -503,7 +503,7 @@
             {/*  First Step */}
             <FormikStep>
             <div class="input-wrap">
-            <InputField name="email" label="Email" type="email" />
+            <InputField placeholder="Your Email" name="email" label="Email" type="email" />
 </div>
 
             
@@ -511,7 +511,7 @@
             {/* Second Step */}
             <FormikStep>
             <div class="input-wrap">
-              <InputField name="phonefield" label="Phone" />
+              <InputField placeholder="Your Phone" name="phonefield" label="Phone" />
               </div>
             </FormikStep>
           </FormikStepper>

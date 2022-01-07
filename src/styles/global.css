@@ -125,7 +125,7 @@ div.large {
 div.rev-optin {
   max-width: 700px;
 
-  width: 80%;
+  width: 90%;
 }
 
 }
@@ -403,8 +403,8 @@ div.input-group {
 small.form-text.text-danger {
   position: absolute;
 }
-.text-danger {
-  margin-top: -35px;
+.w-100.d-flex.justify-content-between {
+  margin-top: 30px;
 }
 .register-form h4 {
   color: #e0e0e0;

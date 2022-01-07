@@ -129,9 +129,26 @@ div.rev-optin {
 }
 
 }
-
+button.btn.btn-danger {
+  background: none;
+  border: 2px solid rgb(255 0 129);
+}
+button.ml-auto.btn.btn-success {
+  background: linear-gradient( 
+90deg, rgba(255,34,51,1) 0%, rgba(255,34,120,1) 100%);
+  border: 2px solid rgb(255 0 94);
+  font-weight: 700;
+}
+button.ml-auto.btn.btn-success:after {
+  content: ' \203A';
+  font-size: 30px;
+  line-height: 0px;
+  position: relative;
+  top: 2px;
+}
 .rev-optin > div.register-form.col-md-6 {
   margin: 7.5rem auto 0;
+  max-width: 100%;
 }
 .input-wrap {
   margin-top: 20px;
@@ -166,6 +183,12 @@ div.rev-optin-mobile > div.time-section >div.star-spinner > div.outer-star>.spin
 div.rev-optin-mobile > div.time-section > .time-remaining {
   margin-top: -70px;
   font-size: 2.7rem;
+}
+button.ml-auto.btn.btn-primary {
+  background: linear-gradient( 
+90deg, rgba(255,34,51,1) 0%, rgba(255,34,120,1) 100%);
+  border: 2px solid rgb(255 0 94);
+  font-weight: 700;
 }
 @media (max-width: 750px) {
   div.rev-optin > div.time-section > div.star-spinner > div.inner-star>.spinnerz:after, div.rev-optin > div.time-section >div.star-spinner > div.outer-star>.spinnerz:after {

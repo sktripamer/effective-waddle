@@ -645,7 +645,7 @@
   };
 
     return (
-      <div className="register-form col-md-6">
+      <div className="register-form col-md-6 steptwo">
       {/* Title */}
       <h4 className="mb-2">Time's almost up!</h4>
       <FormikStepper

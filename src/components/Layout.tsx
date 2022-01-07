@@ -6,7 +6,7 @@ import Header from "./Header";
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
-      <title>Headless WP App</title>
+      <title>revrevdev</title>
       <Header />
       <main>{children}</main>
     </>

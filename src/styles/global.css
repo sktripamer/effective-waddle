@@ -147,7 +147,9 @@ div.register-form h4 {
   div.time-remaining {
     font-size: 1.8rem;
     letter-spacing: -0.1rem;
-    margin-left: 4px;
+    margin-left: -6px;
+    width: 50px;
+    text-align: center;
     left: 5%;
     transform: none;
 
@@ -395,11 +397,12 @@ form input:focus {
 }
 
 div.input-group {
-  margin-bottom: 35px;
   flex-wrap: nowrap;
   flex-direction: row-reverse;
 }
-
+small.form-text.text-danger {
+  position: absolute;
+}
 .text-danger {
   margin-top: -35px;
 }

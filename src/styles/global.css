@@ -218,6 +218,23 @@ display:none;
   div.rev-optin>div.register-form.col-md-6 {
     margin: 1.5rem auto 0;
   }
+  div.steptwo > form > .position-relative.form-group {
+    margin-bottom: 3px;
+}
+
+div.steptwo > form > div.form-group > div.input-group > input.form-control.form-control {
+  padding: 0 10px;
+  width: 100%;
+  height: 34px;
+  border: 6px solid #454545;
+  border-radius: 3px;
+  flex: none;
+  transition: .2s .15s all;
+}
+div.rev-optin>div.register-form.col-md-6.steptwo {
+  margin: 0;
+}
+
 }
 .regular {
   margin: 0 auto;
@@ -438,6 +455,10 @@ text.keep-watching {
   opacity: 1;
   animation: floating 2s infinite ease-out;
   z-index: 20;
+}
+
+div.steptwo > form > div > div > .svg-img-item {
+  display: none;
 }
 
 input:focus + .svg-img-item {

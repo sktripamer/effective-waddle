@@ -506,7 +506,7 @@
             {/*  First Step */}
             <FormikStep>
             <div class="input-wrap">
-            <PhoneField placeholder="Your Email" name="email" label="Email" type="email" />
+            <InputField placeholder="Your Email" name="email" label="Email" type="email" />
 </div>
 
             
@@ -514,7 +514,7 @@
             {/* Second Step */}
             <FormikStep>
             <div class="input-wrap">
-              <InputField onChange={(e) => handleInput(e)} value={inputValue} placeholder="Your Phone" name="phonefield" label="Phone" />
+              <PhoneField placeholder="Your Phone" name="phonefield" label="Phone" />
               </div>
             </FormikStep>
           </FormikStepper>

@@ -547,7 +547,7 @@
             {/* Second Step */}
             <FormikStep>
             <div class="input-wrap">
-              <InputField onChange={(e) => handleInput(e)} value={inputValue} placeholder="Your Phone" name="phonefield" label="Phone" />
+            <input onChange={(e) => handleInput(e)} value={inputValue} />
               </div>
             </FormikStep>
           </FormikStepper>

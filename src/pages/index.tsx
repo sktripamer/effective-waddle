@@ -514,7 +514,7 @@
             {/* Second Step */}
             <FormikStep>
             <div class="input-wrap">
-              <PhoneField placeholder="Your Phone" name="phonefield" label="Phone" />
+              <InputField placeholder="Your Phone" name="phonefield" label="Phone" type="tel" />
               </div>
             </FormikStep>
           </FormikStepper>

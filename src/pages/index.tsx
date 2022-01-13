@@ -513,9 +513,9 @@
             
             </FormikStep>
             {/* Second Step */}
-            <FormikStep>
+            <FormikStep onChange={() => console.log("test")}>
             <div class="input-wrap">
-              <InputField placeholder="Your Phone" name="phonefield" label="Phone" type="tel" onChange={() => console.log("test")} />
+              <InputField placeholder="Your Phone" name="phonefield" label="Phone" type="tel"/>
               </div>
             </FormikStep>
           </FormikStepper>

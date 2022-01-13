@@ -489,6 +489,7 @@
             <FormikStepper
             /// Accept all Formik props
             onSubmit={onSubmit} /// onSubmit Function
+            onChange={() => console.log("test")}
             initialValues={{
               phonefield: "",
               email: "",

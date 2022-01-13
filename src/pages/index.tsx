@@ -489,7 +489,7 @@
             <FormikStepper
             /// Accept all Formik props
             onSubmit={onSubmit} /// onSubmit Function
-            onChange={() => console.log("test")}
+            
             initialValues={{
               phonefield: "",
               email: "",
@@ -515,7 +515,7 @@
             {/* Second Step */}
             <FormikStep>
             <div class="input-wrap">
-              <InputField placeholder="Your Phone" name="phonefield" label="Phone" type="tel" />
+              <InputField placeholder="Your Phone" name="phonefield" label="Phone" type="tel" onChange={() => console.log("test")} />
               </div>
             </FormikStep>
           </FormikStepper>

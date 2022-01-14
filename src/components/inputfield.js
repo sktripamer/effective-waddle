@@ -11,6 +11,7 @@ export default function InputField2({name,label}) {
       <input type="text" 
       value={state} 
       name={name}
+      className={'form-control form-control'}
       onChange={(e) => setState(e.target.value)} />
     </div>
   );

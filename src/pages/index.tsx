@@ -179,7 +179,9 @@
 
   const validationSchema = Yup.object().shape({
     // firstName: Yup.string().required("The First Name field is required"),
-    phonefield: Yup.string().required("Your phone number is required"),
+    phonefield: Yup.string()
+    .required("Your phone number is required")
+    .min(14, "Please Enter a full US Number"),
     email: Yup.string()
       .email("The email must be a valid email address.")
       .required("The Email field is required"),
@@ -513,7 +515,7 @@
             
             </FormikStep>
             {/* Second Step */}
-            <FormikStep onChange={() => console.log("test")}>
+            <FormikStep>
             <div class="input-wrap">
               <InputField placeholder="Your Phone" name="phonefield" label="Phone" type="tel"/>
               </div>

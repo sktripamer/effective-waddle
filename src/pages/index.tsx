@@ -573,7 +573,7 @@
     const {videoTime, setVideoTime } = useBetween(useShareableState);
     const { boxVisible, setBoxVisible } = useBetween(useShareableState);
     const { videoDetails, setVideoDetails } =  useBetween(useShareableState);
-
+    const {player } = useBetween(useShareableState);
 
     async function createIntent(createtoken: string) {
       try {
@@ -637,7 +637,7 @@
   localStorage.setItem("s3", "y")
   setVideoStatus(0)
   setBoxVisible('release')
-  setPlaying({status: true, time: videoDetails.currentTime, speed: 1})
+  player.current!.play();
       //// Important
       // setEmail(values.email);
       // setDescription(values.phonefield);

@@ -713,7 +713,7 @@
 
 
     return (
-  <div className="sharesection">
+  <div className="sharesection register-form col-md-6">
 
       <div className="Demo__container">
       <div className="Demo__some-network">
@@ -1278,7 +1278,7 @@
                   setCurrentTime(131.94);
                   player.current!.pause()
                 }
-                setVideoStatus(3)
+                setVideoStatus(4)
               }   
 
             // if (currentTimeb > 112  && step4verify()===true) {

@@ -1154,7 +1154,7 @@
               setTitleText(Math.floor(66.99 - currentTime));
             }
             if (currentTime > 66) {
-            setPlaying({status: false, time: 65.99, speed: speed})
+            setPlaying({status: false, time: 65.94, speed: speed})
             }
             setVideoStatus(2)
           } 
@@ -1220,7 +1220,7 @@
                   setTitleText(Math.floor(66.99 - currentTimeb));
                 }
                 if (currentTimeb > 66) {
-                  setCurrentTime(65.99);
+                  setCurrentTime(65.94);
                   player.current!.pause()
                 }
                 setVideoStatus(2)

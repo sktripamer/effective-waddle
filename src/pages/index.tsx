@@ -999,7 +999,7 @@
 
 
   return (
-    <div className='payment'>
+    <div className='payment register-form col-md-6'>
     <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
       <InputField2 label={'email'} name={'firstname'}/>
       <CardElement

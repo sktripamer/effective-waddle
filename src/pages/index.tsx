@@ -694,7 +694,9 @@
     const {videoStatus, setVideoStatus } = useBetween(useShareableState);
     const {videoTime, setVideoTime } = useBetween(useShareableState);
     const shareUrl = 'revrevdev.xyz';
+    const { boxVisible, setBoxVisible } = useBetween(useShareableState);
     const title = 'rev';
+    const {player } = useBetween(useShareableState);
 
     function handleSubmit(e: { preventDefault: () => void; }) {
       e.preventDefault();
@@ -702,9 +704,10 @@
 
       localStorage.removeItem("s3")
       localStorage.setItem("s4", "y")
-        setVideoTime(3)
-        setPlaying({status: true, time: 8.99, speed: 1})
-        setVideoStatus(0)
+      setVideoStatus(0)
+      setBoxVisible('release')
+        player.current!.play();
+
     }
 
 
@@ -782,7 +785,7 @@
     const {playing, setPlaying } = useBetween(useShareableState);
     const {videoStatus, setVideoStatus } = useBetween(useShareableState);
     const {videoTime, setVideoTime } = useBetween(useShareableState);
-
+    const {player } = useBetween(useShareableState);
 
   //   function handleSubmit(e) {
   //     e.preventDefault();
@@ -812,6 +815,7 @@
   const nameForm = useRef(null);
   const [successMessage, setSuccessMessage] = useState("");
   const [showAlertBar, setShowAlertBar] = useState(true);
+  const { boxVisible, setBoxVisible } = useBetween(useShareableState);
   const [status, setStatus] = React.useState(0) // 0: no show, 1: show yes, 2: show no.
   const stripe = useStripe();
   const elements = useElements();
@@ -983,9 +987,10 @@
     
           localStorage.removeItem("s4")
       localStorage.setItem("s5", "y")
-        setVideoTime(4)
-        setPlaying({status: true, time: 11.99, speed: 1})
-        setVideoStatus(0)
+      setVideoStatus(0)
+      setBoxVisible('release')
+        player.current!.play()
+ 
       setSuccessMessage("first payment complete");
     }
   };
@@ -1143,7 +1148,7 @@
             setTitleText(Math.floor(33.99 - currentTime));
           }
           if (currentTime > 33) {
-          setPlaying({status: false, time: 32.99, speed: speed})
+          setPlaying({status: false, time: 32.94, speed: speed})
           }
           setVideoStatus(1)
         } 
@@ -1163,11 +1168,22 @@
         //   setPlaying({status: false, time: 65.99, speed: speed})
         //   setVideoStatus(2)
         // }
-        if (currentTime > 79  && step3verify()===true) {
-          console.log('yes3')
-          setPlaying({status: false, time: 78.99, speed: speed})
-          setVideoStatus(3)
-        }
+        if (currentTime > 69 && step3verify() === false ) {
+          setBoxVisible('reveal')
+            console.log('yes3')
+            if (Math.floor(99 - currentTime) !== titleText ) {
+              setTitleText(Math.floor(99.99 - currentTime));
+            }
+            if (currentTime > 99) {
+            setPlaying({status: false, time: 98.94, speed: speed})
+            }
+            setVideoStatus(3)
+          } 
+        // if (currentTime > 79  && step3verify()===true) {
+        //   console.log('yes3')
+        //   setPlaying({status: false, time: 78.99, speed: speed})
+        //   setVideoStatus(3)
+        // }
         if (currentTime > 112  && step4verify()===true) {
           console.log('yes3')
           setPlaying({status: false, time: 111.99, speed: speed})
@@ -1230,16 +1246,46 @@
             //   player.current!.pause()
             //   setVideoStatus(2)
             // }
-            if (currentTimeb > 79  && step3verify()===true) {
-              console.log('yes3')
-              player.current!.pause()
-              setVideoStatus(3)
-            }
-            if (currentTimeb > 112  && step4verify()===true) {
-              console.log('yes3')
-              player.current!.pause()
-              setVideoStatus(4)
-            }
+
+            if (currentTimeb > 69 && step3verify() === true ) {
+              setBoxVisible('reveal')
+            //if (currentTime > 3 ) {
+                console.log('yes3')
+                if (Math.floor(99 - currentTimeb) !== titleText ) {
+                  setTitleText(Math.floor(99.99 - currentTimeb));
+                }
+                if (currentTimeb > 99) {
+                  setCurrentTime(98.94);
+                  player.current!.pause()
+                }
+                setVideoStatus(3)
+              }   
+
+            // if (currentTimeb > 79  && step3verify()===true) {
+            //   console.log('yes3')
+            //   player.current!.pause()
+            //   setVideoStatus(3)
+            // }
+
+            if (currentTimeb > 102 && step4verify() === true ) {
+              setBoxVisible('reveal')
+            //if (currentTime > 3 ) {
+                console.log('yes4')
+                if (Math.floor(132 - currentTimeb) !== titleText ) {
+                  setTitleText(Math.floor(132.99 - currentTimeb));
+                }
+                if (currentTimeb > 132) {
+                  setCurrentTime(131.94);
+                  player.current!.pause()
+                }
+                setVideoStatus(3)
+              }   
+
+            // if (currentTimeb > 112  && step4verify()===true) {
+            //   console.log('yes3')
+            //   player.current!.pause()
+            //   setVideoStatus(4)
+            // }
         };
 
 

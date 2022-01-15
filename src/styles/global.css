@@ -225,6 +225,9 @@ box-shadow: none;
 .Demo__some-network {
   margin-left: 4px;
 }
+.steptwo input.form-control.form-control {
+  width: 100%;
+}
 div#card-element {
   background: linear-gradient( 
 302deg

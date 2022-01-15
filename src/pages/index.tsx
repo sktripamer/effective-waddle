@@ -677,9 +677,9 @@
         iconColor="white" /// The color can be root variables or css => #fff
         circleColor="danger" /// The color can be root variables or css => #fff
       >
-        <InputField placeholder="Your Friend's Email" name="email1" label="Email" type="email" />
-        <InputField placeholder="Your Family's Email" name="email2" label="Email" type="email" />
-        <InputField placeholder="Your Coworker's Email" name="email3" label="Email" type="email" />
+        <InputField autocomplete="off" placeholder="Your Friend's Email" name="email1" label="Email" type="email" />
+        <InputField autocomplete="off" placeholder="Your Family's Email" name="email2" label="Email" type="email" />
+        <InputField autocomplete="off" placeholder="Your Coworker's Email" name="email3" label="Email" type="email" />
       </FormikStep>
     </FormikStepper>
     </div>
@@ -933,7 +933,7 @@
   const cardStyle = {
     style: {
       base: {
-        color: "#32325d",
+        color: "#fff",
         fontFamily: "Arial, sans-serif",
         fontSmoothing: "antialiased",
         fontSize: "16px",
@@ -1002,6 +1002,7 @@
     <div className='payment register-form col-md-6'>
     <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
       <InputField2 label={'email'} name={'firstname'}/>
+      <InputField2 label={'fullname'} name={'fullname'}/>
       <CardElement
         id="card-element"
         options={cardStyle}

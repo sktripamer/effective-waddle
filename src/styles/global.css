@@ -225,6 +225,17 @@ box-shadow: none;
 .Demo__some-network {
   margin-left: 4px;
 }
+div#card-element {
+  background: linear-gradient( 
+302deg
+, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+  border: 3px solid rgb(144, 2, 240);
+  color: rgb(247, 247, 247);
+  height: 38px;
+}
+form.ElementsApp {
+  margin-top: 8px;
+}
 @media (max-width: 667px) {
   div.rev-optin > div.time-section > div.star-spinner > div.inner-star>.spinnerz:after, div.rev-optin > div.time-section >div.star-spinner > div.outer-star>.spinnerz:after {
  display:none;

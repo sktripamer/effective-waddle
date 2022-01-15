@@ -677,9 +677,9 @@
         iconColor="white" /// The color can be root variables or css => #fff
         circleColor="danger" /// The color can be root variables or css => #fff
       >
-        <InputField autocomplete="off" placeholder="Your Friend's Email" name="email1" label="Email" type="email" />
-        <InputField autocomplete="off" placeholder="Your Family's Email" name="email2" label="Email" type="email" />
-        <InputField autocomplete="off" placeholder="Your Coworker's Email" name="email3" label="Email" type="email" />
+        <InputField autocomplete="no" placeholder="Your Friend's Email" name="email1" label="Email" type="email" />
+        <InputField autocomplete="no" placeholder="Your Family's Email" name="email2" label="Email" type="email" />
+        <InputField autocomplete="no" placeholder="Your Coworker's Email" name="email3" label="Email" type="email" />
       </FormikStep>
     </FormikStepper>
     </div>

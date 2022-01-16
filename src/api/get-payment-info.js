@@ -19,21 +19,21 @@ const validateJWT = async (req, res) => {
 
 
 const getPaymentID = async (uID) => {
-    return functionA(uID)
+    let axiosConfig = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Basic ` + process.env.REST_SECRET,
+        }
+      };
+      axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig).then(resp => {
+    
+       return resp.data.acf.payment_method;
+    });
 }
 
 
 async function functionA(uID) {
-    let axiosConfig = {
-      headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Basic ` + process.env.REST_SECRET,
-      }
-    };
-    axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig).then(resp => {
-  
-     return resp.data.acf.payment_method;
-  });
+
   }
   
   async function functionB(pm) {

@@ -32,7 +32,7 @@ async function functionA(uID) {
     };
     axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig).then(resp => {
   
-     return functionB(resp.data.acf.payment_method);
+     return resp.data.acf.payment_method;
   });
   }
   

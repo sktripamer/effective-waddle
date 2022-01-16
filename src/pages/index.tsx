@@ -1414,7 +1414,9 @@
               ? showAlertBar && (
                   
               
+                <Elements stripe={promise}>
                 <StepFive />  
+                </Elements>
               
                 )
               : ""}

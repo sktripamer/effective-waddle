@@ -7,10 +7,11 @@ const validateJWT = async (req, res) => {
     try {
             jwt.verify(req.body, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
             const customerID = await getPaymentID(decoded.data.user.id);
+            const paymentMethod = await getPaymentMethod(customerID);
             //const paymentIntent = await createIntent(customerID, decoded.data.user.id);
              
          // return res.status(200).json(decoded.data.user.id);
-          return res.status(200).json({customerID})
+          return res.status(200).json({paymentMethod})
        });
       } catch (e) {
         res.json({body: 'error ' + e})
@@ -32,11 +33,7 @@ const getPaymentID = async (uID) => {
 }
 
 
-async function functionA(uID) {
-
-  }
-  
-  async function functionB(pm) {
+  async function getPaymentMethod(pm) {
     const paymentMethod =  await stripe.paymentMethods.retrieve(
       pm
     );

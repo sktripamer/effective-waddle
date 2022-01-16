@@ -234,10 +234,10 @@ div#card-element {
 , rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
   border: 3px solid rgb(144, 2, 240);
   color: rgb(247, 247, 247);
-  height: 38px;
+  padding: 6px 2px;
 }
-form.ElementsApp {
-  margin-top: 8px;
+#payment-form input.form-control.form-control {
+  width: 100%;
 }
 @media (max-width: 667px) {
   div.rev-optin > div.time-section > div.star-spinner > div.inner-star>.spinnerz:after, div.rev-optin > div.time-section >div.star-spinner > div.outer-star>.spinnerz:after {
@@ -278,8 +278,19 @@ div>small.form-text.text-danger {
 }
 div.rev-optin>div.register-form.col-md-6.steptwo {
   margin: 0;
+  margin-top: -2px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+div.w-100.d-flex.justify-content-between {
+  margin-top: -8px;
+}
+.d-flex button.ml-auto.btn.btn-success {
+  padding: 0.25rem 0.75rem;
+}
 }
 .regular {
   margin: 0 auto;

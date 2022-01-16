@@ -24,11 +24,10 @@ const getPaymentID = async (uID) => {
 
 
 async function functionA(uID) {
-    console.log('first');
     let axiosConfig = {
       headers: {
           'Content-Type': 'application/json',
-          Authorization: `Basic YWRtaW46YWZhOSBvNTJSIG9uNWsgUVdHTCA4M0dMIHVlR3I=`
+          Authorization: `Basic ` + process.env.REST_SECRET,
       }
     };
     axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig).then(resp => {
@@ -38,7 +37,6 @@ async function functionA(uID) {
   }
   
   async function functionB(pm) {
-    console.log('second', pm);
     const paymentMethod =  await stripe.paymentMethods.retrieve(
       pm
     );

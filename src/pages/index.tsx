@@ -177,6 +177,23 @@
     } // // this will fire only when loadDataOnlyOnce-reference changes
   }
 
+  const step5verify = () => {
+    if (typeof window !== "undefined") {
+
+      let authTokenData = localStorage.getItem("s5");
+
+      if (!isEmpty(authTokenData)) {
+
+        
+        return true
+      
+        
+      } else {
+        return false
+      }
+    } // // this will fire only when loadDataOnlyOnce-reference changes
+  }
+
   const validationSchema = Yup.object().shape({
     // firstName: Yup.string().required("The First Name field is required"),
     phonefield: Yup.string()
@@ -213,14 +230,14 @@
     //   .email("The email must be a valid email address.")
     //   .required("The Email field is required"),
       email1: Yup.string()
-      .email("The email must be a valid email address.")
-      .required("The Email field is required"),
+      .email("The email must be a real address.")
+      .required("This field is required."),
       email2: Yup.string()
-      .email("The email must be a valid email address.")
-      .required("The Email field is required"),
+      .email("The email must be a real address.")
+      .required("This field is required."),
       email3: Yup.string()
-      .email("The email must be a valid email address.")
-      .required("The Email field is required"),
+      .email("The email must be a real address.")
+      .required("This field is required."),
     // password: Yup.string()
     //   .required("The Password field is required")
     //   .matches(
@@ -714,7 +731,7 @@
 
     return (
   <div className="sharesection register-form col-md-6">
-
+    <h4 className="mb-2">Time's almost up!</h4>
       <div className="Demo__container">
       <div className="Demo__some-network">
         <FacebookShareButton
@@ -786,26 +803,6 @@
     const {videoStatus, setVideoStatus } = useBetween(useShareableState);
     const {videoTime, setVideoTime } = useBetween(useShareableState);
     const {player } = useBetween(useShareableState);
-
-  //   function handleSubmit(e) {
-  //     e.preventDefault();
-  
-
-  //     localStorage.removeItem("s4")
-  //     localStorage.setItem("s5", "y")
-  //        setVideoTime(3)
-  //        setPlaying({status: true, time: 8.99, speed: 1})
-  //        setVideoStatus(0)
-  //   }
-
-
-
-  //   return (
-  // <div className="sharesection">
-    
-  // </div>
-  //  )
-
 
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
@@ -938,7 +935,7 @@
         fontSmoothing: "antialiased",
         fontSize: "16px",
         "::placeholder": {
-          color: "#32325d",
+          color: "#9e9e9e",
         },
       },
       invalid: {
@@ -958,9 +955,11 @@
   const handleChange = async (event: { empty: boolean | ((prevState: boolean) => boolean); error: { message: any; }; }) => {
     setDisabled(event.empty);
     setError(event.error ? event.error.message : "");
+    //if nameform ref name is 4+ characters and email is valid, do this. else don't do this.
   };
 
   const handleSubmit = async (ev: { preventDefault: () => void; }) => {
+    const form = nameForm.current
     ev.preventDefault();
     setProcessing(true);
     const intent = await createIntent();
@@ -969,7 +968,11 @@
     const payload = await stripe.confirmCardPayment(intent.body.client_secret, {
       payment_method: {
         card: elements.getElement(CardElement),
+        billing_details: {
+          name:  form['fullname'].value,
+        }
       },
+     
     });
 
     if (payload.error) {
@@ -985,7 +988,7 @@
       // Update your user in DB to store the customerID
       // updateUserInDB() is *your* implementation of updating a user in the DB
     
-          localStorage.removeItem("s4")
+      localStorage.removeItem("s4")
       localStorage.setItem("s5", "y")
       setVideoStatus(0)
       setBoxVisible('release')
@@ -1000,9 +1003,10 @@
 
   return (
     <div className='payment register-form col-md-6'>
+      <h4 className="mb-2">Time's almost up!</h4>
     <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
-      <InputField2 label={'email'} name={'firstname'}/>
       <InputField2 label={'fullname'} name={'fullname'}/>
+      <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
       <CardElement
         id="card-element"
         options={cardStyle}
@@ -1037,6 +1041,35 @@
 
   }
 
+  const StepFive = () => {
+    const [status, setStatus] = React.useState(0) // 0: no show, 1: show yes, 2: show no. radio 
+    const stripe = useStripe();
+    const elements = useElements();
+    const [prevPaymentID, setPrevID] = useState(""); //previous payment ID.
+    const email = JSON.parse(localStorage.auth).authToken;
+  useEffect(() => {
+    window
+      .fetch("/api/get-payment-info", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: email,
+      })
+      .then((res) => {
+        return res.json();
+      })
+      .then((body) => {
+        console.log('right here', body)
+       // setPrevID(body.body.client_secret);
+      });
+  }, []);
+
+  return (
+    <div className="stepfive">hey</div>
+  )
+    //radio selection - select previous payment, or enter a new one.
+  }
 
 
   const IndexPage = () => {
@@ -1287,6 +1320,20 @@
             //   player.current!.pause()
             //   setVideoStatus(4)
             // }
+
+            if (currentTimeb > 136 && step5verify() === true ) {
+              setBoxVisible('reveal')
+            //if (currentTime > 3 ) {
+                console.log('yes4')
+                if (Math.floor(166 - currentTimeb) !== titleText ) {
+                  setTitleText(Math.floor(166.99 - currentTimeb));
+                }
+                if (currentTimeb > 166) {
+                  setCurrentTime(165.94);
+                  player.current!.pause()
+                }
+                setVideoStatus(5)
+              }  
         };
 
 
@@ -1361,6 +1408,14 @@
                 <Elements stripe={promise}>
                 <StepFour />  
                 </Elements>
+                )
+              : ""}
+               {5 == videoStatus
+              ? showAlertBar && (
+                  
+              
+                <StepFive />  
+              
                 )
               : ""}
               </div>

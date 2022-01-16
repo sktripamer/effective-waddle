@@ -19,21 +19,30 @@ const validateJWT = async (req, res) => {
 
 
 const getPaymentID = async (uID) => {
-    let axiosConfig = {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Basic ` + process.env.REST_SECRET,
-        }
-      };
-      
-      axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig)
-      .then((response) => {
-        const paymentMethod = await stripe.paymentMethods.retrieve(
-            response.data.acf.payment_method
-          );
-          return paymentMethod.card.last4;
-    })
+    return functionA(uID)
 }
 
+
+async function functionA(uID) {
+    console.log('first');
+    let axiosConfig = {
+      headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Basic YWRtaW46YWZhOSBvNTJSIG9uNWsgUVdHTCA4M0dMIHVlR3I=`
+      }
+    };
+    axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig).then(resp => {
+  
+     return functionB(resp.data.acf.payment_method);
+  });
+  }
+  
+  async function functionB(pm) {
+    console.log('second', pm);
+    const paymentMethod =  await stripe.paymentMethods.retrieve(
+      pm
+    );
+    return paymentMethod;
+  }
 
 export default validateJWT

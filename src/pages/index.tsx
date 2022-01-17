@@ -1192,6 +1192,7 @@
     style: {
       base: {
         color: "#fff",
+        iconColor: "#fff",
         fontFamily: "Arial, sans-serif",
         fontSmoothing: "antialiased",
         fontSize: "16px",

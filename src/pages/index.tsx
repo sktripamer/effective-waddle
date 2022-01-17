@@ -83,6 +83,7 @@
       const [videoStatus, setVideoStatus] = useState(0)
       const [videoTime, setVideoTime] = useState(0)
       const [boxVisible, setBoxVisible] = useState("hidden");
+      const [prevLast4, setLast4] = useState("");
       const [videoDetails, setVideoDetails] = useState({
         currentTime: 0,
         isPlaying: 0,
@@ -99,6 +100,8 @@
       setVideoTime,
       boxVisible,
       setBoxVisible,
+      prevLast4,
+      setLast4,
       videoDetails,
       setVideoDetails
     };
@@ -1048,7 +1051,8 @@
     const elements = useElements();
     const [prevPaymentID, setPrevID] = useState(""); //previous payment ID.
     const [customerID, setCustomerID] = useState("");
-    const [prevLast4, setLast4] = useState("");
+
+    const { prevLast4, setLast4 } = useBetween(useShareableState);
     const [prevExpY, setPrevExpY] = useState("");
     const [prevExpM, setPrevExpM] = useState("");
     const [prevName, setPrevName] = useState("");
@@ -1396,6 +1400,7 @@ const drawNoContent = () => {
     const [titleText, setTitleText] = useState(30);
     const { boxVisible, setBoxVisible } = useBetween(useShareableState);
     const [currentTime, setCurrentTime] = useState(0);
+    const { prevLast4, setLast4 } = useBetween(useShareableState);
     const [playerSize, setPlayerSize] = useState("regular");
     const currentVideoState = () => {
       return videoTime;
@@ -1625,17 +1630,10 @@ const drawNoContent = () => {
             //   setVideoStatus(4)
             // }
 
-            if (currentTimeb > 136 && step5verify() === true ) {
+            if (currentTimeb > 136 && step5verify() === true && prevLast4 != "") {
               setBoxVisible('reveal')
             //if (currentTime > 3 ) {
-                console.log('yes4')
-                if (Math.floor(166 - currentTimeb) !== titleText ) {
-                  setTitleText(Math.floor(166.99 - currentTimeb));
-                }
-                if (currentTimeb > 166) {
-                  setCurrentTime(165.94);
-                  player.current!.pause()
-                }
+                console.log('yes5')
                 setVideoStatus(5)
               }  
         };

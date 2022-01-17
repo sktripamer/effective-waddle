@@ -1240,8 +1240,8 @@
       setProcessing(false);
       setSucceeded(true);
       //fetch wth intent.body.customer
-      const spm = await setPayment(intent.body.customer);
-      console.log(spm)
+      //const spm = await setPayment(intent.body.customer);
+      //console.log(spm)
       // Update your user in DB to store the customerID
       // updateUserInDB() is *your* implementation of updating a user in the DB
     
@@ -1262,9 +1262,7 @@
     console.log(intent)
     //setClientSecret(intent.body.client_secret);
     const payload = await stripe.confirmCardPayment(intent.body.client_secret, {
-      payment_method: {
-        id: prevPaymentID,
-      },
+      payment_method: prevPaymentID,
      
     });
 
@@ -1276,8 +1274,8 @@
       setProcessingOld(false);
       setSucceededOld(true);
       //fetch wth intent.body.customer
-      const spm = await setPayment(intent.body.customer);
-      console.log(spm)
+      //const spm = await setPayment(intent.body.customer);
+      //console.log(spm)
       // Update your user in DB to store the customerID
       // updateUserInDB() is *your* implementation of updating a user in the DB
     

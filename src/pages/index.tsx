@@ -1630,11 +1630,13 @@ const drawNoContent = () => {
             //   setVideoStatus(4)
             // }
 
-            if (currentTimeb > 136 && step5verify() === true && prevLast4 != "") {
-              setBoxVisible('reveal')
-            //if (currentTime > 3 ) {
-                console.log('yes5')
-                setVideoStatus(5)
+            if (currentTimeb > 136 && step5verify() === true) {
+              setVideoStatus(5)
+              console.log('yes5')
+              if (prevLast4 != "") {
+               setBoxVisible('reveal')
+              }  
+                
               }  
         };
 

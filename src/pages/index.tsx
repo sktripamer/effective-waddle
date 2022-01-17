@@ -969,7 +969,8 @@
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
-          name:  form['fullname'].value,
+          name:  form['firstname'].value,
+          email: form['fullname'].value,
         }
       },
      
@@ -1046,6 +1047,8 @@
     const stripe = useStripe();
     const elements = useElements();
     const [prevPaymentID, setPrevID] = useState(""); //previous payment ID.
+    const [customerID, setCustomerID] = useState("");
+    const [prevLast4, setLast4] = useState("");
     const email = JSON.parse(localStorage.auth).authToken;
   useEffect(() => {
     async function fetchMyAPI() {
@@ -1075,7 +1078,12 @@
         const intent = (await request.json());
         // Update your user in DB to store the customerID
         // updateUserInDB() is *your* implementation of updating a user in the DB
+        console.log(intent)
+        setCustomerID(intent.paymentMethod.customer);
+        setPrevID(intent.paymentMethod.id);
+        setLast4(intent.paymentMethod.card.last4);
         return intent;
+        
       } catch (error) {
         console.log('Failed to get cID');
         console.log(error);
@@ -1086,9 +1094,241 @@
     fetchMyAPI()
   }, []);
 
+  const {playing, setPlaying } = useBetween(useShareableState);
+    const {videoStatus, setVideoStatus } = useBetween(useShareableState);
+    const {videoTime, setVideoTime } = useBetween(useShareableState);
+    const {player } = useBetween(useShareableState);
+
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState(null);
+  const [processing, setProcessing] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState("");
+  const nameForm = useRef(null);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [showAlertBar, setShowAlertBar] = useState(true);
+  const { boxVisible, setBoxVisible } = useBetween(useShareableState);
+
+  // useEffect(() => {
+  //   window
+  //     .fetch("/api/payment-intent", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //            amount: 500,
+  //       }),
+  //     })
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((body) => {
+  //       console.log(body)
+  //       setClientSecret(body.body.client_secret);
+  //     });
+  // }, []);
+
+  const radioHandler = (status) => {
+    setStatus(status);
+  };
+
+
+  async function createIntent() {
+    try {
+      // Retrieve email and username of the currently logged in user.
+      // getUserFromDB() is *your* implemention of getting user info from the DB
+      const form = nameForm.current
+      const email = form['firstname'].value + "@@" + JSON.parse(localStorage.auth).authToken 
+      const request = await fetch('/api/create-intent', {
+        method: 'POST',
+        body: email,
+      });
+      const intent = (await request.json());
+      // Update your user in DB to store the customerID
+      // updateUserInDB() is *your* implementation of updating a user in the DB
+      return intent;
+    } catch (error) {
+      console.log('Failed to create intent');
+      console.log(error);
+      return null;
+    }
+  }
+
+  async function setPayment(cID) {
+    try {
+      // Retrieve email and username of the currently logged in user.
+      // getUserFromDB() is *your* implemention of getting user info from the DB
+
+      const email = cID + "@@" + JSON.parse(localStorage.auth).authToken 
+      const request = await fetch('/api/set-payment-method', {
+        method: 'POST',
+        body: email,
+      });
+      const intent = (await request.json());
+      // Update your user in DB to store the customerID
+      // updateUserInDB() is *your* implementation of updating a user in the DB
+      return intent;
+    } catch (error) {
+      console.log('Failed to create intent');
+      console.log(error);
+      return null;
+    }
+  }
+
+
+  // async function getCustomerObj() {
+  //   try {
+  //     // Retrieve email and username of the currently logged in user.
+  //     // getUserFromDB() is *your* implemention of getting user info from the DB
+
+  //     const request = await fetch('/api/retrieve-customer', {
+  //       method: 'POST',
+  //       body: 'a',
+  //     });
+  //     const customerobj = (await request.json());
+  //     // Update your user in DB to store the customerID
+  //     // updateUserInDB() is *your* implementation of updating a user in the DB
+  //     return customerobj;
+  //   } catch (error) {
+  //     console.log('Failed to get customer');
+  //     console.log(error);
+  //     return null;
+  //   }
+  // }
+
+  // fetch(`/api/payment-intent`, {
+  //   method: "POST",
+  //   body: JSON.stringify({
+  //       amount: 500,
+  //     }),
+  //   headers: {
+  //       "content-type": `application/json`,
+  //      },
+  //   })
+  //   .then(res => res.json())
+  //   .then(body => {
+  //     console.log(body)
+  //     stripe.confirmCardPayment(body.body.client_secret, {
+  //       payment_method: {
+  //         card: elements.getElement(CardElement),
+  //         billing_details: {
+  //           email: "coolio123@gmail.com",
+  //         },
+  //       },
+  //     });
+  //   })
+
+  const cardStyle = {
+    style: {
+      base: {
+        color: "#fff",
+        fontFamily: "Arial, sans-serif",
+        fontSmoothing: "antialiased",
+        fontSize: "16px",
+        "::placeholder": {
+          color: "#9e9e9e",
+        },
+      },
+      invalid: {
+        color: "#fa755a",
+        iconColor: "#fa755a",
+      },
+    },
+  };
+
+  // const getCustomer = async (ev) => {
+  //   ev.preventDefault();
+  //   const custobj = await getCustomerObj();
+  //   console.log(custobj)
+  // }
+
+
+  const handleChange = async (event: { empty: boolean | ((prevState: boolean) => boolean); error: { message: any; }; }) => {
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
+    //if nameform ref name is 4+ characters and email is valid, do this. else don't do this.
+  };
+
+  const handleSubmit = async (ev: { preventDefault: () => void; }) => {
+    const form = nameForm.current
+    ev.preventDefault();
+    setProcessing(true);
+    const intent = await createIntent();
+    console.log(intent)
+    //setClientSecret(intent.body.client_secret);
+    const payload = await stripe.confirmCardPayment(intent.body.client_secret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+        billing_details: {
+          name:  form['fullname'].value,
+        }
+      },
+     
+    });
+
+    if (payload.error) {
+      setError(`Payment failed ${payload.error.message}`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
+      //fetch wth intent.body.customer
+      const spm = await setPayment(intent.body.customer);
+      console.log(spm)
+      // Update your user in DB to store the customerID
+      // updateUserInDB() is *your* implementation of updating a user in the DB
+    
+      localStorage.removeItem("s4")
+      localStorage.setItem("s5", "y")
+      setVideoStatus(0)
+      setBoxVisible('release')
+        player.current!.play()
+      setSuccessMessage("first payment complete");
+    }
+  };
+
+
+
+
   return (
-    <div className="stepfive">hey</div>
-  )
+    <div className='payment register-form col-md-6'>
+      <h4 className="mb-2">Time's almost up!</h4>
+    <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
+      <InputField2 label={'fullname'} name={'fullname'}/>
+      <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
+      <CardElement
+        id="card-element"
+        options={cardStyle}
+        onChange={handleChange}
+      />
+      <button disabled={processing || disabled || succeeded} id="submit">
+        <span id="button-text">
+          {processing ? (
+            <div className="spinner" id="spinner"></div>
+          ) : (
+            "Pay now"
+          )}
+        </span>
+      </button>
+      {error && (
+        <div className="card-error" role="alert">
+          {error}
+        </div>
+      )}
+      <p className={succeeded ? "result-message" : "result-message hidden"}>
+        Payment succeeded, see the result in your
+        <a href={`https://dashboard.stripe.com/test/payments`}>
+          Stripe dashboard.
+        </a>
+        Refresh the page to pay again.
+      </p>
+    </form>
+
+
+    </div>
+  );
     //radio selection - select previous payment, or enter a new one.
   }
 

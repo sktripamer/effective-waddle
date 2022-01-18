@@ -1001,7 +1001,7 @@
     });
 
     if (payload.error) {
-      setError(`Payment failed ${payload.error.message}`);
+      setError(`${payload.error.message}`);
       setProcessing(false);
     } else {
       setError(null);
@@ -1260,7 +1260,7 @@
     });
 
     if (payload.error) {
-      setError(`Payment failed ${payload.error.message}`);
+      setError(`${payload.error.message}`);
       setProcessing(false);
     } else {
       setError(null);
@@ -1294,7 +1294,7 @@
     });
 
     if (payload.error) {
-      setErrorOld(`Payment failed ${payload.error.message}`);
+      setErrorOld(`${payload.error.message}`);
       setProcessingOld(false);
     } else {
       setErrorOld(null);
@@ -1384,6 +1384,19 @@ const drawNoContent = () => {
     <div className='payment register-form col-md-6'>
        <h4 className="mb-2">{heroText}</h4>
        <div className="more-details">{moreDetails}</div>
+        <div className='content-section'>
+      <div className='image-section'></div>
+      <div className='info-section'>
+      <ul>
+    <li>Read the first chapter now</li>
+    <li>Get your book in hardback</li>
+    <li>Get early access to the final book</li>
+    <li>Support Patrick's cause</li>
+    </ul>
+
+      </div>
+
+       <div className='pay-section'>
       <div className='selection-section'>
       <div onClick={(e) => radioHandler(0)} className='previous-payment'>{prevLast4}</div>
       <div onClick={(e) => radioHandler(1)} className='new-payment'>New Method</div>
@@ -1391,6 +1404,8 @@ const drawNoContent = () => {
       <div className='selection-render'>
       {status === 0 && drawYesContent()}
       {status === 1 && drawNoContent()}
+      </div>
+      </div>
       </div>
     </div>
   );
@@ -1661,11 +1676,11 @@ const drawNoContent = () => {
 
             if (currentTimeb > 136 && step5verify() === true) {
               setHero("Limited Time Offer!");
-              setDetails('Step 5 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+              setDetails("Pre-order Patrick's new book and get exclusive early access to the first chapter delivered to your email!");
               setVideoStatus(5)
               console.log('yes5')
               if (prevLast4 != "") {
-               setBoxVisible('reveal')
+               setBoxVisible('reveal final')
               }  
                 
               }  

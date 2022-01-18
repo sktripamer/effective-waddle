@@ -213,17 +213,23 @@ div.rev-optin:after {
   transition: all 0.4s ease;
   min-height: 80px;
   padding: 13px;
-  background: linear-gradient( 
-90deg
- ,#9d00ff,#bc0f52);
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
   color: #efefef;
 }
-
+form#payment-form-old {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .credit-card.selectable:hover {
   cursor: pointer;
 
 }
-
+#payment-form-old > .pay-btn {
+  width: 250px;
+}
 
 /*  NUMBER FORMATTING */
 
@@ -291,6 +297,7 @@ div.rev-optin:after {
 }
 .pay-section {
   width: 30%;
+  margin-top: 40px;
 }
 .pay-btn {
   padding: 0;

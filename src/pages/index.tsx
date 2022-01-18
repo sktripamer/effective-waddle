@@ -85,6 +85,7 @@
       const [boxVisible, setBoxVisible] = useState("hidden");
       const [prevLast4, setLast4] = useState("");
       const [moreDetails, setDetails] = useState("");
+      const [error, setError] = useState(null);
       const [heroText, setHero] = useState("");
       const [videoDetails, setVideoDetails] = useState({
         currentTime: 0,
@@ -106,6 +107,8 @@
       setLast4,
       moreDetails,
       setDetails,
+      error,
+      setError,
       heroText,
       setHero,
       videoDetails,
@@ -695,7 +698,7 @@
       withStepperLine /// false as default and If it is false, it hides stepper line
       nextBtnLabel="step" /// Next as default
       prevBtnLabel="return" /// Prev as default
-      submitBtnLabel="Done" /// Submit as default
+      submitBtnLabel="Keep Watching" /// Submit as default
       nextBtnColor="primary" /// as default and The color can be root variables or css => #fff
       prevBtnColor="danger" /// as default and The color can be root variables or css => #fff
       submitBtnColor="success" /// as default and The color can be root variables or css => #fff
@@ -824,7 +827,7 @@
     const {player } = useBetween(useShareableState);
 
   const [succeeded, setSucceeded] = useState(false);
-  const [error, setError] = useState(null);
+  const {error, setError } = useBetween(useShareableState);
   const [processing, setProcessing] = useState("");
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState("");
@@ -876,9 +879,9 @@
       // Update your user in DB to store the customerID
       // updateUserInDB() is *your* implementation of updating a user in the DB
       return intent;
-    } catch (error) {
+    } catch (error1) {
       console.log('Failed to create intent');
-      console.log(error);
+      console.log(error1);
       return null;
     }
   }
@@ -897,9 +900,9 @@
       // Update your user in DB to store the customerID
       // updateUserInDB() is *your* implementation of updating a user in the DB
       return intent;
-    } catch (error) {
+    } catch (error2) {
       console.log('Failed to create intent');
-      console.log(error);
+      console.log(error2);
       return null;
     }
   }
@@ -1044,7 +1047,7 @@
       <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
         <span id="button-text">
           {processing ? (
-            <div className="spinner" id="spinner"></div>
+            <div className="spinner" id="spinner">Keep Watching</div>
           ) : (
             "Keep Watching"
           )}
@@ -1419,6 +1422,7 @@ const drawNoContent = () => {
     const [playerSize, setPlayerSize] = useState("regular");
     const {moreDetails, setDetails } = useBetween(useShareableState);
     const {heroText, setHero } = useBetween(useShareableState);
+    const {error, setError } = useBetween(useShareableState);
     const currentVideoState = () => {
       return videoTime;
     }
@@ -1577,7 +1581,7 @@ const drawNoContent = () => {
           // }
           if (currentTimeb > 3 && LoginVerify() === false ) {
             setHero("Time's almost up!");
-            setDetails('Step 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+            setDetails('Enter your info to continue watching and get amazing deals and breaking news');
             setBoxVisible('reveal')
           //if (currentTime > 3 ) {
               console.log('yes')
@@ -1592,7 +1596,7 @@ const drawNoContent = () => {
             } 
             if (currentTimeb > 36 && step2verify() === true ) {
               setHero("Time's almost up!");
-              setDetails('Step 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+              setDetails('Just enter 3 emails of people that need to see this');
               setBoxVisible('reveal')
             //if (currentTime > 3 ) {
                 console.log('yes2')
@@ -1613,7 +1617,7 @@ const drawNoContent = () => {
 
             if (currentTimeb > 69 && step3verify() === true ) {
               setHero("Time's almost up!");
-              setDetails('Step 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+              setDetails('Share this video to any of these social media channels to get your code to keep watching');
               setBoxVisible('reveal')
             //if (currentTime > 3 ) {
                 console.log('yes3')
@@ -1683,6 +1687,11 @@ const drawNoContent = () => {
 </div>
 <h4 className="mb-2">{heroText}</h4>
 <div className="more-detail">{moreDetails}</div>
+{error && (
+        <div className="card-error-mobile" role="alert">
+          {error}
+        </div>
+      )}
 </div>
         <div className={`rev-player ${playerSize}`}>
 

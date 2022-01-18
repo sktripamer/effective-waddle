@@ -740,9 +740,10 @@
 
 
     return (
-  <div className="sharesection register-form col-md-6">
+  <div className="register-form col-md-6">
     <h4 className="mb-2">Time's almost up!</h4>
     <div className="more-details">{moreDetails}</div>
+    <div className='sharesection'>
       <div className="Demo__container">
       <div className="Demo__some-network">
         <FacebookShareButton
@@ -803,6 +804,7 @@
     <button onClick={handleSubmit}>
     Continue
   </button>
+  </div>
   </div>
     )
 
@@ -1025,7 +1027,7 @@
         options={cardStyle}
         onChange={handleChange}
       />
-      <button disabled={processing || disabled || succeeded} id="submit">
+      <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
         <span id="button-text">
           {processing ? (
             <div className="spinner" id="spinner"></div>
@@ -1040,11 +1042,7 @@
         </div>
       )}
       <p className={succeeded ? "result-message" : "result-message hidden"}>
-        Payment succeeded, see the result in your
-        <a href={`https://dashboard.stripe.com/test/payments`}>
-          Stripe dashboard.
-        </a>
-        Refresh the page to pay again.
+        Payment succeeded!
       </p>
     </form>
 
@@ -1322,11 +1320,7 @@ const drawYesContent = () => {
       </div>
     )}
     <p className={succeededOld ? "result-message" : "result-message hidden"}>
-      Payment succeeded, see the result in your
-      <a href={`https://dashboard.stripe.com/test/payments`}>
-        Stripe dashboard.
-      </a>
-      Refresh the page to pay again.
+      Payment succeeded!
     </p>
   </form>
       </div>
@@ -1360,11 +1354,7 @@ const drawNoContent = () => {
       </div>
     )}
     <p className={succeeded ? "result-message" : "result-message hidden"}>
-      Payment succeeded, see the result in your
-      <a href={`https://dashboard.stripe.com/test/payments`}>
-        Stripe dashboard.
-      </a>
-      Refresh the page to pay again.
+      Payment succeeded!
     </p>
   </form>
   );
@@ -1670,7 +1660,7 @@ const drawNoContent = () => {
 </div>
 </div>
 <h4 className="mb-2">Time's almost up!</h4>
-<div className="more-details">{moreDetails}</div>
+<div className="more-detail">{moreDetails}</div>
 </div>
         <div className={`rev-player ${playerSize}`}>
 

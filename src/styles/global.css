@@ -140,7 +140,8 @@ div.rev-optin:after {
   float: left;
 }
 .pay-btn:disabled {
-  opacity: 0.65;
+  opacity: 0.55;
+  cursor: default;
 }
 .pay-btn {
   padding: 0;
@@ -150,7 +151,7 @@ div.rev-optin:after {
   border: 2px solid rgb(255 0 94);
   font-weight: 700;
   color: #fff;
-  width: 100px;
+  padding: 0 10px;
   height: 44px;
   border-radius: 3px;
   float: right;
@@ -671,7 +672,12 @@ button {
   border-radius: var(--border-radius);
   padding: 1rem;
 }
-
+.prev-payment {
+  animation: newput .5s forwards;
+}
+form#payment-form {
+  animation: newput .5s forwards;
+}
 .forgot-password-link {
   display: block;
   font-size: 0.7rem;

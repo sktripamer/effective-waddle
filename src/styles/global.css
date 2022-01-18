@@ -534,6 +534,11 @@ div.steptwo > form > div > div > .svg-img-item {
 input:focus + .svg-img-item {
   opacity: 0;
 }
+
+.input-wrap.phone-wrap>div>div>input.form-control.form-control {
+  width: 100%;
+}
+
 @keyframes floating {
   0%, 100% {
     margin-left: 5px;

@@ -108,8 +108,20 @@ main {
 .header {
   display: none;
 }
-@media (max-width: 850px) {
-
+@media (max-width: 1050px) {
+  .register-form h4 {
+    font-size: 20px;
+  }
+  div.outer-star>.spinnerz:after {
+    height: 3.6rem;
+  }
+  div.time-remaining {
+    font-size: 2.2rem;
+    margin-top: 0;
+}
+div.rev-optin>div.register-form.col-md-6 {
+  margin: 4rem auto 0;
+}
   div.spinnerz {
     margin-top:5px;
   }
@@ -264,8 +276,13 @@ div#card-element {
 }
 #payment-form input.form-control.form-control {
   width: 100%;
+  margin-bottom: 8px;
 }
 @media (max-width: 667px) {
+  div.powered-container {
+
+    margin-bottom: 0px;
+}
   div.rev-optin > div.time-section > div.star-spinner > div.inner-star>.spinnerz:after, div.rev-optin > div.time-section >div.star-spinner > div.outer-star>.spinnerz:after {
  display:none;
   }
@@ -278,7 +295,7 @@ div.register-form h4 {
 }
 #payment-form input.form-control.form-control {
   height: 32px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 div.more-details {
   display: none;
@@ -471,7 +488,13 @@ div.w-100.d-flex.justify-content-between {
 	
 }
 
-
+.card-charge {
+  font-size: 11px;
+  text-align: end;
+  color: #c5c5c5ab;
+  font-style: italic;
+  margin-bottom: -6px;
+}
 
 .header {
   border-bottom: 2px solid var(--color-gray-9);
@@ -578,11 +601,16 @@ input:focus + .svg-img-item {
   width: 100%;
 }
 .powered-by-stripe {
-  background-image: url('https://portal.revrevdev.xyz/wp-content/uploads/stripe-small-min.png');
-  height: 48px;
-  width: 190px;
-  background-size: contain;
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/stripe-small-min.png);
   background-repeat: no-repeat;
+  background-size: contain;
+  height: 38px;
+  width: 152px;
+}
+.powered-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
 }
 @keyframes floating {
   0%, 100% {

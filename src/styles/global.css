@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'PT Mono';
-  src: url('https://portal.revrevdev.xyz/wp-content/uploads/ptmono.woff2') format('woff2');
+  src: url(../fonts/ptmono.woff2) format('woff2');
 }
 
 :root {

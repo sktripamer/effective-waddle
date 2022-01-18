@@ -1329,7 +1329,7 @@ const drawYesContent = () => {
         {processingOld ? (
           <div className="spinner" id="spinner"></div>
         ) : (
-          "Pay now"
+          "Pre-Order Book"
         )}
       </span>
     </button>
@@ -1351,8 +1351,8 @@ const drawNoContent = () => {
   
   return (
     <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
-    <InputField2 label={'fullname'} name={'fullname'}/>
     <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
+    <InputField2 label={'fullname'} name={'fullname'}/>
     <CardElement
       id="card-element"
       options={cardStyle}
@@ -1363,7 +1363,7 @@ const drawNoContent = () => {
         {processing ? (
           <div className="spinner" id="spinner"></div>
         ) : (
-          "Pay now"
+          "Pre-Order Book"
         )}
       </span>
     </button>
@@ -1398,8 +1398,11 @@ const drawNoContent = () => {
 
        <div className='pay-section'>
       <div className='selection-section'>
-      <div onClick={(e) => radioHandler(0)} className='previous-payment'>{prevLast4}</div>
-      <div onClick={(e) => radioHandler(1)} className='new-payment'>New Method</div>
+      <div onClick={(e) => radioHandler(0)} className={'previous-payment ' + status}>
+      <div className='card-icon'></div>
+      <div className="prev-last4">{prevLast4}</div>
+      </div>
+      <div onClick={(e) => radioHandler(1)} className={'new-payment ' + status}>New Method</div>
       </div>
       <div className='selection-render'>
       {status === 0 && drawYesContent()}

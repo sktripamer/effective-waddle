@@ -1021,6 +1021,9 @@
       <h4 className="mb-2">Time's almost up!</h4>
       <div className="more-details">{moreDetails}</div>
     <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
+    <div className='powered-container'>
+      <div className='powered-by-stripe'></div>
+      </div>
       <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
       <InputField2 label={'fullname'} name={'fullname'}/>
       <CardElement
@@ -1028,10 +1031,9 @@
         options={cardStyle}
         onChange={handleChange}
       />
-      <div className='powered-container'>
-      <div className='powered-by-stripe'></div>
+      
       <div className='card-charge'>Your card will be charged $1.00</div>
-      </div>
+      
       <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
         <span id="button-text">
           {processing ? (
@@ -1620,7 +1622,7 @@ const drawNoContent = () => {
             // }
 
             if (currentTimeb > 102 && step4verify() === true ) {
-              setDetails('Step 4 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+              setDetails('Find out what comes next for just one crisp dollar');
               setBoxVisible('reveal')
             //if (currentTime > 3 ) {
                 console.log('yes4')

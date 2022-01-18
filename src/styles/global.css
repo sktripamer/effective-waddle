@@ -136,6 +136,9 @@ div.rev-optin:after {
 }
 
 }
+.card-error {
+  float: left;
+}
 .pay-btn:disabled {
   opacity: 0.65;
 }
@@ -660,10 +663,7 @@ button {
   cursor: pointer;
 }
 
-button:hover,
-button:active {
-  color: var(--color-yellow-2);
-}
+
 
 .profile-update-confirmation {
   display: block;
@@ -682,6 +682,7 @@ button:active {
   margin-top: 2.5rem;
 }
 p.result-message.hidden {
+  display: none;
   opacity: 0;
 }
 

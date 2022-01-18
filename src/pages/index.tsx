@@ -1320,7 +1320,17 @@ const drawYesContent = () => {
   return (
     <div className='prev-payment'>
       <div className='payment-infos'>
-      {prevLast4}
+      <div className="credit-card selectable">
+        <div className="credit-card-last4">
+            {prevLast4}
+        </div>
+       <div className="credit-card-name">
+            {prevName}
+        </div>
+        <div className="credit-card-expiry">
+            {prevExpM}/{prevExpY}
+        </div>
+    </div>
       </div>
       <div className='payment-confirm'>
       <form id="payment-form-old" onSubmit={handleSubmitOld}>
@@ -1402,7 +1412,7 @@ const drawNoContent = () => {
       <div className='card-icon'></div>
       <div className="prev-last4">{prevLast4}</div>
       </div>
-      <div onClick={(e) => radioHandler(1)} className={'new-payment ' + status}>New Method</div>
+      <div onClick={(e) => radioHandler(1)} className={'new-payment ' + status}>+ New Card</div>
       </div>
       <div className='selection-render'>
       {status === 0 && drawYesContent()}

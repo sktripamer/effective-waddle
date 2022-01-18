@@ -108,9 +108,24 @@ main {
 .header {
   display: none;
 }
+.powered-by-stripe-small {
+  display:none;
+}
 @media (max-width: 1050px) {
-  .register-form h4 {
+  div.register-form h4 {
     font-size: 20px;
+  }
+  div.powered-by-stripe-small {
+    background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/stripe-small-min.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 32px;
+    width: 126px;
+    position: absolute;
+    display: block;
+  }
+  div.powered-by-stripe {
+    display: none;
   }
   div.outer-star>.spinnerz:after {
     height: 3.6rem;
@@ -279,6 +294,11 @@ div#card-element {
   margin-bottom: 8px;
 }
 @media (max-width: 667px) {
+  
+  div.rev-optin {
+    display: flex;
+  }
+
   div.powered-container {
 
     margin-bottom: 0px;
@@ -305,6 +325,9 @@ div.more-details {
 }
 div.rev-optin>div.payment.register-form.col-md-6 {
   margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 div.rev-optin > div.time-section > div.time-remaining {
 display:none;
@@ -380,6 +403,7 @@ div.w-100.d-flex.justify-content-between {
   opacity: 0;
   left: -300px;
   transition: .8s all  ease-in;
+  z-index: 0;
 }
 .rev-optin.release {
   opacity: 0;

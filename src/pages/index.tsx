@@ -85,6 +85,7 @@
       const [boxVisible, setBoxVisible] = useState("hidden");
       const [prevLast4, setLast4] = useState("");
       const [moreDetails, setDetails] = useState("");
+      const [heroText, setHero] = useState("");
       const [videoDetails, setVideoDetails] = useState({
         currentTime: 0,
         isPlaying: 0,
@@ -105,6 +106,8 @@
       setLast4,
       moreDetails,
       setDetails,
+      heroText,
+      setHero,
       videoDetails,
       setVideoDetails
     };
@@ -307,6 +310,7 @@
     const {player } = useBetween(useShareableState);
     const {videoStatus, setVideoStatus } = useBetween(useShareableState);
     const {moreDetails, setDetails } = useBetween(useShareableState);
+    const {heroText, setHero } = useBetween(useShareableState);
     const {videoTime, setVideoTime } = useBetween(useShareableState);
     const { videoDetails, setVideoDetails } =  useBetween(useShareableState);
     // Check if the user is validated already.
@@ -457,7 +461,7 @@
     return (
       <div className="register-form col-md-6">
         {/* Title */}
-        <h4 className="mb-2">Time's almost up!</h4>
+        <h4 className="mb-2">{heroText}</h4>
         <div className="more-details">{moreDetails}</div>
         {/* Error Message */}
         {"" !== errorMessage
@@ -598,6 +602,7 @@
     const { boxVisible, setBoxVisible } = useBetween(useShareableState);
     const { videoDetails, setVideoDetails } =  useBetween(useShareableState);
     const {moreDetails, setDetails } = useBetween(useShareableState);
+    const {heroText, setHero } = useBetween(useShareableState);
     const {player } = useBetween(useShareableState);
 
     async function createIntent(createtoken: string) {
@@ -675,7 +680,7 @@
     return (
       <div className="register-form col-md-6 steptwo">
       {/* Title */}
-      <h4 className="mb-2">Time's almost up!</h4>
+      <h4 className="mb-2">{heroText}</h4>
       <div className="more-details">{moreDetails}</div>
       <FormikStepper
       /// Accept all Formik props
@@ -724,6 +729,7 @@
     const title = 'rev';
     const {player } = useBetween(useShareableState);
     const {moreDetails, setDetails } = useBetween(useShareableState);
+    const {heroText, setHero } = useBetween(useShareableState);
 
     function handleSubmit(e: { preventDefault: () => void; }) {
       e.preventDefault();
@@ -741,7 +747,7 @@
 
     return (
   <div className="register-form col-md-6">
-    <h4 className="mb-2">Time's almost up!</h4>
+    <h4 className="mb-2">{heroText}</h4>
     <div className="more-details">{moreDetails}</div>
     <div className='sharesection'>
       <div className="Demo__container">
@@ -830,6 +836,7 @@
   const stripe = useStripe();
   const elements = useElements();
   const {moreDetails, setDetails } = useBetween(useShareableState);
+  const {heroText, setHero } = useBetween(useShareableState);
   // useEffect(() => {
   //   window
   //     .fetch("/api/payment-intent", {
@@ -1018,7 +1025,7 @@
 
   return (
     <div className='payment register-form col-md-6'>
-      <h4 className="mb-2">Time's almost up!</h4>
+      <h4 className="mb-2">{heroText}</h4>
       <div className="more-details">{moreDetails}</div>
     <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
     <div className='powered-container'>
@@ -1031,7 +1038,7 @@
         options={cardStyle}
         onChange={handleChange}
       />
-      
+      <div className='powered-by-stripe-small'></div>
       <div className='card-charge'>Your card will be charged $1.00</div>
       
       <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
@@ -1137,6 +1144,7 @@
   const [showAlertBar, setShowAlertBar] = useState(true);
   const { boxVisible, setBoxVisible } = useBetween(useShareableState);
   const {moreDetails, setDetails } = useBetween(useShareableState);
+  const {heroText, setHero } = useBetween(useShareableState);
   // useEffect(() => {
   //   window
   //     .fetch("/api/payment-intent", {
@@ -1371,7 +1379,7 @@ const drawNoContent = () => {
 
   return (
     <div className='payment register-form col-md-6'>
-       <h4 className="mb-2">Time's almost up!</h4>
+       <h4 className="mb-2">{heroText}</h4>
        <div className="more-details">{moreDetails}</div>
       <div className='selection-section'>
       <div onClick={(e) => radioHandler(0)} className='previous-payment'>{prevLast4}</div>
@@ -1410,6 +1418,7 @@ const drawNoContent = () => {
     const { prevLast4, setLast4 } = useBetween(useShareableState);
     const [playerSize, setPlayerSize] = useState("regular");
     const {moreDetails, setDetails } = useBetween(useShareableState);
+    const {heroText, setHero } = useBetween(useShareableState);
     const currentVideoState = () => {
       return videoTime;
     }
@@ -1567,6 +1576,7 @@ const drawNoContent = () => {
           //   player.current!.pause()
           // }
           if (currentTimeb > 3 && LoginVerify() === false ) {
+            setHero("Time's almost up!");
             setDetails('Step 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
             setBoxVisible('reveal')
           //if (currentTime > 3 ) {
@@ -1581,6 +1591,7 @@ const drawNoContent = () => {
               setVideoStatus(1)
             } 
             if (currentTimeb > 36 && step2verify() === true ) {
+              setHero("Time's almost up!");
               setDetails('Step 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
               setBoxVisible('reveal')
             //if (currentTime > 3 ) {
@@ -1601,6 +1612,7 @@ const drawNoContent = () => {
             // }
 
             if (currentTimeb > 69 && step3verify() === true ) {
+              setHero("Time's almost up!");
               setDetails('Step 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
               setBoxVisible('reveal')
             //if (currentTime > 3 ) {
@@ -1622,6 +1634,7 @@ const drawNoContent = () => {
             // }
 
             if (currentTimeb > 102 && step4verify() === true ) {
+              setHero("The Ending is Nuts");
               setDetails('Find out what comes next for just one crisp dollar');
               setBoxVisible('reveal')
             //if (currentTime > 3 ) {
@@ -1643,6 +1656,7 @@ const drawNoContent = () => {
             // }
 
             if (currentTimeb > 136 && step5verify() === true) {
+              setHero("Limited Time Offer!");
               setDetails('Step 5 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
               setVideoStatus(5)
               console.log('yes5')
@@ -1667,7 +1681,7 @@ const drawNoContent = () => {
 	</div>
 </div>
 </div>
-<h4 className="mb-2">Time's almost up!</h4>
+<h4 className="mb-2">{heroText}</h4>
 <div className="more-detail">{moreDetails}</div>
 </div>
         <div className={`rev-player ${playerSize}`}>

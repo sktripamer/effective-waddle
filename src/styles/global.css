@@ -194,6 +194,54 @@ div.rev-optin:after {
   background-repeat: no-repeat;
   background-size: contain;
 }
+.credit-card {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 7px;
+  width: 95%;
+  max-width: 250px;
+  position: relative;
+  transition: all 0.4s ease;
+  box-shadow: 0 2px 4px 0 #cfd7df;
+  min-height: 80px;
+  padding: 13px;
+  background: #1a1b1c;
+  color: #efefef;
+}
+
+.credit-card.selectable:hover {
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+
+/*  NUMBER FORMATTING */
+
+.credit-card-last4 {
+  font-family: "PT Mono", Helvetica, sans-serif;
+  font-size: 24px;
+}
+
+.credit-card-last4:before {
+  content: "**** **** **** ";
+  color: #4f4d4d;
+  font-size: 20px;
+}
+
+.credit-card-name {
+ font-family: "PT Mono", Helvetica, sans-serif;
+ font-size: 16px;
+ margin-top:4px;
+}
+
+.credit-card-expiry {
+  font-family: "PT Mono", Helvetica, sans-serif;
+  font-size: 18px;
+  position: absolute;
+  bottom: 8px;
+  left: 15px;
+}
 
 .selection-section {
   display: flex;
@@ -201,6 +249,7 @@ div.rev-optin:after {
   flex-wrap: nowrap;
   justify-content: space-evenly;
   color: #fff;
+  margin-bottom: 12px;
 }
 
 .rev-optin.reveal.final > .time-section {
@@ -245,6 +294,24 @@ div.rev-optin:after {
   opacity: 1;
 }
 
+
+.previous-payment.\30 {
+  background: linear-gradient( 
+    294deg
+     ,#a2f,#ff2278);
+}
+
+.new-payment.\31 {
+  background: linear-gradient( 
+294deg
+,#a2f,#ff2278);
+}
+.new-payment {
+  border-radius: 3px;
+  border: 2px solid #ff005e;
+  padding: 4px;
+  cursor: pointer;
+}
 button.btn.btn-danger {
   background: none;
   border: 2px solid rgb(255 0 129);
@@ -799,6 +866,10 @@ button {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  border-radius: 3px;
+  border: 2px solid #ff005e;
+  padding: 4px;
+  cursor: pointer;
 }
 
 .card-icon {

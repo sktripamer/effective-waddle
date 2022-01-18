@@ -169,6 +169,9 @@ button.ml-auto.btn.btn-success:after {
 }
 .input-wrap {
   margin-top: 20px;
+  opacity: 0;
+  animation: newput .5s forwards;
+
 }
 
 .rev-optin-mobile.reveal {

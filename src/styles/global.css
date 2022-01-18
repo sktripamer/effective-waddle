@@ -544,10 +544,7 @@ input:focus + .svg-img-item {
     margin-right: 5px;
   }
 }
-.register-form > form {
-  opacity: 0;
-  animation: newput .5s forwards;
-}
+
 @keyframes newput {
   0% {
    opacity:0;
@@ -597,6 +594,12 @@ input.form-control.form-control {
 }
 .w-100.d-flex.justify-content-between {
   margin-top: 0;
+  animation: newput .5s forwards;
+  opacity: 0;
+}
+.btn {
+  animation: newput .5s forwards;
+  opacity: 0;
 }
 .register-form h4 {
   color: #e0e0e0;

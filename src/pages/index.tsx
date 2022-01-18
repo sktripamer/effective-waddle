@@ -944,6 +944,7 @@
     style: {
       base: {
         color: "#fff",
+        iconColor: "#fff",
         fontFamily: "Arial, sans-serif",
         fontSmoothing: "antialiased",
         fontSize: "16px",
@@ -1020,19 +1021,23 @@
       <h4 className="mb-2">Time's almost up!</h4>
       <div className="more-details">{moreDetails}</div>
     <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
-      <InputField2 label={'fullname'} name={'fullname'}/>
       <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
+      <InputField2 label={'fullname'} name={'fullname'}/>
       <CardElement
         id="card-element"
         options={cardStyle}
         onChange={handleChange}
       />
+      <div className='powered-container'>
+      <div className='powered-by-stripe'></div>
+      <div className='card-charge'>Your card will be charged $1.00</div>
+      </div>
       <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
         <span id="button-text">
           {processing ? (
             <div className="spinner" id="spinner"></div>
           ) : (
-            "Pay now"
+            "Keep Watching"
           )}
         </span>
       </button>
@@ -1044,6 +1049,7 @@
       <p className={succeeded ? "result-message" : "result-message hidden"}>
         Payment succeeded!
       </p>
+      
     </form>
 
 
@@ -1305,7 +1311,7 @@ const drawYesContent = () => {
       </div>
       <div className='payment-confirm'>
       <form id="payment-form-old" onSubmit={handleSubmitOld}>
-    <button disabled={processingOld || succeededOld} id="submit">
+    <button className='pay-btn' disabled={processingOld || succeededOld} id="submit">
       <span id="button-text">
         {processingOld ? (
           <div className="spinner" id="spinner"></div>
@@ -1339,7 +1345,7 @@ const drawNoContent = () => {
       options={cardStyle}
       onChange={handleChange}
     />
-    <button disabled={processing || disabled || succeeded} id="submit">
+    <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
       <span id="button-text">
         {processing ? (
           <div className="spinner" id="spinner"></div>

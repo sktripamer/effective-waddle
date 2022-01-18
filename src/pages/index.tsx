@@ -1689,10 +1689,7 @@ const drawNoContent = () => {
 <div className="spinnerz">
 		</div>
 	</div>
-	<div className="inner-star">
-		<div className="spinnerz">
-		</div>
-	</div>
+
 </div>
 </div>
 

@@ -544,6 +544,18 @@ input:focus + .svg-img-item {
     margin-right: 5px;
   }
 }
+.register-form > form {
+  opacity: 0;
+  animation: newput .5s forwards;
+}
+@keyframes newput {
+  0% {
+   opacity:0;
+  }
+  100% {
+   opacity:1;
+  }
+}
 
 form input:focus {
   outline: none;

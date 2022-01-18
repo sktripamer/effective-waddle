@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'PT Mono';
+  src: url('https://portal.revrevdev.xyz/wp-content/uploads/ptmono.woff2') format('woff2');
+}
+
 :root {
   --border-radius: 8px;
 
@@ -66,10 +71,7 @@ body {
   background-color: #f0f4f8;
   color: var(--color-gray-2);
 }
-@font-face {
-  font-family: 'PT Mono';
-  src: url('https://portal.revrevdev.xyz/wp-content/uploads/ptmono.woff2') format('woff2');
-}
+
 h1 {
   font-size: 2.1rem;
   line-height: 1.2;
@@ -258,12 +260,15 @@ form#payment-form-old {
 }
 
 .selection-section {
+  color: #fff;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-evenly;
-  color: #fff;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
+  margin-top: 12px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #d522bd;
 }
 
 .rev-optin.reveal.final > .time-section {

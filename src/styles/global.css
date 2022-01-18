@@ -577,7 +577,13 @@ input:focus + .svg-img-item {
 .input-wrap.phone-wrap>div>div>input.form-control.form-control {
   width: 100%;
 }
-
+.powered-by-stripe {
+  background-image: url('https://portal.revrevdev.xyz/wp-content/uploads/stripe-small-min.png');
+  height: 48px;
+  width: 190px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 @keyframes floating {
   0%, 100% {
     margin-left: 5px;

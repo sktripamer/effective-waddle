@@ -117,6 +117,12 @@ main {
   display:none;
 }
 @media (max-width: 1050px) {
+  .credit-card-last4:before {
+    content: "**** ";
+    color: #747474;
+    font-size: 16px;
+  }
+  
   div.register-form h4 {
     font-size: 20px;
   }
@@ -221,6 +227,7 @@ form#payment-form-old {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: -15px;
 }
 .credit-card.selectable:hover {
   cursor: pointer;
@@ -234,20 +241,20 @@ form#payment-form-old {
 
 .credit-card-last4 {
   font-family: "PT Mono", Helvetica, sans-serif;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .credit-card-last4:before {
-  content: "**** **** **** ";
-  color: #4f4d4d;
-  font-size: 20px;
+  content: "**** ";
+  color: #747474;
+  font-size: 16px;
 }
 
 .credit-card-name {
  font-family: "PT Mono", Helvetica, sans-serif;
  font-size: 16px;
  text-align: start;
- margin-top: -10px;
+ margin-top: -5px;
  margin-bottom: 30px;
 }
 
@@ -260,6 +267,7 @@ form#payment-form-old {
 }
 
 .selection-section {
+  border-bottom: 2px solid #d522bd;
   color: #fff;
   display: flex;
   flex-direction: row;
@@ -268,7 +276,9 @@ form#payment-form-old {
   margin-bottom: 20px;
   margin-top: 12px;
   padding-bottom: 20px;
-  border-bottom: 2px solid #d522bd;
+  margin-left: auto;
+  max-width: 260px;
+  margin-right: auto;
 }
 
 .rev-optin.reveal.final > .time-section {

@@ -1066,12 +1066,14 @@ form input:focus {
     z-index: 2;
 }
 main {
-  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/g.png), linear-gradient( 
-68deg, rgba(255,21,21,1) 0%, rgba(94,0,255,1) 100%);
-  background-position: 100% 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 50px;
+  background-image: linear-gradient( 
+    68deg
+     ,#ff1515ad,#8500ffb5), url(https://portal.revrevdev.xyz/wp-content/uploads/bg.jpg);
+        background-position: 100% 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 50px;
+        padding-bottom: 100px;
 }
 div.input-group {
   flex-wrap: nowrap;

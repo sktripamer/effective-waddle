@@ -628,6 +628,8 @@
     }
 
     const onSubmit = async ( values: { email1: string; email2: string; email3: string; }, { setSubmitting }: any ) => {
+
+      
       console.log(values);
       setSubmitting(false);
 
@@ -729,21 +731,30 @@
     const {videoTime, setVideoTime } = useBetween(useShareableState);
     const shareUrl = 'revrevdev.xyz';
     const { boxVisible, setBoxVisible } = useBetween(useShareableState);
-    const title = 'rev';
+    const title = 'My code to continue watching is USA123. Watch along with me!';
     const shareForm = useRef(null);
+    const [error, setError] = useState(null);
     const {player } = useBetween(useShareableState);
     const {moreDetails, setDetails } = useBetween(useShareableState);
     const {heroText, setHero } = useBetween(useShareableState);
 
     function handleSubmit(e: { preventDefault: () => void; }) {
+
+
       e.preventDefault();
-  
+      const form = shareForm.current
+      const coder = form['sharecode'].value.toUpperCase();
+
+      if (coder === 'USA123') {
 
       localStorage.removeItem("s3")
       localStorage.setItem("s4", "y")
       setVideoStatus(0)
       setBoxVisible('release')
         player.current!.play();
+      } else {
+        setError('Code incorrect. Click one of the social media buttons and share the message to retrieve the code.');
+      }
 
     }
 
@@ -811,10 +822,15 @@
       </div>
     
     </div>
+    {error && (
+        <div className="share-error card-error" role="alert">
+          {error}
+        </div>
+      )}
     <div className='share-container'>
     <form id="share-form" ref={shareForm} onSubmit={handleSubmit}>
-    <input className={'form-control form-control'} placeholder="Your Code" name={'sharecode'}/>
-    <button className='share-btn' id="submit">
+    <input className={'form-control form-control'} placeholder="Your Code (share to retrieve it)" name={'sharecode'}/>
+    <button className='btn share-btn' id="submit">
     Keep Watching
   </button>
   </form>

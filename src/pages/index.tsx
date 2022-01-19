@@ -1034,7 +1034,7 @@
     const elements = useElements();
     const [prevPaymentID, setPrevID] = useState(""); //previous payment ID.
     const [customerID, setCustomerID] = useState("");
-
+    const isBrowser = typeof window !== "undefined";
     const { prevLast4, setLast4 } = useBetween(useShareableState);
     const [prevExpY, setPrevExpY] = useState("");
     const [prevExpM, setPrevExpM] = useState("");
@@ -1043,6 +1043,12 @@
     const [prevBrand, setPrevBrand] = useState("");
     const email = JSON.parse(localStorage.auth).authToken;
   useEffect(() => {
+    if (isBrowser) {
+    var style = document.createElement( 'style' )
+    var host = document.getElementById('vm-player-1');
+    style.innerHTML = '@media (max-width: 666px) { div.player.video { overflow: visible; }}'
+    host.shadowRoot.appendChild( style )
+    }
     async function fetchMyAPI() {
     // window
     //   .fetch("/api/get-payment-info", {

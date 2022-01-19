@@ -1285,7 +1285,7 @@ const drawYesContent = () => {
       </div>
     )}
     <p className={succeededOld ? "result-message" : "result-message hidden"}>
-      Payment succeeded!
+      Pre-order successful! Check your email for your copy of the first chapter.
     </p>
   </form>
       </div>
@@ -1319,7 +1319,7 @@ const drawNoContent = () => {
       </div>
     )}
     <p className={succeeded ? "result-message" : "result-message hidden"}>
-      Payment succeeded!
+    Pre-order successful! Check your email for your copy of the first chapter.
     </p>
   </form>
   );
@@ -1350,6 +1350,7 @@ const drawNoContent = () => {
       </div>
       <div onClick={(e) => radioHandler(1)} className={'new-payment ' + status}>+ New Card</div>
       </div>
+      <div className='powered-by-stripe-final'></div>
       <div className='selection-render'>
       {status === 0 && drawYesContent()}
       {status === 1 && drawNoContent()}

@@ -1315,7 +1315,7 @@ const drawNoContent = () => {
     </button>
     <div className="card-error" role="alert">
     {error && (
-        {error}
+        <b>{error}</b>
     )}
     </div>
 

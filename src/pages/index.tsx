@@ -1081,6 +1081,8 @@
     const [prevExpY, setPrevExpY] = useState("");
     const [prevExpM, setPrevExpM] = useState("");
     const [prevName, setPrevName] = useState("");
+    const [prevEmail, setPrevEmail] = useState("");
+    const [prevBrand, setPrevBrand] = useState("");
     const email = JSON.parse(localStorage.auth).authToken;
   useEffect(() => {
     async function fetchMyAPI() {
@@ -1114,9 +1116,11 @@
         setCustomerID(intent.paymentMethod.customer);
         setPrevID(intent.paymentMethod.id);
         setLast4(intent.paymentMethod.card.last4);
-        setPrevExpY(intent.paymentMethod.card.exp_year);
-        setPrevExpM(intent.paymentMethod.card.exp_month);
+        setPrevExpY(intent.paymentMethod.card.exp_year.slice(-2));
+        setPrevExpM(('0' + intent.paymentMethod.card.exp_month).slice(-2));
         setPrevName(intent.paymentMethod.billing_details.name);
+        setPrevEmail(intent.paymentMethod.billing_details.email);
+        setPrevBrand(intent.paymentMethod.card.brand);
         return intent;
         
       } catch (error) {
@@ -1320,17 +1324,11 @@ const drawYesContent = () => {
   return (
     <div className='prev-payment'>
       <div className='payment-infos'>
-      <div className="credit-card selectable">
-        <div className="credit-card-last4">
-            {prevLast4}
-        </div>
-       <div className="credit-card-name">
-            {prevName}
-        </div>
-        <div className="credit-card-expiry">
-            {prevExpM}/{prevExpY}
-        </div>
-    </div>
+      <div className="prev-name-on-card">{prevName}</div>
+      <div className="prev-email">{prevEmail}</div> 
+      <div className='prev-last-box'>
+      <div className={"prev-brand" + prevBrand}></div><div className="prev-last4">**** {prevLast4}</div><div className="prev-expiry">{prevExpM}/{prevExpY}</div>
+      </div>
       </div>
       <div className='payment-confirm'>
       <form id="payment-form-old" onSubmit={handleSubmitOld}>

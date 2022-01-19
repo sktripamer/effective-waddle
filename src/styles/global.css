@@ -522,12 +522,21 @@ button.ml-auto.btn.btn-primary:after {
 #share-form input.form-control.form-control {
   width: 60%;
 }
+form#share-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .btn.share-btn {
   background: linear-gradient( 
 90deg, rgba(255,34,51,1) 0%, rgba(255,34,120,1) 100%);
   border: 2px solid rgb(255 0 94);
   font-weight: 700;
-  width: 35%;
+  color:#fff;
+  width: 60%;
+}
+.btn.share-btn:hover {
+color:#fff;
 }
 .btn.share-btn:after {
   content: ' \203A';
@@ -630,6 +639,19 @@ div#card-element {
   margin-bottom: 8px;
 }
 @media (max-width: 666px) {
+
+  
+form #share-form input.form-control.form-control {
+  width: 90%;
+}
+
+button.btn.share-btn {
+ 
+  width: 90%;
+}
+  div.sharesection {
+    height: 80%;
+  }
   div.card-error { 
     display: none;
   }

@@ -150,6 +150,9 @@ main {
 
 
 @media (max-width: 1050px) {
+  .final .payment div.more-details {
+    display: none;
+}
 
 .payment div.more-details {
   display: block;
@@ -462,6 +465,8 @@ form#payment-form-old {
   color: #f00;
   font-size: 14px;
   position: absolute;
+  left: 50%;
+    transform: translate(-50%, 0%);
 }
 .pay-btn:disabled {
   opacity: 0.55;

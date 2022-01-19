@@ -1332,8 +1332,9 @@ const drawNoContent = () => {
        <div className="more-details">{moreDetails}</div>
         <div className='content-section'>
 
-      <div className='spit-point-view'>
-
+      <div className='split-point-view'>
+      <div className='final-mobile-hero'>{heroText}</div>
+      <div className='final-mobile-text'>{moreDetails}</div>
       <div className='image-section'></div>
       <div className='info-section'>
       <ul>

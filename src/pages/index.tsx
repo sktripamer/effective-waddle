@@ -548,7 +548,7 @@
             {/* Second Step */}
             <FormikStep>
             <div class="input-wrap phone-wrap">
-              <InputField placeholder="Your Phone" name="phonefield" label="Phone" type="tel"/>
+              <InputField onKeyPress={(e)=>{e.target.keyCode === 13 && e.preventDefault();}} placeholder="Your Phone" name="phonefield" label="Phone" type="tel"/>
               </div>
             </FormikStep>
           </FormikStepper>

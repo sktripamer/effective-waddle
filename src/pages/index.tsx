@@ -908,48 +908,6 @@
   }
 
 
-  // async function getCustomerObj() {
-  //   try {
-  //     // Retrieve email and username of the currently logged in user.
-  //     // getUserFromDB() is *your* implemention of getting user info from the DB
-
-  //     const request = await fetch('/api/retrieve-customer', {
-  //       method: 'POST',
-  //       body: 'a',
-  //     });
-  //     const customerobj = (await request.json());
-  //     // Update your user in DB to store the customerID
-  //     // updateUserInDB() is *your* implementation of updating a user in the DB
-  //     return customerobj;
-  //   } catch (error) {
-  //     console.log('Failed to get customer');
-  //     console.log(error);
-  //     return null;
-  //   }
-  // }
-
-  // fetch(`/api/payment-intent`, {
-  //   method: "POST",
-  //   body: JSON.stringify({
-  //       amount: 500,
-  //     }),
-  //   headers: {
-  //       "content-type": `application/json`,
-  //      },
-  //   })
-  //   .then(res => res.json())
-  //   .then(body => {
-  //     console.log(body)
-  //     stripe.confirmCardPayment(body.body.client_secret, {
-  //       payment_method: {
-  //         card: elements.getElement(CardElement),
-  //         billing_details: {
-  //           email: "coolio123@gmail.com",
-  //         },
-  //       },
-  //     });
-  //   })
-
   const cardStyle = {
     style: {
       base: {
@@ -1116,7 +1074,7 @@
         setCustomerID(intent.paymentMethod.customer);
         setPrevID(intent.paymentMethod.id);
         setLast4(intent.paymentMethod.card.last4);
-        setPrevExpY(intent.paymentMethod.card.exp_year.slice(-2));
+        setPrevExpY((intent.paymentMethod.card.exp_year).slice(-2));
         setPrevExpM(('0' + intent.paymentMethod.card.exp_month).slice(-2));
         setPrevName(intent.paymentMethod.billing_details.name);
         setPrevEmail(intent.paymentMethod.billing_details.email);
@@ -1197,26 +1155,6 @@
     }
   }
 
-  async function setPayment(cID) {
-    try {
-      // Retrieve email and username of the currently logged in user.
-      // getUserFromDB() is *your* implemention of getting user info from the DB
-
-      const email = cID + "@@" + JSON.parse(localStorage.auth).authToken 
-      const request = await fetch('/api/set-payment-method', {
-        method: 'POST',
-        body: email,
-      });
-      const intent = (await request.json());
-      // Update your user in DB to store the customerID
-      // updateUserInDB() is *your* implementation of updating a user in the DB
-      return intent;
-    } catch (error) {
-      console.log('Failed to create intent');
-      console.log(error);
-      return null;
-    }
-  }
 
   const cardStyle = {
     style: {
@@ -1327,7 +1265,7 @@ const drawYesContent = () => {
       <div className="prev-name-on-card">{prevName}</div>
       <div className="prev-email">{prevEmail}</div> 
       <div className='prev-last-box'>
-      <div className={"prev-brand" + prevBrand}></div><div className="prev-last4">**** {prevLast4}</div><div className="prev-expiry">{prevExpM}/{prevExpY}</div>
+      <div className={"prev-brand " + prevBrand}></div><div className="prev-last4">**** {prevLast4}</div><div className="prev-expiry">{prevExpM}/{prevExpY}</div>
       </div>
       </div>
       <div className='payment-confirm'>

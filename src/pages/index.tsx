@@ -1262,10 +1262,14 @@ const drawYesContent = () => {
   return (
     <div className='prev-payment'>
       <div className='payment-infos'>
+        <div class='saved-method-text'>
+      <div className={"prev-brand " + prevBrand}></div>
+      <div className='previous-method-text'>Saved Card</div>
+      </div>
       <div className="prev-name-on-card">{prevName}</div>
       <div className="prev-email">{prevEmail}</div> 
       <div className='prev-last-box'>
-      <div className={"prev-brand " + prevBrand}></div><div className="prev-last4">**** {prevLast4}</div><div className="prev-expiry">{prevExpM}/{prevExpY}</div>
+      <div className="prev-last4">**** {prevLast4}</div><div className="prev-expiry">{prevExpM}/{prevExpY}</div>
       </div>
       </div>
       <div className='payment-confirm'>

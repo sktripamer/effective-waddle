@@ -1074,8 +1074,8 @@
         setCustomerID(intent.paymentMethod.customer);
         setPrevID(intent.paymentMethod.id);
         setLast4(intent.paymentMethod.card.last4);
-        setPrevExpY((intent.paymentMethod.card.exp_year).slice(-2));
-        setPrevExpM(('0' + intent.paymentMethod.card.exp_month).slice(-2));
+        setPrevExpY((intent.paymentMethod.card.exp_year).toString().slice(-2));
+        setPrevExpM(('0' + intent.paymentMethod.card.exp_month.toString()).toString().slice(-2));
         setPrevName(intent.paymentMethod.billing_details.name);
         setPrevEmail(intent.paymentMethod.billing_details.email);
         setPrevBrand(intent.paymentMethod.card.brand);

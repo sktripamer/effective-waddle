@@ -1331,6 +1331,9 @@ const drawNoContent = () => {
        <h4 className="mb-2">{heroText}</h4>
        <div className="more-details">{moreDetails}</div>
         <div className='content-section'>
+
+      <div className='spit-point-view'>
+
       <div className='image-section'></div>
       <div className='info-section'>
       <ul>
@@ -1339,6 +1342,8 @@ const drawNoContent = () => {
     <li>Get early access to the final book</li>
     <li>Support Patrick's cause</li>
     </ul>
+
+      </div>
 
       </div>
 

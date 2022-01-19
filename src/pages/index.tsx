@@ -1423,6 +1423,7 @@ const drawNoContent = () => {
     const {moreDetails, setDetails } = useBetween(useShareableState);
     const {heroText, setHero } = useBetween(useShareableState);
     const {error, setError } = useBetween(useShareableState);
+   
     const currentVideoState = () => {
       return videoTime;
     }
@@ -1761,10 +1762,10 @@ const drawNoContent = () => {
               </div>
       <Video
         crossOrigin
-        poster="https://media.vimejs.com/poster.png"
+        poster='https://portal.revrevdev.xyz/wp-content/uploads/PK-1.jpg'
       >
         <source 
-          data-src="https://media.vimejs.com/720p.mp4" 
+          data-src='https://portal.revrevdev.xyz/wp-content/uploads/pk.mp4'
           type="video/mp4"
         />
         <track 

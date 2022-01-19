@@ -1061,7 +1061,7 @@ form input:focus {
 }
 .rev-player {
   padding-top: 40px;
-    padding-bottom: 630px;
+    padding-bottom: 30px;
     position: relative;
     z-index: 2;
 }

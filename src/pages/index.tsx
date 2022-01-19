@@ -730,6 +730,7 @@
     const shareUrl = 'revrevdev.xyz';
     const { boxVisible, setBoxVisible } = useBetween(useShareableState);
     const title = 'rev';
+    const shareForm = useRef(null);
     const {player } = useBetween(useShareableState);
     const {moreDetails, setDetails } = useBetween(useShareableState);
     const {heroText, setHero } = useBetween(useShareableState);
@@ -810,9 +811,14 @@
       </div>
     
     </div>
-    <button onClick={handleSubmit}>
-    Continue
+    <div className='share-container'>
+    <form id="share-form" ref={shareForm} onSubmit={handleSubmit}>
+    <input className={'form-control form-control'} placeholder="Your Code" name={'sharecode'}/>
+    <button className='share-btn' id="submit">
+    Keep Watching
   </button>
+  </form>
+  </div>
   </div>
   </div>
     )

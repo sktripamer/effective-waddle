@@ -460,7 +460,7 @@ div#card-element {
   width: 100%;
   margin-bottom: 8px;
 }
-@media (max-width: 668px) {
+@media (max-width: 666px) {
   div.card-error { 
     display: none;
   }
@@ -527,7 +527,7 @@ div>small.form-text.text-danger {
 }
 div.rev-optin>div.register-form.col-md-6.steptwo {
   margin: 0;
-  margin-top: -5px;
+  margin-top: -2px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -560,9 +560,21 @@ div.w-100.d-flex.justify-content-between {
   line-height: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  font-weight: normal;
+  font-weight: 500;
   font-size: 17px;
   margin-bottom: 8px;
+}
+
+.more-detail {
+  color: #d4d4d4;
+  font-size: 17px;
+  line-height: 20px;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  font-weight: 500;
+  text-shadow: 2px 2px 1px rgb(0 0 0 / 30%);
 }
 .rev-optin {
   background: #32008385;

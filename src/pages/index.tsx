@@ -1762,10 +1762,10 @@ const drawNoContent = () => {
               </div>
       <Video
         crossOrigin
-        poster='https://portal.revrevdev.xyz/wp-content/uploads/PK-1.jpg'
+        poster='https://1768239509.rsc.cdn77.org/PK-1.jpg'
       >
         <source 
-          data-src='https://portal.revrevdev.xyz/wp-content/uploads/pk.mp4'
+          data-src='https://1768239509.rsc.cdn77.org/pk.mp4'
           type="video/mp4"
         />
         <track 

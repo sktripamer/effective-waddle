@@ -151,6 +151,10 @@ main {
 
 @media (max-width: 1050px) {
 
+.payment div.more-details {
+  display: block;
+  }
+
   .selection-render #payment-form input.form-control.form-control {
     height: 32px;
     margin-bottom: 5px;
@@ -651,9 +655,10 @@ div.register-form h4 {
   height: 32px;
   margin-bottom: 5px;
 }
-div.more-details {
+div.payment div.more-details  {
   display: none;
 }
+
 .payment div#card-element {
   padding: 3px 2px;
 }

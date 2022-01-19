@@ -1313,11 +1313,12 @@ const drawNoContent = () => {
         )}
       </span>
     </button>
+    <div className="card-error" role="alert">
     {error && (
-      <div className="card-error" role="alert">
         {error}
-      </div>
     )}
+    </div>
+
     <p className={succeeded ? "result-message" : "result-message hidden"}>
     Pre-order successful! Check your email for your copy of the first chapter.
     </p>
@@ -1632,7 +1633,7 @@ const drawNoContent = () => {
 
             if (currentTimeb > 136 && step5verify() === true) {
               setHero("Limited Time Offer!");
-              setDetails("Pre-order Patrick's new book and get exclusive early access to the first chapter delivered to your email!");
+              setDetails("Pre-order Patrick's new book and get exclusive access to the first chapter!");
               setVideoStatus(5)
               console.log('yes5')
               if (prevLast4 != "") {

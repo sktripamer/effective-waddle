@@ -1591,7 +1591,6 @@ const drawNoContent = () => {
           
           const currentTimeb = event.detail;
           setCurrentTime(currentTimeb);
-          console.log(currentTimeb);
           // if (event.detail > 5) {
           //   console.log('hey')
           //   player.current!.pause()
@@ -1601,7 +1600,6 @@ const drawNoContent = () => {
             setDetails('Enter your info to continue watching and get amazing deals and breaking news');
             setBoxVisible('reveal')
           //if (currentTime > 3 ) {
-              console.log('yes')
               if (Math.floor(33 - currentTimeb) !== titleText ) {
                 setTitleText(Math.floor(33.99 - currentTimeb));
               }
@@ -1616,7 +1614,6 @@ const drawNoContent = () => {
               setDetails('Just enter 3 emails of people that need to see this');
               setBoxVisible('reveal')
             //if (currentTime > 3 ) {
-                console.log('yes2')
                 if (Math.floor(66 - currentTimeb) !== titleText ) {
                   setTitleText(Math.floor(66.99 - currentTimeb));
                 }
@@ -1637,7 +1634,6 @@ const drawNoContent = () => {
               setDetails('Share this video to any of these social media channels to get your code to keep watching');
               setBoxVisible('reveal')
             //if (currentTime > 3 ) {
-                console.log('yes3')
                 if (Math.floor(99 - currentTimeb) !== titleText ) {
                   setTitleText(Math.floor(99.99 - currentTimeb));
                 }
@@ -1659,7 +1655,6 @@ const drawNoContent = () => {
               setDetails('Find out what comes next for just one crisp dollar');
               setBoxVisible('reveal')
             //if (currentTime > 3 ) {
-                console.log('yes4')
                 if (Math.floor(132 - currentTimeb) !== titleText ) {
                   setTitleText(Math.floor(132.99 - currentTimeb));
                 }
@@ -1680,7 +1675,6 @@ const drawNoContent = () => {
               setHero("Limited Time Offer!");
               setDetails("Pre-order Patrick's new book and get exclusive access to the first chapter!");
               setVideoStatus(5)
-              console.log('yes5')
               if (prevLast4 != "") {
                setBoxVisible('reveal final')
               }  

@@ -17,7 +17,7 @@ const createCustomer = async (req, res) => {
       };
       
       axios.post('https://api.ontraport.com/1/Contacts', data, axiosConfig)
-      return res.status(200);
+      return res.status(200).json('good');
      //return customerID;
   
     } catch (error) {

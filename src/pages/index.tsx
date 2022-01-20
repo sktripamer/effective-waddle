@@ -329,14 +329,10 @@
         // Retrieve email and username of the currently logged in user.
         // getUserFromDB() is *your* implemention of getting user info from the DB
         const ontradata = email + "@@" + description 
-        const request = await fetch('/api/ontraport-create', {
+        fetch('/api/ontraport-create', {
           method: 'POST',
           body: ontradata,
         });
-        const intent = (await request.json());
-        // Update your user in DB to store the customerID
-        // updateUserInDB() is *your* implementation of updating a user in the DB
-        return intent;
       } catch (error1) {
         console.log('Failed to create ontra');
         console.log(error1);

@@ -388,7 +388,7 @@
         } = data;
 
         handleRegisterSuccess();
-        createOntra();
+        
         const authData = {
           authToken: customer.jwtAuthToken,
           user: customer,
@@ -474,6 +474,7 @@
       setVideoStatus(0)
       setBoxVisible('release')
       player.current!.play();
+      createOntra();
     };
 
     return (

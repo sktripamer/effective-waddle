@@ -371,7 +371,7 @@
       variables: {
         input: {
           //clientMutationId: v4(), // Generate a unique id.,
-          //username,
+          username,
           //password,
           email,
           description
@@ -420,6 +420,7 @@
       console.log(values);
       setSubmitting(false); //// Important
       setEmail(values.email);
+      setUsername(values.email.toString().split('@')[0]);
       setDescription(values.phonefield);
       register();
   };

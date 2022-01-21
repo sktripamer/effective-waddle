@@ -8,7 +8,18 @@ const createCustomer = async (req, res) => {
       // get payment method
         
       const data = 'email=' + encodeURIComponent(emails[0]) + '&sms_number=' + encodeURIComponent(emails[1]);
-      let axiosConfig = {
+      const ontraID = await ontraCreate(data);  
+     // return res.status(200).json('good');
+     //return customerID;
+     return await res.status(200).json(ontraID);
+    } catch (error) {
+      return error;
+    }
+    
+  }
+
+  const ontraCreate = async (sendData) => {
+    let axiosConfig = {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Api-Key': process.env.OP_APIKEY,
@@ -16,22 +27,16 @@ const createCustomer = async (req, res) => {
         }
       };
       
-      axios.post('https://api.ontraport.com/1/Contacts', data, axiosConfig)
-      .then((res1) => {
-       return res.status(200).json(res1)
+      axios.post('https://api.ontraport.com/1/Contacts', sendData, axiosConfig)
+      .then((res) => {
+       return res;
        })
-       .catch((err1) => {
-        return err1;
+       .catch((err) => {
+        return err;
        })
-     // return res.status(200).json('good');
-     //return customerID;
-  
-    } catch (error) {
-      return error;
-    }
-    
+
   }
 
-
+  
 
 export default createCustomer

@@ -384,17 +384,17 @@
         }
 
         const {
-          registerCustomer: { customer },
+          registerUser: { user },
         } = data;
 
         handleRegisterSuccess();
         
         const authData = {
-          authToken: customer.jwtAuthToken,
-          user: customer,
+          authToken: user.jwtAuthToken,
+          user: user,
         };
         if (isBrowser) {
-        console.log(customer)
+        console.log(user)
         }
 
         setAuth(authData);

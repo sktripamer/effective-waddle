@@ -1788,18 +1788,17 @@ const drawNoContent = () => {
           label="English" 
         />
       </Video>
-      {/* <Ui>
+      <Ui>
       <Poster />
       <ClickToPlay />
           <Controls fullWidth>
             <ControlGroup>
-              <ScrubberControl />
+              <ScrubberControl hideTooltip noKeyboard />
             </ControlGroup>
                 
             <ControlGroup space="top">
-              <PlaybackControl />
-              <VolumeControl />
-              <TimeProgress separator="/"/>
+              <PlaybackControl hideTooltip keys={''} />
+              <VolumeControl hideTooltip muteKeys={''} noKeyboard/>
               <ControlSpacer />
               <CaptionControl />
 
@@ -1814,8 +1813,8 @@ const drawNoContent = () => {
 
             </ControlGroup>
           </Controls>
-        </Ui> */}
-         <DefaultUi />
+        </Ui>
+         {/* <DefaultUi /> */}
     </Player> }
   
       </div>

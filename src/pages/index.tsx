@@ -3,6 +3,7 @@
     Player,
     Ui,
     Video,
+    DefaultUi,
     Controls,
     Poster,
     Control,
@@ -1787,7 +1788,7 @@ const drawNoContent = () => {
           label="English" 
         />
       </Video>
-      <Ui>
+      {/* <Ui>
       <Poster />
       <ClickToPlay />
           <Controls fullWidth>
@@ -1813,8 +1814,8 @@ const drawNoContent = () => {
 
             </ControlGroup>
           </Controls>
-        </Ui>
-        
+        </Ui> */}
+         <DefaultUi />
     </Player> }
   
       </div>

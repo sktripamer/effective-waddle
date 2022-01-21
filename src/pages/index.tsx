@@ -262,9 +262,9 @@
       .oneOf([true], "The terms and conditions must be accepted."),
   });
   export const REGISTER_CUSTOMER = gql`
-  mutation RegisterCustomer( $input: RegisterCustomerInput! ) {
-      registerCustomer( input:$input ) {
-          customer {
+  mutation registerUser( $input: RegisterUserInput! ) {
+    registerUser( input:$input ) {
+          user {
               id
               username
               email

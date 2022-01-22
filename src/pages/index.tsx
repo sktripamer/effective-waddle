@@ -431,6 +431,7 @@
           body: values.email.toString(),
         });
         const intent = (await request.json());
+        console.log(intent)
         // Update your user in DB to store the customerID
         // updateUserInDB() is *your* implementation of updating a user in the DB
         if (intent == true) {

@@ -434,7 +434,7 @@
         console.log(intent)
         // Update your user in DB to store the customerID
         // updateUserInDB() is *your* implementation of updating a user in the DB
-        if (intent == false) {
+        if (intent === false) {
           console.log('user doesnt exist! registering and closing...')
           const authData = {
             authToken:'temp',

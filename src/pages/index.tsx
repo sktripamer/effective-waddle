@@ -388,7 +388,7 @@
           registerUser: { user },
         } = data;
 
-        handleRegisterSuccess();
+        
         
         const authData = {
           authToken: user.jwtAuthToken,
@@ -423,7 +423,35 @@
       setEmail(values.email);
       setUsername(values.email.toString().split('@')[0]);
       setDescription(values.phonefield);
-      register();
+      try {
+        // Retrieve email and username of the currently logged in user.
+        // getUserFromDB() is *your* implemention of getting user info from the DB
+        const request = await fetch('/api/user-exists', {
+          method: 'POST',
+          body: values.email.toString(),
+        });
+        const intent = (await request.json());
+        // Update your user in DB to store the customerID
+        // updateUserInDB() is *your* implementation of updating a user in the DB
+        if (intent == true) {
+          console.log('user doesnt exist! registering and closing...')
+          const authData = {
+            authToken:'temp',
+            user: 'temp',
+          };
+          setAuth(authData);
+          setLoggedIn(true);
+          handleRegisterSuccess();
+          register();
+        } else {
+          console.log('user already exists')
+        }
+      } catch (error) {
+        console.log('didnt get user exists');
+        console.log(error);
+        return null;
+      }
+    
   };
 
     // const handleRegister = async (event) => {

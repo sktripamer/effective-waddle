@@ -680,46 +680,15 @@
       console.log(values);
       setSubmitting(false);
 
-      
 
-      const bodied ={
-          "acf": {
-              "email1": values.email1,
-              "email2": values.email2,
-              "email3": values.email3,
-                }
-        } 
-        
-
-        const intent = await createIntent(values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken);
-        console.log(intent)
-
-  //     //   const response = await window
-  //     //   .fetch('/api/friends-email', {
-  //     //     method: `POST`,
-  //     //     headers: {
-  //     //       "content-type": "application/json",
-  //     //     },
-  //     //     body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken,
-  //     //   })
-  //     //   .then(res => res.json())
-  //     // console.log(response)
-
-  //       const request = await fetch('/api/friends-email', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json'
-  //         },
-  //         body: values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken
-  //       })
-    
-  //  const intent2 = (await request.json());
-  //  console.log(intent2)
   localStorage.removeItem("s2")
   localStorage.setItem("s3", "y")
   setVideoStatus(0)
   setBoxVisible('release')
   player.current!.play();
+  const intent = await createIntent(values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken);
+  console.log(intent)
+  
       //// Important
       // setEmail(values.email);
       // setDescription(values.phonefield);

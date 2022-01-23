@@ -505,7 +505,7 @@
       setVideoStatus(0)
       setBoxVisible('release')
       player.current!.play();
-     createOntra();
+     //createOntra();
     };
 
     return (

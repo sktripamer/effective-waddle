@@ -303,6 +303,8 @@
   const RegisterOpt = ({ setLoggedIn }) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
+    const [processing, setProcessing] = useState("no");
+    const [error, setError] = useState(null);
     const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -418,6 +420,7 @@
      */
 
     const onSubmit = async ( values: { email: React.SetStateAction<string>; phonefield: React.SetStateAction<string>; }, { setSubmitting }: any ) => {
+      setProcessing("yes");
       console.log(values);
       setSubmitting(false); //// Important
       setEmail(values.email);
@@ -445,6 +448,8 @@
           handleRegisterSuccess();
           register();
         } else {
+          setError('Email already in use. Try using another email.')
+          setProcessing("no");
           console.log('user already exists')
         }
       } catch (error) {
@@ -454,35 +459,6 @@
       }
     
   };
-
-    // const handleRegister = async (event) => {
-    //   console.log(event)
-    //   if (undefined !== window) {
-        
-    //     event.preventDefault();
-
-    //     // Validation and Sanitization.
-    //     // const validationResult = validateAndSanitizeRegisterForm({
-    //     //   //username,
-    //     //   email,
-    //     //   description
-    //     //   //password,
-    //     // });
-
-    //     // If the data is valid.
-    //    // if (validationResult.isValid) {
-    //       //setUsername(validationResult.sanitizedData.username);
-    //       //setPassword(validationResult.sanitizedData.password);
-    //      // setEmail(validationResult.sanitizedData.email);
-    //      // setDescription(validationResult.sanitizedData.description);
-    //      setEmail(email);
-    //      setDescription(description);
-    //       register();
-    //     // } else {
-    //     //   setClientSideError(validationResult);
-    //     // }
-    //   }
-    // };
 
     /**
      * Handle Register success.
@@ -509,7 +485,7 @@
     };
 
     return (
-      <div className="register-form col-md-6">
+        <div className={`register-form col-md-6 ${processing}`}>
         {/* Title */}
         <h4 className="mb-2">{heroText}</h4>
         <div className="more-details">{moreDetails}</div>
@@ -534,37 +510,7 @@
             )
           : ""}
 
-        {/* Register Form */}
-        {/* <form className="mt-1" onSubmit={(event) => handleRegister(event)}>
-          {/* Username */}
-          {/* <div className="form-group">
-            <label className="lead mt-1" htmlFor="description">
-              phone
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="description"
-              placeholder="Enter phone"
-              value={description}
-              onChange={(event) => setDescription(event.target.value)}
-            />
-          </div> */}
-
-          {/* Username */}
-          {/* <div className="form-group">
-            <label className="lead mt-1" htmlFor="email">
-              Email
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-          </div> */}
+      
             
             <FormikStepper
             /// Accept all Formik props
@@ -588,6 +534,11 @@
             <FormikStep>
             <div class="input-wrap">
             <InputField placeholder="Your Email" name="email" label="Email" type="email" />
+            {error && (
+        <div className="share-error card-error" role="alert">
+          {error}
+        </div>
+      )}
 </div>
 
             
@@ -600,46 +551,6 @@
             </FormikStep>
           </FormikStepper>
 
-            
-
-
-          {/* Password */}
-          {/* <div className="form-group">
-            <label className="lead mt-1" htmlFor="password">
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-          </div> */}
-
-          {/* Submit Button */}
-          {/* <div className="form-group">
-            <button
-              className="btn btn-dark"
-              disabled={registerLoading ? "disabled" : ""}
-              type="submit"
-            >
-              Keep watching
-            </button>
-          </div>
-
-          {/*	Loading */}
-          {/* {registerLoading ? (
-            <img
-              className="woo-next-cart-item-spinner"
-              //src={cartSpinnerGif}
-              alt="loading"
-            />
-          ) : (
-            ""
-          )}
-        </form> */}
       </div>
     );
   };
@@ -754,7 +665,26 @@
     const {moreDetails, setDetails } = useBetween(useShareableState);
     const {heroText, setHero } = useBetween(useShareableState);
 
-    function handleSubmit(e: { preventDefault: () => void; }) {
+    async function setThree(createtoken: string) {
+      try {
+        // Retrieve email and username of the currently logged in user.
+        // getUserFromDB() is *your* implemention of getting user info from the DB
+        const request = await fetch('/api/set-step-three', {
+          method: 'POST',
+          body: createtoken,
+        });
+        const intent = (await request.json());
+        // Update your user in DB to store the customerID
+        // updateUserInDB() is *your* implementation of updating a user in the DB
+        return intent;
+      } catch (error) {
+        console.log('Failed to set step three');
+        console.log(error);
+        return null;
+      }
+    }
+
+    async function handleSubmit(e: { preventDefault: () => void; }) {
 
 
       e.preventDefault();
@@ -768,6 +698,8 @@
       setVideoStatus(0)
       setBoxVisible('release')
         player.current!.play();
+        const intent = await setThree(JSON.parse(localStorage.auth).authToken);
+        console.log(intent)
       } else {
         setError('Code incorrect. Click one of the social media buttons and share the message to retrieve the code.');
       }

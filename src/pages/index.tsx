@@ -534,11 +534,7 @@
             <FormikStep>
             <div class="input-wrap">
             <InputField placeholder="Your Email" name="email" label="Email" type="email" />
-            {error && (
-        <div className="share-error card-error" role="alert">
-          {error}
-        </div>
-      )}
+
 </div>
 
             
@@ -550,7 +546,11 @@
               </div>
             </FormikStep>
           </FormikStepper>
-
+          {error && (
+        <div className="share-error card-error" role="alert">
+          {error}
+        </div>
+      )}
       </div>
     );
   };
@@ -1249,9 +1249,9 @@ const drawYesContent = () => {
     <button className='pay-btn' disabled={processingOld || succeededOld} id="submit">
       <span id="button-text">
         {processingOld ? (
-          <div className="spinner" id="spinner"></div>
+          <div className="spinner" id="spinner">Click to Place Order</div>
         ) : (
-          "Pre-Order Book"
+          "Click to Place Order"
         )}
       </span>
     </button>
@@ -1283,9 +1283,9 @@ const drawNoContent = () => {
     <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
       <span id="button-text">
         {processing ? (
-          <div className="spinner" id="spinner"></div>
+          <div className="spinner" id="spinner">Click to Place Order</div>
         ) : (
-          "Pre-Order Book"
+          "Click to Place Order"
         )}
       </span>
     </button>

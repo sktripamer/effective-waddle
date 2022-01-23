@@ -70,6 +70,7 @@ async function getCustomer(token) {
             "email1": emails[0],
             "email2": emails[1],
             "email3": emails[2],
+            "friendmail": true,
               }
       }
     let decoded;  

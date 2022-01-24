@@ -1749,7 +1749,6 @@ const drawNoContent = () => {
         />
       </Video>
       <Ui>
-      <Poster />
       <ClickToPlay />
           <Controls fullWidth>
             <ControlGroup>

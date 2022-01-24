@@ -1749,7 +1749,6 @@ const drawNoContent = () => {
         />
       </Video>
       <Ui>
-      <ClickToPlay />
           <Controls fullWidth>
             <ControlGroup>
               <ScrubberControl hideTooltip noKeyboard />
@@ -1759,7 +1758,7 @@ const drawNoContent = () => {
               <PlaybackControl hideTooltip keys={''} />
               <VolumeControl hideTooltip muteKeys={''} noKeyboard/>
               <ControlSpacer />
-              <CaptionControl />
+              <CaptionControl hideTooltip muteKeys={''} />
 
               <Control
         label="testelement"

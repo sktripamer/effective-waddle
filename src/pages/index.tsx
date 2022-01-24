@@ -1397,17 +1397,7 @@ const drawNoContent = () => {
     const currentVideoState = () => {
       return videoTime;
     }
-    useEffect(() => {    
 
-      if (isBrowser) {
-          var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
-          console.log(video)
-          video.oncanplaythrough = function() {
-          video.muted = true;
-           video.play();
-          }
-        }
- }, []);
     // const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])
     // Check if the user is validated already.
     // useMountEffect(LoginVerify)
@@ -1562,6 +1552,14 @@ const drawNoContent = () => {
         }
         const setPlay = () => {
           console.log('setting play')
+          if (isBrowser) {
+            var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
+            console.log(video)
+            video.addEventListener('canplay', (event) => {
+              video.muted = true;
+              video.play();
+            });
+          }
 
         }
 

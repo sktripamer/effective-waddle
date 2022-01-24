@@ -1666,9 +1666,9 @@ const drawNoContent = () => {
 
         {  typeof window !== 'undefined' && Player && <Player
         autoplay
-        muted
+        muted={true}
         onVmCurrentTimeChange={onTimeUpdate}
-        onVmMutedChange={onMutedChange}
+    
         playsinline={true}
         
         controls={false}

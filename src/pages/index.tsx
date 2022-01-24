@@ -1554,11 +1554,16 @@ const drawNoContent = () => {
           console.log('setting play')
           if (isBrowser) {
             var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
+            var myClick = (function( click_count ) {
+              var handler = function(event) {
+                video.muted = true;
+                video.play();
+                   video.removeEventListener('canplay', myClick);
+              };
+              return handler;
+          })( 0 );
             console.log(video)
-            video.addEventListener('canplay', (event) => {
-              video.muted = true;
-              video.play();
-            });
+            video.addEventListener('canplay', myClick);
           }
 
         }
@@ -1580,14 +1585,7 @@ const drawNoContent = () => {
         const playStart = () => {
           console.log('play started')
           setFirstPlay(true)
-          if (isBrowser) {
-            var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
-            console.log(video)
-            video.removeEventListener('canplay', (event) => {
-              video.muted = true;
-              video.play();
-            });
-          }
+
         }
         const onTimeUpdate = (event: CustomEvent<number>) => {
           

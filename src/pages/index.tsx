@@ -1792,6 +1792,7 @@ const drawNoContent = () => {
         />
       </Video>
       <Ui>
+      <ClickToPlay />
           <Controls fullWidth>
             <ControlGroup>
               <ScrubberControl hideTooltip noKeyboard />

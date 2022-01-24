@@ -1545,6 +1545,12 @@ const drawNoContent = () => {
             setPlayerSize("regular")
           }
         };
+        const emitError = (event) => {
+          console.log(event)
+        }
+        const setPlay = () => {
+          console.log('play ready')
+        }
         const onTimeUpdate = (event: CustomEvent<number>) => {
           
           const currentTimeb = event.detail;
@@ -1668,7 +1674,8 @@ const drawNoContent = () => {
         
         muted={true}
         onVmCurrentTimeChange={onTimeUpdate}
-    
+        onVmPlaybackReady={setPlay}
+        onVmError={emitError}
         playsinline={true}
         
         controls={false}

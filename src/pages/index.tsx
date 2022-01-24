@@ -1552,13 +1552,15 @@ const drawNoContent = () => {
         }
         const setPlay = () => {
           console.log('setting play')
-          if (isBrowser) {
+          if (isBrowser && firstPlay === true) {
             var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
             var myClick = (function( click_count ) {
               var handler = function(event) {
                 video.muted = true;
                 video.play();
-                   video.removeEventListener('canplay', myClick);
+                console.log('set mute')
+                video.removeEventListener('canplay', myClick);
+                console.log('removed listener')
               };
               return handler;
           })( 0 );

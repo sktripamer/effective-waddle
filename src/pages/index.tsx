@@ -1810,7 +1810,6 @@ const drawNoContent = () => {
               <PlaybackControl hideTooltip keys={''} />
               <VolumeControl hideTooltip muteKeys={''} noKeyboard/>
               <ControlSpacer />
-              <CaptionControl hideTooltip muteKeys={''} />
 
               <Control
         label="testelement"

@@ -1552,7 +1552,7 @@ const drawNoContent = () => {
         }
         const setPlay = () => {
           console.log('setting play')
-          if (isBrowser && firstPlay === true) {
+          if (isBrowser && firstPlay === false) {
             var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
             var myClick = (function( click_count ) {
               var handler = function(event) {

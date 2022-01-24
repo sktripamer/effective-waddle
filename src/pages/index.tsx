@@ -1555,10 +1555,9 @@ const drawNoContent = () => {
           if (isBrowser) {
             var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
             console.log(video)
-            video.addEventListener('canplay', (event) => {
               video.muted = true;
               video.play();
-            });
+            
           }
 
         }

@@ -1580,6 +1580,14 @@ const drawNoContent = () => {
         const playStart = () => {
           console.log('play started')
           setFirstPlay(true)
+          if (isBrowser) {
+            var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
+            console.log(video)
+            video.removeEventListener('canplay', (event) => {
+              video.muted = true;
+              video.play();
+            });
+          }
         }
         const onTimeUpdate = (event: CustomEvent<number>) => {
           

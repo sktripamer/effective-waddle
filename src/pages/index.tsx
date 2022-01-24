@@ -1378,6 +1378,7 @@ const drawNoContent = () => {
     const [activate, setActivate] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
     const [muteClass, setMuteClass] = useState("");
+    const [firstPlay, setFirstPlay] = useState(false);
     const [paused, setPaused] = useState(true);
     const {player } = useBetween(useShareableState);
     const [showAlertBar, setShowAlertBar] = useState(true);
@@ -1549,7 +1550,22 @@ const drawNoContent = () => {
           console.log(event)
         }
         const setPlay = () => {
+          console.log('setting play')
           player.current!.play();
+        }
+
+        const pausedSet = () => {
+          console.log('paused changed')
+        }
+        const playingChange = () => {
+          console.log('playing changed')
+        }
+        const playTransition = () => {
+          console.log('play transition begin')
+        }
+        const playStart = () => {
+          console.log('play started')
+          setFirstPlay(true)
         }
         const onTimeUpdate = (event: CustomEvent<number>) => {
           
@@ -1675,8 +1691,12 @@ const drawNoContent = () => {
         muted={true}
         onVmCurrentTimeChange={onTimeUpdate}
         onVmPlaybackReady={setPlay}
+        onVmPlaybackStarted={playStart}
         onVmError={emitError}
+        onVmPausedChange={pausedSet}
         playsinline={true}
+        onVmPlayingChange={playingChange}
+        onVmPlay={playTransition}
         
         controls={false}
         currentTime={currentTime}

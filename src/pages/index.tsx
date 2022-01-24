@@ -1377,6 +1377,7 @@ const drawNoContent = () => {
     //const [isLoggedIn, setLoggedIn] = useState(false);
     const [activate, setActivate] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
+    const [muteClass, setMuteClass] = useState("");
     const [paused, setPaused] = useState(true);
     const {player } = useBetween(useShareableState);
     const [showAlertBar, setShowAlertBar] = useState(true);
@@ -1529,8 +1530,13 @@ const drawNoContent = () => {
         console.log(currentVideoState())
         };
 
-
-    
+        const onMutedChange = () => {
+          setMuteClass("rev-mute")
+        }
+        const unmuteClick = () => {
+          player.current!.muted = false;
+          setMuteClass("rev-mute")
+        };
         const onClick = () => {
           setPaused(!paused);
           if (playerSize === "regular") {
@@ -1660,13 +1666,17 @@ const drawNoContent = () => {
 
         {  typeof window !== 'undefined' && Player && <Player
         onVmCurrentTimeChange={onTimeUpdate}
+        onVmMutedChange={onMutedChange}
         playsinline={true}
+        autoplay={true}
+        muted={true}
         controls={false}
         currentTime={currentTime}
         ref={player}
       theme="dark"
       style={{ '--vm-player-theme': '#CD5C5C' }}
     >
+      <div className={`tap-to-unmute ${muteClass}`} onClick={unmuteClick}></div>
               <div className={`rev-optin ${boxVisible}`}>
 <div className='time-section'>
               <div className='time-remaining'>{titleText}</div>

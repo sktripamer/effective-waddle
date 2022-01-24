@@ -1553,9 +1553,11 @@ const drawNoContent = () => {
           console.log('setting play')
           player.current!.canMutedAutoplay()
           .then(function(result) {
-            console.log(result)
+            if (result === true) {
+              player.current!.play();
+            }
           })
-         // player.current!.play();
+        
         }
 
         const pausedSet = () => {

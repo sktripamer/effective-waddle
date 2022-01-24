@@ -1555,9 +1555,10 @@ const drawNoContent = () => {
           if (isBrowser) {
             var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
             console.log(video)
+            video.addEventListener('canplay', (event) => {
               video.muted = true;
               video.play();
-            
+            });
           }
 
         }
@@ -1719,7 +1720,7 @@ const drawNoContent = () => {
       theme="dark"
       style={{ '--vm-player-theme': '#CD5C5C' }}
     >
-      <div className={`tap-to-unmute ${muteClass}`} onClick={unmuteClick}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'></div></div>
+      <div className={`tap-to-unmute ${muteClass}`} onClick={unmuteClick}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div>
               <div className={`rev-optin ${boxVisible}`}>
 <div className='time-section'>
               <div className='time-remaining'>{titleText}</div>

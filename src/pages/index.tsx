@@ -1551,7 +1551,8 @@ const drawNoContent = () => {
         }
         const setPlay = () => {
           console.log('setting play')
-          player.current!.play();
+          console.log(player.current!.canMutedAutoplay())
+         // player.current!.play();
         }
 
         const pausedSet = () => {

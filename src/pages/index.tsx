@@ -1549,7 +1549,7 @@ const drawNoContent = () => {
           console.log(event)
         }
         const setPlay = () => {
-          console.log('play ready')
+          player.current!.play();
         }
         const onTimeUpdate = (event: CustomEvent<number>) => {
           

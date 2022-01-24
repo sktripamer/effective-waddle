@@ -1712,7 +1712,8 @@ const drawNoContent = () => {
         playsinline={true}
         onVmPlayingChange={playingChange}
         onVmPlay={playTransition}
-        
+        oncanplay="this.muted=true"
+        autoplay
         controls={false}
         currentTime={currentTime}
         ref={player}

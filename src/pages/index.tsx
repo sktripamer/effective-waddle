@@ -1665,11 +1665,12 @@ const drawNoContent = () => {
         <div className={`rev-player ${playerSize}`}>
 
         {  typeof window !== 'undefined' && Player && <Player
+        autoplay
+        muted
         onVmCurrentTimeChange={onTimeUpdate}
         onVmMutedChange={onMutedChange}
         playsinline={true}
-        autoplay={true}
-        muted={true}
+        
         controls={false}
         currentTime={currentTime}
         ref={player}
@@ -1734,7 +1735,6 @@ const drawNoContent = () => {
               </div>
       <Video
         crossOrigin
-        poster='https://1768239509.rsc.cdn77.org/PK-1.jpg'
       >
         <source 
           data-src='https://1768239509.rsc.cdn77.org/pk.mp4'

@@ -1012,6 +1012,24 @@
     const [prevEmail, setPrevEmail] = useState("");
     const [prevBrand, setPrevBrand] = useState("");
     const email = JSON.parse(localStorage.auth).authToken;
+    async function setFive(createtoken: string) {
+      try {
+        // Retrieve email and username of the currently logged in user.
+        // getUserFromDB() is *your* implemention of getting user info from the DB
+        const request = await fetch('/api/set-step-five', {
+          method: 'POST',
+          body: createtoken,
+        });
+        const intent = (await request.json());
+        // Update your user in DB to store the customerID
+        // updateUserInDB() is *your* implementation of updating a user in the DB
+        return intent;
+      } catch (error) {
+        console.log('Failed to set step three');
+        console.log(error);
+        return null;
+      }
+    }
   useEffect(() => {
     if (isBrowser) {
     var style = document.createElement( 'style' )
@@ -1189,7 +1207,8 @@
       //console.log(spm)
       // Update your user in DB to store the customerID
       // updateUserInDB() is *your* implementation of updating a user in the DB
-    
+      const settingFive = await setFive(JSON.parse(localStorage.auth).authToken);
+      console.log(settingFive)
       localStorage.removeItem("s5")
       localStorage.setItem("s6", "y")
       setVideoStatus(0)
@@ -1223,7 +1242,8 @@
       //console.log(spm)
       // Update your user in DB to store the customerID
       // updateUserInDB() is *your* implementation of updating a user in the DB
-    
+      const settingFive = await setFive(JSON.parse(localStorage.auth).authToken);
+      console.log(settingFive)
       localStorage.removeItem("s5")
       localStorage.setItem("s6", "y")
       setVideoStatus(0)

@@ -1767,6 +1767,8 @@ const drawNoContent = () => {
               : ""}
               </div>
       <Video
+      autoplay
+      muted
         crossOrigin
       >
         <source 

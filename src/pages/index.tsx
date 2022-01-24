@@ -1552,6 +1552,11 @@ const drawNoContent = () => {
         }
         const setPlay = () => {
           console.log('setting play')
+
+
+        }
+        const loadStart = () => {
+          console.log('setting play')
           if (isBrowser) {
             var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
             console.log(video)
@@ -1700,6 +1705,7 @@ const drawNoContent = () => {
         muted={true}
         onVmCurrentTimeChange={onTimeUpdate}
         onVmPlaybackReady={setPlay}
+        onVmLoadStart={loadStart}
         onVmPlaybackStarted={playStart}
         onVmError={emitError}
         onVmPausedChange={pausedSet}

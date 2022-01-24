@@ -1665,8 +1665,9 @@ const drawNoContent = () => {
         <div className={`rev-player ${playerSize}`}>
 
         {  typeof window !== 'undefined' && Player && <Player
-        autoplay
+        
         muted={true}
+        autoplay
         onVmCurrentTimeChange={onTimeUpdate}
     
         playsinline={true}

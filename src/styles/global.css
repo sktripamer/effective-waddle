@@ -1476,8 +1476,7 @@ vm-player[audio] {
   background-size: contain;
   width: 22%;
   height: 40%;
-  position: absolute;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.0' width='150' height='150' viewBox='0 0 75 75' stroke='%23111' stroke-width='5'%3E%3Cpath d='m39,14-17,15H6V48H22l17,15z' fill='none' stroke-linejoin='round'/%3E%3Cpath d='m49,26 20,24m0-24-20,24' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.0' width='150' height='150' viewBox='0 0 75 75' stroke='%23111' stroke-width='5'%3E%3Cpath d='m39,14-17,15H6V48H22l17,15z' fill='none' stroke-linejoin='round'/%3E%3Cpath d='m49,26 20,24m0-24-20,24' fill='%23000' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 .tap-to-unmute-text {

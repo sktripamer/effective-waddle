@@ -1711,7 +1711,6 @@ const drawNoContent = () => {
 
         {  typeof window !== 'undefined' && Player && <Player
         
-        muted={true}
         onVmCurrentTimeChange={onTimeUpdate}
         onVmPlaybackReady={setPlay}
         onVmLoadStart={loadStart}

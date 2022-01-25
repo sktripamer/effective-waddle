@@ -1,1546 +1,1840 @@
-@font-face {
-  font-family: 'PT Mono';
-  src: url(../fonts/ptmono.woff2) format('woff2');
-}
+  import React, { useState, useEffect, useRef, useMemo } from "react";
+  import {
+    Player,
+    Ui,
+    Video,
+    DefaultUi,
+    Controls,
+    Poster,
+    Control,
+    ControlGroup,
+    Icon,
+    TimeProgress,
+    ScrubberControl,
+    ClickToPlay,
+    PlaybackControl,
+    VolumeControl,
+    ControlSpacer,
+    Captions,
+  } from '@vime/react';
+  import Layout from "../components/Layout";
+  //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
+  import useAuth from "../hooks/useAuth";
+  //import UnAuthContent from "../components/UnAuthContent";
+  import {loadStripe, StripeConstructorOptions} from '@stripe/stripe-js';
+  import {
+    CardElement,
+    Elements,
+    useStripe,
+    useElements,
+  } from '@stripe/react-stripe-js';
+  import { isEmpty, remove } from 'lodash';
+  import { gql , useMutation } from "@apollo/client";
+  import SignUpForm from "../components/SignUpForm";
+  //import RegisterOpt from "../components/RegisterOpt";
+  import UnAuthContent from "../components/UnAuthContent";
+  //import LoginVerify from "../components/LoginVerify";
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #373737;
-  -webkit-border-radius: 10px;
-  border-radius: 0;
-}
-
-::-webkit-scrollbar-thumb {
-background-color: #d6dee1;
-border-radius: 20px;
-border: 6px solid #a21826;
-background-clip: content-box;
-}
+  import InputField2 from '../components/inputfield';
 
 
-:root {
-  --border-radius: 8px;
+  import { useBetween } from "use-between";
+  import MessageAlert from "../components/MessageAlert";
+  import * as Yup from "yup";
+  import { FormikStepper, FormikStep, InputField, PhoneField } from "formik-stepper";
+  import {
+    EmailShareButton,
+    FacebookShareButton,
+    HatenaShareButton,
+    InstapaperShareButton,
+    LineShareButton,
+    LinkedinShareButton,
+    LivejournalShareButton,
+    MailruShareButton,
+    OKShareButton,
+    PinterestShareButton,
+    PocketShareButton,
+    RedditShareButton,
+    TelegramShareButton,
+    TumblrShareButton,
+    TwitterShareButton,
+    ViberShareButton,
+    VKShareButton,
+    WhatsappShareButton,
+    WorkplaceShareButton
+  } from "react-share";
+  // markup
 
-  /* Colors */
-  --color-white: #fff;
-  --color-gray-1: #102a43;
-  --color-gray-2: #243b53;
-  --color-gray-3: #334e68;
-  --color-gray-4: #486581;
-  --color-gray-5: #627d98;
-  --color-gray-6: #829ab1;
-  --color-gray-7: #9fb3c8;
-  --color-gray-8: #bcccdc;
-  --color-gray-9: #d9e2ec;
-  --color-gray-10: #f0f4f8;
-  --color-yellow-1: #8d2b0b;
-  --color-yellow-2: #b44d12;
-  --color-yellow-3: #cb6e17;
-  --color-yellow-4: #de911d;
-  --color-yellow-5: #f0b429;
-  --color-yellow-6: #f7c948;
-  --color-yellow-7: #fadb5f;
-  --color-yellow-8: #fce588;
-  --color-yellow-9: #fff3c4;
-  --color-yellow-10: #fffbea;
+  import FacebookIcon from "../images/FacebookIcon";
+  import TwitterIcon from "../images/TwitterIcon"
+  import WhatsappIcon from "../images/WhatsappIcon"
+  import LinkedinIcon from "../images/LinkedinIcon"
+  import EmailIcon from "../images/EmailIcon"
+  const promise = loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3');
 
-  /* Box Shadows */
-  --box-shadow-1: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
-    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
-  --box-shadow-2: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
-    rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
-  --box-shadow-3: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px,
-    rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
-  --box-shadow-4: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
-    rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
-  --box-shadow-5: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px,
-    rgba(0, 0, 0, 0.14) 0px 5px 8px 0px, rgba(0, 0, 0, 0.12) 0px 1px 14px 0px;
-  --box-shadow-6: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px,
-    rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
-  --box-shadow-7: rgba(0, 0, 0, 0.2) 0px 4px 5px -2px,
-    rgba(0, 0, 0, 0.14) 0px 7px 10px 1px, rgba(0, 0, 0, 0.12) 0px 2px 16px 1px;
-  --box-shadow-8: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px,
-    rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
-  --box-shadow-9: rgba(0, 0, 0, 0.2) 0px 5px 6px -3px,
-    rgba(0, 0, 0, 0.14) 0px 9px 12px 1px, rgba(0, 0, 0, 0.12) 0px 3px 16px 2px;
-  --box-shadow-10: rgba(0, 0, 0, 0.2) 0px 6px 6px -3px,
-    rgba(0, 0, 0, 0.14) 0px 10px 14px 1px, rgba(0, 0, 0, 0.12) 0px 4px 18px 3px;
-  --box-shadow-11: rgba(0, 0, 0, 0.2) 0px 6px 7px -4px,
-    rgba(0, 0, 0, 0.14) 0px 11px 15px 1px, rgba(0, 0, 0, 0.12) 0px 4px 20px 3px;
-  --box-shadow-12: rgba(0, 0, 0, 0.2) 0px 7px 8px -4px,
-    rgba(0, 0, 0, 0.14) 0px 12px 17px 2px, rgba(0, 0, 0, 0.12) 0px 5px 22px 4px;
-  --box-shadow-13: rgba(0, 0, 0, 0.2) 0px 7px 8px -4px,
-    rgba(0, 0, 0, 0.14) 0px 13px 19px 2px, rgba(0, 0, 0, 0.12) 0px 5px 24px 4px;
-  --box-shadow-14: rgba(0, 0, 0, 0.2) 0px 7px 9px -4px,
-    rgba(0, 0, 0, 0.14) 0px 14px 21px 2px, rgba(0, 0, 0, 0.12) 0px 5px 26px 4px;
-  --box-shadow-15: rgba(0, 0, 0, 0.2) 0px 8px 9px -5px,
-    rgba(0, 0, 0, 0.14) 0px 15px 22px 2px, rgba(0, 0, 0, 0.12) 0px 6px 28px 5px;
-}
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #f0f4f8;
-  color: var(--color-gray-2);
-}
+  const useShareableState = () => {
 
-html {
-  overflow-y: scroll;
-}
+    const [playing, setPlaying] = useState({
+      time: 0,
+      status: false,
+      speed: 1,
+      });
+      const player = useRef<HTMLVmPlayerElement>(null);
+      const [videoStatus, setVideoStatus] = useState(0)
+      const [videoTime, setVideoTime] = useState(0)
+      const [boxVisible, setBoxVisible] = useState("hidden");
+      const [prevLast4, setLast4] = useState("");
+      const [moreDetails, setDetails] = useState("");
+      const [error, setError] = useState(null);
+      const [heroText, setHero] = useState("");
+      const [videoDetails, setVideoDetails] = useState({
+        currentTime: 0,
+        isPlaying: 0,
+        speed: 1,
+        totalTime: 0,
+        });
+    return {
+      player,
+    playing,
+      setPlaying,
+      videoStatus,
+      setVideoStatus,
+      videoTime,
+      setVideoTime,
+      boxVisible,
+      setBoxVisible,
+      prevLast4,
+      setLast4,
+      moreDetails,
+      setDetails,
+      error,
+      setError,
+      heroText,
+      setHero,
+      videoDetails,
+      setVideoDetails
+    };
+  };
 
-h1 {
-  font-size: 2.1rem;
-  line-height: 1.2;
-}
-h2 {
-  font-size: 1.7rem;
-  line-height: 1.3;
-}
-h3 {
-  font-size: 1.5rem;
-  line-height: 1.4;
-}
-h4 {
-  font-size: 1.3rem;
-  line-height: 1.5;
-}
-h5 {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-h6 {
-  font-size: 0.8rem;
-  line-height: 1.7;
-}
 
-a {
-  color: inherit;
-}
 
-* {
-  box-sizing: border-box;
-}
+  const LoginVerify = () => {
+    if (typeof window !== "undefined") {
 
-main {
-  /* margin: 0 auto 4rem;
-  max-width: 1000px;
-  padding: 4rem 1rem 0; */
-}
-.header {
-  display: none;
-}
-.powered-by-stripe-small {
-  display:none;
-}
+      let authTokenData = localStorage.getItem("auth");
 
-.split-point-view {
-  width: 60%;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      margin-right: 20px;
+      if (!isEmpty(authTokenData)) {
+
+        authTokenData = JSON.parse(authTokenData);
+
+        if (!isEmpty(authTokenData.authToken)) {
+        return true
+        } else {
+        return false
+        }
+      } else {
+        return false
+      }
+    } // // this will fire only when loadDataOnlyOnce-reference changes
   }
-  
+  const step2verify = () => {
+    if (typeof window !== "undefined") {
 
+      let authTokenData = localStorage.getItem("s2");
 
-@media (max-width: 1050px) {
-  .final .payment div.more-details {
-    display: none;
-}
+      if (!isEmpty(authTokenData)) {
 
-.payment div.more-details {
-  display: block;
+        
+        return true
+      
+        
+      } else {
+        return false
+      }
+    } // // this will fire only when loadDataOnlyOnce-reference changes
   }
 
-  .selection-render #payment-form input.form-control.form-control {
-    height: 32px;
-    margin-bottom: 5px;
-}
 
-div.selection-render div#card-element {
-  padding: 3px 2px;
-}
-div.prev-name-on-card, div.prev-email, div.prev-last-box {
-  padding: 1px 10px;
-  margin-bottom: 4px;
-}
+  const step3verify = () => {
+    if (typeof window !== "undefined") {
 
-  div.final-mobile-hero {
-    display:block;
-    color: #e0e0e0;
-    font-weight: 700;
-    font-size: 18px;
-    font-style: italic;
-    }
+      let authTokenData = localStorage.getItem("s3");
+
+      if (!isEmpty(authTokenData)) {
+
+        
+        return true
+      
+        
+      } else {
+        return false
+      }
+    } // // this will fire only when loadDataOnlyOnce-reference changes
+  }
+
+  const step4verify = () => {
+    if (typeof window !== "undefined") {
+
+      let authTokenData = localStorage.getItem("s4");
+
+      if (!isEmpty(authTokenData)) {
+
+        
+        return true
+      
+        
+      } else {
+        return false
+      }
+    } // // this will fire only when loadDataOnlyOnce-reference changes
+  }
+
+  const step5verify = () => {
+    if (typeof window !== "undefined") {
+
+      let authTokenData = localStorage.getItem("s5");
+
+      if (!isEmpty(authTokenData)) {
+
+        
+        return true
+      
+        
+      } else {
+        return false
+      }
+    } // // this will fire only when loadDataOnlyOnce-reference changes
+  }
+
+  const validationSchema = Yup.object().shape({
+    // firstName: Yup.string().required("The First Name field is required"),
+    phonefield: Yup.string()
+    .required("Your phone number is required")
+    .min(14, "Please Enter a full US Number"),
+    email: Yup.string()
+      .email("The email must be a valid email address.")
+      .required("The Email field is required"),
+      // email1: Yup.string()
+      // .email("The email must be a valid email address.")
+      // .required("The Email field is required"),
+      // email2: Yup.string()
+      // .email("The email must be a valid email address.")
+      // .required("The Email field is required"),
+      // email3: Yup.string()
+      // .email("The email must be a valid email address.")
+      // .required("The Email field is required"),
+    // password: Yup.string()
+    //   .required("The Password field is required")
+    //   .matches(
+    //     /^(?=.*[A-Za-z])(?=.*\d)(?=.*)[A-Za-z\d]{8,}$/,
+    //     `Must Contain 8 Characters, One Uppercase, One Lowercase,
+    //     One Number and one special case Character [@$!%*#?&-_]`
+    //   ),
+    privacy: Yup.boolean()
+      .isTrue()
+      .oneOf([true], "The terms and conditions must be accepted."),
+  });
+
+  const validationSchema2 = Yup.object().shape({
+    // firstName: Yup.string().required("The First Name field is required"),
+    // phonefield: Yup.string().required("The phone field is required"),
+    // email: Yup.string()
+    //   .email("The email must be a valid email address.")
+    //   .required("The Email field is required"),
+      email1: Yup.string()
+      .email("The email must be a real address.")
+      .required("This field is required."),
+      email2: Yup.string()
+      .email("The email must be a real address.")
+      .required("This field is required."),
+      email3: Yup.string()
+      .email("The email must be a real address.")
+      .required("This field is required."),
+    // password: Yup.string()
+    //   .required("The Password field is required")
+    //   .matches(
+    //     /^(?=.*[A-Za-z])(?=.*\d)(?=.*)[A-Za-z\d]{8,}$/,
+    //     `Must Contain 8 Characters, One Uppercase, One Lowercase,
+    //     One Number and one special case Character [@$!%*#?&-_]`
+    //   ),
+    privacy: Yup.boolean()
+      .isTrue()
+      .oneOf([true], "The terms and conditions must be accepted."),
+  });
+  export const REGISTER_CUSTOMER = gql`
+  mutation registerUser( $input: RegisterUserInput! ) {
+    registerUser( input:$input ) {
+          user {
+              id
+              username
+              email
+              firstName
+              lastName
+              jwtAuthToken
+          }
+      }
+  }
+  `;
+
+  export const isUserValidated = () => {
+      let userLoggedInData = "";
     
-    div.final-mobile-text {
-    display:block;
-    color: #e0e0e0;
-    line-height: 20px;
-    font-size: 15px;
+      if (undefined !== window) {
+        let authTokenData = localStorage.getItem("auth");
+    
+        if (!isEmpty(authTokenData)) {
+          authTokenData = JSON.parse(authTokenData);
+    
+          if (!isEmpty(authTokenData.authToken)) {
+            userLoggedInData = authTokenData;
+          }
+        }
+      }
+    
+      return userLoggedInData;
+    };
+    
+    export const setAuth = (authData: { authToken: any; user: any; }) => {
+      localStorage.setItem("auth", JSON.stringify(authData));
+    };
+
+
+  const RegisterOpt = ({ setLoggedIn }) => {
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [processing, setProcessing] = useState("no");
+    const [error, setError] = useState(null);
+    const [description, setDescription] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
+    const [showAlertBar, setShowAlertBar] = useState(true);
+    const isBrowser = typeof window !== "undefined";
+    const { boxVisible, setBoxVisible } = useBetween(useShareableState);
+    const {playing, setPlaying } = useBetween(useShareableState);
+    const {player } = useBetween(useShareableState);
+    const {videoStatus, setVideoStatus } = useBetween(useShareableState);
+    const {moreDetails, setDetails } = useBetween(useShareableState);
+    const {heroText, setHero } = useBetween(useShareableState);
+    const {videoTime, setVideoTime } = useBetween(useShareableState);
+    const { videoDetails, setVideoDetails } =  useBetween(useShareableState);
+    // Check if the user is validated already.
+    /**
+     * Hide the Status bar on cross button click.
+     */
+    const onCloseButtonClick = () => {
+      setErrorMessage("");
+      setShowAlertBar(false);
+    };
+    async function createOntra() {
+      try {
+        // Retrieve email and username of the currently logged in user.
+        // getUserFromDB() is *your* implemention of getting user info from the DB
+        const ontradata = email + "@@" + description 
+        fetch('/api/ontraport-create', {
+          method: 'POST',
+          body: ontradata,
+        });
+      } catch (error1) {
+        console.log('Failed to create ontra');
+        console.log(error1);
+        return null;
+      }
+    }
+    /**
+     * Sets client side error.
+     *
+     * Sets error data to result of our client side validation,
+     * and statusbars to true so that its visible.
+     *
+     * @param {Object} validationResult Validation result data.
+     */
+    const setClientSideError = (validationResult: { errors: { email: React.SetStateAction<string>; }; }) => {
+      // if (validationResult.errors.password) {
+      //   setErrorMessage(validationResult.errors.password);
+      // }
+
+      if (validationResult.errors.email) {
+        setErrorMessage(validationResult.errors.email);
+      }
+
+      // if (validationResult.errors.username) {
+      //   setErrorMessage(validationResult.errors.username);
+      // }
+
+      setShowAlertBar(true);
+    };
+
+    // Register Mutation.
+    const [
+      register,
+      { loading: registerLoading, error: registerError },
+    ] = useMutation(REGISTER_CUSTOMER, {
+      variables: {
+        input: {
+          //clientMutationId: v4(), // Generate a unique id.,
+          username,
+          //password,
+          email,
+          description
+        },
+      },
+      onCompleted: (data) => {
+        // If error.
+        if (!isEmpty(registerError)) {
+          setErrorMessage(registerError.graphQLErrors[0].message);
+        }
+
+        const {
+          registerUser: { user },
+        } = data;
+
+        
+        
+        const authData = {
+          authToken: user.jwtAuthToken,
+          user: user,
+        };
+        if (isBrowser) {
+        console.log(user)
+        }
+
+        setAuth(authData);
+        setLoggedIn(true);
+      },
+      onError: (error) => {
+        if (error) {
+          if (!isEmpty(error)) {
+            setErrorMessage(error.graphQLErrors[0].message);
+          }
+        }
+      },
+    });
+
+    /**
+     * Handles user registration.
+     *
+     * @param {object} event Event Object.
+     * @return {void}
+     */
+
+    const onSubmit = async ( values: { email: React.SetStateAction<string>; phonefield: React.SetStateAction<string>; }, { setSubmitting }: any ) => {
+      setProcessing("yes");
+      console.log(values);
+      setSubmitting(false); //// Important
+      setEmail(values.email);
+      setUsername(values.email.toString().split('@')[0]);
+      setDescription(values.phonefield);
+      try {
+        // Retrieve email and username of the currently logged in user.
+        // getUserFromDB() is *your* implemention of getting user info from the DB
+        const request = await fetch('/api/user-exists', {
+          method: 'POST',
+          body: values.email.toString(),
+        });
+        const intent = (await request.json());
+        console.log(intent)
+        // Update your user in DB to store the customerID
+        // updateUserInDB() is *your* implementation of updating a user in the DB
+        if (intent === false) {
+          console.log('user doesnt exist! registering and closing...')
+          const authData = {
+            authToken:'temp',
+            user: 'temp',
+          };
+          setAuth(authData);
+          setLoggedIn(true);
+          handleRegisterSuccess();
+          register();
+        } else {
+          setError('Email already in use. Try using another email.')
+          setProcessing("no");
+          console.log('user already exists')
+        }
+      } catch (error) {
+        console.log('didnt get user exists');
+        console.log(error);
+        return null;
+      }
+    
+  };
+
+    /**
+     * Handle Register success.
+     *
+     * @return {void}
+     */
+    const handleRegisterSuccess = () => {
+      // Set form fields value to empty.
+      setErrorMessage("");
+      //setUsername("");
+      //setPassword("");
+
+      // localStorage.setItem( 'registration-success', 'yes' );
+
+      // Add a message.
+      setSuccessMessage(
+        "Please click the link in your email to verify your email and continue watching"
+      );
+      localStorage.setItem("s2", "y");
+      setVideoStatus(0)
+      setBoxVisible('release')
+      player.current!.play();
+     //createOntra();
+    };
+
+    return (
+        <div className={`register-form col-md-6 ${processing}`}>
+        {/* Title */}
+        <h4 className="mb-2">{heroText}</h4>
+        <div className="more-details">{moreDetails}</div>
+        {/* Error Message */}
+        {"" !== errorMessage
+          ? showAlertBar && (
+              <MessageAlert
+                message={errorMessage}
+                success={false}
+                onCloseButtonClick={onCloseButtonClick}
+              />
+            )
+          : ""}
+
+        {"" !== successMessage
+          ? showAlertBar && (
+              <MessageAlert
+                message={successMessage}
+                success={true}
+                onCloseButtonClick={onCloseButtonClick}
+              />
+            )
+          : ""}
+
+      
+            
+            <FormikStepper
+            /// Accept all Formik props
+            onSubmit={onSubmit} /// onSubmit Function
+            
+            initialValues={{
+              phonefield: "",
+              email: "",
+            }}
+            validationSchema={validationSchema}
+            labelsColor="secondary" /// The text label color can be root variables or css => #fff
+           // withStepperLine /// false as default and If it is false, it hides stepper line
+            nextBtnLabel="Next" /// Next as default
+            prevBtnLabel="Back" /// Prev as default
+            submitBtnLabel="Keep Watching" /// Submit as default
+            nextBtnColor="primary" /// as default and The color can be root variables or css => #fff
+            prevBtnColor="danger" /// as default and The color can be root variables or css => #fff
+            submitBtnColor="success" /// as default and The color can be root variables or css => #fff
+          >
+            {/*  First Step */}
+            <FormikStep>
+            <div class="input-wrap">
+            <InputField placeholder="Your Email" name="email" label="Email" type="email" />
+
+</div>
+
+            
+            </FormikStep>
+            {/* Second Step */}
+            <FormikStep>
+            <div class="input-wrap phone-wrap">
+              <InputField onKeyPress={(e)=>{e.target.keyCode === 13 && onSubmit;}} placeholder="Your Phone" name="phonefield" label="Phone" type="tel"/>
+              </div>
+            </FormikStep>
+          </FormikStepper>
+          {error && (
+        <div className="share-error card-error" role="alert">
+          {error}
+        </div>
+      )}
+      </div>
+    );
+  };
+
+
+  const StepTwo = () => {
+    const {playing, setPlaying } = useBetween(useShareableState);
+    const {videoStatus, setVideoStatus } = useBetween(useShareableState);
+    const {videoTime, setVideoTime } = useBetween(useShareableState);
+    const { boxVisible, setBoxVisible } = useBetween(useShareableState);
+    const { videoDetails, setVideoDetails } =  useBetween(useShareableState);
+    const {moreDetails, setDetails } = useBetween(useShareableState);
+    const {heroText, setHero } = useBetween(useShareableState);
+    const {player } = useBetween(useShareableState);
+
+    async function createIntent(createtoken: string) {
+      try {
+        // Retrieve email and username of the currently logged in user.
+        // getUserFromDB() is *your* implemention of getting user info from the DB
+        const request = await fetch('/api/friends-email', {
+          method: 'POST',
+          body: createtoken,
+        });
+        const intent = (await request.json());
+        // Update your user in DB to store the customerID
+        // updateUserInDB() is *your* implementation of updating a user in the DB
+        return intent;
+      } catch (error) {
+        console.log('Failed to set emails');
+        console.log(error);
+        return null;
+      }
     }
 
-    div.content-section {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      height: 100%;
-      justify-content: center;
-      align-items: center;
+    const onSubmit = async ( values: { email1: string; email2: string; email3: string; }, { setSubmitting }: any ) => {
+
+      
+      console.log(values);
+      setSubmitting(false);
+
+
+  localStorage.removeItem("s2")
+  localStorage.setItem("s3", "y")
+  setVideoStatus(0)
+  setBoxVisible('release')
+  player.current!.play();
+  const intent = await createIntent(values.email1 + '@@' + values.email2 + '@@' + values.email3 + '@@' + JSON.parse(localStorage.auth).authToken);
+  console.log(intent)
+  
+      //// Important
+      // setEmail(values.email);
+      // setDescription(values.phonefield);
+
+
+
+      
+  };
+
+    return (
+      <div className="register-form col-md-6 steptwo">
+      {/* Title */}
+      <h4 className="mb-2">{heroText}</h4>
+      <div className="more-details">{moreDetails}</div>
+      <FormikStepper
+      /// Accept all Formik props
+      onSubmit={onSubmit} /// onSubmit Function
+      initialValues={{
+        email1: "",
+        email2: "",
+        email3: "",
+      }}
+      validationSchema={validationSchema2}
+      labelsColor="secondary" /// The text label color can be root variables or css => #fff
+      withStepperLine /// false as default and If it is false, it hides stepper line
+      nextBtnLabel="step" /// Next as default
+      prevBtnLabel="return" /// Prev as default
+      submitBtnLabel="Keep Watching" /// Submit as default
+      nextBtnColor="primary" /// as default and The color can be root variables or css => #fff
+      prevBtnColor="danger" /// as default and The color can be root variables or css => #fff
+      submitBtnColor="success" /// as default and The color can be root variables or css => #fff
+    >
+      {/*  First Step */}
+      <FormikStep
+        label="Profile Info" /// The text label of Step
+        withIcons="fa fa-user" // to add icon into the circle must add icon as class Name like Fontawesome
+        withNumbers /// If true, it hides the icon and shows the step number
+        iconColor="white" /// The color can be root variables or css => #fff
+        circleColor="danger" /// The color can be root variables or css => #fff
+      >
+        <InputField autocomplete="no" placeholder="Your Friend's Email" name="email1" label="Email" type="email" />
+        <InputField autocomplete="no" placeholder="Your Family's Email" name="email2" label="Email" type="email" />
+        <InputField autocomplete="no" placeholder="Your Coworker's Email" name="email3" label="Email" type="email" />
+      </FormikStep>
+    </FormikStepper>
+    </div>
+    )
+
+
   }
-  div.split-point-view {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    margin-right: 20px;
-    height: 100%;
-    justify-content: center;
-}
-div.image-section {
-  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/book-example-min.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 35%;
-  width: 100%;
-}
 
-div.info-section {
-  display: flex;
-  flex-direction: column;
-  margin-top: 8px;
-  width: 100%;
-height: auto;
-  align-items: center;
-}
 
-div.info-section>ul>li {
-    color: #dedede;
-    font-size: 15px;
-    margin-bottom: 2px;
-    padding-left: 10px;
-    text-align: left;
-}
+  const StepThree = () => {
+    const {playing, setPlaying } = useBetween(useShareableState);
+    const {videoStatus, setVideoStatus } = useBetween(useShareableState);
+    const {videoTime, setVideoTime } = useBetween(useShareableState);
+    const shareUrl = 'revrevdev.xyz';
+    const { boxVisible, setBoxVisible } = useBetween(useShareableState);
+    const title = 'My code to continue watching is USA123. Watch along with me!';
+    const shareForm = useRef(null);
+    const [error, setError] = useState(null);
+    const {player } = useBetween(useShareableState);
+    const {moreDetails, setDetails } = useBetween(useShareableState);
+    const {heroText, setHero } = useBetween(useShareableState);
 
-div.pay-section {
-  width: 40%;
-  top: 50%;
-margin-top: 8px;
-}
+    async function setThree(createtoken: string) {
+      try {
+        // Retrieve email and username of the currently logged in user.
+        // getUserFromDB() is *your* implemention of getting user info from the DB
+        const request = await fetch('/api/set-step-three', {
+          method: 'POST',
+          body: createtoken,
+        });
+        const intent = (await request.json());
+        // Update your user in DB to store the customerID
+        // updateUserInDB() is *your* implementation of updating a user in the DB
+        return intent;
+      } catch (error) {
+        console.log('Failed to set step three');
+        console.log(error);
+        return null;
+      }
+    }
 
-.final h4.mb-2 {
-  display: none;
-}
+    async function handleSubmit(e: { preventDefault: () => void; }) {
 
-div.more-details {
-  display: none;
- }
 
-div.rev-optin.reveal.final>div.payment.register-form.col-md-6 {
+      e.preventDefault();
+      const form = shareForm.current
+      const coder = form['sharecode'].value.toUpperCase();
 
-  margin-top: 4px;
+      if (coder === 'USA123') {
+
+      localStorage.removeItem("s3")
+      localStorage.setItem("s4", "y")
+      setVideoStatus(0)
+      setBoxVisible('release')
+        player.current!.play();
+        const intent = await setThree(JSON.parse(localStorage.auth).authToken);
+        console.log(intent)
+      } else {
+        setError('Code incorrect. Click one of the social media buttons and share the message to retrieve the code.');
+      }
+
+    }
+
+
+
+    return (
+  <div className="register-form col-md-6">
+    <h4 className="mb-2">{heroText}</h4>
+    <div className="more-details">{moreDetails}</div>
+    <div className='sharesection'>
+      <div className="Demo__container">
+      <div className="Demo__some-network">
+        <FacebookShareButton
+          url={shareUrl}
+          quote={title}
+          className="Demo__some-network__share-button"
+        >
+          <FacebookIcon size={32} round />
+        </FacebookShareButton>
+
+      </div>
+
+
+      <div className="Demo__some-network">
+        <TwitterShareButton
+          url={shareUrl}
+          title={title}
+          className="Demo__some-network__share-button"
+        >
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
+
+        <div className="Demo__some-network__share-count">&nbsp;</div>
+      </div>
+
+      <div className="Demo__some-network">
+        <WhatsappShareButton
+          url={shareUrl}
+          title={title}
+          separator=":: "
+          className="Demo__some-network__share-button"
+        >
+          <WhatsappIcon size={32} round />
+        </WhatsappShareButton>
+
+        <div className="Demo__some-network__share-count">&nbsp;</div>
+      </div>
+
+      <div className="Demo__some-network">
+        <LinkedinShareButton url={shareUrl} className="Demo__some-network__share-button">
+          <LinkedinIcon size={32} round />
+        </LinkedinShareButton>
+      </div>
+
+
+      <div className="Demo__some-network">
+        <EmailShareButton
+          url={shareUrl}
+          subject={title}
+          body="body"
+          className="Demo__some-network__share-button"
+        >
+          <EmailIcon size={32} round />
+        </EmailShareButton>
+      </div>
+    
+    </div>
+    {error && (
+        <div className="share-error card-error" role="alert">
+          {error}
+        </div>
+      )}
+    <div className='share-container'>
+    <form id="share-form" ref={shareForm} onSubmit={handleSubmit}>
+    <input className={'form-control form-control'} placeholder="Your Code (share to retrieve it)" name={'sharecode'}/>
+    <button className='btn share-btn' id="submit">
+    Keep Watching
+  </button>
+  </form>
+  </div>
+  </div>
+  </div>
+    )
+
+
   }
 
-  div.rev-optin-mobile.final>h4.mb-2 {
-    display: block;
-}
+  const StepFour = () => {
+    const {playing, setPlaying } = useBetween(useShareableState);
+    const {videoStatus, setVideoStatus } = useBetween(useShareableState);
+    const {videoTime, setVideoTime } = useBetween(useShareableState);
+    const {player } = useBetween(useShareableState);
+
+  const [succeeded, setSucceeded] = useState(false);
+  const {error, setError } = useBetween(useShareableState);
+  const [processing, setProcessing] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState("");
+  const nameForm = useRef(null);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [showAlertBar, setShowAlertBar] = useState(true);
+  const { boxVisible, setBoxVisible } = useBetween(useShareableState);
+  const [status, setStatus] = React.useState(0) // 0: no show, 1: show yes, 2: show no.
+  const stripe = useStripe();
+  const elements = useElements();
+  const {moreDetails, setDetails } = useBetween(useShareableState);
+  const {heroText, setHero } = useBetween(useShareableState);
+  // useEffect(() => {
+  //   window
+  //     .fetch("/api/payment-intent", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //            amount: 500,
+  //       }),
+  //     })
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((body) => {
+  //       console.log(body)
+  //       setClientSecret(body.body.client_secret);
+  //     });
+  // }, []);
+
+  const radioHandler = (status) => {
+    setStatus(status);
+  };
 
 
+  async function createIntent() {
+    try {
+      // Retrieve email and username of the currently logged in user.
+      // getUserFromDB() is *your* implemention of getting user info from the DB
+      const form = nameForm.current
+      const email = form['firstname'].value + "@@" + JSON.parse(localStorage.auth).authToken 
+      const request = await fetch('/api/create-intent', {
+        method: 'POST',
+        body: email,
+      });
+      const intent = (await request.json());
+      // Update your user in DB to store the customerID
+      // updateUserInDB() is *your* implementation of updating a user in the DB
+      return intent;
+    } catch (error1) {
+      console.log('Failed to create intent');
+      console.log(error1);
+      return null;
+    }
+  }
 
-.rev-optin-mobile.final .time-section {
-  display: none;
+  async function setPayment(cID) {
+    try {
+      // Retrieve email and username of the currently logged in user.
+      // getUserFromDB() is *your* implemention of getting user info from the DB
+
+      const email = cID + "@@" + JSON.parse(localStorage.auth).authToken 
+      const request = await fetch('/api/set-payment-method', {
+        method: 'POST',
+        body: email,
+      });
+      const intent = (await request.json());
+      // Update your user in DB to store the customerID
+      // updateUserInDB() is *your* implementation of updating a user in the DB
+      return intent;
+    } catch (error2) {
+      console.log('Failed to create intent');
+      console.log(error2);
+      return null;
+    }
+  }
+
+
+  const cardStyle = {
+    style: {
+      base: {
+        color: "#fff",
+        iconColor: "#fff",
+        fontFamily: "Arial, sans-serif",
+        fontSmoothing: "antialiased",
+        fontSize: "16px",
+        "::placeholder": {
+          color: "#9e9e9e",
+        },
+      },
+      invalid: {
+        color: "#fa755a",
+        iconColor: "#fa755a",
+      },
+    },
+  };
+
+  // const getCustomer = async (ev) => {
+  //   ev.preventDefault();
+  //   const custobj = await getCustomerObj();
+  //   console.log(custobj)
+  // }
+
+
+  const handleChange = async (event: { empty: boolean | ((prevState: boolean) => boolean); error: { message: any; }; }) => {
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
+    //if nameform ref name is 4+ characters and email is valid, do this. else don't do this.
+  };
+
+  const handleSubmit = async (ev: { preventDefault: () => void; }) => {
+    const form = nameForm.current
+    ev.preventDefault();
+    setProcessing(true);
+    const intent = await createIntent();
+    console.log(intent)
+    //setClientSecret(intent.body.client_secret);
+    const payload = await stripe.confirmCardPayment(intent.body.client_secret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+        billing_details: {
+          name:  form['firstname'].value,
+          email: form['fullname'].value,
+        }
+      },
+     
+    });
+
+    if (payload.error) {
+      setError(`${payload.error.message}`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
+      //fetch wth intent.body.customer
+      const spm = await setPayment(intent.body.customer);
+      console.log(spm)
+      // Update your user in DB to store the customerID
+      // updateUserInDB() is *your* implementation of updating a user in the DB
+    
+      localStorage.removeItem("s4")
+      localStorage.setItem("s5", "y")
+      setVideoStatus(0)
+      setBoxVisible('release')
+        player.current!.play()
  
-}
-
-
-  .credit-card-last4:before {
-    content: "**** ";
-    color: #747474;
-    font-size: 16px;
-  }
-  
-  div.register-form h4 {
-    font-size: 20px;
-  }
-  div.powered-by-stripe-small {
-    background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/stripe-small-min.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 32px;
-    width: 126px;
-    margin-top: 32px;
-    position: absolute;
-    display: block;
-  }
-  div.powered-by-stripe {
-    display: none;
-  }
-  div.outer-star>.spinnerz:after {
-    height: 3.1rem;
-  }
-  div.time-remaining {
-    font-size: 2.2rem;
-    margin-top: -2px;
-}
-div.rev-optin>div.register-form.col-md-6 {
-  margin: 4rem auto 0;
-}
-  div.spinnerz {
-    margin-top:5px;
-  }
-
-  div.regular {
-
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
-div.large {
-  padding-left: 0rem;
-  padding-right: 0rem;
-}
-
-div.rev-optin {
- 
-  z-index: 121;
-  width: 100%;
-}
-
-div.rev-optin:after {
-  background: linear-gradient(
-68deg,#3200838c 50%,rgb(35 35 35/5%));
-}
-
-}
-.content-section {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  height: 100%;
-  justify-content: center;
-}
-
-.info-section {
-  display: flex;
-  flex-direction: column;
-  height: 80%;
-  justify-content: center;
-  width: 50%;
-}
-
-.info-section>ul>li {
-  color: #dedede;
-  font-size: 18px;
-  margin-bottom: 20px;
-  padding-left: 10px;
-  text-align: left;
-}
-
-.image-section {
-  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/book-example-min.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 75%;
-  width: 50%;
-}
-form#payment-form-old {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin-top: -15px;
-  flex-direction: column;
-}
-
-#payment-form-old > .pay-btn {
-  width: 100%;
-}
-.selection-render .pay-btn {
-  width: 100%;
-}
-/*  NUMBER FORMATTING */
-.prev-last-box {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  background: linear-gradient(
-    0deg
-    ,rgb(255 255 255/10%),hsla(0,0%,100%,0) 70%);
-  border: 3px solid #bd9bd4;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  border-radius: 3px;
-  color: #868686;
-  padding: 4px 10px;
-  transition: all .2s .15s;
-  text-align: left;
-  font-size: 1rem;
-  font-weight: 400;
-  cursor: default;
-  margin-bottom: 8px;
-}
-.selection-render .card-error {
-  position: initial;
-  height: 0px;
-}
-.powered-by-stripe-final {
-  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/stripe-small-min.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 48px;
-  width: 177px;
-  margin: 0 auto;
-  margin-bottom: 10px;
-}
-.prev-name-on-card, .prev-email {
-  background: linear-gradient(
-    0deg
-    ,rgb(255 255 255/10%),hsla(0,0%,100%,0) 70%);
-  border: 3px solid #bd9bd4;
-  border-top: none;
-  border-right: none;
-  border-left: none;  
-  border-radius: 3px;
-  color: #868686;
-  flex: none;
-  padding: 4px 10px;
-  transition: all .2s .15s;
-  text-align: left;
-  display: block;
-  font-size: 1rem;
-  font-weight: 400;
-  cursor: default;
-  margin-bottom: 8px;
-}
-.selection-section {
-  border-bottom: 2px solid #d522bd;
-  color: #fff;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  margin-bottom: 16px;
-  margin-top: 12px;
-  padding-bottom: 20px;
-  margin-left: auto;
-  max-width: 260px;
-  margin-right: auto;
-}
-
-.rev-optin.reveal.final > .time-section {
-  display: none;
-}
-
-.rev-optin.reveal.final {
-  width: 100%;
-  z-index: 120;
-  background: #320083d1;
-}
-
-.final-mobile-hero {
-  display:none;
-  }
-  
-  .final-mobile-text {
-  display:none;
-  }
-.rev-optin.reveal.final > div.register-form.col-md-6 {
-  margin-top: 30px;
-  height: 90%;
-}
-.card-error{
-  margin-top: -15px;
-  color: #f00;
-  font-size: 14px;
-  position: absolute;
-}
-.card-error-mobile {
-  color: #f00;
-  font-size: 14px;
-  position: absolute;
-  left: 50%;
-    transform: translate(-50%, 0%);
-}
-.pay-btn:disabled {
-  opacity: 0.55;
-  cursor: default;
-}
-.pay-section {
-  width: 30%;
-  margin-top: 40px;
-}
-.pay-btn {
-  padding: 0;
-  background: linear-gradient( 
-90deg
-, rgba(255,34,51,1) 0%, rgba(255,34,120,1) 100%);
-  border: 2px solid rgb(255 0 94);
-  font-weight: 700;
-  color: #fff;
-  padding: 0 10px;
-  height: 44px;
-  border-radius: 3px;
-  float: right;
-  margin-top: 10px;
-  opacity: 1;
-}
-
-
-.previous-payment.\30 {
-  background: linear-gradient( 
-    294deg
-     ,#a2f,#ff2278);
-}
-
-.new-payment.\31 {
-  background: linear-gradient( 
-294deg
-,#a2f,#ff2278);
-}
-.new-payment {
-  border-radius: 3px;
-  border: 2px solid #ff005e;
-  padding: 4px;
-  cursor: pointer;
-}
-button.btn.btn-danger {
-  background: none;
-  border: 2px solid #7d4360;
-}
-button.ml-auto.btn.btn-success:focus {
-  box-shadow: none;
-}
-button.ml-auto.btn.btn-primary:after {
-  content: " \203A";
-  font-size: 30px;
-  line-height: 0px;
-  position: relative;
-  top: 2px;
-}
-#share-form input.form-control.form-control {
-  width: 60%;
-}
-form#share-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.btn.share-btn {
-  background: linear-gradient( 
-90deg, rgba(255,34,51,1) 0%, rgba(255,34,120,1) 100%);
-  border: 2px solid rgb(255 0 94);
-  font-weight: 700;
-  color:#fff;
-  width: 60%;
-}
-.btn.share-btn:hover {
-color:#fff;
-}
-.btn.share-btn:after {
-  content: ' \203A';
-  font-size: 30px;
-  line-height: 0px;
-  position: relative;
-  top: 2px;
-}
-button.ml-auto.btn.btn-success {
-  background: linear-gradient( 
-90deg, rgba(255,34,51,1) 0%, rgba(255,34,120,1) 100%);
-  border: 2px solid rgb(255 0 94);
-  font-weight: 700;
-}
-button.ml-auto.btn.btn-success:after {
-  content: ' \203A';
-  font-size: 30px;
-  line-height: 0px;
-  position: relative;
-  top: 2px;
-}
-.rev-optin > div.register-form.col-md-6 {
-  margin: 5.5rem auto 0;
-  max-width: 100%;
-}
-.input-wrap {
-  margin-top: 20px;
-  opacity: 0;
-  animation: newput .5s forwards;
-
-}
-
-.rev-optin-mobile.reveal {
-  opacity: 1;
-}
-.rev-optin-mobile.hidden {
-  opacity: 0;
-}
-
-.rev-optin-mobile {
-  transition: .8s all;
-  display:none;
-}
-div.rev-optin-mobile > h4.mb-2 {
-  color: #e0e0e0;
-  font-family: Verdana;
-  font-size: 24px;
-  font-style: italic;
-  font-weight: 700;
-  text-shadow: -1px -1px 1px #111, 2px 2px 1px #3c3c3c;
-  text-align: center;
-  margin-top: 3.2em;
-}
-
-div.rev-optin-mobile > div.time-section >div.star-spinner > div.outer-star>.spinnerz:after {
-  margin-top: -70px;
-  height: 4rem;
-}
-div.rev-optin-mobile > div.time-section > .time-remaining {
-  margin-top: -70px;
-  font-size: 2.7rem;
-}
-button.ml-auto.btn.btn-primary {
-  background: linear-gradient( 
-90deg, rgba(255,34,51,1) 0%, rgba(255,34,120,1) 100%);
-  border: 2px solid rgb(255 0 94);
-  font-weight: 700;
-}
-input.form-control.form-control:focus {
-box-shadow: none;
-}
-
-.Demo__container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.sharesection {
-  height: 45%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.Demo__some-network {
-  margin-left: 4px;
-}
-.steptwo input.form-control.form-control {
-  width: 100%;
-}
-div#card-element {
-  background: linear-gradient( 
-302deg
-, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
-  border: 3px solid rgb(189, 155, 212);
-  color: rgb(247, 247, 247);
-  padding: 6px 2px;
-}
-#payment-form input.form-control.form-control {
-  width: 100%;
-  margin-bottom: 8px;
-}
-
-.share-error.card-error {
-  position: static;
-  font-size: 12px;
-  display: block;
-  margin-top: -25px;
-}
-
-@media (max-width: 666px) {
-
-  
-form #share-form input.form-control.form-control {
-  width: 90%;
-  margin-bottom: 8px;
-}
-
-button.btn.share-btn {
- 
-  width: 90%;
-}
-  div.sharesection {
-    height: 80%;
-  }
-  div.card-error { 
-    display: none;
-  }
-  div.rev-optin {
-    display: flex;
-  }
-
-  div.powered-container {
-
-    margin-bottom: 0px;
-}
-  div.rev-optin > div.time-section > div.star-spinner > div.inner-star>.spinnerz:after, div.rev-optin > div.time-section >div.star-spinner > div.outer-star>.spinnerz:after {
- display:none;
-  }
-  .rev-optin-mobile {
-
-    display:block;
-  }
-div.register-form h4 {
-  display: none;
-}
-#payment-form input.form-control.form-control {
-  height: 32px;
-  margin-bottom: 5px;
-}
-div.payment div.more-details  {
-  display: none;
-}
-
-.payment div#card-element {
-  padding: 3px 2px;
-}
-div.rev-optin>div.payment.register-form.col-md-6 {
-  margin-top: 5px;
-  display: flex;
-  flex-direction: column;
-  margin-top: -2px;
-  justify-content: center;
-}
-div.rev-optin > div.time-section > div.time-remaining {
-display:none;
-
-  }
-  div.input-wrap>div>div>input.form-control.form-control {
-    height: 34px;
-  }
-  div.rev-optin>div.register-form.col-md-6 {
-    margin: 1.5rem auto 0;
-  }
-  div.steptwo > form > .position-relative.form-group {
-    margin-bottom: 3px;
-}
-
-div.steptwo > form > div.form-group > div.input-group > input.form-control.form-control {
-  padding: 0 10px;
-  width: 100%;
-  height: 34px;
-  border-radius: 0px;
-  margin-bottom: 10px;
-  flex: none;
-  transition: .2s .15s all;
-}
-div>small.form-text.text-danger {
-  margin-top: -14px;
-}
-div.rev-optin>div.register-form.col-md-6.steptwo {
-  margin: 0;
-  margin-top: -2px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-div.w-100.d-flex.justify-content-between {
-  margin-top: -8px;
-}
-.d-flex button.ml-auto.btn.btn-success {
-  padding: 0.25rem 0.75rem;
-}
-}
-.regular {
-  margin: 0 auto;
-  max-width: 1300px;
-  transition: .25s ease-out all;
-  padding-left: 4rem;
-  padding-right: 4rem;
-}
-.large {
-  margin: 0 auto;
-  max-width: 100%;
-  transition: .25s ease-out all;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-.more-details {
-  color: #d4d4d4;
-  line-height: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-weight: 500;
-  font-size: 17px;
-  margin-bottom: 20px;
-}
-
-.more-detail {
-  color: #d4d4d4;
-  font-size: 17px;
-  line-height: 20px;
-  margin-bottom: 8px;
-  padding-left: 20px;
-  padding-right: 20px;
-  text-align: center;
-  font-weight: 500;
-  text-shadow: 2px 2px 1px rgb(0 0 0 / 30%);
-}
-.rev-optin {
-  background: #32008385;
-  height: 100%;
-  opacity: 1;
-  position: absolute;
-  width: 50%;
-  left: 0px;
-  background-image:url("https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg");
-  z-index: 22;
-  transition: .8s all;
-  background-position: top right;
-  background-repeat: no-repeat;
-}
-
-.rev-optin.hidden {
-  opacity: 0;
-  left: -300px;
-  transition: .8s all  ease-in;
-  z-index: 22;
-}
-.rev-optin.release {
-  opacity: 0;
-  left: -300px;
-  z-index: 22;
-  transition: .8s all  ease-in;
-  
-}
-
-.rev-optin:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  background: linear-gradient(
-    68deg,#320083e0 50%,rgb(35 35 35/5%));
-}
-
-.register-form.col-md-6 {
-  flex: 0 0 100%;
-  max-width: 90%;
-  text-align: center;
-  margin: 11vh auto 0 auto;
-}
-
-.register-form {
-  z-index: 1;
-}
-
-.time-remaining {
-  text-shadow: #bbb 0 0 1px, #fff 0 -1px 2px, #313131ed 0 -3px 2px, rgb(0 0 0 / 95%) 0 10px 15px;
-  color: hsl(0deg 0% 100% / 50%);
-  z-index: 21;
-  position: absolute;
-  font-size: 3rem;
-  height: 6rem;
-  left: 50%;
-  FONT-WEIGHT: bold;
-  letter-spacing: -0.3rem;
-  margin-left: -2px;
-  transform: translate(-50%);
-}
-
-.spinnerz {
-  margin-top: 5px;
-}
-.star-spinner > .spinnerz {
-	height: 50%;
-	width: auto;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
-}
-
-
-.inner-star {
-
-		height: 100%;
-	width: auto;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
-	
-}
-
-.inner-star>.spinnerz:after {
-  clip-path: polygon(0 90%, 100% 90%, 100% 100%, 0% 100%);
-  animation: breathe 30s linear forwards;
-
-}
-.outer-star > .spinnerz:after {
-	content:'';
-  height: 4.6rem;
-  z-index: 1;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  right: 0;
-  width: auto;
-	background-repeat: no-repeat;
-	    background-position: center;
-	background-image: url("https://portal.revrevdev.xyz/wp-content/uploads/starline.svg");
-}
-.inner-star > .spinnerz:after {
-  height: 4.6rem;
-    z-index: 1;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    right: 0;
-    width: auto;
-	background-repeat: no-repeat;
-	    background-position: center;
-	content:'';
-	background-image: url("https://portal.revrevdev.xyz/wp-content/uploads/starfill.svg");
-}
-@keyframes breathe {
-  to {
-		clip-path: polygon(0 24%,100% 24%,100% 100%,0 100%);
-	}
-	
-}
-
-.card-charge {
-  font-size: 11px;
-  text-align: end;
-  color: #c5c5c5ab;
-  font-style: italic;
-  margin-bottom: -6px;
-}
-
-.header {
-  border-bottom: 2px solid var(--color-gray-9);
-}
-
-.nav {
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.nav li {
-  list-style: none;
-}
-
-.nav a {
-  display: block;
-  padding: 2rem;
-  text-decoration: none;
-}
-
-.error-message {
-  color: var(--color-yellow-1);
-}
-
-fieldset {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
-form label {
-  display: none;
-  font-size: 0.9rem;
-}
-
-form input,
-form textarea {
-  border: 2px solid var(--color-gray-9);
-  padding: 0.5rem;
-  border-radius: var(--border-radius);
-  margin: 0.1rem 0 1rem;
-  width: 100%;
-}
-.input-wrap > div > div > input.form-control.form-control {
-  border: 3px solid #bd9bd4;
-  border-radius: 0px;
-  flex: none;
-  height: 38px;
-  padding: 0 10px;
-  transition: all .2s .15s;
-  width: 70%;
-  background: linear-gradient(
-302deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 100%);
-  color: #f7f7f7;
-  margin-bottom: 4px;
-}
-input.form-control.form-control::placeholder {
-  color: #9e9e9e;
-}
-.input-wrap>div>div>input.form-control.form-control:focus {
-  width: 100%;
-  height: 42px;
-  border: 3px solid #bd9bd4;
-  background: linear-gradient( 
-302deg, rgb(255 255 255 / 3%) 0%, rgba(255,255,255,0) 100%);
-box-shadow: none;
-margin-bottom: 0px;
-}
-text.keep-watching {
-  text-shadow: 1px 1px 1px #664200;
-}
-.input-group > svg {
-  opacity: 1;
-  transition: opacity 0.4s ease;
-  margin-right: -10px;
-  margin-left: 10px;
-  animation: floating 2s infinite ease-out;
-  
-}
-div.stepper-horizontal {
-  display: none;
-}
-.svg-img-item {
-  width: 30%;
-  background-image: url("https://portal.revrevdev.xyz/wp-content/uploads/continue.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: opacity 0.4s ease;
-  opacity: 1;
-  animation: floating 2s infinite ease-out;
-  z-index: 20;
-}
-
-div.steptwo > form > div > div > .svg-img-item {
-  display: none;
-}
-
-input:focus + .svg-img-item {
-  opacity: 0;
-}
-
-.input-wrap.phone-wrap>div>div>input.form-control.form-control {
-  width: 100%;
-}
-.powered-by-stripe {
-  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/stripe-small-min.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 38px;
-  width: 152px;
-}
-.powered-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 8px;
-}
-@keyframes floating {
-  0%, 100% {
-    margin-left: 5px;
-    margin-right: -10px;
-  }
-  50% {
-    margin-left: -10px;
-    margin-right: 5px;
-  }
-}
-
-@keyframes newput {
-  0% {
-   opacity:0;
-  }
-  100% {
-   opacity:1;
-  }
-}
-
-form input:focus {
-  outline: none;
-  border-color: var(--color-yellow-6);
-}
-.rev-player {
-  padding-top: 40px;
-    padding-bottom: 30px;
-    position: relative;
-    z-index: 2;
-}
-main {
-  background-image: linear-gradient( 
-    68deg
-     ,#ff1515ad,#8500ffb5), url(https://portal.revrevdev.xyz/wp-content/uploads/bg.jpg);
-        background-position: 100% 0;
-        background-repeat: no-repeat;
-        background-size: cover;
-        padding-top: 50px;
-        padding-bottom: 100px;
-}
-div.input-group {
-  flex-wrap: nowrap;
-  flex-direction: row-reverse;
-}
-small.form-text.text-danger {
-  position: absolute;
-  margin-top: -5px;
-}
-input.form-control.form-control {
-  border: 3px solid #bd9bd4;
-  border-radius: 0px;
-  flex: none;
-  height: 38px;
-  padding: 0 10px;
-  transition: all .2s .15s;
-  width: 70%;
-  background: linear-gradient(
-302deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 100%);
-  color: #f7f7f7;
-}
-.w-100.d-flex.justify-content-between {
-  margin-top: 0;
-  animation: newput .5s forwards;
-  opacity: 0;
-}
-.btn {
-  animation: newput .5s forwards;
-  opacity: 0;
-}
-.register-form h4 {
-  color: #e0e0e0;
-  font-family: Verdana;
-  text-shadow: -1px -1px 1px #111, 2px 2px 1px #3c3c3c;
-  font-weight: BOLD;
-  font-size: 28px;
-  font-style: italic;
-}
-button {
-  display: block;
-  font-weight: 700;
-  border: none;
-  border-radius: var(--border-radius);
-  padding: 14px 18px;
-  background-color: var(--color-yellow-6);
-  color: var(--color-yellow-3);
-  cursor: pointer;
-}
-
-.previous-payment {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  border-radius: 3px;
-  border: 2px solid #ff005e;
-  padding: 4px;
-  cursor: pointer;
-}
-
-.card-icon {
-  width: 28px;
-  height: 28px;
-  margin-right: 4px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z'/%3E%3C/svg%3E");
-}
-
-.profile-update-confirmation {
-  display: block;
-  background: var(--color-gray-9);
-  border-radius: var(--border-radius);
-  padding: 1rem;
-}
-.prev-payment {
-  animation: newput .5s forwards;
-}
-form#payment-form {
-  animation: newput .5s forwards;
-}
-.forgot-password-link {
-  display: block;
-  font-size: 0.7rem;
-  margin-bottom: 1rem;
-}
-
-.account-sign-up-message {
-  margin-top: 2.5rem;
-}
-p.result-message.hidden {
-  display: none;
-  opacity: 0;
-}
-
-/* spinner/processing state, errors */
-
-.yes button.ml-auto.btn.btn-success {
-  color: #fff0;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image:  url("data:image/svg+xml, %3Csvg version='1.1' id='loader-1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='24px' height='24px' viewBox='0 0 50 50' style='enable-background:new 0 0 50 50;' xml:space='preserve'%3E%3Cpath fill='%23fff' d='M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z'%3E%3CanimateTransform attributeType='xml' attributeName='transform' type='rotate' from='0 25 25' to='360 25 25' dur='0.6s' repeatCount='indefinite'/%3E%3C/path%3E%3C/svg%3E"), linear-gradient(90deg,#f23,#ff2278);
-  opacity: 0.7 !important;
-  cursor: default;
-}
-.spinner {
-  color: #fff0;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("data:image/svg+xml, %3Csvg version='1.1' id='loader-1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='24px' height='24px' viewBox='0 0 50 50' style='enable-background:new 0 0 50 50;' xml:space='preserve'%3E%3Cpath fill='%23fff' d='M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z'%3E%3CanimateTransform attributeType='xml' attributeName='transform' type='rotate' from='0 25 25' to='360 25 25' dur='0.6s' repeatCount='indefinite'/%3E%3C/path%3E%3C/svg%3E");
-}
-
-
-@keyframes loading {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-vm-player {
-  /*******************************
-   * Colors
-   *******************************/
-
-  --vm-color-dark: #313131;
-
-  --vm-color-gray-100: rgba(0, 0, 0, 0.1);
-  --vm-color-gray-200: rgba(0, 0, 0, 0.27);
-  --vm-color-gray-300: rgba(0, 0, 0, 0.38);
-  /* --vm-color-gray-400: rgba(0, 0, 0, 0.54); */
-  --vm-color-gray-500: rgba(0, 0, 0, 0.64);
-  --vm-color-gray-600: rgba(0, 0, 0, 0.7);
-  /* --vm-color-gray-700: rgba(0, 0, 0, 0.87); */
-
-  --vm-color-white-100: rgba(255, 255, 255, 0.1);
-  --vm-color-white-200: rgba(255, 255, 255, 0.27);
-  /* --vm-color-white-300: rgba(255, 255, 255, 0.38); */
-  /* --vm-color-white-400: rgba(255, 255, 255, 0.54); */
-  /* --vm-color-white-500: rgba(255, 255, 255, 0.64); */
-  /* --vm-color-white-600: rgba(255, 255, 255, 0.7); */
-  --vm-color-white-700: rgba(255, 255, 255, 0.87);
-
-  /*******************************
-   * Transitions
-   *******************************/
-
-  --vm-fade-transition: opacity 0.3s ease-in-out;
-
-  /*******************************
-   * Z-Index
-   *******************************/
-
-  /* Root stack. */
-  --vm-media-z-index: 0;
-  --vm-blocker-z-index: 1;
-  --vm-ui-z-index: 2;
-
-  /* UI stack. */
-  --vm-loading-screen-z-index: 1;
-  --vm-poster-z-index: 5;
-  --vm-scrim-z-index: 10;
-  --vm-click-to-play-z-index: 20;
-  --vm-dbl-click-fullscreen-z-index: 20;
-  --vm-captions-z-index: 30;
-  --vm-spinner-z-index: 40;
-  --vm-controls-z-index: 50;
-  --vm-tooltip-z-index: 60;
-  --vm-menu-z-index: 70;
-  --vm-skeleton-z-index: 100;
-
-  /*******************************
-   * Player
-   *******************************/
-
-  --vm-player-bg: #000;
-  /* --vm-player-theme: #eb7290; */
-  --vm-player-border-radius: 4px;
-  --vm-player-font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial,
-    sans-serif;
-
-  /*******************************
-   * Loading Screen
-   *******************************/
-
-  --vm-loading-screen-dot-size: 12px;
-  --vm-loading-screen-pulse-duration: 1.5s;
-  --vm-loading-screen-dot-color: var(
-    --vm-player-theme,
-    var(--vm-color-white-700)
+      setSuccessMessage("first payment complete");
+    }
+  };
+
+
+
+
+  return (
+    <div className='payment register-form col-md-6'>
+      <h4 className="mb-2">{heroText}</h4>
+      <div className="more-details">{moreDetails}</div>
+    <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
+    <div className='powered-container'>
+      <div className='powered-by-stripe'></div>
+      </div>
+      <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
+      <InputField2 label={'fullname'} name={'fullname'}/>
+      <CardElement
+        id="card-element"
+        options={cardStyle}
+        onChange={handleChange}
+      />
+      <div className='powered-by-stripe-small'></div>
+      <div className='card-charge'>Your card will be charged $1.00</div>
+      
+      <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
+        <span id="button-text">
+          {processing ? (
+            <div className="spinner" id="spinner">Keep Watching</div>
+          ) : (
+            "Keep Watching"
+          )}
+        </span>
+      </button>
+      {error && (
+        <div className="card-error" role="alert">
+          {error}
+        </div>
+      )}
+      <p className={succeeded ? "result-message" : "result-message hidden"}>
+        Payment succeeded!
+      </p>
+      
+    </form>
+
+
+    </div>
   );
 
-  /*******************************
-   * Skeleton
-   *******************************/
+  }
 
-  --vm-skeleton-color: hsl(0, 10%, 90%);
-  --vm-skeleton-sheen-color: hsl(0, 10%, 97%);
+  const StepFive = () => {
+    const [status, setStatus] = React.useState(0) // 0: no show, 1: show yes, 2: show no. radio 
+    const stripe = useStripe();
+    const elements = useElements();
+    const [prevPaymentID, setPrevID] = useState(""); //previous payment ID.
+    const [customerID, setCustomerID] = useState("");
+    const isBrowser = typeof window !== "undefined";
+    const { prevLast4, setLast4 } = useBetween(useShareableState);
+    const [prevExpY, setPrevExpY] = useState("");
+    const [prevExpM, setPrevExpM] = useState("");
+    const [prevName, setPrevName] = useState("");
+    const [prevEmail, setPrevEmail] = useState("");
+    const [prevBrand, setPrevBrand] = useState("");
+    const email = JSON.parse(localStorage.auth).authToken;
+    async function setFive(createtoken: string) {
+      try {
+        // Retrieve email and username of the currently logged in user.
+        // getUserFromDB() is *your* implemention of getting user info from the DB
+        const request = await fetch('/api/set-step-five', {
+          method: 'POST',
+          body: createtoken,
+        });
+        const intent = (await request.json());
+        // Update your user in DB to store the customerID
+        // updateUserInDB() is *your* implementation of updating a user in the DB
+        return intent;
+      } catch (error) {
+        console.log('Failed to set step three');
+        console.log(error);
+        return null;
+      }
+    }
+  useEffect(() => {
+    if (isBrowser) {
+    var style = document.createElement( 'style' )
+    var host = document.getElementById('vm-player-1');
+    style.innerHTML = '@media (max-width: 666px) { div.player.video { overflow: visible; }}'
+    host.shadowRoot.appendChild( style )
+    }
+    async function fetchMyAPI() {
+    // window
+    //   .fetch("/api/get-payment-info", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: email,
+    //   })
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((body) => {
+    //     console.log('right here', body)
+    //    // setPrevID(body.body.client_secret);
+    //   });
 
-  /*******************************
-   * Slider
-   *******************************/
+      try {
+        // Retrieve email and username of the currently logged in user.
+        // getUserFromDB() is *your* implemention of getting user info from the DB
+        const request = await fetch('/api/get-payment-info', {
+          method: 'POST',
+          body: email,
+        });
+        const intent = (await request.json());
+        // Update your user in DB to store the customerID
+        // updateUserInDB() is *your* implementation of updating a user in the DB
+        console.log(intent)
+        setCustomerID(intent.paymentMethod.customer);
+        setPrevID(intent.paymentMethod.id);
+        setLast4(intent.paymentMethod.card.last4);
+        setPrevExpY((intent.paymentMethod.card.exp_year).toString().slice(-2));
+        setPrevExpM(('0' + intent.paymentMethod.card.exp_month.toString()).toString().slice(-2));
+        setPrevName(intent.paymentMethod.billing_details.name);
+        setPrevEmail(intent.paymentMethod.billing_details.email);
+        setPrevBrand(intent.paymentMethod.card.brand);
+        return intent;
+        
+      } catch (error) {
+        console.log('Failed to get cID');
+        console.log(error);
+        return null;
+      }
 
-  --vm-slider-thumb-width: 13px;
-  --vm-slider-thumb-height: 13px;
-  --vm-slider-thumb-bg: #fff;
-  --vm-slider-thumb-border: 2px solid transparent;
+    }
+    fetchMyAPI()
+  }, []);
 
-  --vm-slider-track-height: 3px;
-  --vm-slider-track-focused-height: 5px;
-  --vm-slider-track-color: var(--vm-color-white-200);
-  --vm-slider-value-color: var(--vm-player-theme, #fff);
+  const {playing, setPlaying } = useBetween(useShareableState);
+    const {videoStatus, setVideoStatus } = useBetween(useShareableState);
+    const {videoTime, setVideoTime } = useBetween(useShareableState);
+    const {player } = useBetween(useShareableState);
 
-  /*******************************
-   * Tooltip
-   *******************************/
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState(null);
+  const [processingOld, setProcessingOld] = useState("");
+  const [succeededOld, setSucceededOld] = useState(false);
+  const [errorOld, setErrorOld] = useState(null);
+  const [processing, setProcessing] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState("");
+  const nameForm = useRef(null);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [showAlertBar, setShowAlertBar] = useState(true);
+  const { boxVisible, setBoxVisible } = useBetween(useShareableState);
+  const {moreDetails, setDetails } = useBetween(useShareableState);
+  const {heroText, setHero } = useBetween(useShareableState);
+  // useEffect(() => {
+  //   window
+  //     .fetch("/api/payment-intent", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //            amount: 500,
+  //       }),
+  //     })
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((body) => {
+  //       console.log(body)
+  //       setClientSecret(body.body.client_secret);
+  //     });
+  // }, []);
 
-  --vm-tooltip-border-radius: 3px;
-  --vm-tooltip-font-size: 14px;
-  --vm-tooltip-padding: calc(var(--vm-control-spacing) / 1.5);
-  --vm-tooltip-fade-duration: 0.2s;
-  --vm-tooltip-fade-timing-func: ease;
-  --vm-tooltip-spacing: 14px;
-  --vm-tooltip-box-shadow: 0 0 2px var(--vm-color-gray-500);
-  --vm-tooltip-bg: var(--vm-color-dark);
-  --vm-tooltip-color: var(--vm-color-white-700);
+  const radioHandler = (status) => {
+    setStatus(status);
+  };
 
-  /*******************************
-   * Spinner
-   *******************************/
 
-  --vm-spinner-width: 80px;
-  --vm-spinner-height: 80px;
-  --vm-spinner-thickness: 3px;
-  --vm-spinner-fill-color: #fff;
-  --vm-spinner-track-color: var(--vm-color-white-200);
-  --vm-spinner-spin-duration: 1.1s;
-  --vm-spinner-spin-timing-func: linear;
+  async function createIntent() {
+    try {
+      // Retrieve email and username of the currently logged in user.
+      // getUserFromDB() is *your* implemention of getting user info from the DB
+      const email = customerID
+      const request = await fetch('/api/second-intent', {
+        method: 'POST',
+        body: email,
+      });
+      const intent = (await request.json());
+      // Update your user in DB to store the customerID
+      // updateUserInDB() is *your* implementation of updating a user in the DB
+      return intent;
+    } catch (error) {
+      console.log('Failed to create intent');
+      console.log(error);
+      return null;
+    }
+  }
 
-  /*******************************
-   * Scrim
-   *******************************/
 
-  --vm-scrim-bg: var(--vm-color-gray-300);
+  const cardStyle = {
+    style: {
+      base: {
+        color: "#fff",
+        iconColor: "#fff",
+        fontFamily: "Arial, sans-serif",
+        fontSmoothing: "antialiased",
+        fontSize: "16px",
+        "::placeholder": {
+          color: "#9e9e9e",
+        },
+      },
+      invalid: {
+        color: "#fa755a",
+        iconColor: "#fa755a",
+      },
+    },
+  };
 
-  /*******************************
-   * Captions
-   *******************************/
 
-  --vm-captions-text-color: #fff;
-  --vm-captions-font-size: 18px;
-  --vm-captions-font-size-medium: 22px;
-  --vm-captions-font-size-large: 24px;
-  --vm-captions-font-size-xlarge: 28px;
-  --vm-captions-cue-bg-color: var(--vm-color-gray-600);
-  --vm-captions-cue-border-radius: 2px;
-  --vm-captions-cue-padding: 0.2em 0.5em;
-  --vm-captions-z-index: 20;
 
-  /*******************************
-   * Controls
-   *******************************/
+  const handleChange = async (event: { empty: boolean | ((prevState: boolean) => boolean); error: { message: any; }; }) => {
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
+    //if nameform ref name is 4+ characters and email is valid, do this. else don't do this.
+  };
 
-  --vm-controls-bg: transparent;
-  --vm-controls-border-radius: 4px;
-  --vm-controls-padding: var(--vm-control-spacing);
-  --vm-controls-spacing: var(--vm-control-spacing);
+  const handleSubmit = async (ev: { preventDefault: () => void; }) => {
+    const form = nameForm.current
+    ev.preventDefault();
+    setProcessing(true);
+    const intent = await createIntent();
+    console.log(intent)
+    //setClientSecret(intent.body.client_secret);
+    const payload = await stripe.confirmCardPayment(intent.body.client_secret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+        billing_details: {
+          name:  form['firstname'].value,
+          email: form['fullname'].value,
+        }
+      },
+     
+    });
 
-  /*******************************
-   * Control Group
-   *******************************/
+    if (payload.error) {
+      setError(`${payload.error.message}`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
+      //fetch wth intent.body.customer
+      //const spm = await setPayment(intent.body.customer);
+      //console.log(spm)
+      // Update your user in DB to store the customerID
+      // updateUserInDB() is *your* implementation of updating a user in the DB
+      const settingFive = await setFive(JSON.parse(localStorage.auth).authToken);
+      console.log(settingFive)
+      localStorage.removeItem("s5")
+      localStorage.setItem("s6", "y")
+      setVideoStatus(0)
+      setBoxVisible('release')
+        player.current!.play()
+      setSuccessMessage("second payment complete");
+    }
+  };
+  
+  const handleSubmitOld = async (ev: { preventDefault: () => void; }) => {
+    const form = nameForm.current
+    ev.preventDefault();
+    setProcessingOld(true);
+    const intent = await createIntent();
+    console.log(intent)
+    //setClientSecret(intent.body.client_secret);
+    const payload = await stripe.confirmCardPayment(intent.body.client_secret, {
+      payment_method: prevPaymentID,
+     
+    });
 
-  --vm-control-group-spacing: var(--vm-control-spacing);
+    if (payload.error) {
+      setErrorOld(`${payload.error.message}`);
+      setProcessingOld(false);
+    } else {
+      setErrorOld(null);
+      setProcessingOld(false);
+      setSucceededOld(true);
+      //fetch wth intent.body.customer
+      //const spm = await setPayment(intent.body.customer);
+      //console.log(spm)
+      // Update your user in DB to store the customerID
+      // updateUserInDB() is *your* implementation of updating a user in the DB
+      const settingFive = await setFive(JSON.parse(localStorage.auth).authToken);
+      console.log(settingFive)
+      localStorage.removeItem("s5")
+      localStorage.setItem("s6", "y")
+      setVideoStatus(0)
+      setBoxVisible('release')
+        player.current!.play()
+      setSuccessMessage("second payment complete");
+    }
+  };
 
-  /*******************************
-   * Control
-   *******************************/
+const drawYesContent = () => {
+  
+  return (
+    <div className='prev-payment'>
+      <div className='payment-infos'>
+      <div className="prev-name-on-card">{prevName}</div>
+      <div className="prev-email">{prevEmail}</div> 
+      <div className='prev-last-box'>
+      <div className="brand-last4"><div className={"prev-brand " + prevBrand}></div><div className="prev-last4">**** {prevLast4}</div></div><div className="prev-expiry">{prevExpM}/{prevExpY}</div>
+      </div>
+      </div>
+      <div className='payment-confirm'>
+      <form id="payment-form-old" onSubmit={handleSubmitOld}>
+    <button className='pay-btn' disabled={processingOld || succeededOld} id="submit">
+      <span id="button-text">
+        {processingOld ? (
+          <div className="spinner" id="spinner">Click to Place Order</div>
+        ) : (
+          "Click to Place Order"
+        )}
+      </span>
+    </button>
+    {errorOld && (
+      <div className="card-error" role="alert">
+        {errorOld}
+      </div>
+    )}
+    <p className={succeededOld ? "result-message" : "result-message hidden"}>
+      Pre-order successful! Check your email for your copy of the first chapter.
+    </p>
+  </form>
+      </div>
+    </div>
+  );
 
-  --vm-control-border: 0;
-  --vm-control-scale: 1;
-  --vm-control-border-radius: 3px;
-  --vm-control-spacing: 8px;
-  --vm-control-padding: 4px;
-  --vm-control-icon-size: 28px;
-  --vm-control-color: #fff;
-  --vm-control-tap-highlight: var(--vm-color-white-200);
-  --vm-control-focus-color: #fff;
-  --vm-control-focus-bg: var(--vm-player-theme, var(--vm-color-white-200));
-
-  /*******************************
-   * Scrubber Control
-   *******************************/
-
-  --vm-scrubber-loading-stripe-size: 25px;
-  --vm-scrubber-buffered-bg: var(--vm-color-white-200);
-  --vm-scrubber-loading-stripe-color: var(--vm-color-white-200);
-  --vm-scrubber-tooltip-spacing: 10px;
-
-  /*******************************
-   * Time
-   *******************************/
-
-  --vm-time-font-size: 14px;
-  --vm-time-font-weight: 400;
-  --vm-time-color: var(--vm-color-white-700);
-
-  /*******************************
-   * Menu
-   *******************************/
-
-  --vm-menu-color: var(--vm-color-white-700);
-  --vm-menu-bg: var(--vm-color-dark);
-  --vm-menu-font-size: 14px;
-  --vm-menu-font-weight: 400;
-  --vm-menu-transition: transform 0.25s ease-out;
-
-  /*******************************
-   * Menu Item
-   *******************************/
-
-  --vm-menu-item-padding: 8px;
-  --vm-menu-item-focus-color: var(--vm-menu-color);
-  --vm-menu-item-focus-bg: var(--vm-color-white-100);
-  --vm-menu-item-tap-highlight: var(--vm-color-white-100);
-
-  --vm-menu-item-hint-color: var(--vm-menu-color);
-  --vm-menu-item-hint-font-size: 13px;
-  --vm-menu-item-hint-opacity: 0.54;
-
-  --vm-menu-item-badge-color: var(--vm-menu-color);
-  --vm-menu-item-badge-bg: transparent;
-  --vm-menu-item-badge-font-size: 10px;
-
-  --vm-menu-item-arrow-color: var(--vm-menu-color);
-
-  --vm-menu-item-check-icon-size: 16px;
-
-  --vm-menu-item-divider-color: var(--vm-color-white-100);
-
-  /*******************************
-   * Settings
-   *******************************/
-
-  --vm-settings-width: 275px;
-  --vm-settings-padding: 8px;
-  --vm-settings-max-height: 75%;
-  --vm-settings-border-radius: 2px;
-  --vm-settings-shadow: 0 0 8px 2px var(--vm-color-gray-100);
-
-  --vm-settings-scroll-width: 10px;
-  --vm-settings-scroll-thumb-color: var(--vm-color-white-200);
-  --vm-settings-scroll-track-color: var(--vm-menu-bg);
-
-  --vm-settings-transition: transform 0.2s cubic-bezier(0, 0, 0.4, 1) 0.16s,
-    opacity 0.2s cubic-bezier(0, 0, 0.4, 1) 0.16s;
 }
-::cue {
-  opacity: 0;
-}
-vm-player[video] {
-  --vm-tooltip-spacing: 18px;
+const drawNoContent = () => {
+  
+  return (
+    <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
+    <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
+    <InputField2 label={'fullname'} name={'fullname'}/>
+    <CardElement
+      id="card-element"
+      options={cardStyle}
+      onChange={handleChange}
+    />
+    <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
+      <span id="button-text">
+        {processing ? (
+          <div className="spinner" id="spinner">Click to Place Order</div>
+        ) : (
+          "Click to Place Order"
+        )}
+      </span>
+    </button>
+    <div className="card-error" role="alert">
+    {error && (
+        <b>{error}</b>
+    )}
+    </div>
+
+    <p className={succeeded ? "result-message" : "result-message hidden"}>
+    Pre-order successful! Check your email for your copy of the first chapter.
+    </p>
+  </form>
+  );
+
 }
 
-vm-player[mobile],
-vm-player[touch] {
-  --vm-control-border-radius: 50%;
-}
+  return (
+    <div className='payment register-form col-md-6'>
+       <h4 className="mb-2">{heroText}</h4>
+       <div className="more-details">{moreDetails}</div>
+        <div className='content-section'>
 
-vm-player[mobile] {
-  --vm-settings-width: 100%;
-  --vm-menu-control-padding: 12px calc(var(--vm-control-padding) * 2);
-}
+      <div className='split-point-view'>
+      <div className='final-mobile-hero'>{heroText}</div>
+      <div className='final-mobile-text'>{moreDetails}</div>
+      <div className='image-section'></div>
+      <div className='info-section'>
+      <ul>
+    <li>Read the first chapter now</li>
+    <li>Get your book in hardback</li>
+    <li>Get early access to the final book</li>
+    <li>Support Patrick's cause</li>
+    </ul>
 
-vm-player[audio] {
-  --vm-controls-bg: var(--vm-color-dark);
-  --vm-settings-max-height: 200px;
-  --vm-tooltip-spacing: 10px;
-}
-.payment-infos {
-  margin-bottom: 15px;
-}
-.brand-last4 {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-}
-.tap-to-unmute {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: flex;
-  z-index: 21;
-  top: 0;
-    left: 0;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
+      </div>
 
+      </div>
 
-.tap-to-unmute-svg {
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 22%;
-  height: 40%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150px' height='150px' viewBox='0 0 16 16' class='bi bi-volume-mute' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zM6 5.04L4.312 6.39A.5.5 0 0 1 4 6.5H2v3h2a.5.5 0 0 1 .312.11L6 10.96V5.04zm7.854.606a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708l4-4a.5.5 0 0 1 .708 0z'/%3E%3Cpath fill-rule='evenodd' d='M9.146 5.646a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0z'/%3E%3C/svg%3E");
-}
-
-.tap-to-unmute-text {
-  color: #fff;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  background: #000;
-  border-radius: 5px;
-  font-size: 20px;
-}
-
-.tap-to-unmute.rev-mute {
-  display: none;
-}
-.prev-brand.visa {
-  height: 16px;
-  width: 50px;
-  background-image: url('data:image/png;base64,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');
-}
-
-.prev-brand.mastercard {
-  width: 40px;
-  height: 25px;
-  background-image: url('data:image/png;base64,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');
-}
-
-.prev-brand.amex,
-.prev-brand.american-express {
-  width: 50px;
-  height: 14px;
-  background-image: url('data:image/png;base64,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');
-}
-.prev-last4 {
-  margin-left: 4px;
-}
+       <div className='pay-section'>
+      <div className='selection-section'>
+      <div onClick={(e) => radioHandler(0)} className={'previous-payment ' + status}>
+      <div className='card-icon'></div>
+      <div className="prev-last4">{prevLast4}</div>
+      </div>
+      <div onClick={(e) => radioHandler(1)} className={'new-payment ' + status}>+ New Card</div>
+      </div>
+      <div className='powered-by-stripe-final'></div>
+      <div className='selection-render'>
+      {status === 0 && drawYesContent()}
+      {status === 1 && drawNoContent()}
+      </div>
+      </div>
+      </div>
+    </div>
+  );
+    //radio selection - select previous payment, or enter a new one.
+  }
 
 
-.prev-brand.diners,
-.prev-brand.diners-club {
-  width: 30px;
-  height: 24px;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAYCAYAAADtaU2/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAED2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIKICAgICAgICAgICAgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiCiAgICAgICAgICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIgogICAgICAgICAgICB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iPgogICAgICAgICA8eG1wTU06RG9jdW1lbnRJRD54bXAuZGlkOkFDMEM4Rjk2NTQzRDExRTQ5MzZBQzlERDRCNDEwQzZDPC94bXBNTTpEb2N1bWVudElEPgogICAgICAgICA8eG1wTU06RGVyaXZlZEZyb20gcmRmOnBhcnNlVHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICA8c3RSZWY6aW5zdGFuY2VJRD54bXAuaWlkOkFDMEM4RjkzNTQzRDExRTQ5MzZBQzlERDRCNDEwQzZDPC9zdFJlZjppbnN0YW5jZUlEPgogICAgICAgICAgICA8c3RSZWY6ZG9jdW1lbnRJRD54bXAuZGlkOkFDMEM4Rjk0NTQzRDExRTQ5MzZBQzlERDRCNDEwQzZDPC9zdFJlZjpkb2N1bWVudElEPgogICAgICAgICA8L3htcE1NOkRlcml2ZWRGcm9t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');
-}
+  const IndexPage = () => {
 
-.prev-brand.discover {
-  width: 50px;
-  height: 14px;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAOCAYAAABth09nAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAAVlpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KTMInWQAAA/tJREFUSA19ll2IVVUUx73jmEYgiUpYiIREkFqQD0FhKiVIoPaSRaEPQlATZmk9JERBQVCSldjHk9iDqE8KQaTQB0lFoljDSGKiFI3VWJZZfo6n32+fta5nrrcW/O/6r8+999n77HNbVVWNHnVZqlardSlNYj1yffAWVFt9qSNPX/axxzB2kehhfERdjNs5njmO4RyyBlok52W80pNziLmVpPaPA8fgnT4btyWL0bmAdixJt1inr9FnRP/s8X+aWuda6lqQmZHsUxxklX9qR8J0Ob7vwzcDPQHsx/cPOb3oixG7A309OIjvELEetDt5Nb5ZwAV/h++kdXB7/Yp9HBvlVKqx+G4Bx4H8WnAejAH6zoCJwB05Rc0faOd6lT8X7BByHv0OuCYSDsA/D64/ZQgyO/yz4P0ZCH1fxJZiH2nEfoGvjNg+eH9wF+ZcHo/ce9EfBE+1FvJkGL+jz4G3wFTQZ7GyHcwFG4CyOxoPwHeB2TqRl8EU8CKYDCaCU+Bv8DBwUW+AuWAeSHFnRMqDkAfCmONYCvZBcDS4D/EwuAvcDyaBV4GyGDxXWFU9gx6fC3m+dKqbZcIcEvaAj4Bc2ZB5Mdibtbu6vemP2LcRO4POhZwN3zH0DeA02B75Tlh5KuxD8E/lKdivm9CwNd8ttgx5pRG8sXZVK9Efg6+Mod8Pv5NaD3zR9oIjEdf2XJtrD3dJGa5V+zd35mY87YnB346MSdHj67B/Cv0Q2uOlrAFbCquqheaXsylpyLjgvkiuvuTwYi2ncD32KuBTGwJeDNcBxdxyXaPz+tTfFHOEN42Lfg88Td8X0EvBVsY5gVYcdxC8BBxjL/AiUNbVatQ88j+jvieP1toIaG8CimfyC2DiOOCNVATuEfHlfxYod2ZMjT0aeMaVbkfLm8rbz1z7p9ytT8ExAD6srfoXeyOwtg8oSyK31wLlS+CknLjSFwlH4Z8Aj5LX7QrgApRHI+fn2iz1C+Bu+T1gfvi7qcfqqZUJPxIJe9IXfV2It9Nq8Bq4DawD7qjz3iZHbi11kH5wGHgWXciiEqiTd2BvAtPBNyBlM8Tvgw2nAS+EFHdrfsSWwX/IANpFPxExvyvWjwe/gXx46d+Jz8vgBFBWBdyRMWACGAQ77dOCWNj5VyE/Zp55eX70bsI+i/0j2kk0P4hTcHlcjhF397JHfhDtNUDsL7S10FY+3am4hrB9CMWP9lvm3IaB79Q5YA/frdMkeWn4oXTMk+Cy2ARccQHgK08pMyOvvNjGtDPW1Pi79ept5v8Xb/bpxqkr42fMiafDR1GeUAZzEP3BSy62T6ktzRjOK3YXX44x4s9mNqDeB2WsPT6+rGmnBSGt/mObOdr/Ap6tK4eqKaaFAAAAAElFTkSuQmCC');
-}
+   // const promise = loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3');
+    //const [promise = loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'));
+  // const stripePromise = useMemo(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
+  
+    const [loggedIn, setLoggedIn] = useState(LoginVerify());
+    const [loggedIn2, setLoggedIn2] = useState(false);
+    //const [isLoggedIn, setLoggedIn] = useState(false);
+    const [activate, setActivate] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
+    const [muteClass, setMuteClass] = useState("");
+    const [firstPlay, setFirstPlay] = useState(false);
+    const [paused, setPaused] = useState(true);
+    const {player } = useBetween(useShareableState);
+    const [showAlertBar, setShowAlertBar] = useState(true);
+    const isBrowser = typeof window !== "undefined";
+    const {videoStatus, setVideoStatus } = useBetween(useShareableState);
+    const {videoTime, setVideoTime } = useBetween(useShareableState);
+    const [titleText, setTitleText] = useState(30);
+    const { boxVisible, setBoxVisible } = useBetween(useShareableState);
+    const [currentTime, setCurrentTime] = useState(0);
+    const { prevLast4, setLast4 } = useBetween(useShareableState);
+    const [playerSize, setPlayerSize] = useState("regular");
+    const {moreDetails, setDetails } = useBetween(useShareableState);
+    const {heroText, setHero } = useBetween(useShareableState);
+    const {error, setError } = useBetween(useShareableState);
+   
+    const currentVideoState = () => {
+      return videoTime;
+    }
 
-.prev-brand.jcb {
-  width: 30px;
-  height: 15px;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAPCAYAAADzun+cAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABWWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyI+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3RpZmY6T3JpZW50YXRpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgpMwidZAAACsklEQVQ4EX2U32uOYRjH32c2zIjyKyc7IDkRZw4cMEcjxIHSyoH4C6yNNJRJOZKWAyeEQqI4wQnlhE0phCHmR1NsI43ttdnm8fk8nktPWu+3Prvu676v57qv+3rve0kJpWk6FbMdVkICRemfS5LkiZPEbsSsgRpdUNpauEbc7WwiTVdjjXW+GDcd/4GJauAiVJJFGXusUhBrh/O4XYzHKsReryZwEzTBOFiZJ9ROgLIbgyRZgm11Ao1AsTPGzoAfxBl/CMxdzi3mX07jhl00YSjaZ1LHod8M6qEKxsB2TSbjFsG8fNFNJlPixkXFiT8y2Q1usAqmwC9QFvQUXoNdshhPth5cc3PVBf2gH9/OZtwIVX4UctP46AqXxIDN8BZMGK0/ztoK/Gb4Brb9IbyHOIixu4nbgu2BpXAH3+LaoM5AN1QmHwVPJ8obadstyPFnOADqLDSA2vHXlC5j4zDT8rlZ2DqYmftztG7sZbCtc2EhqPjIFsVls5gvVP2TC7SA8WJQFhWbZRP88TBx+nuM++A+qPkw4QdWdBc2wDN4BadBNcAy8ELZjeVsupbN/e3a4SvYbn/zIbC4uCfOq21wEHaC6oDUqgzYD1beAgOO2WAfdi/Es/F3U+dZO4J9B0fBFr6EPWCn3NgDbSXuObYTXsAbfA/n3fjuP4UWCA0z6IVyTOS2Ebvuvzld361vfEgHNUM9hO/cCBg3rpPrQvwOFJG10ncXby+eitVLyHm7IHFhohu2OjrEMHtudiE64Z3xTlWb0NYox7bbxCYqJvA2x+YRrzUuYFj6AM6bJxTrzsW3PSazAuVz0rcLVi76Z7hMj7BxOuNiPaw5bsFVKHatmMtYT/4YOlzoBRMPQpyKYVb1TewJHfQJboD/MIqyM51wigK9lGXGl6AWPG3IjbvhpK/iD/ZAl+AbzJMOAAAAAElFTkSuQmCC');
-}
+    // const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])
+    // Check if the user is validated already.
+    // useMountEffect(LoginVerify)
+  //   useEffect(() => {
+  //     if (undefined !== window) {
+  //       console.log('heyyy')
+  //       console.log(loggedIn)
+  //       let authTokenData = localStorage.getItem("auth");
+    
+  //       if (!isEmpty(authTokenData)) {
+  //         console.log('heyyy1')
+  //         console.log(loggedIn)
+  //         authTokenData = JSON.parse(authTokenData);
+    
+  //         if (!isEmpty(authTokenData.authToken)) {
+  //           setLoggedIn(true)
+  //           console.log('heyyy2')
+  //           console.log(loggedIn)
+  //         } else {
+  //           console.log('empty')
+  //         }
+  //       }
+  //     } // // this will fire only when loadDataOnlyOnce-reference changes
+  // }, [loggedIn, setLoggedIn]);
 
-.prev-brand.unionpay {
-  width: 50px;
-  height: 30px;
-  background-image: url('data:image/png;base64,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');
-}
+
+
+
+    const videoLink = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+    // const [playing, setPlaying] = useState({
+    // 	time: 0,
+    // 	status: false,
+    // 	speed: 1,
+    //   });
+
+      const {playing, setPlaying } = useBetween(useShareableState);
+      const [videoProgressFunctions, setVideoProgressFunctions] = useState({
+        getPlayingStatus: null,
+        getCurrentTime: null,
+        getPlaybackSpeed: null,
+        });
+      
+        const { videoDetails, setVideoDetails } =  useBetween(useShareableState);
+        
+        const handlePlayPause = (status: any) => () => {
+        setPlaying({
+          status,
+          time: videoProgressFunctions.getCurrentTime?.() || playing.time,
+          speed: videoProgressFunctions.getPlaybackSpeed?.() || playing.speed,
+        });
+        };
+    
+        const handlePlaybackSpeedChange = (speed: any) => () => {
+        setPlaying({
+          speed,
+          time: videoProgressFunctions.getCurrentTime?.() || playing.time,
+          status: videoProgressFunctions.getPlayingStatus?.() || playing.status,
+        });
+        };
+      
+        const storeVideoDetailFunctions = ({
+        getPlaybackSpeed,
+        getCurrentTime,
+        getPlayingStatus,
+        }) => {
+        setVideoProgressFunctions({
+          getPlayingStatus: getPlayingStatus,
+          getCurrentTime: getCurrentTime,
+          getPlaybackSpeed: getPlaybackSpeed,
+        });
+        };
+    
+        const handleVideoProgress = ({
+        currentTime,
+        isPlaying,
+        speed,
+        totalTime,
+        }) => {
+        setVideoDetails({ currentTime, isPlaying, speed, totalTime });
+        if (currentTime > 3 && LoginVerify() === false ) {
+        setBoxVisible('reveal')
+          console.log('yes')
+          if (Math.floor(33 - currentTime) !== titleText ) {
+            setTitleText(Math.floor(33.99 - currentTime));
+          }
+          if (currentTime > 33) {
+          setPlaying({status: false, time: 32.94, speed: speed})
+          }
+          setVideoStatus(1)
+        } 
+        if (currentTime > 36 && step2verify() === false ) {
+          setBoxVisible('reveal')
+            console.log('yes2')
+            if (Math.floor(66 - currentTime) !== titleText ) {
+              setTitleText(Math.floor(66.99 - currentTime));
+            }
+            if (currentTime > 66) {
+            setPlaying({status: false, time: 65.94, speed: speed})
+            }
+            setVideoStatus(2)
+          } 
+        // if (currentTime > 66  && step2verify()===true) {
+        //   console.log('yes2')
+        //   setPlaying({status: false, time: 65.99, speed: speed})
+        //   setVideoStatus(2)
+        // }
+        if (currentTime > 69 && step3verify() === false ) {
+          setBoxVisible('reveal')
+            console.log('yes3')
+            if (Math.floor(99 - currentTime) !== titleText ) {
+              setTitleText(Math.floor(99.99 - currentTime));
+            }
+            if (currentTime > 99) {
+            setPlaying({status: false, time: 98.94, speed: speed})
+            }
+            setVideoStatus(3)
+          } 
+        // if (currentTime > 79  && step3verify()===true) {
+        //   console.log('yes3')
+        //   setPlaying({status: false, time: 78.99, speed: speed})
+        //   setVideoStatus(3)
+        // }
+        if (currentTime > 112  && step4verify()===true) {
+          console.log('yes3')
+          setPlaying({status: false, time: 111.99, speed: speed})
+          setVideoStatus(4)
+        }
+        console.log(currentTime)
+        console.log(isPlaying)
+        console.log(loggedIn)
+        console.log(videoTime)
+        console.log(currentVideoState())
+        };
+
+        const onMutedChange = () => {
+          setMuteClass("rev-mute")
+        }
+        const unmuteClick = () => {
+         player.current!.muted = false;
+          setMuteClass("rev-mute")
+        };
+        const onClick = () => {
+          setPaused(!paused);
+          if (playerSize === "regular") {
+            setPlayerSize("large")
+          } else {
+            setPlayerSize("regular")
+          }
+        };
+        const emitError = (event) => {
+          console.log(event)
+        }
+        const setPlay = () => {
+          console.log('setting play')
+          if (isBrowser && firstPlay === false) {
+            var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
+            var myClick = (function( click_count ) {
+              var handler = function(event) {
+                video.muted = true;
+                video.play();
+                console.log('set mute')
+                video.removeEventListener('canplay', myClick);
+                console.log('removed listener')
+              };
+              return handler;
+          })( 0 );
+            console.log(video)
+            video.addEventListener('canplay', myClick);
+          }
+          
+
+        }
+        const loadStart = () => {
+          console.log('setting play')
+
+
+        }
+
+        const pausedSet = () => {
+          console.log('paused changed')
+        }
+        const playingChange = () => {
+          console.log('playing changed')
+        }
+        const playTransition = () => {
+          console.log('play transition begin')
+        }
+        const playStart = () => {
+          console.log('play started')
+          setFirstPlay(true)
+
+        }
+        const onTimeUpdate = (event: CustomEvent<number>) => {
+          
+          const currentTimeb = event.detail;
+          setCurrentTime(currentTimeb);
+          // if (event.detail > 5) {
+          //   console.log('hey')
+          //   player.current!.pause()
+          // }
+          if (currentTimeb > 3 && LoginVerify() === false ) {
+            setHero("Time's almost up!");
+            setDetails('Enter your info to continue watching and get amazing deals and breaking news');
+            setBoxVisible('reveal')
+          //if (currentTime > 3 ) {
+              if (Math.floor(33 - currentTimeb) !== titleText ) {
+                setTitleText(Math.floor(33.99 - currentTimeb));
+              }
+              if (currentTimeb > 33) {
+                setCurrentTime(32.99);
+                player.current!.pause()
+              }
+              setVideoStatus(1)
+            } 
+            if (currentTimeb > 36 && step2verify() === true ) {
+              setHero("Time's almost up!");
+              setDetails('Just enter 3 emails of people that need to see this');
+              setBoxVisible('reveal')
+            //if (currentTime > 3 ) {
+                if (Math.floor(66 - currentTimeb) !== titleText ) {
+                  setTitleText(Math.floor(66.99 - currentTimeb));
+                }
+                if (currentTimeb > 66) {
+                  setCurrentTime(65.94);
+                  player.current!.pause()
+                }
+                setVideoStatus(2)
+              } 
+            // if (currentTimeb > 66  && step2verify()===true) {
+            //   console.log('yes2')
+            //   player.current!.pause()
+            //   setVideoStatus(2)
+            // }
+
+            if (currentTimeb > 69 && step3verify() === true ) {
+              setHero("Time's almost up!");
+              setDetails('Share this video to any of these social media channels to get your code to keep watching');
+              setBoxVisible('reveal')
+            //if (currentTime > 3 ) {
+                if (Math.floor(99 - currentTimeb) !== titleText ) {
+                  setTitleText(Math.floor(99.99 - currentTimeb));
+                }
+                if (currentTimeb > 99) {
+                  setCurrentTime(98.94);
+                  player.current!.pause()
+                }
+                setVideoStatus(3)
+              }   
+
+            // if (currentTimeb > 79  && step3verify()===true) {
+            //   console.log('yes3')
+            //   player.current!.pause()
+            //   setVideoStatus(3)
+            // }
+
+            if (currentTimeb > 102 && step4verify() === true ) {
+              setHero("The Ending is Nuts");
+              setDetails('Find out what comes next for just one crisp dollar');
+              setBoxVisible('reveal')
+            //if (currentTime > 3 ) {
+                if (Math.floor(132 - currentTimeb) !== titleText ) {
+                  setTitleText(Math.floor(132.99 - currentTimeb));
+                }
+                if (currentTimeb > 132) {
+                  setCurrentTime(131.94);
+                  player.current!.pause()
+                }
+                setVideoStatus(4)
+              }   
+
+            // if (currentTimeb > 112  && step4verify()===true) {
+            //   console.log('yes3')
+            //   player.current!.pause()
+            //   setVideoStatus(4)
+            // }
+
+            if (currentTimeb > 136 && step5verify() === true) {
+              setHero("Limited Time Offer!");
+              setDetails("Pre-order Patrick's new book and get exclusive access to the first chapter!");
+              setVideoStatus(5)
+              if (prevLast4 != "") {
+               setBoxVisible('reveal final')
+              }  
+                
+              }  
+        };
+
+
+
+        return (
+          <Layout>
+<div className={`rev-optin-mobile ${boxVisible}`}>
+      <div className='time-section'>
+              <div className='time-remaining'>{titleText}</div>
+                <div className="star-spinner">
+	<div className="outer-star">
+<div className="spinnerz">
+		</div>
+	</div>
+</div>
+</div>
+<h4 className="mb-2">{heroText}</h4>
+<div className="more-detail">{moreDetails}</div>
+{error && (
+        <div className="card-error-mobile" role="alert">
+          {error}
+        </div>
+      )}
+</div>
+        <div className={`rev-player ${playerSize}`}>
+        <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div> 
+        {  typeof window !== 'undefined' && Player && <Player
+        debug={true}
+        onVmCurrentTimeChange={onTimeUpdate}
+        onVmPlaybackReady={setPlay}
+        onVmLoadStart={loadStart}
+        onVmPlaybackStarted={playStart}
+        onVmError={emitError}
+        onVmPausedChange={pausedSet}
+        playsinline={true}
+        onVmPlayingChange={playingChange}
+        onVmPlay={playTransition}
+        
+        autoplay
+        controls={false}
+        currentTime={currentTime}
+        ref={player}
+      theme="dark"
+      style={{ '--vm-player-theme': '#CD5C5C' }}
+    >
+      
+              <div className={`rev-optin ${boxVisible}`}>
+<div className='time-section'>
+              <div className='time-remaining'>{titleText}</div>
+                <div className="star-spinner">
+	<div className="outer-star">
+<div className="spinnerz">
+		</div>
+	</div>
+
+</div>
+</div>
+
+        {1 == videoStatus
+              ? showAlertBar && (
+                  
+
+                <RegisterOpt setLoggedIn={setLoggedIn} />  
+      
+                )
+              : ""}
+              {2 == videoStatus
+              ? showAlertBar && (
+                  
+
+                <StepTwo />  
+      
+                )
+              : ""}
+              {3 == videoStatus
+              ? showAlertBar && (
+                  
+
+                <StepThree />  
+      
+                )
+              : ""}
+                {4 == videoStatus
+              ? showAlertBar && (
+                  
+                <Elements stripe={promise}>
+                <StepFour />  
+                </Elements>
+                )
+              : ""}
+               {5 == videoStatus
+              ? showAlertBar && (
+                  
+              
+                <Elements stripe={promise}>
+                <StepFive />  
+                </Elements>
+              
+                )
+              : ""}
+              </div>
+             
+      <Video
+        crossOrigin
+        preload="auto"
+      >
+        <source 
+          data-src='https://1768239509.rsc.cdn77.org/pk.mp4'
+          type="video/mp4"
+        />
+        <track 
+          default 
+          kind="subtitles" 
+          src="https://media.vimejs.com/subs/english.vtt" 
+          srclang="en" 
+          label="English" 
+        />
+      </Video>
+      <Ui>
+      <ClickToPlay />
+      <Captions />
+          <Controls fullWidth>
+            <ControlGroup>
+              <ScrubberControl hideTooltip noKeyboard />
+            </ControlGroup>
+                
+            <ControlGroup space="top">
+              <PlaybackControl hideTooltip keys={''} />
+              <VolumeControl hideTooltip muteKeys={''} noKeyboard/>
+              <ControlSpacer />
+
+              <Control
+        label="testelement"
+        pressed={paused}
+      onClick={onClick}
+      >
+        <Icon name="fullscreen-enter" library="material"/>
+      </Control>
+
+
+            </ControlGroup>
+          </Controls>
+        </Ui>
+         {/* <DefaultUi /> */}
+    </Player> }
+           
+      </div>
+      
+            
+          </Layout>
+        )
+
+  }
+
+  export default IndexPage

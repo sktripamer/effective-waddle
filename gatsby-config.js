@@ -9,7 +9,9 @@ module.exports = {
   plugins: [
     {
       resolve: `gatsby-source-wordpress`,
-      
+      alias: {
+        'react-dom$': 'react-dom/profiling',
+      },
       options: {
         url: process.env.GATSBY_WORDPRESS_API_URL,
         type: {
@@ -21,9 +23,4 @@ module.exports = {
     },
     "gatsby-plugin-react-helmet",
   ],
-  resolve: {
-    alias: {
-      'react-dom$': 'react-dom/profiling',
-    }
-  }
 };

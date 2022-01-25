@@ -15,6 +15,7 @@
     PlaybackControl,
     VolumeControl,
     ControlSpacer,
+    IconLibrary ,
     Captions,
   } from '@vime/react';
   import Layout from "../components/Layout";
@@ -1732,6 +1733,7 @@ const drawNoContent = () => {
         <div className={`rev-player ${playerSize}`}>
         <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div> 
         {  typeof window !== 'undefined' && Player && <Player
+        icons="my-library"
         debug={true}
         onVmCurrentTimeChange={onTimeUpdate}
         onVmPlaybackReady={setPlay}
@@ -1824,6 +1826,7 @@ const drawNoContent = () => {
       </Video>
       <Ui>
       <ClickToPlay />
+      <IconLibrary name="my-library" resolver={(iconName) => `/icons/${iconName}.svg`}  />
       <Captions />
           <Controls fullWidth>
             <ControlGroup>
@@ -1840,7 +1843,7 @@ const drawNoContent = () => {
         pressed={paused}
       onClick={onClick}
       >
-        <Icon name="fullscreen-enter" library="material"/>
+        <Icon name="vm-fullscreen-enter" library="my-library"/>
       </Control>
 
 

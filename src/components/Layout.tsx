@@ -9,12 +9,12 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Helmet>
         <html lang="en" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-        <link rel="preload" as="image" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-volume-mute.svg"/>
-        <link rel="preload" as="image" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-pause.svg"/>
-        <link rel="preload" as="image" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-volume-high.svg"/>
-        <link rel="preload" as="image" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-play.svg"/>
-        <link rel="preload" as="image" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/material/md-fullscreen-enter.svg"/>
-        <link rel="preload" as="image" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-fullscreen-enter.svg"/>
+        <link rel="preload" as="fetch" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-volume-mute.svg"/>
+        <link rel="preload" as="fetch" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-pause.svg"/>
+        <link rel="preload" as="fetch" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-volume-high.svg"/>
+        <link rel="preload" as="fetch" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-play.svg"/>
+        <link rel="preload" as="fetch" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/material/md-fullscreen-enter.svg"/>
+        <link rel="preload" as="fetch" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-fullscreen-enter.svg"/>
         <link rel="preload" as="image" href="https://portal.revrevdev.xyz/wp-content/uploads/continue.svg"/>
         <link rel="preload" as="image" href="https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg"/>
         <link rel="preload" as="image" href="https://portal.revrevdev.xyz/wp-content/uploads/starline.svg"/>

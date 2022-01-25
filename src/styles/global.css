@@ -1332,6 +1332,7 @@ vm-player {
   --vm-captions-cue-bg-color: var(--vm-color-gray-600);
   --vm-captions-cue-border-radius: 2px;
   --vm-captions-cue-padding: 0.2em 0.5em;
+  --vm-captions-z-index: 20;
 
   /*******************************
    * Controls
@@ -1430,7 +1431,9 @@ vm-player {
   --vm-settings-transition: transform 0.2s cubic-bezier(0, 0, 0.4, 1) 0.16s,
     opacity 0.2s cubic-bezier(0, 0, 0.4, 1) 0.16s;
 }
-
+::cue {
+  opacity: 0;
+}
 vm-player[video] {
   --vm-tooltip-spacing: 18px;
 }

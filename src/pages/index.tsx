@@ -1419,6 +1419,100 @@ const IndexPage = () => {
 
     useEffect(() => {
       console.log('useeffected ct', currentTime);
+      const currentTimeb = currentTime;
+      console.log("currenttimeb", currentTimeb)
+     
+      
+      
+      // if (event.detail > 5) {
+      //   console.log('hey')
+      //   player.current!.pause()
+      // }
+      if (currentTimeb > 3 && LoginVerify() === false ) {
+        setHero("Time's almost up!");
+        setDetails('Enter your info to continue watching and get amazing deals and breaking news');
+        setBoxVisible('reveal')
+      //if (currentTime > 3 ) {
+          if (Math.floor(33 - currentTimeb) !== titleText ) {
+            setTitleText(Math.floor(33.99 - currentTimeb));
+          }
+          if (currentTimeb > 33) {
+            setCurrentTime(32);
+            player.current!.pause()
+          }
+          setVideoStatus(1)
+        } 
+        if (currentTimeb > 36 && step2verify() === true ) {
+          setHero("Time's almost up!");
+          setDetails('Just enter 3 emails of people that need to see this');
+          setBoxVisible('reveal')
+        //if (currentTime > 3 ) {
+            if (Math.floor(66 - currentTimeb) !== titleText ) {
+              setTitleText(Math.floor(66.99 - currentTimeb));
+            }
+            if (currentTimeb > 66) {
+              setCurrentTime(65);
+              player.current!.pause()
+            }
+            setVideoStatus(2)
+          } 
+        // if (currentTimeb > 66  && step2verify()===true) {
+        //   console.log('yes2')
+        //   player.current!.pause()
+        //   setVideoStatus(2)
+        // }
+
+        if (currentTimeb > 69 && step3verify() === true ) {
+          setHero("Time's almost up!");
+          setDetails('Share this video to any of these social media channels to get your code to keep watching');
+          setBoxVisible('reveal')
+        //if (currentTime > 3 ) {
+            if (Math.floor(99 - currentTimeb) !== titleText ) {
+              setTitleText(Math.floor(99.99 - currentTimeb));
+            }
+            if (currentTimeb > 99) {
+              setCurrentTime(98);
+              player.current!.pause()
+            }
+            setVideoStatus(3)
+          }   
+
+        // if (currentTimeb > 79  && step3verify()===true) {
+        //   console.log('yes3')
+        //   player.current!.pause()
+        //   setVideoStatus(3)
+        // }
+
+        if (currentTimeb > 102 && step4verify() === true ) {
+          setHero("The Ending is Nuts");
+          setDetails('Find out what comes next for just one crisp dollar');
+          setBoxVisible('reveal')
+        //if (currentTime > 3 ) {
+            if (Math.floor(132 - currentTimeb) !== titleText ) {
+              setTitleText(Math.floor(132.99 - currentTimeb));
+            }
+            if (currentTimeb > 132) {
+              setCurrentTime(131);
+              player.current!.pause()
+            }
+            setVideoStatus(4)
+          }   
+
+        // if (currentTimeb > 112  && step4verify()===true) {
+        //   console.log('yes3')
+        //   player.current!.pause()
+        //   setVideoStatus(4)
+        // }
+
+        if (currentTimeb > 136 && step5verify() === true) {
+          setHero("Limited Time Offer!");
+          setDetails("Pre-order Patrick's new book and get exclusive access to the first chapter!");
+          setVideoStatus(5)
+          if (prevLast4 != "") {
+           setBoxVisible('reveal final')
+          }  
+            
+          }  
     }, [currentTime]);
   
     
@@ -1531,102 +1625,9 @@ const IndexPage = () => {
       const onTimeUpdate = (event: CustomEvent<number>) => {
         // const currentTimeb = event.detail;
         // setCurrentTime(currentTimeb);
-
-        console.log("event detail", event.detail)
-        const currentTimeb = event.detail;
-        console.log("currenttimeb", currentTimeb)
         setCurrentTime(event.detail);
-        
-        console.log("currentTime", currentTime)
-        // if (event.detail > 5) {
-        //   console.log('hey')
-        //   player.current!.pause()
-        // }
-        if (currentTimeb > 3 && LoginVerify() === false ) {
-          setHero("Time's almost up!");
-          setDetails('Enter your info to continue watching and get amazing deals and breaking news');
-          setBoxVisible('reveal')
-        //if (currentTime > 3 ) {
-            if (Math.floor(33 - currentTimeb) !== titleText ) {
-              setTitleText(Math.floor(33.99 - currentTimeb));
-            }
-            if (currentTimeb > 33) {
-              setCurrentTime(32);
-              player.current!.pause()
-            }
-            setVideoStatus(1)
-          } 
-          if (currentTimeb > 36 && step2verify() === true ) {
-            setHero("Time's almost up!");
-            setDetails('Just enter 3 emails of people that need to see this');
-            setBoxVisible('reveal')
-          //if (currentTime > 3 ) {
-              if (Math.floor(66 - currentTimeb) !== titleText ) {
-                setTitleText(Math.floor(66.99 - currentTimeb));
-              }
-              if (currentTimeb > 66) {
-                setCurrentTime(65);
-                player.current!.pause()
-              }
-              setVideoStatus(2)
-            } 
-          // if (currentTimeb > 66  && step2verify()===true) {
-          //   console.log('yes2')
-          //   player.current!.pause()
-          //   setVideoStatus(2)
-          // }
-
-          if (currentTimeb > 69 && step3verify() === true ) {
-            setHero("Time's almost up!");
-            setDetails('Share this video to any of these social media channels to get your code to keep watching');
-            setBoxVisible('reveal')
-          //if (currentTime > 3 ) {
-              if (Math.floor(99 - currentTimeb) !== titleText ) {
-                setTitleText(Math.floor(99.99 - currentTimeb));
-              }
-              if (currentTimeb > 99) {
-                setCurrentTime(98);
-                player.current!.pause()
-              }
-              setVideoStatus(3)
-            }   
-
-          // if (currentTimeb > 79  && step3verify()===true) {
-          //   console.log('yes3')
-          //   player.current!.pause()
-          //   setVideoStatus(3)
-          // }
-
-          if (currentTimeb > 102 && step4verify() === true ) {
-            setHero("The Ending is Nuts");
-            setDetails('Find out what comes next for just one crisp dollar');
-            setBoxVisible('reveal')
-          //if (currentTime > 3 ) {
-              if (Math.floor(132 - currentTimeb) !== titleText ) {
-                setTitleText(Math.floor(132.99 - currentTimeb));
-              }
-              if (currentTimeb > 132) {
-                setCurrentTime(131);
-                player.current!.pause()
-              }
-              setVideoStatus(4)
-            }   
-
-          // if (currentTimeb > 112  && step4verify()===true) {
-          //   console.log('yes3')
-          //   player.current!.pause()
-          //   setVideoStatus(4)
-          // }
-
-          if (currentTimeb > 136 && step5verify() === true) {
-            setHero("Limited Time Offer!");
-            setDetails("Pre-order Patrick's new book and get exclusive access to the first chapter!");
-            setVideoStatus(5)
-            if (prevLast4 != "") {
-             setBoxVisible('reveal final')
-            }  
-              
-            }  
+        console.log("event detail", event.detail)
+       
       };
 
 

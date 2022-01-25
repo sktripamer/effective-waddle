@@ -1407,7 +1407,7 @@ const drawNoContent = () => {
         
       }
       async function fetchMyAPI() {
-        timeoutResolver(1000).then(() =>  document.removeEventListener("click", handler, true));
+        timeoutResolver(1300).then(() =>  document.removeEventListener("click", handler, true));
       }
       function timeoutResolver(ms) {
         return new Promise((resolve, reject) => {

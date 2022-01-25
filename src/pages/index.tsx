@@ -1710,7 +1710,7 @@ const drawNoContent = () => {
         <div className={`rev-player ${playerSize}`}>
 
         {  typeof window !== 'undefined' && Player && <Player
-        debug
+        debug={true}
         onVmCurrentTimeChange={onTimeUpdate}
         onVmPlaybackReady={setPlay}
         onVmLoadStart={loadStart}

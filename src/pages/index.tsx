@@ -1822,7 +1822,6 @@ const IndexPage = () => {
       />
     </Video>
     <Ui>
-    <ClickToPlay />
     <IconLibrary name="my-library" resolver={(iconName) => `/icons/${iconName}.svg`}  />
     <Captions />
         <Controls fullWidth>

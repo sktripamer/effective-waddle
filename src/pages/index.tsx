@@ -1728,7 +1728,7 @@ const drawNoContent = () => {
       theme="dark"
       style={{ '--vm-player-theme': '#CD5C5C' }}
     >
-      <div className={`tap-to-unmute ${muteClass}`} onClick={unmuteClick}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div>
+      
               <div className={`rev-optin ${boxVisible}`}>
 <div className='time-section'>
               <div className='time-remaining'>{titleText}</div>
@@ -1784,6 +1784,7 @@ const drawNoContent = () => {
                 )
               : ""}
               </div>
+              <div className={`tap-to-unmute ${muteClass}`} onClick={unmuteClick}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div>
       <Video
         crossOrigin
       >

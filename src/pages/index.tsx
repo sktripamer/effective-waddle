@@ -1536,8 +1536,8 @@ const drawNoContent = () => {
           setMuteClass("rev-mute")
         }
         const unmuteClick = () => {
-         // player.current!.muted = false;
-          //setMuteClass("rev-mute")
+         player.current!.muted = false;
+          setMuteClass("rev-mute")
         };
         const onClick = () => {
           setPaused(!paused);
@@ -1784,7 +1784,7 @@ const drawNoContent = () => {
                 )
               : ""}
               </div>
-              <div id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div>
+             
       <Video
         crossOrigin
         preload="auto"
@@ -1830,7 +1830,7 @@ const drawNoContent = () => {
     </Player> }
   
       </div>
-
+      <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div>          
             
           </Layout>
         )

@@ -1468,6 +1468,8 @@ vm-player[audio] {
   position: absolute;
   display: flex;
   z-index: 21;
+  top: 0;
+    left: 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -1493,8 +1495,7 @@ vm-player[audio] {
 }
 
 .tap-to-unmute.rev-mute {
-  z-index: 0;
-  opacity: 0;
+  display: none;
 }
 .prev-brand.visa {
   height: 16px;

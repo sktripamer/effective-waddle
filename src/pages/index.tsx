@@ -1386,6 +1386,7 @@ const IndexPage = () => {
   const [titleText, setTitleText] = useState(30);
   const { boxVisible, setBoxVisible } = useBetween(useShareableState);
   const [currentTime, setCurrentTime] = useState(0);
+  const [currentTimeb, setCurrentTimeb] = useState(0);
   const { prevLast4, setLast4 } = useBetween(useShareableState);
   const [playerSize, setPlayerSize] = useState("regular");
   const {moreDetails, setDetails } = useBetween(useShareableState);
@@ -1419,7 +1420,7 @@ const IndexPage = () => {
 
     useEffect(() => {
       console.log('useeffected ct', currentTime);
-      const currentTimeb = currentTime;
+  
       console.log("currenttimeb", currentTimeb)
      
       
@@ -1513,7 +1514,7 @@ const IndexPage = () => {
           }  
             
           }  
-    }, [currentTime]);
+    }, [currentTimeb]);
   
     
   // const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])
@@ -1626,6 +1627,7 @@ const IndexPage = () => {
         // const currentTimeb = event.detail;
         // setCurrentTime(currentTimeb);
         setCurrentTime(event.detail);
+        setCurrentTimeb(event.detail);
         console.log("event detail", event.detail)
        
       };

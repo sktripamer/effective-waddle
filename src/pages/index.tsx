@@ -1612,7 +1612,7 @@ const IndexPage = () => {
       const onTimeUpdate = (event: CustomEvent<number>) => {
         
         const currentTimeb = Math.round(event.detail);
-        //setCurrentTime(currentTimeb);
+        setCurrentTime(currentTimeb);
         // if (event.detail > 5) {
         //   console.log('hey')
         //   player.current!.pause()

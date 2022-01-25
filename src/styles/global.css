@@ -1493,7 +1493,8 @@ vm-player[audio] {
 }
 
 .tap-to-unmute.rev-mute {
-  display: none;
+  z-index: 0;
+  opacity: 0;
 }
 .prev-brand.visa {
   height: 16px;

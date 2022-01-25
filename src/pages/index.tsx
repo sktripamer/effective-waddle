@@ -70,7 +70,7 @@
   import WhatsappIcon from "../images/WhatsappIcon"
   import LinkedinIcon from "../images/LinkedinIcon"
   import EmailIcon from "../images/EmailIcon"
-  const promise = loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3');
+  //const promise = loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3');
 
 
   const useShareableState = () => {
@@ -1708,7 +1708,7 @@ const drawNoContent = () => {
       )}
 </div>
         <div className={`rev-player ${playerSize}`}>
-
+        <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div> 
         {  typeof window !== 'undefined' && Player && <Player
         debug={true}
         onVmCurrentTimeChange={onTimeUpdate}
@@ -1828,7 +1828,7 @@ const drawNoContent = () => {
         </Ui>
          {/* <DefaultUi /> */}
     </Player> }
-    <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div>         
+           
       </div>
       
             

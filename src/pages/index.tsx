@@ -1536,7 +1536,7 @@ const drawNoContent = () => {
           setMuteClass("rev-mute")
         }
         const unmuteClick = () => {
-          player.current!.muted = false;
+         // player.current!.muted = false;
           //setMuteClass("rev-mute")
         };
         const onClick = () => {
@@ -1784,7 +1784,7 @@ const drawNoContent = () => {
                 )
               : ""}
               </div>
-              <div className={`tap-to-unmute ${muteClass}`} onClick={unmuteClick}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div>
+              <div className={`tap-to-unmute ${muteClass}`}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div>
       <Video
         crossOrigin
       >

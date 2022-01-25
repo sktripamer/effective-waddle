@@ -1416,6 +1416,11 @@ const IndexPage = () => {
     }
     fetchMyAPI();
     }, []);
+
+    useEffect(() => {
+      console.log('useeffected ct', currentTime);
+    }, [currentTime]);
+  
     
   // const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])
   // Check if the user is validated already.
@@ -1458,98 +1463,8 @@ const IndexPage = () => {
       getCurrentTime: null,
       getPlaybackSpeed: null,
       });
-    
-      const { videoDetails, setVideoDetails } =  useBetween(useShareableState);
-      
-      const handlePlayPause = (status: any) => () => {
-      setPlaying({
-        status,
-        time: videoProgressFunctions.getCurrentTime?.() || playing.time,
-        speed: videoProgressFunctions.getPlaybackSpeed?.() || playing.speed,
-      });
-      };
-  
-      const handlePlaybackSpeedChange = (speed: any) => () => {
-      setPlaying({
-        speed,
-        time: videoProgressFunctions.getCurrentTime?.() || playing.time,
-        status: videoProgressFunctions.getPlayingStatus?.() || playing.status,
-      });
-      };
-    
-      const storeVideoDetailFunctions = ({
-      getPlaybackSpeed,
-      getCurrentTime,
-      getPlayingStatus,
-      }) => {
-      setVideoProgressFunctions({
-        getPlayingStatus: getPlayingStatus,
-        getCurrentTime: getCurrentTime,
-        getPlaybackSpeed: getPlaybackSpeed,
-      });
-      };
-  
-      const handleVideoProgress = ({
-      currentTime,
-      isPlaying,
-      speed,
-      totalTime,
-      }) => {
-      setVideoDetails({ currentTime, isPlaying, speed, totalTime });
-      if (currentTime > 3 && LoginVerify() === false ) {
-      setBoxVisible('reveal')
-        console.log('yes')
-        if (Math.floor(33 - currentTime) !== titleText ) {
-          setTitleText(Math.floor(33.99 - currentTime));
-        }
-        if (currentTime > 33) {
-        setPlaying({status: false, time: 32.94, speed: speed})
-        }
-        setVideoStatus(1)
-      } 
-      if (currentTime > 36 && step2verify() === false ) {
-        setBoxVisible('reveal')
-          console.log('yes2')
-          if (Math.floor(66 - currentTime) !== titleText ) {
-            setTitleText(Math.floor(66.99 - currentTime));
-          }
-          if (currentTime > 66) {
-          setPlaying({status: false, time: 65.94, speed: speed})
-          }
-          setVideoStatus(2)
-        } 
-      // if (currentTime > 66  && step2verify()===true) {
-      //   console.log('yes2')
-      //   setPlaying({status: false, time: 65.99, speed: speed})
-      //   setVideoStatus(2)
-      // }
-      if (currentTime > 69 && step3verify() === false ) {
-        setBoxVisible('reveal')
-          console.log('yes3')
-          if (Math.floor(99 - currentTime) !== titleText ) {
-            setTitleText(Math.floor(99.99 - currentTime));
-          }
-          if (currentTime > 99) {
-          setPlaying({status: false, time: 98.94, speed: speed})
-          }
-          setVideoStatus(3)
-        } 
-      // if (currentTime > 79  && step3verify()===true) {
-      //   console.log('yes3')
-      //   setPlaying({status: false, time: 78.99, speed: speed})
-      //   setVideoStatus(3)
-      // }
-      if (currentTime > 112  && step4verify()===true) {
-        console.log('yes3')
-        setPlaying({status: false, time: 111.99, speed: speed})
-        setVideoStatus(4)
-      }
-      console.log(currentTime)
-      console.log(isPlaying)
-      console.log(loggedIn)
-      console.log(videoTime)
-      console.log(currentVideoState())
-      };
+
+
 
       const onMutedChange = () => {
         setMuteClass("rev-mute")

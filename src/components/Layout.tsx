@@ -7,7 +7,6 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <title>revrevdev</title>
-      <Header />
       <main>{children}</main>
     </>
   );

@@ -21,7 +21,7 @@
   //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
   //import useAuth from "../hooks/useAuth";
   //import UnAuthContent from "../components/UnAuthContent";
-  import {loadStripe, StripeConstructorOptions} from '@stripe/stripe-js';
+  import {loadStripe} from '@stripe/stripe-js/pure';
   import {
     CardElement,
     Elements,

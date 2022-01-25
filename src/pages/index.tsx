@@ -1732,7 +1732,7 @@ const IndexPage = () => {
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"
       debug={true}
-      onVmCurrentTimeChange={onTimeUpdate}
+      // onVmCurrentTimeChange={onTimeUpdate}
       onVmPlaybackReady={setPlay}
       onVmLoadStart={loadStart}
       onVmPlaybackStarted={playStart}
@@ -1822,6 +1822,7 @@ const IndexPage = () => {
       />
     </Video>
     <Ui>
+    <ClickToPlay />
     <IconLibrary name="my-library" resolver={(iconName) => `/icons/${iconName}.svg`}  />
     <Captions />
         <Controls fullWidth>

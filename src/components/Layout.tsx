@@ -9,10 +9,10 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Helmet>
         <html lang="en" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-        <link rel="preload" as="image" href="/icons/vm-volume-mute.svg"/>
-        <link rel="preload" as="image" href="/icons/vm-pause.svg"/>
-        <link rel="preload" as="image" href="/icons/vm-volume-high.svg"/>
-        <link rel="preload" as="image" href="/icons/vm-play.svg"/>
+        <link rel="preload" as="image" href="/icons/volume-mute.svg"/>
+        <link rel="preload" as="image" href="/icons/pause.svg"/>
+        <link rel="preload" as="image" href="/icons/volume-high.svg"/>
+        <link rel="preload" as="image" href="/icons/play.svg"/>
         <link rel="preload" as="image" href="/icons/md-fullscreen-enter.svg"/>
         <link rel="preload" as="image" href="/icons/vm-fullscreen-enter.svg"/>
         <link rel="preload" as="image" href="https://portal.revrevdev.xyz/wp-content/uploads/continue.svg"/>

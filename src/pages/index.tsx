@@ -15,7 +15,7 @@
     PlaybackControl,
     VolumeControl,
     ControlSpacer,
-    CaptionControl,
+    Captions,
   } from '@vime/react';
   import Layout from "../components/Layout";
   //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
@@ -1802,6 +1802,7 @@ const drawNoContent = () => {
       </Video>
       <Ui>
       <ClickToPlay />
+      <Captions />
           <Controls fullWidth>
             <ControlGroup>
               <ScrubberControl hideTooltip noKeyboard />

@@ -19,7 +19,7 @@
   } from '@vime/react';
   import Layout from "../components/Layout";
   //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
-  import useAuth from "../hooks/useAuth";
+  //import useAuth from "../hooks/useAuth";
   //import UnAuthContent from "../components/UnAuthContent";
   import {loadStripe, StripeConstructorOptions} from '@stripe/stripe-js';
   import {
@@ -30,9 +30,9 @@
   } from '@stripe/react-stripe-js';
   import { isEmpty, remove } from 'lodash';
   import { gql , useMutation } from "@apollo/client";
-  import SignUpForm from "../components/SignUpForm";
+  //import SignUpForm from "../components/SignUpForm";
   //import RegisterOpt from "../components/RegisterOpt";
-  import UnAuthContent from "../components/UnAuthContent";
+  //import UnAuthContent from "../components/UnAuthContent";
   //import LoginVerify from "../components/LoginVerify";
 
   import InputField2 from '../components/inputfield';

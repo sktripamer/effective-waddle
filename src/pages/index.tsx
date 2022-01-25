@@ -1404,8 +1404,19 @@ const drawNoContent = () => {
       function handler(e) {
         e.stopPropagation();
         e.preventDefault();
+        
       }
-      
+      async function fetchMyAPI() {
+        timeoutResolver(1000).then(() =>  document.removeEventListener("click", handler, true));
+      }
+      function timeoutResolver(ms) {
+        return new Promise((resolve, reject) => {
+          setTimeout(function () {
+            resolve(true);
+          }, ms);
+        });
+      }
+      fetchMyAPI();
       }, []);
       
     // const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])

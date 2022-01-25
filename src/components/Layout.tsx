@@ -9,6 +9,16 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Helmet>
         <html lang="en" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+        <link rel="preload" as="image" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-volume-mute.svg"/>
+        <link rel="preload" as="image" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-pause.svg"/>
+        <link rel="preload" as="image" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-volume-high.svg"/>
+        <link rel="preload" as="image" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-play.svg"/>
+        <link rel="preload" as="image" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/material/md-fullscreen-enter.svg"/>
+        <link rel="preload" as="image" href="https://cdn.jsdelivr.net/npm/@vime/core@latest/icons/vime/vm-fullscreen-enter.svg"/>
+        <link rel="preload" as="image" href="https://portal.revrevdev.xyz/wp-content/uploads/continue.svg"/>
+        <link rel="preload" as="image" href="https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg"/>
+        <link rel="preload" as="image" href="https://portal.revrevdev.xyz/wp-content/uploads/starline.svg"/>
+        <link rel="preload" as="track" href="https://media.vimejs.com/subs/english.vtt"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
 <link rel="manifest" href="/site.webmanifest"/>

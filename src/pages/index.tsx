@@ -1405,7 +1405,7 @@ const IndexPage = () => {
       
     }
     async function fetchMyAPI() {
-      timeoutResolver(1300).then(() =>  document.removeEventListener("click", handler, true));
+      timeoutResolver(1700).then(() =>  document.removeEventListener("click", handler, true));
     }
     function timeoutResolver(ms) {
       return new Promise((resolve, reject) => {

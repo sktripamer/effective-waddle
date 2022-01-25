@@ -14,7 +14,6 @@ import {
   ControlSpacer,
   IconLibrary,
   Captions,
-  usePlayerContext,
 } from '@vime/react';
 import Layout from "../components/Layout";
 //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
@@ -1386,13 +1385,13 @@ const IndexPage = () => {
   const {videoTime, setVideoTime } = useBetween(useShareableState);
   const [titleText, setTitleText] = useState(30);
   const { boxVisible, setBoxVisible } = useBetween(useShareableState);
-  //const [currentTime, setCurrentTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const { prevLast4, setLast4 } = useBetween(useShareableState);
   const [playerSize, setPlayerSize] = useState("regular");
   const {moreDetails, setDetails } = useBetween(useShareableState);
   const {heroText, setHero } = useBetween(useShareableState);
   const {error, setError } = useBetween(useShareableState);
-  const [currentTime, setCurrentTime] = usePlayerContext(player, 'currentTime', 0);
+ 
   const currentVideoState = () => {
     return videoTime;
   }
@@ -1622,6 +1621,7 @@ const IndexPage = () => {
         const currentTimeb = event.detail;
         console.log("currenttimeb", currentTimeb)
         setCurrentTime(event.detail);
+        
         console.log("currentTime", currentTime)
         // if (event.detail > 5) {
         //   console.log('hey')

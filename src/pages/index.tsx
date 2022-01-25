@@ -70,7 +70,7 @@
   import WhatsappIcon from "../images/WhatsappIcon"
   import LinkedinIcon from "../images/LinkedinIcon"
   import EmailIcon from "../images/EmailIcon"
-  //const promise = loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3');
+  const promise = loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3');
 
 
   const useShareableState = () => {
@@ -1398,6 +1398,16 @@ const drawNoContent = () => {
       return videoTime;
     }
 
+    useEffect(() => {
+      document.addEventListener("click", handler, true);
+          
+      function handler(e) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+      
+      }, []);
+      
     // const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])
     // Check if the user is validated already.
     // useMountEffect(LoginVerify)
@@ -1689,6 +1699,7 @@ const drawNoContent = () => {
 
         return (
           <Layout>
+            
 <div className={`rev-optin-mobile ${boxVisible}`}>
       <div className='time-section'>
               <div className='time-remaining'>{titleText}</div>

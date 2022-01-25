@@ -1057,12 +1057,26 @@ input:focus + .svg-img-item {
 @keyframes oldput {
   0% {
    opacity:1;
+   z-index: 2;
   }
+  99% {
+    z-index: 2;
+    opacity:0;
+   }
+  100% {
+    z-index: 1;
+   opacity:0;
+  }
+}
+@keyframes oldput2 {
+  0% {
+   opacity:1;
+  }
+ 
   100% {
    opacity:0;
   }
 }
-
 
 form input:focus {
   outline: none;
@@ -1498,10 +1512,12 @@ vm-player[audio] {
   z-index: 21;
   top: 0;
     left: 0;
+    opacity:0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  animation: newput .5s cubic-bezier(.4,0,1,1) .7s forwards;
 }
 
 

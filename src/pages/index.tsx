@@ -1828,9 +1828,9 @@ const drawNoContent = () => {
         </Ui>
          {/* <DefaultUi /> */}
     </Player> }
-  
+    <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div>         
       </div>
-      <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div>          
+      
             
           </Layout>
         )

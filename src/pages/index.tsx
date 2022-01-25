@@ -1611,8 +1611,8 @@ const IndexPage = () => {
       }
       const onTimeUpdate = (event: CustomEvent<number>) => {
         
-        const currentTimeb = event.detail;
-        setCurrentTime(currentTimeb);
+        const currentTimeb = Math.round(event.detail);
+        //setCurrentTime(currentTimeb);
         // if (event.detail > 5) {
         //   console.log('hey')
         //   player.current!.pause()
@@ -1626,7 +1626,7 @@ const IndexPage = () => {
               setTitleText(Math.floor(33.99 - currentTimeb));
             }
             if (currentTimeb > 33) {
-              setCurrentTime(32.99);
+              setCurrentTime(32);
               player.current!.pause()
             }
             setVideoStatus(1)
@@ -1640,7 +1640,7 @@ const IndexPage = () => {
                 setTitleText(Math.floor(66.99 - currentTimeb));
               }
               if (currentTimeb > 66) {
-                setCurrentTime(65.94);
+                setCurrentTime(65);
                 player.current!.pause()
               }
               setVideoStatus(2)
@@ -1660,7 +1660,7 @@ const IndexPage = () => {
                 setTitleText(Math.floor(99.99 - currentTimeb));
               }
               if (currentTimeb > 99) {
-                setCurrentTime(98.94);
+                setCurrentTime(98);
                 player.current!.pause()
               }
               setVideoStatus(3)
@@ -1681,7 +1681,7 @@ const IndexPage = () => {
                 setTitleText(Math.floor(132.99 - currentTimeb));
               }
               if (currentTimeb > 132) {
-                setCurrentTime(131.94);
+                setCurrentTime(131);
                 player.current!.pause()
               }
               setVideoStatus(4)
@@ -1732,7 +1732,7 @@ const IndexPage = () => {
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"
       debug={true}
-      // onVmCurrentTimeChange={onTimeUpdate}
+      onVmCurrentTimeChange={onTimeUpdate}
       onVmPlaybackReady={setPlay}
       onVmLoadStart={loadStart}
       onVmPlaybackStarted={playStart}

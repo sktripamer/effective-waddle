@@ -1609,11 +1609,17 @@ const IndexPage = () => {
         setFirstPlay(true)
 
       }
+      function round(num, places) {
+        var multiplier = Math.pow(10, places);
+        return Math.round(num * multiplier) / multiplier;
+    }
       const onTimeUpdate = (event: CustomEvent<number>) => {
+        
+
         console.log("event detail", event.detail)
-        const currentTimeb = Math.round(event.detail);
+        const currentTimeb = round(event.detail, 1);
         console.log("currenttimeb", currentTimeb)
-        setCurrentTime(event.detail);
+        setCurrentTime(round(event.detail, 3));
         console.log("currentTime", currentTime)
         // if (event.detail > 5) {
         //   console.log('hey')

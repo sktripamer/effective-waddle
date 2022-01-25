@@ -40,15 +40,15 @@ export const GET_USER = gql`
 `;
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const { data, loading, error } = useQuery(GET_USER);
-  const user = data?.viewer;
-  const loggedIn = Boolean(user);
+ // const { data, loading, error } = useQuery(GET_USER);
+  //const user = data?.viewer;
+ // const loggedIn = Boolean(user);
 
   const value = {
-    loggedIn,
-    user,
-    loading,
-    error,
+    loggedIn: false,
+    user: undefined,
+    loading: false,
+    error: undefined,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

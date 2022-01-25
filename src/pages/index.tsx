@@ -1537,7 +1537,7 @@ const drawNoContent = () => {
         }
         const unmuteClick = () => {
           player.current!.muted = false;
-          setMuteClass("rev-mute")
+          //setMuteClass("rev-mute")
         };
         const onClick = () => {
           setPaused(!paused);

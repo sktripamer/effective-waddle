@@ -1619,7 +1619,7 @@ const IndexPage = () => {
         console.log("event detail", event.detail)
         const currentTimeb = round(event.detail, 1);
         console.log("currenttimeb", currentTimeb)
-        setCurrentTime(round(event.detail, 3));
+        //setCurrentTime(event.detail);
         console.log("currentTime", currentTime)
         // if (event.detail > 5) {
         //   console.log('hey')

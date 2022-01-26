@@ -1096,6 +1096,7 @@ const [errorOld, setErrorOld] = useState(null);
 const [processing, setProcessing] = useState("");
 const [disabled, setDisabled] = useState(true);
 const [clientSecret, setClientSecret] = useState("");
+
 const nameForm = useRef(null);
 const [successMessage, setSuccessMessage] = useState("");
 const [showAlertBar, setShowAlertBar] = useState(true);
@@ -1392,7 +1393,7 @@ const IndexPage = () => {
   const {moreDetails, setDetails } = useBetween(useShareableState);
   const {heroText, setHero } = useBetween(useShareableState);
   const {error, setError } = useBetween(useShareableState);
- 
+  const [revealer, setRevealer] = useState("");
   const currentVideoState = () => {
     return videoTime;
   }
@@ -1595,6 +1596,7 @@ const IndexPage = () => {
         })( 0 );
           console.log(video)
           video.addEventListener('canplay', myClick);
+
         }
         
 
@@ -1617,6 +1619,9 @@ const IndexPage = () => {
       const playStart = () => {
         console.log('play started')
         setFirstPlay(true)
+        if (firstPlay===true) {
+          setRevealer('revealer-el')
+        }
 
       }
       function round(num, places) {
@@ -1656,7 +1661,7 @@ const IndexPage = () => {
     )}
 </div>
       <div className={`rev-player ${playerSize}`}>
-      <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className='tap-to-unmute-svg'></div><div className='tap-to-unmute-text'>Click to unmute</div></div> 
+      <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg ${revealer}`}></div><div className={`tap-to-unmute-text ${revealer}`}>Click to unmute</div></div> 
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"
       debug={true}

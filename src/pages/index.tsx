@@ -1395,6 +1395,7 @@ const IndexPage = () => {
   const {error, setError } = useBetween(useShareableState);
   const [revealer, setRevealer] = useState("");
   const [loadrevealer, setLoadRevealer] = useState("");
+  const [loadswitcher, setLoadswitcher] = useState("");
   const currentVideoState = () => {
     return videoTime;
   }
@@ -1623,6 +1624,7 @@ const IndexPage = () => {
        
           setRevealer('revealer-el')
           setLoadRevealer('loadrevealer-el')
+          setLoadswitcher('loadswitch-el')
 
       }
       function round(num, places) {
@@ -1661,7 +1663,7 @@ const IndexPage = () => {
       </div>
     )}
 </div>
-<div className="rev-player-cont">
+<div className={`rev-player-cont ${loadswitcher}`}>
       <div className={`rev-player ${playerSize} ${revealer}`}>
        
       {  typeof window !== 'undefined' && Player && <Player

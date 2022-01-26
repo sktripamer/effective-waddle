@@ -1619,9 +1619,9 @@ const IndexPage = () => {
       const playStart = () => {
         console.log('play started')
         setFirstPlay(true)
-        if (firstPlay===true) {
+       
           setRevealer('revealer-el')
-        }
+        
 
       }
       function round(num, places) {

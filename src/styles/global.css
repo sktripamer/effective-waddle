@@ -653,7 +653,9 @@ div#card-element {
 }
 
 @media (max-width: 666px) {
-
+  div.rev-player-cont.loadswitch-el {
+    animation: relout-mobile .6s forwards step-end;
+  }
   
 form #share-form input.form-control.form-control {
   width: 90%;
@@ -1068,6 +1070,20 @@ input:focus + .svg-img-item {
   100% {
     z-index: 1;
    opacity:0;
+  }
+}
+@keyframes relout-mobile {
+  0% {
+    position: absolute;
+    margin-top: 119px;
+  }
+  99% {
+    position: absolute;
+    margin-top: 119px;
+   }
+  100% {
+    position: relative;
+    margin-top: 0px;
   }
 }
 @keyframes relout {

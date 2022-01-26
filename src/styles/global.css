@@ -155,21 +155,7 @@ main {
       margin-right: 20px;
   }
   
-  h1.revival-of-revenue {
-    color: #fff;
-    text-align: center;
-    font-family: 'Josefin Sans';
-    text-transform: uppercase;
-    padding-top: 40px;
-}
-h1 span {
-  display: table;
-  margin: 0 auto;
-  font-size: 2.8rem;
-  margin-top: 16px;
-  letter-spacing: 0rem;
-  animation: letterspace 2.5s ease-out forwards, neon1 1.5s ease-in-out infinite alternate;
-}
+
 @keyframes letterspace {
   0% {
     letter-spacing: 0rem;
@@ -682,6 +668,12 @@ div#card-element {
 }
 
 @media (max-width: 666px) {
+  h1.revival-of-revenue {
+    font-size: 1.3rem;
+  }
+  h1 span {
+    font-size: 1.4rem;
+  }
   div.rev-loadin {
     padding-top: 169px;
 }
@@ -783,6 +775,21 @@ div.w-100.d-flex.justify-content-between {
 .d-flex button.ml-auto.btn.btn-success {
   padding: 0.25rem 0.75rem;
 }
+}
+h1.revival-of-revenue {
+  color: #fff;
+  text-align: center;
+  font-family: 'Josefin Sans';
+  text-transform: uppercase;
+  padding-top: 40px;
+}
+h1 span {
+display: table;
+margin: 0 auto;
+font-size: 2.8rem;
+margin-top: 16px;
+letter-spacing: 0rem;
+animation: letterspace 2.5s ease-out forwards, neon1 1.5s ease-in-out infinite alternate;
 }
 .regular {
   margin: 0 auto;
@@ -1173,7 +1180,7 @@ main {
         background-repeat: no-repeat;
         background-size: cover;
         padding-bottom: 100px;
-        min-height: 900px;
+        min-height: 1100px;
 }
 
 div.input-group {

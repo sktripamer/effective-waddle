@@ -675,7 +675,7 @@ div#card-element {
     font-size: 1.4rem;
   }
   div.rev-loadin {
-    padding-top: 169px;
+    padding-top: 219px;
 }
 
   div.rev-player-cont.loadswitch-el {
@@ -1122,7 +1122,7 @@ input:focus + .svg-img-item {
    }
   100% {
     position: relative;
-    margin-top: 0px;
+    margin-top: -116px;
   }
 }
 @keyframes relout {

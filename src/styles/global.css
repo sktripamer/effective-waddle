@@ -803,7 +803,7 @@ h2.revival-of-revenue {
   padding-top: 40px;
   text-align: center;
   text-transform: uppercase;
-  transition: .6s all;
+  transition: .6s all .61s;
 }
 h2.revival-of-revenue.revealerh2-el {
   opacity: 1;

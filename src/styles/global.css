@@ -703,7 +703,7 @@ button.btn.share-btn {
   }
   div.rev-optin {
     display: flex;
-    margin-top: -219px;
+    margin-top: -30px;
   }
 
   div.powered-container {
@@ -762,7 +762,7 @@ div.steptwo > form > div.form-group > div.input-group > input.form-control.form-
   transition: .2s .15s all;
 }
 div>small.form-text.text-danger {
-  margin-top: -14px;
+  margin-top: -10px;
 }
 div.rev-optin>div.register-form.col-md-6.steptwo {
   margin: 0;

@@ -1401,36 +1401,34 @@ const IndexPage = () => {
     return videoTime;
   }
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    async function fetchMyAPI() {
-      timeoutResolver(3000).then(() =>  lastResort());
-    }
-    function timeoutResolver(ms) {
-      return new Promise((resolve, reject) => {
-        setTimeout(function () {
-          resolve(true);
-        }, ms);
-      });
-    }
-    function lastResort() {
-      console.log('first play value', firstPlay)
-      if (firstPlay===false) {
-       setFirstPlay(true)
-      setFile("")
-        setFile("https://media.vimejs.com/720p.mp4")
-       setRevealer('revealer-el')
-       setLoadRevealer('loadrevealer-el')
-       setLoadswitcher('loadswitch-el')
-      }
-    }
-    fetchMyAPI();
-    }, []);
+  //   async function fetchMyAPI() {
+  //     timeoutResolver(3000).then(() =>  lastResort());
+  //   }
+  //   function timeoutResolver(ms) {
+  //     return new Promise((resolve, reject) => {
+  //       setTimeout(function () {
+  //         resolve(true);
+  //       }, ms);
+  //     });
+  //   }
+  //   function lastResort() {
+  //     console.log('first play value', firstPlay)
+  //     if (firstPlay===false) {
+  //      setFirstPlay(true)
+  //     setFile("")
+  //       setFile("https://media.vimejs.com/720p.mp4")
+  //      setRevealer('revealer-el')
+  //      setLoadRevealer('loadrevealer-el')
+  //      setLoadswitcher('loadswitch-el')
+  //     }
+  //   }
+  //   fetchMyAPI();
+  //   }, []);
 
     useEffect(() => {
-      console.log('useeffected ct', currentTime);
-  
-      console.log("currenttimeb", currentTimeb)
+ 
      
       
       
@@ -1642,7 +1640,6 @@ const IndexPage = () => {
         // setCurrentTime(currentTimeb);
         setCurrentTime(event.detail);
         setCurrentTimeb(event.detail);
-        console.log("event detail", event.detail)
        
       };
 
@@ -1685,8 +1682,6 @@ const IndexPage = () => {
       playsinline={true}
       onVmPlayingChange={playingChange}
       onVmPlay={playTransition}
-      
-      autoplay
       controls={false}
       currentTime={currentTime}
       ref={player}

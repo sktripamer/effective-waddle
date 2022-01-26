@@ -141,10 +141,10 @@ main {
 }
 @keyframes neon1 {
   from {
-   text-shadow: 0 0 10px #ffffff78, 0 0 20px #ffffff85, 0 0 30px #ffffff0d, 0 0 40px #0e42857d, 0 0 70px #0e428594, 0 0 80px #0e42859e, 0 0 100px #0e428591, 0 0 150px #0e42858c;
+   text-shadow: 0 0 4px #ffffff78, 0 0 8px #ffffff85, 0 0 16px #ffffff0d, 0 0 28px #0e42857d, 0 0 36px #0e428594, 0 0 48px #0e42859e, 0 0 64px #0e428591, 0 0 84px #0e42858c;
   }
   to {
-   text-shadow: 0 0 5px #ffffff78, 0 0 10px #ffffff85, 0 0 15px #ffffff0d, 0 0 20px #0e42857d, 0 0 35px #0e428594, 0 0 40px #0e42859e, 0 0 50px #0e428591, 0 0 75px #0e42858c;
+   text-shadow: 0 0 2px #ffffff78, 0 0 4px #ffffff85, 0 0 8px #ffffff0d, 0 0 14px #0e42857d, 0 0 18px #0e428594, 0 0 24px #0e42859e, 0 0 32px #0e428591, 0 0 42px #0e42858c;
   }
 }
 .split-point-view {
@@ -160,6 +160,7 @@ main {
     text-align: center;
     font-family: 'Josefin Sans';
     text-transform: uppercase;
+    padding-top: 40px;
 }
 h1 span {
   display: table;
@@ -167,7 +168,7 @@ h1 span {
   font-size: 2.8rem;
   margin-top: 16px;
   letter-spacing: 0rem;
-  animation: letterspace 1.5s ease-out forwards, neon1 1.5s ease-in-out infinite alternate;
+  animation: letterspace 2.5s ease-out forwards, neon1 1.5s ease-in-out infinite alternate;
 }
 @keyframes letterspace {
   0% {
@@ -1123,9 +1124,11 @@ input:focus + .svg-img-item {
   }
   99% {
     position: absolute;
+    margin-top: 0px;
    }
   100% {
     position: relative;
+    margin-top: -166px;
   }
 }
 @keyframes disout {
@@ -1596,11 +1599,11 @@ vm-player[audio] {
   .rev-player-cont {
       position: absolute;
       width: 100%;
-      padding-top: 50px;
+      padding-top: 216px;
       top: 0;
   }
   .rev-player-cont.loadswitch-el {
-    animation: relout .6s forwards;
+    animation: relout .6s forwards step-end;
   }
 
 .tap-to-unmute-svg {

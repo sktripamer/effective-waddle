@@ -1415,12 +1415,12 @@ const IndexPage = () => {
     }
     function lastResort() {
       if (firstPlay===false) {
-      // setFirstPlay(true)
+       setFirstPlay(true)
       setFile("")
-        setFile("https://1768239509.rsc.cdn77.org/pk.mp4")
-      // setRevealer('revealer-el')
-      // setLoadRevealer('loadrevealer-el')
-      // setLoadswitcher('loadswitch-el')
+        setFile("https://media.vimejs.com/720p.mp4")
+       setRevealer('revealer-el')
+       setLoadRevealer('loadrevealer-el')
+       setLoadswitcher('loadswitch-el')
       }
     }
     fetchMyAPI();

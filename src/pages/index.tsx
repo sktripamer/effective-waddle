@@ -1394,6 +1394,7 @@ const IndexPage = () => {
   const {heroText, setHero } = useBetween(useShareableState);
   const {error, setError } = useBetween(useShareableState);
   const [revealer, setRevealer] = useState("");
+  const [revealerh2, setRevealerh2] = useState("");
   const [loadrevealer, setLoadRevealer] = useState("");
   const [loadswitcher, setLoadswitcher] = useState("");
   const [fileURL, setFile] = useState("https://1768239509.rsc.cdn77.org/pk.mp4")
@@ -1401,31 +1402,29 @@ const IndexPage = () => {
     return videoTime;
   }
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   async function fetchMyAPI() {
-  //     timeoutResolver(3000).then(() =>  lastResort());
-  //   }
-  //   function timeoutResolver(ms) {
-  //     return new Promise((resolve, reject) => {
-  //       setTimeout(function () {
-  //         resolve(true);
-  //       }, ms);
-  //     });
-  //   }
-  //   function lastResort() {
-  //     console.log('first play value', firstPlay)
-  //     if (firstPlay===false) {
-  //      setFirstPlay(true)
-  //     setFile("")
-  //       setFile("https://media.vimejs.com/720p.mp4")
-  //      setRevealer('revealer-el')
-  //      setLoadRevealer('loadrevealer-el')
-  //      setLoadswitcher('loadswitch-el')
-  //     }
-  //   }
-  //   fetchMyAPI();
-  //   }, []);
+    async function fetchMyAPI() {
+      timeoutResolver(3000).then(() =>  lastResort());
+    }
+    function timeoutResolver(ms) {
+      return new Promise((resolve, reject) => {
+        setTimeout(function () {
+          resolve(true);
+        }, ms);
+      });
+    }
+    function lastResort() {
+      console.log('first play value', firstPlay)
+      if (firstPlay===false) {
+        var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
+
+            video.muted = true;
+            video.play();
+      }
+    }
+    fetchMyAPI();
+    }, []);
 
     useEffect(() => {
  
@@ -1627,6 +1626,7 @@ const IndexPage = () => {
         setFirstPlay(true)
        console.log('set first play value', firstPlay)
           setRevealer('revealer-el')
+          setRevealerh2('revealerh2-el')
           setLoadRevealer('loadrevealer-el')
           setLoadswitcher('loadswitch-el')
 
@@ -1792,7 +1792,7 @@ const IndexPage = () => {
          
     </div>
  </div>   
- <h2 className={`revival-of-revenue ${revealer}`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>      
+ <h2 className={`revival-of-revenue ${revealerh2}`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>      
         </Layout>
       )
 

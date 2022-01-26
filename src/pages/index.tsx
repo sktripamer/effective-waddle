@@ -1396,6 +1396,7 @@ const IndexPage = () => {
   const [revealer, setRevealer] = useState("");
   const [loadrevealer, setLoadRevealer] = useState("");
   const [loadswitcher, setLoadswitcher] = useState("");
+  const [fileURL, setFile] = useState("https://1768239509.rsc.cdn77.org/pk.mp4")
   const currentVideoState = () => {
     return videoTime;
   }
@@ -1414,10 +1415,11 @@ const IndexPage = () => {
     }
     function lastResort() {
       if (firstPlay===false) {
-      setFirstPlay(true)
-      setRevealer('revealer-el')
-      setLoadRevealer('loadrevealer-el')
-      setLoadswitcher('loadswitch-el')
+      // setFirstPlay(true)
+        setFile("https://1768239509.rsc.cdn77.org/pk.mp4")
+      // setRevealer('revealer-el')
+      // setLoadRevealer('loadrevealer-el')
+      // setLoadswitcher('loadswitch-el')
       }
     }
     fetchMyAPI();
@@ -1751,7 +1753,7 @@ const IndexPage = () => {
       preload="auto"
     >
       <source 
-        data-src='https://1768239509.rsc.cdn77.org/pk.mp4'
+        data-src={fileURL}
         type="video/mp4"
       />
       <track 

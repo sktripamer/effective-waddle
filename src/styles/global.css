@@ -584,6 +584,7 @@ button.ml-auto.btn.btn-success:after {
 .rev-optin-mobile {
   transition: .8s all;
   display:none;
+  padding-top: 90px;
 }
 div.rev-optin-mobile > h4.mb-2 {
   color: #e0e0e0;
@@ -593,7 +594,7 @@ div.rev-optin-mobile > h4.mb-2 {
   font-weight: 700;
   text-shadow: -1px -1px 1px #111, 2px 2px 1px #3c3c3c;
   text-align: center;
-  margin-top: 3.2em;
+  margin-top: 1.2em;
 }
 
 div.rev-optin-mobile > div.time-section >div.star-spinner > div.outer-star>.spinnerz:after {
@@ -794,6 +795,7 @@ div.w-100.d-flex.justify-content-between {
   transition: .8s all;
   background-position: top right;
   background-repeat: no-repeat;
+  margin-top: -50px;
 }
 
 .rev-optin.hidden {
@@ -1120,7 +1122,6 @@ main {
         background-position: 100% 0;
         background-repeat: no-repeat;
         background-size: cover;
-        padding-top: 50px;
         padding-bottom: 100px;
         min-height: 900px;
 }
@@ -1542,11 +1543,13 @@ vm-player[audio] {
       background-position: center;
       background-size: 18%;
   }
-  
+  .rev-loadin {
+    padding-top: 50px;
+}
   .rev-player-cont {
       position: absolute;
       width: 100%;
-      margin-top: 50px;
+      padding-top: 50px;
       top: 0;
   }
   .rev-player-cont.loadswitch-el {

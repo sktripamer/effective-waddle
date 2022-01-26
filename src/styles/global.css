@@ -653,6 +653,10 @@ div#card-element {
 }
 
 @media (max-width: 666px) {
+  div.rev-loadin {
+    padding-top: 169px;
+}
+
   div.rev-player-cont.loadswitch-el {
     animation: relout-mobile .6s forwards step-end;
   }

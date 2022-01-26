@@ -1625,6 +1625,7 @@ vm-player[audio] {
   }
   .rev-loadin {
     padding-top: 50px;
+   display:none !important;
 }
   .rev-player-cont {
       position: absolute;

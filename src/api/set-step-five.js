@@ -22,7 +22,7 @@ const getPaymentID = async (uID) => {
 
     const data = {
         "acf": {
-            "socialshare": true,
+            "preorder": true,
               }
       }
       let axiosConfig = {

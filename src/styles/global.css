@@ -600,7 +600,7 @@ button.ml-auto.btn.btn-success:after {
 .rev-optin-mobile {
   transition: .8s all;
   display:none;
-  max-height: 0;
+  max-height: 30px;
   padding-top: 90px;
 }
 div.rev-optin-mobile > h4.mb-2 {

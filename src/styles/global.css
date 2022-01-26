@@ -668,10 +668,10 @@ div#card-element {
 }
 
 @media (max-width: 666px) {
-  h1.revival-of-revenue {
+  main h1.revival-of-revenue {
     font-size: 1.3rem;
   }
-  h1 span {
+  main h1 span {
     font-size: 1.4rem;
   }
   div.rev-loadin {
@@ -762,7 +762,7 @@ div>small.form-text.text-danger {
 }
 div.rev-optin>div.register-form.col-md-6.steptwo {
   margin: 0;
-  margin-top: -2px;
+  margin-top: -1px;
   height: 100%;
   display: flex;
   flex-direction: column;

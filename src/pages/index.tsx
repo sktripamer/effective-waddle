@@ -1416,6 +1416,7 @@ const IndexPage = () => {
     function lastResort() {
       if (firstPlay===false) {
       // setFirstPlay(true)
+      setFile("")
         setFile("https://1768239509.rsc.cdn77.org/pk.mp4")
       // setRevealer('revealer-el')
       // setLoadRevealer('loadrevealer-el')
@@ -1795,7 +1796,7 @@ const IndexPage = () => {
          
     </div>
  </div>   
- <h2 className="revival-of-revenue">Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>      
+ <h2 className={`revival-of-revenue ${revealer}`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>      
         </Layout>
       )
 

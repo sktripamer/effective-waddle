@@ -1508,6 +1508,28 @@ vm-player[audio] {
   animation: newput .5s cubic-bezier(.4,0,1,1) forwards;
 }
 
+.rev-loadin {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  background: #09051b;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.rev-loadin:after {
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/starline.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18%;
+}
+
 .tap-to-unmute-svg {
   background-repeat: no-repeat;
   background-size: contain;

@@ -1397,26 +1397,26 @@ const IndexPage = () => {
     return videoTime;
   }
 
-  useEffect(() => {
-    document.addEventListener("click", handler, true);
+  // useEffect(() => {
+  //   document.addEventListener("click", handler, true);
         
-    function handler(e) {
-      e.stopPropagation();
-      e.preventDefault();
+  //   function handler(e) {
+  //     e.stopPropagation();
+  //     e.preventDefault();
       
-    }
-    async function fetchMyAPI() {
-      timeoutResolver(1700).then(() =>  document.removeEventListener("click", handler, true));
-    }
-    function timeoutResolver(ms) {
-      return new Promise((resolve, reject) => {
-        setTimeout(function () {
-          resolve(true);
-        }, ms);
-      });
-    }
-    fetchMyAPI();
-    }, []);
+  //   }
+  //   async function fetchMyAPI() {
+  //     timeoutResolver(1700).then(() =>  document.removeEventListener("click", handler, true));
+  //   }
+  //   function timeoutResolver(ms) {
+  //     return new Promise((resolve, reject) => {
+  //       setTimeout(function () {
+  //         resolve(true);
+  //       }, ms);
+  //     });
+  //   }
+  //   fetchMyAPI();
+  //   }, []);
 
     useEffect(() => {
       console.log('useeffected ct', currentTime);

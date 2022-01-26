@@ -1394,6 +1394,7 @@ const IndexPage = () => {
   const {heroText, setHero } = useBetween(useShareableState);
   const {error, setError } = useBetween(useShareableState);
   const [revealer, setRevealer] = useState("");
+  const [loadrevealer, setLoadRevealer] = useState("");
   const currentVideoState = () => {
     return videoTime;
   }
@@ -1621,7 +1622,7 @@ const IndexPage = () => {
         setFirstPlay(true)
        
           setRevealer('revealer-el')
-        
+          setLoadRevealer('loadrevealer-el')
 
       }
       function round(num, places) {
@@ -1641,7 +1642,7 @@ const IndexPage = () => {
 
       return (
         <Layout>
-          
+ <div className={`rev-loadin ${loadrevealer}  ${playerSize}`}><div className='inner-loadin'></div></div>         
 <div className={`rev-optin-mobile ${boxVisible}`}>
     <div className='time-section'>
             <div className='time-remaining'>{titleText}</div>
@@ -1660,8 +1661,9 @@ const IndexPage = () => {
       </div>
     )}
 </div>
+<div className="rev-player-cont">
       <div className={`rev-player ${playerSize} ${revealer}`}>
-      <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg ${revealer}`}></div><div className={`tap-to-unmute-text ${revealer}`}>Click to unmute</div></div> 
+       
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"
       debug={true}
@@ -1682,6 +1684,7 @@ const IndexPage = () => {
     theme="dark"
     style={{ '--vm-player-theme': '#CD5C5C' }}
   >
+    <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg ${revealer}`}></div><div className={`tap-to-unmute-text ${revealer}`}>Click to unmute</div></div>
              <div className={`rev-loadin ${revealer}`}></div>
             <div className={`rev-optin ${boxVisible}`}>
 <div className='time-section'>
@@ -1784,7 +1787,7 @@ const IndexPage = () => {
   </Player> }
          
     </div>
-    
+ </div>   
           
         </Layout>
       )

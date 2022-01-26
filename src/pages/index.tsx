@@ -1682,7 +1682,7 @@ const IndexPage = () => {
     theme="dark"
     style={{ '--vm-player-theme': '#CD5C5C' }}
   >
-    
+             <div className={`rev-loadin ${revealer}`}></div>
             <div className={`rev-optin ${boxVisible}`}>
 <div className='time-section'>
             <div className='time-remaining'>{titleText}</div>

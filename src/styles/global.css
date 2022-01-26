@@ -795,6 +795,21 @@ margin-top: 16px;
 letter-spacing: 0rem;
 animation: letterspace 2.5s ease-out forwards, neon1 1.5s ease-in-out infinite alternate;
 }
+h2.revival-of-revenue {
+  opacity: 0;
+  color: #fff;
+  font-family: Josefin Sans;
+  font-size: 2.4rem;
+  padding-top: 40px;
+  text-align: center;
+  text-transform: uppercase;
+}
+h2 span {
+  display: table;
+  letter-spacing: 0;
+  margin: 16px auto 0;
+  text-transform: initial;
+}
 .regular {
   margin: 0 auto;
   max-width: 1300px;

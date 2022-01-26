@@ -1402,7 +1402,7 @@ const IndexPage = () => {
     return videoTime;
   }
 
-  useEffect(() => {
+  //useEffect(() => {
 
     // async function fetchMyAPI() {
     //   timeoutResolver(3000).then(() =>  lastResort());

@@ -1414,6 +1414,7 @@ const IndexPage = () => {
       });
     }
     function lastResort() {
+      console.log('first play value', firstPlay)
       if (firstPlay===false) {
        setFirstPlay(true)
       setFile("")
@@ -1626,7 +1627,7 @@ const IndexPage = () => {
       const playStart = () => {
         console.log('play started')
         setFirstPlay(true)
-       
+       console.log('set first play value', firstPlay)
           setRevealer('revealer-el')
           setLoadRevealer('loadrevealer-el')
           setLoadswitcher('loadswitch-el')

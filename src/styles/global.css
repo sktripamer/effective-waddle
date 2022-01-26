@@ -1193,7 +1193,7 @@ form input:focus {
     padding-bottom: 30px;
     position: relative;
     z-index: 2;
-    opacity:0;
+    opacity:1 !important;
 }
 main {
   background-image: linear-gradient( 

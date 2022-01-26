@@ -1660,7 +1660,7 @@ const IndexPage = () => {
       </div>
     )}
 </div>
-      <div className={`rev-player ${playerSize}`}>
+      <div className={`rev-player ${playerSize} ${revealer}`}>
       <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg ${revealer}`}></div><div className={`tap-to-unmute-text ${revealer}`}>Click to unmute</div></div> 
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"

@@ -1083,7 +1083,6 @@ form input:focus {
   border-color: var(--color-yellow-6);
 }
 .rev-player {
-  padding-top: 40px;
     padding-bottom: 30px;
     position: relative;
     z-index: 2;

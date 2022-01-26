@@ -1068,6 +1068,28 @@ input:focus + .svg-img-item {
    opacity:0;
   }
 }
+@keyframes relout {
+  0% {
+  position: absolute;
+  }
+  99% {
+    position: absolute;
+   }
+  100% {
+    position: relative;
+  }
+}
+@keyframes disout {
+  0% {
+   display:inherit;
+  }
+  99% {
+    display:inherit;
+   }
+  100% {
+    display:none;
+  }
+}
 @keyframes oldput2 {
   0% {
    opacity:1;
@@ -1506,7 +1528,9 @@ vm-player[audio] {
 .revealer-el {
   animation: newput .5s cubic-bezier(.4,0,1,1) forwards;
 }
-
+.loadrevealer-el {
+  animation: disout .5s forwards;
+}
 .inner-loadin {
   padding-bottom: 56.25%;
       background: #09051b;
@@ -1522,7 +1546,9 @@ vm-player[audio] {
       margin-top: 50px;
       top: 0;
   }
-
+  .rev-player-cont.loadswitcher-el {
+    animation: relout .6s forwards;
+  }
 
 .tap-to-unmute-svg {
   background-repeat: no-repeat;

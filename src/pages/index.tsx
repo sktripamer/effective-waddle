@@ -1400,26 +1400,28 @@ const IndexPage = () => {
     return videoTime;
   }
 
-  // useEffect(() => {
-  //   document.addEventListener("click", handler, true);
-        
-  //   function handler(e) {
-  //     e.stopPropagation();
-  //     e.preventDefault();
-      
-  //   }
-  //   async function fetchMyAPI() {
-  //     timeoutResolver(1700).then(() =>  document.removeEventListener("click", handler, true));
-  //   }
-  //   function timeoutResolver(ms) {
-  //     return new Promise((resolve, reject) => {
-  //       setTimeout(function () {
-  //         resolve(true);
-  //       }, ms);
-  //     });
-  //   }
-  //   fetchMyAPI();
-  //   }, []);
+  useEffect(() => {
+
+    async function fetchMyAPI() {
+      timeoutResolver(3000).then(() =>  lastResort());
+    }
+    function timeoutResolver(ms) {
+      return new Promise((resolve, reject) => {
+        setTimeout(function () {
+          resolve(true);
+        }, ms);
+      });
+    }
+    function lastResort() {
+      if (firstPlay===false) {
+      setFirstPlay(true)
+      setRevealer('revealer-el')
+      setLoadRevealer('loadrevealer-el')
+      setLoadswitcher('loadswitch-el')
+      }
+    }
+    fetchMyAPI();
+    }, []);
 
     useEffect(() => {
       console.log('useeffected ct', currentTime);
@@ -1791,7 +1793,7 @@ const IndexPage = () => {
          
     </div>
  </div>   
-          
+ <h2 className="revival-of-revenue">Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>      
         </Layout>
       )
 

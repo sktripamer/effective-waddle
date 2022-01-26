@@ -1402,29 +1402,29 @@ const IndexPage = () => {
     return videoTime;
   }
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    async function fetchMyAPI() {
-      timeoutResolver(3000).then(() =>  lastResort());
-    }
-    function timeoutResolver(ms) {
-      return new Promise((resolve, reject) => {
-        setTimeout(function () {
-          resolve(true);
-        }, ms);
-      });
-    }
-    function lastResort() {
-      console.log('first play value', firstPlay)
-      if (firstPlay===false) {
-        var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
+  //   async function fetchMyAPI() {
+  //     timeoutResolver(3000).then(() =>  lastResort());
+  //   }
+  //   function timeoutResolver(ms) {
+  //     return new Promise((resolve, reject) => {
+  //       setTimeout(function () {
+  //         resolve(true);
+  //       }, ms);
+  //     });
+  //   }
+  //   function lastResort() {
+  //     console.log('first play value', firstPlay)
+  //     if (firstPlay===false) {
+  //       var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
 
-            video.muted = true;
-            video.play();
-      }
-    }
-    fetchMyAPI();
-    }, []);
+  //           video.muted = true;
+  //           video.play();
+  //     }
+  //   }
+  //   fetchMyAPI();
+  //   }, []);
 
     useEffect(() => {
  

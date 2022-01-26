@@ -1081,13 +1081,16 @@ input:focus + .svg-img-item {
 }
 @keyframes disout {
   0% {
-   display:inherit;
+    position: relative;
+    visibility: visible;
   }
   99% {
-    display:inherit;
+    position: relative;
+    visibility: visible;
    }
   100% {
-    display:none;
+    position: absolute;
+    visibility: hidden;
   }
 }
 @keyframes oldput2 {
@@ -1546,7 +1549,7 @@ vm-player[audio] {
       margin-top: 50px;
       top: 0;
   }
-  .rev-player-cont.loadswitcher-el {
+  .rev-player-cont.loadswitch-el {
     animation: relout .6s forwards;
   }
 

@@ -1690,7 +1690,7 @@ const IndexPage = () => {
     style={{ '--vm-player-theme': '#CD5C5C' }}
   >
     <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg ${revealer}`}></div><div className={`tap-to-unmute-text ${revealer}`}>Click to unmute</div></div>
-             <div className={`rev-loadin ${revealer}`}></div>
+            
             <div className={`rev-optin ${boxVisible}`}>
 <div className='time-section'>
             <div className='time-remaining'>{titleText}</div>

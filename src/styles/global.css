@@ -1144,7 +1144,7 @@ input:focus + .svg-img-item {
     margin-top: 119px;
    }
   100% {
-    position: relative;
+    position: absolute;
     margin-top: 233px;
   }
 }
@@ -1157,7 +1157,7 @@ input:focus + .svg-img-item {
     margin-top: 0px;
    }
   100% {
-    position: absolute;
+    position: relative;
     margin-top: -166px;
   }
 }

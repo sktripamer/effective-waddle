@@ -1194,6 +1194,8 @@ form input:focus {
     position: relative;
     z-index: 2;
     opacity:1 !important;
+
+    padding-top: 200px;
 }
 main {
   background-image: linear-gradient( 

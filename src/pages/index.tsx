@@ -1668,19 +1668,9 @@ const IndexPage = () => {
     theme="dark"
     style={{ '--vm-player-theme': '#CD5C5C' }}
   >
-    <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg ${revealer}`}></div><div className={`tap-to-unmute-text ${revealer}`}>Click to unmute</div></div>
             
             <div className={`rev-optin ${boxVisible}`}>
-<div className='time-section'>
-            <div className='time-remaining'>{titleText}</div>
-              <div className="star-spinner">
-<div className="outer-star">
-<div className="spinnerz">
-  </div>
-</div>
 
-</div>
-</div>
 
       {1 == videoStatus
             ? showAlertBar && (

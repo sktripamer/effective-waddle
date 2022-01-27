@@ -1673,6 +1673,7 @@ const IndexPage = () => {
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"
       debug={true}
+      muted={true}
       onVmCurrentTimeChange={onTimeUpdate}
       onVmPlaybackReady={setPlay}
       onVmLoadStart={loadStart}

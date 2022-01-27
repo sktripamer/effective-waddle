@@ -1667,7 +1667,7 @@ const IndexPage = () => {
       </div>
     )}
 </div>
-<div className={`rev-player-cont`}>
+{/* <div className={`rev-player-cont`}> */}
       <div className={`rev-player ${playerSize}`}>
        
       {  typeof window !== 'undefined' && Player && <Player
@@ -1791,7 +1791,7 @@ const IndexPage = () => {
   </Player> }
          
     </div>
- </div>   
+ {/* </div>    */}
  <h2 className={`revival-of-revenue ${revealerh2}`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>      
         </Layout>
       )

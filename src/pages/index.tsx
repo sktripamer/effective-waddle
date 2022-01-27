@@ -1673,20 +1673,20 @@ const IndexPage = () => {
       <div className={`rev-player ${playerSize}`}>
        
       {  typeof window !== 'undefined' && Player && <Player
-      icons="my-library"
-      debug='true'
-      muted={muter}
-      onVmCurrentTimeChange={onTimeUpdate}
-      onVmPlaybackReady={setPlay}
-      onVmLoadStart={loadStart}
-      onVmPlaybackStarted={playStart}
-      onVmError={emitError}
-      onVmPausedChange={pausedSet}
+      //icons="my-library"
+     // debug='true'
+    //  muted={muter}
+      // onVmCurrentTimeChange={onTimeUpdate}
+      // onVmPlaybackReady={setPlay}
+      // onVmLoadStart={loadStart}
+      // onVmPlaybackStarted={playStart}
+      // onVmError={emitError}
+      // onVmPausedChange={pausedSet}
       playsinline={true}
-      onVmPlayingChange={playingChange}
-      onVmPlay={playTransition}
-      controls={false}
-      currentTime={currentTime}
+      // onVmPlayingChange={playingChange}
+      // onVmPlay={playTransition}
+    //  controls={false}
+   //   currentTime={currentTime}
       ref={player}
     theme="dark"
     style={{ '--vm-player-theme': '#CD5C5C' }}

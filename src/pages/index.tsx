@@ -1649,30 +1649,7 @@ const IndexPage = () => {
 
       return (
         <Layout>
-         <h1 className="revival-of-revenue">Welcome to your <span>Revival of Revenue</span></h1>
- <div className={`rev-loadin ${loadrevealer}  ${playerSize}`}><div className='inner-loadin'></div></div>         
-<div className={`rev-optin-mobile ${boxVisible}`}>
-    <div className='time-section'>
-            <div className='time-remaining'>{titleText}</div>
-              <div className="star-spinner">
-<div className="outer-star">
-<div className="spinnerz">
-  </div>
-</div>
-</div>
-</div>
-<h4 className="mb-2">{heroText}</h4>
-<div className="more-detail">{moreDetails}</div>
-{error && (
-      <div className="card-error-mobile" role="alert">
-        {error}
-      </div>
-    )}
-</div>
-{/* <div className={`rev-player-cont`}> */}
-      <div className={`rev-player ${playerSize}`}>
-       
-      {  typeof window !== 'undefined' && Player && <Player
+                {  typeof window !== 'undefined' && Player && <Player
       //icons="my-library"
      // debug='true'
     //  muted={muter}
@@ -1685,68 +1662,13 @@ const IndexPage = () => {
       playsinline={true}
       // onVmPlayingChange={playingChange}
       // onVmPlay={playTransition}
-    //  controls={false}
+   controls={false}
    //   currentTime={currentTime}
-      ref={player}
+   //   ref={player}
     theme="dark"
     style={{ '--vm-player-theme': '#CD5C5C' }}
   >
-    <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg ${revealer}`}></div><div className={`tap-to-unmute-text ${revealer}`}>Click to unmute</div></div>
-            
-            <div className={`rev-optin ${boxVisible}`}>
-<div className='time-section'>
-            <div className='time-remaining'>{titleText}</div>
-              <div className="star-spinner">
-<div className="outer-star">
-<div className="spinnerz">
-  </div>
-</div>
-
-</div>
-</div>
-
-      {1 == videoStatus
-            ? showAlertBar && (
-                
-
-              <RegisterOpt setLoggedIn={setLoggedIn} />  
-    
-              )
-            : ""}
-            {2 == videoStatus
-            ? showAlertBar && (
-                
-
-              <StepTwo />  
-    
-              )
-            : ""}
-            {3 == videoStatus
-            ? showAlertBar && (
-                
-
-              <StepThree />  
-    
-              )
-            : ""}
-              {4 == videoStatus
-            ? showAlertBar && (
-              <Elements stripe={loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3')}>
-              <StepFour />  
-              </Elements>
-              )
-            : ""}
-             {5 == videoStatus
-            ? showAlertBar && (
-                
-              
-              <Elements stripe={loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3')}>
-              <StepFive />  
-              </Elements>
-            
-              )
-            : ""}
-            </div>
+   
            
     <Video
       crossOrigin
@@ -1792,10 +1714,7 @@ const IndexPage = () => {
       </Ui>
        {/* <DefaultUi /> */}
   </Player> }
-         
-    </div>
- {/* </div>    */}
- <h2 className={`revival-of-revenue ${revealerh2}`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>      
+       
         </Layout>
       )
 

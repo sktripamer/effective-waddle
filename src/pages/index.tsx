@@ -1394,6 +1394,7 @@ const IndexPage = () => {
   const {heroText, setHero } = useBetween(useShareableState);
   const {error, setError } = useBetween(useShareableState);
   const [revealer, setRevealer] = useState("");
+  const [muter, setMuter] = useState(true);
   const [revealerh2, setRevealerh2] = useState("");
   const [loadrevealer, setLoadRevealer] = useState("");
   const [loadswitcher, setLoadswitcher] = useState("");
@@ -1613,16 +1614,17 @@ const IndexPage = () => {
       }
 
       const pausedSet = () => {
-        console.log('paused changed')
+        console.log('paused changed', player)
       }
       const playingChange = () => {
-        console.log('playing changed')
+        console.log('playing changed', player)
       }
       const playTransition = () => {
-        console.log('play transition begin')
+        console.log('play transition begin', player)
+        
       }
       const playStart = () => {
-        console.log('play started')
+        console.log('play started', player)
         setFirstPlay(true)
        console.log('set first play value', firstPlay)
           setRevealer('revealer-el')
@@ -1672,8 +1674,8 @@ const IndexPage = () => {
        
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"
-      debug={true}
-      muted={true}
+      debug='true'
+      muted={muter}
       onVmCurrentTimeChange={onTimeUpdate}
       onVmPlaybackReady={setPlay}
       onVmLoadStart={loadStart}

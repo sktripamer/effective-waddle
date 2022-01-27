@@ -1668,7 +1668,7 @@ const IndexPage = () => {
     )}
 </div>
 <div className={`rev-player-cont`}>
-      <div className={`rev-player ${playerSize} ${revealer}`}>
+      <div className={`rev-player ${playerSize}`}>
        
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"

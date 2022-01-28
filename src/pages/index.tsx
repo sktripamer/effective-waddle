@@ -1394,7 +1394,6 @@ const IndexPage = () => {
   const {heroText, setHero } = useBetween(useShareableState);
   const {error, setError } = useBetween(useShareableState);
   const [revealer, setRevealer] = useState("");
-  const [muter, setMuter] = useState(true);
   const [revealerh2, setRevealerh2] = useState("");
   const [loadrevealer, setLoadRevealer] = useState("");
   const [loadswitcher, setLoadswitcher] = useState("");
@@ -1588,22 +1587,22 @@ const IndexPage = () => {
       }
       const setPlay = () => {
         console.log('setting play')
-        if (isBrowser && firstPlay === false) {
-          var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
-          var myClick = (function( click_count ) {
-            var handler = function(event) {
-              video.muted = true;
-              video.play();
-              console.log('set mute')
-              video.removeEventListener('canplay', myClick);
-              console.log('removed listener')
-            };
-            return handler;
-        })( 0 );
-          console.log(video)
-          video.addEventListener('canplay', myClick);
+        // if (isBrowser && firstPlay === false) {
+        //   var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
+        //   var myClick = (function( click_count ) {
+        //     var handler = function(event) {
+        //       video.muted = true;
+        //       video.play();
+        //       console.log('set mute')
+        //       video.removeEventListener('canplay', myClick);
+        //       console.log('removed listener')
+        //     };
+        //     return handler;
+        // })( 0 );
+        //   console.log(video)
+        //   video.addEventListener('canplay', myClick);
 
-        }
+        // }
         
 
       }
@@ -1614,17 +1613,16 @@ const IndexPage = () => {
       }
 
       const pausedSet = () => {
-        console.log('paused changed', player)
+        console.log('paused changed')
       }
       const playingChange = () => {
-        console.log('playing changed', player)
+        console.log('playing changed')
       }
       const playTransition = () => {
-        console.log('play transition begin', player)
-        
+        console.log('play transition begin')
       }
       const playStart = () => {
-        console.log('play started', player)
+        console.log('play started')
         setFirstPlay(true)
        console.log('set first play value', firstPlay)
           setRevealer('revealer-el')
@@ -1649,9 +1647,32 @@ const IndexPage = () => {
 
       return (
         <Layout>
+         <h1 className="revival-of-revenue">Welcome to your <span>Revival of Revenue</span></h1>
+ <div className={`rev-loadin ${loadrevealer}  ${playerSize}`}><div className='inner-loadin'></div></div>         
+<div className={`rev-optin-mobile ${boxVisible}`}>
+    <div className='time-section'>
+            <div className='time-remaining'>{titleText}</div>
+              <div className="star-spinner">
+<div className="outer-star">
+<div className="spinnerz">
+  </div>
+</div>
+</div>
+</div>
+<h4 className="mb-2">{heroText}</h4>
+<div className="more-detail">{moreDetails}</div>
+{error && (
+      <div className="card-error-mobile" role="alert">
+        {error}
+      </div>
+    )}
+</div>
+<div className={`rev-player-cont`}>
+      <div className={`rev-player ${playerSize} ${revealer}`}>
+       
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"
-     debug='true'
+      debug={true}
       onVmCurrentTimeChange={onTimeUpdate}
       onVmPlaybackReady={setPlay}
       onVmLoadStart={loadStart}
@@ -1661,18 +1682,16 @@ const IndexPage = () => {
       playsinline={true}
       onVmPlayingChange={playingChange}
       onVmPlay={playTransition}
-   controls={false}
-     currentTime={currentTime}
+      controls={false}
+      currentTime={currentTime}
       ref={player}
     theme="dark"
     style={{ '--vm-player-theme': '#CD5C5C' }}
   >
-            
-         
+   
            
     <Video
       crossOrigin
-      preload="none"
     >
       <source 
         data-src={fileURL}
@@ -1686,51 +1705,62 @@ const IndexPage = () => {
         label="English" 
       />
     </Video>
-    <div className={`rev-optin ${boxVisible}`}>
+    <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg ${revealer}`}></div><div className={`tap-to-unmute-text ${revealer}`}>Click to unmute</div></div>
+             <div className={`rev-loadin ${revealer}`}></div>
+            <div className={`rev-optin ${boxVisible}`}>
+<div className='time-section'>
+            <div className='time-remaining'>{titleText}</div>
+              <div className="star-spinner">
+<div className="outer-star">
+<div className="spinnerz">
+  </div>
+</div>
 
+</div>
+</div>
 
-{1 == videoStatus
-      ? showAlertBar && ( 
-          
+      {1 == videoStatus
+            ? showAlertBar && (
+                
 
-        <RegisterOpt setLoggedIn={setLoggedIn} />  
+              <RegisterOpt setLoggedIn={setLoggedIn} />  
+    
+              )
+            : ""}
+            {2 == videoStatus
+            ? showAlertBar && (
+                
 
-        )
-      : ""}
-      {2 == videoStatus
-      ? showAlertBar && (
-          
+              <StepTwo />  
+    
+              )
+            : ""}
+            {3 == videoStatus
+            ? showAlertBar && (
+                
 
-        <StepTwo />  
-
-        )
-      : ""}
-      {3 == videoStatus
-      ? showAlertBar && (
-          
-
-        <StepThree />  
-
-        )
-      : ""}
-        {4 == videoStatus
-      ? showAlertBar && (
-        <Elements stripe={loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3')}>
-        <StepFour />  
-        </Elements>
-        )
-      : ""}
-       {5 == videoStatus
-      ? showAlertBar && (
-          
-        
-        <Elements stripe={loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3')}>
-        <StepFive />  
-        </Elements>
-      
-        )
-      : ""}
-      </div>
+              <StepThree />  
+    
+              )
+            : ""}
+              {4 == videoStatus
+            ? showAlertBar && (
+              <Elements stripe={loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3')}>
+              <StepFour />  
+              </Elements>
+              )
+            : ""}
+             {5 == videoStatus
+            ? showAlertBar && (
+                
+              
+              <Elements stripe={loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3')}>
+              <StepFive />  
+              </Elements>
+            
+              )
+            : ""}
+            </div>
     <Ui>
     <ClickToPlay />
     <IconLibrary name="my-library" resolver={(iconName) => `/icons/${iconName}.svg`}  />
@@ -1759,7 +1789,10 @@ const IndexPage = () => {
       </Ui>
        {/* <DefaultUi /> */}
   </Player> }
-       
+         
+    </div>
+ </div>   
+ <h2 className={`revival-of-revenue ${revealerh2}`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>      
         </Layout>
       )
 

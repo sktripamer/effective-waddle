@@ -1719,7 +1719,7 @@ const IndexPage = () => {
 </div>
 </div>
 
-      {1 == videoStatus
+      {/* {1 == videoStatus
             ? showAlertBar && (
                 
 
@@ -1760,7 +1760,7 @@ const IndexPage = () => {
             
               )
             : ""}
-            </div>
+            </div> */}
     <Ui>
     <ClickToPlay />
     <IconLibrary name="my-library" resolver={(iconName) => `/icons/${iconName}.svg`}  />

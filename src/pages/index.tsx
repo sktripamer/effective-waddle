@@ -1550,20 +1550,11 @@ const IndexPage = () => {
 
 
 
-
-  const videoLink = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
   // const [playing, setPlaying] = useState({
   // 	time: 0,
   // 	status: false,
   // 	speed: 1,
   //   });
-
-    const {playing, setPlaying } = useBetween(useShareableState);
-    const [videoProgressFunctions, setVideoProgressFunctions] = useState({
-      getPlayingStatus: null,
-      getCurrentTime: null,
-      getPlaybackSpeed: null,
-      });
 
 
 
@@ -1649,7 +1640,7 @@ const IndexPage = () => {
         <Layout>
          <h1 className="revival-of-revenue">Welcome to your <span>Revival of Revenue</span></h1>
  <div className={`rev-loadin ${loadrevealer}  ${playerSize}`}><div className='inner-loadin'></div></div>         
-<div className={`rev-optin-mobile ${boxVisible}`}>
+{/* <div className={`rev-optin-mobile ${boxVisible}`}>
     <div className='time-section'>
             <div className='time-remaining'>{titleText}</div>
               <div className="star-spinner">
@@ -1666,13 +1657,12 @@ const IndexPage = () => {
         {error}
       </div>
     )}
-</div>
+</div> */}
 <div className={`rev-player-cont`}>
       <div className={`rev-player ${playerSize} ${revealer}`}>
        
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"
-      debug={true}
       onVmCurrentTimeChange={onTimeUpdate}
       onVmPlaybackReady={setPlay}
       onVmLoadStart={loadStart}
@@ -1705,22 +1695,7 @@ const IndexPage = () => {
         label="English" 
       />
     </Video>
-    <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg ${revealer}`}></div><div className={`tap-to-unmute-text ${revealer}`}>Click to unmute</div></div>
-             <div className={`rev-loadin ${revealer}`}></div>
-            <div className={`rev-optin ${boxVisible}`}>
-<div className='time-section'>
-            <div className='time-remaining'>{titleText}</div>
-              <div className="star-spinner">
-<div className="outer-star">
-<div className="spinnerz">
-  </div>
-</div>
 
-</div>
-</div>
-
-     
-            </div>
     <Ui>
     <ClickToPlay />
     <IconLibrary name="my-library" resolver={(iconName) => `/icons/${iconName}.svg`}  />

@@ -1719,48 +1719,8 @@ const IndexPage = () => {
 </div>
 </div>
 
-      {/* {1 == videoStatus
-            ? showAlertBar && (
-                
-
-              <RegisterOpt setLoggedIn={setLoggedIn} />  
-    
-              )
-            : ""}
-            {2 == videoStatus
-            ? showAlertBar && (
-                
-
-              <StepTwo />  
-    
-              )
-            : ""}
-            {3 == videoStatus
-            ? showAlertBar && (
-                
-
-              <StepThree />  
-    
-              )
-            : ""}
-              {4 == videoStatus
-            ? showAlertBar && (
-              <Elements stripe={loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3')}>
-              <StepFour />  
-              </Elements>
-              )
-            : ""}
-             {5 == videoStatus
-            ? showAlertBar && (
-                
-              
-              <Elements stripe={loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3')}>
-              <StepFive />  
-              </Elements>
-            
-              )
-            : ""}
-            </div> */}
+     
+            </div>
     <Ui>
     <ClickToPlay />
     <IconLibrary name="my-library" resolver={(iconName) => `/icons/${iconName}.svg`}  />

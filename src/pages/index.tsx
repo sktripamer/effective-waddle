@@ -1588,22 +1588,22 @@ const IndexPage = () => {
       }
       const setPlay = () => {
         console.log('setting play')
-        // if (isBrowser && firstPlay === false) {
-        //   var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
-        //   var myClick = (function( click_count ) {
-        //     var handler = function(event) {
-        //       video.muted = true;
-        //       video.play();
-        //       console.log('set mute')
-        //       video.removeEventListener('canplay', myClick);
-        //       console.log('removed listener')
-        //     };
-        //     return handler;
-        // })( 0 );
-        //   console.log(video)
-        //   video.addEventListener('canplay', myClick);
+        if (isBrowser && firstPlay === false) {
+          var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
+          var myClick = (function( click_count ) {
+            var handler = function(event) {
+              video.muted = true;
+              video.play();
+              console.log('set mute')
+              video.removeEventListener('canplay', myClick);
+              console.log('removed listener')
+            };
+            return handler;
+        })( 0 );
+          console.log(video)
+          video.addEventListener('canplay', myClick);
 
-        // }
+        }
         
 
       }
@@ -1650,20 +1650,19 @@ const IndexPage = () => {
       return (
         <Layout>
       {  typeof window !== 'undefined' && Player && <Player
-      //icons="my-library"
-     // debug='true'
-    //  muted={muter}
-      // onVmCurrentTimeChange={onTimeUpdate}
-      // onVmPlaybackReady={setPlay}
-      // onVmLoadStart={loadStart}
-      // onVmPlaybackStarted={playStart}
-      // onVmError={emitError}
-      // onVmPausedChange={pausedSet}
+      icons="my-library"
+     debug='true'
+      onVmCurrentTimeChange={onTimeUpdate}
+      onVmPlaybackReady={setPlay}
+      onVmLoadStart={loadStart}
+      onVmPlaybackStarted={playStart}
+      onVmError={emitError}
+      onVmPausedChange={pausedSet}
       playsinline={true}
-      // onVmPlayingChange={playingChange}
-      // onVmPlay={playTransition}
+      onVmPlayingChange={playingChange}
+      onVmPlay={playTransition}
    controls={false}
-   //   currentTime={currentTime}
+     currentTime={currentTime}
       ref={player}
     theme="dark"
     style={{ '--vm-player-theme': '#CD5C5C' }}
@@ -1691,7 +1690,7 @@ const IndexPage = () => {
 
 
 {1 == videoStatus
-      ? showAlertBar && (
+      ? showAlertBar && ( 
           
 
         <RegisterOpt setLoggedIn={setLoggedIn} />  

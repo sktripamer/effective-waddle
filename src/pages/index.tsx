@@ -1563,7 +1563,7 @@ const IndexPage = () => {
         setMuteClass("rev-mute")
       }
       const unmuteClick = () => {
-       setMuter(false)
+       player.current!.muted = false;
         setMuteClass("rev-mute")
       };
       const onClick = () => {
@@ -1662,7 +1662,6 @@ const IndexPage = () => {
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"
       onVmCurrentTimeChange={onTimeUpdate}
-      muted={muter}
       onVmPlaybackReady={setPlay}
       onVmLoadStart={loadStart}
       onVmPlaybackStarted={playStart}

@@ -1393,7 +1393,7 @@ const IndexPage = () => {
   const {moreDetails, setDetails } = useBetween(useShareableState);
   const {heroText, setHero } = useBetween(useShareableState);
   const {error, setError } = useBetween(useShareableState);
-  const [revealer, setRevealer] = useState("revealer-el");
+  const [revealer, setRevealer] = useState("");
   const [revealerh2, setRevealerh2] = useState("");
   const [loadrevealer, setLoadRevealer] = useState("");
   const [loadswitcher, setLoadswitcher] = useState("");
@@ -1616,7 +1616,7 @@ const IndexPage = () => {
         console.log('play started')
         setFirstPlay(true)
        console.log('set first play value', firstPlay)
-         // setRevealer('revealer-el')
+          setRevealer('revealer-el')
           // setRevealerh2('revealerh2-el')
           // setLoadRevealer('loadrevealer-el')
           // setLoadswitcher('loadswitch-el')

@@ -1144,7 +1144,7 @@ input:focus + .svg-img-item {
     margin-top: 119px;
    }
   100% {
-    position: absolute;
+    position: relative;
     margin-top: 233px;
   }
 }
@@ -1193,9 +1193,7 @@ form input:focus {
     padding-bottom: 30px;
     position: relative;
     z-index: 2;
-    opacity:1 !important;
-
-    padding-top: 200px;
+    opacity:0;
 }
 main {
   background-image: linear-gradient( 
@@ -1627,7 +1625,6 @@ vm-player[audio] {
   }
   .rev-loadin {
     padding-top: 50px;
-   display:none !important;
 }
   .rev-player-cont {
       position: absolute;

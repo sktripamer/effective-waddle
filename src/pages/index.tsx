@@ -1393,7 +1393,7 @@ const IndexPage = () => {
   const {moreDetails, setDetails } = useBetween(useShareableState);
   const {heroText, setHero } = useBetween(useShareableState);
   const {error, setError } = useBetween(useShareableState);
-  const [revealer, setRevealer] = useState("");
+  const [revealer, setRevealer] = useState("revealer-el");
   const [revealerh2, setRevealerh2] = useState("");
   const [loadrevealer, setLoadRevealer] = useState("");
   const [loadswitcher, setLoadswitcher] = useState("");
@@ -1616,16 +1616,13 @@ const IndexPage = () => {
         console.log('play started')
         setFirstPlay(true)
        console.log('set first play value', firstPlay)
-          setRevealer('revealer-el')
-          setRevealerh2('revealerh2-el')
-          setLoadRevealer('loadrevealer-el')
-          setLoadswitcher('loadswitch-el')
+         // setRevealer('revealer-el')
+          // setRevealerh2('revealerh2-el')
+          // setLoadRevealer('loadrevealer-el')
+          // setLoadswitcher('loadswitch-el')
 
       }
-      function round(num, places) {
-        var multiplier = Math.pow(10, places);
-        return Math.round(num * multiplier) / multiplier;
-    }
+
       const onTimeUpdate = (event: CustomEvent<number>) => {
         // const currentTimeb = event.detail;
         // setCurrentTime(currentTimeb);

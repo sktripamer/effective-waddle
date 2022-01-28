@@ -683,13 +683,10 @@ div#card-element {
     font-size: 1.4rem;
   }
   div.rev-loadin {
-    padding-top: 30px;
 }
 div.rev-player-cont {
-  padding-top: 27px;
 }
   div.rev-player-cont.loadswitch-el {
-    animation: relout-mobile .6s forwards step-end;
   }
   
 form #share-form input.form-control.form-control {
@@ -1183,16 +1180,13 @@ input:focus + .svg-img-item {
 }
 @keyframes disout {
   0% {
-    position: relative;
-    visibility: visible;
+    display:block;
   }
   99% {
-    position: relative;
-    visibility: visible;
+    display:block;
    }
   100% {
-    position: absolute;
-    visibility: hidden;
+    display:none;
   }
 }
 @keyframes oldput2 {
@@ -1645,16 +1639,14 @@ vm-player[audio] {
       background-size: 18%;
   }
   .rev-loadin {
-    padding-top: 50px;
 }
   .rev-player-cont {
-      position: absolute;
-      width: 100%;
-      padding-top: 216px;
-      top: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
   .revealer-el .rev-player-cont {
-    animation: relout .6s forwards step-end;
+
 }
 
 .tap-to-unmute-svg {

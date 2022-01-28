@@ -1563,7 +1563,7 @@ const IndexPage = () => {
         setMuteClass("rev-mute")
       }
       const unmuteClick = () => {
-       player.current!.muted = false;
+       setMuter(false)
         setMuteClass("rev-mute")
       };
       const onClick = () => {

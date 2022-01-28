@@ -1629,9 +1629,7 @@ vm-player[audio] {
   opacity:1;
   
 }
-.revealer-el {
-  animation: newput .5s cubic-bezier(.4,0,1,1) forwards;
-}
+
 .revealer-el .rev-loadin {
   animation: disout .5s forwards step-end;
 }

@@ -1636,8 +1636,9 @@ const IndexPage = () => {
 
       return (
         <Layout>
+          <div className={`${revealer} ${playerSize}`}>
          {/* <h1 className="revival-of-revenue">Welcome to your <span>Revival of Revenue</span></h1> */}
- <div className={`rev-loadin ${revealer} ${playerSize}`}><div className='inner-loadin'></div></div>         
+ <div className={`rev-loadin`}><div className='inner-loadin'></div></div>         
 {/* <div className={`rev-optin-mobile ${boxVisible}`}>
     <div className='time-section'>
             <div className='time-remaining'>{titleText}</div>
@@ -1657,7 +1658,7 @@ const IndexPage = () => {
     )}
 </div> */}
 <div className={`rev-player-cont`}>
-      <div className={`rev-player ${playerSize} ${revealer}`}>
+      <div className={`rev-player`}>
        
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"
@@ -1691,7 +1692,7 @@ const IndexPage = () => {
         label="English" 
       />
     </Video>
-    <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg ${revealer}`}></div><div className={`tap-to-unmute-text ${revealer}`}>Click to unmute</div></div>
+    <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg`}></div><div className={`tap-to-unmute-text`}>Click to unmute</div></div>
     <Ui>
     <ClickToPlay />
     <IconLibrary name="my-library" resolver={(iconName) => `/icons/${iconName}.svg`}  />
@@ -1724,6 +1725,7 @@ const IndexPage = () => {
     </div>
  </div>   
  <h2 className={`revival-of-revenue ${revealerh2}`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>      
+</div>
         </Layout>
       )
 

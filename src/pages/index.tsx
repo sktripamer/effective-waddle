@@ -1674,9 +1674,7 @@ const IndexPage = () => {
       ref={player}
     theme="dark"
     style={{ '--vm-player-theme': '#CD5C5C' }}
-  >
-   
-           
+  >     
     <Video
       crossOrigin
     >

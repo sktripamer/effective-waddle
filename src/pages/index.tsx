@@ -1379,6 +1379,7 @@ const IndexPage = () => {
   const [muteClass, setMuteClass] = useState("");
   const [firstPlay, setFirstPlay] = useState(false);
   const [paused, setPaused] = useState(true);
+  const [muter, setMuter] = useState(true);
   const {player } = useBetween(useShareableState);
   const [showAlertBar, setShowAlertBar] = useState(true);
   const isBrowser = typeof window !== "undefined";
@@ -1580,7 +1581,7 @@ const IndexPage = () => {
         console.log('setting play')
         if (isBrowser && firstPlay === false) {
           var video = document.getElementsByClassName('lazy sc-vm-file sc-vm-file-s')[0];
-          var myClick = (function( click_count ) {
+          var myClick = (function() {
             var handler = function(event) {
               video.muted = true;
               video.play();
@@ -1589,7 +1590,7 @@ const IndexPage = () => {
               console.log('removed listener')
             };
             return handler;
-        })( 0 );
+        })();
           console.log(video)
           video.addEventListener('canplay', myClick);
 
@@ -1661,6 +1662,7 @@ const IndexPage = () => {
       {  typeof window !== 'undefined' && Player && <Player
       icons="my-library"
       onVmCurrentTimeChange={onTimeUpdate}
+      muted={muter}
       onVmPlaybackReady={setPlay}
       onVmLoadStart={loadStart}
       onVmPlaybackStarted={playStart}
@@ -1690,7 +1692,7 @@ const IndexPage = () => {
         label="English" 
       />
     </Video>
-
+    <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg ${revealer}`}></div><div className={`tap-to-unmute-text ${revealer}`}>Click to unmute</div></div>
     <Ui>
     <ClickToPlay />
     <IconLibrary name="my-library" resolver={(iconName) => `/icons/${iconName}.svg`}  />

@@ -311,14 +311,13 @@ div.rev-optin>div.register-form.col-md-6 {
     margin-top:5px;
   }
 
-  div.regular {
-
+  .regular div.rev-player  {
     padding-left: 1.5rem;
-    padding-right: 1.5rem;
+padding-right: 1.5rem;
 }
-div.large {
-  padding-left: 0rem;
-  padding-right: 0rem;
+.large div.rev-player  {
+  padding-left: 0;
+padding-right: 0;
 }
 
 div.rev-optin {
@@ -814,17 +813,19 @@ h2 span {
   margin: 16px auto 0;
   text-transform: initial;
 }
-.regular {
+.regular .rev-player {
   margin: 0 auto;
+  transition: all .25s ease-out;
   max-width: 1300px;
-  transition: .25s ease-out all;
   padding-left: 4rem;
   padding-right: 4rem;
 }
-.large {
+.large .rev-player {
   margin: 0 auto;
+  transition: all .25s ease-out;
   max-width: 1500px;
-  transition: .25s ease-out all;
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 .more-details {
   color: #d4d4d4;
@@ -1612,9 +1613,10 @@ vm-player[audio] {
 .revealer-el {
   animation: newput .5s cubic-bezier(.4,0,1,1) forwards;
 }
-.loadrevealer-el {
-  animation: disout .5s forwards;
+.revealer-el .rev-loadin {
+  animation: disout .5s forwards step-end;
 }
+
 .inner-loadin {
   padding-bottom: 56.25%;
       background: #09051b;
@@ -1632,9 +1634,9 @@ vm-player[audio] {
       padding-top: 216px;
       top: 0;
   }
-  .rev-player-cont.loadswitch-el {
+  .revealer-el .rev-player-cont {
     animation: relout .6s forwards step-end;
-  }
+}
 
 .tap-to-unmute-svg {
   background-repeat: no-repeat;

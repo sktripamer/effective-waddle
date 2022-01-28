@@ -311,15 +311,22 @@ div.rev-optin>div.register-form.col-md-6 {
     margin-top:5px;
   }
 
-  .regular div.rev-player  {
+  .regular div.rev-loadin  {
     padding-left: 1.5rem;
 padding-right: 1.5rem;
 }
-.large div.rev-player  {
+.large div.rev-loadin  {
   padding-left: 0;
 padding-right: 0;
 }
-
+.regular div.rev-player  {
+  padding-left: 1.5rem;
+padding-right: 1.5rem;
+}
+.large div.rev-player  {
+padding-left: 0;
+padding-right: 0;
+}
 div.rev-optin {
  
   z-index: 121;
@@ -823,6 +830,18 @@ h2 span {
 .large .rev-player {
   margin: 0 auto;
   transition: all .25s ease-out;
+  max-width: 1500px;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.regular .rev-loadin {
+  margin: 0 auto;
+  max-width: 1300px;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.large .rev-loadin {
+  margin: 0 auto;
   max-width: 1500px;
   padding-left: 4rem;
   padding-right: 4rem;
@@ -1616,7 +1635,9 @@ vm-player[audio] {
 .revealer-el .rev-loadin {
   animation: disout .5s forwards step-end;
 }
-
+.revealer-el .rev-player {
+  opacity: 1;
+}
 .inner-loadin {
   padding-bottom: 56.25%;
       background: #09051b;

@@ -1636,7 +1636,7 @@ const IndexPage = () => {
 
       return (
         <Layout>
-          <div className={`${revealer} ${playerSize}`}>
+          <div className={`loader-player ${revealer} ${playerSize}`}>
          {/* <h1 className="revival-of-revenue">Welcome to your <span>Revival of Revenue</span></h1> */}
  <div className={`rev-loadin`}><div className='inner-loadin'></div></div>         
 {/* <div className={`rev-optin-mobile ${boxVisible}`}>

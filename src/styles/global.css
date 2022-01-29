@@ -625,12 +625,13 @@ div.rev-optin-mobile > h4.mb-2 {
   font-weight: 700;
   text-shadow: -1px -1px 1px #111, 2px 2px 1px #3c3c3c;
   text-align: center;
-  margin-top: 1.2em;
+  margin-top: 4px;
 }
 
 
 div.rev-optin-mobile > div.time-section > .time-remaining {
-  font-size: 2.7rem;
+  font-size: 2.1rem;
+  padding-bottom: 30px;
 }
 button.ml-auto.btn.btn-primary {
   background: linear-gradient( 
@@ -935,7 +936,7 @@ h2 span {
   background-size: contain;
   background-repeat: no-repeat;
   overflow: visible;
-  background-position: calc(50% - 2px) 50%;
+  background-position: center;
   padding-top: 18px;
   padding-bottom: 36px;
   margin-bottom: -4px;

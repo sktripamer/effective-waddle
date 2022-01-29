@@ -1697,13 +1697,6 @@ const IndexPage = () => {
     <div className={`rev-optin ${boxVisible}`}>
 <div className='time-section'>
             <div className='time-remaining'>{titleText}</div>
-              <div className="star-spinner">
-<div className="outer-star">
-<div className="spinnerz">
-  </div>
-</div>
-
-</div>
 </div>
 
       {1 == videoStatus

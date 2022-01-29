@@ -598,7 +598,6 @@ button.ml-auto.btn.btn-success:after {
 
 .rev-optin-mobile.reveal {
   opacity: 1;
-  margin-bottom: -200px;
 }
 .rev-optin-mobile.hidden {
   opacity: 0;
@@ -607,8 +606,6 @@ button.ml-auto.btn.btn-success:after {
 .rev-optin-mobile {
   transition: .8s all;
   display:none;
-  margin-bottom: -320px;
-  padding-top: 90px;
 }
 div.rev-optin-mobile > h4.mb-2 {
   color: #e0e0e0;
@@ -621,12 +618,8 @@ div.rev-optin-mobile > h4.mb-2 {
   margin-top: 1.2em;
 }
 
-div.rev-optin-mobile > div.time-section >div.star-spinner > div.outer-star>.spinnerz:after {
-  margin-top: -70px;
-  height: 4rem;
-}
+
 div.rev-optin-mobile > div.time-section > .time-remaining {
-  margin-top: -70px;
   font-size: 2.7rem;
 }
 button.ml-auto.btn.btn-primary {

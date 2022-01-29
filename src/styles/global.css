@@ -675,7 +675,9 @@ div#card-element {
   display: block;
   margin-top: -25px;
 }
-
+.loader-player {
+  position: relative;
+}
 @media (max-width: 666px) {
   div.more-details {
     display: none;
@@ -768,7 +770,7 @@ div.steptwo > form > div.form-group > div.input-group > input.form-control.form-
   transition: .2s .15s all;
 }
 div>small.form-text.text-danger {
-  margin-top: -10px;
+  margin-top: -14px;
 }
 div.rev-optin>div.register-form.col-md-6.steptwo {
   margin: 0;
@@ -1232,9 +1234,9 @@ div.input-group {
   flex-wrap: nowrap;
   flex-direction: row-reverse;
 }
-small.form-text.text-danger {
+.form-text.text-danger {
   position: absolute;
-  margin-top: -5px;
+  margin-top: -4px;
 }
 input.form-control.form-control {
   border: 3px solid #bd9bd4;

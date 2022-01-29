@@ -1769,8 +1769,9 @@ const IndexPage = () => {
          
     </div>
  </div>   
- <h2 className={`revival-of-revenue ${revealerh2}`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>      
+  
 </div>
+<h2 className={`revival-of-revenue`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>    
         </Layout>
       )
 

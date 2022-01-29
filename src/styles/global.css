@@ -188,7 +188,9 @@ div.prev-name-on-card, div.prev-email, div.prev-last-box {
   padding: 1px 10px;
   margin-bottom: 4px;
 }
-
+.loader-player {
+  position: relative;
+}
   div.final-mobile-hero {
     display:block;
     color: #e0e0e0;

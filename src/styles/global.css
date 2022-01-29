@@ -305,7 +305,6 @@ div.rev-optin.reveal.final>div.payment.register-form.col-md-6 {
     margin-top: -2px;
 }
 div.rev-optin>div.register-form.col-md-6 {
-  margin: 4rem auto 0;
 }
   div.spinnerz {
     margin-top:5px;
@@ -585,7 +584,6 @@ button.ml-auto.btn.btn-success:after {
   top: 2px;
 }
 .rev-optin > div.register-form.col-md-6 {
-  margin: 5.5rem auto 0;
   max-width: 100%;
 }
 .input-wrap {
@@ -706,7 +704,6 @@ button.btn.share-btn {
   }
   div.rev-optin {
     display: flex;
-    margin-top: -30px;
   }
 
   div.powered-container {
@@ -876,7 +873,6 @@ h2 span {
   transition: .8s all;
   background-position: top right;
   background-repeat: no-repeat;
-  margin-top: -50px;
 }
 
 .rev-optin.hidden {
@@ -907,7 +903,6 @@ h2 span {
   flex: 0 0 100%;
   max-width: 90%;
   text-align: center;
-  margin: 11vh auto 0 auto;
 }
 
 .register-form {
@@ -915,17 +910,22 @@ h2 span {
 }
 
 .time-remaining {
-  text-shadow: #bbb 0 0 1px, #fff 0 -1px 2px, #313131ed 0 -3px 2px, rgb(0 0 0 / 95%) 0 10px 15px;
-  color: hsl(0deg 0% 100% / 50%);
-  z-index: 21;
-  position: absolute;
+  FONT-WEIGHT: 700;
+  color: hsla(0,0%,100%,.5);
   font-size: 3rem;
-  height: 6rem;
-  left: 50%;
-  FONT-WEIGHT: bold;
-  letter-spacing: -0.3rem;
-  margin-left: -2px;
-  transform: translate(-50%);
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  letter-spacing: -.3rem;
+  text-shadow: #bbb 0 0 1px, #fff 0 -1px 2px, #313131ed 0 -3px 2px, rgb(0 0 0 / 95%) 0 10px 15px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: visible;
+  background-position: calc(50% - 2px) 50%;
+  padding-top: 18px;
+  padding-bottom: 36px;
+  margin-bottom: -25px;
+  background-image: url("data:image/svg+xml,%3Csvg id='splitsvg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='370' height='623' version='1.1'%3E%3Cdefs%3E%3ClinearGradient id='logo-gradient' x1='50%25' y1='0%25' x2='50%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23cc22ff'%3E%3Canimate attributeName='stop-color' values='%23cc22ff; %23ff2233; %23cc22ff' dur='5s' repeatCount='indefinite'%3E%3C/animate%3E%3C/stop%3E%3Cstop offset='100%25' stop-color='%2301FF89'%3E%3Canimate attributeName='stop-color' values='%23ff2233; %23cc22ff; %23ff2233' dur='5s' repeatCount='indefinite'%3E%3C/animate%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cg id='svgg'%3E%3Cpath id='path0' d='M 123.503 30.931 C 101.55 33.031 82.86 41.924 71.493 55.68 C 48.227 83.835 54.759 136.701 84.009 156.971 C 89.181 160.555 90.797 157.094 65.633 196.345 C 53.558 215.538 43.198 232.078 42 234 L 90 234 L 111.183 201.449 L 132.582 169.082 L 145.303 169.082 L 158.024 169.082 L 161.183 191.546 C 162.92 203.901 165.028 218.466 165.867 223.913 L 167.371 233.976 L 183.231 233.988 L 199.011 233.975 L 199.034 131.884 L 199.034 29.952 L 164.976 30.087 C 146.244 30.161 127.581 30.541 123.503 30.931 M 204.831 132.785 L 204.82 234.003 L 220.683 234.014 C 232.201 233.992 236.553 233.997 236.988 233.997 C 237.186 232.911 239.298 218.346 241.638 201.208 L 245.894 170.049 L 258.937 170.055 L 271.981 170.061 L 293.237 202.403 L 314.016 234.012 L 338.377 234.026 C 350.898 234.005 361.421 233.997 362.006 234.001 C 361.91 233.848 352.039 217.938 339.474 198.374 C 312.872 156.951 314.589 160.8 320.838 156.591 C 351.829 135.715 355.761 79.054 328.119 51.661 C 310.332 34.034 300.86 31.666 246.048 30.239 L 204.798 29.949 L 204.831 132.785 M 158.454 100.135 L 158.454 130.706 L 140.338 130.174 C 110.632 129.302 99.987 121.466 100.007 100.483 C 100.029 76.955 109.698 69.908 142.271 69.679 L 158.454 69.565 L 158.454 100.135 M 290.166 73.308 C 306.574 81.387 308.93 110.507 294.223 123.452 C 287.907 129.011 284.898 129.692 264.493 130.181 L 246.377 130.616 L 246.377 100.502 L 246.377 70.389 L 265.942 70.702 C 284.242 70.994 285.809 71.163 290.166 73.308 M 44.605 239.508 C 44.799 239.967 47.754 246.931 51.208 254.95 L 57.488 269.531 L 112.319 269.548 L 167.15 269.565 L 167.15 285.99 L 167.15 302.415 L 119.807 302.415 C 91.907 302.403 72.464 302.375 72.088 302.384 C 72.591 303.625 75.612 310.808 79.111 318.999 L 85.758 333.816 L 126.454 334.068 L 167.15 334.32 L 167.15 351.218 L 167.15 368.116 L 134.196 368.116 C 103.222 368.116 101.244 368.112 100.88 368.116 C 102.068 370.75 105.076 377.648 108.482 385.242 L 114.493 398.987 L 157.246 399.011 L 199.05 399.018 L 199.054 318.858 L 199.008 239.045 L 122.058 239.017 C 76.976 238.816 44.419 239.009 44.397 238.997 M 204.831 318.841 L 204.831 399.034 L 247.24 399.034 C 279.996 398.988 289.494 398.99 289.762 398.993 C 290.512 397.192 293.308 390.566 296.539 383.168 C 299.556 375.73 302.151 369.235 302.56 368.134 C 302.151 368.134 287.85 368.116 270.048 368.116 L 237.681 368.116 L 237.681 351.208 L 237.681 334.3 L 278.112 334.3 L 318.543 334.3 L 324.993 319.082 C 328.355 310.655 331.21 303.456 331.521 302.638 C 331.351 302.63 310.314 302.415 284.541 302.415 L 237.681 302.415 L 237.681 285.998 L 237.681 269.581 L 292.433 269.332 L 347.184 269.082 L 353.785 254.23 C 357.416 246.062 360.386 239.214 360.386 239.013 C 360.386 238.812 325.386 238.647 282.609 238.647 L 204.901 238.961 L 204.831 318.841 M 116.881 404.784 C 121.97 416.323 201.626 597.791 202.1 597.31 C 203.08 596.316 285.192 405.872 287.026 404.018 C 285.576 404.007 279.276 404.018 264.126 404.088 L 242.289 404.035 L 222.83 455.415 L 203.398 506.483 L 201.94 503.172 C 201.139 501.351 191.787 478.273 181.159 451.886 L 161.903 403.972 L 139.242 403.972 C 126.872 403.927 116.902 404.006 116.543 404.007 Z Z' stroke='none' fill='url(%23logo-gradient)' fill-rule='evenodd'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
 }
 
 .spinnerz {
@@ -1652,10 +1652,10 @@ vm-player[audio] {
 .tap-to-unmute-svg {
   background-repeat: no-repeat;
   background-size: contain;
+  height: 26%;
+  opacity: 1;
   width: 22%;
-  opacity:0;
-  height: 40%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150px' height='150px' viewBox='0 0 16 16' class='bi bi-volume-mute' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zM6 5.04L4.312 6.39A.5.5 0 0 1 4 6.5H2v3h2a.5.5 0 0 1 .312.11L6 10.96V5.04zm7.854.606a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708l4-4a.5.5 0 0 1 .708 0z'/%3E%3Cpath fill-rule='evenodd' d='M9.146 5.646a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150px' height='100px' viewBox='0 0 16 16' class='bi bi-volume-mute' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zM6 5.04L4.312 6.39A.5.5 0 0 1 4 6.5H2v3h2a.5.5 0 0 1 .312.11L6 10.96V5.04zm7.854.606a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708l4-4a.5.5 0 0 1 .708 0z'/%3E%3Cpath fill-rule='evenodd' d='M9.146 5.646a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0z'/%3E%3C/svg%3E");
 }
 
 .tap-to-unmute-text {
@@ -1663,7 +1663,7 @@ vm-player[audio] {
   text-transform: uppercase;
   padding: 2px 8px;
   background: #000;
-  opacity:0;
+  opacity:1;
   border-radius: 5px;
   font-size: 20px;
 }

@@ -1637,18 +1637,10 @@ const IndexPage = () => {
       return (
         <Layout>
           <h1 className="revival-of-revenue">Welcome to your <span>Revival of Revenue</span></h1>
-          <div className={`loader-player ${revealer} ${playerSize}`}>
-         
- <div className={`rev-loadin`}><div className='inner-loadin'></div></div>         
-{/* <div className={`rev-optin-mobile ${boxVisible}`}>
+          <div className={`rev-optin-mobile ${boxVisible}`}>
     <div className='time-section'>
             <div className='time-remaining'>{titleText}</div>
-              <div className="star-spinner">
-<div className="outer-star">
-<div className="spinnerz">
-  </div>
-</div>
-</div>
+            
 </div>
 <h4 className="mb-2">{heroText}</h4>
 <div className="more-detail">{moreDetails}</div>
@@ -1657,7 +1649,11 @@ const IndexPage = () => {
         {error}
       </div>
     )}
-</div> */}
+</div>
+          <div className={`loader-player ${revealer} ${playerSize}`}>
+         
+ <div className={`rev-loadin`}><div className='inner-loadin'></div></div>         
+
 <div className={`rev-player-cont`}>
       <div className={`rev-player`}>
        

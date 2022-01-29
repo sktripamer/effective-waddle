@@ -684,6 +684,9 @@ div#card-element {
   margin-top: 30px;
 }
 @media (max-width: 666px) {
+  main h2.revival-of-revenue {
+    font-size: 1.1rem;
+}
   div.more-details {
     display: none;
    }
@@ -809,17 +812,14 @@ letter-spacing: 0rem;
 animation: letterspace 2.5s ease-out forwards, neon1 1.5s ease-in-out infinite alternate;
 }
 h2.revival-of-revenue {
-  opacity: 0;
   color: #fff;
   font-family: Josefin Sans;
   font-size: 2.4rem;
+  opacity: 0;
   padding-top: 40px;
   text-align: center;
   text-transform: uppercase;
-  transition: .6s all .61s;
-}
-h2.revival-of-revenue.revealerh2-el {
-  opacity: 1;
+  animation: newput .5s .5s forwards;
 }
 h2 span {
   display: table;

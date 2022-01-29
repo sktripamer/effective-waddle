@@ -597,10 +597,20 @@ button.ml-auto.btn.btn-success:after {
 }
 
 .rev-optin-mobile.reveal {
+  max-height: 100vh;
   opacity: 1;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background: rgba(0,0,0,0.35);
+    background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg);
+    backdrop-filter: saturate(180%) blur(4px);
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .rev-optin-mobile.hidden {
   opacity: 0;
+  max-height:0;
 }
 
 .rev-optin-mobile {
@@ -670,6 +680,7 @@ div#card-element {
 }
 .loader-player {
   position: relative;
+  margin-top: 30px;
 }
 @media (max-width: 666px) {
   div.more-details {

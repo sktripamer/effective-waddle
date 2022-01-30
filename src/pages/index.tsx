@@ -1568,9 +1568,11 @@ return (
   <Select
   options={optionsC} 
   labelField="name"
-  name="shipping-country"
+  name="shipping-country" 
   dropdownPosition="top"
+  searchBy="name"
   required
+  closeOnSelect={true}
   values={country}
   noDataRenderer={customNoDataRenderer}
   onChange={values => setCountry(values)}

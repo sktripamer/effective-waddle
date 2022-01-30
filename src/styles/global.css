@@ -147,6 +147,17 @@ main {
    text-shadow: 0 0 2px #ffffff78, 0 0 4px #ffffff85, 0 0 8px #ffffff0d, 0 0 14px #0e42857d, 0 0 18px #0e428594, 0 0 24px #0e42859e, 0 0 32px #0e428591, 0 0 42px #0e42858c;
   }
 }
+.selection-section.secondstep {
+  display: none;
+}
+
+.step-one-pay.secondstep {
+  display: none;
+}
+.step-two-pay.firststep {
+  display: none;
+}
+
 .split-point-view {
   width: 60%;
       display: flex;
@@ -250,7 +261,7 @@ div.info-section>ul>li {
 }
 
 div.pay-section {
-  width: 40%;
+  width: 45%;
   top: 50%;
 margin-top: 8px;
 }

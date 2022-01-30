@@ -34,7 +34,7 @@
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^3.1.0",
     "react": "^17.0.2",
-    "react-country-dropdown": "^1.0.4",
+    "react-country-dropdown": "git+https://github.com/sktripamer/react-country-dropdown.git",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-share": "^4.4.0",

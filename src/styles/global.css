@@ -165,7 +165,9 @@ main {
       flex-wrap: nowrap;
       margin-right: 20px;
   }
-  
+  .react-dropdown-select-dropdown.react-dropdown-select-dropdown-position-top {
+    max-height: 260px;
+}
   .react-dropdown-select-dropdown.react-dropdown-select-dropdown-position-top {
     width: auto;
 }

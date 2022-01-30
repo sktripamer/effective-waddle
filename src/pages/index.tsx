@@ -1010,7 +1010,7 @@ const StepFive = () => {
   const [prevEmail, setPrevEmail] = useState("");
   const [prevBrand, setPrevBrand] = useState("");
   const email = JSON.parse(localStorage.auth).authToken;
-  const options = [ 
+  const optionsC = [ 
     {name: 'Afghanistan', code: 'AF'}, 
     {name: 'Åland Islands', code: 'AX'}, 
     {name: 'Albania', code: 'AL'}, 
@@ -1566,7 +1566,8 @@ return (
   <div className={`step-two-pay ${stepCount}`}>
   <input className={'form-control form-control'} placeholder="Full Name" name={'name'}/>
   <Select
-  options={options} 
+  options={optionsC} 
+  labelField="name"
   name="shipping-country"
   dropdownPosition="top"
   required

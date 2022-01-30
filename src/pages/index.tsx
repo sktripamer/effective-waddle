@@ -34,7 +34,7 @@ import { gql , useMutation } from "@apollo/client";
 //import LoginVerify from "../components/LoginVerify";
 
 import InputField2 from '../components/inputfield';
-
+import { ReactCountryDropdown } from 'react-country-dropdown'
 
 import { useBetween } from "use-between";
 import MessageAlert from "../components/MessageAlert";
@@ -1095,6 +1095,7 @@ const [succeededOld, setSucceededOld] = useState(false);
 const [errorOld, setErrorOld] = useState(null);
 const [processing, setProcessing] = useState("");
 const [disabled, setDisabled] = useState(true);
+const [stepCount, setStep] = useState("firststep");
 const [clientSecret, setClientSecret] = useState("");
 
 const nameForm = useRef(null);
@@ -1288,10 +1289,15 @@ return (
 );
 
 }
+const stepSwitch = () => {
+  setStep("secondstep")
+}
+
 const drawNoContent = () => {
 
 return (
   <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
+  <div className={`step-one-pay ${stepCount}`}>
   <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
   <InputField2 label={'fullname'} name={'fullname'}/>
   <CardElement
@@ -1299,6 +1305,16 @@ return (
     options={cardStyle}
     onChange={handleChange}
   />
+    <button onClick={stepSwitch} className='next-btn' disabled={disabled}>
+    <span id="button-text">
+      Continue to Shipping
+    </span>
+  </button>
+  </div>
+  <div className={`step-two-pay ${stepCount}`}>
+  <input className={'form-control form-control'} placeholder="Full Name" name={'name'}/>
+  <ReactCountryDropdown countryCode='US' />
+
   <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
     <span id="button-text">
       {processing ? (
@@ -1308,6 +1324,8 @@ return (
       )}
     </span>
   </button>
+    
+  </div>
   <div className="card-error" role="alert">
   {error && (
       <b>{error}</b>
@@ -1343,9 +1361,9 @@ return (
     </div>
 
     </div>
-
+    
      <div className='pay-section'>
-    <div className='selection-section'>
+    <div className={`selection-section ${stepCount}`}>
     <div onClick={(e) => radioHandler(0)} className={'previous-payment ' + status}>
     <div className='card-icon'></div>
     <div className="prev-last4">{prevLast4}</div>

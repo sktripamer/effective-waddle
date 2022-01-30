@@ -166,7 +166,9 @@ main {
       margin-right: 20px;
   }
   
-
+  .react-dropdown-select-dropdown.react-dropdown-select-dropdown-position-top {
+    width: auto;
+}
 @keyframes letterspace {
   0% {
     letter-spacing: 0rem;

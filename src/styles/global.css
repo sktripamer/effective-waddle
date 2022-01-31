@@ -165,11 +165,71 @@ main {
       flex-wrap: nowrap;
       margin-right: 20px;
   }
-  .react-dropdown-select-dropdown.react-dropdown-select-dropdown-position-top {
-    max-height: 260px;
+  .next-btn {
+    background: linear-gradient( 
+90deg
+ ,#f23,#ff2278);
+    border: 2px solid #ff005e;
+    border-radius: 3px;
+    color: #fff;
+    float: right;
+    font-weight: 700;
+    margin-top: 10px;
+    opacity: 1;
+    padding: 6px 10px;
+    width: 100%;
+    cursor: pointer;
 }
-  .react-dropdown-select-dropdown.react-dropdown-select-dropdown-position-top {
+
+.next-btn.disabled {
+    opacity: .7;
+    cursor: default;
+}
+
+div.react-dropdown-select {
+    height: 38px;
+    padding: 0 10px;
+    background: linear-gradient( 
+302deg
+ ,rgba(255,255,255,.12),rgba(255,255,255,0));
+    border: 3px solid #bd9bd4;
+    border-radius: 0;
+    color: #f7f7f7;
+font-weight: normal;
+}
+
+.react-dropdown-select-content.react-dropdown-select-type-single span {
+    margin-top: -2px;
+}
+span.react-dropdown-select-item.react-dropdown-select-item-selected {
+    background: rgb(49 0 128);
+    border-bottom: 1px solid rgb(255 255 255 / 17%);
+}
+span.react-dropdown-select-item {
+    background: rgb(49 0 128);
+    border-bottom: 1px solid rgb(255 255 255 / 17%);
+}
+div.react-dropdown-select:hover, div.react-dropdown-select:focus-within {
+    border: 3px solid #bd9bd4;
+}
+
+.react-dropdown-select-dropdown.react-dropdown-select-dropdown-position-top {
+    max-height: 260px;
     width: auto;
+    bottom: 36px;
+opacity: .9;
+}
+span.react-dropdown-select-item:hover, span.react-dropdown-select-item:focus {
+background: rgb(49 0 128);
+}
+div.react-dropdown-select-dropdown-handle {
+    height: 36px;
+}
+input.react-dropdown-select-input {
+    line-height: 36px;
+    margin-top: 16px;
+    color: #f7f7f7;
+    font-size: medium;
 }
 @keyframes letterspace {
   0% {

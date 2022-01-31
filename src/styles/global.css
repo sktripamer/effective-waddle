@@ -608,7 +608,12 @@ form#payment-form-old {
   z-index: 120;
   background: #320083d1;
 }
-
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+     transition: all 0s 50000s;
+}
 .final-mobile-hero {
   display:none;
   }

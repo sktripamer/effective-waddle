@@ -239,8 +239,8 @@ form .secondstep label {
     font-size: 12px;
     text-align: left;
     color: #c7c7c7;
-    margin-bottom: -4px;
-    margin-top: -4px;
+    margin-bottom: -5px;
+    margin-top: -5px;
 }
 .ship-zipcountry > div {
   width: 48%;
@@ -307,6 +307,12 @@ input.react-dropdown-select-input {
   }
 }
 @media (max-width: 1050px) {
+  div.powered-by-stripe-final {
+
+    height: 32px;
+    margin: 0 auto 2px;
+    width: 120px;
+}
   div.ship-zipcountry>div {
     margin-bottom: 5px;
   }
@@ -574,6 +580,8 @@ form#payment-form-old {
 .selection-render .card-error {
   position: initial;
   height: 0px;
+  margin-top: 0;
+  font-size: 12PX;
 }
 .powered-by-stripe-final {
   background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/stripe-small-min.png);

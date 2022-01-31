@@ -856,7 +856,10 @@ div#card-element {
   width: 100%;
   margin-bottom: 8px;
 }
-
+#payment-form-old input.form-control.form-control {
+  width: 100%;
+  margin-bottom: 8px;
+}
 .share-error.card-error {
   position: static;
   font-size: 12px;

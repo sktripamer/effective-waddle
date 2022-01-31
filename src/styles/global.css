@@ -209,12 +209,25 @@ font-weight: normal;
   justify-content: space-between;
   align-items: flex-end;
 }
-
+#payment-form .ship-street input.form-control.form-control {
+  margin-bottom: 4px;
+}
+.ship-street > input:nth-of-type(2) {
+  border: 2px solid #bd9bd4c2;
+  height: 32px;
+}
 form .secondstep label {
   display: block;
+    margin: 0;
+    font-size: 12px;
+    text-align: left;
+    color: #c7c7c7;
+    margin-bottom: -4px;
+    margin-top: -4px;
 }
 .ship-zipcountry > div {
   width: 48%;
+  margin-bottom: 8px;
 }
 
 .ship-citystate {
@@ -604,7 +617,7 @@ form#payment-form-old {
   display:none;
   }
 .rev-optin.reveal.final > div.register-form.col-md-6 {
-  margin-top: 30px;
+  margin-top: 14px;
   height: 90%;
 }
 .card-error{
@@ -626,7 +639,7 @@ form#payment-form-old {
 }
 .pay-section {
   width: 30%;
-  margin-top: 40px;
+  margin-top: 4px;
 }
 .pay-btn {
   padding: 0;
@@ -640,7 +653,7 @@ form#payment-form-old {
   height: 44px;
   border-radius: 3px;
   float: right;
-  margin-top: 10px;
+  margin-top: 0px;
   opacity: 1;
 }
 
@@ -990,7 +1003,7 @@ h2 span {
   margin-top: 12px;
   font-weight: 500;
   font-size: 17px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .more-detail {

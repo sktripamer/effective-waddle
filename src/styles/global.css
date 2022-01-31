@@ -199,7 +199,7 @@ font-weight: normal;
 }
 
 
-#payment-form .ship-zipcountry input.form-control.form-control {
+#payment-form .ship-zipcountry input.form-control.form-control, #payment-form-old .ship-zipcountry input.form-control.form-control {
   width: 48%;
 }
 
@@ -229,6 +229,9 @@ font-weight: normal;
 #payment-form .ship-street input.form-control.form-control {
   margin-bottom: 4px;
 }
+#payment-form-old .ship-street input.form-control.form-control {
+  margin-bottom: 4px;
+}
 div.ship-street > input:nth-of-type(2) {
   border: 2px solid #bd9bd4c2;
   height: 32px;
@@ -256,6 +259,9 @@ form .secondstep label {
 #payment-form .ship-citystate input.form-control.form-control {
   width: 48%;
 }
+#payment-form-old .ship-citystate input.form-control.form-control {
+  width: 48%;
+}
 .react-dropdown-select-content.react-dropdown-select-type-single span {
     margin-top: -2px;
     overflow: hidden;
@@ -281,10 +287,11 @@ div.react-dropdown-select:hover, div.react-dropdown-select:focus-within {
 }
 
 .react-dropdown-select-dropdown.react-dropdown-select-dropdown-position-top {
-    max-height: 260px;
-    width: auto;
-    bottom: 36px;
-opacity: .9;
+  bottom: 36px;
+  max-height: 260px;
+  opacity: .98;
+  width: 200%;
+  left: -98%;
 }
 span.react-dropdown-select-item:hover, span.react-dropdown-select-item:focus {
 background: rgb(49 0 128);
@@ -348,7 +355,10 @@ input.react-dropdown-select-input {
     height: 32px;
     margin-bottom: 5px;
 }
-
+.selection-render #payment-form-old input.form-control.form-control {
+  height: 32px;
+  margin-bottom: 5px;
+}
 div.selection-render div#card-element {
   padding: 3px 2px;
 }
@@ -1121,7 +1131,7 @@ h2 span {
 
 .rev-optin.hidden {
   opacity: 0;
-  left: -300px;
+  left: -600px;
   transition: .8s all  ease-in;
   z-index: 22;
 }
@@ -1842,7 +1852,7 @@ vm-player[audio] {
   --vm-tooltip-spacing: 10px;
 }
 .payment-infos {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 .brand-last4 {
   display: flex;

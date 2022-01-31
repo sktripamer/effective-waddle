@@ -1347,6 +1347,7 @@ const [country, setCountry] = useState([{
   code: 'US'
 }]);
 const nameForm = useRef(null);
+const nameFormOld = useRef(null);
 const [successMessage, setSuccessMessage] = useState("");
 const [showAlertBar, setShowAlertBar] = useState(true);
 const { boxVisible, setBoxVisible } = useBetween(useShareableState);
@@ -1456,7 +1457,6 @@ const handleSubmit = async (ev: { preventDefault: () => void; }) => {
     //console.log(spm)
     // Update your user in DB to store the customerID
     // updateUserInDB() is *your* implementation of updating a user in the DB
-    const form = nameForm.current
     //form['firstname'].value
     let ex = {
       token: JSON.parse(localStorage.auth).authToken,
@@ -1482,7 +1482,7 @@ const handleSubmit = async (ev: { preventDefault: () => void; }) => {
 };
 
 const handleSubmitOld = async (ev: { preventDefault: () => void; }) => {
-  const form = nameForm.current
+  const form = nameFormOld.current
   ev.preventDefault();
   setProcessingOld(true);
   const intent = await createIntent();
@@ -1500,12 +1500,27 @@ const handleSubmitOld = async (ev: { preventDefault: () => void; }) => {
     setErrorOld(null);
     setProcessingOld(false);
     setSucceededOld(true);
+    
     //fetch wth intent.body.customer
     //const spm = await setPayment(intent.body.customer);
     //console.log(spm)
     // Update your user in DB to store the customerID
     // updateUserInDB() is *your* implementation of updating a user in the DB
-    const settingFive = await setFive(JSON.parse(localStorage.auth).authToken);
+
+    let ex = {
+      token: JSON.parse(localStorage.auth).authToken,
+      shippingaddress1: form['ship-address1'].value,
+      shippingaddress2: form['ship-address2'].value,
+      shippingname: form['name'].value,
+      shippingcity: form['ship-city'].value,
+      shippingstate: form['ship-state'].value,
+      shippingzip: form['ship-zip'].value,
+      shippingcountry: country[0].code,
+      transactionid: payload.paymentIntent.id
+      }
+
+
+    const settingFive = await setFive(JSON.stringify(ex));
     console.log(settingFive)
     localStorage.removeItem("s5")
     localStorage.setItem("s6", "y")
@@ -1528,14 +1543,14 @@ return (
     <div className="brand-last4"><div className={"prev-brand " + prevBrand}></div><div className="prev-last4">**** {prevLast4}</div></div><div className="prev-expiry">{prevExpM}/{prevExpY}</div>
     </div>
     </div>
-    <div onClick={stepSwitch} className={`next-btn ${disabled}`}>
+    <div onClick={stepSwitchOld} className={`next-btn`}>
     <span id="button-text">
       Continue to Shipping
     </span>
   </div>
   </div>
     <div className='payment-confirm'>
-    <form id="payment-form-old" onSubmit={handleSubmitOld}>
+    <form id="payment-form-old" ref={nameFormOld} onSubmit={handleSubmitOld}>
     <div className={`step-two-pay ${stepCount}`}>
   <label>Full Name</label>
   <div className="ship-name">
@@ -1607,6 +1622,12 @@ const stepSwitch = (e) => {
   if (disabled === false) {
   setStep("secondstep")
   }
+}
+const stepSwitchOld = (e) => {
+  e.preventDefault();
+
+  setStep("secondstep")
+  
 }
 const stepBack = (e) => {
   e.preventDefault();

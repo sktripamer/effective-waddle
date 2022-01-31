@@ -1557,7 +1557,7 @@ return (
     options={cardStyle}
     onChange={handleChange}
   />
-    <div onClick={stepSwitch} className='next-btn' disabled={disabled}>
+    <div onClick={stepSwitch} className={`next-btn ${disabled}`}>
     <span id="button-text">
       Continue to Shipping
     </span>

@@ -203,6 +203,23 @@ font-weight: normal;
   width: 48%;
 }
 
+.paybtn-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.next-btn.stepback {
+  width: 25%;
+  margin-top: 0px;
+  background: none;
+  border: 2px solid #7d4360;
+  font-weight: normal;
+}
+
+.selection-render .secondstep .pay-btn {
+  width: 73%;
+}
 
 .ship-zipcountry {
   display: flex;
@@ -212,7 +229,7 @@ font-weight: normal;
 #payment-form .ship-street input.form-control.form-control {
   margin-bottom: 4px;
 }
-.ship-street > input:nth-of-type(2) {
+div.ship-street > input:nth-of-type(2) {
   border: 2px solid #bd9bd4c2;
   height: 32px;
 }
@@ -290,6 +307,9 @@ input.react-dropdown-select-input {
   }
 }
 @media (max-width: 1050px) {
+  div.ship-zipcountry>div {
+    margin-bottom: 5px;
+  }
  .secondstep div.react-dropdown-select-dropdown-handle {
     height: 32px;
 }
@@ -655,8 +675,7 @@ input:-webkit-autofill:active {
   border: 2px solid rgb(255 0 94);
   font-weight: 700;
   color: #fff;
-  padding: 0 10px;
-  height: 44px;
+  padding: 6px 10px;
   border-radius: 3px;
   float: right;
   margin-top: 0px;
@@ -1162,7 +1181,6 @@ h2 span {
   text-align: end;
   color: #c5c5c5ab;
   font-style: italic;
-  margin-bottom: -6px;
 }
 
 .header {

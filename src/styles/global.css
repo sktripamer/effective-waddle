@@ -201,6 +201,9 @@ font-weight: normal;
 .react-dropdown-select-content.react-dropdown-select-type-single span {
     margin-top: -2px;
 }
+div.react-dropdown-select-content.react-dropdown-select-type-single {
+  align-items: center;
+}
 span.react-dropdown-select-item.react-dropdown-select-item-selected {
     background: rgb(49 0 128);
     border-bottom: 1px solid rgb(255 255 255 / 17%);
@@ -240,6 +243,23 @@ input.react-dropdown-select-input {
   }
 }
 @media (max-width: 1050px) {
+ .secondstep div.react-dropdown-select-dropdown-handle {
+    height: 32px;
+}
+.secondstep input.react-dropdown-select-input {
+    line-height: 32px;
+    margin-top: 16px;
+    color: #f7f7f7;
+    font-size: medium;
+}
+.secondstep div.react-dropdown-select {
+  min-height: 32px;
+  height: 32px;
+}
+.secondstep div.react-dropdown-select-dropdown-handle {
+  height: 32px;
+  margin: 0;
+}
   div.more-details {
     font-size: 15px;
 }

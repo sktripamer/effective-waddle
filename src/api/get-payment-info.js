@@ -11,7 +11,11 @@ const validateJWT = async (req, res) => {
             //const paymentIntent = await createIntent(customerID, decoded.data.user.id);
              
          // return res.status(200).json(decoded.data.user.id);
+         if (paymentMethod === '') {
+          return res.status(200).json('')
+         } else {
           return res.status(200).json({paymentMethod})
+         }
        });
       } catch (e) {
         res.json({body: 'error ' + e})
@@ -34,10 +38,15 @@ const getPaymentID = async (uID) => {
 
 
   async function getPaymentMethod(pm) {
-    const paymentMethod =  await stripe.paymentMethods.retrieve(
-      pm
-    );
-    return paymentMethod;
+    if (pm ==''){
+      return '';
+    } else {
+      const paymentMethod =  await stripe.paymentMethods.retrieve(
+        pm
+      );
+      return paymentMethod;
+    }
+  
   }
 
 export default validateJWT

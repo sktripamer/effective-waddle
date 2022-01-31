@@ -198,11 +198,45 @@ div.react-dropdown-select {
 font-weight: normal;
 }
 
+
+#payment-form .ship-zipcountry input.form-control.form-control {
+  width: 48%;
+}
+
+
+.ship-zipcountry {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+form .secondstep label {
+  display: block;
+}
+.ship-zipcountry > div {
+  width: 48%;
+}
+
+.ship-citystate {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+#payment-form .ship-citystate input.form-control.form-control {
+  width: 48%;
+}
 .react-dropdown-select-content.react-dropdown-select-type-single span {
     margin-top: -2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 div.react-dropdown-select-content.react-dropdown-select-type-single {
+
   align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    white-space: nowrap;
 }
 span.react-dropdown-select-item.react-dropdown-select-item-selected {
     background: rgb(49 0 128);

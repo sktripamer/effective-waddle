@@ -1542,7 +1542,7 @@ const stepSwitch = (e) => {
   setStep("secondstep")
 }
 const customNoDataRenderer = () => (
-   <div>No country found</div>
+   <div className='no-country'>No country found</div>
 );
 
 const drawNoContent = () => {

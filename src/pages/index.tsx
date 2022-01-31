@@ -1520,6 +1520,7 @@ const drawYesContent = () => {
 
 return (
   <div className='prev-payment'>
+     <div className={`step-one-pay ${stepCount}`}>
     <div className='payment-infos'>
     <div className="prev-name-on-card">{prevName}</div>
     <div className="prev-email">{prevEmail}</div> 
@@ -1527,17 +1528,66 @@ return (
     <div className="brand-last4"><div className={"prev-brand " + prevBrand}></div><div className="prev-last4">**** {prevLast4}</div></div><div className="prev-expiry">{prevExpM}/{prevExpY}</div>
     </div>
     </div>
+    <div onClick={stepSwitch} className={`next-btn ${disabled}`}>
+    <span id="button-text">
+      Continue to Shipping
+    </span>
+  </div>
+  </div>
     <div className='payment-confirm'>
     <form id="payment-form-old" onSubmit={handleSubmitOld}>
-  <button className='pay-btn' disabled={processingOld || succeededOld} id="submit">
+    <div className={`step-two-pay ${stepCount}`}>
+  <label>Full Name</label>
+  <div className="ship-name">
+
+  <input required className={'form-control form-control'} placeholder="First and last name" autocomplete="shipping name" name={'name'}/>
+  </div>
+  <label>Street Address</label>
+  <div className="ship-street">
+
+  <input required className={'form-control form-control'} placeholder="Street and number" autocomplete="shipping address-line1" name={'ship-address1'}/>
+  <input className={'form-control form-control'} placeholder="Apartment, suite, unit, etc (optional)" autocomplete="shipping address-line2" name={'ship-address2'}/>
+  </div>
+  <label>City / State</label>
+  <div className="ship-citystate">
+
+  <input required className={'form-control form-control'} placeholder="City" name="ship-city" autocomplete="shipping address-level2"/>
+  <input required className={'form-control form-control'} placeholder="State / Province" name="ship-state" autocomplete="shipping address-level1"/>
+  </div>
+  <label>Zip Code / Country</label>
+  <div className="ship-zipcountry">
+  <input required className={'form-control form-control'} placeholder="Zip / Postal Code" autocomplete="shipping postal-code" name={'ship-zip'}/>
+  <Select
+  options={optionsC} 
+  labelField="name"
+  valueField="code"
+  name="ship-country" 
+  dropdownPosition="top"
+  searchBy="name"
+  required
+  closeOnSelect={true}
+  values={country}
+  noDataRenderer={customNoDataRenderer}
+  onChange={values => setCountry(values)}
+/>
+</div>
+  <div className='paybtn-cont'>
+  <div onClick={stepBack} className={`next-btn stepback`}>
     <span id="button-text">
-      {processingOld ? (
+      Back
+    </span>
+  </div>
+  <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
+    <span id="button-text">
+      {processing ? (
         <div className="spinner" id="spinner">Click to Place Order</div>
       ) : (
         "Click to Place Order"
       )}
     </span>
   </button>
+    </div>
+  </div>
   {errorOld && (
     <div className="card-error" role="alert">
       {errorOld}

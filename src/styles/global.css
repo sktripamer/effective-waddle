@@ -181,7 +181,7 @@ main {
     cursor: pointer;
 }
 
-.next-btn.disabled {
+.next-btn.true {
     opacity: .7;
     cursor: default;
 }

@@ -858,6 +858,58 @@ div#card-element {
   margin-top: 30px;
 }
 @media (max-width: 666px) {
+  .payment .rev-optin.reveal.final {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    background: #320083;
+}
+.payment div.content-section {
+    display: flex;
+    flex-direction: column;
+height: 100%;
+}
+
+.payment div.split-point-view {
+    width: 90%;
+margin-right: 0px;
+}
+
+.payment div.final-mobile-hero {
+font-size: 24px;
+}
+
+.payment div.final-mobile-text {
+font-size: 15px;
+    line-height: 18px;
+}
+
+.payment div.info-section>ul>li {
+font-size: 14px;
+    margin-bottom: 0;
+}
+
+.payment div.pay-section {
+width: 90%;
+margin-right: 0px;
+}
+
+.payment div.image-section {
+height:50%
+}
+
+.payment div.split-point-view {
+height: 50%;
+}
+
+div.rev-optin.reveal.final>div.register-form.col-md-6 {
+
+    height: 100%;
+}
+
+
   main h2.revival-of-revenue {
     font-size: 1.1rem;
 }

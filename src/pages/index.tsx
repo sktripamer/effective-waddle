@@ -1575,7 +1575,7 @@ return (
   <label>Full Name</label>
   <div className="ship-name">
 
-  <input required className={'form-control form-control'} placeholder="First and last name" autocomplete="name" name={'name'}/>
+  <input required className={'form-control form-control'} placeholder="First and last name" autocomplete="shipping name" name={'name'}/>
   </div>
   <label>Street Address</label>
   <div className="ship-street">

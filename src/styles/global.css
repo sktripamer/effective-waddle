@@ -858,7 +858,7 @@ div#card-element {
   margin-top: 30px;
 }
 @media (max-width: 666px) {
-  .payment .rev-optin.reveal.final {
+  div.rev-optin.reveal.final {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -876,7 +876,10 @@ height: 100%;
     width: 90%;
 margin-right: 0px;
 }
-
+div.selection-section {
+	margin: 4px auto 8px;
+    padding-bottom: 8px;
+}
 .payment div.final-mobile-hero {
 font-size: 24px;
 }

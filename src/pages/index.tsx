@@ -1268,7 +1268,7 @@ const StepFive = () => {
       // updateUserInDB() is *your* implementation of updating a user in the DB
       return intent;
     } catch (error) {
-      console.log('Failed to set step three');
+      console.log('Failed to set step 5');
       console.log(error);
       return null;
     }
@@ -1450,11 +1450,25 @@ const handleSubmit = async (ev: { preventDefault: () => void; }) => {
     setError(null);
     setProcessing(false);
     setSucceeded(true);
+    console.log(payload)
     //fetch wth intent.body.customer
     //const spm = await setPayment(intent.body.customer);
     //console.log(spm)
     // Update your user in DB to store the customerID
     // updateUserInDB() is *your* implementation of updating a user in the DB
+    const form = nameForm.current
+    //form['firstname'].value
+    let ex = {
+      token: JSON.parse(localStorage.auth).authToken,
+      shippingaddress1: form['ship-address1'].value,
+      shippingaddress2: form['ship-address2'].value,
+      shippingname: form['name'].value,
+      shippingcity: form['ship-city'].value,
+      shippingstate: form['ship-state'].value,
+      shippingzip: form['ship-zip'].value,
+      shippingcountry: country[1],
+      }
+      console.log(ex)
     const settingFive = await setFive(JSON.parse(localStorage.auth).authToken);
     console.log(settingFive)
     localStorage.removeItem("s5")
@@ -1581,7 +1595,7 @@ return (
   <div className="ship-street">
 
   <input required className={'form-control form-control'} placeholder="Street and number" autocomplete="shipping address-line1" name={'ship-address1'}/>
-  <input required className={'form-control form-control'} placeholder="Apartment, suite, unit, etc (optional)" autocomplete="shipping address-line2" name={'ship-address2'}/>
+  <input className={'form-control form-control'} placeholder="Apartment, suite, unit, etc (optional)" autocomplete="shipping address-line2" name={'ship-address2'}/>
   </div>
   <label>City / State</label>
   <div className="ship-citystate">

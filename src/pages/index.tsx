@@ -1559,7 +1559,7 @@ const stepSwitch = (e) => {
 }
 const stepBack = (e) => {
   e.preventDefault();
-
+  console.log(country)
   setStep("firststep")
   
 }
@@ -1609,6 +1609,7 @@ return (
   <Select
   options={optionsC} 
   labelField="name"
+  valueField="code"
   name="ship-country" 
   dropdownPosition="top"
   searchBy="name"

@@ -1009,7 +1009,15 @@ const StepFive = () => {
   const [prevName, setPrevName] = useState("");
   const [prevEmail, setPrevEmail] = useState("");
   const [prevBrand, setPrevBrand] = useState("");
-  const email = JSON.parse(localStorage.auth).authToken;
+  const [noAccount, setAccount] = useState(false);
+  const [noCard, setCard] = useState(false);
+  const email = function() {
+    try {
+    return JSON.parse(localStorage.auth).authToken;
+    } catch {
+      return '';
+    }
+    }
   const optionsC = [ 
     {name: 'Afghanistan', code: 'AF'}, 
     {name: 'Åland Islands', code: 'AX'}, 
@@ -1296,17 +1304,26 @@ useEffect(() => {
   //     console.log('right here', body)
   //    // setPrevID(body.body.client_secret);
   //   });
-
-    try {
+    if (email() =='') {
+      setAccount(true)
+      setCard(true)
+      radioHandler(1)
+    } else {
+     try {
       // Retrieve email and username of the currently logged in user.
       // getUserFromDB() is *your* implemention of getting user info from the DB
       const request = await fetch('/api/get-payment-info', {
         method: 'POST',
-        body: email,
+        body: email(),
       });
       const intent = (await request.json());
       // Update your user in DB to store the customerID
       // updateUserInDB() is *your* implementation of updating a user in the DB
+      if (intent =='') {
+        setCard(true)
+        radioHandler(1)
+        return '';
+      } else {
       console.log(intent)
       setCustomerID(intent.paymentMethod.customer);
       setPrevID(intent.paymentMethod.id);
@@ -1317,13 +1334,13 @@ useEffect(() => {
       setPrevEmail(intent.paymentMethod.billing_details.email);
       setPrevBrand(intent.paymentMethod.card.brand);
       return intent;
-      
+      }
     } catch (error) {
       console.log('Failed to get cID');
       console.log(error);
       return null;
     }
-
+  }
   }
   fetchMyAPI()
 }, []);
@@ -1383,6 +1400,28 @@ async function createIntent() {
     // Retrieve email and username of the currently logged in user.
     // getUserFromDB() is *your* implemention of getting user info from the DB
     const email = customerID
+    if (email == '') {
+      const form = nameForm.current
+      const request = await fetch('/api/user-exists', {
+        method: 'POST',
+        body: form['fullname'].value,
+      });
+      const intent = (await request.json());
+      if (intent === false) {
+        const request2 = await fetch('/api/create-intent-noacc', {
+          method: 'POST',
+          body: form['fullname'].value,
+        });
+        const intent2 = (await request2.json());
+        // Update your user in DB to store the customerID
+        // updateUserInDB() is *your* implementation of updating a user in the DB
+        return intent2;
+      } else {
+        setError('Email already in use. Try using another email.')
+        //setProcessing("no");
+        console.log('user already exists')
+      }
+    } else {
     const request = await fetch('/api/second-intent', {
       method: 'POST',
       body: email,
@@ -1391,6 +1430,8 @@ async function createIntent() {
     // Update your user in DB to store the customerID
     // updateUserInDB() is *your* implementation of updating a user in the DB
     return intent;
+
+  }
   } catch (error) {
     console.log('Failed to create intent');
     console.log(error);
@@ -1746,7 +1787,7 @@ return (
     </div>
     
      <div className='pay-section'>
-    <div className={`selection-section ${stepCount}`}>
+    <div className={`selection-section ${stepCount} ${noCard}`}>
     <div onClick={(e) => radioHandler(0)} className={'previous-payment ' + status}>
     <div className='card-icon'></div>
     <div className="prev-last4">{prevLast4}</div>

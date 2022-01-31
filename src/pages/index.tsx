@@ -1543,6 +1543,12 @@ const stepSwitch = (e) => {
   setStep("secondstep")
   }
 }
+const stepBack = (e) => {
+  e.preventDefault();
+
+  setStep("firststep")
+  
+}
 const customNoDataRenderer = () => (
    <div className='no-country'>No country found</div>
 );
@@ -1599,7 +1605,12 @@ return (
   onChange={values => setCountry(values)}
 />
 </div>
-
+  <div className='paybtn-cont'>
+  <div onClick={stepBack} className={`next-btn stepback`}>
+    <span id="button-text">
+      Back
+    </span>
+  </div>
   <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
     <span id="button-text">
       {processing ? (
@@ -1609,7 +1620,7 @@ return (
       )}
     </span>
   </button>
-    
+    </div>
   </div>
   <div className="card-error" role="alert">
   {error && (

@@ -1466,10 +1466,11 @@ const handleSubmit = async (ev: { preventDefault: () => void; }) => {
       shippingcity: form['ship-city'].value,
       shippingstate: form['ship-state'].value,
       shippingzip: form['ship-zip'].value,
-      shippingcountry: country[1],
+      shippingcountry: country[0].code,
+      transactionid: payload.paymentIntent.id
       }
       console.log(ex)
-    const settingFive = await setFive(JSON.parse(localStorage.auth).authToken);
+    const settingFive = await setFive(JSON.stringify(ex));
     console.log(settingFive)
     localStorage.removeItem("s5")
     localStorage.setItem("s6", "y")

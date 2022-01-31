@@ -2,9 +2,10 @@ import jwt from 'jsonwebtoken'
 import axios from 'axios'
 
 const validateJWT = async (req, res) => {
+  let parsedVar = JSON.parse(req.body)
 //validates JWT and gets user ID from payload data. then passes to the next function to get customerID and paymentID from stripe.
     try {
-            jwt.verify(req.body, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
+            jwt.verify(parsedVar.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
             const customerID = await getPaymentID(decoded.data.user.id);
            // const paymentMethod = await getPaymentMethod(customerID);
             //const paymentIntent = await createIntent(customerID, decoded.data.user.id);
@@ -23,6 +24,14 @@ const getPaymentID = async (uID) => {
     const data = {
         "acf": {
             "preorder": true,
+            "shippingname": parsedVar.shippingname,
+            "shippingaddress1": parsedVar.shippingaddress1,
+            "shippingaddress2": parsedVar.shippingaddress2,
+            "shippingcity": parsedVar.shippingcity,
+            "shippingstate": parsedVar.shippingstate,
+            "shippingzip": parsedVar.shippingzip,
+            "shippingcountry": parsedVar.shippingcountry,
+            "transactionid": parsedVar.transactionid
               }
       }
       let axiosConfig = {

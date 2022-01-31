@@ -1539,7 +1539,9 @@ return (
 }
 const stepSwitch = (e) => {
   e.preventDefault();
+  if (disabled === false) {
   setStep("secondstep")
+  }
 }
 const customNoDataRenderer = () => (
    <div className='no-country'>No country found</div>

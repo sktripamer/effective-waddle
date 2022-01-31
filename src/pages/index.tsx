@@ -1566,11 +1566,27 @@ return (
   </div>
   </div>
   <div className={`step-two-pay ${stepCount}`}>
-  <input className={'form-control form-control'} placeholder="Full Name" name={'name'}/>
+  <div className="ship-name">
+  <label>Full Name</label>
+  <input required className={'form-control form-control'} autocomplete="name" name={'name'}/>
+  </div>
+  <div className="ship-street">
+  <label>Street Address</label>
+  <input required className={'form-control form-control'} placeholder="Street and number" autocomplete="shipping address-line1" name={'ship-address1'}/>
+  <input required className={'form-control form-control'} placeholder="Apartment, suite, unit, etc (optional)" autocomplete="shipping address-line2" name={'ship-address2'}/>
+  </div>
+  <div className="ship-citystate">
+  <label>City / State</label>
+  <input required className={'form-control form-control'} placeholder="City" name="ship-city" autocomplete="shipping locality"/>
+  <input required className={'form-control form-control'} placeholder="State / Province" name="ship-state" autocomplete="shipping region"/>
+  </div>
+  <div className="ship-zipcountry">
+  <label>Zip Code / Country</label>
+  <input required className={'form-control form-control'} placeholder="Zip / Postal Code" autocomplete="shipping postal-code" name={'ship-zip'}/>
   <Select
   options={optionsC} 
   labelField="name"
-  name="shipping-country" 
+  name="ship-country" 
   dropdownPosition="top"
   searchBy="name"
   required
@@ -1579,6 +1595,7 @@ return (
   noDataRenderer={customNoDataRenderer}
   onChange={values => setCountry(values)}
 />
+</div>
 
   <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
     <span id="button-text">

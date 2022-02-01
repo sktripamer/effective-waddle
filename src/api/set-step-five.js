@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import axios from 'axios'
 let parsedVar;
 const validateJWT = async (req, res) => {
-  let parsedVar = JSON.parse(req.body)
+  parsedVar = req.body
 //validates JWT and gets user ID from payload data. then passes to the next function to get customerID and paymentID from stripe.
     try {
             jwt.verify(parsedVar.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {

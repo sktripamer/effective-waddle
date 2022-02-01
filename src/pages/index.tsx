@@ -325,21 +325,7 @@ const RegisterOpt = ({ setLoggedIn }) => {
     setErrorMessage("");
     setShowAlertBar(false);
   };
-  async function createOntra() {
-    try {
-      // Retrieve email and username of the currently logged in user.
-      // getUserFromDB() is *your* implemention of getting user info from the DB
-      const ontradata = email + "@@" + description 
-      fetch('/api/ontraport-create', {
-        method: 'POST',
-        body: ontradata,
-      });
-    } catch (error1) {
-      console.log('Failed to create ontra');
-      console.log(error1);
-      return null;
-    }
-  }
+
   /**
    * Sets client side error.
    *
@@ -1281,6 +1267,24 @@ const StepFive = () => {
       return null;
     }
   }
+  async function setPreorder(createtoken: string) {
+    try {
+      // Retrieve email and username of the currently logged in user.
+      // getUserFromDB() is *your* implemention of getting user info from the DB
+      const request = await fetch('/api/new-preorder-noacc', {
+        method: 'POST',
+        body: createtoken,
+      });
+      const intent = (await request.json());
+      // Update your user in DB to store the customerID
+      // updateUserInDB() is *your* implementation of updating a user in the DB
+      return intent;
+    } catch (error) {
+      console.log('Failed to set step 5');
+      console.log(error);
+      return null;
+    }
+  }
 useEffect(() => {
   if (isBrowser) {
   var style = document.createElement( 'style' )
@@ -1399,43 +1403,69 @@ async function createIntent() {
   try {
     // Retrieve email and username of the currently logged in user.
     // getUserFromDB() is *your* implemention of getting user info from the DB
-    const email = customerID
-    if (email == '') {
-      const form = nameForm.current
-      const request = await fetch('/api/user-exists', {
-        method: 'POST',
-        body: form['fullname'].value,
-      });
-      const intent = (await request.json());
-      if (intent === false) {
-        const request2 = await fetch('/api/create-intent-noacc', {
+    const email2 = customerID
+    if (email2 == '') {
+      //no customerID from stripe (set in useeffect), which means no "pay one dollar" succeeded
+      //now we need to split up - whether the user is on an account (first step) or not
+      if (email() == '') {
+          //no account - check if user exists from form, and do intent process, create account at the end
+        const form = nameForm.current
+        const request = await fetch('/api/user-exists', {
           method: 'POST',
           body: form['fullname'].value,
         });
-        const intent2 = (await request2.json());
-        // Update your user in DB to store the customerID
-        // updateUserInDB() is *your* implementation of updating a user in the DB
-        return intent2;
+        const intent = (await request.json());
+        if (intent === false) {
+          try {
+          const request2 = await fetch('/api/create-intent-noacc', {
+            method: 'POST',
+            body: form['fullname'].value,
+          });
+          const intent2 = (await request2.json());
+          return intent2;
+        } catch (error1) {
+          console.log('Failed to create intent');
+          console.log(error1);
+          return '';
+        }
+        
+        } else {
+          setError('Email already in use. Try using another email.')
+          //setProcessing("no");
+          console.log('user already exists')
+          return '';
+        }
       } else {
-        setError('Email already in use. Try using another email.')
-        //setProcessing("no");
-        console.log('user already exists')
+        //user exists, but hasnt done first payment - so now we mimick the first intent (create-intent), but have it for preorder.
+        try {
+
+          const request3 = await fetch('/api/create-intent-acc', {
+            method: 'POST',
+            body: JSON.parse(localStorage.auth).authToken,
+          });
+          const intent3 = (await request3.json());
+          return intent3;
+        } catch (error1) {
+          console.log('Failed to create intent');
+          console.log(error1);
+          return '';
+        }
       }
+
     } else {
-    const request = await fetch('/api/second-intent', {
+      const request = await fetch('/api/second-intent', {
       method: 'POST',
-      body: email,
+      body: email2,
     });
     const intent = (await request.json());
     // Update your user in DB to store the customerID
     // updateUserInDB() is *your* implementation of updating a user in the DB
     return intent;
-
   }
   } catch (error) {
     console.log('Failed to create intent');
     console.log(error);
-    return null;
+    return '';
   }
 }
 
@@ -1468,58 +1498,88 @@ const handleChange = async (event: { empty: boolean | ((prevState: boolean) => b
 };
 
 const handleSubmit = async (ev: { preventDefault: () => void; }) => {
+  //new card processing only.
   const form = nameForm.current
   ev.preventDefault();
   setProcessing(true);
   const intent = await createIntent();
-  console.log(intent)
-  //setClientSecret(intent.body.client_secret);
-  const payload = await stripe.confirmCardPayment(intent.body.client_secret, {
-    payment_method: {
-      card: elements.getElement(CardElement),
-      billing_details: {
-        name:  form['firstname'].value,
-        email: form['fullname'].value,
-      }
-    },
-   
-  });
-
-  if (payload.error) {
-    setError(`${payload.error.message}`);
-    setProcessing(false);
+  if (intent == '') {
+    return;
+    //user account already exists, or theres an error with intent
   } else {
-    setError(null);
-    setProcessing(false);
-    setSucceeded(true);
-    console.log(payload)
-    //fetch wth intent.body.customer
-    //const spm = await setPayment(intent.body.customer);
-    //console.log(spm)
-    // Update your user in DB to store the customerID
-    // updateUserInDB() is *your* implementation of updating a user in the DB
-    //form['firstname'].value
-    let ex = {
-      token: JSON.parse(localStorage.auth).authToken,
-      shippingaddress1: form['ship-address1'].value,
-      shippingaddress2: form['ship-address2'].value,
-      shippingname: form['name'].value,
-      shippingcity: form['ship-city'].value,
-      shippingstate: form['ship-state'].value,
-      shippingzip: form['ship-zip'].value,
-      shippingcountry: country[0].code,
-      transactionid: payload.paymentIntent.id
+
+      //user account exists - same process, even if they paid the one dollar step, or are here for the first time.
+      console.log(intent)
+      //setClientSecret(intent.body.client_secret);
+      const payload = await stripe.confirmCardPayment(intent.body.client_secret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+          billing_details: {
+            name:  form['firstname'].value,
+            email: form['fullname'].value,
+          }
+        },
+       
+      });
+    
+      if (payload.error) {
+        setError(`${payload.error.message}`);
+        setProcessing(false);
+      } else {
+        setError(null);
+        setProcessing(false);
+        setSucceeded(true);
+        console.log(payload)
+        if (email()=='') {  
+          //no user account - submit payment info, and create account/save info based on the form data
+          let ex = {
+            token: JSON.parse(localStorage.auth).authToken,
+            shippingaddress1: form['ship-address1'].value,
+            shippingaddress2: form['ship-address2'].value,
+            accountemail: form['fullname'].value,
+            shippingname: form['name'].value,
+            shippingcity: form['ship-city'].value,
+            shippingstate: form['ship-state'].value,
+            shippingzip: form['ship-zip'].value,
+            shippingcountry: country[0].code,
+            transactionid: payload.paymentIntent.id
+            }
+            console.log(ex)
+          const settingFive = await setPreorder(JSON.stringify(ex));
+          console.log(settingFive)
+        } else {
+        //fetch wth intent.body.customer
+        //const spm = await setPayment(intent.body.customer);
+        //console.log(spm)
+        // Update your user in DB to store the customerID
+        // updateUserInDB() is *your* implementation of updating a user in the DB
+        //form['firstname'].value
+        let ex = {
+          token: JSON.parse(localStorage.auth).authToken,
+          shippingaddress1: form['ship-address1'].value,
+          shippingaddress2: form['ship-address2'].value,
+          shippingname: form['name'].value,
+          shippingcity: form['ship-city'].value,
+          shippingstate: form['ship-state'].value,
+          shippingzip: form['ship-zip'].value,
+          shippingcountry: country[0].code,
+          transactionid: payload.paymentIntent.id
+          }
+          console.log(ex)
+        const settingFive = await setFive(JSON.stringify(ex));
+        console.log(settingFive)
+        localStorage.removeItem("s5")
+        localStorage.setItem("s6", "y")
+        setVideoStatus(0)
+        setBoxVisible('release')
+          player.current!.play()
+        setSuccessMessage("second payment complete");
+        }
       }
-      console.log(ex)
-    const settingFive = await setFive(JSON.stringify(ex));
-    console.log(settingFive)
-    localStorage.removeItem("s5")
-    localStorage.setItem("s6", "y")
-    setVideoStatus(0)
-    setBoxVisible('release')
-      player.current!.play()
-    setSuccessMessage("second payment complete");
+    
   }
+
+
 };
 
 const handleSubmitOld = async (ev: { preventDefault: () => void; }) => {
@@ -1633,9 +1693,9 @@ return (
       Back
     </span>
   </div>
-  <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
+  <button className='pay-btn' disabled={processingOld || succeededOld} id="submit">
     <span id="button-text">
-      {processing ? (
+      {processingOld ? (
         <div className="spinner" id="spinner">Click to Place Order</div>
       ) : (
         "Click to Place Order"
@@ -1817,6 +1877,7 @@ const IndexPage = () => {
   const [loggedIn2, setLoggedIn2] = useState(false);
   //const [isLoggedIn, setLoggedIn] = useState(false);
   const [activate, setActivate] = useState(false);
+  const [loadPreorder, setPreorder] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [muteClass, setMuteClass] = useState("");
   const [firstPlay, setFirstPlay] = useState(false);
@@ -1844,7 +1905,9 @@ const IndexPage = () => {
   const currentVideoState = () => {
     return videoTime;
   }
-
+  function preReveal() {
+    setPreorder(true)
+}
   useEffect(() => {
 
     async function fetchMyAPI() {
@@ -1864,6 +1927,7 @@ const IndexPage = () => {
         window.location.reload();
       }
     }
+
     fetchMyAPI();
     }, []);
 
@@ -2211,10 +2275,26 @@ const IndexPage = () => {
  </div>   
   
 </div>
-<h2 className={`revival-of-revenue`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>    
+<h2 className={`revival-of-revenue`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>
+
+<button onClick={preReveal} className='preorder-reveal'>preorder button</button>
+<div className='preorder-btn-container'>
+{true == loadPreorder
+            ? (
+                
+              
+              <Elements stripe={stripePromise}>
+              <StepFive />  
+              </Elements>
+            
+              )
+            : ""}
+</div>
         </Layout>
       )
 
 }
+
+
 
 export default IndexPage

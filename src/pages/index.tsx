@@ -2180,7 +2180,7 @@ const IndexPage = () => {
   >     
     <Video
       crossOrigin
-      preload="auto"
+      preload="metadata"
     >
       <source 
         data-src={fileURL}

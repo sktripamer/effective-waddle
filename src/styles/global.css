@@ -1855,13 +1855,16 @@ vm-player[audio] {
   --vm-tooltip-spacing: 10px;
 }
 .payment-infos {
-  margin-bottom: 25px;
+  margin-bottom: -4px;
 }
 .brand-last4 {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+}
+.selection-section.true {
+  display: none;
 }
 .tap-to-unmute {
   width: 100%;

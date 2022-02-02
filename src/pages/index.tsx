@@ -2172,7 +2172,7 @@
           onVmPlayingChange={playingChange}
           onVmPlay={playTransition}
           controls={false}
-          currentTime={currentTime}
+          //currentTime={currentTime}
           ref={player}
         theme="dark"
         style={{ '--vm-player-theme': '#CD5C5C' }}

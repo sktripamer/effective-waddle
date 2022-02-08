@@ -1572,7 +1572,6 @@
               }  else {
                 //account exists, but not authenticated to it (like they are on another device, revisting site, etc). add preorder purchase to the account that already exists. api will query the user ID based on email.
                 let ex = {
-                  token: JSON.parse(localStorage.auth).authToken,
                   shippingaddress1: form['ship-address1'].value,
                   shippingaddress2: form['ship-address2'].value,
                   accountemail: form['fullname'].value,

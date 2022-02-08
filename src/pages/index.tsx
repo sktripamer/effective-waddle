@@ -1872,7 +1872,7 @@
     return (
       <div className='payment register-form col-md-6'>
 
-{true == preorderButton
+{false == preorderButton
                 ? (
                   <React.Fragment>
                   <h4 className="mb-2">{heroText}</h4>
@@ -1884,7 +1884,7 @@
        
           <div className='content-section'>
 
-          {true == preorderButton
+          {false == preorderButton
                 ? (
                   <React.Fragment>
                          <div className='split-point-view'>

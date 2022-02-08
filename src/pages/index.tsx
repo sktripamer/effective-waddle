@@ -86,6 +86,7 @@
         const [moreDetails, setDetails] = useState("");
         const [error, setError] = useState(null);
         const [heroText, setHero] = useState("");
+        const [preorderButton, setPreorderButton] = useState(false);
         const [videoDetails, setVideoDetails] = useState({
           currentTime: 0,
           isPlaying: 0,
@@ -108,6 +109,8 @@
         setDetails,
         error,
         setError,
+        preorderButton,
+        setPreorderButton,
         heroText,
         setHero,
         videoDetails,
@@ -990,6 +993,7 @@
       const [customerID, setCustomerID] = useState("");
       const isBrowser = typeof window !== "undefined";
       const { prevLast4, setLast4 } = useBetween(useShareableState);
+      const { preorderButton, setPreorderButton } = useBetween(useShareableState);
       const [prevExpY, setPrevExpY] = useState("");
       const [prevExpM, setPrevExpM] = useState("");
       const [prevName, setPrevName] = useState("");
@@ -1867,11 +1871,23 @@
 
     return (
       <div className='payment register-form col-md-6'>
-        <h4 className="mb-2">{heroText}</h4>
+
+{true == preorderButton
+                ? (
+                  <React.Fragment>
+                  <h4 className="mb-2">{heroText}</h4>
         <div className="more-details">{moreDetails}</div>
+        </React.Fragment>
+                  )
+                :  <h4 className="mb-2">Preorder Text</h4>}
+
+       
           <div className='content-section'>
 
-        <div className='split-point-view'>
+          {true == preorderButton
+                ? (
+                  <React.Fragment>
+                         <div className='split-point-view'>
         <div className='final-mobile-hero'>{heroText}</div>
         <div className='final-mobile-text'>{moreDetails}</div>
         <div className='image-section'></div>
@@ -1886,6 +1902,19 @@
         </div>
 
         </div>
+        </React.Fragment>
+                  )
+                :       <div className='info-section'>
+                <ul>
+              <li>Read the first chapter now</li>
+              <li>Get your book in hardback</li>
+              <li>Get early access to the final book</li>
+              <li>Support Patrick's cause</li>
+              </ul>
+        
+                </div>}
+
+
         
         <div className='pay-section'>
         <div className={`selection-section ${stepCount} ${noCard}`}>
@@ -1909,7 +1938,7 @@
 
 
     const IndexPage = () => {
-
+      const { preorderButton, setPreorderButton } = useBetween(useShareableState);
     // const promise = loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3');
       //const [promise = loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'));
     //const stripePromise = useMemo(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
@@ -1947,6 +1976,7 @@
         return videoTime;
       }
       function preReveal() {
+        setPreorderButton(true)
         setPreorder(true)
     }
       useEffect(() => {

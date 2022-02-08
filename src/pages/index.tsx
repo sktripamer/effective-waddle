@@ -996,6 +996,7 @@
       const [prevEmail, setPrevEmail] = useState("");
       const [prevBrand, setPrevBrand] = useState("");
       const [noAccount, setAccount] = useState(false);
+      const [accountExists, setAccountExists] = useState(true);
       const [noCard, setCard] = useState(false);
       const email = function() {
         try {
@@ -1285,6 +1286,24 @@
           return null;
         }
       }
+      async function setPreorderAccExists(createtoken: string) {
+        try {
+          // Retrieve email and username of the currently logged in user.
+          // getUserFromDB() is *your* implemention of getting user info from the DB
+          const request = await fetch('/api/new-preorder-acc', {
+            method: 'POST',
+            body: createtoken,
+          });
+          const intent = (await request.json());
+          // Update your user in DB to store the customerID
+          // updateUserInDB() is *your* implementation of updating a user in the DB
+          return intent;
+        } catch (error) {
+          console.log('Failed to set step 5');
+          console.log(error);
+          return null;
+        }
+      }
     useEffect(() => {
       if (isBrowser) {
       var style = document.createElement( 'style' )
@@ -1402,13 +1421,13 @@
     async function createIntent() {
       try {
         // Retrieve email and username of the currently logged in user.
-        // getUserFromDB() is *your* implemention of getting user info from the DB
         const email2 = customerID
         if (email2 == '') {
           //no customerID from stripe (set in useeffect), which means no "pay one dollar" succeeded
-          //now we need to split up - whether the user is on an account (first step) or not
+          //now we need to split up - whether the user is on an account (first step complete) or not
           if (email() == '') {
               //no account - check if user exists from form, and do intent process, create account at the end
+              //no localstorage account
             const form = nameForm.current
             const request = await fetch('/api/user-exists', {
               method: 'POST',
@@ -1416,7 +1435,14 @@
             });
             const intent = (await request.json());
             if (intent === false) {
-              try {
+            
+            } else {
+              setAccountExists(false)
+              //setError('Email already in use. Try using another email.')
+              //make a note in the state that this email exists. this will be checked after the return of this createIntent function, and will be added to said email.
+              console.log('user already exists')
+            }
+            try {
               const request2 = await fetch('/api/create-intent-noacc', {
                 method: 'POST',
                 body: form['fullname'].value,
@@ -1429,12 +1455,6 @@
               return '';
             }
             
-            } else {
-              setError('Email already in use. Try using another email.')
-              //setProcessing("no");
-              console.log('user already exists')
-              return '';
-            }
           } else {
             //user exists, but hasnt done first payment - so now we mimick the first intent (create-intent), but have it for preorder.
             try {
@@ -1453,6 +1473,7 @@
           }
 
         } else {
+          //customerID is set - basically, user is on the video player flow and is on the final optin, or has completed step four at least, and it browsing around on the preorder optin from content sections.
           const request = await fetch('/api/second-intent', {
           method: 'POST',
           body: email2,
@@ -1530,23 +1551,44 @@
             setProcessing(false);
             setSucceeded(true);
             console.log(payload)
-            if (email()=='') {  
-              //no user account - submit payment info, and create account/save info based on the form data
-              let ex = {
-                token: JSON.parse(localStorage.auth).authToken,
-                shippingaddress1: form['ship-address1'].value,
-                shippingaddress2: form['ship-address2'].value,
-                accountemail: form['fullname'].value,
-                shippingname: form['name'].value,
-                shippingcity: form['ship-city'].value,
-                shippingstate: form['ship-state'].value,
-                shippingzip: form['ship-zip'].value,
-                shippingcountry: country[0].code,
-                transactionid: payload.paymentIntent.id
-                }
-                console.log(ex)
-              const settingFive = await setPreorder(JSON.stringify(ex));
-              console.log(settingFive)
+            if (email()=='') {
+              if (accountExists===false) {
+                //no user account - submit payment info, and create account/save info based on the form data
+                let ex = {
+                  token: JSON.parse(localStorage.auth).authToken,
+                  shippingaddress1: form['ship-address1'].value,
+                  shippingaddress2: form['ship-address2'].value,
+                  accountemail: form['fullname'].value,
+                  shippingname: form['name'].value,
+                  shippingcity: form['ship-city'].value,
+                  shippingstate: form['ship-state'].value,
+                  shippingzip: form['ship-zip'].value,
+                  shippingcountry: country[0].code,
+                  transactionid: payload.paymentIntent.id
+                  }
+                  console.log(ex)
+                const settingFive = await setPreorder(JSON.stringify(ex));
+                console.log(settingFive)
+              }  else {
+                //account exists, but not authenticated to it (like they are on another device, revisting site, etc). add preorder purchase to the account that already exists. api will query the user ID based on email.
+                let ex = {
+                  token: JSON.parse(localStorage.auth).authToken,
+                  shippingaddress1: form['ship-address1'].value,
+                  shippingaddress2: form['ship-address2'].value,
+                  accountemail: form['fullname'].value,
+                  shippingname: form['name'].value,
+                  shippingcity: form['ship-city'].value,
+                  shippingstate: form['ship-state'].value,
+                  shippingzip: form['ship-zip'].value,
+                  shippingcountry: country[0].code,
+                  transactionid: payload.paymentIntent.id
+                  }
+                  console.log(ex)
+                const settingFive = await setPreorderAccExists(JSON.stringify(ex));
+                console.log(settingFive)
+              }
+              
+
             } else {
             //fetch wth intent.body.customer
             //const spm = await setPayment(intent.body.customer);
@@ -1901,7 +1943,7 @@
       const [revealerh2, setRevealerh2] = useState("");
       const [loadrevealer, setLoadRevealer] = useState("");
       const [loadswitcher, setLoadswitcher] = useState("");
-      const [fileURL, setFile] = useState("https://1768239509.rsc.cdn77.org/pk.mp4")
+      const [fileURL, setFile] = useState("https://revrevdev2.b-cdn.net/pk.mp4")
       const currentVideoState = () => {
         return videoTime;
       }

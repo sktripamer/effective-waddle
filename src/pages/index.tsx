@@ -2201,9 +2201,9 @@
 
           const onTimeUpdate = (event: CustomEvent<number>) => {
            // const currentTimeb = event.detail;
-            setCurrentTime(currentTimeb);
+            setCurrentTimeb(currentTimeb);
            setCurrentTime(event.detail);
-          setCurrentTimeb(Math.round(event.detail * 100) / 100);
+         // setCurrentTimeb(Math.round(event.detail * 100) / 100);
           };
 
 

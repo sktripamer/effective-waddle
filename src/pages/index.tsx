@@ -2202,10 +2202,10 @@
           const onTimeUpdate = (event: CustomEvent<number>) => {
         //    const currentTimeb = event.detail;
         //    setCurrentTimeb(currentTimeb);
-        //   setCurrentTime(event.detail);
-         // setCurrentTimeb(Math.round(event.detail * 100) / 100);
-         setCurrentTime(event.detail);
-         setCurrentTimeb(event.detail);
+          setCurrentTime(event.detail);
+         setCurrentTimeb(Math.round(event.detail * 100) / 100);
+        //  setCurrentTime(event.detail);
+        //  setCurrentTimeb(event.detail);
           };
 
 
@@ -2245,7 +2245,7 @@
           onVmPlayingChange={playingChange}
           onVmPlay={playTransition}
           controls={false}
-          currentTime={currentTime}
+          //currentTime={currentTime}
           ref={player}
         theme="dark"
         style={{ '--vm-player-theme': '#CD5C5C' }}

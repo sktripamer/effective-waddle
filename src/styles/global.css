@@ -2094,19 +2094,37 @@ div#say-hello-list-container {
 
 .j-heading {
   font-size: 4.2vw;
-  font-family: Arial;
+  font-family: Josefin Sans;
   white-space: nowrap;
 }
 
 .j-first .j-subheading {
-  font-size: 10.2vw;
-  font-family: Arial;
+  font-size: 10vw;
+  font-family: Josefin Sans;
   white-space: nowrap;
+  line-height: 10vw;
+}
+.j-second .j-subheading {
+  font-family: Josefin Sans;
+  font-size: 10.5vw;
+  line-height: 10vw;
+}
+
+.j-third .j-subheading {
+  font-family: Josefin Sans;
+  font-size: 11vw;
+  line-height: 10vw;
+}
+
+.j-fourth .j-subheading {
+  font-family: Josefin Sans;
+  font-size: 11.6vw;
+  line-height: 10vw;
 }
 
 .j-transform {
   font-size: 42px;
-  font-family: Arial;
+  font-family: Josefin Sans;
 }
 
 .j-transform span {

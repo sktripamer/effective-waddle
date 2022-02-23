@@ -2450,7 +2450,7 @@ div#what-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 200px;
+  PADDING-bottom: 200px;
 }
 
 .compare-tomorrow-container {
@@ -2476,7 +2476,7 @@ div#what-container {
 
 .compare-tomorrow-subtext {
   opacity: 0;
-  left: 75%;
+ right: 25%;
   position: absolute;
 }
 
@@ -2496,14 +2496,51 @@ div#what-container {
 @keyframes opacitystartlist2 {
   0% {
       opacity: 0;
-      transform: translate(-100%);
+      transform: translate(0%);
   }
 
   100% {
       opacity: 1;
-      transform: translate(-50%);
+      transform: translate(50%);
   }
   
+}
+
+div#say-hello-container {
+  margin-top: 70px;
+}
+
+.hello-list-number-cont {
+max-width: 64px;
+}
+
+div#jounrey-list-container {
+  margin-top: 80px;
+}
+
+div#say-hello-list-container {
+  margin-top: 80px;
+}
+
+div#why-container {
+  margin-bottom: 80px;
+}
+
+.y-heading {
+  margin-bottom: 20px;
+}
+
+.w-heading {
+  margin-bottom: 20px;
+}
+
+div#book-container {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.need-content-container {
+  border-radius: 10PX;
 }
 
 .compare-today-subtext:nth-child(1) {

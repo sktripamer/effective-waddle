@@ -2013,7 +2013,7 @@ div#say-hello-list-container {
   text-align: center;
   align-self: end;
   font-size: 22px;
-  font-family: Arial;
+  font-family: Josefin Sans;
   color: #310be3;
   font-weight: bold;
 }
@@ -2096,8 +2096,11 @@ div#say-hello-list-container {
   font-size: 4.2vw;
   font-family: Josefin Sans;
   white-space: nowrap;
+  color: #320ce3;
 }
-
+.j-subheading {
+  color: #320ce3;
+}
 .j-first .j-subheading {
   font-size: 10vw;
   font-family: Josefin Sans;
@@ -2125,6 +2128,7 @@ div#say-hello-list-container {
 .j-transform {
   font-size: 42px;
   font-family: Josefin Sans;
+  color: #e00a2d;
 }
 
 .j-transform span {
@@ -2217,7 +2221,7 @@ div#say-hello-list-container {
 
 .y-heading {
   text-align: center;
-  font-family: Arial;
+  font-family: Josefin Sans;
   font-size: 32px;
   font-weight: bold;
   color: #320ce3;
@@ -2272,7 +2276,7 @@ div#say-hello-list-container {
 
 .w-heading {
   text-align: center;
-  font-family: Arial;
+  font-family: Josefin Sans;
   font-size: 32px;
   font-weight: bold;
   color: #320ce3;
@@ -2287,7 +2291,7 @@ div#say-hello-list-container {
 }
 
 .w-list-title {
-  font-family: Arial;
+  font-family: Josefin Sans;
   font-size: 22px;
   font-weight: bold;
   color: #e00a2d;
@@ -2359,7 +2363,7 @@ div#what-container {
   color: #320ce3;
   font-size: 24px;
   font-style: italic;
-  font-family: Arial;
+  font-family: Josefin Sans;
 }
 
 .book-spine {
@@ -2400,12 +2404,12 @@ div#what-container {
   font-weight: bold;
   color: #fff;
   font-size: 26px;
-  font-family: Arial;
+  font-family: Josefin Sans;
 }
 
 .need-cta {
   text-align: center;
-  font-family: Arial;
+  font-family: Josefin Sans;
   font-size: 26px;
   font-weight: bold;
   color: #320ce3;
@@ -2430,7 +2434,7 @@ div#what-container {
 
 .compare-title-1 {
   font-size: 22px;
-  font-family: Arial;
+  font-family: Josefin Sans;
   width: 300px;
   color: #e00a2d;
   text-align: center;
@@ -2438,7 +2442,7 @@ div#what-container {
 
 .compare-title-2 {
   font-size: 22px;
-  font-family: Arial;
+  font-family: Josefin Sans;
   width: 300px;
   color: #320ce3;
   text-align: center;

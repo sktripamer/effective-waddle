@@ -1983,7 +1983,7 @@ vm-player[audio] {
 
 
 .say-hello-bg {
-  background-image: url(hello.png);
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/hello.png);
   padding-top: 28.3%;
   background-size: contain;
 }
@@ -2185,7 +2185,7 @@ div#say-hello-list-container {
   align-items: center;
 }
 .j-image {
-  background-image: url(icon.png);
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/icon.png);
   padding-top: 100%;
   background-size: contain;
 }
@@ -2236,7 +2236,7 @@ div#say-hello-list-container {
 
 .y-image-cont {
   width: 40%;
-  background-image: url(cut.png), linear-gradient(286deg, rgb(235 235 235) 0%, rgb(242 242 242) 100%);
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/cut.png), linear-gradient(286deg, rgb(235 235 235) 0%, rgb(242 242 242) 100%);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -2345,7 +2345,7 @@ div#what-container {
 }
 
 .book-spine {
-  background-image: url(binder.png);
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/binder.png);
   padding-top: 10.88%;
   background-size: contain;
   width: 100%;
@@ -2354,7 +2354,7 @@ div#what-container {
 }
 
 .book-render {
-  background-image: url(book.jpg);
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/book.jpg);
   padding-top: 10.88%;
   background-size: contain;
   width: 100%;

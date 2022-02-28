@@ -2843,6 +2843,7 @@ width: 100%; height: 100%;
   font-family: 'Josefin Sans';
   background: linear-gradient(181deg, rgb(0 0 0 / 14%) 0%, rgb(0 0 0 / 30%) 100%);
   padding: 10px;
+  position: relative;
 }
 
 .acc1 .ac1 .arch-title {

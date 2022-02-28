@@ -1989,8 +1989,22 @@
         setArchtype(4)
         setArchtypeClick(true)
       }
-
-
+      const setArchtype5 = () => {
+        setArchtype(5)
+        setArchtypeClick(true)
+      }
+      const setArchtype6 = () => {
+        setArchtype(6)
+        setArchtypeClick(true)
+      }
+      const setArchtype7 = () => {
+        setArchtype(7)
+        setArchtypeClick(true)
+      }
+      const setArchtype8 = () => {
+        setArchtype(8)
+        setArchtypeClick(true)
+      }
       const [fileURL, setFile] = useState("https://revrevdev2.b-cdn.net/pk.mp4")
       const currentVideoState = () => {
         return videoTime;
@@ -2027,20 +2041,24 @@
         }, []);
 
         useEffect(() => {
-        let timer = setInterval(() => {
+
           if (archetypeClick===false) {
+        let timer = setInterval(() => {
+
           setArchtype(archetype => {
               const updatedCounter = archetype + 1;
-              if (updatedCounter === 5) {
+              if (updatedCounter === 9) {
                   console.log(updatedCounter)
                   return 1;
               }
               console.log(updatedCounter)
               return updatedCounter;
           }); // use callback function to set the state
-        }
+        
       }, 3000);
       return () => clearInterval(timer); // cleanup the timer
+    }
+
     }, []);
         useEffect(() => {
     
@@ -2613,6 +2631,22 @@
     <div onClick={setArchtype4} class='arch-cont ac4'>
       <div class='arch-title'>Executive</div>
       <div class='arch-text'>I’m a 44 year old executive working late most nights, raising a family, and saving money to start a business so I can leave my job where I’m overworked and under appreciated.</div>
+    </div>
+    <div onClick={setArchtype5} class='arch-cont ac5'>
+      <div class='arch-title'>Stay-at-home Parent</div>
+      <div class='arch-text'> I’m a stay-at-home parent raising kids, starting my own business, and married to my partner who earns steady income from a full-time job. We just need to survive and get ahead financially together.</div>
+    </div>
+    <div onClick={setArchtype6} class='arch-cont ac6'>
+      <div class='arch-title'>Retired</div>
+      <div class='arch-text'>I’m retired from the military, or retired in general, and I’m living on steady income from my pension or social security funds. I’m ready to turn my passions into profits by investing in my own business.</div>
+    </div>
+    <div onClick={setArchtype7} class='arch-cont ac7'>
+      <div class='arch-title'>Ministry</div>
+      <div class='arch-text'>I’m just a pastor trying to minister in the non-profit world and I’m open to making more money in the for-profit world to take care of my ministry and my family.</div>
+    </div>
+    <div onClick={setArchtype8} class='arch-cont ac8'>
+      <div class='arch-title'>Nomad</div>
+      <div class='arch-text'>I’m a minimalist who loves to travel. I focus on how to run my business virtually, and how to build my business on the go. I value experiences first, and running my own company gives me this freedom to be mobile.</div>
     </div>
   </div>    
             </Layout>

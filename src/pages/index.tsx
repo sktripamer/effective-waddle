@@ -1971,6 +1971,26 @@
       const [revealerh2, setRevealerh2] = useState("");
       const [loadrevealer, setLoadRevealer] = useState("");
       const [loadswitcher, setLoadswitcher] = useState("");
+      const [archetype, setArchtype] = useState(1)
+      const [archetypeClick, setArchtypeClick] = useState(false)
+      const setArchtype1 = () => {
+        setArchtype(1)
+        setArchtypeClick(true)
+      }
+      const setArchtype2 = () => {
+        setArchtype(2)
+        setArchtypeClick(true)
+      }
+      const setArchtype3 = () => {
+        setArchtype(3)
+        setArchtypeClick(true)
+      }
+      const setArchtype4 = () => {
+        setArchtype(4)
+        setArchtypeClick(true)
+      }
+
+
       const [fileURL, setFile] = useState("https://revrevdev2.b-cdn.net/pk.mp4")
       const currentVideoState = () => {
         return videoTime;
@@ -2000,8 +2020,28 @@
         }
 
         fetchMyAPI();
+
+
+
+
         }, []);
 
+        useEffect(() => {
+        let timer = setInterval(() => {
+          if (archetypeClick===false) {
+          setArchtype(archetype => {
+              const updatedCounter = archetype + 1;
+              if (updatedCounter === 6) {
+                  console.log(updatedCounter)
+                  return 1;
+              }
+              console.log(updatedCounter)
+              return updatedCounter;
+          }); // use callback function to set the state
+        }
+      }, 3000);
+      return () => clearInterval(timer); // cleanup the timer
+    }, []);
         useEffect(() => {
     
         
@@ -2556,6 +2596,25 @@
             <div class="compare-tomorrow-subtext">Lorem ipsum dolor sit amet</div>
         </div>
     </div>
+
+    <div id='archetype-container' class={`${archetype}`}>
+    <div onClick={setArchtype1} class='arch-cont ac1'>
+      <div class='arch-title'>Self-employed</div>
+      <div class='arch-text'>I work for myself. I “eat what I kill” and I need help growing my current business or starting a new business in this post-pandemic economy. I’m always looking for new ways to make money, new entrepreneurial opportunities, and new business networks. It’s lonely working alone, and I’m ready to build my business beyond me. I’m tired of working in my business, and I’m ready to work on my business.</div>
+    </div>
+    <div onClick={setArchtype2} class='arch-cont ac2'>
+      <div class='arch-title'>Resigned</div>
+      <div class='arch-text'> I resigned from my job, I’m investing in myself, and I’m ready to turn my business ideas into business income. I just need to know how. I believe in freedom to live, freedom to think, freedom speak, freedom to create, and freedom to profit in America and around the world!</div>
+    </div>
+    <div onClick={setArchtype3} class='arch-cont ac3'>
+      <div class='arch-title'>Millennial</div>
+      <div class='arch-text'>I’m a 28 year old millennial working a job I don’t like for a company I don’t care about. I’m building a side hustle to overcome student debt, escape the corporate trap, and achieve financial independence in 3 years.</div>
+    </div>
+    <div onClick={setArchtype4} class='arch-cont ac4'>
+      <div class='arch-title'>Executive</div>
+      <div class='arch-text'>I’m a 44 year old executive working late most nights, raising a family, and saving money to start a business so I can leave my job where I’m overworked and under appreciated.</div>
+    </div>
+  </div>
 
   </div>      
             </Layout>

@@ -2649,6 +2649,7 @@ top: 0; left: 0;
 width: 100%; height: 100%;
   background-position: 50%;
   background-size: cover;
+  filter: grayscale(100%);
 }
 
 .acc1 .arch-cont.ac1 {
@@ -2835,11 +2836,41 @@ width: 100%; height: 100%;
 }
 
 .arch-title {
-  text-align: center;
+  color: #ffd7de;
   font-size: 26px;
-  color: #320ce3;
-  position: relative;
+  text-align: center;
+  font-weight: 500;
+  font-family: 'Josefin Sans';
+  background: linear-gradient(181deg, rgb(0 0 0 / 14%) 0%, rgb(0 0 0 / 30%) 100%);
+  padding: 10px;
 }
+
+.acc1 .ac1 .arch-title {
+  color: #ef1b3d;
+}
+.acc2 .ac2 .arch-title {
+  color: #ef1b3d;
+}
+.acc3 .ac3 .arch-title {
+  color: #ef1b3d;
+}
+.acc4 .ac4 .arch-title {
+  color: #ef1b3d;
+}
+.acc5 .ac5 .arch-title {
+  color: #ef1b3d;
+}
+.acc6 .ac6 .arch-title {
+  color: #ef1b3d;
+}
+.acc7 .ac7 .arch-title {
+  color: #ef1b3d;
+}
+.acc8 .ac8 .arch-title {
+  color: #ef1b3d;
+}
+
+
 .arch-text {
   position: relative;
 }

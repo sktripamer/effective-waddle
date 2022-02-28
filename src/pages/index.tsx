@@ -2055,7 +2055,7 @@
               return updatedCounter;
           }); // use callback function to set the state
         
-      }, 3000);
+      }, 5000);
       
       
       return () => clearInterval(timer); // cleanup the timer

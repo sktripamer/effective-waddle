@@ -2041,7 +2041,7 @@
         }, []);
       
         useEffect(() => {
-
+          if (archetypeClick) {
 
         let timer = setInterval(() => {
 
@@ -2056,13 +2056,12 @@
           }); // use callback function to set the state
         
       }, 3000);
-      if (archetypeClick===true) {
-        clearInterval(timer)
-      }
+      
+      
       return () => clearInterval(timer); // cleanup the timer
 
-
-    }, []);
+    }
+    }, [archetypeClick]);
   
         useEffect(() => {
     

@@ -2870,7 +2870,50 @@ width: 100%; height: 100%;
   color: #ef1b3d;
 }
 
+.acc1 .ac1 .arch-text {
+  opacity: 1;
+  transition: .6s .6s all;
+}
+.acc2 .ac2 .arch-text {
+  opacity: 1;
+  transition: .6s .6s all;
+}
+.acc3 .ac3 .arch-text {
+  opacity: 1;
+  transition: .6s .6s all;
+}
+.acc4 .ac4 .arch-text {
+  opacity: 1;
+  transition: .6s .6s all;
+}
+.acc5 .ac5 .arch-text {
+  opacity: 1;
+  transition: .6s .6s all;
+}
+.acc6 .ac6 .arch-text {
+  opacity: 1;
+  transition: .6s .6s all;
+}
+.acc7 .ac7 .arch-text {
+  opacity: 1;
+  transition: .6s .6s all;
+}
+.acc8 .ac8 .arch-text {
+  opacity: 1;
+  transition: .6s .6s all;
+}
 
 .arch-text {
-  position: relative;
+  opacity: 0;
+  transition: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  background: linear-gradient(181deg, rgb(0 0 0 / 64%) 0%, rgb(0 0 0 / 70%) 100%);
+  padding: 8px;
+  color: #fff;
+  font-size: 18px;
+  text-shadow: -1px -1px 1px #111111cf, 2px 2px 4px #363636b0;
 }

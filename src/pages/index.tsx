@@ -2597,7 +2597,7 @@
         </div>
     </div>
   </div>  
-  <div id='archetype-container' class={`${archetype}`}>
+  <div id='archetype-container' class={`acc${archetype}`}>
     <div onClick={setArchtype1} class='arch-cont ac1'>
       <div class='arch-title'>Self-employed</div>
       <div class='arch-text'>I work for myself. I “eat what I kill” and I need help growing my current business or starting a new business in this post-pandemic economy. I’m always looking for new ways to make money, new entrepreneurial opportunities, and new business networks. It’s lonely working alone, and I’m ready to build my business beyond me. I’m tired of working in my business, and I’m ready to work on my business.</div>

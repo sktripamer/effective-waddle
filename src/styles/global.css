@@ -316,6 +316,7 @@ input.react-dropdown-select-input {
 @media (max-width: 1050px) {
   #archetype-container div.arch-cont {
     width: 50%;
+    height: 300px;
   }
   #archetype-container.acc1 div.arch-cont.ac1, #archetype-container.acc2 div.arch-cont.ac2, #archetype-container.acc3 div.arch-cont.ac3, #archetype-container.acc4 div.arch-cont.ac4, #archetype-container.acc5 div.arch-cont.ac5, #archetype-container.acc6 div.arch-cont.ac6, #archetype-container.acc7 div.arch-cont.ac7, #archetype-container.acc8 div.arch-cont.ac8 {
     width: 60%;
@@ -2921,14 +2922,14 @@ width: 100%; height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40%);
   width: 90%;
   background: linear-gradient(181deg, rgb(0 0 0 / 64%) 0%, rgb(0 0 0 / 70%) 100%);
   padding: 8px;
   color: #fff;
   font-size: 18px;
   text-shadow: -1px -1px 1px #111111cf, 2px 2px 4px #363636b0;
-  max-height: 300px;
+  max-height: 200px;
   overflow: auto;
   max-width: 600px;
 }

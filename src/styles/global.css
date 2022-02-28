@@ -314,14 +314,14 @@ input.react-dropdown-select-input {
   }
 }
 @media (max-width: 1050px) {
-  div.arch-cont {
+  #archetype-container div.arch-cont {
     width: 50%;
   }
-  .acc1 div.arch-cont.ac1, .acc2 div.arch-cont.ac2, .acc3 div.arch-cont.ac3, .acc4 div.arch-cont.ac4, .acc5 div.arch-cont.ac5, .acc6 div.arch-cont.ac6, .acc7 div.arch-cont.ac7, .acc8 div.arch-cont.ac8 {
+  #archetype-container.acc1 div.arch-cont.ac1, #archetype-container.acc2 div.arch-cont.ac2, #archetype-container.acc3 div.arch-cont.ac3, #archetype-container.acc4 div.arch-cont.ac4, #archetype-container.acc5 div.arch-cont.ac5, #archetype-container.acc6 div.arch-cont.ac6, #archetype-container.acc7 div.arch-cont.ac7, #archetype-container.acc8 div.arch-cont.ac8 {
     width: 60%;
 }
 
-  .acc1 div.arch-cont.ac2, .acc2 div.arch-cont.ac1, .acc3 div.arch-cont.ac4, .acc4 div.arch-cont.ac3, .acc5 div.arch-cont.ac6,.acc6 div.arch-cont.ac5, .acc7 div.arch-cont.ac8, .acc8 div.arch-cont.ac7 {
+#archetype-container.acc1 div.arch-cont.ac2, #archetype-container.acc2 div.arch-cont.ac1, #archetype-container.acc3 div.arch-cont.ac4, #archetype-container.acc4 div.arch-cont.ac3, #archetype-container.acc5 div.arch-cont.ac6,#archetype-container.acc6 div.arch-cont.ac5, #archetype-container.acc7 div.arch-cont.ac8, #archetype-container.acc8 div.arch-cont.ac7 {
     width: 40%;
 }
 
@@ -2646,7 +2646,7 @@ div#archetype-container {
 }
 
 .arch-cont {
-
+  cursor: pointer;
   height: 500px;
   width: 25%;
   transition: .6s all;
@@ -2884,35 +2884,35 @@ width: 100%; height: 100%;
 
 .acc1 .ac1 .arch-text {
   opacity: 1;
-  transition: .6s .6s all;
+  transition: .2s .6s all;
 }
 .acc2 .ac2 .arch-text {
   opacity: 1;
-  transition: .6s .6s all;
+  transition: .2s .6s all;
 }
 .acc3 .ac3 .arch-text {
   opacity: 1;
-  transition: .6s .6s all;
+  transition: .2s .6s all;
 }
 .acc4 .ac4 .arch-text {
   opacity: 1;
-  transition: .6s .6s all;
+  transition: .2s .6s all;
 }
 .acc5 .ac5 .arch-text {
   opacity: 1;
-  transition: .6s .6s all;
+  transition: .2s .6s all;
 }
 .acc6 .ac6 .arch-text {
   opacity: 1;
-  transition: .6s .6s all;
+  transition: .2s .6s all;
 }
 .acc7 .ac7 .arch-text {
   opacity: 1;
-  transition: .6s .6s all;
+  transition: .2s .6s all;
 }
 .acc8 .ac8 .arch-text {
   opacity: 1;
-  transition: .6s .6s all;
+  transition: .2s .6s all;
 }
 
 .arch-text {
@@ -2930,4 +2930,5 @@ width: 100%; height: 100%;
   text-shadow: -1px -1px 1px #111111cf, 2px 2px 4px #363636b0;
   max-height: 300px;
   overflow: auto;
+  max-width: 600px;
 }

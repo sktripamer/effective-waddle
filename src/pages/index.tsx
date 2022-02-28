@@ -2041,7 +2041,7 @@
         }, []);
       
         useEffect(() => {
-          if (archetypeClick) {
+          if (archetypeClick===false) {
 
         let timer = setInterval(() => {
 

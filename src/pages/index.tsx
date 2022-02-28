@@ -2031,7 +2031,7 @@
           if (archetypeClick===false) {
           setArchtype(archetype => {
               const updatedCounter = archetype + 1;
-              if (updatedCounter === 6) {
+              if (updatedCounter === 5) {
                   console.log(updatedCounter)
                   return 1;
               }
@@ -2596,8 +2596,8 @@
             <div class="compare-tomorrow-subtext">Lorem ipsum dolor sit amet</div>
         </div>
     </div>
-
-    <div id='archetype-container' class={`${archetype}`}>
+  </div>  
+  <div id='archetype-container' class={`${archetype}`}>
     <div onClick={setArchtype1} class='arch-cont ac1'>
       <div class='arch-title'>Self-employed</div>
       <div class='arch-text'>I work for myself. I “eat what I kill” and I need help growing my current business or starting a new business in this post-pandemic economy. I’m always looking for new ways to make money, new entrepreneurial opportunities, and new business networks. It’s lonely working alone, and I’m ready to build my business beyond me. I’m tired of working in my business, and I’m ready to work on my business.</div>
@@ -2614,9 +2614,7 @@
       <div class='arch-title'>Executive</div>
       <div class='arch-text'>I’m a 44 year old executive working late most nights, raising a family, and saving money to start a business so I can leave my job where I’m overworked and under appreciated.</div>
     </div>
-  </div>
-
-  </div>      
+  </div>    
             </Layout>
           )
 

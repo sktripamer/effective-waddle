@@ -39,6 +39,7 @@
     "react-helmet": "^6.1.0",
     "react-share": "^4.4.0",
     "stripe": "^8.191.0",
+    "typewriter-effect": "^2.18.2",
     "use-between": "^1.0.1",
     "yup": "^0.32.11"
   }

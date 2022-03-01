@@ -20,6 +20,7 @@
     //import useAuth from "../hooks/useAuth";
     //import UnAuthContent from "../components/UnAuthContent";
     import {loadStripe} from '@stripe/stripe-js/pure';
+    import Typewriter from 'typewriter-effect';
     import {
       CardElement,
       Elements,
@@ -2465,7 +2466,13 @@
         <div class="j-text">
             <div class="j-heading">The Entrepreneurial</div>
              <div class="j-subheading">Lifestyle</div>
-             <div class="j-transform">is <span>Lorum.</span><span>Ipsum.</span><span>Dolor.</span></div>
+             <div class="j-transform">is <Typewriter
+  options={{
+    strings: ['Lorem', 'Ipsum', 'Dolor'],
+    autoStart: true,
+    loop: true,
+  }}
+/></div>
         </div>   
         <div class="j-image-cont">
         <div class="j-image"></div>

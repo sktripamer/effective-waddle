@@ -2500,6 +2500,7 @@ div#what-container {
   font-size: 22px;
   width: 50%;
   border-right: 5px solid #890b87;
+  height: 150px;
 }
 
 .compare-today-subtext {

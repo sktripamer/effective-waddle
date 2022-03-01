@@ -2788,6 +2788,8 @@
       <div class='mb-subtitle'>Mini Book #7</div>
        </div>
       </div>
+
+      <div class='mb-rightdisplay-section'>
     <div class='mb-right-section'>
       <div class='mb-content mb1'>
       <div class='mb-content-title'>Mini Book #1 Offense Wins Championships - <span>How to Go ON Offense!</span></div>
@@ -2848,6 +2850,7 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
       <div class='mb-content-title'>Mini Book #7 Entrepreneurial Education in Business, Ministry, &amp; Politics</div>
       <div class='mb-content-content'>What Would The World Look Like If Everyone Was More Entrepreneurial? I close my mini book series with this futuristic question. I also deliver a winning word and a dire warning regarding the United States of America, future generations, and the warped nature of our education system. The future is dark if good people don’t step up. Marxism is afoot in America’s classrooms. Communism, the political arm of Marxists thought, is a power grab from “We the People”. Sadly, Socialism is like a good girl dating a bad boy; in time, she is likely to get toppled by Marxist agendas. But younger generations question whether capitalism is any better. Crony capitalism is fake capitalism. Manipulated markets are nothing like free markets. Younger generations in particular are feeling the pain of the BIGs taking over markets at the expense of the Middle Class, the Masses, and Main Street Small Business. But the tide is turning with the advent and adoption of blockchains and Web 3 technologies. A capitalistic future that seizes the economy back from the BIGs and embeds freedom, values, and economic opportunity into the underlying technology running the free world economy is finally possible. The time is now to fight for technological freedoms suitable for entrepreneurship. Yes, freedom is the best ecosystem for entrepreneurials. Imagine a world of creators who share in the freedom, profits, and abundance of the economy. I take a closer look at the current educational system and how we can train the next generation to fight for opportunity, profits, values, and freedoms across America and around the world. Starting as a child, I share my story in business, ministry, and politics, and I share what we can do as Entrepreneurials in Business, Frontliners in Ministry, and Free Marketers in Politics to lead America back to its original DNA. I believe in the DNA of an American. I believe in the foundation in which our country was built. I encourage you to reflect on this Word: “Remember the Heights from Which You Have Fallen.” I plead for America to return to a nation “Under God”. I cry “Long Live the Dream!”</div>
       </div>
+    </div>
     </div>
   </div>
             </Layout>

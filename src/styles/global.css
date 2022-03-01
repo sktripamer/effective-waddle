@@ -2905,3 +2905,22 @@ width: 100%; height: 100%;
   overflow: auto;
   max-width: 600px;
 }
+
+
+.minibook-container {
+  display: flex;
+}
+
+.minibook-container {
+  margin: 0 auto;
+  max-width: 1300px;
+}
+
+.mb-left-section {
+  width: 25%;
+}
+
+
+.mb-rightdisplay-section {
+  width: 75%;
+}

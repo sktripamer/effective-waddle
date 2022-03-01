@@ -2046,7 +2046,7 @@ div#say-hello-list-container {
   align-items: center;
   display: flex;  
   font-family: 'Josefin Sans';
-  font-size: 62px;
+  font-size: 5vw;
   font-weight: bolder;
   height: 100%;
   justify-content: center;
@@ -2909,6 +2909,8 @@ width: 100%; height: 100%;
 
 .minibook-container {
   display: flex;
+  margin-left: 1em;
+    margin-right: 1em;
 }
 
 #minibook-container {
@@ -2918,9 +2920,58 @@ width: 100%; height: 100%;
 
 .mb-left-section {
   width: 25%;
+  padding-left: 20px;
+  padding-right: 10px;
+  background: #2d2d2d;
 }
 
 
 .mb-rightdisplay-section {
   width: 75%;
+}
+
+
+
+.mb-content {
+  visibility: hidden;
+  position:absolute;
+  opacity: 0;
+}
+
+.mbb1 .mb-content.mb1 {
+  animation: mbcontent .4s forwards;
+}
+.mbb2 .mb-content.mb2 {
+  animation: mbcontent .4s forwards;
+}
+.mbb3 .mb-content.mb3 {
+  animation: mbcontent .4s forwards;
+}
+.mbb4 .mb-content.mb4 {
+  animation: mbcontent .4s forwards;
+}
+.mbb5 .mb-content.mb5 {
+  animation: mbcontent .4s forwards;
+}
+.mbb6 .mb-content.mb6 {
+  animation: mbcontent .4s forwards;
+}
+.mbb7 .mb-content.mb7 {
+  animation: mbcontent .4s forwards;
+}
+
+
+@keyframes mbcontent {
+  0% {
+      visibility: hidden;
+  }
+
+  1% {
+     visibility: visible;
+    opacity: 0;
+  }
+  100% {
+     visibility: visible;
+      opacity: 1;
+  }
 }

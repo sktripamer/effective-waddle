@@ -2021,22 +2021,18 @@ div#say-hello-list-container {
 }
 
 .hello-list-heading {
-  width: 100%;
-  text-align: center;
-  align-self: end;
-  font-size: 22px;
   font-family: Josefin Sans;
-  color: #310be3;
-  font-weight: bold;
+  font-size: 26px;
+  width: 100%;
+  background-image: linear-gradient( rgb(238 9 28) 0%, rgb(133 11 144) 100% );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hello-list-number-cont {
   position: relative;
   width: 20%;
-  border: 10px solid;
-  border-image-slice: 1;
-  border-width: 5px;
-  border-image-source: linear-gradient(270deg, rgb(49 11 228) 0%, rgb(162 10 114) 100%);
+
 }
 
 .hello-list-number-cont:after {
@@ -2046,24 +2042,27 @@ div#say-hello-list-container {
 }
 
 .hello-list-number {
+  align-content: center;
+  align-items: center;
+  display: flex;  
+  font-family: 'Josefin Sans';
+  font-size: 62px;
+  font-weight: bolder;
+  height: 100%;
+  justify-content: center;
   position: absolute;
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial;
-  font-weight: bold;
-  font-size: 40px;
-  color: #e0092c;
+  background-image: linear-gradient( rgb(238 9 28) 0%, rgb(133 11 144) 100% );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hello-list-subheading {
   font-family: Arial;
   font-size: 16px;
-  text-align: justify;
-  margin-top: 10px;
+  margin-left: 16%;
+  margin-top: -20px;
+  color: #6b0f1a;
 }
 
 .hello-list-item.h-first {

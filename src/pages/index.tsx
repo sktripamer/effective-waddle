@@ -2046,6 +2046,10 @@
         setPreorderButton(true)
         setPreorder(true)
     }
+    function preHide() {
+      setPreorderButton(false)
+      setPreorder(false)
+  }
       useEffect(() => {
 
         async function fetchMyAPI() {
@@ -2468,12 +2472,13 @@
     <h2 className={`revival-of-revenue`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>
 
     <button onClick={preReveal} className='preorder-reveal'>preorder button</button>
-    <div className='preorder-btn-container'>
+    <div className={`preorder-btn-container ${loadPreorder}`}>
     {true == loadPreorder
                 ? (
                     
                   
                   <Elements stripe={stripePromise}>
+                    <div onClick={preHide} class='close-preorder'>X</div>
                   <StepFive />  
                   </Elements>
                 

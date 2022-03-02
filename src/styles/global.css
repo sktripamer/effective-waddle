@@ -2564,7 +2564,6 @@
   div#book-container {
     background: #fff;
     padding-bottom: 80px;
-    padding-top: 80px;
   }
 
   .need-content-container {
@@ -2631,6 +2630,7 @@
   div#compare-container {
     max-width: 1300px;
     margin: 0 auto;
+    background: #fff;
   }
 
 

@@ -2609,7 +2609,7 @@
     </div>
   </div>
 
-  <div id='why-container'>
+
   <div class="y-container">
     <div class='y-content-container'>
     <div class="y-heading">Why I wrote this book?</div>
@@ -2625,7 +2625,7 @@
     </div>
     <div class="why-bg-image"></div>
     </div>
-  </div>  
+ 
 
 
 

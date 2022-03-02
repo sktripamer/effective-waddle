@@ -2610,6 +2610,7 @@
   </div>
 
   <div id='why-container'>
+    <div class="why-bg-image">
     <div class="y-heading">Why I wrote this book?</div>
     <div class="y-cont">
       <div class="y-text-cont">
@@ -2618,63 +2619,12 @@
         <div class="y-cta">Order your copy now</div>
         <div class="y-preorderbtn">Pre-Order</div>
       </div>  
-      <div class="y-image-cont"></div>
+      <div class="y-image-contain"><div class="y-image-cont"></div></div>
+    </div>
     </div>
   </div>  
 
-  <div id='what-container'>
-    <div class="w-heading">What's inside?</div>
-    <div class="w-list">
-      <div class="w-list-item">
-        <div class="w-list-title">0. <span>Lorum Ipsum</span></div>
-        <div class="w-list-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      </div>
-      <div class="w-list-item">
-        <div class="w-list-title">1. <span>Lorum Ipsum</span></div>
-        <div class="w-list-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      </div>
-      <div class="w-list-item">
-        <div class="w-list-title">2. <span>Lorum Ipsum</span></div>
-        <div class="w-list-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      </div>
-      <div class="w-list-item">
-        <div class="w-list-title">3. <span>Lorum Ipsum</span></div>
-        <div class="w-list-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      </div>
-      <div class="w-list-item">
-        <div class="w-list-title">4. <span>Lorum Ipsum</span></div>
-        <div class="w-list-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      </div>
-      <div class="w-list-item">
-        <div class="w-list-title">5. <span>Lorum Ipsum</span></div>
-        <div class="w-list-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      </div>
-      <div class="w-list-item">
-        <div class="w-list-title">6. <span>Lorum Ipsum</span></div>
-        <div class="w-list-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      </div>
-      <div class="w-list-item">
-        <div class="w-list-title">7. <span>Lorum Ipsum</span></div>
-        <div class="w-list-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      </div>
-      <div class="w-list-item">
-        <div class="w-list-title">8. <span>Lorum Ipsum</span></div>
-        <div class="w-list-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      </div>
-      <div class="w-list-item">
-        <div class="w-list-title">9. <span>Lorum Ipsum</span></div>
-        <div class="w-list-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      </div>
-      <div class="w-list-item">
-        <div class="w-list-title">10. <span>Lorum Ipsum</span></div>
-        <div class="w-list-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      </div>
-      <div class="w-list-item">
-        <div class="w-list-title">11. <span>Lorum Ipsum</span></div>
-        <div class="w-list-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      </div>
-    </div>
-  </div>
+
 
   <div id='book-container'>
     <div class="book-spine"></div>

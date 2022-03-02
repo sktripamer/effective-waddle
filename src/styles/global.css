@@ -2042,11 +2042,11 @@
   }
 
   .hello-list-number {
-    align-content: center;
-    align-items: center;
+    align-items: baseline;
     display: flex;  
     font-family: 'Josefin Sans';
     font-size: 5vw;
+    line-height: 5.5vw;
     font-weight: bolder;
     height: 100%;
     justify-content: center;
@@ -2520,6 +2520,7 @@
 
   div#jounrey-list-container {
     margin-top: 80px;
+    background: #fff;
   }
 
   div#say-hello-list-container {
@@ -2541,6 +2542,7 @@
   div#book-container {
     margin-top: 80px;
     margin-bottom: 80px;
+    background: #fff;
   }
 
   .need-content-container {
@@ -3071,3 +3073,41 @@
         opacity: 1;
     }
   }
+  .y-container {
+    z-index: -10;
+    transform-style: preserve-3d;
+    height: 100vh;
+    position: relative;
+}
+html {
+  overflow: hidden;
+}
+main {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  perspective: 1px;
+  overflow-y: scroll;
+}
+.y-content-container {
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.why-bg-image {
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/pkbg.jpg);
+  transform: translateZ(-0.9px) scale(2);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

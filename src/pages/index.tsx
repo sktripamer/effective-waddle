@@ -2333,6 +2333,20 @@
 
           return (
             <Layout>
+                  <div className={`preorder-btn-container ${loadPreorder}`}>
+    {true == loadPreorder
+                ? (
+                    
+                  
+                  <Elements stripe={stripePromise}>
+                    <div onClick={preHide} class='close-preorder'>X</div>
+                  <StepFive />  
+                  </Elements>
+                
+                  )
+                : ""}
+    </div>
+              <div class='main-main'>
               <div className="main-vid-area">
               <h1 className="revival-of-revenue">Welcome to your <span>Revival of Revenue</span></h1>
               <div className={`rev-optin-mobile ${boxVisible}`}>
@@ -2472,19 +2486,7 @@
     <h2 className={`revival-of-revenue`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>
 
     <button onClick={preReveal} className='preorder-reveal'>preorder button</button>
-    <div className={`preorder-btn-container ${loadPreorder}`}>
-    {true == loadPreorder
-                ? (
-                    
-                  
-                  <Elements stripe={stripePromise}>
-                    <div onClick={preHide} class='close-preorder'>X</div>
-                  <StepFive />  
-                  </Elements>
-                
-                  )
-                : ""}
-    </div>
+
 </div>
  
     <div id='say-hello-container'>
@@ -2811,6 +2813,7 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
     </div>
     </div>
     </div>
+  </div>
   </div>
             </Layout>
           )

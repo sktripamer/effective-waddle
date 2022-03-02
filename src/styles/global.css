@@ -2265,15 +2265,7 @@
     margin: 10px;
   }
 
-  .y-image-cont {
-    width: 40%;
-    background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/cut.png), linear-gradient(286deg, rgb(235 235 235) 0%, rgb(242 242 242) 100%);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
+
 
   .y-cta {
     text-align: center;
@@ -2560,16 +2552,19 @@
 
   .y-heading {
     margin-bottom: 20px;
+    margin-top: 40px;
   }
 
   .w-heading {
     margin-bottom: 20px;
   }
-
+  .journey-item.j-fifth {
+    margin-bottom: 100px;
+}
   div#book-container {
-    margin-top: 80px;
-    margin-bottom: 80px;
     background: #fff;
+    padding-bottom: 80px;
+    padding-top: 80px;
   }
 
   .need-content-container {

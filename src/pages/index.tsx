@@ -2642,20 +2642,6 @@
     <div class="book-render"></div>
   </div>
 
-  <div id='need-container'>
-    <div class='need-content-container'>
-    <div class="need-heading">I need a revival of revenue because...</div>
-    <ul>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-      </ul>
-      <div class="need-cta">Get my book to start your Entrepreneurial Journey</div>
-      <div class="need-preorderbtn">Pre-Order</div>
-    </div>
-  </div>
 
   <div id='compare-container'>
     <div class='compare-title-container'>

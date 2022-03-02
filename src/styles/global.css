@@ -2540,6 +2540,8 @@
   div#jounrey-list-container {
     margin-top: 80px;
     background: #fff;
+    padding-bottom: 1px;
+}
   }
 
   div#say-hello-list-container {

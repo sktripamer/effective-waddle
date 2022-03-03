@@ -2435,7 +2435,7 @@
   .book-spine {
     background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/binder.png);
     padding-top: 10.88%;
-    background-size: contain;
+    background-size: cover;
     width: 100%;
     position: relative;
     margin: 0;
@@ -3124,12 +3124,11 @@
 
   .preorder-btn-container.true {
     background: #200df0;
-    border-radius: 10px;
-    height: 90%;
-    left: 5%;
+    height: 100%;
+    left: 0;
     position: absolute;
-    top: 5%;
-    width: 90%;
+    top: 0;
+    width: 100%;
     z-index: 9999;
     filter: drop-shadow(0 0 0.75rem #00000080);
   }

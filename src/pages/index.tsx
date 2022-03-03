@@ -2496,10 +2496,10 @@
     <div id='say-hello-container'>
     <div class="say-hello-bg"></div>
   </div> */}
-
-<Suspense fallback={<div>Loading</div>}>
+{isBrowser && (<Suspense fallback={<div>Loading</div>}>
 				<sayHello />
-</Suspense>
+</Suspense>)}
+
 
 
   <div id='say-hello-list-container'>

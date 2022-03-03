@@ -3322,3 +3322,43 @@ html {
 .read-more-content {
   margin: 12px;
 }
+
+.preorder-book-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.preorder-btn-container .register-form.col-md-6 {
+  max-width: 100%;
+}
+
+.preorder-book-section {
+}
+
+.preorder-book-cont {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.preorder-book-picture {
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/book-example-min.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 40vh;
+  width: 100%;
+}
+
+.preorder-btn-container .content-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -20vh;
+}
+
+.preorder-btn-container .pay-section {
+  width: 50%;
+}
+

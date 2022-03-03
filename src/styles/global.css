@@ -3192,3 +3192,16 @@ html {
 .always-visible > p:last-child {
   margin: 0;
 }
+.read-more-title {
+  margin-top: 40px;
+  font-size: 28px;
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(#ee091c,#850b90);
+  font-family: Josefin Sans;
+}
+
+.read-more-content {
+  margin: 12px;
+}

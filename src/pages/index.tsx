@@ -2644,9 +2644,9 @@
 
         </ol>
 </p>
-
+<div onClick={preReveal} class="y-preorderbtn">Pre-Order</div>
     </div>
-    <div onClick={preReveal} class="y-preorderbtn">Pre-Order</div>
+    
   </div>
 </div>
   <div id='jounrey-list-container'>
@@ -2759,12 +2759,10 @@
 
   <div id='book-container'>
     <div class="book-spine"></div>
-    <div class="book-heading">Your revival of revenue begins...</div>
-    <div class="book-heading-change-cont">
-    <div class="book-heading-change"><span>Here.</span><span>Today.</span><span>Right Now.</span></div>
-      </div>  
-    <div class="book-cta">Order your copy now</div>
-    <div class="book-preorderbtn">Pre-Order</div>
+    <div class="book-heading">Pre-Order PK’s Book Today</div>
+    <div class="book-subheading">Read Chapter 1 Before PK’s Book Even Hits the Shelves!</div>
+    <div class="book-maintext">Get access to the first chapter of PK’s upcoming book Revival of Revenue for free today! Don’t do life the hard way. Don’t do business alone. Start your Entrepreneurial Journey with PK on page 1 today!</div>
+    <div onClick={preReveal} class="y-preorderbtn">Preorder My Copy Now!</div>
     <div class="book-render"></div>
   </div>
 

@@ -2519,7 +2519,7 @@
     </div>
     <h2 className={`revival-of-revenue`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>
 
-    <button onClick={preReveal} className='preorder-reveal'>preorder button</button>
+    <div onClick={preReveal} class="y-preorderbtn">Pre-Order</div>
 
 </div>
 {/*  
@@ -2646,7 +2646,7 @@
 </p>
 
     </div>
-
+    <div onClick={preReveal} class="y-preorderbtn">Pre-Order</div>
   </div>
 </div>
   <div id='jounrey-list-container'>
@@ -2746,7 +2746,7 @@
         <div class="y-subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
         <div class="y-signature"></div>
         <div class="y-cta">Order your copy now</div>
-        <div class="y-preorderbtn">Pre-Order</div>
+        <div onClick={preReveal} class="y-preorderbtn">Pre-Order</div>
       </div>  
       <div class="y-image-contain"><div class="y-image-cont"></div></div>
     </div>

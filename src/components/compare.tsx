@@ -15,6 +15,7 @@ export default function CompareList() {
             <div class="compare-today-subtext">Choosing a Monotonous Lifestyle</div>
             <div class="compare-today-subtext">Accepting An Underappreciated Work-life</div>
             <div class="compare-today-subtext">Selling Your Talents at a Wholesale Discount</div>
+            <div class="compare-today-subtext">Living On One Income Source</div>
             <div class="compare-today-subtext">Working Everyday for Money</div>
             <div class="compare-today-subtext">Losing Under the Laws of Addition</div>
             <div class="compare-today-subtext">Only Cutting Expenses to “Make Money”</div>

@@ -2447,11 +2447,10 @@
     background-size: contain;
     width: 100%;
     position: relative;
-    margin: 0;
     background-repeat: no-repeat;
     background-position: center;
     height: 200px;
-    margin-top: 40px;
+    margin: 80px auto;
     margin-bottom: 120px;
   }
 

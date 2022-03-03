@@ -2607,7 +2607,7 @@
     </div>
 
   </div>
-
+</div>
   <div id='jounrey-list-container'>
     <div class="journey-item j-first">
         <div class="j-text">

@@ -2447,7 +2447,8 @@
     font-family: Josefin Sans;
     width: 300px;
     color: #e00a2d;
-    text-align: center;
+    text-align: end;
+    margin-right: 5%;
   }
 
   .compare-title-2 {
@@ -2455,7 +2456,7 @@
     font-family: Josefin Sans;
     width: 300px;
     color: #320ce3;
-    text-align: center;
+    margin-left: 5%;
   }
 
   .compare-title-1 > span {
@@ -2470,12 +2471,20 @@
     font-size: 34px;
     font-weight: bold;
   }
+  .compare-today-subtext {
+    text-align: end;
+    margin-right: 10%;
+}
 
+.compare-tomorrow-subtext {
+    margin-left: 10%;
+}
   .compare-title-vs {
     font-size: 18px;
     padding: 5px 10px;
     border: 2px solid #8d0b83;
     font-family: Arial;
+    position: absolute;
   }
 
   .compare-text-container {

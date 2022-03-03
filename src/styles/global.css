@@ -2500,7 +2500,7 @@
     border-right: 5px solid #890b87;
     height: 150px;
   }
-
+/* 
   .compare-today-subtext {
     opacity: 0;
     left: 25%;
@@ -2511,7 +2511,7 @@
     opacity: 0;
   right: 25%;
     position: absolute;
-  }
+  } */
 
   @keyframes opacitystartlist {
     0% {
@@ -2579,7 +2579,7 @@
   .need-content-container {
     border-radius: 10PX;
   }
-
+/* 
   .compare-today-subtext:nth-child(1) {
     animation-duration: 2s;
     animation-name: opacitystartlist;
@@ -2605,6 +2605,13 @@
     animation-name: opacitystartlist;
     animation-fill-mode: forwards;
     animation-delay: 4.5s;
+    margin-top: 84px;
+  }
+  .compare-today-subtext:nth-child(4) {
+    animation-duration: 2s;
+    animation-name: opacitystartlist;
+    animation-fill-mode: forwards;
+    animation-delay: 6s;
     margin-top: 84px;
   }
 
@@ -2635,7 +2642,7 @@
     animation-fill-mode: forwards;
     animation-delay: 4.5s;
     margin-top: 84px;
-  }
+  } */
 
   div#compare-container {
     max-width: 1300px;
@@ -2887,43 +2894,43 @@
   }
 
   .acc1 .ac1 .arch-text {
-    display: block;
+    z-index: 1;
     opacity: 1;
     transition: .2s .6s all;
   }
   .acc2 .ac2 .arch-text {
-    display: block;
+    z-index: 1;
     opacity: 1;
     transition: .2s .6s all;
   }
   .acc3 .ac3 .arch-text {
     opacity: 1;
-    display: block;
+    z-index: 1;
     transition: .2s .6s all;
   }
   .acc4 .ac4 .arch-text {
     opacity: 1;
-    display: block;
+    z-index: 1;
     transition: .2s .6s all;
   }
   .acc5 .ac5 .arch-text {
     opacity: 1;
-    display: block;
+    z-index: 1;
     transition: .2s .6s all;
   }
   .acc6 .ac6 .arch-text {
     opacity: 1;
-    display: block;
+    z-index: 1;
     transition: .2s .6s all;
   }
   .acc7 .ac7 .arch-text {
     opacity: 1;
-    display: block;
+    z-index: 1;
     transition: .2s .6s all;
   }
   .acc8 .ac8 .arch-text {
     opacity: 1;
-    display: block;
+    z-index: 1;
     transition: .2s .6s all;
   }
 
@@ -2943,7 +2950,7 @@
     max-height: 200px;
     overflow: auto;
     max-width: 600px;
-    display: none;
+    z-index: -1;
   }
 
 

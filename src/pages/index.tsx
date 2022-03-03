@@ -1,4 +1,4 @@
-    import React, { useState, useEffect, useRef, useMemo } from "react";
+    import React, { useState, useEffect, useRef, useMemo, Suspense  } from "react";
     import {
       Player,
       Ui,
@@ -16,6 +16,7 @@
       Captions,
     } from '@vime/react';
     import Layout from "../components/Layout";
+    const sayHello = React.lazy(() => import("../components/say-hello"));
     //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
     //import useAuth from "../hooks/useAuth";
     //import UnAuthContent from "../components/UnAuthContent";
@@ -2491,10 +2492,15 @@
     <button onClick={preReveal} className='preorder-reveal'>preorder button</button>
 
 </div>
- 
+{/*  
     <div id='say-hello-container'>
     <div class="say-hello-bg"></div>
-  </div>
+  </div> */}
+
+<Suspense fallback={<div>Loading</div>}>
+				<sayHello />
+</Suspense>
+
 
   <div id='say-hello-list-container'>
     <div class="hello-list-item h-first">

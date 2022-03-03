@@ -17,6 +17,8 @@
     } from '@vime/react';
     import Layout from "../components/Layout";
     const SayHello = React.lazy(() => import("../components/say-hello"));
+    const SayHelloList = React.lazy(() => import("../components/say-hello-list"));
+    const CompareList = React.lazy(() => import("../components/compare"));
     //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
     //import useAuth from "../hooks/useAuth";
     //import UnAuthContent from "../components/UnAuthContent";
@@ -2496,11 +2498,13 @@
     <div id='say-hello-container'>
     <div class="say-hello-bg"></div>
   </div> */}
-{isBrowser && (<Suspense fallback={<div>Loading</div>}>
+{isBrowser && (<Suspense fallback={<div></div>}>
 				<SayHello />
 </Suspense>)}
-
-
+{isBrowser && (<Suspense fallback={<div></div>}>
+				<SayHelloList />
+</Suspense>)}
+{/* 
 
   <div id='say-hello-list-container'>
     <div class="hello-list-item h-first">
@@ -2530,7 +2534,7 @@
       </div>
       
     </div>
-  </div>
+  </div> */}
 
   <div class='read-more-container'>
     <div class='read-more-title'>
@@ -2736,8 +2740,10 @@
     <div class="book-render"></div>
   </div>
 
-
-  <div id='compare-container'>
+  {isBrowser && (<Suspense fallback={<div></div>}>
+				<CompareList />
+</Suspense>)}
+  {/* <div id='compare-container'>
     <div class='compare-title-container'>
         <div class="compare-title-1">My Life <span>Today</span></div>
         <div class="compare-title-vs">VS</div>
@@ -2758,7 +2764,7 @@
             <div class="compare-tomorrow-subtext">Lorem ipsum dolor sit amet</div>
         </div>
     </div>
-  </div>  
+  </div>   */}
   <div id='archetype-container' class={`acc${archetype}`}>
     <div onClick={setArchtype1} class='arch-cont ac1'>
       <div class='arch-title'>Self-employed</div>

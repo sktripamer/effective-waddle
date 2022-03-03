@@ -2944,8 +2944,6 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
     <div class="book-render"></div>
     <div class="book-subheading">Experience Your Revival of Revenue and Become an Entrepreneurial with PK today.</div>
     <form id="bottom-opt-form">
-
-<input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
 <div className="first-name">
 <label>First Name</label>
 <input required className='bottom-section-form-name' placeholder="First Name" autocomplete="first name" name={'name'}/>

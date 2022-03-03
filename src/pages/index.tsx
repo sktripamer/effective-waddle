@@ -2523,6 +2523,91 @@
     </div>
   </div>
 
+  <div class='read-more-container'>
+    <div class='read-more-title'>
+    REVENUE MAPS / ENTREPRENEURIAL JOURNEY
+    </div>
+    <div class='read-more-content'>
+      <div class='always-visible'>
+        <p>There’s a map for everything under the sun— everything you need to know and everywhere you want to go… Except for how to navigate your entrepreneurial journey.</p>
+        <p>The entrepreneurial journey is like one big question mark. It’s basically 3D Tetris for business, and every block on the board is moving too fast; critical blocks are missing; repeatedly rearranging the blocks is a frantic hopeless strategy, and time is not on your side. </p>
+        <p>What is your entrepreneurial journey? Your entrepreneurial journey is every step of the business creation process from the conception of your business idea to the go-to-market promotion of your business product. It is a journey of ups and down, which, for those who win, can take you higher up in life.</p>
+        <p>If you are like millions of entrepreneurials learning how to start a business, however, you probably understand just how time-consuming, exhausting, and confusing the entrepreneurial journey can feel like if you are just beginning. You solve one problem only to discovery you learned business backwards. All you want to do is business the right way. You may not even care about business. You simply care about what you are building and how your entrepreneurial journey can help you:</p>
+        <p>
+        <ul>
+  <li>Pioneer Your Passions into Profit - <span>You Have a Meaningful Vision for Your Future. You Just Don’t Know Where to Start.</span></li>
+  <li>Invent Your Ideas into Income -<span>You Have Great Ideas. You Just Don’t Know How to Protect, Develop, and Launch Them.</span></li>
+  </ul>
+  </p>
+  </div>
+  <div class='click-to-read'></div>
+  <div class='more-to-read'>
+  <p>
+        <ul>
+  <li>Negotiate Your Networks to Net-worth - <span>You Have a Professional Network. You Just Don’t Know Who to Ask for Help.</span></li>
+  <li>Turn Your Talents into Transactions - <span>You Have Skill Sets. You Just Don’t Know How to Creatively Attract Clients.</span></li>
+  <li>Win Your Work to Wealth - <span>You Work Everyday. You Just Don’t Know How to Achieve Profitability &amp; Acquire Wealth.</span></li>
+  </ul>
+  </p>
+  <p>The majority of entrepreneurial speakers, books, and courses teach simple principles of business. While these principles lead to success, they are often too general to help you start a business. You don’t need to listen to business principles on podcasts for years waiting to get started. That’s too general. Even more importantly, that’s too slow.</p>
+  <p>As a result, you may turn to business gurus. But business gurus may be too specific for your ultimate end goal. Business gurus specialize in business specialties. Think of each specialty like a silo. You go deep, but you probably go too deep. At least for a start up. What they train is singular in nature. One. Thing. At. A. Time. When you are starting a business, you don’t need to learn everything about one thing right now. That’s too much information on one topic. You will likely be faced with a bunch of different types of problems all at once, the so all you need is help knocking out key obstacles in your entrepreneurial journey.</p>
+  <p>Remember why you started your entrepreneurial journey. You are on mission to start creating, and since you hope to own and control what you create, you need a business. You are not on a mission to become a business motivational speaker or a business guru. You simply want to become a business. Where should someone like you start learning?</p>
+  <p>Great question! The entrepreneurial journey feels like a fractured system of hundreds of business parts that don’t fit together. At least not at first. Each part makes up the entrepreneurial engine, and that engine powers your car, which we call your business. Unless you know what part you need, where to find each part, and how to install each part, you are out of luck. Your business is going nowhere soon. You need a mechanic for your car the same way you need a Revival of Revenue for your business. If you ever hope to get out of the world of ideas—if you decide to drive your business on the highways of revenue—you need a way to bring the business parts together to create a business engine.</p>
+  <p>You need all the information in one place. I call these Revenue Maps.</p>   
+  <p>Imagine a map that showed you every step of the entrepreneurial journey, and gave you answers to the questions that you actually need answered on a daily basis, such as, “What do I do first? Where do I go to find solutions? How much does each issue cost to solve? Who can help me each step of the way? When can I start testing my ideas? Why am I starting my business? Who am I in business to help?”</p>
+  <p>You need a Revenue Map the same way every driver needs a car manual. How do you start a business that is safe to rev up? What if you hope to drive your car fast, pedal to the metal, pushing RPMs and higher speeds as your business grows? Regardless of whether you already have entrepreneurial exposure or no business experience, the entrepreneurial journey is confusing and vulnerable to failure, error, and loss for anyone. Experienced entrepreneurs need help. Inexperienced entrepreneurials need twice the help. That’s why Revenue Maps help you navigate the gauntlet of challenges of starting a business.</p>
+  <p>Each Revenue Map tackles a highly specific problem that you will likely face somewhere along your entrepreneurial journey. In fact, that’s why we design Revenue Maps for each step and most problems entrepreneurials face. All you need to do is follow. By following each Revenue Map, your entrepreneurial journey will finally be ready-to-go, easy-to-follow, and not confusing. Not impossible. The goal of each Revenue Map is quite simple:</p>
+  <p>
+        <ul>
+        <li>Solve highly specific problems in less time - Save time by following ready-to-go solutions!</li>
+        <li>Don’t recreate the wheel - Save mind power for your business. Leverage us to do the rest!</li>
+        <li>Don’t make easy to avoid mistakes - Save energy by not constantly undoing blunders and errors!</li>
+        <li>Don’t sweat technical issues - Get the right answers fast at your fingertips! Research less! Do more!</li>
+        <li>Don’t exhaust friends, family, and your professional network - Save social capital by learning with us!</li>
+        <li>Don’t get stuck when business gets confusing - Get the maps, detours, & exits to bypass traffic jams with less effort!</li>
+        <li>Focus on your business &amp; less on becoming a business guru - Save capital by solving problems faster than …</li>
+        </ul>
+  </p>
+  <p>Survive entrepreneurial road blocks by following our Revenue Maps! Try not to get stuck figuring out every problem alone. You may find you are suddenly frozen in time, right where you started, even after months of research and work, still asking yourself the same questions about how to solve this problem or that issue. Remember, time is everything. Saving time is the first step to becoming more profitable. Let’s get you off the ground, shift your business in gear, and experience your Revival of Revenue today. Let’s team up together to take control of your entrepreneurial journey! Cut the cheap talk, say yes to action. Become an Entrepreneurial today!
+</p>
+<p class='p-title'>BOTTOMLINE—YOU CAN SKIP THE HEADACHES OF DOING BUSINESS ALONE BY FINALLY OWNING: </p>
+<p>
+        <ul>
+                  <li>The 25 Quadrant Matrix Every Mini CEO Needs to Follow </li>
+                  <li>The 50+ Unlocked Revenue Maps That Every Business Needs Daily</li>
+                  <li>The Offensive Playbook (Workbook) Every Entrepreneurial Needs from Day 1</li>
+                  <li>The Easy-to-Follow Entrepreneurial Journey Explained in 24 Course Hours - A Day with PK!</li>
+                  <li>The Turn-Key Start Up Bundle that Makes Entrepreneurship Easy. Not Impossible. </li>
+
+        </ul>
+</p>
+<p class='p-title'>INSTEAD OF TAKING MONTHS, LEVERAGE IN MINUTES HOW TO: </p>  
+<p>
+        <ul>
+                  <li>Get help starting your side hustle</li>
+                  <li>Discover Your Entrepreneurial Journey</li>
+                  <li>Build Your Business</li>
+                  <li>Create Something New</li>
+                  <li>Create from Nothing</li>
+                  <li>Dare to Explore</li>
+                  <li>Explore the Possibilities</li>
+                  <li>Consider the Cost</li>
+                  <li>Start Your Side Hustle</li>
+                  <li>Begin Your Journey</li>
+                  <li>Become an Entrepreneurial</li>
+                  <li>Design Your Lifestyle</li>
+                  <li>Develop Your Best Work</li>
+                  <li>Trademark your God-given Talents</li>
+                  <li>Envision Your Future</li>
+
+
+        </ul>
+</p>
+
+    </div>
+
+  </div>
+
   <div id='jounrey-list-container'>
     <div class="journey-item j-first">
         <div class="j-text">

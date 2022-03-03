@@ -2835,7 +2835,7 @@
     </div>
   </div>    
 
-
+  <div class='show-me-title'>What's Inside?</div>
   <div id='minibook-container' class={`mbb${minibook}`}>
     <div class='minibook-container'>
 
@@ -2942,6 +2942,24 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
     <div class="book-maintext">Get access to the first chapter of PK’s upcoming book Revival of Revenue for free today! Don’t do life the hard way. Don’t do business alone. Start your Entrepreneurial Journey with PK on page 1 today!</div>
     <div onClick={preReveal} class="y-preorderbtn">Preorder My Copy Now!</div>
     <div class="book-render"></div>
+    <div class="book-subheading">Experience Your Revival of Revenue and Become an Entrepreneurial with PK today.</div>
+    <form id="bottom-opt-form">
+
+<input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
+<div className="first-name">
+<label>First Name</label>
+<input required className='bottom-section-form-name' placeholder="First Name" autocomplete="first name" name={'name'}/>
+</div>
+<div className="email-address-form">
+<label>Email</label>
+<input required className='bottom-section-form-name' placeholder="Email" autocomplete="email" name={'email'}/>
+</div>
+      <button className='bottom-btn' id="submit">
+<span id="button-text">Subscribe Me!
+</span>
+</button>
+</form>
+  
   </div>
 
 

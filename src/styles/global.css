@@ -2644,7 +2644,7 @@
     margin-bottom: 20px;
   }
   .journey-item.j-fifth {
-    margin-bottom: 100px;
+    margin-bottom: 160px;
 }
   div#book-container {
     background: #2d2828;
@@ -2790,7 +2790,7 @@
   div#compare-container {
     margin: 0 auto;
     background: #fff;
-    padding-top: 40px;
+    padding-top: 80px;
   }
 
 
@@ -3508,7 +3508,8 @@ span.typewrap5:before {
   font-size: 36px;
   font-weight: 700;
   text-align: center;
-  margin-top: 80px;
+  margin-bottom:20px;
+  margin-top: 120px;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-image: linear-gradient(#ee091c,#850b90);

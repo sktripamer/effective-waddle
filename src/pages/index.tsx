@@ -16,7 +16,7 @@
       Captions,
     } from '@vime/react';
     import Layout from "../components/Layout";
-    const sayHello = React.lazy(() => import("../components/say-hello"));
+    const SayHello = React.lazy(() => import("../components/say-hello"));
     //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
     //import useAuth from "../hooks/useAuth";
     //import UnAuthContent from "../components/UnAuthContent";
@@ -2497,7 +2497,7 @@
     <div class="say-hello-bg"></div>
   </div> */}
 {isBrowser && (<Suspense fallback={<div>Loading</div>}>
-				<sayHello />
+				<SayHello />
 </Suspense>)}
 
 

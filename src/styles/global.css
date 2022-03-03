@@ -2246,11 +2246,13 @@
     align-items: center;
   }
   .j-image {
-    background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/icon.png);
     padding-top: 100%;
     background-size: contain;
+    background-repeat: no-repeat;
   }
-
+  .j-first .j-image {
+    background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/17.svg);
+}
   .journey-item:nth-of-type(2n) {
     flex-direction: row-reverse;
   }
@@ -2450,6 +2452,7 @@
     background-position: center;
     height: 200px;
     margin-top: 40px;
+    margin-bottom: 120px;
   }
 
   .need-content-container ul {
@@ -2646,6 +2649,7 @@
   div#book-container {
     background: #2d2828;
     padding-bottom: 80px;
+    margin-top: 80px;
   }
 
   .need-content-container {
@@ -3546,4 +3550,56 @@ span.typewrap5:before {
   height: 16px;
   margin-left: -28px;
   margin-top: 5px;
+}
+.hello-list-item.h-second {margin-top: 30px;}
+
+.hello-list-item.h-third {
+    margin-top: 60px;
+}
+
+input.bottom-section-form-name {
+  background: #2d2828;
+  color: #fff;
+}
+
+form#bottom-opt-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+input.bottom-section-form-name:focus {
+  border-color: #b2222c;
+}
+
+#bottom-opt-form button#submit {
+  margin: 0 auto;
+  background: #3d3a3a;
+  border: 2px solid #888181;
+  border-radius: 8px;
+  color: #fff;
+}
+
+#bottom-opt-form label {
+  display: initial;
+  color: #b3b3b3;
+  margin-left: 8px;
+}
+
+
+.j-first .j-image {
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/17.svg);
+}
+
+.j-second .j-image {
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/51.svg);
+}
+.j-third .j-image {
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/97.svg);
+}
+.j-fourth .j-image {
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/114.svg);
+}
+
+.j-fifth .j-image {
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/57.svg);
 }

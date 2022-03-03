@@ -1897,6 +1897,20 @@
               <li>Get early access to the final book</li>
               <li>Support Patrick's cause</li>
               </ul>
+              <div className='pay-section'>
+        <div className={`selection-section ${stepCount} ${noCard}`}>
+        <div onClick={(e) => radioHandler(0)} className={'previous-payment ' + status}>
+        <div className='card-icon'></div>
+        <div className="prev-last4">{prevLast4}</div>
+        </div>
+        <div onClick={(e) => radioHandler(1)} className={'new-payment ' + status}>+ New Card</div>
+        </div>
+        <div className='powered-by-stripe-final'></div>
+        <div className='selection-render'>
+        {status === 0 && drawYesContent()}
+        {status === 1 && drawNoContent()}
+        </div>
+        </div>
                 </div>
                 
                 </div>
@@ -1930,7 +1944,8 @@
                 </div>}
 
 
-        
+                {false == preorderButton
+                ? (
         <div className='pay-section'>
         <div className={`selection-section ${stepCount} ${noCard}`}>
         <div onClick={(e) => radioHandler(0)} className={'previous-payment ' + status}>
@@ -1945,6 +1960,8 @@
         {status === 1 && drawNoContent()}
         </div>
         </div>
+                )
+                :""}
         </div>
       </div>
     );

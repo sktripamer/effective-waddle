@@ -2757,14 +2757,7 @@
 
 
 
-  <div id='book-container'>
-    <div class="book-spine"></div>
-    <div class="book-heading">Pre-Order PK’s Book Today</div>
-    <div class="book-subheading">Read Chapter 1 Before PK’s Book Even Hits the Shelves!</div>
-    <div class="book-maintext">Get access to the first chapter of PK’s upcoming book Revival of Revenue for free today! Don’t do life the hard way. Don’t do business alone. Start your Entrepreneurial Journey with PK on page 1 today!</div>
-    <div onClick={preReveal} class="y-preorderbtn">Preorder My Copy Now!</div>
-    <div class="book-render"></div>
-  </div>
+
 
   {isBrowser && (<Suspense fallback={<div></div>}>
 				<CompareList />
@@ -2791,6 +2784,22 @@
         </div>
     </div>
   </div>   */}
+<div id='shows-me-container'>
+  <div class='show-me-title'>This Book Shows Me…</div>
+  <div class='show-me-grid'>
+    <div class="show-me-item">How to Begin My Entrepreneurial Journey on Day 1</div>
+    <div class="show-me-item">How to Go-to-Market By Following a 25-Step Entrepreneurial Journey</div>
+    <div class="show-me-item">How to Generate Multiple Revenue Streams (Mini Book 1: Offense Wins Championships)</div>
+    <div class="show-me-item">How to Increase Revenue from Each Source (Mini Book 2: Maximum Wage)</div>
+    <div class="show-me-item">How to go from minimum wage to “Maximum Wage” in 365 days</div>
+    <div class="show-me-item">Turn your ideas into income on a budget</div>
+    <div class="show-me-item">Turn your passions into profits with a predictable model!</div>
+    <div class="show-me-item">Create your own economy with a clearly defined life plan</div>
+  </div>
+  <div onClick={preReveal} class="y-preorderbtn">Preorder My Copy Now!</div>
+</div>
+
+  <div class='archtype-title'>I Need a Revival of Revenue Because…</div>
   <div id='archetype-container' class={`acc${archetype}`}>
     <div onClick={setArchtype1} class='arch-cont ac1'>
       <div class='arch-title'>Self-employed</div>
@@ -2926,6 +2935,17 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
     </div>
     </div>
   </div>
+  <div id='book-container'>
+    <div class="book-spine"></div>
+    <div class="book-heading">Pre-Order PK’s Book Today</div>
+    <div class="book-subheading">Read Chapter 1 Before PK’s Book Even Hits the Shelves!</div>
+    <div class="book-maintext">Get access to the first chapter of PK’s upcoming book Revival of Revenue for free today! Don’t do life the hard way. Don’t do business alone. Start your Entrepreneurial Journey with PK on page 1 today!</div>
+    <div onClick={preReveal} class="y-preorderbtn">Preorder My Copy Now!</div>
+    <div class="book-render"></div>
+  </div>
+
+
+
   </div>
             </Layout>
           )

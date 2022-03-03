@@ -3140,6 +3140,7 @@ html {
   padding: 1em;
   max-width: 1300px;
   COLOR: #470006;
+  margin:0 auto;
 }
 .read-more-container span {
   font-style: italic;

@@ -2072,6 +2072,9 @@
       const setReadMore = () => {
         setReadmore(true)
       }
+      const setReadLess = () => {
+        setReadmore(false)
+      }
       const [fileURL, setFile] = useState("https://revrevdev2.b-cdn.net/pk.mp4")
       const currentVideoState = () => {
         return videoTime;
@@ -2519,7 +2522,9 @@
     </div>
     <h2 className={`revival-of-revenue`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>
 
-    <div onClick={preReveal} class="y-preorderbtn">Pre-Order</div>
+    <div class="vid-section-cta">Begin your Revival of Revenue today!</div>
+
+    <div onClick={preReveal} class="y-preorderbtn">Pre-Order My Copy Now!</div>
 
 </div>
 {/*  
@@ -2566,7 +2571,7 @@
 
   <div class='read-more-container'>
     <div class='read-more-title'>
-    REVENUE MAPS / ENTREPRENEURIAL JOURNEY
+    EXPERIENCE YOUR ENTREPRENEURIAL JOURNEY
     </div>
     <div class={`read-more-content ${readmore}`}>
       <div class='always-visible'>
@@ -2644,7 +2649,9 @@
 
         </ol>
 </p>
-<div onClick={preReveal} class="y-preorderbtn">Pre-Order</div>
+<div class="read-more-section-cta">Begin your Revival of Revenue today!</div>
+<div onClick={preReveal} class="y-preorderbtn">Pre-Order My Copy Now!</div>
+<div onClick={setReadLess} class='click-to-read-less'>Read Less</div> 
     </div>
     
   </div>
@@ -2743,15 +2750,16 @@
     <div class="y-heading">Why I wrote this book?</div>
     <div class="y-cont">
       <div class="y-text-cont">
-        <div class="y-subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="y-subheading">Everyday self-employed people ask me, “How in the world do I make more money? And how can I make money multiple ways?” Employees ask me, “How can I do more for God? How can I start a meaningful business from nothing?” Executives ask me, “Where is America going as a nation? How do you think we can navigate today’s political turmoil and economic challenges?” Everyone wants to maximize their wage, increase their personal income, and generate more business revenue, but doing so while doing something they love. They just don’t know how…UNTIL NOW! I wrote this book because, like so many people, I needed a Revival of Revenue myself.</div>
         <div class="y-signature"></div>
+        <div class="y-cta-cont">
         <div class="y-cta">Order your copy now</div>
-        <div onClick={preReveal} class="y-preorderbtn">Pre-Order</div>
+        <div onClick={preReveal} class="y-preorderbtn">Pre-Order My Copy Now!</div>
+        </div>
       </div>  
       <div class="y-image-contain"><div class="y-image-cont"></div></div>
     </div>
     </div>
-    <div class="why-bg-image"></div>
     </div>
  
 
@@ -2803,35 +2811,51 @@
   <div id='archetype-container' class={`acc${archetype}`}>
     <div onClick={setArchtype1} class='arch-cont ac1'>
       <div class='arch-title'>Self-employed</div>
+      <div class='arch-text=-wrapper'>
       <div class='arch-text'>I work for myself. I “eat what I kill” and I need help growing my current business or starting a new business in this post-pandemic economy. I’m always looking for new ways to make money, new entrepreneurial opportunities, and new business networks. It’s lonely working alone, and <strong>I’m ready to build my business beyond me.</strong> I’m tired of working in my business, and I’m ready to work on my business.</div>
+      </div>    
     </div>
     <div onClick={setArchtype2} class='arch-cont ac2'>
       <div class='arch-title'>Resigned</div>
+      <div class='arch-text=-wrapper'>
       <div class='arch-text'> I resigned from my job, I’m investing in myself, and <strong>I’m ready to turn my business ideas into business income.</strong> I just need to know how. I believe in freedom to live, freedom to think, freedom speak, freedom to create, and freedom to profit in America and around the world!</div>
+      </div>
     </div>
     <div onClick={setArchtype3} class='arch-cont ac3'>
       <div class='arch-title'>Millennial</div>
+      <div class='arch-text=-wrapper'>
       <div class='arch-text'>I’m a 28 year old millennial working a job I don’t like for a company I don’t care about. <strong>I’m building a side hustle</strong> to overcome student debt, escape the corporate trap, and achieve financial independence in 3 years.</div>
+      </div>
     </div>
     <div onClick={setArchtype4} class='arch-cont ac4'>
       <div class='arch-title'>Executive</div>
+      <div class='arch-text=-wrapper'>
       <div class='arch-text'>I’m a 44 year old executive working late most nights, raising a family, and <strong>saving money to start a business</strong> so I can leave my job where I’m overworked and under appreciated.</div>
+      </div>
     </div>
     <div onClick={setArchtype5} class='arch-cont ac5'>
       <div class='arch-title'>Stay-at-home Parent</div>
+      <div class='arch-text=-wrapper'>
       <div class='arch-text'> I’m a stay-at-home parent raising kids, starting my own business, and married to my partner who earns steady income from a full-time job. <strong>We just need to survive and get ahead financially together.</strong></div>
+      </div>
     </div>
     <div onClick={setArchtype6} class='arch-cont ac6'>
       <div class='arch-title'>Retired</div>
+      <div class='arch-text=-wrapper'>
       <div class='arch-text'>I’m retired from the military, or retired in general, and I’m living on steady income from my pension or social security funds. <strong>I’m ready to turn my passions into profits by investing in my own business.</strong></div>
+      </div>
     </div>
     <div onClick={setArchtype7} class='arch-cont ac7'>
       <div class='arch-title'>Ministry</div>
+      <div class='arch-text=-wrapper'>
       <div class='arch-text'>I’m just a pastor trying to minister in the non-profit world and <strong>I’m open to making more money in the for-profit world</strong> to take care of my ministry and my family.</div>
+      </div>
     </div>
     <div onClick={setArchtype8} class='arch-cont ac8'>
       <div class='arch-title'>Nomad</div>
+      <div class='arch-text=-wrapper'>
       <div class='arch-text'>I’m a minimalist who loves to travel. <strong>I focus on how to run my business virtually, and how to build my business on the go.</strong> I value experiences first, and running my own company gives me this freedom to be mobile.</div>
+      </div>
     </div>
   </div>    
 

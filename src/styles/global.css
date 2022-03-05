@@ -2343,7 +2343,7 @@
     margin-left: 4rem;
   }
   .y-container .y-preorderbtn {
-
+    margin-left: 0px;
     margin-top: 40px;
     margin-bottom: 80px;
 }
@@ -2813,6 +2813,7 @@
     margin: 0 auto;
     background: #fff;
     padding-top: 80px;
+    padding-bottom: 10px;
   }
 
 
@@ -3745,7 +3746,7 @@ input.bottom-section-form-name:focus {
 
 #bottom-opt-form button#submit {
   margin: 0 auto;
-  background: #3d3a3a;
+  background: #b11924;
   border: 2px solid #888181;
   border-radius: 8px;
   color: #fff;
@@ -3778,6 +3779,8 @@ input.bottom-section-form-name:focus {
 
 div#shows-me-container {
   background: #fff;
+  padding-top: 100px;
+  padding-bottom: 10px;
 }
 
 .vid-section-cta {

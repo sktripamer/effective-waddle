@@ -3728,8 +3728,9 @@ span.typewrap5:before {
 }
 
 input.bottom-section-form-name {
-  background: #2d2828;
-  color: #fff;
+  background: #fff;
+  color: #000;
+
 }
 
 form#bottom-opt-form {

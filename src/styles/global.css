@@ -3226,7 +3226,7 @@
 
     font-size: 18px;
     max-height: 200px;
-    height: 100%;
+    height: 0%;
     max-width: 600px;
     opacity: 0;
     overflow: auto;
@@ -3283,7 +3283,7 @@
   }
 
   .mb-rightdisplay-section {
-    width: 75%;
+    width: 55%;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     background: url(https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg),linear-gradient(286deg,#771383,#a21010);
@@ -3354,11 +3354,12 @@
     padding-left: 20px;
     height: 450px;
     overflow: auto;
+    margin-left: 10px;
   }
   .mb-content-title {
     font-family: 'Josefin Sans';
     color: #fff;
-    font-size: 20px;
+    font-size: 28px;
     margin-top: 8px;
   }
   .mb-title {
@@ -3531,7 +3532,7 @@ html {
   margin: 0;
 }
 .read-more-title {
-  font-size: 58px;
+  font-size: 46px;
   text-align: center;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
@@ -3785,4 +3786,30 @@ div#shows-me-container {
   margin-top: 100px;
   margin-bottom: 20px;
   text-align: center;
+}
+
+.mb-right-arrow {
+  width:10%;
+}
+
+.mb-left-arrow {
+  width:10%;
+}
+
+.mb-right-section {
+  position: relative;
+}
+
+.mb-content-pretitle {
+  color: #bbb;
+  font-size: 14px;
+  margin-bottom: -10px;
+  margin-top: 20px;
+}
+
+.mb-content-posttitle {
+  color: #f0f0f0;
+  font-family: Josefin Sans;
+  font-size: 20px;
+  margin-top: -4px;
 }

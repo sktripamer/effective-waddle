@@ -2289,7 +2289,7 @@
     flex-wrap: nowrap;
     margin: 0 auto;
     max-width: 1300px;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .y-preorderbtn {
@@ -2315,6 +2315,7 @@
     background: linear-gradient(286deg,#850be2,#c41ab8);
     border-radius: 20px;
     filter: drop-shadow(0 0 0.55rem #181818);
+    margin-top: 35px;
 }
 .y-image-cont {
   background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/pkps.jpg);
@@ -3025,11 +3026,11 @@
   }
 
   .ac1 .arch-title:after {
-content:'Self-Employed'
+    content:'Self-Employed'
   }
-  .ac2 .arch-title:after {
+    .ac2 .arch-title:after {
     content:'Resigned'
-      }
+  }
       
 
       .ac3 .arch-title:after {
@@ -3054,6 +3055,10 @@ content:'Self-Employed'
                               }
              
 
+
+.arch-text-wrapper {
+    max-height: 0%;
+}
   .arch-title {
     color: #ef1b3d;
     font-size: 34px;
@@ -3112,62 +3117,104 @@ content:'Self-Employed'
   .acc8 .ac8 .arch-title {
     color: #ef1b3d;
   }
-
   .acc1 .ac1 .arch-text {
     z-index: 1;
     opacity: 1;
-    transition: .2s .6s all;
-    height: 100%;
+    transition: .6s .3s all;
+
   }
   .acc2 .ac2 .arch-text {
     z-index: 1;
     opacity: 1;
-    transition: .2s .6s all;
-    height: 100%;
+    transition: .6s .3s all;
+
   }
   .acc3 .ac3 .arch-text {
     opacity: 1;
     z-index: 1;
-    transition: .2s .6s all;
-    height: 100%;
+    transition: .6s .3s all;
+
   }
   .acc4 .ac4 .arch-text {
     opacity: 1;
     z-index: 1;
-    transition: .2s .6s all;
-    height: 100%;
+    transition: .6s .3s all;
+
   }
   .acc5 .ac5 .arch-text {
     opacity: 1;
     z-index: 1;
-    transition: .2s .6s all;
-    height: 100%;
+    transition: .6s .3s all;
+
   }
   .acc6 .ac6 .arch-text {
     opacity: 1;
     z-index: 1;
-    transition: .2s .6s all;
-    height: 100%;
+    transition: .6s .3s all;
+
   }
   .acc7 .ac7 .arch-text {
     opacity: 1;
     z-index: 1;
-    transition: .2s .6s all;
-    height: 100%;
+    transition: .6s .3s all;
+
   }
   .acc8 .ac8 .arch-text {
     opacity: 1;
     z-index: 1;
-    transition: .2s .6s all;
-    height: 100%;
-  }
+    transition: .6s .3s all;
 
+  }
+  .acc1 .ac1 .arch-text-wrapper {
+    
+    
+    transition: .6s .3s all;
+    max-height: fit-content;
+  }
+  .acc2 .ac2 .arch-text-wrapper {
+    
+    
+    transition: .6s .3s all;
+    max-height: fit-content;
+  }
+  .acc3 .ac3 .arch-text-wrapper {
+    
+    
+    transition: .6s .3s all;
+    max-height: fit-content;
+  }
+  .acc4 .ac4 .arch-text-wrapper {
+    
+    transition: .6s .3s all;
+    max-height: fit-content;
+  }
+  .acc5 .ac5 .arch-text-wrapper {
+    
+    
+    transition: .6s .3s all;
+    max-height: fit-content;
+  }
+  .acc6 .ac6 .arch-text-wrapper {
+    
+    transition: .6s .3s all;
+    max-height: fit-content;
+  }
+  .acc7 .ac7 .arch-text-wrapper {
+    
+    
+    transition: .6s .3s all;
+    max-height: fit-content;
+  }
+  .acc8 .ac8 .arch-text-wrapper {
+    transition: .6s .3s all;
+    max-height: fit-content;
+  }
   .arch-text {
     background: linear-gradient(181deg,rgb(0 0 0/64%),rgb(0 0 0/70%));
     color: #fff;
     font-size: 18px;
     max-height: 200px;
-    height: 0%;
+    height: 100%;
     max-width: 600px;
     opacity: 0;
     overflow: auto;
@@ -3359,6 +3406,7 @@ content:'Self-Employed'
     justify-content: center;
     transform-style: preserve-3d;
     z-index: -10;
+    position: relative;
 }
 
 .y-container:after {

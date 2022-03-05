@@ -2298,7 +2298,6 @@
     line-height: 28px;
     padding: 14px 32px;
     width: fit-content;
-    background-size: 200% 200%;
     animation: gradient 6.5s ease infinite;
     font-weight: bold;
     filter: drop-shadow(0 0 0.75rem #00000080) saturate(1);
@@ -2309,7 +2308,7 @@
     border-radius: 100000000000000px;
     -webkit-text-fill-color: initial;
     transition: .3s all;
-
+    background-size: 200% 200%;
 }
 .y-preorderbtn:hover {
   text-shadow: 0px 0px 3px #d3d3d3;

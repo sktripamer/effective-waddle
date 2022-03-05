@@ -3727,11 +3727,13 @@ span.typewrap5:before {
   max-width: 1300px;
   margin-bottom: 60px;
   font-size: 18px;
+  padding-left: 14px;
 }
 
 .show-me-item {
   width: 50%;
   padding: 12px 20px;
+  padding-right: 30px;
   COLOR: #470006;
   font-size: 20px;
 }
@@ -3743,7 +3745,7 @@ span.typewrap5:before {
   width: 16px;
   height: 16px;
   margin-left: -28px;
-  margin-top: 5px;
+  margin-top: 8px;
 }
 .hello-list-item.h-second {margin-top: 80px;}
 

@@ -2401,7 +2401,7 @@
   .book-heading {
     font-family: 'Josefin Sans';
     color: #dadada;
-    margin-top: 40px;
+    margin-top: 100px;
     font-size: 58px;
     font-weight: bold;
     text-align: center;
@@ -2460,7 +2460,7 @@
     background-position: center;
     height: 200px;
     margin: 80px auto;
-    margin-bottom: 120px;
+    margin-bottom: 35vh;
   }
 
   .need-content-container ul {
@@ -2669,7 +2669,7 @@
     margin-bottom: 160px;
 }
   div#book-container {
-    background: #2d2828;
+    background: #330083;
     padding-bottom: 80px;
     margin-top: 80px;
   }
@@ -3076,7 +3076,7 @@
   }
   .arch-title:before {
     content: '';
-    background: linear-gradient(181deg,rgb(255 255 255 / 54%),rgb(255 255 255 / 70%));
+    background: linear-gradient(181deg,rgb(255 255 255/64%),rgb(255 255 255/80%));
     width: 100%;
     position: absolute;
     height: 100%;
@@ -3125,50 +3125,58 @@
   .acc1 .ac1 .arch-text {
     z-index: 1;
     opacity: 1;
+    height: 100%;
     transition: .6s .3s all;
-
+    overflow: auto;
   }
   .acc2 .ac2 .arch-text {
     z-index: 1;
     opacity: 1;
+    height: 100%;
     transition: .6s .3s all;
-
+    overflow: auto;
   }
   .acc3 .ac3 .arch-text {
     opacity: 1;
     z-index: 1;
+    height: 100%;
     transition: .6s .3s all;
-
+    overflow: auto;
   }
   .acc4 .ac4 .arch-text {
     opacity: 1;
     z-index: 1;
+    height: 100%;
     transition: .6s .3s all;
-
+    overflow: auto;
   }
   .acc5 .ac5 .arch-text {
     opacity: 1;
     z-index: 1;
+    height: 100%;
     transition: .6s .3s all;
-
+    overflow: auto;
   }
   .acc6 .ac6 .arch-text {
     opacity: 1;
     z-index: 1;
+    height: 100%;
     transition: .6s .3s all;
-
+    overflow: auto;
   }
   .acc7 .ac7 .arch-text {
     opacity: 1;
     z-index: 1;
+    height: 100%;
     transition: .6s .3s all;
-
+    overflow: auto;
   }
   .acc8 .ac8 .arch-text {
     opacity: 1;
     z-index: 1;
+    height: 100%;
     transition: .6s .3s all;
-
+    overflow: auto;
   }
   .acc1 .ac1 .arch-text-wrapper {
     
@@ -3216,7 +3224,6 @@
   }
   .arch-text {
 
-    color: #fff;
     font-size: 18px;
     max-height: 200px;
     height: 100%;
@@ -3225,16 +3232,14 @@
     overflow: auto;
     padding: 8px;
     position: relative;
-    text-shadow: -1px -1px 1px #111111cf, 2px 2px 4px #363636b0;
-    transition: none;
+    transition: height .6s, opacity .3s;
+    overflow-y: hidden;
     width: 90%;
     z-index: -1;
     margin: 0 auto;
-    margin-top: 0px;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-image: linear-gradient(#ee091c,#850b90);
-    color: #ef1b3d;
+    color: #59191e;
+    background: linear-gradient(181deg,rgb(254 255 255/74%),rgb(255 255 255/90%));
+    margin-top: 20px;
   }
 
 
@@ -3257,10 +3262,13 @@
     padding-top: 10px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    background: url(https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg), #2d2d2d;
+    background: url(https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg), #0a00a8eb;
     background-position: 100% 0;
     background-repeat: no-repeat;
     background-size: 175%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .preorder-btn-container.true {
@@ -3278,7 +3286,7 @@
     width: 75%;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
-    background: url(https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg),linear-gradient(286deg,#602626,#a22121);
+    background: url(https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg),linear-gradient(286deg,#771383,#a21010);
     background-position: 100% 0;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -3451,6 +3459,7 @@ html {
   max-width: 1300px;
   COLOR: #470006;
   margin:0 auto;
+  margin-top:80px;
 }
 .read-more-container span {
   font-style: italic;
@@ -3459,6 +3468,7 @@ html {
   text-align: center;
   font-weight: bold;
   cursor: pointer;
+  -webkit-text-fill-color: initial;
 }
 .click-to-read:after {
   content: "\2304";
@@ -3476,6 +3486,7 @@ html {
   text-align: center;
   font-weight: bold;
   cursor: pointer;
+  -webkit-text-fill-color: initial;
 }
 .click-to-read-less:after {
   content: "\2303";
@@ -3520,8 +3531,7 @@ html {
   margin: 0;
 }
 .read-more-title {
-  margin-top: 40px;
-  font-size: 28px;
+  font-size: 58px;
   text-align: center;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
@@ -3624,7 +3634,9 @@ span.typewrap4:before {
 span.typewrap5:before {
   content:'I Gain '
 }
-
+.j-fourth .j-transform {
+  margin-top: -34px;
+}
 .close-preorder {
   cursor: pointer;
   color: #2e2e2e;
@@ -3641,7 +3653,7 @@ span.typewrap5:before {
   color: #c1c1c1;
   text-align: center;
   font-family: 'Josefin Sans';
-  margin-top: 12px;
+  margin-top: 40px;
   font-size: 22px;
 }
 
@@ -3649,7 +3661,7 @@ span.typewrap5:before {
   max-width: 600px;
   color: #c1c1c1;
   text-align: center;
-  margin: 36px auto;
+  margin: 46px auto;
   font-size: 18px;
 }
 
@@ -3675,7 +3687,7 @@ span.typewrap5:before {
   font-size: 58px;
   font-weight: 700;
   text-align: center;
-  padding-top: 80px;
+  margin-top: 80px;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-image: linear-gradient(#ee091c,#850b90);
@@ -3696,6 +3708,7 @@ span.typewrap5:before {
   width: 50%;
   padding: 12px 20px;
   COLOR: #470006;
+  font-size: 20px;
 }
 
 .show-me-item:before {
@@ -3707,10 +3720,10 @@ span.typewrap5:before {
   margin-left: -28px;
   margin-top: 5px;
 }
-.hello-list-item.h-second {margin-top: 30px;}
+.hello-list-item.h-second {margin-top: 80px;}
 
 .hello-list-item.h-third {
-    margin-top: 60px;
+    margin-top: 160px;
 }
 
 input.bottom-section-form-name {
@@ -3722,6 +3735,7 @@ form#bottom-opt-form {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  margin-bottom: 25vh;
 }
 input.bottom-section-form-name:focus {
   border-color: #b2222c;
@@ -3764,3 +3778,11 @@ div#shows-me-container {
   background: #fff;
 }
 
+.vid-section-cta {
+  color: #fff;
+  font-family: Josefin Sans;
+  font-size: 2.1rem;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  text-align: center;
+}

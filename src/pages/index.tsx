@@ -2864,7 +2864,7 @@
   <div class='show-me-title'>What's Inside?</div>
   <div id='minibook-container' class={`mbb${minibook}`}>
     <div class='minibook-container'>
-
+    <div class='mb-left-arrow'></div>
     <div class='mb-left-section'>
     <div onClick={setMinibook1} class='mb-cont mb1'>
       <div class='mb-title'>Offense Wins Championships</div>
@@ -2973,6 +2973,7 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
       </div>
     </div>
     </div>
+    <div class='mb-right-arrow'></div>
     </div>
   </div>
   <div id='book-container'>

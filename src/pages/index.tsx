@@ -2042,7 +2042,7 @@
         setArchtypeClick(true)
       }
       const goRight = () => {
-        if (minibook===8) {
+        if (minibook===7) {
           setMinibook(1)
         } else {
           setMinibook(minibook + 1)
@@ -2051,7 +2051,7 @@
       }
       const goLeft = () => {
         if (minibook===1) {
-          setMinibook(8)
+          setMinibook(7)
         } else {
           setMinibook(minibook - 1)
         }
@@ -2953,7 +2953,7 @@ I’m going to show you how to get out from their control by understanding the T
     <div class='mb-right-section'>
       <div class='mb-content mb4'>
       <div class='mb-content-pretitle'>Mini Book #4</div>
-      <div class='mb-content-title'>Mini Book #4 Enter God’s Economy</div>
+      <div class='mb-content-title'>Enter God’s Economy</div>
       <div class='mb-content-posttitle'>Get IN God’s Economy</div>
       <div class='mb-content-content'>There are two economies, one with God and one without God. Which one are you in? If God is the Creator, He is the Original Entrepreneur. If you understand God’s Economy, you were created to co-create with Him. He is your Good Dad, raising you by His side to learn His creative ways and redemptive solutions. However, you have a Bad Dad, too. Your Bad Dad seeks to turn you away from your calling to co-create with Good Dad. His goal is to prompt you to reject your God-given story, which your Good Dad wrote about you in the Best Selling Book of All Time. God’s Word. By entering God’s Economy, you are co-creating with Good Dad, by “Putting God Back into the Equation of Making Money”. This is not about the revenue you make but the relationship you make with the Almighty as you pursue the Almighty dollar. God’s Economy is a call to “Bring Life Back to Work and Work Back to Life”. Discover the myths and misunderstandings about God and Money in Mini Book #4 God’s Economy! Where could you go if you entered God’s Economy?</div>
       </div>
@@ -2991,8 +2991,9 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
     <div onClick={goRight} class='mb-right-arrow'></div>
     </div>
   </div>
+  <div class="book-spine"></div>
   <div id='book-container'>
-    <div class="book-spine"></div>
+
     <div class="book-heading">Pre-Order PK’s Book Today</div>
     <div class="book-subheading">Read Chapter 1 Before PK’s Book Even Hits the Shelves!</div>
     <div class="book-maintext">Get access to the first chapter of PK’s upcoming book Revival of Revenue for free today! Don’t do life the hard way. Don’t do business alone. Start your Entrepreneurial Journey with PK on page 1 today!</div>

@@ -2554,6 +2554,145 @@
 {isBrowser && (<Suspense fallback={<div></div>}>
 				<SayHelloList />
 </Suspense>)}
+<div class='archtype-title'>I Need a Revival of Revenue Because…</div>
+  <div id='archetype-container' class={`acc${archetype}`}>
+    <div onClick={setArchtype1} class='arch-cont ac1'>
+      <div class='arch-title'></div>
+
+      <div class='arch-text'>I work for myself. I “eat what I kill” and I need help growing my current business or starting a new business in this post-pandemic economy. I’m always looking for new ways to make money, new entrepreneurial opportunities, and new business networks. It’s lonely working alone, and <strong>I’m ready to build my business beyond me.</strong> I’m tired of working in my business, and I’m ready to work on my business.</div>
+ 
+    </div>
+    <div onClick={setArchtype2} class='arch-cont ac2'>
+      <div class='arch-title'></div>
+
+      <div class='arch-text'> I resigned from my job, I’m investing in myself, and <strong>I’m ready to turn my business ideas into business income.</strong> I just need to know how. I believe in freedom to live, freedom to think, freedom speak, freedom to create, and freedom to profit in America and around the world!</div>
+
+    </div>
+    <div onClick={setArchtype3} class='arch-cont ac3'>
+      <div class='arch-title'></div>
+
+      <div class='arch-text'>I’m a 28 year old millennial working a job I don’t like for a company I don’t care about. <strong>I’m building a side hustle</strong> to overcome student debt, escape the corporate trap, and achieve financial independence in 3 years.</div>
+
+    </div>
+    <div onClick={setArchtype4} class='arch-cont ac4'>
+      <div class='arch-title'></div>
+
+      <div class='arch-text'>I’m a 44 year old executive working late most nights, raising a family, and <strong>saving money to start a business</strong> so I can leave my job where I’m overworked and under appreciated.</div>
+
+    </div>
+    <div onClick={setArchtype5} class='arch-cont ac5'>
+      <div class='arch-title'></div>
+
+      <div class='arch-text'> I’m a stay-at-home parent raising kids, starting my own business, and married to my partner who earns steady income from a full-time job. <strong>We just need to survive and get ahead financially together.</strong></div>
+
+    </div>
+    <div onClick={setArchtype6} class='arch-cont ac6'>
+      <div class='arch-title'></div>
+
+      <div class='arch-text'>I’m retired from the military, or retired in general, and I’m living on steady income from my pension or social security funds. <strong>I’m ready to turn my passions into profits by investing in my own business.</strong></div>
+
+    </div>
+    <div onClick={setArchtype7} class='arch-cont ac7'>
+      <div class='arch-title'></div>
+
+      <div class='arch-text'>I’m just a pastor trying to minister in the non-profit world and <strong>I’m open to making more money in the for-profit world</strong> to take care of my ministry and my family.</div>
+
+    </div>
+    <div onClick={setArchtype8} class='arch-cont ac8'>
+      <div class='arch-title'></div>
+
+      <div class='arch-text'>I’m a minimalist who loves to travel. <strong>I focus on how to run my business virtually, and how to build my business on the go.</strong> I value experiences first, and running my own company gives me this freedom to be mobile.</div>
+
+    </div>
+  </div>  
+
+  <div id='jounrey-list-container'>
+    <div class="journey-item j-first">
+        <div class="j-text">
+            <div class="j-heading">My Entrepreneurial</div>
+             <div class="j-subheading">Lifestyle</div>
+              <div class="j-transform"><Typewriter
+    options={{
+      strings: ['Creative Work', 'Work-life Satisfaction', 'Flexible Workdays', 'Meaningful Work', 'Constant Learning' , 'Freedom to Travel' ,'Remote Work' ,'Personal Growth' ,'Social Networking'],
+      autoStart: true,
+      wrapperClassName: 'typewrap1',
+      loop: true,
+    }}
+  /></div>
+        </div>   
+        <div class="j-image-cont">
+        <div class="j-image"></div>
+        </div>  
+    </div>
+    <div class="journey-item j-second">
+        <div class="j-text">
+            <div class="j-heading">My Entrepreneurial</div>
+             <div class="j-subheading">Mindset</div>
+             <div class="j-transform"><Typewriter
+  options={{
+    strings: ['Invest in Myself', 'Work for No Boss', 'Fill an Unmet Need', 'Do the Job Better', 'Produce at My Pace' , 'Find Purpose' ,'Beat the Odds' ,'Think Innovatively' ,'Prioritize Profitability','Capitalize On Opportunities'],
+    autoStart: true,
+    wrapperClassName: 'typewrap2',
+    loop: true,
+  }}
+/></div>
+        </div>   
+        <div class="j-image-cont">
+          <div class="j-image"></div>
+          </div>  
+    </div>
+    <div class="journey-item j-third">
+        <div class="j-text">
+            <div class="j-heading">My Entrepreneurial</div>
+             <div class="j-subheading">Journey</div>
+             <div class="j-transform"><Typewriter
+    options={{
+      strings: ['Adapt to Change', 'Overcome Obstacles', 'Delete Distractions', 'Acquire Skill Sets', 'Crush Fear of Failure' , 'Revalue My Time' ,'Conquer Self-Doubt' ,'Kill Procrastination'],
+      autoStart: true,
+      wrapperClassName: 'typewrap3',
+      loop: true,
+    }}
+  /></div>
+        </div>   
+        <div class="j-image-cont">
+          <div class="j-image"></div>
+          </div>  
+    </div>
+    <div class="journey-item j-fourth">
+        <div class="j-text">
+            <div class="j-heading">My Entrepreneurial</div>
+             <div class="j-subheading">Risk</div>
+             <div class="j-transform"><Typewriter
+    options={{
+      strings: ['Failure', 'Monetary Loss', 'Financial Liabilities', 'Regulatory Errors', 'Political Mandates' , 'Economic Meltdowns' ,'Business Competition' ,'Reputational Injury'],
+      autoStart: true,
+      wrapperClassName: 'typewrap4',
+      loop: true,
+    }}
+  /></div>
+        </div>   
+        <div class="j-image-cont">
+          <div class="j-image"></div>
+          </div>  
+    </div>
+    <div class="journey-item j-fifth">
+        <div class="j-text">
+            <div class="j-heading">My Entrepreneurial</div>
+             <div class="j-subheading">Reward</div>
+             <div class="j-transform"><Typewriter
+    options={{
+      strings: ['Personal Achievements', 'Financial Independence', 'New Relationships', 'Opportunities to Help People', 'Changing the World' , 'Generational Wealth' ,'Economic Freedom' ,'Tax Write Offs'],
+      autoStart: true,
+      wrapperClassName: 'typewrap5',
+      loop: true,
+    }}
+  /></div>
+        </div>   
+        <div class="j-image-cont">
+          <div class="j-image"></div>
+          </div>  
+    </div>
+  </div>
 {/* 
 
   <div id='say-hello-list-container'>
@@ -2673,96 +2812,12 @@
     
   </div>
 </div>
-  <div id='jounrey-list-container'>
-    <div class="journey-item j-first">
-        <div class="j-text">
-            <div class="j-heading">My Entrepreneurial</div>
-             <div class="j-subheading">Lifestyle</div>
-              <div class="j-transform"><Typewriter
-    options={{
-      strings: ['Creative Work', 'Work-life Satisfaction', 'Flexible Workdays', 'Meaningful Work', 'Constant Learning' , 'Freedom to Travel' ,'Remote Work' ,'Personal Growth' ,'Social Networking'],
-      autoStart: true,
-      wrapperClassName: 'typewrap1',
-      loop: true,
-    }}
-  /></div>
-        </div>   
-        <div class="j-image-cont">
-        <div class="j-image"></div>
-        </div>  
-    </div>
-    <div class="journey-item j-second">
-        <div class="j-text">
-            <div class="j-heading">My Entrepreneurial</div>
-             <div class="j-subheading">Mindset</div>
-             <div class="j-transform"><Typewriter
-  options={{
-    strings: ['Invest in Myself', 'Work for No Boss', 'Fill an Unmet Need', 'Do the Job Better', 'Produce at My Pace' , 'Find Purpose' ,'Beat the Odds' ,'Think Innovatively' ,'Prioritize Profitability','Capitalize On Opportunities'],
-    autoStart: true,
-    wrapperClassName: 'typewrap2',
-    loop: true,
-  }}
-/></div>
-        </div>   
-        <div class="j-image-cont">
-          <div class="j-image"></div>
-          </div>  
-    </div>
-    <div class="journey-item j-third">
-        <div class="j-text">
-            <div class="j-heading">My Entrepreneurial</div>
-             <div class="j-subheading">Journey</div>
-             <div class="j-transform"><Typewriter
-    options={{
-      strings: ['Adapt to Change', 'Overcome Obstacles', 'Delete Distractions', 'Acquire Skill Sets', 'Crush Fear of Failure' , 'Revalue My Time' ,'Conquer Self-Doubt' ,'Kill Procrastination'],
-      autoStart: true,
-      wrapperClassName: 'typewrap3',
-      loop: true,
-    }}
-  /></div>
-        </div>   
-        <div class="j-image-cont">
-          <div class="j-image"></div>
-          </div>  
-    </div>
-    <div class="journey-item j-fourth">
-        <div class="j-text">
-            <div class="j-heading">My Entrepreneurial</div>
-             <div class="j-subheading">Risk</div>
-             <div class="j-transform"><Typewriter
-    options={{
-      strings: ['Failure', 'Monetary Loss', 'Financial Liabilities', 'Regulatory Errors', 'Political Mandates' , 'Economic Meltdowns' ,'Business Competition' ,'Reputational Injury'],
-      autoStart: true,
-      wrapperClassName: 'typewrap4',
-      loop: true,
-    }}
-  /></div>
-        </div>   
-        <div class="j-image-cont">
-          <div class="j-image"></div>
-          </div>  
-    </div>
-    <div class="journey-item j-fifth">
-        <div class="j-text">
-            <div class="j-heading">My Entrepreneurial</div>
-             <div class="j-subheading">Reward</div>
-             <div class="j-transform"><Typewriter
-    options={{
-      strings: ['Personal Achievements', 'Financial Independence', 'New Relationships', 'Opportunities to Help People', 'Changing the World' , 'Generational Wealth' ,'Economic Freedom' ,'Tax Write Offs'],
-      autoStart: true,
-      wrapperClassName: 'typewrap5',
-      loop: true,
-    }}
-  /></div>
-        </div>   
-        <div class="j-image-cont">
-          <div class="j-image"></div>
-          </div>  
-    </div>
-  </div>
 
+  {isBrowser && (<Suspense fallback={<div></div>}>
+				<CompareList />
+</Suspense>)}
 
-  <div class="y-container">
+<div class="y-container">
     <div class='y-content-container'>
     <div class="y-heading">Why I wrote this book?</div>
     <div class="y-cont">
@@ -2779,14 +2834,6 @@
     </div>
     </div>
  
-
-
-
-
-
-  {isBrowser && (<Suspense fallback={<div></div>}>
-				<CompareList />
-</Suspense>)}
   {/* <div id='compare-container'>
     <div class='compare-title-container'>
         <div class="compare-title-1">My Life <span>Today</span></div>
@@ -2809,74 +2856,8 @@
         </div>
     </div>
   </div>   */}
-<div id='shows-me-container'>
-  <div class='show-me-title'>This Book Shows Me…</div>
-  <div class='show-me-grid'>
-    <div class="show-me-item">How to Begin My Entrepreneurial Journey on Day 1</div>
-    <div class="show-me-item">How to Go-to-Market By Following a 25-Step Entrepreneurial Journey</div>
-    <div class="show-me-item">How to Generate Multiple Revenue Streams (Mini Book 1: Offense Wins Championships)</div>
-    <div class="show-me-item">How to Increase Revenue from Each Source (Mini Book 2: Maximum Wage)</div>
-    <div class="show-me-item">How to go from minimum wage to “Maximum Wage” in 365 days</div>
-    <div class="show-me-item">Turn your ideas into income on a budget</div>
-    <div class="show-me-item">Turn your passions into profits with a predictable model!</div>
-    <div class="show-me-item">Create your own economy with a clearly defined life plan</div>
-  </div>
-  <div onClick={preReveal} class="y-preorderbtn">Preorder My Copy Now!</div>
-</div>
 
-  <div class='archtype-title'>I Need a Revival of Revenue Because…</div>
-  <div id='archetype-container' class={`acc${archetype}`}>
-    <div onClick={setArchtype1} class='arch-cont ac1'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'>I work for myself. I “eat what I kill” and I need help growing my current business or starting a new business in this post-pandemic economy. I’m always looking for new ways to make money, new entrepreneurial opportunities, and new business networks. It’s lonely working alone, and <strong>I’m ready to build my business beyond me.</strong> I’m tired of working in my business, and I’m ready to work on my business.</div>
- 
-    </div>
-    <div onClick={setArchtype2} class='arch-cont ac2'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'> I resigned from my job, I’m investing in myself, and <strong>I’m ready to turn my business ideas into business income.</strong> I just need to know how. I believe in freedom to live, freedom to think, freedom speak, freedom to create, and freedom to profit in America and around the world!</div>
-
-    </div>
-    <div onClick={setArchtype3} class='arch-cont ac3'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'>I’m a 28 year old millennial working a job I don’t like for a company I don’t care about. <strong>I’m building a side hustle</strong> to overcome student debt, escape the corporate trap, and achieve financial independence in 3 years.</div>
-
-    </div>
-    <div onClick={setArchtype4} class='arch-cont ac4'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'>I’m a 44 year old executive working late most nights, raising a family, and <strong>saving money to start a business</strong> so I can leave my job where I’m overworked and under appreciated.</div>
-
-    </div>
-    <div onClick={setArchtype5} class='arch-cont ac5'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'> I’m a stay-at-home parent raising kids, starting my own business, and married to my partner who earns steady income from a full-time job. <strong>We just need to survive and get ahead financially together.</strong></div>
-
-    </div>
-    <div onClick={setArchtype6} class='arch-cont ac6'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'>I’m retired from the military, or retired in general, and I’m living on steady income from my pension or social security funds. <strong>I’m ready to turn my passions into profits by investing in my own business.</strong></div>
-
-    </div>
-    <div onClick={setArchtype7} class='arch-cont ac7'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'>I’m just a pastor trying to minister in the non-profit world and <strong>I’m open to making more money in the for-profit world</strong> to take care of my ministry and my family.</div>
-
-    </div>
-    <div onClick={setArchtype8} class='arch-cont ac8'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'>I’m a minimalist who loves to travel. <strong>I focus on how to run my business virtually, and how to build my business on the go.</strong> I value experiences first, and running my own company gives me this freedom to be mobile.</div>
-
-    </div>
-  </div>    
-
-  <div class='show-me-title'>What's Inside?</div>
+<div class='show-me-title'>What's Inside?</div>
   <div id='minibook-container' class={`mbb${minibook}`}>
     <div class='minibook-container'>
     <div onClick={goLeft} class='mb-left-arrow'></div>
@@ -2991,6 +2972,25 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
     <div onClick={goRight} class='mb-right-arrow'></div>
     </div>
   </div>
+
+
+<div id='shows-me-container'>
+  <div class='show-me-title'>This Book Shows Me…</div>
+  <div class='show-me-grid'>
+    <div class="show-me-item">How to Begin My Entrepreneurial Journey on Day 1</div>
+    <div class="show-me-item">How to Go-to-Market By Following a 25-Step Entrepreneurial Journey</div>
+    <div class="show-me-item">How to Generate Multiple Revenue Streams (Mini Book 1: Offense Wins Championships)</div>
+    <div class="show-me-item">How to Increase Revenue from Each Source (Mini Book 2: Maximum Wage)</div>
+    <div class="show-me-item">How to go from minimum wage to “Maximum Wage” in 365 days</div>
+    <div class="show-me-item">Turn your ideas into income on a budget</div>
+    <div class="show-me-item">Turn your passions into profits with a predictable model!</div>
+    <div class="show-me-item">Create your own economy with a clearly defined life plan</div>
+  </div>
+  <div onClick={preReveal} class="y-preorderbtn">Preorder My Copy Now!</div>
+</div>
+
+  
+
   <div class="book-spine"></div>
   <div id='book-container'>
 

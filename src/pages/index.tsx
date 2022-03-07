@@ -2895,6 +2895,8 @@ useEffect(() => {
     </div>
   </div>   */}
 
+<div class='minib-r-cont'>
+
 <div class='show-me-title'>WHAT'S INSIDE <span>REVIVAL OF REVENUE?</span></div>
   <div id='minibook-container' class={`mbb${minibook}`}>
     <div class='minibook-container'>
@@ -3009,6 +3011,8 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
     </div>
     <div onClick={goRight} class='mb-right-arrow'></div>
     </div>
+  </div>
+
   </div>
 
 

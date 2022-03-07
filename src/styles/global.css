@@ -2520,9 +2520,9 @@
   }
 
   .compare-title-1 {
-    font-size: 38px;
+    font-size: 80px;
     font-family: Josefin Sans;
-    width: 300px;
+    width: 100%;
     color: #e00a2d;
     text-align: end;
     margin-right: 5%;
@@ -2532,9 +2532,9 @@
   }
 
   .compare-title-2 {
-    font-size: 38px;
+    font-size: 80px;
     font-family: Josefin Sans;
-    width: 300px;
+    width: 100%;
     color: #320ce3;
     margin-left: 5%;
     -webkit-text-fill-color: transparent;
@@ -2544,15 +2544,18 @@
 
   .compare-title-1 > span {
     display: block;
-    font-size: 58px;
+    font-size: 34px;
     font-weight: bold;
-    
+    padding-right: 4px;
+    margin-top: -25px;
   }
 
   .compare-title-2 > span {
     display: block;
-    font-size: 58px;
+    font-size: 34px;
     font-weight: bold;
+    padding-right: 4px;
+    margin-top: -25px;  
   }
   .compare-today-subtext {
     opacity: 0;
@@ -3877,7 +3880,7 @@ div#shows-me-container {
   position: sticky;
     top: 50%;
     transform: translate(0, -50%);
-    margin-bottom: -80px;
+    margin-bottom: -50px;
     margin-top: 50vh;
 }
 .book-section .book
@@ -3950,7 +3953,7 @@ div#shows-me-container {
 }
 
 
-.compare-tomorrow-subtext:after {
+.compare-tomorrow-subtext:before {
   content: '';
   background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='198' height='198'%3E%3Ccircle fill='%23e00a2d' cx='99' cy='99' r='75'/%3E%3C/svg%3E");
   width: 12px;
@@ -3961,3 +3964,29 @@ div#shows-me-container {
   position: absolute;
 }
 
+.vid-section-cta span {
+  font-style: italic;
+  margin-left: 4px;
+  margin-right: 8px;
+}
+
+.y-heading span {
+  font-style: italic;
+}
+
+.compare-title-1>span>span {
+  font-style: italic;
+
+}
+
+.compare-title-2>span>span {
+  font-style: italic;
+}
+
+.show-me-title span {
+  font-style: italic;
+}
+
+.minib-r-cont {
+  background: #fff;
+}

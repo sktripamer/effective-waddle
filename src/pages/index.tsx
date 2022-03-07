@@ -1887,7 +1887,10 @@
                 <div class='preorder-book-section'>
                    <div class='preorder-book-cont'>
                 <div class='preorder-book-picture'></div>
+                <div class='preorder-book-price-cont'>
+                <div class='preorder-book-oldprice'>$50</div>
                 <div class='preorder-book-price'>$50</div>
+                </div>
                 </div>
                 <div class='preorder-cont-section'>
                 <h4 className="mb-2">Your <strong>Revival of Revenue</strong> Begins Now</h4>

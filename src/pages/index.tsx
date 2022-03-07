@@ -2107,6 +2107,7 @@
 
   const [scrollPosition, setScrollPosition] = useState(180);
 const handleScroll = () => {
+  console.log('scrolled')
   let elScrollPos = document.querySelector('.book-section-cont').getBoundingClientRect().top;
   let vwport = window.screen.availHeight * .95;
      if (elScrollPos <= 0) {
@@ -2122,10 +2123,10 @@ const handleScroll = () => {
 };
 
 useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
+  document.querySelector('.main-main').addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-        window.removeEventListener('scroll', handleScroll);
+      document.querySelector('.main-main').removeEventListener('scroll', handleScroll);
     };
 }, []);
 

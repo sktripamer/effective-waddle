@@ -3876,6 +3876,8 @@ div#shows-me-container {
   position: sticky;
     top: 50%;
     transform: translate(0, -50%);
+    margin-bottom: -100px;
+    margin-top: 50vh;
 }
 .book-section .book
 {
@@ -3934,7 +3936,6 @@ div#shows-me-container {
 
 .book-section-cont {
   height: 200vh;
-  margin-top: 50vh;
   display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -4,9 +4,9 @@ export default function CompareList() {
   return (
     <div id='compare-container'>
     <div class='compare-title-container'>
-        <div class="compare-title-1">My Life <span>Today</span></div>
+        <div class="compare-title-1">BEFORE <span>MY REVIVAL OF REVENUE</span></div>
         <div class="compare-title-vs">VS</div>
-        <div class="compare-title-2">My Life <span>Tomorrow</span></div>
+        <div class="compare-title-2">AFTER <span>MY REVIVAL OF REVENUE</span></div>
     </div>
 
     <div class='compare-text-container'>
@@ -18,7 +18,7 @@ export default function CompareList() {
             <div class="compare-today-subtext">Living On One Income Source</div>
             <div class="compare-today-subtext">Working Everyday for Money</div>
             <div class="compare-today-subtext">Losing Under the Laws of Addition</div>
-            <div class="compare-today-subtext">Only Cutting Expenses to “Make Money”</div>
+            <div class="compare-today-subtext">Only Cutting Expenses to “Make Money”</div>  
             <div class="compare-today-subtext">Settling for a Stagnant Career</div>
             <div class="compare-today-subtext">Renting Your Time to Your Employer</div>
             <div class="compare-today-subtext">Doing the Same Work Everyday</div>

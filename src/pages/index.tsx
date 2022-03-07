@@ -1895,7 +1895,7 @@
                 </div>
                 </div>
                 <div class='preorder-cont-section'>
-                <h3 className="mb-222">PREORDER YOUR COPY TODAY</h3>
+                <div className="mb-222">PREORDER YOUR COPY TODAY</div>
                 <h4 className="mb-2">Your <strong>Revival of Revenue</strong> Begins Now</h4>
 
               <div className='pay-section'>

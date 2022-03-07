@@ -2119,7 +2119,7 @@ const handleScroll = () => {
       }
   
      } else {
-      setScrollPosition(180)
+      setScrollPosition(23)
       setShadowPosition(20)
      }
 };

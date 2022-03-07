@@ -913,7 +913,7 @@
           card: elements.getElement(CardElement),
           billing_details: {
             name:  form['firstname'].value,
-            email: form['fullname'].value,
+            email: form['email'].value,
           }
         },
       
@@ -954,7 +954,7 @@
         <div className='powered-by-stripe'></div>
         </div>
         <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
-        <InputField2 label={'fullname'} name={'fullname'}/>
+        <InputField2 label={'email'} name={'email'}/>
         <CardElement
           id="card-element"
           options={cardStyle}
@@ -1439,7 +1439,7 @@
             const form = nameForm.current
             const request = await fetch('/api/user-exists', {
               method: 'POST',
-              body: form['fullname'].value,
+              body: form['email'].value,
             });
             const intent = (await request.json());
             if (intent === false) {
@@ -1453,7 +1453,7 @@
             try {
               const request2 = await fetch('/api/create-intent-noacc', {
                 method: 'POST',
-                body: form['fullname'].value,
+                body: form['email'].value,
               });
               const intent2 = (await request2.json());
               return intent2;
@@ -1545,7 +1545,7 @@
               card: elements.getElement(CardElement),
               billing_details: {
                 name:  form['firstname'].value,
-                email: form['fullname'].value,
+                email: form['email'].value,
               }
             },
           
@@ -1566,7 +1566,7 @@
                   token: JSON.parse(localStorage.auth).authToken,
                   shippingaddress1: form['ship-address1'].value,
                   shippingaddress2: form['ship-address2'].value,
-                  accountemail: form['fullname'].value,
+                  accountemail: form['email'].value,
                   shippingname: form['name'].value,
                   shippingcity: form['ship-city'].value,
                   shippingstate: form['ship-state'].value,
@@ -1582,7 +1582,7 @@
                 let ex = {
                   shippingaddress1: form['ship-address1'].value,
                   shippingaddress2: form['ship-address2'].value,
-                  accountemail: form['fullname'].value,
+                  accountemail: form['email'].value,
                   shippingname: form['name'].value,
                   shippingcity: form['ship-city'].value,
                   shippingstate: form['ship-state'].value,
@@ -1796,7 +1796,7 @@
       <div className={`step-one-pay ${stepCount}`}>
         <div class="name-email-group">
       <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
-      <InputField2 label={'fullname'} name={'fullname'}/>
+      <InputField2 label={'email'} name={'email'}/>
       </div>
       <CardElement
         id="card-element"

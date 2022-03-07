@@ -2559,10 +2559,11 @@ useEffect(() => {
 			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg"></img>
 		</div>
 	</div>
-</div>
-    <div class="vid-section-cta">Begin your Revival of Revenue today!</div>
+  <div class="vid-section-cta">Begin your Revival of Revenue today!</div>
 
     <div onClick={preReveal} class="y-preorderbtn">Pre-Order My Copy Now!</div>
+</div>
+    
 
 </div>
 {/*  

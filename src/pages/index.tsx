@@ -2565,7 +2565,7 @@ useEffect(() => {
     </div>
     <div class="book-section-cont">
     <div class="book-section">
-		<div style={`transform: rotateY(${scrollPosition}deg);`} class="book">
+		<div style={{transform: `rotateY(${scrollPosition}deg`}} class="book"> 
 			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg"></img>
 		</div>
 	</div>

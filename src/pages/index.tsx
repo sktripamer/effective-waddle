@@ -1794,8 +1794,10 @@
     return (
       <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
       <div className={`step-one-pay ${stepCount}`}>
+        <div class="name-email-group">
       <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
       <InputField2 label={'fullname'} name={'fullname'}/>
+      </div>
       <CardElement
         id="card-element"
         options={cardStyle}
@@ -1893,13 +1895,9 @@
                 </div>
                 </div>
                 <div class='preorder-cont-section'>
+                <h4 className="mb-222">PREORDER YOUR COPY TODAY</h4>
                 <h4 className="mb-2">Your <strong>Revival of Revenue</strong> Begins Now</h4>
-                <ul>
-              <li>Read the first chapter now</li>
-              <li>Get your book in hardback</li>
-              <li>Get early access to the final book</li>
-              <li>Support Patrick's cause</li>
-              </ul>
+
               <div className='pay-section'>
         <div className={`selection-section ${stepCount} ${noCard}`}>
         <div onClick={(e) => radioHandler(0)} className={'previous-payment ' + status}>

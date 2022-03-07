@@ -2569,7 +2569,7 @@ useEffect(() => {
     <div class="book-section-cont">
     <div class="book-section">
     
-		<div style={Object.assign({transform: `rotateY(${scrollPosition}deg` }, {boxShadow: `${shadowPosition}px 20px 20px rgb(0 0 0 / 20%)`})} class="book"> 
+		<div style={Object.assign({transform: `rotateY(${scrollPosition}deg)` }, {boxShadow: `20px 20px 20px rgb(0 0 0 / ${shadowPosition}%)`})} class="book"> 
 			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg"></img>
 		</div>
 	</div>

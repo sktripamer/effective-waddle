@@ -2150,7 +2150,7 @@
   }
 
   .j-heading {
-    font-size: 4.2vw;
+    font-size: 3.3vw;
     font-family: Josefin Sans;
     white-space: nowrap;
     color: #320ce3;
@@ -2162,7 +2162,7 @@
     background-image: linear-gradient(#320ce3,#ed2092);
   }
   .j-first .j-subheading {
-    font-size: 9.7vw;
+    font-size: 8.7vw;
     font-family: Josefin Sans;
     white-space: nowrap;
     line-height: 11vw;
@@ -2170,14 +2170,14 @@
   }
   .j-second .j-subheading {
     font-family: Josefin Sans;
-    font-size: 10.4vw;
+    font-size: 9.15vw;
     line-height: 10vw;
     margin-left: -0.4vw;
   }
 
   .j-third .j-subheading {
     font-family: Josefin Sans;
-    font-size: 10.7vw;
+    font-size: 9.5vw;
     line-height: 10vw;
   }
 
@@ -2251,9 +2251,7 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
-  .j-first .j-image {
-    background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/17.svg);
-}
+
   .journey-item:nth-of-type(2n) {
     flex-direction: row-reverse;
   }
@@ -2838,7 +2836,7 @@
     margin: 0 auto;
     background: #fff;
     padding-top: 80px;
-    padding-bottom: 10px;
+    padding-bottom: 80px;
   }
 
 
@@ -2859,7 +2857,6 @@
   }
   .arch-cont:before {
     content: '';
-    background: url(https://portal.revrevdev.xyz/wp-content/uploads/man.jpg);
       position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
@@ -2867,6 +2864,54 @@
     background-size: cover;
     filter: grayscale(100%);
   }
+
+  .arch-cont.ac1:before {
+    background: url(https://portal.revrevdev.xyz/wp-content/uploads/self.jpeg);
+    background-position: 50%;
+    background-size: cover;
+}
+.arch-cont.ac2:before {
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/resigned.jpeg);
+  background-position: 50%;
+  background-size: cover;
+}
+
+.arch-cont.ac3:before {
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/millenial.jpeg);
+  background-position: 50%;
+  background-size: cover;
+}
+
+.arch-cont.ac4:before {
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/executive.jpeg);
+  background-position: 50%;
+  background-size: cover;
+}
+
+.arch-cont.ac5:before {
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/parent.jpeg);
+  background-position: 50%;
+  background-size: cover;
+}
+
+.arch-cont.ac6:before {
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/retired.jpeg);
+  background-position: 50%;
+  background-size: cover;
+}
+
+.arch-cont.ac7:before {
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/ministry.jpeg);
+  background-position: 50%;
+  background-size: cover;
+}
+
+.arch-cont.ac8:before {
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/nomad.jpeg);
+  background-position: 50%;
+  background-size: cover;
+}
+
 
   .acc1 .arch-cont.ac1 {
     width: 40%;
@@ -3789,14 +3834,14 @@ input.bottom-section-form-name:focus {
 
 
 .j-first .j-image {
-  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/17.svg);
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/lifestyle.png);
 }
 
 .j-second .j-image {
-  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/51.svg);
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/mindset.png);
 }
 .j-third .j-image {
-  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/97.svg);
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/journey.png);
 }
 .j-fourth .j-image {
   background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/114.svg);
@@ -3989,4 +4034,5 @@ div#shows-me-container {
 
 .minib-r-cont {
   background: #fff;
+  padding-top: 10px;
 }

@@ -4,9 +4,9 @@ export default function CompareList() {
   return (
     <div id='compare-container'>
     <div class='compare-title-container'>
-        <div class="compare-title-1">BEFORE <span>MY REVIVAL OF REVENUE</span></div>
+        <div class="compare-title-1">BEFORE <span>MY <span>REVIVAL OF REVENUE</span></span></div>
         <div class="compare-title-vs">VS</div>
-        <div class="compare-title-2">AFTER <span>MY REVIVAL OF REVENUE</span></div>
+        <div class="compare-title-2">AFTER <span>MY <span>REVIVAL OF REVENUE</span></span></div>
     </div>
 
     <div class='compare-text-container'>

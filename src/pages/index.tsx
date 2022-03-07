@@ -1888,7 +1888,7 @@
                    <div class='preorder-book-cont'>
                 <div class='preorder-book-picture'></div>
                 <div class='preorder-book-price-cont'>
-                <div class='preorder-book-oldprice'>$50</div>
+                <div class='preorder-book-oldprice'>$80</div>
                 <div class='preorder-book-price'>$50</div>
                 </div>
                 </div>

@@ -3752,9 +3752,18 @@ span.typewrap5:before {
   margin: 46px auto;
   font-size: 18px;
 }
-
+.preorder-btn-container h4.mb-222 {
+  color: #fff;
+  display: initial;
+  font-size: 40px;
+  font-family: Josefin Sans;
+  font-style: normal;
+  text-shadow: none;
+  text-transform: uppercase;
+}
 .preorder-cont-section {
   width: 60%;
+  margin-right: 28px;
 }
 .archtype-title {
   color: #fc1d36;
@@ -4081,4 +4090,22 @@ div#shows-me-container {
   line-height: 96px;
   margin-top: -30px;
   padding-top: 7px;
+}
+
+.name-email-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.preorder-btn-container #payment-form input.form-control.form-control {
+  width: 49%;
+}
+
+.name-email-group > div {
+  width: 49%;
+}
+
+.preorder-btn-container #payment-form .name-email-group > div > input.form-control.form-control {
+  width: 100%;
 }

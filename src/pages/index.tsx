@@ -2553,12 +2553,13 @@ useEffect(() => {
     </div>   
       
     </div>
-    <h2 className={`revival-of-revenue`}>Maximize, Monetize, &amp; Market <span>Your God-Given Gifts With PK</span></h2>
+    <div class="book-section-cont">
     <div class="book-section">
 		<div class="book">
 			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg"></img>
 		</div>
 	</div>
+</div>
     <div class="vid-section-cta">Begin your Revival of Revenue today!</div>
 
     <div onClick={preReveal} class="y-preorderbtn">Pre-Order My Copy Now!</div>

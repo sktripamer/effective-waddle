@@ -4098,7 +4098,7 @@ div#shows-me-container {
   justify-content: space-between;
 }
 
-.preorder-btn-container #payment-form input.form-control.form-control {
+.preorder-btn-container #payment-form  .name-email-group input.form-control.form-control {
   width: 49%;
 }
 

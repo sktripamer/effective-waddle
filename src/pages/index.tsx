@@ -2104,21 +2104,23 @@
       setPreorderButton(false)
       setPreorder(false)
   }
-
+  const [shadowPosition, setShadowPosition] = useState(20);
   const [scrollPosition, setScrollPosition] = useState(180);
 const handleScroll = () => {
-  console.log('scrolled')
   let elScrollPos = document.querySelector('.book-section-cont').getBoundingClientRect().top;
   let vwport = window.screen.availHeight * .95;
      if (elScrollPos <= 0) {
       if (Math.abs(elScrollPos) > vwport) {
         setScrollPosition(0)
+        setShadowPosition(20)
       } else {
         setScrollPosition( 180 -  (180 * (Math.abs(elScrollPos) / vwport)) )
+        setShadowPosition( Math.abs(20 -  (40 * (Math.abs(elScrollPos) / vwport))) )
       }
   
      } else {
       setScrollPosition(180)
+      setShadowPosition(20)
      }
 };
 
@@ -2566,7 +2568,8 @@ useEffect(() => {
     </div>
     <div class="book-section-cont">
     <div class="book-section">
-		<div style={{transform: `rotateY(${scrollPosition}deg`}} class="book"> 
+    
+		<div style={Object.assign({transform: `rotateY(${scrollPosition}deg` }, {boxShadow: `${shadowPosition}px 20px 20px rgb(0 0 0 / 20%)`})} class="book"> 
 			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg"></img>
 		</div>
 	</div>

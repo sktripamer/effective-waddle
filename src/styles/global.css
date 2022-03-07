@@ -3884,9 +3884,9 @@ div#shows-me-container {
   position: relative;
   transition: .5s;
   aspect-ratio: 177 / 283;
-  width: 30%;
-  min-width: 270px;
-  max-width: 800px;
+  max-height: 1200px;
+  height: 60vh;
+  min-height: 400px;
 }
 .book-section .book:hover
 {
@@ -3935,4 +3935,7 @@ div#shows-me-container {
 .book-section-cont {
   height: 200vh;
   margin-top: 50vh;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

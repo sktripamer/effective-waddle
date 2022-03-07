@@ -3024,7 +3024,6 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
     <div class="show-me-item">Turn your passions into profits with a predictable model!</div>
     <div class="show-me-item">Create your own economy with a clearly defined life plan</div>
   </div>
-  <div onClick={preReveal} class="y-preorderbtn">Preorder My Copy Now!</div>
 </div>
 
   

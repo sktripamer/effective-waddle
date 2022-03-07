@@ -2108,7 +2108,7 @@
   const [scrollPosition, setScrollPosition] = useState(180);
 const handleScroll = () => {
   let elScrollPos = document.querySelector('.book-section-cont').getBoundingClientRect().top;
-  let vwport = window.screen.availHeight * .95;
+  let vwport = window.screen.availHeight * .90;
      if (elScrollPos <= 0) {
       if (Math.abs(elScrollPos) > vwport) {
         setScrollPosition(0)

@@ -2105,10 +2105,20 @@
       setPreorder(false)
   }
 
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(180);
 const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
+  let elScrollPos = document.querySelector('.book-section-cont').getBoundingClientRect().top;
+  let vwport = window.screen.availHeight * .95;
+     if (elScrollPos <= 0) {
+      if (Math.abs(elScrollPos) > vwport) {
+        setScrollPosition(0)
+      } else {
+        setScrollPosition( 180 -  (180 * (Math.abs(elScrollPos) / vwport)) )
+      }
+  
+     } else {
+      setScrollPosition(180)
+     }
 };
 
 useEffect(() => {
@@ -2555,7 +2565,7 @@ useEffect(() => {
     </div>
     <div class="book-section-cont">
     <div class="book-section">
-		<div class="book">
+		<div style={`transform: rotateY(${scrollPosition}deg);`} class="book">
 			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg"></img>
 		</div>
 	</div>

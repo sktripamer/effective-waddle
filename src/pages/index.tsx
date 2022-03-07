@@ -2111,7 +2111,7 @@ const handleScroll = () => {
   let vwport = window.screen.availHeight * .90;
      if (elScrollPos <= 0) {
       if (Math.abs(elScrollPos) > vwport) {
-        setScrollPosition(0)
+        setScrollPosition(23)
         setShadowPosition(20)
       } else {
         setScrollPosition( 180 -  (157 * (Math.abs(elScrollPos) / vwport)) )
@@ -2119,7 +2119,7 @@ const handleScroll = () => {
       }
   
      } else {
-      setScrollPosition(23)
+      setScrollPosition(180)
       setShadowPosition(20)
      }
 };

@@ -2146,11 +2146,11 @@
 
 
   .j-text {
-    width: 40%;
+    width: 33%;
   }
 
   .j-heading {
-    font-size: 3.3vw;
+    font-size: 2.7vw;
     font-family: Josefin Sans;
     white-space: nowrap;
     color: #320ce3;
@@ -2162,7 +2162,7 @@
     background-image: linear-gradient(#320ce3,#ed2092);
   }
   .j-first .j-subheading {
-    font-size: 8.7vw;
+    font-size: 7.1vw;
     font-family: Josefin Sans;
     white-space: nowrap;
     line-height: 11vw;
@@ -2170,14 +2170,14 @@
   }
   .j-second .j-subheading {
     font-family: Josefin Sans;
-    font-size: 9.15vw;
+    font-size: 7.5vw;
     line-height: 10vw;
     margin-left: -0.4vw;
   }
 
   .j-third .j-subheading {
     font-family: Josefin Sans;
-    font-size: 9.5vw;
+    font-size: 7.8vw;
     line-height: 10vw;
   }
 
@@ -2256,7 +2256,7 @@
     flex-direction: row-reverse;
   }
   .j-image-cont {
-    width: 22%;
+    width: 40%;
   }
 
   .y-heading {
@@ -3306,8 +3306,8 @@
     width: 90%;
     z-index: -1;
     margin: 0 auto;
-    color: #59191e;
-    background: linear-gradient(181deg,rgb(254 255 255/74%),rgb(255 255 255/90%));
+    background: linear-gradient(181deg,#1614ffeb,#ab00ffd4);
+    color: #e5e5e5;
     margin-top: 20px;
   }
 
@@ -3701,7 +3701,7 @@ html {
 .Typewriter {
   font-family: 'Josefin Sans';
   color: #e80a24;
-  font-size: clamp(12px, 2.5vw, 70px);
+  font-size: clamp(12px, 2.1vw, 70px);
   margin-top: 16px;
   height: 40px;
 }

@@ -2449,7 +2449,7 @@
   }
 
   .book-spine {
-    background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/binder.png);
+    background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/binder.jpg);
     padding-top: 10.88%;
     background-size: cover;
     width: 100%;
@@ -2459,8 +2459,8 @@
   }
 
   .book-render {
-    background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/book.jpg);
-    padding-top: 10.88%;
+    background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/mockup-1.png);
+    padding-top: 80%;
     background-size: contain;
     width: 100%;
     position: relative;
@@ -2867,48 +2867,48 @@
 
   .arch-cont.ac1:before {
     background: url(https://portal.revrevdev.xyz/wp-content/uploads/self.jpeg);
-    background-position: 50%;
+    background-position: 24%;
     background-size: cover;
 }
 .arch-cont.ac2:before {
   background: url(https://portal.revrevdev.xyz/wp-content/uploads/resigned.jpeg);
-  background-position: 50%;
+  background-position: 40%;
   background-size: cover;
 }
 
 .arch-cont.ac3:before {
   background: url(https://portal.revrevdev.xyz/wp-content/uploads/millenial.jpeg);
-  background-position: 50%;
+  background-position: 35%;
   background-size: cover;
 }
 
 .arch-cont.ac4:before {
   background: url(https://portal.revrevdev.xyz/wp-content/uploads/executive.jpeg);
-  background-position: 50%;
+  background-position: 62%;
   background-size: cover;
 }
 
 .arch-cont.ac5:before {
   background: url(https://portal.revrevdev.xyz/wp-content/uploads/parent.jpeg);
-  background-position: 50%;
+  background-position: 40%;
   background-size: cover;
 }
 
 .arch-cont.ac6:before {
   background: url(https://portal.revrevdev.xyz/wp-content/uploads/retired.jpeg);
-  background-position: 50%;
+  background-position: 66%;
   background-size: cover;
 }
 
 .arch-cont.ac7:before {
   background: url(https://portal.revrevdev.xyz/wp-content/uploads/ministry.jpeg);
-  background-position: 50%;
+  background-position: 64%;
   background-size: cover;
 }
 
 .arch-cont.ac8:before {
   background: url(https://portal.revrevdev.xyz/wp-content/uploads/nomad.jpeg);
-  background-position: 50%;
+  background-position: 57%;
   background-size: cover;
 }
 

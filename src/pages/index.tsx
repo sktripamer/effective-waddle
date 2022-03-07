@@ -2108,7 +2108,7 @@
   const [scrollPosition, setScrollPosition] = useState(180);
 const handleScroll = () => {
   let elScrollPos = document.querySelector('.book-section-cont').getBoundingClientRect().top;
-  let vwport = window.screen.availHeight * .90;
+  let vwport = window.screen.availHeight * .80;
      if (elScrollPos <= 0) {
       if (Math.abs(elScrollPos) > vwport) {
         setScrollPosition(23)
@@ -2574,7 +2574,7 @@ useEffect(() => {
 		</div>
 	</div>
   <div class="book-section-hero-cta">
-  <div class="vid-section-cta">Begin your Revival of Revenue today!</div>
+  <div class="vid-section-cta">BEGIN YOUR <span>REVIVAL OF REVENUE </span> TODAY!</div>
 
     <div onClick={preReveal} class="y-preorderbtn">Pre-Order My Copy Now!</div>
     </div>
@@ -2592,7 +2592,7 @@ useEffect(() => {
 {isBrowser && (<Suspense fallback={<div></div>}>
 				<SayHelloList />
 </Suspense>)}
-<div class='archtype-title'>I Need a Revival of Revenue Because…</div>
+<div class='archtype-title'>WHICH ONE ARE YOU?</div>
   <div id='archetype-container' class={`acc${archetype}`}>
     <div onClick={setArchtype1} class='arch-cont ac1'>
       <div class='arch-title'></div>
@@ -2647,8 +2647,8 @@ useEffect(() => {
   <div id='jounrey-list-container'>
     <div class="journey-item j-first">
         <div class="j-text">
-            <div class="j-heading">My Entrepreneurial</div>
-             <div class="j-subheading">Lifestyle</div>
+            <div class="j-heading">Why the Entrepreneurial</div>
+             <div class="j-subheading">Lifestyle?</div>
               <div class="j-transform"><Typewriter
     options={{
       strings: ['Creative Work', 'Work-life Satisfaction', 'Flexible Workdays', 'Meaningful Work', 'Constant Learning' , 'Freedom to Travel' ,'Remote Work' ,'Personal Growth' ,'Social Networking'],
@@ -2664,8 +2664,8 @@ useEffect(() => {
     </div>
     <div class="journey-item j-second">
         <div class="j-text">
-            <div class="j-heading">My Entrepreneurial</div>
-             <div class="j-subheading">Mindset</div>
+            <div class="j-heading">Why the Entrepreneurial</div>
+             <div class="j-subheading">Mindset?</div>
              <div class="j-transform"><Typewriter
   options={{
     strings: ['Invest in Myself', 'Work for No Boss', 'Fill an Unmet Need', 'Do the Job Better', 'Produce at My Pace' , 'Find Purpose' ,'Beat the Odds' ,'Think Innovatively' ,'Prioritize Profitability','Capitalize On Opportunities'],
@@ -2681,8 +2681,8 @@ useEffect(() => {
     </div>
     <div class="journey-item j-third">
         <div class="j-text">
-            <div class="j-heading">My Entrepreneurial</div>
-             <div class="j-subheading">Journey</div>
+            <div class="j-heading">Why the Entrepreneurial</div>
+             <div class="j-subheading">Journey?</div>
              <div class="j-transform"><Typewriter
     options={{
       strings: ['Adapt to Change', 'Overcome Obstacles', 'Delete Distractions', 'Acquire Skill Sets', 'Crush Fear of Failure' , 'Revalue My Time' ,'Conquer Self-Doubt' ,'Kill Procrastination'],
@@ -2696,7 +2696,7 @@ useEffect(() => {
           <div class="j-image"></div>
           </div>  
     </div>
-    <div class="journey-item j-fourth">
+    {/* <div class="journey-item j-fourth">
         <div class="j-text">
             <div class="j-heading">My Entrepreneurial</div>
              <div class="j-subheading">Risk</div>
@@ -2729,7 +2729,7 @@ useEffect(() => {
         <div class="j-image-cont">
           <div class="j-image"></div>
           </div>  
-    </div>
+    </div> */}
   </div>
 {/* 
 
@@ -2857,7 +2857,7 @@ useEffect(() => {
 
 <div class="y-container">
     <div class='y-content-container'>
-    <div class="y-heading">Why I wrote this book?</div>
+    <div class="y-heading">WHY I WROTE <span>REVIVAL OF REVENUE</span></div>
     <div class="y-cont">
       <div class="y-text-cont">
         <div class="y-subheading">Everyday self-employed people ask me, “How in the world do I make more money? And how can I make money multiple ways?” Employees ask me, “How can I do more for God? How can I start a meaningful business from nothing?” Executives ask me, “Where is America going as a nation? How do you think we can navigate today’s political turmoil and economic challenges?” Everyone wants to maximize their wage, increase their personal income, and generate more business revenue, but doing so while doing something they love. They just don’t know how…UNTIL NOW! I wrote this book because, like so many people, I needed a Revival of Revenue myself.</div>
@@ -2895,7 +2895,7 @@ useEffect(() => {
     </div>
   </div>   */}
 
-<div class='show-me-title'>What's Inside?</div>
+<div class='show-me-title'>WHAT'S INSIDE <span>REVIVAL OF REVENUE?</span></div>
   <div id='minibook-container' class={`mbb${minibook}`}>
     <div class='minibook-container'>
     <div onClick={goLeft} class='mb-left-arrow'></div>
@@ -3013,13 +3013,13 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
 
 
 <div id='shows-me-container'>
-  <div class='show-me-title'>This Book Shows Me…</div>
+  <div class='show-me-title'>PK'S BOOK SHOWS ME HOW TO...</div>
   <div class='show-me-grid'>
-    <div class="show-me-item">How to Begin My Entrepreneurial Journey on Day 1</div>
-    <div class="show-me-item">How to Go-to-Market By Following a 25-Step Entrepreneurial Journey</div>
-    <div class="show-me-item">How to Generate Multiple Revenue Streams (Mini Book 1: Offense Wins Championships)</div>
-    <div class="show-me-item">How to Increase Revenue from Each Source (Mini Book 2: Maximum Wage)</div>
-    <div class="show-me-item">How to go from minimum wage to “Maximum Wage” in 365 days</div>
+    <div class="show-me-item">Begin My Entrepreneurial Journey on Day 1</div>
+    <div class="show-me-item">Go-to-Market By Following a 25-Step Entrepreneurial Journey</div>
+    <div class="show-me-item">Generate Multiple Revenue Streams (Mini Book 1: Offense Wins Championships)</div>
+    <div class="show-me-item">Increase Revenue from Each Source (Mini Book 2: Maximum Wage)</div>
+    <div class="show-me-item">go from minimum wage to “Maximum Wage” in 365 days</div>
     <div class="show-me-item">Turn your ideas into income on a budget</div>
     <div class="show-me-item">Turn your passions into profits with a predictable model!</div>
     <div class="show-me-item">Create your own economy with a clearly defined life plan</div>

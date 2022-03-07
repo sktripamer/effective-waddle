@@ -2114,7 +2114,7 @@ const handleScroll = () => {
         setScrollPosition(0)
         setShadowPosition(20)
       } else {
-        setScrollPosition( 180 -  (180 * (Math.abs(elScrollPos) / vwport)) )
+        setScrollPosition( 180 -  (157 * (Math.abs(elScrollPos) / vwport)) )
         setShadowPosition( Math.abs(20 -  (40 * (Math.abs(elScrollPos) / vwport))) )
       }
   

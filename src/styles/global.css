@@ -3873,15 +3873,20 @@ div#shows-me-container {
 	align-items: center;
 	transform-style: preserve-3d;
 	perspective: 1000px;
+  position: sticky;
+    top: 50%;
+    transform: translate(0, -50%);
 }
 .book-section .book
 {
-	position: relative;
-	width: 354px;
-	height: 566px;
-	box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
-	transform-style: preserve-3d;
-	transition: 0.5s;
+  transform-style: preserve-3d;
+  box-shadow: 20px 20px 20px rgb(0 0 0 / 20%);
+  position: relative;
+  transition: .5s;
+  aspect-ratio: 177 / 283;
+  width: 30%;
+  min-width: 270px;
+  max-width: 800px;
 }
 .book-section .book:hover
 {
@@ -3925,4 +3930,9 @@ div#shows-me-container {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+.book-section-cont {
+  height: 200vh;
+  margin-top: 50vh;
 }

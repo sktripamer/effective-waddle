@@ -3024,7 +3024,7 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
     <div class="show-me-item">Go-to-Market By Following a 25-Step Entrepreneurial Journey</div>
     <div class="show-me-item">Generate Multiple Revenue Streams (Mini Book 1: Offense Wins Championships)</div>
     <div class="show-me-item">Increase Revenue from Each Source (Mini Book 2: Maximum Wage)</div>
-    <div class="show-me-item">go from minimum wage to “Maximum Wage” in 365 days</div>
+    <div class="show-me-item">Go from minimum wage to “Maximum Wage” in 365 days</div>
     <div class="show-me-item">Turn your ideas into income on a budget</div>
     <div class="show-me-item">Turn your passions into profits with a predictable model!</div>
     <div class="show-me-item">Create your own economy with a clearly defined life plan</div>

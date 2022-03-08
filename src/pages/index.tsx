@@ -2594,11 +2594,15 @@ useEffect(() => {
 				<SayHelloList />
 </Suspense>)}
 
+
+<div class='bbtcont'>
 <section class='b-bt'>
 		<div class="book-bt">
 		<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg"></img>
 		</div>
 	</section>
+  </div>
+
 <div class='archtype-title'>WHICH ONE ARE YOU?</div>
   <div id='archetype-container' class={`acc${archetype}`}>
     <div onClick={setArchtype1} class='arch-cont ac1'>

@@ -4109,3 +4109,68 @@ div#shows-me-container {
 .preorder-btn-container #payment-form .name-email-group > div > input.form-control.form-control {
   width: 100%;
 }
+
+
+
+
+
+
+
+
+.b-bt
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transform-style: preserve-3d;
+	perspective: 1000px;
+}
+.b-bt .book-bt
+{
+	position: relative;
+	width: 383px;
+	height: 567px;
+	box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
+	transform-style: preserve-3d;
+	transition: 0.5s;
+}
+.b-bt .book-bt:hover
+{
+	transform: rotateY(35deg);
+	box-shadow: 0px 20px 20px rgba(0,0,0,0.2);
+}
+.b-bt .book-bt:active
+{
+	transform: rotateY(180deg);
+}
+.b-bt .book-bt:before
+{
+	content: '';
+	position: absolute;
+	width: 60px;
+	height: 100%;
+	transform-origin: left;
+	background: url(https://portal.revrevdev.xyz/wp-content/uploads/side.jpg);
+	background-position: center;
+	transform: rotateY(90deg);
+}
+.b-bt .book-bt:after
+{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transform-origin: center;
+	background: url(https://portal.revrevdev.xyz/wp-content/uploads/back.jpg);
+	background-position: center;
+	transform: rotateY(180deg) translateZ(60px);
+}
+.b-bt .book-bt img
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}

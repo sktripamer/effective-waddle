@@ -15,7 +15,7 @@
       IconLibrary,
       Captions,
     } from '@vime/react';
-    import Layout from "../components/Layout";
+    import Dashboard from "../components/Dashboard";
     const SayHello = React.lazy(() => import("../components/say-hello"));
     const SayHelloList = React.lazy(() => import("../components/say-hello-list"));
     const CompareList = React.lazy(() => import("../components/compare"));
@@ -2137,7 +2137,7 @@ useEffect(() => {
       useEffect(() => {
 
         async function fetchMyAPI() {
-          timeoutResolver(3000).then(() =>  lastResort());
+          timeoutResolver(6000).then(() =>  lastResort());
         }
         function timeoutResolver(ms) {
           return new Promise((resolve, reject) => {
@@ -2416,7 +2416,7 @@ useEffect(() => {
 
 
           return (
-            <Layout>
+            <Dashboard>
                   <div className={`preorder-btn-container ${loadPreorder}`}>
     {true == loadPreorder
                 ? (
@@ -3072,7 +3072,7 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
 
 
   </div>
-            </Layout>
+            </Dashboard>
           )
 
     }

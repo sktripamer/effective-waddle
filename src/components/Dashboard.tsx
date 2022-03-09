@@ -17,7 +17,6 @@ export default function Dashboard({ children }: { children: ReactNode }) {
 <meta name="theme-color" content="#ffffff"/>
       </Helmet>
       <title>revrevdev</title>
-      <Header />
       <main>{children}</main>
     </>
   );

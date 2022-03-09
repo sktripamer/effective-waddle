@@ -18,6 +18,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       </Helmet>
       <title>revrevdev</title>
 
+      <Header />
       <main>{children}</main>
     </>
   );

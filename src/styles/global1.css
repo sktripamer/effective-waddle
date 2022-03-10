@@ -1315,10 +1315,6 @@
     font-style: italic;
   }
 
-  .header {
-    border-bottom: 2px solid var(--color-gray-9);
-  }
-
   .nav {
     margin: 0;
     padding: 0;
@@ -3542,6 +3538,7 @@ html {
   font-weight: bold;
   cursor: pointer;
   -webkit-text-fill-color: initial;
+  position: relative;
 }
 .click-to-read:after {
   content: "\2304";
@@ -3614,7 +3611,6 @@ html {
 
 .read-more-content {
   margin: 12px 20px;
-  margin-left: 68px;
   -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-image: linear-gradient(#ee091c,#850b90);
@@ -3808,6 +3804,7 @@ span.typewrap5:before {
   padding-right: 30px;
   COLOR: #470006;
   font-size: 20px;
+  position: relative;
 }
 
 .show-me-item:before {

@@ -133,9 +133,7 @@
     max-width: 1000px;
     padding: 4rem 1rem 0; */
   }
-  .header {
-    display: none;
-  }
+ 
   .powered-by-stripe-small {
     display:none;
   }

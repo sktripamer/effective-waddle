@@ -73,7 +73,7 @@
     import LinkedinIcon from "../images/LinkedinIcon"
     import EmailIcon from "../images/EmailIcon"
     //const promise = loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3');
-    import "../styles/global.css";
+    import "../styles/global1.css";
 
     const useShareableState = () => {
 

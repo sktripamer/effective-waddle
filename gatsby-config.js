@@ -22,5 +22,14 @@ module.exports = {
       },
     },
     "gatsby-plugin-react-helmet",
+    {
+      resolve: `gatsby-plugin-gatsby-cloud`,
+      options: {
+      
+        allPageHeaders: [
+          "Access-Control-Allow-Origin: '*'",
+        ],
+      },
+    },
   ],
 };

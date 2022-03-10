@@ -27,6 +27,7 @@
     "dotenv": "^8.6.0",
     "formik-stepper": "git+https://github.com/sktripamer/formik-stepper.git",
     "gatsby": "^3.6.2",
+    "gatsby-plugin-gatsby-cloud": "^4.9.1",
     "gatsby-plugin-react-helmet": "^4.13.0",
     "gatsby-plugin-sharp": "^3.8.0",
     "gatsby-source-wordpress": "^5.10.0",

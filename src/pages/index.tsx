@@ -2413,7 +2413,7 @@ useEffect(() => {
         //  setCurrentTimeb(event.detail);
           };
 
-
+          require('../styles/global1.css');
 
           return (
             <Dashboard>

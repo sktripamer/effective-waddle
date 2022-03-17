@@ -40,6 +40,11 @@ export default function Nav() {
               </Link>
             </li>
             <li>
+              <Link to="/orders">
+                Orders
+              </Link>
+            </li>
+            <li>
               <Link to="/profile">
                 Profile
               </Link>

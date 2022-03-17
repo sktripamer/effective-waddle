@@ -29,6 +29,7 @@ module.exports = {
         allPageHeaders: [
           "Access-Control-Allow-Origin: '*'",
         ],
+        mergeSecurityHeaders: false,
       },
     },
   ],

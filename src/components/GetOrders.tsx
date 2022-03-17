@@ -22,7 +22,7 @@ export default function GetOrders() {
   const { user } = useAuth();
   const { id } = user as User;
   const { loading, error, data } = useQuery(GET_ORDERS, {
-    variables: { input: id },
+    variables: { input: parseInt(atob(id).split(':')[1]) },
   });
 
   if (loading) return <p>Loading ...</p>;

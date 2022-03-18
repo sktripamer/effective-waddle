@@ -5,7 +5,7 @@ import useAuth, { User } from "../hooks/useAuth";
 
 
 const GET_ORDERS = gql`
-query customer( $input: Integer) {
+query customer( $input: Int) {
     customer( customerId:$input ) {
     orders {
       edges {

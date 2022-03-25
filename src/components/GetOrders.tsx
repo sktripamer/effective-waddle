@@ -64,10 +64,14 @@ export default function GetOrders() {
 
   if (loading) return <p>Loading ...</p>;
 
-  return (
-    <div>
-  Total number of orders: aa
+  let newA = []
+for (let i=0; i < data.orders.edges.length; i++) {
+ newA.push(data.orders.edges[i])
+}
+
+
+  return (<div>
+  {newA && newA.map((el) => <h1>order # {el.node.databaseId}</h1>)}
   { console.log(data) }
-    </div>
-  );
+</div>);
 }

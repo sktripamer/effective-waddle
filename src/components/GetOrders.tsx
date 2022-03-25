@@ -16,16 +16,33 @@ query theorders( $input: Int) {
           nodes {
             product {
               name
+              image {
+                sourceUrl
+              }
             }
             subtotal
           }
         }
         transactionId
         databaseId
+        status
+        shipping {
+          address1
+          address2
+          city
+          country
+          email
+          firstName
+          lastName
+          postcode
+          state
+        }
+        hasShippingAddress
       }
     }
   }
 }
+
 `;
 
 

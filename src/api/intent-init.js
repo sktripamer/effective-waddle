@@ -93,14 +93,18 @@ const getCustomer = async (uEmail, uID) => {
             Authorization: `Basic ` + process.env.REST_SECRET,
         }
     };
-    const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig).then(resp => {  
+    const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig)
+    .then(resp => {  
        if (resp.data.acf.payment_method === '') {
         const customerID = await createCustomer(uEmail); //create customer if none found in acf data
         return customerID;
        } else {
         return resp.data.acf.payment_method;
        }
-    });
+    })
+    .catch((err) => {
+        return err;
+       })
     return responser;
 }
 

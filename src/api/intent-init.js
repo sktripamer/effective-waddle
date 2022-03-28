@@ -96,8 +96,13 @@ const getCustomer = async (uEmail, uID) => {
     const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig)
     .then(resp => {  
        if (resp.data.acf.payment_method === '') {
-        const customerID = await createCustomer(uEmail); //create customer if none found in acf data
-        return customerID;
+           try {
+                const customerID = await createCustomer(uEmail); //create customer if none found in acf data
+                return customerID;
+           } catch(error2) {
+                return error2;
+           }
+      
        } else {
         return resp.data.acf.payment_method;
        }

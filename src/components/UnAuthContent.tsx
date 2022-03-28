@@ -6,17 +6,21 @@ import useAuth from "../hooks/useAuth";
 
 export default function UnAuthContent({ children }: { children: ReactNode }) {
   const { loggedIn, loading, user } = useAuth();
-
+  const isBrowser = typeof window !== "undefined";
   // Navigate authenticated users to Members page.
   useEffect(() => {
     if (!loading && loggedIn) {
-      localStorage.setItem("auth", JSON.stringify(user.jwtAuthToken));
+      if (isBrowser) {
+        localStorage.setItem("auth", JSON.stringify(user.jwtAuthToken));
+      }
       navigate('/members');
     }
   }, [loggedIn, loading, navigate]);
 
   if (!loggedIn) {
-    localStorage.removeItem("auth")
+    if (isBrowser) {
+      localStorage.removeItem("auth")
+    }
     return <>{children}</>;
   }
 

@@ -8,6 +8,7 @@ export interface User {
   lastName: string;
   email: string;
   capabilities: string[];
+  jwtAuthToken: string;
 }
 
 interface AuthData {
@@ -35,6 +36,7 @@ export const GET_USER = gql`
       lastName
       email
       capabilities
+      jwtAuthToken
     }
   }
 `;

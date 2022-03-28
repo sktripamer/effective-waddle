@@ -11,7 +11,11 @@ export default function UnAuthContent({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!loading && loggedIn) {
       if (isBrowser) {
-        localStorage.setItem("auth", JSON.stringify(user.jwtAuthToken));
+        const authData = {
+          authToken: user.jwtAuthToken,
+          user: user,
+        };
+        localStorage.setItem("auth", JSON.stringify(authData));
       }
       navigate('/members');
     }

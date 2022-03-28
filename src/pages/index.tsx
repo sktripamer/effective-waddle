@@ -20,7 +20,7 @@
     const SayHelloList = React.lazy(() => import("../components/say-hello-list"));
     const CompareList = React.lazy(() => import("../components/compare"));
     //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
-    //import useAuth from "../hooks/useAuth";
+    import useAuth, { User } from "../hooks/useAuth";
     //import UnAuthContent from "../components/UnAuthContent";
     import {loadStripe} from '@stripe/stripe-js/pure';
     import Typewriter from 'typewriter-effect';
@@ -831,6 +831,23 @@
         // Retrieve email and username of the currently logged in user.
         // getUserFromDB() is *your* implemention of getting user info from the DB
         const form = nameForm.current
+        // let ex = {
+        //   shippingaddress1: form['ship-address1'].value,
+        //   shippingaddress2: form['ship-address2'].value,
+        //   accountemail: form['email'].value,
+        //   shippingname: form['name'].value,
+        //   shippingcity: form['ship-city'].value,
+        //   shippingstate: form['ship-state'].value,
+        //   shippingzip: form['ship-zip'].value,
+        //   shippingcountry: country[0].code,
+        //   transactionid: payload.paymentIntent.id
+        //   }
+
+        // json auth
+        // try to get ID, if logged in via cookie
+        
+        //   console.log(ex)
+        // const settingFive = await setPreorderAccExists(JSON.stringify(ex));
         const email = form['firstname'].value + "@@" + JSON.parse(localStorage.auth).authToken 
         const request = await fetch('/api/create-intent', {
           method: 'POST',
@@ -2304,6 +2321,140 @@ useEffect(() => {
         }, [currentTimeb]);
       
         
+        async function testIntent1() {
+          try {
+            let tokenGet = function() {
+              let authTokenData = localStorage.getItem("auth");
+
+              if (!isEmpty(authTokenData)) {
+      
+                authTokenData = JSON.parse(authTokenData);
+      
+                if (!isEmpty(authTokenData.authToken)) {
+                return JSON.parse(localStorage.auth).authToken;
+                } else {
+                return null;
+                }
+              } else {
+                return null;
+              }
+            }
+            let ex = {
+              token: tokenGet(),
+              //cart: JSON.parse(localStorage.cart),
+              cart: [30],
+              newAccount: null,
+            }
+  
+            const request = await fetch('/api/intent-init', {
+              method: 'POST',
+              body: JSON.stringify(ex),
+            });
+            const intent = (await request.json());
+            console.log(intent)
+            return intent;
+          } catch (error1) {
+            console.log('Failed to create intent');
+            console.log(error1);
+            return null;
+          }
+        }
+
+        async function testIntent2() {
+          try {
+            let tokenGet = function() {
+              let authTokenData = localStorage.getItem("auth");
+
+              if (!isEmpty(authTokenData)) {
+      
+                authTokenData = JSON.parse(authTokenData);
+      
+                if (!isEmpty(authTokenData.authToken)) {
+                return JSON.parse(localStorage.auth).authToken;
+                } else {
+                return null;
+                }
+              } else {
+                return null;
+              }
+            }
+            let ex = {
+              token: tokenGet(),
+              //cart: JSON.parse(localStorage.cart),
+              cart: [30],
+              newAccount: 'lxcvhhey100100100@wwwwf.com',
+            }
+  
+            const request = await fetch('/api/intent-init', {
+              method: 'POST',
+              body: JSON.stringify(ex),
+            });
+            const intent = (await request.json());
+            console.log(intent)
+            return intent;
+          } catch (error1) {
+            console.log('Failed to create intent');
+            console.log(error1);
+            return null;
+          }
+        }
+        async function testIntent3() {
+          try {
+            let tokenGet = function() {
+              let authTokenData = localStorage.getItem("auth");
+
+              if (!isEmpty(authTokenData)) {
+      
+                authTokenData = JSON.parse(authTokenData);
+      
+                if (!isEmpty(authTokenData.authToken)) {
+                return JSON.parse(localStorage.auth).authToken;
+                } else {
+                return null;
+                }
+              } else {
+                return null;
+              }
+            }
+            let ex = {
+              token: tokenGet(),
+              //cart: JSON.parse(localStorage.cart),
+              cart: [30, 91],
+              newAccount: 'aisudausudy@cccccccccccccc.com',
+            }
+  
+            const request = await fetch('/api/intent-init', {
+              method: 'POST',
+              body: JSON.stringify(ex),
+            });
+            const intent = (await request.json());
+            console.log(intent)
+            return intent;
+          } catch (error1) {
+            console.log('Failed to create intent');
+            console.log(error1);
+            return null;
+          }
+        }
+
+
+        const tester1 = async (ev: { preventDefault: () => void; }) => {
+          ev.preventDefault();
+          const intent = await testIntent1();
+          console.log(intent);
+        }
+        const tester2 = async (ev: { preventDefault: () => void; }) => {
+          ev.preventDefault();
+          const intent = await testIntent2();
+          console.log(intent);
+        }
+        const tester3 = async (ev: { preventDefault: () => void; }) => {
+          ev.preventDefault();
+          const intent = await testIntent3();
+          console.log(intent);
+        }
+
+
       // const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])
       // Check if the user is validated already.
       // useMountEffect(LoginVerify)
@@ -2337,7 +2488,7 @@ useEffect(() => {
       // 	speed: 1,
       //   });
 
-
+          
 
           const onMutedChange = () => {
             setMuteClass("rev-mute")
@@ -2595,13 +2746,10 @@ useEffect(() => {
 </Suspense>)}
 
 
-<div class='bbtcont'>
-<section class='b-bt'>
-		<div class="book-bt">
-		<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg"></img>
-		</div>
-	</section>
-  </div>
+<button onClick={tester1}>test1</button>
+<button onClick={tester2}>test2</button>
+<button onClick={tester3}>test3</button>
+
 
 <div class='archtype-title'>WHICH ONE ARE YOU?</div>
   <div id='archetype-container' class={`acc${archetype}`}>

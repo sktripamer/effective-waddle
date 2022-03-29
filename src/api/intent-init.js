@@ -15,6 +15,7 @@ const getIntent = async (req, res) => {
 
     //if new account is not null, and authtoken is null, try to process new account.
     if (params.newAccount !== null && params.token === null) {
+        return res.status(200).json({'here':'hello'})
         const exists = await axios.get('https://portal.revrevdev.xyz/wp-json/tv5hoq1wzdbgy0y6y4s8krvqvp759kc03vu7snia/user-exists?email=' + encodeURIComponent(params.newAccount)).then(resp => {    
             return resp.data;
         });
@@ -39,7 +40,7 @@ const getIntent = async (req, res) => {
             return res.status(200).json({paymentIntent})
         } else {
             return res.status(409); //email already exists on WP's side.
-        }
+        }   
     }
 
     //if new account is null, and authtoken is not null, try to process authtoken.

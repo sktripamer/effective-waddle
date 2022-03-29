@@ -23,21 +23,19 @@ const getIntent = async (req, res) => {
         if (!exists) {
             const customerID = await createCustomer(params.newAccount);
 
-            // let total = 0;
-            // const mapLoop = async _ => {
-            //     const promises = params.cart.map(async pID => {
-            //         const priceOfProduct = await getPrice(pID)
-            //         total += parseInt(priceOfProduct)
-            //         return priceOfProduct
-            //     })
-            //     const totalPrice = await Promise.all(promises)
-            //     return total;
-            // }
-            // const totalCartPrice = await mapLoop();
-            const priceOfProduct = await getPrice(params.cart[0])
-           // const paymentIntent = await createIntent(customerID, totalCartPrice);
-           // return res.status(200).json({paymentIntent})
-           return res.status(200).json({priceOfProduct})
+            let total = 0;
+            const mapLoop = async _ => {
+                const promises = params.cart.map(async pID => {
+                    const priceOfProduct = await getPrice(pID)
+                    total += parseInt(priceOfProduct)
+                    return priceOfProduct
+                })
+                const totalPrice = await Promise.all(promises)
+                return total;
+            }
+            const totalCartPrice = await mapLoop();
+           const paymentIntent = await createIntent(customerID, totalCartPrice);
+           return res.status(200).json({paymentIntent})
         } else {
             return res.status(409); //email already exists on WP's side.
         }   
@@ -136,19 +134,18 @@ const getPrice = async (pID) => {
             Authorization: `Basic ` + process.env.WC_SECRET,
         }
     };
-      
-      axios.get('https://portal.revrevdev.xyz/wp-json/wc/v3/products/' + pID, axiosConfig)
-      .then((res) => {
-          return res
-        //   if (res.price.includes('.')) {
-        //       return res.price.replace(/\./g, '');
-        //   } else {
-        //     return res.price + '00';
-        //   }
+      const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wc/v3/products/' + pID, axiosConfig)
+      .then(resp => {  
+        if (resp.data.price.includes('.')) {
+            return resp.price.replace(/\./g, '');
+        } else {
+          return resp.data.price + '00';
+        }
       })
       .catch((err) => {
-       return err;
-      })
+          return err;
+         })
+      return responser;
 }
 
 

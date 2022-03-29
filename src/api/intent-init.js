@@ -23,21 +23,21 @@ const getIntent = async (req, res) => {
         if (!exists) {
             const customerID = await createCustomer(params.newAccount);
 
-            let total = 0;
-            const mapLoop = async _ => {
-                const promises = params.cart.map(async pID => {
-                    const priceOfProduct = await getPrice(pID)
-                    total += parseInt(priceOfProduct)
-                    return priceOfProduct
-                })
-                const totalPrice = await Promise.all(promises)
-                return total;
-            }
-            const totalCartPrice = await mapLoop();
-
+            // let total = 0;
+            // const mapLoop = async _ => {
+            //     const promises = params.cart.map(async pID => {
+            //         const priceOfProduct = await getPrice(pID)
+            //         total += parseInt(priceOfProduct)
+            //         return priceOfProduct
+            //     })
+            //     const totalPrice = await Promise.all(promises)
+            //     return total;
+            // }
+            // const totalCartPrice = await mapLoop();
+            const priceOfProduct = await getPrice(params.cart[0])
            // const paymentIntent = await createIntent(customerID, totalCartPrice);
            // return res.status(200).json({paymentIntent})
-           return res.status(200).json({totalCartPrice})
+           return res.status(200).json({priceOfProduct})
         } else {
             return res.status(409); //email already exists on WP's side.
         }   

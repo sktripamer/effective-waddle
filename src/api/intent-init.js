@@ -70,6 +70,7 @@ const getIntent = async (req, res) => {
             return res.status(401); //jwt not valid
           }
     }
+    return res.status(200).json({'nothere':'nope'})
 }
 
 

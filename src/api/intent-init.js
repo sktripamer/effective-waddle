@@ -21,7 +21,8 @@ const getIntent = async (req, res) => {
         //we check to make sure that the account isn't registered yet on WP's side. We won't yet create the account on WP's side - after payment verification we do that (ontraport has substantial lag of 10+ seconds with initial user creation syncing).
         if (!exists) {
             const customerID = await createCustomer(params.newAccount);
-            return res.status(200).json({customerID})
+            await res.status(200).json({customerID})
+            return;
             let total = 0;
             const mapLoop = async _ => {
                 const promises = params.cart.map(async pID => {

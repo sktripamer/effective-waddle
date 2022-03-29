@@ -15,15 +15,14 @@ const getIntent = async (req, res) => {
 
     //if new account is not null, and authtoken is null, try to process new account.
     if (params.newAccount !== null && params.token === null) {
-        return res.status(200).json({'here':'hello'})
+        //return res.status(200).json({'here':'hello'})
         const exists = await axios.get('https://portal.revrevdev.xyz/wp-json/tv5hoq1wzdbgy0y6y4s8krvqvp759kc03vu7snia/user-exists?email=' + encodeURIComponent(params.newAccount)).then(resp => {    
             return resp.data;
         });
         //we check to make sure that the account isn't registered yet on WP's side. We won't yet create the account on WP's side - after payment verification we do that (ontraport has substantial lag of 10+ seconds with initial user creation syncing).
         if (!exists) {
             const customerID = await createCustomer(params.newAccount);
-            await res.status(200).json({customerID})
-            return;
+
             let total = 0;
             const mapLoop = async _ => {
                 const promises = params.cart.map(async pID => {
@@ -76,18 +75,18 @@ const getIntent = async (req, res) => {
 
 
 const createCustomer = async (emailSend) => {
-    // try {
+    try {
 
-    //   const customerID = await stripe.customers.create({
-    //     email: emailSend
-    //   });
+      const customerID = await stripe.customers.create({
+        email: emailSend
+      });
       
-    //   return customerID.id;
+      return customerID.id;
   
-    // } catch (error) {
-    //   return error;
-    // } 
-    return "hey"
+    } catch (error) {
+      return error;
+    } 
+
 }
 
 const getCustomer = async (uEmail, uID) => {

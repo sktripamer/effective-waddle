@@ -35,8 +35,9 @@ const getIntent = async (req, res) => {
             }
             const totalCartPrice = await mapLoop();
 
-            const paymentIntent = await createIntent(customerID, totalCartPrice);
-            return res.status(200).json({paymentIntent})
+           // const paymentIntent = await createIntent(customerID, totalCartPrice);
+           // return res.status(200).json({paymentIntent})
+           return res.status(200).json({totalCartPrice})
         } else {
             return res.status(409); //email already exists on WP's side.
         }   

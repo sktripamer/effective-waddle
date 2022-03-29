@@ -115,7 +115,7 @@ const createIntent = async (cID, cartTotal) => {
    
     try {
     const paymentIntent = await stripe.paymentIntents.create({
-        amount: cartTotal.toString(),
+        amount: cartTotal,
         currency: 'usd',
         customer: cID,
         setup_future_usage: "on_session",

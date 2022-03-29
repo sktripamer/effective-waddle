@@ -139,11 +139,12 @@ const getPrice = async (pID) => {
       
       axios.get('https://portal.revrevdev.xyz/wp-json/wc/v3/products/' + pID, axiosConfig)
       .then((res) => {
-          if (res.price.includes('.')) {
-              return res.price.replace(/\./g, '');
-          } else {
-            return res.price + '00';
-          }
+          return res
+        //   if (res.price.includes('.')) {
+        //       return res.price.replace(/\./g, '');
+        //   } else {
+        //     return res.price + '00';
+        //   }
       })
       .catch((err) => {
        return err;

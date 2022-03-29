@@ -5,13 +5,13 @@ let params;
 
 const getIntent = async (req, res) => {
     params = req.body;
-    return res.status(200).json({'first':'first'})
+    //return res.status(200).json({'first':'first'})
 
     //if new account is null and so is authtoken, return error and end immediately
-    if (params.newAccount === null && params.token === null) return res.status(400);
+    if (params.newAccount === null && params.token === null) {return res.status(400)};
 
     //if new account is not null, and authtoken is not null, return error (and try to clearn authtoken?).
-    if (params.newAccount !== null && params.token !== null) return res.status(400);
+    if (params.newAccount !== null && params.token !== null) {return res.status(400)};
 
     //if new account is not null, and authtoken is null, try to process new account.
     if (params.newAccount !== null && params.token === null) {

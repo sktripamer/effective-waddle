@@ -95,7 +95,7 @@ const getCustomer = async (uEmail, uID) => {
         }
     };
     const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig)
-    .then(resp => {  
+    .then(resp = async() => {  
        if (resp.data.acf.payment_method === '') {
         try {
 

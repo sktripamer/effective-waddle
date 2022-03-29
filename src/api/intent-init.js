@@ -59,9 +59,15 @@ const getIntent = async (req, res) => {
                  return total;
              }
              const totalCartPrice = await mapLoop();
+             if (customerID === '') {
+                const newCustomerID = await createCustomer(params.newAccount);
+                const paymentIntent = await createIntent(newCustomerID, totalCartPrice);
+                return res.status(200).json({paymentIntent});
+             } else {
+                const paymentIntent = await createIntent(customerID, totalCartPrice);
+                return res.status(200).json({paymentIntent});
+             }
 
-             const paymentIntent = await createIntent(customerID, totalCartPrice);
-             return res.status(200).json({paymentIntent});
               
           });
         } catch (e) {
@@ -95,22 +101,8 @@ const getCustomer = async (uEmail, uID) => {
         }
     };
     const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig)
-    .then(resp = async() => {  
-       if (resp.data.acf.payment_method === '') {
-        try {
-
-            const customerID = await stripe.customers.create({
-              email: uEmail
-            });
-            
-            return customerID.id;
-        
-          } catch (error) {
-            return error;
-          } 
-       } else {
-        return resp.data.acf.payment_method;
-       }
+    .then(resp => {  
+       return resp.data.acf.payment_method;
     })
     .catch((err) => {
         return err;

@@ -68,7 +68,6 @@ const getIntent = async (req, res) => {
             return res.status(401); //jwt not valid
           }
     }
-    return res.status(200).json({'nothere':'nope'})
 }
 
 
@@ -98,8 +97,17 @@ const getCustomer = async (uEmail, uID) => {
     const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig)
     .then(resp => {  
        if (resp.data.acf.payment_method === '') {
-        const customerID = async _ => await createCustomer(uEmail); //create customer if none found in acf data
-        return customerID;
+        try {
+
+            const customerID = await stripe.customers.create({
+              email: uEmail
+            });
+            
+            return customerID.id;
+        
+          } catch (error) {
+            return error;
+          } 
        } else {
         return resp.data.acf.payment_method;
        }

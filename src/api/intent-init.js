@@ -4,8 +4,8 @@ import jwt from 'jsonwebtoken';
 let params;
 
 const getIntent = async (req, res) => {
-    params = req.body;
-    return res.status(200).json({'first':params})
+    params = JSON.parse(req.body);
+   // return res.status(200).json({'first':params})
 
     //if new account is null and so is authtoken, return error and end immediately
     if (params.newAccount === null && params.token === null) {return res.status(400)};

@@ -993,7 +993,7 @@
         setProcessing(false);
       } else {
         console.log(payload.paymentIntent)
-        const verifyIntent = await intentVerify(payload.paymentIntent);
+        const verifyIntent = await intentVerify(payload.paymentIntent.id);
         console.log(verifyIntent)
         if (verifyIntent === true) {
           setError(null);

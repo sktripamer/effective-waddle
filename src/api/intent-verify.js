@@ -23,7 +23,7 @@ const verifyIntent = async (req, res) => {
     const totalCartPrice = await mapLoop();
     if (totalCartPrice != paymentIntent.amount) return res.status(400); //intent and cart checker price mismatch.
     if (paymentIntent.status !== "succeeded") return res.status(400); //not successfull transaction
-    return res.status(200).json({paymentIntent})
+    return res.status(200).json(true)
 }
 
 

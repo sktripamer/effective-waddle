@@ -8,8 +8,8 @@ const verifyIntent = async (req, res) => {
 
     if (params.intent == null) return res.status(400); //no payment intent included in check, exit.
     const paymentIntent = await stripe.paymentIntents.retrieve(params.intent);
-    return res.status(200).json({paymentIntent})
-    if (JSON.stringify(params.cart) !== paymentIntent.metadata.cart) return res.status(400); // cart from intent and verifier mismatch, exit.
+
+    if (JSON.stringify(params.cart) !== paymentIntent.paymentIntent.metadata.cart) return res.status(400); // cart from intent and verifier mismatch, exit.
     let total = 0;
     const mapLoop = async _ => {
         const promises = params.cart.map(async pID => {
@@ -21,9 +21,9 @@ const verifyIntent = async (req, res) => {
         return total;
     }
     const totalCartPrice = await mapLoop();
-    if (totalCartPrice != paymentIntent.amount) return res.status(400); //intent and cart checker price mismatch.
-    if (paymentIntent.status !== "succeeded") return res.status(400); //not successfull transaction
-    return res.status(200)
+    if (totalCartPrice != paymentIntent.paymentIntent.amount) return res.status(400); //intent and cart checker price mismatch.
+    if (paymentIntent.paymentIntent.status !== "succeeded") return res.status(400); //not successfull transaction
+    return res.status(200).json({paymentIntent})
 }
 
 

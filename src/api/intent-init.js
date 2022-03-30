@@ -118,7 +118,7 @@ const createIntent = async (cID, cartTotal) => {
         currency: 'usd',
         customer: cID,
         setup_future_usage: "on_session",
-        metadata: {'cart': params.cart.toString()},
+        metadata: {'cart': JSON.stringify(params.cart)},
       });
      
       return paymentIntent;

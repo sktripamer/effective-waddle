@@ -826,36 +826,35 @@
     };
 
 
+
     async function createIntent() {
       try {
-        // Retrieve email and username of the currently logged in user.
-        // getUserFromDB() is *your* implemention of getting user info from the DB
-        const form = nameForm.current
-        // let ex = {
-        //   shippingaddress1: form['ship-address1'].value,
-        //   shippingaddress2: form['ship-address2'].value,
-        //   accountemail: form['email'].value,
-        //   shippingname: form['name'].value,
-        //   shippingcity: form['ship-city'].value,
-        //   shippingstate: form['ship-state'].value,
-        //   shippingzip: form['ship-zip'].value,
-        //   shippingcountry: country[0].code,
-        //   transactionid: payload.paymentIntent.id
-        //   }
+        let tokenGet = function() {
+          let authTokenData = localStorage.getItem("auth");
+          if (!isEmpty(authTokenData)) {
+            authTokenData = JSON.parse(authTokenData);
+            if (!isEmpty(authTokenData.authToken)) {
+            return JSON.parse(localStorage.auth).authToken;
+            } else {
+            return null;
+            }
+          } else {
+            return null;
+          }
+        }
+        let ex = {
+          token: tokenGet(),
+          //cart: JSON.parse(localStorage.cart),
+          cart: [30],
+          newAccount: null,
+        }
 
-        // json auth
-        // try to get ID, if logged in via cookie
-        
-        //   console.log(ex)
-        // const settingFive = await setPreorderAccExists(JSON.stringify(ex));
-        const email = form['firstname'].value + "@@" + JSON.parse(localStorage.auth).authToken 
-        const request = await fetch('/api/create-intent', {
+        const request = await fetch('/api/intent-init', {
           method: 'POST',
-          body: email,
+          body: JSON.stringify(ex),
         });
         const intent = (await request.json());
-        // Update your user in DB to store the customerID
-        // updateUserInDB() is *your* implementation of updating a user in the DB
+        console.log(intent)
         return intent;
       } catch (error1) {
         console.log('Failed to create intent');
@@ -863,6 +862,59 @@
         return null;
       }
     }
+
+    async function intentVerify(paymentIntent) {
+      try {
+        let tokenGet = function() {
+          let authTokenData = localStorage.getItem("auth");
+          if (!isEmpty(authTokenData)) {
+            authTokenData = JSON.parse(authTokenData);
+            if (!isEmpty(authTokenData.authToken)) {
+            return JSON.parse(localStorage.auth).authToken;
+            } else {
+            return null;
+            }
+          } else {
+            return null;
+          }
+        }
+        let ex = {
+          token: tokenGet(),
+          //cart: JSON.parse(localStorage.cart),
+          cart: [30],
+          intent:paymentIntent,
+          newAccount: null,
+        }
+
+        const request = await fetch('/api/intent-verify', {
+          method: 'POST',
+          body: JSON.stringify(ex),
+        });
+        const intent = (await request.json());
+        console.log(intent)
+        return intent;
+      } catch (error1) {
+        console.log('Failed to verify intent');
+        console.log(error1);
+        return null;
+      }
+    }
+    // async function createIntent() {
+    //   try {
+    //     const form = nameForm.current
+    //     const email = form['firstname'].value + "@@" + JSON.parse(localStorage.auth).authToken 
+    //     const request = await fetch('/api/create-intent', {
+    //       method: 'POST',
+    //       body: email,
+    //     });
+    //     const intent = (await request.json());
+    //     return intent;
+    //   } catch (error1) {
+    //     console.log('Failed to create intent');
+    //     console.log(error1);
+    //     return null;
+    //   }
+    // }
 
     async function setPayment(cID) {
       try {
@@ -923,9 +975,9 @@
       ev.preventDefault();
       setProcessing(true);
       const intent = await createIntent();
-      console.log(intent)
+      console.log(intent.paymentIntent.client_secret)
       //setClientSecret(intent.body.client_secret);
-      const payload = await stripe.confirmCardPayment(intent.body.client_secret, {
+      const payload = await stripe.confirmCardPayment(intent.paymentIntent.client_secret, {
         payment_method: {
           card: elements.getElement(CardElement),
           billing_details: {
@@ -940,22 +992,25 @@
         setError(`${payload.error.message}`);
         setProcessing(false);
       } else {
-        setError(null);
-        setProcessing(false);
-        setSucceeded(true);
-        //fetch wth intent.body.customer
-        const spm = await setPayment(intent.body.customer);
-        console.log(spm)
-        // Update your user in DB to store the customerID
-        // updateUserInDB() is *your* implementation of updating a user in the DB
-      
-        localStorage.removeItem("s4")
-        localStorage.setItem("s5", "y")
-        setVideoStatus(0)
-        setBoxVisible('release')
-          player.current!.play()
+        console.log(payload.paymentIntent)
+        const verifyIntent = await intentVerify(payload.paymentIntent);
+        console.log(verifyIntent)
+        if (verifyIntent === true) {
+          setError(null);
+          setProcessing(false);
+          setSucceeded(true);
+        
+          localStorage.removeItem("s4")
+          localStorage.setItem("s5", "y")
+          setVideoStatus(0)
+          setBoxVisible('release')
+            player.current!.play()
+  
+          setSuccessMessage("first payment complete");
+        } else {
+          setProcessing(false);
+        }
 
-        setSuccessMessage("first payment complete");
       }
     };
 
@@ -2446,7 +2501,7 @@ useEffect(() => {
         const tester2 = async (ev: { preventDefault: () => void; }) => {
           ev.preventDefault();
           const intent = await testIntent2();
-          console.log(intent);
+          console.log(intent.paymentIntent.client_secret);
         }
         const tester3 = async (ev: { preventDefault: () => void; }) => {
           ev.preventDefault();

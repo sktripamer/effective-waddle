@@ -884,6 +884,9 @@
           cart: [30],
           intent:paymentIntent,
           newAccount: null,
+          shippingData: null,
+          metafield: "onedollar",
+          metavalue: true,
         }
 
         const request = await fetch('/api/intent-verify', {
@@ -1060,7 +1063,203 @@
     );
 
     }
+    const StepSix = () => {
+      const stripe = useStripe();
+      const elements = useElements();
+      const isBrowser = typeof window !== "undefined";
+      const [succeeded, setSucceeded] = useState(false);
+      const {error, setError } = useBetween(useShareableState);
+      const [processing, setProcessing] = useState("");
+      const [disabled, setDisabled] = useState(true);
+      const nameForm = useRef(null);
 
+      const handleChange = async (event: { empty: boolean | ((prevState: boolean) => boolean); error: { message: any; }; }) => {
+        setDisabled(event.empty);
+        setError(event.error ? event.error.message : "");
+        //if nameform ref name is 4+ characters and email is valid, do this. else don't do this.
+      };
+
+      
+    const handleSubmit = async (ev: { preventDefault: () => void; }) => {
+      const form = nameForm.current
+      const email = form['email'].value 
+      ev.preventDefault();
+      setProcessing(true);
+      const intent = await createIntent(email);
+      console.log(intent)
+      const payload = await stripe.confirmCardPayment(intent.paymentIntent.client_secret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+          billing_details: {
+            name:  form['firstname'].value,
+            email: form['email'].value,
+          }
+        },
+      
+      });
+
+      if (payload.error) {
+        setError(`${payload.error.message}`);
+        setProcessing(false);
+      } else {
+        console.log(payload.paymentIntent)
+        const verifyIntent = await intentVerify(payload.paymentIntent.id, email);
+        console.log(verifyIntent)
+        if (verifyIntent === true) {
+          setError(null);
+          setProcessing(false);
+          setSucceeded(true);
+
+        } else {
+          setProcessing(false);
+        }
+
+      }
+    };
+
+      async function createIntent(newEmail) {
+        let newAccuntEmail = null;
+        try {
+          let tokenGet = function() {
+            let authTokenData = localStorage.getItem("auth");
+            if (!isEmpty(authTokenData)) {
+              authTokenData = JSON.parse(authTokenData);
+              if (!isEmpty(authTokenData.authToken)) {
+              return JSON.parse(localStorage.auth).authToken;
+              } else {
+                newAccuntEmail = newEmail
+              return null;
+              }
+            } else {
+              newAccuntEmail = newEmail
+              return null;
+            }
+          }
+          let ex = {
+            token: tokenGet(),
+            //cart: JSON.parse(localStorage.cart),
+            cart: [30],
+            newAccount: newAccuntEmail,
+          }
+  
+          const request = await fetch('/api/intent-init', {
+            method: 'POST',
+            body: JSON.stringify(ex),
+          });
+          const intent = (await request.json());
+          console.log(intent)
+          return intent;
+        } catch (error1) {
+          console.log('Failed to create intent');
+          console.log(error1);
+          return null;
+        }
+      }
+  
+      async function intentVerify(paymentIntent, newEmail) {
+        let newAccuntEmail = null;
+        try {
+          let tokenGet = function() {
+            let authTokenData = localStorage.getItem("auth");
+            if (!isEmpty(authTokenData)) {
+              authTokenData = JSON.parse(authTokenData);
+              if (!isEmpty(authTokenData.authToken)) {
+              return JSON.parse(localStorage.auth).authToken;
+              } else {
+                newAccuntEmail = newEmail
+              return null;
+              }
+            } else {
+              newAccuntEmail = newEmail
+              return null;
+            }
+          }
+          let ex = {
+            token: tokenGet(),
+            //cart: JSON.parse(localStorage.cart),
+            cart: [30],
+            intent:paymentIntent,
+            newAccount: newAccuntEmail,
+            shippingData: null,
+            metafield: "onedollar",
+            metavalue: true,
+          }
+  
+          const request = await fetch('/api/intent-verify', {
+            method: 'POST',
+            body: JSON.stringify(ex),
+          });
+          const intent = (await request.json());
+          console.log(intent)
+          return intent;
+        } catch (error1) {
+            console.log('Failed to verify intent');
+           console.log(error1);
+          return null;
+        }
+      }
+
+      
+    const cardStyle = {
+      style: {
+        base: {
+          color: "#fff",
+          iconColor: "#fff",
+          fontFamily: "Arial, sans-serif",
+          fontSmoothing: "antialiased",
+          fontSize: "16px",
+          "::placeholder": {
+            color: "#9e9e9e",
+          },
+        },
+        invalid: {
+          color: "#fa755a",
+          iconColor: "#fa755a",
+        },
+      },
+    };
+
+      return (
+        <div className='payment register-form col-md-6'>
+        <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
+        <div className='powered-container'>
+          <div className='powered-by-stripe'></div>
+          </div>
+          <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
+          <InputField2 label={'email'} name={'email'}/>
+          <CardElement
+            id="card-element"
+            options={cardStyle}
+            onChange={handleChange}
+          />
+          <div className='powered-by-stripe-small'></div>
+          <div className='card-charge'>Your card will be charged $1.00</div>
+          
+          <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
+            <span id="button-text">
+              {processing ? (
+                <div className="spinner" id="spinner">Keep Watching</div>
+              ) : (
+                "Keep Watching"
+              )}
+            </span>
+          </button>
+          {error && (
+            <div className="card-error" role="alert">
+              {error}
+            </div>
+          )}
+          <p className={succeeded ? "result-message" : "result-message hidden"}>
+            Payment succeeded!
+          </p>
+          
+        </form>
+  
+  
+        </div>
+      );
+
+    }
     const StepFive = () => {
       const [status, setStatus] = React.useState(0) // 0: no show, 1: show yes, 2: show no. radio 
       const stripe = useStripe();
@@ -1392,21 +1591,7 @@
       host.shadowRoot.appendChild( style )
       }
       async function fetchMyAPI() {
-      // window
-      //   .fetch("/api/get-payment-info", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: email,
-      //   })
-      //   .then((res) => {
-      //     return res.json();
-      //   })
-      //   .then((body) => {
-      //     console.log('right here', body)
-      //    // setPrevID(body.body.client_secret);
-      //   });
+
         if (email() =='') {
           setAccount(true)
           setCard(true)
@@ -2244,7 +2429,7 @@ useEffect(() => {
                   console.log(updatedCounter)
                   return 1;
               }
-              console.log(updatedCounter)
+
               return updatedCounter;
           }); // use callback function to set the state
         
@@ -2267,7 +2452,7 @@ useEffect(() => {
               console.log(updatedCounter)
               return 1;
           }
-          console.log(updatedCounter)
+
           return updatedCounter;
       }); // use callback function to set the state
     

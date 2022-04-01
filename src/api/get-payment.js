@@ -33,15 +33,11 @@ const getCustomerID = async (uID) => {
 
 
   async function getPaymentMethods(cID) {
-    if (pm ==''){
-      return '';
-    } else {
       const paymentMethods = await stripe.paymentMethods.list({
         customer: cID,
         type: 'card',
       });
       return paymentMethods;
-    }
   }
 
 export default validateJWT

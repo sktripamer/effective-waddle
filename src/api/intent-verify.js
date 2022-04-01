@@ -41,7 +41,8 @@ const verifyIntent = async (req, res) => {
     if (params.newAccount === null && params.token !== null) {
         try {
             jwt.verify(params.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
-                 const savedUser = await saveUser(decoded.data.user.id); //saves acf data
+                const savedUser = await saveUser(decoded.data.user.id); //saves acf data
+               
                  return res.status(200).json({savedUser})
                 // still need to create woo order
               });
@@ -118,7 +119,7 @@ function makeid(length) {
       })
 }
 
-const saveUser = async (userID) => {
+const saveUser = async(userID) => {
     let data = {
         "acf": {
             "customer_id": paymentIntent.customer,
@@ -135,7 +136,7 @@ const saveUser = async (userID) => {
         }
       };
       
-      axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users' + userID, JSON.stringify(data), axiosConfig)
+      axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + userID, JSON.stringify(data), axiosConfig)
       .then((res) => {
        return res;
       })

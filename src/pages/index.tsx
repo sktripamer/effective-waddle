@@ -1084,11 +1084,12 @@
 
       useEffect(() => {
         async function fetchMyAPI() {
-  
+          console.log('start here')
           if (email() == null) {
             // setAccount(true)
             // setCard(true)
             // radioHandler(1)
+            console.log('its not here')
           } else {
           try {
             // Retrieve email and username of the currently logged in user.

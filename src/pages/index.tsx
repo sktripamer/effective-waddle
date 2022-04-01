@@ -1073,6 +1073,8 @@
       const [disabled, setDisabled] = useState(true);
       const nameForm = useRef(null);
       const [status, setStatus] = useState(0)
+      const [loadedPayments, setLoadedPayments] = useState(false);
+      let newA = []
 
       const email = function() {
         try {
@@ -1103,10 +1105,16 @@
             // Update your user in DB to store the customerID
             // updateUserInDB() is *your* implementation of updating a user in the DB
             if (intent =='') {
+              setLoadedPayments(true)
               // setCard(true)
               // radioHandler(1)
               return '';
             } else {
+              setLoadedPayments(true)
+              
+              for (let i=0; i < intent.paymentMethod.data.length; i++) {
+               newA.push(intent.paymentMethod.data.edges[i])
+              }
             // console.log(intent)
             // setCustomerID(intent.paymentMethod.customer);
             // setPrevID(intent.paymentMethod.id);
@@ -1269,7 +1277,9 @@
         }
       }
 
-      
+      const getButtonId = (e) => {
+        console.log(e.currentTarget.id);
+      }
     const cardStyle = {
       style: {
         base: {
@@ -1291,6 +1301,7 @@
 
       return (
         <div className='payment register-form col-md-6'>
+           {newA && newA.map((el) => <div onClick={this.getButtonId} id={el.id}>saved method</div>)}
         <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
         <div className='powered-container'>
           <div className='powered-by-stripe'></div>

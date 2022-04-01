@@ -1113,7 +1113,7 @@
               setLoadedPayments(true)
               
               for (let i=0; i < intent.paymentMethod.data.length; i++) {
-               newA.push(intent.paymentMethod.data.edges[i])
+               newA.push(intent.paymentMethod.data[i])
               }
             // console.log(intent)
             // setCustomerID(intent.paymentMethod.customer);

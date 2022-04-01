@@ -114,15 +114,13 @@ function makeid(length) {
       
       const responser = await axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users', JSON.stringify(data), axiosConfig)
       .then((resp) => {
-        const newjwt = await jwt.sign({  data: {
+        var newJWT = jwt.sign({  data: {
             user: {
               id: resp.data.id,
               user_email: resp.data.email
             }
-          } }, process.env.JWT_SECRET, function(err, token) {
-            return token
-          });
-       return newjwt
+          } }, process.env.JWT_SECRET);
+       return newJWT;
       })
       .catch((err) => {
        return err;
@@ -156,5 +154,6 @@ const saveUser = async(userID) => {
       })
 
 }
+
 
 export default verifyIntent;

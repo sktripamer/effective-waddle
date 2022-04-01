@@ -8,14 +8,9 @@ const validateJWT = async (req, res) => {
             jwt.verify(req.body, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
             const customerID = await getCustomerID(decoded.data.user.id);
             const paymentMethod = await getPaymentMethods(customerID);
-            //const paymentIntent = await createIntent(customerID, decoded.data.user.id);
-             
-         // return res.status(200).json(decoded.data.user.id);
-         if (paymentMethod === '') {
-          return res.status(200).json('')
-         } else {
-          return res.status(200).json({paymentMethod})
-         }
+
+            return res.status(200).json({paymentMethod})
+         
        });
       } catch (e) {
         res.json({body: 'error ' + e})

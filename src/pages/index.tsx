@@ -1072,6 +1072,65 @@
       const [processing, setProcessing] = useState("");
       const [disabled, setDisabled] = useState(true);
       const nameForm = useRef(null);
+      const [status, setStatus] = useState(0)
+
+      const email = function() {
+        try {
+          return JSON.parse(localStorage.auth).authToken;
+        } catch {
+          return null;
+        }
+      }
+
+      useEffect(() => {
+        async function fetchMyAPI() {
+  
+          if (email() == null) {
+            setAccount(true)
+            setCard(true)
+            radioHandler(1)
+          } else {
+          try {
+            // Retrieve email and username of the currently logged in user.
+            // getUserFromDB() is *your* implemention of getting user info from the DB
+            const request = await fetch('/api/get-payment-info', {
+              method: 'POST',
+              body: email(),
+            });
+            const intent = (await request.json());
+            // Update your user in DB to store the customerID
+            // updateUserInDB() is *your* implementation of updating a user in the DB
+            if (intent =='') {
+              setCard(true)
+              radioHandler(1)
+              return '';
+            } else {
+            console.log(intent)
+            setCustomerID(intent.paymentMethod.customer);
+            setPrevID(intent.paymentMethod.id);
+            setLast4(intent.paymentMethod.card.last4);
+            setPrevExpY((intent.paymentMethod.card.exp_year).toString().slice(-2));
+            setPrevExpM(('0' + intent.paymentMethod.card.exp_month.toString()).toString().slice(-2));
+            setPrevName(intent.paymentMethod.billing_details.name);
+            setPrevEmail(intent.paymentMethod.billing_details.email);
+            setPrevBrand(intent.paymentMethod.card.brand);
+            return intent;
+            }
+          } catch (error) {
+            console.log('Failed to get cID');
+            console.log(error);
+            return null;
+          }
+        }
+        }
+        fetchMyAPI()
+      }, []);
+
+
+
+      const radioHandler = (status) => {
+        setStatus(status);
+      };
 
       const handleChange = async (event: { empty: boolean | ((prevState: boolean) => boolean); error: { message: any; }; }) => {
         setDisabled(event.empty);
@@ -1105,6 +1164,15 @@
         console.log(payload.paymentIntent)
         const verifyIntent = await intentVerify(payload.paymentIntent.id, email);
         console.log(verifyIntent)
+        if (verifyIntent !== true) {
+          const authData = {
+            authToken: verifyIntent.newUser,
+            user: {email: email},
+          };
+          setAuth(authData);
+        }
+
+
         if (verifyIntent === true) {
           setError(null);
           setProcessing(false);
@@ -1279,11 +1347,11 @@
       const [noCard, setCard] = useState(false);
       const email = function() {
         try {
-        return JSON.parse(localStorage.auth).authToken;
+          return JSON.parse(localStorage.auth).authToken;
         } catch {
           return '';
         }
-        }
+      }
       const optionsC = [ 
         {name: 'Afghanistan', code: 'AF'}, 
         {name: 'Åland Islands', code: 'AX'}, 
@@ -1658,25 +1726,6 @@
     const { boxVisible, setBoxVisible } = useBetween(useShareableState);
     const {moreDetails, setDetails } = useBetween(useShareableState);
     const {heroText, setHero } = useBetween(useShareableState);
-    // useEffect(() => {
-    //   window
-    //     .fetch("/api/payment-intent", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({
-    //            amount: 500,
-    //       }),
-    //     })
-    //     .then((res) => {
-    //       return res.json();
-    //     })
-    //     .then((body) => {
-    //       console.log(body)
-    //       setClientSecret(body.body.client_secret);
-    //     });
-    // }, []);
 
     const radioHandler = (status) => {
       setStatus(status);
@@ -2426,7 +2475,7 @@ useEffect(() => {
           setArchtype(archetype => {
               const updatedCounter = archetype + 1;
               if (updatedCounter === 9) {
-                  console.log(updatedCounter)
+                  
                   return 1;
               }
 
@@ -2449,7 +2498,7 @@ useEffect(() => {
       setMinibook(minibook => {
           const updatedCounter = minibook + 1;
           if (updatedCounter === 8) {
-              console.log(updatedCounter)
+            
               return 1;
           }
 

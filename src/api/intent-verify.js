@@ -110,13 +110,14 @@ function makeid(length) {
         }
       };
       
-      axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users', JSON.stringify(data), axiosConfig)
+      const responser = await axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users', JSON.stringify(data), axiosConfig)
       .then((res) => {
        return res;
       })
       .catch((err) => {
        return err;
       })
+      return responser;
 }
 
 const saveUser = async(userID) => {

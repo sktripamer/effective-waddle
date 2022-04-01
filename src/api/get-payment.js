@@ -37,7 +37,7 @@ const getCustomerID = async (uID) => {
       return '';
     } else {
       const paymentMethods =  await stripe.customers.listPaymentMethods(
-        cID
+        cID, {type: 'card'}
       );
       return paymentMethods;
     }

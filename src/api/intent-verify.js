@@ -111,8 +111,8 @@ function makeid(length) {
       };
       
       const responser = await axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users', JSON.stringify(data), axiosConfig)
-      .then((res) => {
-       return res;
+      .then((resp) => {
+       return resp.data;
       })
       .catch((err) => {
        return err;

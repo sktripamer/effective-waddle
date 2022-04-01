@@ -7,8 +7,7 @@ const validateJWT = async (req, res) => {
     try {
             jwt.verify(req.body, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
             const customerID = await getCustomerID(decoded.data.user.id);
-          
-            const paymentMethod = await getPaymentMethods(customerID.customerID);
+            const paymentMethod = await getPaymentMethods(customerID);
 
             return res.status(200).json({paymentMethod})
          
@@ -37,12 +36,12 @@ const getCustomerID = async (uID) => {
     if (pm ==''){
       return '';
     } else {
-      const paymentMethods =  await stripe.customers.listPaymentMethods(
-        cID, {type: 'card'}
-      );
+      const paymentMethods = await stripe.paymentMethods.list({
+        customer: cID,
+        type: 'card',
+      });
       return paymentMethods;
     }
-  
   }
 
 export default validateJWT

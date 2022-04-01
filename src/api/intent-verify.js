@@ -99,6 +99,8 @@ function makeid(length) {
             "customer_id": paymentIntent.customer,
               }
       }
+
+      
       if (params.metafield !== null) {
         data.acf[params.metafield] = params.metavalue
       }
@@ -112,7 +114,15 @@ function makeid(length) {
       
       const responser = await axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users', JSON.stringify(data), axiosConfig)
       .then((resp) => {
-       return resp.data;
+        const newjwt = await jwt.sign({  data: {
+            user: {
+              id: resp.data.id,
+              user_email: resp.data.email
+            }
+          } }, process.env.JWT_SECRET, function(err, token) {
+            return token
+          });
+       return newjwt
       })
       .catch((err) => {
        return err;

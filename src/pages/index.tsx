@@ -1306,7 +1306,11 @@
          
            {methodProcessing ? (
                 <div>loading payments...</div>
-              ) : (newA && newA.map((el) =>  {<div id={el.id}>saved method</div>}) )}
+              ) : (
+                <>
+               { newA && newA.map((el) =>  {<div id={el.id}>saved method</div>})}
+                </>
+                )}
         <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
         <div className='powered-container'>
           <div className='powered-by-stripe'></div>

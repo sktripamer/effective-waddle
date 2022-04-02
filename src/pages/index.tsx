@@ -1070,11 +1070,11 @@
       const [succeeded, setSucceeded] = useState(false);
       const {error, setError } = useBetween(useShareableState);
       const [processing, setProcessing] = useState("");
+      const [methodProcessing, setMethodProcessing] = useState(true);
       const [disabled, setDisabled] = useState(true);
       const nameForm = useRef(null);
-      const [status, setStatus] = useState(0)
-      const [loadedPayments, setLoadedPayments] = useState(false);
-      let newA = []
+      const [status, setStatus] = useState(0);
+      let newA = [];
 
       const email = function() {
         try {
@@ -1105,12 +1105,12 @@
             // Update your user in DB to store the customerID
             // updateUserInDB() is *your* implementation of updating a user in the DB
             if (intent =='') {
-              setLoadedPayments(true)
+              setMethodProcessing(false)
               // setCard(true)
               // radioHandler(1)
               return '';
             } else {
-              setLoadedPayments(true)
+              setMethodProcessing(false)
               
               for (let i=0; i < intent.paymentMethod.data.length; i++) {
                newA.push(intent.paymentMethod.data[i])
@@ -1301,7 +1301,12 @@
 
       return (
         <div className='payment register-form col-md-6'>
-           {newA && newA.map((el) => <div onClick={this.getButtonId} id={el.id}>saved method</div>)}
+         
+           {methodProcessing ? (
+                <div>loading payments...</div>
+              ) : (
+                newA && newA.map((el) => <div onClick={this.getButtonId} id={el.id}>saved method</div>)
+              )}
         <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
         <div className='powered-container'>
           <div className='powered-by-stripe'></div>

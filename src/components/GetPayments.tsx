@@ -1,4 +1,5 @@
-import { useState, useEffect  } from "react";
+import * as React from "react";
+import {useState, useEffect } from "react";
 
 import useAuth, { User } from "../hooks/useAuth";
 
@@ -6,7 +7,6 @@ import useAuth, { User } from "../hooks/useAuth";
 export default function GetPayments() {
   const { user } = useAuth();
   const { jwtAuthToken } = user as User;
-  let orderOutput: String;
   const [methodProcessing, setMethodProcessing] = useState(true);
   const [arrayTest, setArray] = useState({});
   useEffect(() => {

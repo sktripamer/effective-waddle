@@ -66,7 +66,7 @@ const getIntent = async (req, res) => {
              } else {
                  //create an intent with the saved customer ID.
                 const paymentIntent = await createIntent(customerID, totalCartPrice);
-                return res.status(200).json({customerID});
+                return res.status(200).json({paymentIntent});
              }
 
               

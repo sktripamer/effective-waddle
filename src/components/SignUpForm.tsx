@@ -5,8 +5,6 @@ import { Link } from "gatsby";
 const REGISTER_USER = gql`
   mutation registerUser(
     $email: String!
-    $firstName: String!
-    $lastName: String!
     $password: String!
   ) {
     registerUser(
@@ -14,8 +12,6 @@ const REGISTER_USER = gql`
         username: $email
         email: $email
         password: $password
-        firstName: $firstName
-        lastName: $lastName
       }
     ) {
       user {
@@ -51,22 +47,7 @@ export default function SignUpForm() {
   return (
     <form method="post" onSubmit={handleSubmit}>
       <fieldset disabled={loading} aria-busy={loading}>
-        <label htmlFor="sign-up-first-name">First name</label>
-        <input
-          id="sign-up-first-name"
-          type="text"
-          name="firstName"
-          autoComplete="given-name"
-          required
-        />
-        <label htmlFor="sign-up-last-name">Last name</label>
-        <input
-          id="sign-up-first-name"
-          type="text"
-          name="lastName"
-          autoComplete="family-name"
-          required
-        />
+        
         <label htmlFor="sign-up-email">Email</label>
         <input
           id="sign-up-email"

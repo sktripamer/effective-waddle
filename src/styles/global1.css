@@ -1589,6 +1589,7 @@
 
   .card-icon {
     width: 28px;
+    pointer-events: none;
     height: 28px;
     margin-right: 4px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z'/%3E%3C/svg%3E");
@@ -2003,6 +2004,7 @@
   }
   .prev-last4 {
     margin-left: 4px;
+    pointer-events: none;
   }
 
 

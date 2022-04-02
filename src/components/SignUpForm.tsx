@@ -7,11 +7,13 @@ const REGISTER_USER = gql`
     $email: String!
     $firstName: String!
     $lastName: String!
+    $password: String!
   ) {
     registerUser(
       input: {
         username: $email
         email: $email
+        password: $password
         firstName: $firstName
         lastName: $lastName
       }
@@ -71,6 +73,14 @@ export default function SignUpForm() {
           type="email"
           name="email"
           autoComplete="username"
+          required
+        />
+         <label htmlFor="sign-up-password">Password</label>
+        <input
+          id="sign-up-password"
+          type="password"
+          name="password"
+          autoComplete="password"
           required
         />
         {error ? (

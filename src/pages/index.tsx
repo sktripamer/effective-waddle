@@ -1221,7 +1221,7 @@
           let ex = {
             token: tokenGet(),
             //cart: JSON.parse(localStorage.cart),
-            cart: [30],
+            cart: [101],
             newAccount: newAccuntEmail,
           }
   
@@ -1260,7 +1260,7 @@
           let ex = {
             token: tokenGet(),
             //cart: JSON.parse(localStorage.cart),
-            cart: [30],
+            cart: [101],
             intent:paymentIntent,
             newAccount: newAccuntEmail,
             shippingData: null,
@@ -1308,7 +1308,7 @@
 // ('0' + el.card.exp_month.toString()).toString().slice(-2)
       return (
         <div className='payment register-form col-md-6'>
-
+            <h3>Test Course purchase</h3>
            {methodProcessing ? (
                 <div>loading payments...</div>
               ) : (
@@ -1336,14 +1336,14 @@
             onChange={handleChange}
           />
           <div className='powered-by-stripe-small'></div>
-          <div className='card-charge'>Your card will be charged $1.00</div>
+          
           
           <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
             <span id="button-text">
               {processing ? (
-                <div className="spinner" id="spinner">Keep Watching</div>
+                <div className="spinner" id="spinner">Order Course</div>
               ) : (
-                "Keep Watching"
+                "Order Course"
               )}
             </span>
           </button>

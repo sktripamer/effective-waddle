@@ -3,7 +3,7 @@ import { useState, useEffect  } from "react";
 import useAuth, { User } from "../hooks/useAuth";
 
 
-export default function GetOrders() {
+export default function GetPayments() {
   const { user } = useAuth();
   const { jwtAuthToken } = user as User;
   let orderOutput: String;

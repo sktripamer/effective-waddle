@@ -46,7 +46,7 @@ const getIntent = async (req, res) => {
 
         try {
         jwt.verify(params.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
-             const customerID = await getCustomer(decoded.data.user.user_email, decoded.data.user.id);
+             const customerID = await getCustomer(decoded.data.user.id); // tries to retrieve the ACF data (stripe customer ID) associated with the decoded JWT
 
              let total = 0;
              const mapLoop = async _ => {
@@ -59,13 +59,14 @@ const getIntent = async (req, res) => {
                  return total;
              }
              const totalCartPrice = await mapLoop();
-             if (customerID === '') {
+             if (customerID === '') { //no saved customer ID on stripe, so we create a new one and pass off that intent.
                 const newCustomerID = await createCustomer(params.newAccount);
                 const paymentIntent = await createIntent(newCustomerID, totalCartPrice);
                 return res.status(200).json({paymentIntent});
              } else {
+                 //create an intent with the saved customer ID.
                 const paymentIntent = await createIntent(customerID, totalCartPrice);
-                return res.status(200).json({paymentIntent});
+                return res.status(200).json({customerID});
              }
 
               
@@ -79,6 +80,7 @@ const getIntent = async (req, res) => {
 
 
 const createCustomer = async (emailSend) => {
+    
     try {
 
       const customerID = await stripe.customers.create({
@@ -93,7 +95,7 @@ const createCustomer = async (emailSend) => {
 
 }
 
-const getCustomer = async (uEmail, uID) => {
+const getCustomer = async (uID) => {
     let axiosConfig = {
         headers: {
             'Content-Type': 'application/json',
@@ -102,7 +104,7 @@ const getCustomer = async (uEmail, uID) => {
     };
     const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig)
     .then(resp => {  
-       return resp.data.acf.payment_method;
+       return resp.data.acf.customer_id;
     })
     .catch((err) => {
         return err;
@@ -124,8 +126,7 @@ const createIntent = async (cID, cartTotal) => {
       return paymentIntent;
     } catch (error) {
         return error;
-    }
-    
+    }  
 }
 
 const getPrice = async (pID) => {

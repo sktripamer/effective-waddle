@@ -1075,6 +1075,7 @@
       const nameForm = useRef(null);
       const [status, setStatus] = useState(0);
       let newA = [];
+      const [arrayTest, setArray] = useState({});
 
       const email = function() {
         try {
@@ -1102,6 +1103,7 @@
             });
             const intent = (await request.json());
             console.log(intent)
+            setArray(intent);
             // Update your user in DB to store the customerID
             // updateUserInDB() is *your* implementation of updating a user in the DB
             if (intent =='') {
@@ -1137,7 +1139,8 @@
         }
         fetchMyAPI()
       }, []);
-
+      if (isBrowser) console.log(arrayTest);
+ 
 
 
       const radioHandler = (status) => {

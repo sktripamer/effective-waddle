@@ -1312,10 +1312,9 @@
            {methodProcessing ? (
                 <div>loading payments...</div>
               ) : (
-                <div class='testclass'>
+                <div class='selection-section'>
                {arrayTest && arrayTest.map((el, index) =>
                       <React.Fragment key={index}>
-                      <strong>{el.id}</strong>
                       <div data-id={el.id} onClick={getButtonId} className={'previous-payment'}>
                       <div className='card-icon'></div>
                       <div className="prev-last4">{el.card.last4}</div>

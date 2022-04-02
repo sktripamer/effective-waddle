@@ -42,8 +42,8 @@ const verifyIntent = async (req, res) => {
         try {
             jwt.verify(params.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
                 await saveUser(decoded.data.user.id); //saves acf data
-                const newOrder = await createOrder(decoded.data.user.id);
-                 return res.status(200).json(newOrder)
+                await createOrder(decoded.data.user.id);
+                 return res.status(200).json(true)
                 // still need to create woo order
               });
             } catch (e) {

@@ -1115,6 +1115,7 @@
               for (let i=0; i < intent.paymentMethod.data.length; i++) {
                newA.push(intent.paymentMethod.data[i])
               }
+              console.log(newA)
             // console.log(intent)
             // setCustomerID(intent.paymentMethod.customer);
             // setPrevID(intent.paymentMethod.id);
@@ -1305,7 +1306,9 @@
            {methodProcessing ? (
                 <div>loading payments...</div>
               ) : (
-                newA && newA.map((el) => <div onClick={this.getButtonId} id={el.id}>saved method</div>)
+                
+                newA && newA.map((el) => <div id={el.id}>saved method</div>)
+                
               )}
         <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
         <div className='powered-container'>

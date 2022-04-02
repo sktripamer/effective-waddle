@@ -1308,7 +1308,7 @@
                 <div>loading payments...</div>
               ) : (
                 <div class='testclass'>
-               { newA && newA.map((el) =>  {<div id={el.id}>saved method</div>})}
+               { newA && newA.map((el) => <div id={el.id}>saved method</div>    )}
                 </div>
                 )}
         <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>

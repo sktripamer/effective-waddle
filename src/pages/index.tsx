@@ -1311,16 +1311,11 @@
                 <div>loading payments...</div>
               ) : (
                 <div class='testclass'>
-               {console.log(arrayTest)}
-               {arrayTest ? arrayTest.map((el, index) =>
-          el && index === undefined ? (
-            <p>error</p>
-          ) : (
-            <React.Fragment key={index}>
-                  <strong>{el.id}</strong>
-            </React.Fragment>
-        )
-): <div>Data Loading!</div>}
+               {arrayTest && arrayTest.map((el, index) =>
+                      <React.Fragment key={index}>
+                      <strong>{el.id}</strong>
+                      </React.Fragment>
+)}
                 </div>
                 )}
         <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>

@@ -114,7 +114,12 @@ function makeid(length) {
       
       const responser = await axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users', JSON.stringify(data), axiosConfig)
       .then((resp) => {
-        await createOrder(resp.data.id)
+          try {
+            createOrder(resp.data.id)
+          } catch(erro) {
+              return erro
+          }
+       
         var newJWT = jwt.sign({  data: {
             user: {
               id: resp.data.id,

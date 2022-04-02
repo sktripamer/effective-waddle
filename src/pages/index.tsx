@@ -1303,13 +1303,21 @@
 
       return (
         <div className='payment register-form col-md-6'>
-         
+
            {methodProcessing ? (
                 <div>loading payments...</div>
               ) : (
                 <div class='testclass'>
                {console.log(newA)}
-               { newA && newA.map((el) => <div id={el.id}>saved method</div> )}
+               {newA ? newA.map((el, index) =>
+          el && index === undefined ? (
+            <p>error</p>
+          ) : (
+            <React.Fragment key={index}>
+                  <strong>{el.id}</strong>
+            </React.Fragment>
+        )
+): <div>Data Loading!</div>}
                 </div>
                 )}
         <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>

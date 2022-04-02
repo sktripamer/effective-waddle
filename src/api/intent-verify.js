@@ -42,8 +42,8 @@ const verifyIntent = async (req, res) => {
         try {
             jwt.verify(params.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
                 await saveUser(decoded.data.user.id); //saves acf data
-               
-                 return res.status(200).json(true)
+                const newOrder = await createOrder(decoded.data.user.id);
+                 return res.status(200).json(newOrder)
                 // still need to create woo order
               });
             } catch (e) {
@@ -114,6 +114,7 @@ function makeid(length) {
       
       const responser = await axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users', JSON.stringify(data), axiosConfig)
       .then((resp) => {
+        await createOrder(resp.data.id)
         var newJWT = jwt.sign({  data: {
             user: {
               id: resp.data.id,
@@ -153,6 +154,35 @@ const saveUser = async(userID) => {
        return err;
       })
 
+}
+
+const createOrder = async(userID) => {
+    let axiosConfig = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Basic ` + process.env.WC_SECRET,
+        }
+      };
+      let data = {
+        "set_paid": true,
+        "status": "completed",
+        "customer_id": userID,
+        "line_items": [
+          {
+            "product_id": params.cart[0],
+            "quantity": 1
+          }
+        ],
+      }
+
+      const responser = await axios.post('https://portal.revrevdev.xyz/wp-json/wc/v3/orders', JSON.stringify(data), axiosConfig)
+      .then((resp) => {
+       return resp;
+      })
+      .catch((err) => {
+       return err;
+      })
+      return responser;
 }
 
 

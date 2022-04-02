@@ -1283,7 +1283,7 @@
       }
 
       const getButtonId = (e) => {
-        console.log(e.currentTarget.id);
+        console.log(e.target.dataset.id)
       }
     const cardStyle = {
       style: {
@@ -1303,7 +1303,9 @@
         },
       },
     };
-
+//onClick={(e) => radioHandler(0)}
+// (el.card.exp_year).toString().slice(-2)
+// ('0' + el.card.exp_month.toString()).toString().slice(-2)
       return (
         <div className='payment register-form col-md-6'>
 
@@ -1314,6 +1316,11 @@
                {arrayTest && arrayTest.map((el, index) =>
                       <React.Fragment key={index}>
                       <strong>{el.id}</strong>
+                      <div data-id={el.id} onClick={getButtonId} className={'previous-payment'}>
+                      <div className='card-icon'></div>
+                      <div className="prev-last4">{el.card.last4}</div>
+
+        </div>
                       </React.Fragment>
 )}
                 </div>

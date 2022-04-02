@@ -1103,7 +1103,7 @@
             });
             const intent = (await request.json());
             console.log(intent)
-            setArray(intent);
+            setArray(intent.paymentMethod.data);
             // Update your user in DB to store the customerID
             // updateUserInDB() is *your* implementation of updating a user in the DB
             if (intent =='') {
@@ -1311,8 +1311,8 @@
                 <div>loading payments...</div>
               ) : (
                 <div class='testclass'>
-               {console.log(newA)}
-               {newA ? newA.map((el, index) =>
+               {console.log(arrayTest)}
+               {arrayTest ? arrayTest.map((el, index) =>
           el && index === undefined ? (
             <p>error</p>
           ) : (

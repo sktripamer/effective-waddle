@@ -153,13 +153,14 @@ const saveUser = async(userID) => {
         }
       };
       
-      axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + userID, JSON.stringify(data), axiosConfig)
+      const responser = await axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + userID, JSON.stringify(data), axiosConfig)
       .then((res) => {
        return res;
       })
       .catch((err) => {
        return err;
       })
+      return responser;
 }
 
 const createOrder = async(userID) => {

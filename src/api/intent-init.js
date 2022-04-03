@@ -119,7 +119,7 @@ const createIntent = async (cID, cartTotal) => {
         amount: cartTotal,
         currency: 'usd',
         customer: cID,
-        setup_future_usage: "on_session",
+        setup_future_usage: "off_session",
         metadata: {'cart': JSON.stringify(params.cart)},
       });
      

@@ -33,6 +33,7 @@ const verifyIntent = async (req, res) => {
     //if new account is not null, and authtoken is null, try to process new account.
     if (params.newAccount !== null && params.token === null) {
         const newUser = await createNewUser(params.newAccount);
+        if (params.cart[0] == 105)  await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
         return res.status(200).json({newUser})
         // still need to create woo order
     }
@@ -43,6 +44,7 @@ const verifyIntent = async (req, res) => {
             jwt.verify(params.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
                 await saveUser(decoded.data.user.id); //saves acf data
                 await createOrder(decoded.data.user.id);
+              if (params.cart[0] == 105)  await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
                  return res.status(200).json(true)
                 // still need to create woo order
               });
@@ -158,7 +160,6 @@ const saveUser = async(userID) => {
       .catch((err) => {
        return err;
       })
-
 }
 
 const createOrder = async(userID) => {
@@ -190,5 +191,17 @@ const createOrder = async(userID) => {
       return responser;
 }
 
+const createSubscription = async(customerID, paymentID) => {
 
+    const subscription = await stripe.subscriptions.create({
+        customer: customerID,
+        items: [
+            {price: 'price_1KkQhpEIi9OXKxaBOPNTGrf0'},
+          ],
+        default_payment_method: paymentID,
+        trial_end: (new Date).setMonth((new Date).getMonth()+1)
+      });
+
+      return subscription
+}
 export default verifyIntent;

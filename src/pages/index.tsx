@@ -1221,7 +1221,7 @@
           let ex = {
             token: tokenGet(),
             //cart: JSON.parse(localStorage.cart),
-            cart: [101],
+            cart: [105],
             newAccount: newAccuntEmail,
           }
   
@@ -1260,7 +1260,7 @@
           let ex = {
             token: tokenGet(),
             //cart: JSON.parse(localStorage.cart),
-            cart: [101],
+            cart: [105],
             intent:paymentIntent,
             newAccount: newAccuntEmail,
             shippingData: null,

@@ -44,7 +44,7 @@ const verifyIntent = async (req, res) => {
             jwt.verify(params.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
                 await saveUser(decoded.data.user.id); //saves acf data
                 await createOrder(decoded.data.user.id);
-             // if (params.cart[0] == 105)  await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
+              if (params.cart[0] == 105) res.status(200).json(paymentIntent.customer, paymentIntent.payment_method);
                  return res.status(200).json(true)
                 // still need to create woo order
               });
@@ -203,6 +203,6 @@ const createSubscription = async(customerID, paymentID) => {
         trial_end: (new Date).setMonth((new Date).getMonth()+1)
       });
 
-      return subscription
+      return subscription;
 }
 export default verifyIntent;

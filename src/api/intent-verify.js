@@ -200,7 +200,7 @@ const createSubscription = async(customerID, paymentID) => {
             {price: 'price_1KkQhpEIi9OXKxaBOPNTGrf0'},
           ],
         default_payment_method: paymentID,
-        trial_end: (new Date).setMonth((new Date).getMonth()+1)
+       // trial_end: (new Date).setMonth((new Date).getMonth()+1)
       });
 
       return subscription;

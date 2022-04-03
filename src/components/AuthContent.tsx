@@ -20,7 +20,10 @@ export default function AuthContent({ children }: { children: ReactNode }) {
   if (loggedIn) {
     if (isBrowser) {
       const authData = {
-        authToken: user.jwtAuthToken
+        authToken: user.jwtAuthToken,
+        user: {
+          email: user.email
+        }
       };
       localStorage.setItem("auth", JSON.stringify(authData));
     }

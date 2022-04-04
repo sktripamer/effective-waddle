@@ -34,7 +34,7 @@ const verifyIntent = async (req, res) => {
     if (params.newAccount !== null && params.token === null) {
         const newUser = await createNewUser(params.newAccount);
         if (params.cart[0] == 105)  await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
-        return res.status(200).json({newUser})
+        return res.status(200).json({new: true, newUser})
         // still need to create woo order
     }
 

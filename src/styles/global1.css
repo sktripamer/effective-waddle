@@ -1585,6 +1585,9 @@
     border: 2px solid #ff005e;
     padding: 4px;
     cursor: pointer;
+    margin-left: 6px;
+    margin-right: 6px;
+    align-items: center;
   }
 
   .card-icon {

@@ -1129,17 +1129,6 @@
               setPrevEmail(intent.paymentMethod.data[0].billing_details.email);
               setPrevBrand(intent.paymentMethod.data[0].card.brand);
               setMethodProcessing(false)
-              
-
-            // console.log(intent)
-            // setCustomerID(intent.paymentMethod.customer);
-            // setPrevID(intent.paymentMethod.id);
-            // setLast4(intent.paymentMethod.card.last4);
-            // setPrevExpY((intent.paymentMethod.card.exp_year).toString().slice(-2));
-            // setPrevExpM(('0' + intent.paymentMethod.card.exp_month.toString()).toString().slice(-2));
-            // setPrevName(intent.paymentMethod.billing_details.name);
-            // setPrevEmail(intent.paymentMethod.billing_details.email);
-            // setPrevBrand(intent.paymentMethod.card.brand);
             return intent;
             }
           } catch (error) {
@@ -1304,11 +1293,12 @@
         }
       }
       const newCardButton = () => {
+        radioHandler(1)
         if (firstDisabled === false) {
           setDisabled(true)
           firstDisabled(true)
         }
-        radioHandler(1)
+
       }
       const getButtonId = (e) => {
         setDisabled(false)

@@ -44,13 +44,13 @@ export default function GetSubscriptions() {
     <div className='sub-list'>
 
        {methodProcessing ? (
-            <div>loading payments...</div>
+            <div>loading subscriptions...</div>
           ) : (
             <div class='subscription-list'>
            {arrayTest && arrayTest.map((el, index) =>
                   <>
                   <div data-id={el.sub.id} onClick={getButtonId} className={'sub-item'}>
-                  <div className="next-payment-date">{new Date((el.sub.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                  {/* <div className="next-payment-date">{new Date((el.sub.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div> */}
                   <div className='card-info'>{el.pm.id}</div>
     </div>
                   </>

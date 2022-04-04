@@ -30,18 +30,13 @@ export default function Nav() {
         ) : (
           <>
             <li>
-              <Link to="/members">
-                Members
-              </Link>
-            </li>
-            <li>
-              <Link to="/create-post">
-                Create Post
-              </Link>
-            </li>
-            <li>
               <Link to="/orders">
                 Orders
+              </Link>
+            </li>
+            <li>
+              <Link to="/subscriptions">
+                Subscriptions
               </Link>
             </li>
             <li>

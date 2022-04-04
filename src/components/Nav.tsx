@@ -5,7 +5,6 @@ import useAuth from "../hooks/useAuth";
 
 export default function Nav() {
   const { loggedIn } = useAuth();
-
   return (
     <nav>
       <ul className="nav">

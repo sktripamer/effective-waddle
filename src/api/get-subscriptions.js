@@ -10,15 +10,15 @@ const validateJWT = async (req, res) => {
             if (customerID == '') return res.status(200);
             const paymentMethod = await getPaymentMethods(customerID);
             
-            let sublist = {};
-            for (let i=0; i< paymentMethod.data.length; i++) {
-              const paymentM = await getPaymentMethod(paymentMethod.data[i].default_payment_method)
-              sublist[i] = {
-                sub: paymentMethod.data[i],
-                pm: paymentM
-            }
-            }
-            return res.status(200).json({sublist})
+            // let sublist = {};
+            // for (let i=0; i< paymentMethod.data.length; i++) {
+            // const paymentM = await getPaymentMethod(paymentMethod.data[i].default_payment_method)
+            //   sublist[i] = {
+            //     sub: paymentMethod.data[i],
+            //     pm: paymentM
+            // }
+            // }
+            return res.status(200).json({paymentMethod})
          
        });
       } catch (e) {

@@ -1083,7 +1083,7 @@
       const [prevBrand, setPrevBrand] = useState("");
       const [prevPaymentID, setPrevID] = useState(""); //previous payment ID.
       const { prevLast4, setLast4 } = useBetween(useShareableState);
-
+      const [clickedItem, setClickedItem] = useState(0);
       const email = function() {
         try {
           return JSON.parse(localStorage.auth).authToken;
@@ -1171,16 +1171,25 @@
       setProcessing(true);
       const intent = await createIntent(email);
       console.log(intent)
-      const payload = await stripe.confirmCardPayment(intent.paymentIntent.client_secret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-          billing_details: {
-            name:  form['firstname'].value,
-            email: form['email'].value,
-          }
-        },
-      
-      });
+      let payload;
+      if (status===0) {
+         payload = await stripe.confirmCardPayment(intent.paymentIntent.client_secret, {
+          payment_method: {
+            card: elements.getElement(CardElement),
+            billing_details: {
+              name:  form['firstname'].value,
+              email: form['email'].value,
+            }
+          },
+        
+        });
+      } else {
+         payload = await stripe.confirmCardPayment(intent.body.client_secret, {
+          payment_method: prevPaymentID,
+        
+        });
+      }
+
 
       if (payload.error) {
         setError(`${payload.error.message}`);
@@ -1189,12 +1198,15 @@
         console.log(payload.paymentIntent)
         const verifyIntent = await intentVerify(payload.paymentIntent.id, email);
         console.log(verifyIntent)
-        if (verifyIntent !== true) {
+        if (verifyIntent.new === true) {
           const authData = {
             authToken: verifyIntent.newUser,
             user: {email: email},
           };
           setAuth(authData);
+          setError(null);
+          setProcessing(false);
+          setSucceeded(true);
         }
 
 
@@ -1203,9 +1215,7 @@
           setProcessing(false);
           setSucceeded(true);
 
-        } else {
-          setProcessing(false);
-        }
+        } 
 
       }
     };
@@ -1293,7 +1303,8 @@
       }
 
       const getButtonId = (e) => {
-        console.log(e.target.dataset.id)
+        radioHandler(0)
+        setClickedItem(parseInt(e.target.dataset.idindex));
         setPrevID(e.target.dataset.id);
         setLast4(e.target.dataset.last4);
         setPrevExpY((e.target.dataset.year).toString().slice(-2));
@@ -1325,21 +1336,22 @@
 // ('0' + el.card.exp_month.toString()).toString().slice(-2)
 
       return (
-        <div className='payment register-form col-md-6'>
+        <div className={`payment register-form col-md-6 status-${status}`}>
             <h3>Test Course purchase</h3>
            {methodProcessing ? (
                 <div>loading payments...</div>
               ) : (
-                <div class='selection-section'>
+                <div class={`selection-section`}>
                {arrayTest && arrayTest.map((el, index) =>
                       <React.Fragment key={index}>
-                      <div data-id={el.id} data-month={el.card.exp_month} data-year={el.card.exp_year} data-brand={el.card.brand} data-last4={el.card.last4} data-prevname={el.billing_details.name} data-prevemail={el.billing_details.email} onClick={getButtonId} className={'previous-payment'}>
-                      <div className='card-icon'></div>
+                      <div data-id={el.id} data-month={el.card.exp_month} data-year={el.card.exp_year} data-brand={el.card.brand} data-last4={el.card.last4} data-prevname={el.billing_details.name} data-prevemail={el.billing_details.email} onClick={getButtonId} data-idindex={index} className={index === clickedItem ? "previous-payment is-checked" : "previous-payment"}>
+                      <div className={`prev-brand ${el.card.brand}`}></div>
                       <div className="prev-last4">{el.card.last4}</div>
 
         </div>
                       </React.Fragment>
 )}
+<div onClick={(e) => radioHandler(1)} className={'new-payment'}>+ New Card</div>
                 </div>
                 )}
         <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
@@ -1354,7 +1366,13 @@
             onChange={handleChange}
           />
           <div className='powered-by-stripe-small'></div>
-          
+          <div className='payment-infos'>
+            <div className="prev-name-on-card">{prevName}</div>
+            <div className="prev-email">{prevEmail}</div> 
+            <div className='prev-last-box'>
+              <div className="brand-last4"><div className={"prev-brand " + prevBrand}></div><div className="prev-last4">**** {prevLast4}</div></div><div className="prev-expiry">{prevExpM}/{prevExpY}</div>
+            </div>
+          </div>
           
           <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
             <span id="button-text">
@@ -1375,13 +1393,7 @@
           </p>
           
         </form>
-        <div className='payment-infos'>
-<div className="prev-name-on-card">{prevName}</div>
-<div className="prev-email">{prevEmail}</div> 
-<div className='prev-last-box'>
-<div className="brand-last4"><div className={"prev-brand " + prevBrand}></div><div className="prev-last4">**** {prevLast4}</div></div><div className="prev-expiry">{prevExpM}/{prevExpY}</div>
-</div>
-</div>
+
         </div>
       );
 

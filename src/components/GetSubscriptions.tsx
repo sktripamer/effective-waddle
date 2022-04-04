@@ -40,7 +40,7 @@ export default function GetSubscriptions() {
             <div>loading subscriptions...</div>
           ) : (
             <div class='subscription-list'>
-               {arrayTest && arrayTest.map((el) =>
+               {arrayTest && arrayTest.map((el, index) =>
                   <>
                   s
                   {/* <div data-id={el.sub.id} onClick={getButtonId} className={'sub-item'}>

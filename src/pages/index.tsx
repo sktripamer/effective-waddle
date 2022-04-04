@@ -1084,6 +1084,7 @@
       const [prevPaymentID, setPrevID] = useState(""); //previous payment ID.
       const { prevLast4, setLast4 } = useBetween(useShareableState);
       const [clickedItem, setClickedItem] = useState(0);
+      const [firstDisabled, setFirstDisabled] = useState(false)
       const email = function() {
         try {
           return JSON.parse(localStorage.auth).authToken;
@@ -1119,6 +1120,7 @@
               // radioHandler(1)
               return '';
             } else {
+              setDisabled(false)
               setPrevID(intent.paymentMethod.data[0].id);
               setLast4(intent.paymentMethod.data[0].card.last4);
               setPrevExpY((intent.paymentMethod.data[0].card.exp_year).toString().slice(-2));
@@ -1301,8 +1303,15 @@
           return null;
         }
       }
-
+      const newCardButton = () => {
+        if (firstDisabled === false) {
+          setDisabled(true)
+          firstDisabled(true)
+        }
+        radioHandler(1)
+      }
       const getButtonId = (e) => {
+        setDisabled(false)
         radioHandler(0)
         setClickedItem(parseInt(e.target.dataset.idindex));
         setPrevID(e.target.dataset.id);
@@ -1351,7 +1360,7 @@
         </div>
                       </React.Fragment>
 )}
-<div onClick={(e) => radioHandler(1)} className={'new-payment'}>+ New Card</div>
+<div onClick={newCardButton} className={'new-payment'}>+ New Card</div>
                 </div>
                 )}
         <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>

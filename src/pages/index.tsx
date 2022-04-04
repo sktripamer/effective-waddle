@@ -1175,7 +1175,7 @@
         
         });
       } else {
-         payload = await stripe.confirmCardPayment(intent.body.client_secret, {
+         payload = await stripe.confirmCardPayment(intent.paymentIntent.client_secret, {
           payment_method: prevPaymentID,
         
         });

@@ -29,6 +29,7 @@ export default function GetSubscriptions() {
     }
     fetchMyAPI()
   }, []);
+  console.log(arrayTest)
   const getButtonId = (e) => {
     console.log(e.target.dataset.id)
   }

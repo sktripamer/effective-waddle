@@ -9,12 +9,13 @@ const validateJWT = async (req, res) => {
             const customerID = await getCustomerID(decoded.data.user.id);
             if (customerID == '') return res.status(200);
             const paymentMethod = await getPaymentMethods(customerID);
+            
             let sublist = {};
             for (let i=0; i< paymentMethod.data.length; i++) {
-              getPaymentMethod(paymentMethod.data[i].default_payment_method)
+              const paymentM = await getPaymentMethod(paymentMethod.data[i].default_payment_method)
               sublist[i] = {
                 sub: paymentMethod.data[i],
-                pm: getPaymentMethod(paymentMethod.data[i].default_payment_method)
+                pm: paymentM
             }
             }
             return res.status(200).json({sublist})

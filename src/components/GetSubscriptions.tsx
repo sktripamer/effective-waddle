@@ -18,8 +18,8 @@ export default function GetSubscriptions() {
         });
         const intent = (await request.json());
         console.log(intent)
-       // setArray(intent.sublist);
-        //  setMethodProcessing(false)
+        setArray(intent.sublist);
+       setMethodProcessing(false);
       } catch (error) {
         console.log('Failed to get cID');
         console.log(error);
@@ -34,22 +34,7 @@ export default function GetSubscriptions() {
   }
   return (
     <div className='sub-list'>
-
-       {methodProcessing ? (
-            <div>loading subscriptions...</div>
-          ) : (
-            <div class='subscription-list'>
-           {arrayTest && arrayTest.map((el) =>
-                  <>
-                  {/* <div data-id={el.sub.id} onClick={getButtonId} className={'sub-item'}>
-                  <div className="next-payment-date">{new Date((el.sub.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-                  <div className='card-info'>{el.pm.id}</div>
-    </div> */}
-                  </>
-)}
-            </div>
-            )}
-   
+l
     </div>
   );
 

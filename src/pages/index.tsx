@@ -1076,6 +1076,13 @@
       const [status, setStatus] = useState(0);
       let newA = [];
       const [arrayTest, setArray] = useState({});
+      const [prevExpY, setPrevExpY] = useState("");
+      const [prevExpM, setPrevExpM] = useState("");
+      const [prevName, setPrevName] = useState("");
+      const [prevEmail, setPrevEmail] = useState("");
+      const [prevBrand, setPrevBrand] = useState("");
+      const [prevPaymentID, setPrevID] = useState(""); //previous payment ID.
+      const { prevLast4, setLast4 } = useBetween(useShareableState);
 
       const email = function() {
         try {
@@ -1112,10 +1119,13 @@
               // radioHandler(1)
               return '';
             } else {
-              for (let i=0; i < intent.paymentMethod.data.length; i++) {
-                newA.push(intent.paymentMethod.data[i])
-               }
-               console.log(newA)
+              setPrevID(intent.paymentMethod.data[0].id);
+              setLast4(intent.paymentMethod.data[0].card.last4);
+              setPrevExpY((intent.paymentMethod.data[0].card.exp_year).toString().slice(-2));
+              setPrevExpM(('0' + intent.paymentMethod.data[0].card.exp_month.toString()).toString().slice(-2));
+              setPrevName(intent.paymentMethod.data[0].billing_details.name);
+              setPrevEmail(intent.paymentMethod.data[0].billing_details.email);
+              setPrevBrand(intent.paymentMethod.data[0].card.brand);
               setMethodProcessing(false)
               
 
@@ -1140,7 +1150,7 @@
         fetchMyAPI()
       }, []);
       if (isBrowser) console.log(arrayTest);
- 
+
 
 
       const radioHandler = (status) => {
@@ -1284,6 +1294,13 @@
 
       const getButtonId = (e) => {
         console.log(e.target.dataset.id)
+        setPrevID(e.target.dataset.id);
+        setLast4(e.target.dataset.last4);
+        setPrevExpY((e.target.dataset.year).toString().slice(-2));
+        setPrevExpM(('0' + e.target.dataset.month.toString()).toString().slice(-2));
+        setPrevName(e.target.dataset.prevname);
+        setPrevEmail(e.target.dataset.prevemail);
+        setPrevBrand(e.target.dataset.brand);
       }
     const cardStyle = {
       style: {
@@ -1306,6 +1323,7 @@
 //onClick={(e) => radioHandler(0)}
 // (el.card.exp_year).toString().slice(-2)
 // ('0' + el.card.exp_month.toString()).toString().slice(-2)
+
       return (
         <div className='payment register-form col-md-6'>
             <h3>Test Course purchase</h3>
@@ -1315,7 +1333,7 @@
                 <div class='selection-section'>
                {arrayTest && arrayTest.map((el, index) =>
                       <React.Fragment key={index}>
-                      <div data-id={el.id} onClick={getButtonId} className={'previous-payment'}>
+                      <div data-id={el.id} data-month={el.card.exp_month} data-year={el.card.exp_year} data-brand={el.card.brand} data-last4={el.card.last4} data-prevname={el.billing_details.name} data-prevemail={el.billing_details.email} onClick={getButtonId} className={'previous-payment'}>
                       <div className='card-icon'></div>
                       <div className="prev-last4">{el.card.last4}</div>
 
@@ -1357,8 +1375,13 @@
           </p>
           
         </form>
-  
-  
+        <div className='payment-infos'>
+<div className="prev-name-on-card">{prevName}</div>
+<div className="prev-email">{prevEmail}</div> 
+<div className='prev-last-box'>
+<div className="brand-last4"><div className={"prev-brand " + prevBrand}></div><div className="prev-last4">**** {prevLast4}</div></div><div className="prev-expiry">{prevExpM}/{prevExpY}</div>
+</div>
+</div>
         </div>
       );
 

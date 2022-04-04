@@ -19,7 +19,7 @@ export default function GetSubscriptions() {
         const intent = (await request.json());
         console.log(intent)
        // setArray(intent.sublist);
-          setMethodProcessing(false)
+        //  setMethodProcessing(false)
       } catch (error) {
         console.log('Failed to get cID');
         console.log(error);

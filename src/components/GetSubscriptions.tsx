@@ -43,10 +43,10 @@ export default function GetSubscriptions() {
                {arrayTest && arrayTest.map((el, index) =>
                   <>
                   s
-                  {/* <div data-id={el.sub.id} onClick={getButtonId} className={'sub-item'}>
-                  <div className="next-payment-date">{new Date((el.sub.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-                  <div className='card-info'>{el.pm.id}</div>
-    </div> */}
+                  <div data-id={el.id} onClick={getButtonId} className={'sub-item'}>
+                  <div className="next-payment-date">{new Date((el.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                  <div className='card-info'>{el.default_payment_method}</div>
+    </div>
                   </>
 )}
 </div>

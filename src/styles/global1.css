@@ -655,13 +655,11 @@
     color: #fff;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
     justify-content: space-evenly;
     margin-bottom: 16px;
     margin-top: 12px;
     padding-bottom: 20px;
     margin-left: auto;
-    max-width: 260px;
     margin-right: auto;
   }
 
@@ -726,8 +724,24 @@
     margin-top: 0px;
     opacity: 1;
   }
+  div.status-1 .previous-payment {
+    background: none;
+    font-weight: normal;
+}
+.status-1 .new-payment {
+  background: linear-gradient( 
+    294deg
+    ,#a2f,#ff2278);
+    font-weight: bold;
+}
 
 
+  .previous-payment.is-checked {
+    background: linear-gradient( 
+      294deg
+      ,#a2f,#ff2278);
+      font-weight: bold;
+  }
   .previous-payment.\30 {
     background: linear-gradient( 
       294deg
@@ -1914,6 +1928,12 @@
   .payment-infos {
     margin-bottom: -4px;
   }
+  .status-1 .payment-infos {
+    display: none;
+}
+.status-0 .new-card-form {
+  display: none;
+}
   .brand-last4 {
     display: flex;
     flex-direction: row;
@@ -1983,7 +2003,9 @@
     border-radius: 5px;
     font-size: 20px;
   }
-
+.prev-brand {
+  pointer-events: none;
+}
   .tap-to-unmute.rev-mute {
     display: none;
   }

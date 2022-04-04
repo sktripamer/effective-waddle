@@ -1358,6 +1358,7 @@
         <div className='powered-container'>
           <div className='powered-by-stripe'></div>
           </div>
+          <div className='new-card-form'>
           <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
           <InputField2 label={'email'} name={'email'}/>
           <CardElement
@@ -1365,6 +1366,7 @@
             options={cardStyle}
             onChange={handleChange}
           />
+          </div>
           <div className='powered-by-stripe-small'></div>
           <div className='payment-infos'>
             <div className="prev-name-on-card">{prevName}</div>

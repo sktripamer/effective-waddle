@@ -19,7 +19,7 @@ export default function GetSubscriptions() {
         const intent = (await request.json());
         console.log(intent)
         setArray(intent.sublist);
-       setMethodProcessing(false);
+          setMethodProcessing(false)
       } catch (error) {
         console.log('Failed to get cID');
         console.log(error);
@@ -35,7 +35,16 @@ export default function GetSubscriptions() {
   }
   return (
     <div className='sub-list'>
-l
+
+       {methodProcessing ? (
+            <div>loading subscriptions...</div>
+          ) : (
+            <div class='subscription-list'>
+
+            dd
+</div>
+            )}
+   
     </div>
   );
 

@@ -1165,6 +1165,12 @@
       let payload;
       if (status===0) {
          payload = await stripe.confirmCardPayment(intent.paymentIntent.client_secret, {
+          payment_method: prevPaymentID,
+        
+        });
+      } else {
+         payload = await stripe.confirmCardPayment(intent.paymentIntent.client_secret, {
+         
           payment_method: {
             card: elements.getElement(CardElement),
             billing_details: {
@@ -1172,12 +1178,6 @@
               email: form['email'].value,
             }
           },
-        
-        });
-      } else {
-         payload = await stripe.confirmCardPayment(intent.paymentIntent.client_secret, {
-          payment_method: prevPaymentID,
-        
         });
       }
 

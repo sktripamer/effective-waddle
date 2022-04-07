@@ -9,7 +9,7 @@ const validateJWT = async (req, res) => {
             const customerID = await getCustomerID(decoded.data.user.id);
             if (customerID == '') return res.status(200).json('');
             const paymentMethod = await getPaymentMethods(customerID);
-
+            if (paymentMethod == '') return res.status(200).json('');
             return res.status(200).json({paymentMethod})
          
        });

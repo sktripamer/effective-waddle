@@ -1064,7 +1064,7 @@
 
     }
     const StepSix = (props) => {
-      const [shipping, setShipping] = useState(false);
+      let [shipping, setShipping] = useState(false);
       const [currentStep, setCurrentStep] = useState(1);
       if (props.shipping === true) {
       setShipping(true)
@@ -1716,15 +1716,14 @@ const noShippingForm = () => {
             </div>
           </div>
           
-          {shipping === true && (
-                    <div className={`next-btn`}>
-                    <span id="button-text">
-                      Continue to Shipping
-                    </span>
-                  </div>
-          )}
 
-          {shipping === true && drawShippingForm()}
+          {shipping === true && (
+                  <div className={`next-btn`}>
+                  <span id="button-text">
+                    Continue to Shipping
+                  </span>
+                </div>
+          ) && drawShippingForm()}
           {shipping === false && noShippingForm()}
 
 

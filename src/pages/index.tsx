@@ -1142,7 +1142,6 @@
         fetchMyAPI()
       }, []);
       if (isBrowser) console.log(arrayTest);
-      if (Object.keys(array).length === 0) setStatus(1);
 
 
       const radioHandler = (status) => {

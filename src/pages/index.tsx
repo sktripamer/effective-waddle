@@ -1335,10 +1335,10 @@
 // ('0' + el.card.exp_month.toString()).toString().slice(-2)
 
       return (
-        <div className={`payment register-form col-md-6 status-${status} load-${processing}`}>
+        <div className={`payment register-form col-md-6 status-${status} load-${methodProcessing}`}>
             <h3>Test Course purchase</h3>
            {methodProcessing ? (
-                <div>loading payments...</div>
+                <></>
               ) : (
                 <div class={`selection-section`}>
                {arrayTest && arrayTest.map((el, index) =>

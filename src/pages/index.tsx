@@ -1064,10 +1064,13 @@
 
     }
     const StepSix = (props) => {
-      let [shipping, setShipping] = useState(false);
+      const [shipping, setShipping] = useState(false);
+      const [currentStep, setCurrentStep] = useState(1);
       if (props.shipping === true) {
-        [shipping, setShipping] = useState(true);
+      setShipping(true)
       }
+
+
 
       const stripe = useStripe();
       const elements = useElements();
@@ -1673,7 +1676,7 @@ const noShippingForm = () => {
 
 
       return (
-        <div className={`payment register-form col-md-6 status-${status} load-${doneLoading}`}>
+        <div className={`payment register-form col-md-6 status-${status} load-${doneLoading} step-${currentStep}`}>
             <h3>Test Course purchase</h3>
            {methodProcessing ? (
                 <></>
@@ -1713,6 +1716,14 @@ const noShippingForm = () => {
             </div>
           </div>
           
+          {shipping === true && (
+                    <div className={`next-btn`}>
+                    <span id="button-text">
+                      Continue to Shipping
+                    </span>
+                  </div>
+          )}
+
           {shipping === true && drawShippingForm()}
           {shipping === false && noShippingForm()}
 

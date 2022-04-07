@@ -1115,18 +1115,17 @@
             });
             const intent = (await request.json());
             console.log(intent)
-            setArray(intent.paymentMethod.data);
-            console.log()
-            if (Object.keys(intent.paymentMethod.data).length === 0) radioHandler(1);
-            // Update your user in DB to store the customerID
-            // updateUserInDB() is *your* implementation of updating a user in the DB
             if (intent =='') {
               setMethodProcessing(false)
               setDoneLoading(true)
-              // setCard(true)
-              // radioHandler(1)
-              return '';
-            } else {
+              radioHandler(1)
+              return;
+            }
+            setArray(intent.paymentMethod.data);
+            console.log()
+            
+            // Update your user in DB to store the customerID
+            // updateUserInDB() is *your* implementation of updating a user in the DB
               setDisabled(false)
               setPrevID(intent.paymentMethod.data[0].id);
               setLast4(intent.paymentMethod.data[0].card.last4);
@@ -1138,7 +1137,7 @@
               setMethodProcessing(false)
               setDoneLoading(true)
             return intent;
-            }
+            
           } catch (error) {
             console.log('Failed to get cID');
             console.log(error);

@@ -1567,6 +1567,15 @@
         }
 
       }
+
+      const nextStep = () => {
+        setCurrentStep(2)
+      }
+      const prevStep = () => {
+        setCurrentStep(1)
+      }
+
+
       const getButtonId = (e) => {
         setDisabled(false)
         radioHandler(0)
@@ -1653,7 +1662,7 @@ const noShippingForm = () => {
     />
     </div>
       <div className='paybtn-cont'>
-      <div className={`next-btn stepback`}>
+      <div onClick={prevStep} className={`next-btn stepback`}>
         <span id="button-text">
           Back
         </span>
@@ -1716,7 +1725,7 @@ const noShippingForm = () => {
             </div>
           </div>
           {shipping === true && (
-                  <div className={`next-btn`}>
+                  <div onClick={nextStep} className={`next-btn`}>
                   <span id="button-text">
                     Continue to Shipping
                   </span>
@@ -3279,7 +3288,7 @@ useEffect(() => {
                   
                   <Elements stripe={stripePromise}>
                     <div onClick={preHide} class='close-preorder'>X</div>
-                  <StepSix />  
+                  <StepSix shipping={true} />  
                   </Elements>
                 
                   )

@@ -1715,15 +1715,15 @@ const noShippingForm = () => {
               <div className="brand-last4"><div className={"prev-brand " + prevBrand}></div><div className="prev-last4">**** {prevLast4}</div></div><div className="prev-expiry">{prevExpM}/{prevExpY}</div>
             </div>
           </div>
-          
-
           {shipping === true && (
                   <div className={`next-btn`}>
                   <span id="button-text">
                     Continue to Shipping
                   </span>
                 </div>
-          ) && drawShippingForm()}
+          )}
+
+          {shipping === true && drawShippingForm()}
           {shipping === false && noShippingForm()}
 
 

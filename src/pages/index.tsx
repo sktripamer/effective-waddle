@@ -1141,7 +1141,7 @@
         fetchMyAPI()
       }, []);
       if (isBrowser) console.log(arrayTest);
-
+      if (arrayTest[0] == null) setStatus(1);
 
 
       const radioHandler = (status) => {
@@ -1296,7 +1296,7 @@
         radioHandler(1)
         if (firstDisabled === false) {
           setDisabled(true)
-          firstDisabled(true)
+          setFirstDisabled(true)
         }
 
       }

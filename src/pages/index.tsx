@@ -1067,7 +1067,7 @@
       let [shipping, setShipping] = useState(false);
       const [currentStep, setCurrentStep] = useState(1);
       if (props.shipping === true) {
-      setShipping(true)
+         [shipping, setShipping] = useState(true);
       }
 
 

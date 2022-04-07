@@ -1116,7 +1116,7 @@
             const intent = (await request.json());
             console.log(intent)
             if (intent =='') {
-              setMethodProcessing(false)
+        
               setDoneLoading(true)
               radioHandler(1)
               return;

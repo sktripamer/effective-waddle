@@ -1100,6 +1100,8 @@
             // setAccount(true)
             // setCard(true)
             // radioHandler(1)
+            setMethodProcessing(false)
+            radioHandler(1)
             console.log('its not here')
           } else {
           try {
@@ -1112,7 +1114,8 @@
             const intent = (await request.json());
             console.log(intent)
             setArray(intent.paymentMethod.data);
-            if (Object.keys(intent.paymentMethod.data).length === 0) setStatus(1);
+            console.log()
+            if (Object.keys(intent.paymentMethod.data).length === 0) radioHandler(1);
             // Update your user in DB to store the customerID
             // updateUserInDB() is *your* implementation of updating a user in the DB
             if (intent =='') {

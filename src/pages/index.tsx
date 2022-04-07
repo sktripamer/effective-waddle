@@ -1071,6 +1071,7 @@
       const {error, setError } = useBetween(useShareableState);
       const [processing, setProcessing] = useState("");
       const [methodProcessing, setMethodProcessing] = useState(true);
+      const [doneLoading, setDoneLoading] = useState(false);
       const [disabled, setDisabled] = useState(true);
       const nameForm = useRef(null);
       const [status, setStatus] = useState(0);
@@ -1100,8 +1101,9 @@
             // setAccount(true)
             // setCard(true)
             // radioHandler(1)
-            setMethodProcessing(false)
+            
             radioHandler(1)
+            setDoneLoading(true)
             console.log('its not here')
           } else {
           try {
@@ -1120,6 +1122,7 @@
             // updateUserInDB() is *your* implementation of updating a user in the DB
             if (intent =='') {
               setMethodProcessing(false)
+              setDoneLoading(true)
               // setCard(true)
               // radioHandler(1)
               return '';
@@ -1133,6 +1136,7 @@
               setPrevEmail(intent.paymentMethod.data[0].billing_details.email);
               setPrevBrand(intent.paymentMethod.data[0].card.brand);
               setMethodProcessing(false)
+              setDoneLoading(true)
             return intent;
             }
           } catch (error) {
@@ -1338,7 +1342,7 @@
 // ('0' + el.card.exp_month.toString()).toString().slice(-2)
 
       return (
-        <div className={`payment register-form col-md-6 status-${status} load-${methodProcessing}`}>
+        <div className={`payment register-form col-md-6 status-${status} load-${doneLoading}`}>
             <h3>Test Course purchase</h3>
            {methodProcessing ? (
                 <></>

@@ -1112,6 +1112,7 @@
             const intent = (await request.json());
             console.log(intent)
             setArray(intent.paymentMethod.data);
+            if (Object.keys(intent.paymentMethod.data).length === 0) setStatus(1);
             // Update your user in DB to store the customerID
             // updateUserInDB() is *your* implementation of updating a user in the DB
             if (intent =='') {
@@ -1141,7 +1142,7 @@
         fetchMyAPI()
       }, []);
       if (isBrowser) console.log(arrayTest);
-      if (Object.keys(arrayTest).length === 0) setStatus(1);
+      if (Object.keys(array).length === 0) setStatus(1);
 
 
       const radioHandler = (status) => {

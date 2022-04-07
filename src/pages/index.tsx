@@ -3279,7 +3279,7 @@ useEffect(() => {
                   
                   <Elements stripe={stripePromise}>
                     <div onClick={preHide} class='close-preorder'>X</div>
-                  <StepSix shipping={true} />  
+                  <StepSix />  
                   </Elements>
                 
                   )

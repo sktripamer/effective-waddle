@@ -1141,7 +1141,7 @@
         fetchMyAPI()
       }, []);
       if (isBrowser) console.log(arrayTest);
-      if (arrayTest[0] == null) setStatus(1);
+      if (Object.keys(arrayTest).length === 0) setStatus(1);
 
 
       const radioHandler = (status) => {
@@ -1335,7 +1335,7 @@
 // ('0' + el.card.exp_month.toString()).toString().slice(-2)
 
       return (
-        <div className={`payment register-form col-md-6 status-${status}`}>
+        <div className={`payment register-form col-md-6 status-${status} load-${processing}`}>
             <h3>Test Course purchase</h3>
            {methodProcessing ? (
                 <div>loading payments...</div>
@@ -1350,7 +1350,7 @@
         </div>
                       </React.Fragment>
 )}
-<div onClick={newCardButton} className={'new-payment'}>+ New Card</div>
+<div onClick={newCardButton} className={`new-payment`}>+ New Card</div>
                 </div>
                 )}
         <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>

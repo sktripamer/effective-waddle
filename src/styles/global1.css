@@ -755,6 +755,40 @@
   color: #fff;
   font-weight: bold;
 }
+.success-true .card-error {
+  display: none;
+}
+
+.success-true .shipping-form-data {
+  display: none;
+}
+
+.success-true .powered-by-stripe-small {
+  display: none;
+}
+
+.success-true .new-card-form {
+  display: none;
+}
+
+.success-true .powered-container {
+  display: none;
+}
+
+p.result-message-text {
+  color: #fff;
+}
+
+p.result-message-text a {
+  color: #4226ff;
+  font-weight: bold;
+}
+
+.payment h2 {
+  color: #1204fe;
+  font-family: 'Josefin Sans';
+  margin-bottom: 20px;
+}
 .result-message-success:before {
   position: absolute;
   content: "L";

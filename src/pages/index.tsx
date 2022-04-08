@@ -1052,9 +1052,9 @@
             {error}
           </div>
         )}
-        <p className={succeeded ? "result-message" : "result-message hidden"}>
-          Payment succeeded!
-        </p>
+        <div className={succeeded ? "result-message" : "result-message hidden"}>
+         <div className='result-message-success'> Payment succeeded!</div>
+        </div>
         
       </form>
 
@@ -1686,7 +1686,7 @@ const noShippingForm = () => {
 
 
       return (
-        <div className={`payment register-form col-md-6 status-${status} load-${doneLoading} step-${currentStep}`}>
+        <div className={`payment register-form col-md-6 status-${status} load-${doneLoading} step-${currentStep} success-${succeeded}`}>
             <h3>Test Course purchase</h3>
            {methodProcessing ? (
                 <></>
@@ -1742,9 +1742,10 @@ const noShippingForm = () => {
               {error}
             </div>
           )}
-          <p className={succeeded ? "result-message" : "result-message hidden"}>
-            Payment succeeded!
-          </p>
+        <div className={"result-message"}>
+         <div className='result-message-success'>Payment succeeded!</div>
+         <p className='result-message-text'>{props.success}</p>
+        </div>
           
         </form>
 
@@ -3290,7 +3291,7 @@ useEffect(() => {
                   
                   <Elements stripe={stripePromise}>
                     <div onClick={preHide} class='close-preorder'>X</div>
-                  <StepSix shipping={true} />  
+                  <StepSix shipping={true} success={["Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
                   </Elements>
                 
                   )

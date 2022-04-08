@@ -1450,6 +1450,7 @@
 
 
       if (payload.error) {
+        setCurrentStep(1)
         setError(`${payload.error.message}`);
         setProcessing(false);
       } else {
@@ -1725,7 +1726,7 @@ const noShippingForm = () => {
             </div>
           </div>
           {shipping === true && (
-                  <div onClick={nextStep} className={`next-btn firststep-btn`}>
+                  <div onClick={nextStep} className={`next-btn firststep-btn disabled-${disabled}`}>
                   <span id="button-text">
                     Continue to Shipping
                   </span>
@@ -2282,6 +2283,7 @@ const noShippingForm = () => {
           });
         
           if (payload.error) {
+            
             setError(`${payload.error.message}`);
             setProcessing(false);
           } else {

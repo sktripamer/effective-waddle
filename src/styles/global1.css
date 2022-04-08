@@ -743,6 +743,26 @@
     opacity: .7;
     pointer-events: none;
 }
+.step-2 .new-card-form {
+  display: none;
+}
+p.result-message {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+}
+p.result-message:before {
+  position: absolute;
+  content: "L";
+  color: white;
+  font-family: arial;
+  transform: scaleX(-1) rotate(-35deg);
+  margin-left: -25px;
+}
   .pay-btn {
     padding: 0;
     background: linear-gradient( 

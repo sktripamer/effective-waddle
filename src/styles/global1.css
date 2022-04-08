@@ -209,7 +209,9 @@
   }
 
   .next-btn.stepback {
-    width: 25%;
+    padding: 6px 25px;
+    width: 20%;
+    width: fit-content;
     margin-top: 0px;
     background: none;
     border: 2px solid #7d4360;
@@ -650,6 +652,9 @@
     cursor: default;
     margin-bottom: 8px;
   }
+  .new-card-form {
+    margin-bottom: 4px;
+}
   .selection-section {
     border-bottom: 2px solid #d522bd;
     color: #fff;
@@ -673,7 +678,8 @@
 }
 
 .load-true {
-    animation: newput .25s forwards;
+  opacity:0;
+    animation: newput .25s .25s forwards;
 
 }
 .load-false:after {
@@ -741,7 +747,7 @@
     border: 2px solid rgb(255 0 94);
     font-weight: 700;
     color: #fff;
-    padding: 6px 10px;
+    padding: 6px 32px;
     border-radius: 3px;
     float: right;
     margin-top: 0px;
@@ -1982,6 +1988,40 @@
     opacity:1;
     
   }
+
+  .step-1 .shipping-form-data {
+    display: none;
+}
+
+.step-2 .payment-infos {
+    display: none;
+}
+
+.step-2 .selection-section {
+    display: none;
+}
+
+.step-2 .firststep-btn {
+     display: none;
+}
+
+
+
+.firststep-btn {
+    width: fit-content;
+    padding: 6px 32px;
+}
+
+.firststep-btn:after {
+    content: '';
+    border: solid currentColor;
+    border-width: 0 .2em .2em 0;
+    display:      inline-block;
+    padding:      .20em;
+    transform: rotate(-45deg);
+    margin-left: 5px;
+}
+
 
   .revealer-el .rev-loadin {
     animation: disout .5s forwards step-end;

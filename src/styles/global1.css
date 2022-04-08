@@ -746,7 +746,7 @@
 .step-2 .new-card-form {
   display: none;
 }
-p.result-message {
+.result-message-success {
   position: absolute;
   left: 0;
   right: 0;
@@ -755,7 +755,7 @@ p.result-message {
   color: #fff;
   font-weight: bold;
 }
-p.result-message:before {
+.result-message-success:before {
   position: absolute;
   content: "L";
   color: white;
@@ -1686,7 +1686,7 @@ p.result-message:before {
   .account-sign-up-message {
     margin-top: 2.5rem;
   }
-  p.result-message.hidden {
+  .success-false .result-message {
     display: none;
     opacity: 0;
   }

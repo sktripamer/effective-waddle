@@ -1725,7 +1725,7 @@ const noShippingForm = () => {
             </div>
           </div>
           {shipping === true && (
-                  <div onClick={nextStep} className={`next-btn`}>
+                  <div onClick={nextStep} className={`next-btn firststep-btn`}>
                   <span id="button-text">
                     Continue to Shipping
                   </span>

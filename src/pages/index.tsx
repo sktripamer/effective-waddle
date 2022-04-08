@@ -1519,6 +1519,7 @@
       }
   
       async function intentVerify(paymentIntent, newEmail) {
+        const form = nameForm.current
         let newAccuntEmail = null;
         try {
           let tokenGet = function() {
@@ -1545,6 +1546,19 @@
             shippingData: null,
             metafield: "onedollar",
             metavalue: true,
+          }
+
+          if (shipping===true) {
+            ex.shippingData = {
+              shippingaddress1: form['ship-address1'].value,
+              shippingaddress2: form['ship-address2'].value,
+              accountemail: form['email'].value,
+              shippingname: form['name'].value,
+              shippingcity: form['ship-city'].value,
+              shippingstate: form['ship-state'].value,
+              shippingzip: form['ship-zip'].value,
+              shippingcountry: country[0].code,
+            }
           }
   
           const request = await fetch('/api/intent-verify', {

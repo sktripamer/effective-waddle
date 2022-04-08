@@ -182,6 +182,20 @@ const createOrder = async(userID) => {
         ],
       }
 
+    if (params.shippingData !==null) {
+        data.shipping = {
+    "first_name": params.shippingData.shippingname,
+    "last_name": '',
+    "address_1": params.shippingData.shippingaddress1,
+    "address_2": params.shippingData.shippingaddress2,
+    "city": params.shippingData.shippingcity,
+    "state": params.shippingData.shippingstate,
+    "postcode": params.shippingData.shippingzip,
+    "country": params.shippingData.shippingcountry
+  }
+    }
+
+
       const responser = await axios.post('https://portal.revrevdev.xyz/wp-json/wc/v3/orders', JSON.stringify(data), axiosConfig)
       .then((resp) => {
        return resp;

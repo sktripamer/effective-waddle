@@ -2714,6 +2714,8 @@ const noShippingForm = () => {
       //const [isLoggedIn, setLoggedIn] = useState(false);
       const [activate, setActivate] = useState(false);
       const [loadPreorder, setPreorder] = useState(false);
+      const [loadPreorder2, setPreorder2] = useState(false);
+      const [loadPreorder3, setPreorder3] = useState(false);
       const [successMessage, setSuccessMessage] = useState("");
       const [muteClass, setMuteClass] = useState("");
       const [firstPlay, setFirstPlay] = useState(false);
@@ -2834,10 +2836,26 @@ const noShippingForm = () => {
         setPreorderButton(true)
         setPreorder(true)
     }
+    function preReveal2() {
+      setPreorderButton(true)
+      setPreorder2(true)
+  }
+  function preReveal3() {
+    setPreorderButton(true)
+    setPreorder3(true)
+}
     function preHide() {
       setPreorderButton(false)
       setPreorder(false)
   }
+  function preHide2() {
+    setPreorderButton(false)
+    setPreorder2(false)
+}
+function preHide3() {
+  setPreorderButton(false)
+  setPreorder3(false)
+}
   const [shadowPosition, setShadowPosition] = useState(20);
   const [scrollPosition, setScrollPosition] = useState(180);
 const handleScroll = () => {
@@ -3291,7 +3309,33 @@ useEffect(() => {
                   
                   <Elements stripe={stripePromise}>
                     <div onClick={preHide} class='close-preorder'>X</div>
-                  <StepSix shipping={true} success={["Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
+                  <StepSix shipping={true} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
+                  </Elements>
+                
+                  )
+                : ""}
+    </div>
+    <div className={`preorder-btn-container ${loadPreorder2}`}>
+    {true == loadPreorder2
+                ? (
+                    
+                  
+                  <Elements stripe={stripePromise}>
+                    <div onClick={preHide2} class='close-preorder'>X</div>
+                  <StepSix shipping={true} success={["2. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
+                  </Elements>
+                
+                  )
+                : ""}
+    </div>
+    <div className={`preorder-btn-container ${loadPreorder3}`}>
+    {true == loadPreorder3
+                ? (
+                    
+                  
+                  <Elements stripe={stripePromise}>
+                    <div onClick={preHide3} class='close-preorder'>X</div>
+                  <StepSix shipping={true} success={["3. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
                   </Elements>
                 
                   )
@@ -3462,9 +3506,9 @@ useEffect(() => {
 </Suspense>)}
 
 
-<button onClick={tester1}>test1</button>
-<button onClick={tester2}>test2</button>
-<button onClick={tester3}>test3</button>
+<button onClick={preReveal}>test1</button>
+<button onClick={preReveal2}>test2</button>
+<button onClick={preReveal3}>test3</button>
 
 
 <div class='archtype-title'>WHICH ONE ARE YOU?</div>

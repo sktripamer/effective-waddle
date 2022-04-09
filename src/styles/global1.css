@@ -1420,6 +1420,7 @@ p.result-message-text a {
     font-style: italic;
   }
   nav {
+    min-width: 70px;
     max-width: 70px;
     height: 100vh;
     position: static;
@@ -1433,6 +1434,8 @@ p.result-message-text a {
     flex-direction: column;
     height: 100%;
     justify-content: center;
+    opacity: 0;
+    animation: .2s newput forwards;
   }
 
   .nav li {

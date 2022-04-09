@@ -6,8 +6,9 @@ import useAuth from "../hooks/useAuth";
 
 
 export default function Nav() {
-  const { loggedIn } = useAuth();
+  const { loggedIn, loading } = useAuth();
  const [navSelected, setNav] = useState();
+
   useEffect(() => {
     if (window.location.href.indexOf("orders") > -1) {
         setNav('orders')
@@ -15,11 +16,14 @@ export default function Nav() {
     if (window.location.href.indexOf("subscriptions") > -1) {
       setNav('subscriptions')
   }
-
   }, []);
 
   return (
-    <nav>
+    <>
+     {loading ? (
+      <nav className='navLoading'></nav>
+     ) : (
+      <nav classname='navloaded'>
       <ul className={`nav ${navSelected}`}>
         <li  className='nav-home'>
           <Link to="/">
@@ -70,5 +74,11 @@ export default function Nav() {
         )}
       </ul>
     </nav>
+     )}
+
+
+
+
+    </>
   );
 }

@@ -1,14 +1,24 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import { Link } from "gatsby";
 
 import useAuth from "../hooks/useAuth";
 
+
 export default function Nav() {
   const { loggedIn } = useAuth();
+ const [navSelected, setNav] = useState();
+  useEffect(() => {
+    if (window.location.href.indexOf("orders") > -1) {
+        setNav('orders')
+    }
+
+  }, []);
+
   return (
     <nav>
-      <ul className="nav">
-        <li>
+      <ul className={`nav ${navSelected}`}>
+        <li  className='nav-home'>
           <Link to="/">
             Home
           </Link>
@@ -28,27 +38,27 @@ export default function Nav() {
           </>
         ) : (
           <>
-            <li>
+            <li className='nav-orders'>
               <Link to="/orders">
                 Orders
               </Link>
             </li>
-            <li>
+            <li className='nav-subscriptions'>
               <Link to="/subscriptions">
                 Subscriptions
               </Link>
             </li>
-            <li>
+            <li className='nav-payments'>
               <Link to="/payments">
                 Payments
               </Link>
             </li>
-            <li>
+            <li className='nav-profile'>
               <Link to="/profile">
                 Profile
               </Link>
             </li>
-            <li>
+            <li className='nav-logout'>
               <Link to="/log-out">
                 Log Out
               </Link>

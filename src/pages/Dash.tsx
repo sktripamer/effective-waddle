@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import Layout from "../components/Layout";
-
+import Nav from "./Nav";
 // styles
 
 
@@ -11,6 +11,7 @@ import Layout from "../components/Layout";
 const DashPage = () => {
   return (
     <Layout>
+      <Nav />
       <div>
       aaa
       </div>

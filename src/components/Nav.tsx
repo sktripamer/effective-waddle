@@ -12,6 +12,9 @@ export default function Nav() {
     if (window.location.href.indexOf("orders") > -1) {
         setNav('orders')
     }
+    if (window.location.href.indexOf("subscriptions") > -1) {
+      setNav('subscriptions')
+  }
 
   }, []);
 

@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 import useAuth from "../hooks/useAuth";
 
 
-export default function Nav() {
+export default function Nav(props) {
   const { loggedIn, loading } = useAuth();
  const [navSelected, setNav] = useState();
  const [hoverClick, setHoverClick] = useState('');
@@ -21,7 +21,7 @@ export default function Nav() {
     }
     if (window.location.href.indexOf("subscriptions") > -1) {
       setNav('subscriptions')
-  }
+    }
   }, []);
 
   return (
@@ -51,7 +51,7 @@ export default function Nav() {
           </>
         ) : (
           <>
-            <li onClick={clickHandle} onMouseLeave={mouseHandle} className='nav-orders'>
+            <li onClick={() => props.changePage('orders')} onMouseLeave={mouseHandle} className='nav-orders'>
               <Link to="/orders">
                 Orders
               </Link>

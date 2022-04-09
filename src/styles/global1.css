@@ -1460,7 +1460,8 @@ p.result-message-text a {
     padding-left: 72px;
     text-decoration: none;
     color: #fff;
-    padding-right: 20px;
+    margin-right: 20px;
+    overflow: hidden;
   }
   li.nav-orders:before {
     content: '';
@@ -1511,7 +1512,7 @@ nav:hover .nav li {
   background: linear-gradient(202deg,#ee091c,#900b6d);
 }
 
-.subscriptions li.nav-subcriptions {
+.subscriptions li.nav-subscriptions {
   background: linear-gradient(202deg, #ee091c,#900b6d);
   font-weight: bold;
 }

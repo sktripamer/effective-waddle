@@ -133,6 +133,8 @@
     max-width: 1000px;
     padding: 4rem 1rem 0; */
     background: #fff;
+    display: flex;
+
   }
  
   .powered-by-stripe-small {
@@ -353,20 +355,20 @@
     div.ship-zipcountry>div {
       margin-bottom: 5px;
     }
-  .secondstep div.react-dropdown-select-dropdown-handle {
+  .payment div.react-dropdown-select-dropdown-handle {
       height: 32px;
   }
-  .secondstep input.react-dropdown-select-input {
+  .payment input.react-dropdown-select-input {
       line-height: 32px;
       margin-top: 16px;
       color: #f7f7f7;
       font-size: medium;
   }
-  .secondstep div.react-dropdown-select {
+  .payment div.react-dropdown-select {
     min-height: 32px;
     height: 32px;
   }
-  .secondstep div.react-dropdown-select-dropdown-handle {
+  .payment div.react-dropdown-select-dropdown-handle {
     height: 32px;
     margin: 0;
   }
@@ -746,8 +748,11 @@
 .step-2 .new-card-form {
   display: none;
 }
+
+.step-2 .powered-by-stripe-small {
+  display: none;
+}
 .result-message-success {
-  position: absolute;
   left: 0;
   right: 0;
   margin: auto;
@@ -1414,21 +1419,31 @@ p.result-message-text a {
     color: #c5c5c5ab;
     font-style: italic;
   }
-
+  nav {
+    max-width: 70px;
+    height: 100vh;
+    position: static;
+    background-color: #3b3b3b;
+}
   .nav {
+    display: flex;
     margin: 0;
     padding: 0;
-    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
   }
 
   .nav li {
     list-style: none;
+    white-space: nowrap;
   }
 
   .nav a {
     display: block;
     padding: 2rem;
     text-decoration: none;
+    color: #fff;
   }
 
   .error-message {

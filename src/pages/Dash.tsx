@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import Layout from "../components/Layout";
-import Nav from "./Nav";
+import Nav from "../components/Nav";
 // styles
 
 

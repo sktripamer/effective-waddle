@@ -8,10 +8,12 @@ export default function Profile() {
   return (
     <Layout>
       <Nav />
+      <div className='navcontent'>
       <h1>Orders</h1>
       <AuthContent>
         <GetOrders />
       </AuthContent>
+      </div>
     </Layout>
   );
 }

@@ -1,7 +1,8 @@
 import * as React from "react";
-
+import { useState } from "react";
 import Layout from "../components/Layout";
 import Nav from "../components/Nav";
+import GetOrders from "../components/GetOrders";
 // styles
 
 
@@ -9,12 +10,13 @@ import Nav from "../components/Nav";
 
 // markup
 const DashPage = () => {
+  const [page, setPage] = useState('');
   return (
     <Layout>
-      <Nav />
-      <div>
-      aaa
-      </div>
+      <Nav changePage={page => setPage(page)}/>
+      {page === 'orders' && (
+        <GetOrders/>
+      )}
     </Layout>
   )
 }

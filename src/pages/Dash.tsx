@@ -1,9 +1,8 @@
 import * as React from "react";
-import { useState, useLayoutEffect  } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import Nav from "../components/Nav";
 import GetOrders from "../components/GetOrders";
-import AuthContent from "../components/AuthContent";
 // styles
 
 
@@ -13,7 +12,7 @@ import AuthContent from "../components/AuthContent";
 const DashPage = () => {
   const [page, setPage] = useState('');
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (window.location.href.indexOf("orders") > -1) {
         setPage('orders')
     }
@@ -26,9 +25,7 @@ const DashPage = () => {
     <Layout>
       <Nav changePage={page => setPage(page)}/>
       {page === 'orders' && (
-          <AuthContent>
         <GetOrders/>
-        </AuthContent>
       )}
     </Layout>
   )

@@ -8,18 +8,15 @@ import useAuth from "../hooks/useAuth";
 export default function Nav(props) {
   const { loggedIn, loading } = useAuth();
  const [navSelected, setNav] = useState();
- const [hoverClick, setHoverClick] = useState('');
-  const clickHandle = () => {
-    setHoverClick('just-clicked')
-  }
-  const mouseHandle = () => {
-    setHoverClick('')
-  }
+
   useEffect(() => {
     if (window.location.href.indexOf("orders") > -1) {
         setNav('orders')
     }
     if (window.location.href.indexOf("subscriptions") > -1) {
+      setNav('subscriptions')
+    }
+    if (window.location.href.indexOf("home") > -1) {
       setNav('subscriptions')
     }
   }, []);
@@ -31,11 +28,7 @@ export default function Nav(props) {
      ) : (
       <nav classname='navloaded'>
       <ul className={`nav ${navSelected} ${props.classPass}`}>
-        <li onClick={clickHandle} onMouseLeave={mouseHandle} className='nav-home'>
-          <Link to="/">
-            Home
-          </Link>
-        </li>
+
         {!loggedIn ? (
           <>
             <li>
@@ -51,6 +44,11 @@ export default function Nav(props) {
           </>
         ) : (
           <>
+          <li onClick={() => props.changePage('home')} className='nav-home'>
+          <Link to="#home">
+            Home
+          </Link>
+        </li>
             <li onClick={() => props.changePage('orders')} className='nav-orders'>
               <Link to="#orders">
                 Orders

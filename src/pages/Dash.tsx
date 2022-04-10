@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import Nav from "../components/Nav";
 import GetOrders from "../components/GetOrders";
+import GetSubscriptions from "../components/GetSubscriptions";
 import AuthContent from "../components/AuthContent";
 // styles
 
@@ -37,13 +38,20 @@ const DashPage = () => {
     <Layout>
       <Nav changePage={page => setPage(page)} classPass={page}/>
       {page === 'orders' && (
-          <AuthContent>
-        <GetOrders/>
+        <AuthContent>
+          <GetOrders/>
         </AuthContent>
       )}
-        {page === 'home' && (
-            <div>home page</div>
-        )}
+      
+      {page === 'subscriptions' && (
+        <AuthContent>
+          <GetSubscriptions/>
+        </AuthContent>
+      )}
+
+      {page === 'home' && (
+        <div>home page</div>
+      )}
     </Layout>
   )
 }

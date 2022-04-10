@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useQuery, gql } from "@apollo/client";
-
+import { useEffect } from "react";
 import useAuth, { User } from "../hooks/useAuth";
 
 
@@ -55,6 +55,14 @@ query theorders( $input: Int) {
 
 
 export default function GetOrders() {
+  useEffect(() => {
+
+    if (window.location.href.indexOf("orders") === -1) {
+      window.location.reload();
+    }
+
+
+  }, []);
   const { user } = useAuth();
   const { id } = user as User;
   let orderOutput: String;

@@ -29,6 +29,11 @@ export default function GetSubscriptions() {
     }
     fetchMyAPI()
   }, []);
+  useEffect(() => {
+    if (window.location.href.indexOf("subscriptions") === -1) {
+      window.location.reload();
+    }
+  });
   console.log(arrayTest)
   const getButtonId = (e) => {
     console.log(e.target.dataset.id)
@@ -42,7 +47,6 @@ export default function GetSubscriptions() {
             <div class='subscription-list'>
                {arrayTest && arrayTest.map((el, index) =>
                   <>
-                  s
                   <div data-id={el.id} onClick={getButtonId} className={'sub-item'}>
                   <div className="next-payment-date">{new Date((el.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
                   <div className='card-info'>{el.default_payment_method}</div>

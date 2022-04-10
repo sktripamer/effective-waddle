@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect  } from "react";
 import Layout from "../components/Layout";
 import Nav from "../components/Nav";
 import GetOrders from "../components/GetOrders";
@@ -13,7 +13,7 @@ import AuthContent from "../components/AuthContent";
 const DashPage = () => {
   const [page, setPage] = useState('');
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (window.location.href.indexOf("orders") > -1) {
         setPage('orders')
     }

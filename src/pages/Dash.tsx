@@ -24,7 +24,7 @@ const DashPage = () => {
 
   return (
     <Layout>
-      <Nav changePage={page => setPage(page)}/>
+      <Nav changePage={page => setPage(page)} classPass={page}/>
       {page === 'orders' && (
           <AuthContent>
         <GetOrders/>

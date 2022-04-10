@@ -61,9 +61,7 @@ export default function GetOrders() {
       console.log('here')
       window.location.reload();
     }
-
-
-  }, []);
+  });
   const { user } = useAuth();
   const { id } = user as User;
   let orderOutput: String;

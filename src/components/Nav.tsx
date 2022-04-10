@@ -56,8 +56,8 @@ export default function Nav(props) {
                 Orders
               </Link>
             </li>
-            <li onClick={clickHandle} onMouseLeave={mouseHandle} className='nav-subscriptions'>
-              <Link to="/subscriptions">
+            <li onClick={() => props.changePage('subscriptions')} className='nav-subscriptions'>
+              <Link to="#subscriptions">
                 Subscriptions
               </Link>
             </li>

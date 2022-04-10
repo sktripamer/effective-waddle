@@ -56,8 +56,9 @@ query theorders( $input: Int) {
 
 export default function GetOrders() {
   useEffect(() => {
-
+    console.log(window.location.href.indexOf("orders"))
     if (window.location.href.indexOf("orders") === -1) {
+      console.log('here')
       window.location.reload();
     }
 

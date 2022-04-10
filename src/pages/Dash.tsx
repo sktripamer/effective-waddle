@@ -16,6 +16,7 @@ const DashPage = () => {
   useEffect(() => {
     window.onpageshow = function(event) {
       if (event.persisted) {
+        console.log('here')
         window.location.reload();
       }
     };

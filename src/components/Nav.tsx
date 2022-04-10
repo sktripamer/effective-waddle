@@ -7,19 +7,19 @@ import useAuth from "../hooks/useAuth";
 
 export default function Nav(props) {
   const { loggedIn, loading } = useAuth();
- const [navSelected, setNav] = useState();
+//  const [navSelected, setNav] = useState();
 
-  useEffect(() => {
-    if (window.location.href.indexOf("orders") > -1) {
-        setNav('orders')
-    }
-    if (window.location.href.indexOf("subscriptions") > -1) {
-      setNav('subscriptions')
-    }
-    if (window.location.href.indexOf("home") > -1) {
-      setNav('subscriptions')
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (window.location.href.indexOf("orders") > -1) {
+  //       setNav('orders')
+  //   }
+  //   if (window.location.href.indexOf("subscriptions") > -1) {
+  //     setNav('subscriptions')
+  //   }
+  //   if (window.location.href.indexOf("home") > -1) {
+  //     setNav('subscriptions')
+  //   }
+  // }, []);
 
   return (
     <>
@@ -27,7 +27,7 @@ export default function Nav(props) {
       <nav className='navLoading'></nav>
      ) : (
       <nav classname='navloaded'>
-      <ul className={`nav ${navSelected} ${props.classPass}`}>
+      <ul className={`nav  ${props.classPass}`}>
 
         {!loggedIn ? (
           <>

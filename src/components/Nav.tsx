@@ -30,7 +30,7 @@ export default function Nav(props) {
       <nav className='navLoading'></nav>
      ) : (
       <nav classname='navloaded'>
-      <ul className={`nav ${navSelected} ${hoverClick}`}>
+      <ul className={`nav ${navSelected} ${props.classPass}`}>
         <li onClick={clickHandle} onMouseLeave={mouseHandle} className='nav-home'>
           <Link to="/">
             Home

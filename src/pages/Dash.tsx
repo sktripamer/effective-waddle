@@ -14,6 +14,11 @@ const DashPage = () => {
   const [page, setPage] = useState('home');
 
   useEffect(() => {
+    window.onpageshow = function(event) {
+      if (event.persisted) {
+        window.location.reload();
+      }
+    };
     if (window.location.href.indexOf("orders") > -1) {
         setPage('orders')
         return;
@@ -25,6 +30,7 @@ const DashPage = () => {
     setPage('home')
 
   }, []);
+
 
   return (
     <Layout>

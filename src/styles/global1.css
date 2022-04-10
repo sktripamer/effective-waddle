@@ -1462,6 +1462,7 @@ p.result-message-text a {
     color: #fff;
     margin-right: 20px;
     overflow: hidden;
+    font-weight: bold;
   }
   li.nav-orders:before {
     content: '';
@@ -1532,7 +1533,14 @@ nav:hover .nav li {
   background: linear-gradient(202deg, #ee091c,#900b6d);
   font-weight: bold;
 }
+.home li.nav-home {
+  background: linear-gradient(202deg, #ee091c,#900b6d);
+  font-weight: bold;
+}
 .nav.subscriptions li.nav-subscriptions:hover {
+  background: linear-gradient(202deg,#ee091c,#900b6d);
+}
+.nav.home li.nav-home:hover {
   background: linear-gradient(202deg,#ee091c,#900b6d);
 }
   .error-message {

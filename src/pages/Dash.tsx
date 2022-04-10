@@ -11,15 +11,19 @@ import AuthContent from "../components/AuthContent";
 
 // markup
 const DashPage = () => {
-  const [page, setPage] = useState('');
+  const [page, setPage] = useState('home');
 
   useEffect(() => {
     if (window.location.href.indexOf("orders") > -1) {
         setPage('orders')
+        return;
     }
     if (window.location.href.indexOf("subscriptions") > -1) {
       setPage('subscriptions')
+      return;
     }
+    setPage('home')
+
   }, []);
 
   return (
@@ -30,6 +34,9 @@ const DashPage = () => {
         <GetOrders/>
         </AuthContent>
       )}
+        {page === 'home' && (
+            <div>home page</div>
+        )}
     </Layout>
   )
 }

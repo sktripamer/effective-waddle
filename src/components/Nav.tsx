@@ -9,8 +9,9 @@ export default function Nav(props) {
   const { loggedIn, loading } = useAuth();
  const [navSelected, setNav] = useState();
  const [hoverClick, setHoverClick] = useState('');
-  const clickHandle = () => {
-    setHoverClick('just-clicked')
+  const clickHandle = (pageString) => {
+    props.changePage(pageString)
+    setNav(pageString)
   }
   const mouseHandle = () => {
     setHoverClick('')
@@ -51,12 +52,12 @@ export default function Nav(props) {
           </>
         ) : (
           <>
-            <li onClick={() => props.changePage('orders') && setNav('orders')} className='nav-orders'>
+            <li onClick={clickHandle('orders')} className='nav-orders'>
               <Link to="#orders">
                 Orders
               </Link>
             </li>
-            <li onClick={clickHandle} onMouseLeave={mouseHandle} className='nav-subscriptions'>
+            <li  className='nav-subscriptions'>
               <Link to="/subscriptions">
                 Subscriptions
               </Link>

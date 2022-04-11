@@ -7,6 +7,7 @@ import GetOrders from "../components/GetOrders";
 import GetSubscriptions from "../components/GetSubscriptions";
 import AuthContent from "../components/AuthContent";
 import GetHome from "../components/GetHome"
+import GetPayments from "../components/GetPayments"
 // styles
 
 
@@ -30,6 +31,10 @@ const DashPage = () => {
       setPage('home')
       return;
     }
+    if (window.location.href.indexOf("payments") > -1) {
+      setPage('payments')
+      return;
+    }
     navigate("#home")
 
   }, []);
@@ -48,6 +53,12 @@ const DashPage = () => {
         <AuthContent>
           <GetSubscriptions/>
         </AuthContent>
+      )}
+
+      {page === 'payments' && (
+         <AuthContent>
+         <GetPayments/>
+       </AuthContent>
       )}
 
       {page === 'home' && (

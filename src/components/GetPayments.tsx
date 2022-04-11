@@ -46,6 +46,7 @@ export default function GetPayments() {
     console.log(e.target.dataset.id)
   }
   return (
+    <div className="payment-list">
     <div className='payment register-form col-md-6'>
 
        {methodProcessing ? (
@@ -64,6 +65,7 @@ export default function GetPayments() {
             </div>
             )}
    
+    </div>
     </div>
   );
 

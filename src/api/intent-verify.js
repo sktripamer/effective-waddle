@@ -3,6 +3,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET)
 import jwt from 'jsonwebtoken'
 let params;
 let paymentIntent;
+let newID;
 const verifyIntent = async (req, res) => {
     params = JSON.parse(req.body)
 
@@ -34,6 +35,7 @@ const verifyIntent = async (req, res) => {
     if (params.newAccount !== null && params.token === null) {
         const newUser = await createNewUser(params.newAccount);
         if (params.cart[0] == 105)  await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
+        if (params.cart[0] === 105) await addCourse(newID);
         return res.status(200).json({new: true, newUser})
         // still need to create woo order
     }
@@ -45,6 +47,7 @@ const verifyIntent = async (req, res) => {
                 await saveUser(decoded.data.user.id); //saves acf data
                 await createOrder(decoded.data.user.id);
               if (params.cart[0] === 105) await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
+              if (params.cart[0] === 105) await addCourse(decoded.data.user.id);
                  return res.status(200).json(true)
                 // still need to create woo order
               });
@@ -117,6 +120,7 @@ function makeid(length) {
       const responser = await axios.post('https://portal.revrevdev.xyz/wp-json/wp/v2/users', JSON.stringify(data), axiosConfig)
       .then((resp) => {
           try {
+            newID = resp.data.id
             createOrder(resp.data.id)
           } catch(erro) {
               return erro
@@ -207,6 +211,7 @@ const createOrder = async(userID) => {
 }
 
 const createSubscription = async(customerID, paymentID) => {
+  
 
     const subscription = await stripe.subscriptions.create({
         customer: customerID,
@@ -219,4 +224,13 @@ const createSubscription = async(customerID, paymentID) => {
 
       return subscription;
 }
+
+const addCourse = async(customerID) => {
+  const exists = await axios.get('https://portal.revrevdev.xyz/?better_ld_api=d74dd1094863071982578684bc13be64&better_ld_api_method=add_new_member&course_id=134&user_id=' + customerID).then(resp => {    
+    return resp.data;
+});
+return exists;
+
+}
+
 export default verifyIntent;

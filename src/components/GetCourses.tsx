@@ -21,6 +21,14 @@ export default function GetCourses() {
         setArray(intent.customerID.message);
           setMethodProcessing(false)
       } catch (error) {
+        setArray([
+          {
+              "data": {
+                  "status": ""
+              },
+              "title": "No courses added!"
+          }
+      ]);
         console.log('Failed to get cID');
         console.log(error);
         return null;

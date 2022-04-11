@@ -9,6 +9,7 @@ import AuthContent from "../components/AuthContent";
 import GetHome from "../components/GetHome"
 import GetPayments from "../components/GetPayments"
 import ProfileForm from "../components/ProfileForm";
+import GetCourses from "../components/GetCourses"
 // styles
 
 
@@ -38,6 +39,10 @@ const DashPage = () => {
     }
     if (window.location.href.indexOf("profile") > -1) {
       setPage('profile')
+      return;
+    }
+    if (window.location.href.indexOf("courses") > -1) {
+      setPage('courses')
       return;
     }
     navigate("#home")
@@ -74,6 +79,11 @@ const DashPage = () => {
        {page === 'profile' && (
          <AuthContent>
          <ProfileForm/>
+       </AuthContent>
+      )}
+      {page === 'courses' && (
+         <AuthContent>
+         <GetCourses/>
        </AuthContent>
       )}
     </Layout>

@@ -503,7 +503,7 @@
       background-size: contain;
       height: 32px;
       width: 126px;
-      margin-top: 32px;
+      margin-top: 105px;
       position: absolute;
       display: block;
     }
@@ -1426,6 +1426,7 @@ p.result-message-text a {
     position: absolute;
     background-color: #380369;
     transition: .2s all;
+    z-index: 20;
 }
   .nav {
     display: flex;
@@ -3830,7 +3831,8 @@ background-image: linear-gradient(to bottom, rgb(205 30 37 / 90%), rgb(14 12 253
 html {
   overflow: hidden;
 }
-.main-main {
+main > div.main-main {
+  margin:0;
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;

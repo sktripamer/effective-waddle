@@ -1,73 +1,91 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
-import { navigate } from "gatsby"
-import Layout from "../components/Layout";
-import Nav from "../components/Nav";
-import GetOrders from "../components/GetOrders";
-import GetSubscriptions from "../components/GetSubscriptions";
-import AuthContent from "../components/AuthContent";
-import GetHome from "../components/GetHome"
-import GetPayments from "../components/GetPayments"
-// styles
+import { useEffect, useState } from "react";
+import { Link } from "gatsby";
+
+import useAuth from "../hooks/useAuth";
 
 
-// data
+export default function Nav(props) {
+  const { loggedIn, loading } = useAuth();
+//  const [navSelected, setNav] = useState();
 
-// markup
-const DashPage = () => {
-  const [page, setPage] = useState('home');
-
-  useEffect(() => {
-
-    if (window.location.href.indexOf("orders") > -1) {
-        setPage('orders')
-        return;
-    }
-    if (window.location.href.indexOf("subscriptions") > -1) {
-      setPage('subscriptions')
-      return;
-    }
-    if (window.location.href.indexOf("home") > -1) {
-      setPage('home')
-      return;
-    }
-    if (window.location.href.indexOf("payments") > -1) {
-      setPage('payments')
-      return;
-    }
-    navigate("#home")
-
-  }, []);
-
+  // useEffect(() => {
+  //   if (window.location.href.indexOf("orders") > -1) {
+  //       setNav('orders')
+  //   }
+  //   if (window.location.href.indexOf("subscriptions") > -1) {
+  //     setNav('subscriptions')
+  //   }
+  //   if (window.location.href.indexOf("home") > -1) {
+  //     setNav('subscriptions')
+  //   }
+  // }, []);
 
   return (
-    <Layout>
-      <Nav changePage={page => setPage(page)} classPass={page}/>
-      {page === 'orders' && (
-        <AuthContent>
-          <GetOrders/>
-        </AuthContent>
-      )}
-      
-      {page === 'subscriptions' && (
-        <AuthContent>
-          <GetSubscriptions/>
-        </AuthContent>
-      )}
+    <>
+     {loading ? (
+      <nav className='navLoading'></nav>
+     ) : (
+      <nav classname='navloaded'>
+      <ul className={`nav  ${props.classPass}`}>
 
-      {page === 'payments' && (
-         <AuthContent>
-         <GetPayments/>
-       </AuthContent>
-      )}
+        {!loggedIn ? (
+          <>
+            <li>
+              <Link to="/log-in">
+                Log In
+              </Link>
+            </li>
+            <li>
+              <Link to="/sign-up">
+                Sign Up
+              </Link>
+            </li>
+          </>
+        ) : (
+          <>
+          <li onClick={() => props.changePage('home')} className='nav-logo'>
+          <Link to="#home">Revival<span>of</span><span>Revenue</span></Link>
+        </li>
+          <li onClick={() => props.changePage('home')} className='nav-home'>
+          <Link to="#home">
+            Home
+          </Link>
+        </li>
+            <li onClick={() => props.changePage('orders')} className='nav-orders'>
+              <Link to="#orders">
+                Orders
+              </Link>
+            </li>
+            <li onClick={() => props.changePage('subscriptions')} className='nav-subscriptions'>
+              <Link to="#subscriptions">
+                Subscriptions
+              </Link>
+            </li>
+            <li onClick={() => props.changePage('payments')} className='nav-payments'>
+              <Link to="#payments">
+                Payments
+              </Link>
+            </li>
+            <li className='nav-profile'>
+              <Link to="/profile">
+                Profile
+              </Link>
+            </li>
+            <li className='nav-logout'>
+              <Link to="/log-out">
+                Log Out
+              </Link>
+            </li>
+          </>
+        )}
+      </ul>
+    </nav>
+     )}
 
-      {page === 'home' && (
-         <AuthContent>
-         <GetHome/>
-       </AuthContent>
-      )}
-    </Layout>
-  )
+
+
+
+    </>
+  );
 }
-
-export default DashPage

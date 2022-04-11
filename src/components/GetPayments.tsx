@@ -37,6 +37,11 @@ export default function GetPayments() {
     }
     fetchMyAPI()
   }, []);
+  useEffect(() => {
+    if (window.location.href.indexOf("payments") === -1) {
+      window.location.reload();
+    }
+  });
   const getButtonId = (e) => {
     console.log(e.target.dataset.id)
   }

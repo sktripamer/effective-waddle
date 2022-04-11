@@ -44,6 +44,9 @@ export default function Nav(props) {
           </>
         ) : (
           <>
+          <li onClick={() => props.changePage('home')} className='nav-logo'>
+          <Link to="#home"></Link>
+        </li>
           <li onClick={() => props.changePage('home')} className='nav-home'>
           <Link to="#home">
             Home

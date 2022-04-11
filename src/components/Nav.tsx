@@ -59,8 +59,8 @@ export default function Nav(props) {
                 Subscriptions
               </Link>
             </li>
-            <li className='nav-payments'>
-              <Link to="/payments">
+            <li onClick={() => props.changePage('payments')} className='nav-payments'>
+              <Link to="#payments">
                 Payments
               </Link>
             </li>

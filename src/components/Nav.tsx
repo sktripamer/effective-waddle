@@ -72,8 +72,8 @@ export default function Nav(props) {
                 Profile
               </Link>
             </li>
-            <li className='nav-logout'>
-              <Link to="/log-out">
+            <li onClick={() => props.changePage('courses')} className='nav-courses'>
+              <Link to="#log-out">
                 Log Out
               </Link>
             </li>

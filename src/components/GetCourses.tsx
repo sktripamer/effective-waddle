@@ -18,7 +18,7 @@ export default function GetCourses() {
         });
         const intent = (await request.json());
         console.log(intent)
-        setArray(intent.message);
+        setArray(intent.customerID.message);
           setMethodProcessing(false)
       } catch (error) {
         console.log('Failed to get cID');

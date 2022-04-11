@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useMutation, gql } from "@apollo/client";
-
+import { useEffect } from "react";
 import useAuth, { User } from "../hooks/useAuth";
 
 const UPDATE_PROFILE = gql`
@@ -24,6 +24,11 @@ const UPDATE_PROFILE = gql`
 `;
 
 export default function ProfileForm() {
+  useEffect(() => {
+    if (window.location.href.indexOf("profile") === -1) {
+      window.location.reload();
+    }
+  });
   const { user } = useAuth();
   const { id, firstName, lastName, email } = user as User;
   const [updateProfile, { data, loading, error }] = useMutation(UPDATE_PROFILE);
@@ -41,6 +46,7 @@ export default function ProfileForm() {
   }
 
   return (
+    <div className='profile-page'>
     <form method="post" onSubmit={handleSubmit}>
       {wasProfileUpdated ? (
         <p className="profile-update-confirmation">
@@ -80,5 +86,6 @@ export default function ProfileForm() {
         </button>
       </fieldset>
     </form>
+    </div>
   );
 }

@@ -67,8 +67,8 @@ export default function Nav(props) {
                 Payments
               </Link>
             </li>
-            <li className='nav-profile'>
-              <Link to="/profile">
+            <li  onClick={() => props.changePage('profile')} className='nav-profile'>
+              <Link to="#profile">
                 Profile
               </Link>
             </li>

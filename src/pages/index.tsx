@@ -307,7 +307,7 @@
 
     const RegisterOpt = ({ setLoggedIn }) => {
       const [username, setUsername] = useState("");
-      const [url, setUrl] = useState("http://notregistered");
+      const [websiteUrl, setUrl] = useState("http://notregistered");
       const [email, setEmail] = useState("");
       const [processing, setProcessing] = useState("no");
       const [error, setError] = useState(null);
@@ -369,7 +369,7 @@
             username,
             //password,
             email,
-            url,
+            websiteUrl,
             description
           },
         },

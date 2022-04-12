@@ -307,6 +307,7 @@
 
     const RegisterOpt = ({ setLoggedIn }) => {
       const [username, setUsername] = useState("");
+      const [url, setUrl] = useState("http://notregistered");
       const [email, setEmail] = useState("");
       const [processing, setProcessing] = useState("no");
       const [error, setError] = useState(null);
@@ -1701,7 +1702,7 @@ const noShippingForm = () => {
 
       return (
         <div className={`payment register-form col-md-6 status-${status} load-${doneLoading} step-${currentStep} success-${succeeded}`}>
-            <h3>Test Course purchase</h3>
+            <h2>Test Course purchase</h2>
            {methodProcessing ? (
                 <></>
               ) : (

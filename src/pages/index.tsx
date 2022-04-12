@@ -369,6 +369,7 @@
             username,
             //password,
             email,
+            url,
             description
           },
         },

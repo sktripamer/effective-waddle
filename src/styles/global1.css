@@ -1949,6 +1949,82 @@ nav:hover .nav li {
     }
   }
 
+
+/*
+navbar start
+*/
+
+navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  height:50px;
+  width: 100%;
+  background: rgb(225, 20, 68);
+  box-shadow: 0 0 8px 4px rgba(0,0,0,0.3);
+  box-sizing: border-box;
+  color: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translatey(-100px);
+}
+
+
+a[dropdown] {
+	position: relative;
+  display:block;
+  line-height:50px;
+}
+
+a[dropdown]:hover .active2 {
+	display: block;
+}
+
+.active2 { display: none; }
+
+.link-dropdown {
+	position: absolute;
+	color: #bbbbbb;
+	top: 50px;
+	right: 0;
+	background: #fff;
+	box-shadow: 0 10px 15px 0 rgba(0,0,0,0.05);
+}
+
+.link-dropdown label {
+	cursor: pointer;
+	padding: 1em 2em;
+	white-space: nowrap;
+	display: block;
+}
+
+.link-dropdown label:hover {
+	color: #1c2541;
+}
+
+.active { 
+  transform: translatey(0);
+}
+
+
+navbar > ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 1.2rem;
+  margin:0;
+  display: flex;
+    align-items: center;
+}
+navbar > ul > li {
+  display: inline-block;
+  padding: 0 0.5rem;
+  cursor: pointer;
+}
+
+/*
+navbar end
+*/
+
   vm-player {
     /*******************************
     * Colors

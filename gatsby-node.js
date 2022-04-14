@@ -14,7 +14,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 };
 
 exports.createPages = async function({actions, graphql}) {
-	const {data} = await graphql`
+	const { data } = await graphql(`
 	query {
 		products {
 			edges {
@@ -24,7 +24,7 @@ exports.createPages = async function({actions, graphql}) {
 			}
 		  }
 	}
-	`
+	`)
 
 
 	data.products.edges.forEach(edge => {
@@ -33,7 +33,7 @@ exports.createPages = async function({actions, graphql}) {
 		actions.createPages({
 			path: slug,
 			component: require.resolve(`.src/templates/singleProduct.js`),
-			context:{id},
+			context: { id },
 		})
 	})
 }

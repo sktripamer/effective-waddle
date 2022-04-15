@@ -3,11 +3,11 @@ import { useMutation, gql } from "@apollo/client";
 
 const singleProduct = ({data}) => {
 
-
+console.log(data)
     return (
         <div>
             aa
-          <div>{JSON.stringify(data)}</div>
+          <div>{data}</div>
         </div>
     );
 }

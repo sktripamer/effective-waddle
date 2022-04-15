@@ -1,24 +1,27 @@
 import React from 'react';
 import { useMutation, gql } from "@apollo/client";
 
-const singleProduct = ({data}) => {
+const singleProduct = ( props ) => {
 
-console.log(data)
+    const { pageContext: { id, slug } } = props;
+
+console.log(props.pageContext)
     return (
         <div>
             aa
-          <div>{data}</div>
+          <div>{id}</div>
+          <div>{slug}</div>
         </div>
     );
 }
 
 export default singleProduct;
 
-// export const productQuery = gql`
-// query SingleProductQuery($id: String!) {
-//     product(id: $id, idType: DATABASE_ID) {
-//         description
-//         name
-//       }
-// }
-// `
+export const query = gql`
+query SingleProductQuery($id: String!) {
+    product(id: $id, idType: DATABASE_ID) {
+        description
+        name
+      }
+}
+`

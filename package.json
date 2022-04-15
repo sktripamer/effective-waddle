@@ -1,10 +1,9 @@
 {
-  "name": "headless-wp-cookie-auth-gatsby",
+  "name": "ecom",
   "version": "1.0.0",
   "private": true,
-  "description": "headless-wp-cookie-auth-gatsby",
-  "type": "module",
-  "author": "Kellen Mace",
+  "description": "ec",
+  "author": "st",
   "keywords": [
     "gatsby"
   ],

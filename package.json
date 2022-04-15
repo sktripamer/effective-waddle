@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "headless-wp-cookie-auth-gatsby",
+  "type": "module",
   "author": "Kellen Mace",
   "keywords": [
     "gatsby"

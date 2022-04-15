@@ -2,7 +2,7 @@ import {ApolloClient, gql, HttpLink, InMemoryCache } from "@apollo/client";
 import fetch from "cross-fetch";
 const path = require(`path`);
 const { slash }         = require( `gatsby-core-utils` );
-const singleProductPageTemplate = require.resolve( `src/templates/product/index.js` );
+const singleProductPageTemplate = require.resolve( `src/templates/singleProduct.js` );
 
 
 const productQuery = gql`

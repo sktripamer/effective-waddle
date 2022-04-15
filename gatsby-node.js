@@ -62,32 +62,23 @@
 	// 		})
 	// 	})
 
-
-	exports.createSchemaCustomization = ({ actions, schema }) => {
+	exports.createSchemaCustomization = ({ actions }) => {
 		const { createTypes } = actions
-		const typeDefs = [
-		  schema.buildObjectType({
-			name: "products",
-			fields: {
-			  edges: {
-				node: {
-					databaseId: "ID!",
-					type: "Object"
-				},
-				type: "Object"
-			  },
-			},
-			interfaces: ["Node"],
-			 extensions: {
-				   // While in SDL you have two different directives, @infer and @dontInfer to
-				 // control inference behavior, Gatsby Type Builders take a single `infer`
-				  // extension which accepts a Boolean
-			   infer: false
-			 },
-		  }),
-		]
-		createTypes(typeDefs)
+	  
+		createTypes(`
+		  type products implements Node {
+			edges: ProductsEdges!
+		  }
+		  type ProductsEdges {
+			node: ProductsEdgesNode!
+		  }
+		  type ProductsEdgesNode {
+			databaseId: String!
+		  }
+		`)
 	  }
+
+
 
 	exports.createPages = ({ graphql, actions }) => {
 		const { createPage } = actions;

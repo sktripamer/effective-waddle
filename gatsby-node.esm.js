@@ -93,7 +93,7 @@ const client = new ApolloClient({
 			const id = edge.node.databaseId
 			actions.createPage({
 				path: slug,
-				component: path.resolve(`.src/templates/singleProduct.js`),
+				component: path.resolve(`src/templates/singleProduct.js`),
 				context: { id },
 			})
 		})
@@ -102,31 +102,18 @@ const client = new ApolloClient({
 
 
 
-	// exports.createPages = ({ graphql, actions }) => {
+	// exports.createPages = ({ actions }) => {
 	// 	const { createPage } = actions;
-	// 	return new Promise((resolve, reject) => {
-	// 	  graphql(`
-	// 	  query GET_POSTS 	{
-	// 			products {
-	// 				edges {
-	// 					node {
-	// 						databaseId
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	  `).then(result => {
-	// 		  console.log(result)
-	// 		result.data.products.edges.forEach(({ node }) => {
+	// 	const newp = await cool()
+    //     newp.data.products.edges.forEach(({ node }) => {
 	// 		  createPage({
 	// 			path: node.node.databaseId,
-	// 			component: path.resolve(`.src/templates/singleProduct.js`),
+	// 			component: path.resolve(`src/templates/singleProduct.js`),
 	// 			context: {
 	// 			 id: node.node.databaseId,
 	// 			},
 	// 		  });
 	// 		});
-	// 		resolve();
-	// 	  });
-	// 	});
+			
+
 	//   };

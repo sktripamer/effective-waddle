@@ -44,48 +44,48 @@
 
 	
 
-	// exports.createPages = async function({actions, graphql}) {
-	// 	const { data } = await graphql( GET_POSTS )
-
-	// 	data.products.edges.forEach(edge => {
-	// 		const slug = edge.node.databaseId
-	// 		const id = edge.node.databaseId
-	// 		actions.createPages({
-	// 			path: slug,
-	// 			component: require.resolve(`.src/templates/singleProduct.js`),
-	// 			context: { id },
-	// 		})
-	// 	})
-	// }
-
-
+	exports.createPages = async function({actions, graphql}) {
+		const { data } = await graphql( GET_POSTS )
+		console.log(data)
+		data.products.edges.forEach(edge => {
+			const slug = edge.node.databaseId
+			const id = edge.node.databaseId
+			actions.createPages({
+				path: slug,
+				component: require.resolve(`.src/templates/singleProduct.js`),
+				context: { id },
+			})
+		})
+	}
 
 
-	exports.createPages = ({ graphql, actions }) => {
-		const { createPage } = actions;
-		return new Promise((resolve, reject) => {
-		  graphql(`
-		  query GET_POSTS 	{
-				products {
-					edges {
-						node {
-							databaseId
-						}
-					}
-				}
-			}
-		  `).then(result => {
-			  console.log(result)
-			result.data.products.edges.forEach(({ node }) => {
-			  createPage({
-				path: node.node.databaseId,
-				component: path.resolve(`.src/templates/singleProduct.js`),
-				context: {
-				 id: node.node.databaseId,
-				},
-			  });
-			});
-			resolve();
-		  });
-		});
-	  };
+
+
+	// exports.createPages = ({ graphql, actions }) => {
+	// 	const { createPage } = actions;
+	// 	return new Promise((resolve, reject) => {
+	// 	  graphql(`
+	// 	  query GET_POSTS 	{
+	// 			products {
+	// 				edges {
+	// 					node {
+	// 						databaseId
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	  `).then(result => {
+	// 		  console.log(result)
+	// 		result.data.products.edges.forEach(({ node }) => {
+	// 		  createPage({
+	// 			path: node.node.databaseId,
+	// 			component: path.resolve(`.src/templates/singleProduct.js`),
+	// 			context: {
+	// 			 id: node.node.databaseId,
+	// 			},
+	// 		  });
+	// 		});
+	// 		resolve();
+	// 	  });
+	// 	});
+	//   };

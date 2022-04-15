@@ -71,8 +71,10 @@
 			fields: {
 			  edges: {
 				node: {
-					databaseId: "ID!"
+					databaseId: "ID!",
+					type: "Object"
 				},
+				type: "Object"
 			  },
 			},
 			interfaces: ["Node"],

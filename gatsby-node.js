@@ -71,7 +71,9 @@
 			fields: {
 			  edges: {
 				node: {
-					databaseId: "String!",
+					databaseId: {
+						type: "ID!"
+					}
 				},
 			  },
 			},

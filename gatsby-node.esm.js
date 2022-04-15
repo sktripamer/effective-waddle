@@ -20,22 +20,24 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
   });
   
-  
- const cool = await client.query({
-    query: gql`query GET_POSTS {
-        products {
-            edges {
-                node {
-                    databaseId
+  const cool = () => {
+    client.query({
+        query: gql`query GET_POSTS {
+            products {
+                edges {
+                    node {
+                        databaseId
+                    }
                 }
             }
-        }
-    }`
-  })
-    .then(result => {
-        console.log(result)
-        return result;
-    } );
+        }`
+      })
+        .then(result => {
+            console.log(result)
+            return result;
+        } );
+  }
+ //const cool = await
 
 	exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 		if (stage === "build-html") {
@@ -82,7 +84,7 @@ const client = new ApolloClient({
 	
 
 	exports.createPages = async function({actions, graphql}) {
-        console.log(await cool)
+        console.log(await cool())
 		const { data } = await productQuery
 		
 		data.products.edges.forEach(edge => {

@@ -99,7 +99,7 @@ const client = new ApolloClient({
 			actions.createPage({
 				path: edge.node.slug,
 				component: slash( singleProductPageTemplate ),
-				context: { id: id },
+				context: { id: edge.node.databaseId },
 			})
             
 		})

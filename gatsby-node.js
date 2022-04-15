@@ -19,14 +19,8 @@
 		const { createTypes } = actions
 		const typeDefs = `
 		type products implements Node @dontInfer {	
-			edges: Edges
 		}
-		type Edges implements Node @dontInfer {	
-			node: Node
-		}
-		type Node implements Node @dontInfer {	
-			databaseId: ID!
-		}
+
 		`
 		createTypes(typeDefs)
 	}
@@ -36,13 +30,7 @@
 
 	const GET_POSTS = `
 	query GET_POSTS {
-		products {
-			edges {
-				node {
-					databaseId
-				}
-			}
-		}
+		products 
 	}
 	`;
 

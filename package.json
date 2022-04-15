@@ -25,6 +25,7 @@
     "cross-fetch": "^3.1.4",
     "dompurify": "^2.2.9",
     "dotenv": "^8.6.0",
+    "esm": "^3.2.25",
     "formik-stepper": "git+https://github.com/sktripamer/formik-stepper.git",
     "gatsby": "^3.6.2",
     "gatsby-plugin-gatsby-cloud": "^3.2.1",

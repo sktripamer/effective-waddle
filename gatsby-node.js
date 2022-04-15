@@ -1,5 +1,15 @@
-
-
+import { gql } from "@apollo/client";
+const productQuery = gql`
+query GET_POSTS {
+	products {
+		edges {
+			node {
+				databaseId
+			}
+		}
+	}
+}
+`
 	exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 		if (stage === "build-html") {
 			actions.setWebpackConfig({
@@ -46,7 +56,7 @@
 
 	exports.createPages = async function({actions, graphql}) {
 		const { data } = await graphql( GET_POSTS )
-		console.log(data)
+		console.log(await productQuery)
 		data.products.edges.forEach(edge => {
 			const slug = edge.node.databaseId
 			const id = edge.node.databaseId

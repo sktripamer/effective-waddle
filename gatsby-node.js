@@ -20,13 +20,13 @@
 	  
 		createTypes(`
 		  type products implements Node {
-			edges: ProductsEdges!
+			edges: ProductsEdges
 		  }
 		  type ProductsEdges {
-			node: ProductsEdgesNode!
+			node: ProductsEdgesNode
 		  }
 		  type ProductsEdgesNode {
-			databaseId: String!
+			databaseId: String
 		  }
 		`)
 	  }
@@ -75,6 +75,7 @@
 				}
 			}
 		  `).then(result => {
+			  console.log(result)
 			result.data.products.edges.forEach(({ node }) => {
 			  createPage({
 				path: node.node.databaseId,

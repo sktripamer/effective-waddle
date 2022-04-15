@@ -71,9 +71,7 @@
 			fields: {
 			  edges: {
 				node: {
-					databaseId: {
-						type: "ID!"
-					}
+					databaseId: "ID!"
 				},
 			  },
 			},
@@ -82,7 +80,7 @@
 				   // While in SDL you have two different directives, @infer and @dontInfer to
 				 // control inference behavior, Gatsby Type Builders take a single `infer`
 				  // extension which accepts a Boolean
-			   infer: true
+			   infer: false
 			 },
 		  }),
 		]

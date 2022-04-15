@@ -16,7 +16,7 @@ query GET_POSTS {
 
 
 const client = new ApolloClient({
-    link: new HttpLink({ uri: process.env.PRODUCTION_GRAPHQL_URL, fetch }),
+    link: new HttpLink({ uri: process.env.GATSBY_WORDPRESS_API_URL, fetch }),
     cache: new InMemoryCache(),
   });
   

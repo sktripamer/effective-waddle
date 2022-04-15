@@ -82,9 +82,11 @@ const client = new ApolloClient({
   }
      
 
-	exports.createPages = async function({actions, graphql}) {
-        console.log(await cool())
-		const { data } = await productQuery
+	exports.createPages = async function({actions}) {
+        const newp = await cool()
+        console.log(newp.data.products.edges)
+        console.log(newp.data.products.edges[0].node.databaseId)
+		const { data } = await cool()
 		
 		data.products.edges.forEach(edge => {
 			const slug = edge.node.databaseId

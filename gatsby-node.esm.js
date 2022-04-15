@@ -1,4 +1,7 @@
-import {useQuery,  gql } from "@apollo/client";
+import {ApolloClient, gql, HttpLink, InMemoryCache } from "@apollo/client";
+import fetch from "cross-fetch";
+
+
 const productQuery = gql`
 query GET_POSTS {
 	products {
@@ -10,7 +13,24 @@ query GET_POSTS {
 	}
 }
 `
-const { data2, loading, error } = useQuery(productQuery);
+const client = new ApolloClient({
+    link: new HttpLink({ uri: process.env.PRODUCTION_GRAPHQL_URL, fetch }),
+    cache: new InMemoryCache(),
+  });
+  
+  
+  client.query({
+    query: gql`query GET_POSTS {
+        products {
+            edges {
+                node {
+                    databaseId
+                }
+            }
+        }
+    }`
+  })
+    .then(result => console.log(result));
 
 	exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 		if (stage === "build-html") {

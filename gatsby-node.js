@@ -15,7 +15,14 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 	  }
 };
 
-
+exports.createSchemaCustomization = ({ actions }) => {
+	const { createTypes } = actions
+	const typeDefs = `
+	  type products implements Node @dontInfer {
+	  }
+	`
+	createTypes(typeDefs)
+  }
 const GET_POSTS = `
 query GET_POSTS {
 	products {

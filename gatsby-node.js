@@ -76,6 +76,12 @@
 			  },
 			},
 			interfaces: ["Node"],
+			 extensions: {
+				   // While in SDL you have two different directives, @infer and @dontInfer to
+				 // control inference behavior, Gatsby Type Builders take a single `infer`
+				  // extension which accepts a Boolean
+			   infer: true
+			 },
 		  }),
 		]
 		createTypes(typeDefs)

@@ -15,15 +15,14 @@
 		}
 	};
 
-	exports.createSchemaCustomization = ({ actions }) => {
-		const { createTypes } = actions
-		const typeDefs = `
-		type products implements Node @dontInfer {	
-		}
+	// exports.createSchemaCustomization = ({ actions }) => {
+	// 	const { createTypes } = actions
+	// 	const typeDefs = `
+		
 
-		`
-		createTypes(typeDefs)
-	}
+	// 	`
+	// 	createTypes(typeDefs)
+	// }
 
 
 

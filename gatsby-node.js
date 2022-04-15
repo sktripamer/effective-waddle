@@ -61,8 +61,25 @@
 	// 			context: { id },
 	// 		})
 	// 	})
-	// }
 
+
+	exports.createSchemaCustomization = ({ actions, schema }) => {
+		const { createTypes } = actions
+		const typeDefs = [
+		  schema.buildObjectType({
+			name: "products",
+			fields: {
+			  edges: {
+				node: {
+					databaseId: "ID!"
+				},
+			  },
+			},
+			interfaces: ["Node"],
+		  }),
+		]
+		createTypes(typeDefs)
+	  }
 
 	exports.createPages = ({ graphql, actions }) => {
 		const { createPage } = actions;

@@ -15,29 +15,6 @@ query GET_POSTS {
 `
 
 
-const client = new ApolloClient({
-    link: new HttpLink({ uri: process.env.GATSBY_WORDPRESS_API_URL, fetch }),
-    cache: new InMemoryCache(),
-  });
-  
-  const cool = () => {
-    client.query({
-        query: gql`query GET_POSTS {
-            products {
-                edges {
-                    node {
-                        databaseId
-                    }
-                }
-            }
-        }`
-      })
-        .then(result => {
-            console.log(result)
-            return result;
-        } );
-  }
- //const cool = await
 
 	exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 		if (stage === "build-html") {
@@ -82,6 +59,28 @@ const client = new ApolloClient({
 	`;
 
 	
+const client = new ApolloClient({
+    link: new HttpLink({ uri: process.env.GATSBY_WORDPRESS_API_URL, fetch }),
+    cache: new InMemoryCache(),
+  });
+  
+
+  const cool = async () => {
+   const hey = await client.query({
+        query: gql`query GET_POSTS {
+            products {
+                edges {
+                    node {
+                        databaseId
+                    }
+                }
+            }
+        }`
+      })
+        .then(result =>{ return result});
+    return hey;
+  }
+     
 
 	exports.createPages = async function({actions, graphql}) {
         console.log(await cool())

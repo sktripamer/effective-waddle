@@ -19,13 +19,13 @@
 		const { createTypes } = actions
 		const typeDefs = `
 		type products implements Node @dontInfer {	
+			edges {
+				node {
+					databaseId: ID!
+				}
+			}
 		}
-		type edges implements Node @dontInfer {	
-		}
-		type node implements Node @dontInfer {	
-		}
-		type databaseId implements Node @dontInfer {	
-		}
+		
 		`
 		createTypes(typeDefs)
 	}

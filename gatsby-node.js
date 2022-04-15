@@ -1,3 +1,5 @@
+
+
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 	if (stage === "build-html") {
 		actions.setWebpackConfig({
@@ -13,18 +15,21 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 	  }
 };
 
-exports.createPages = async function({actions, graphql}) {
-	const { data } = await graphql(`
-	query {
-		products {
-			edges {
-			  node {
-				databaseId
-			  }
-			}
+
+const GET_POSTS = `
+query GET_POSTS {
+	products {
+		edges {
+		  node {
+			databaseId
 		  }
-	}
-	`)
+		}
+	  }
+}
+`;
+
+exports.createPages = async function({actions, graphql}) {
+	const { data } = await graphql( GET_POSTS )
 
 
 	data.products.edges.forEach(edge => {

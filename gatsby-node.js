@@ -19,6 +19,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 	const { createTypes } = actions
 	const typeDefs = `
 	  type products implements Node @dontInfer {
+		  databaseId: Integer!
 	  }
 	`
 	createTypes(typeDefs)

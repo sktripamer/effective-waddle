@@ -92,14 +92,14 @@ const client = new ApolloClient({
 		const { data } = await cool()
 		
 		data.products.edges.forEach(edge => {
-            console.log(edge)
-            console.log(edge.node)
+
 			const slug = edge.node.slug
 			const id = edge.node.databaseId
+            console.log(id)
 			actions.createPage({
 				path: edge.node.slug,
 				component: slash( singleProductPageTemplate ),
-				context: { id },
+				context: { id: id },
 			})
             
 		})

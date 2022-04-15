@@ -85,7 +85,7 @@ const client = new ApolloClient({
   }
      
 
-	exports.createPages = async function({actions}) {
+	exports.createPages = async function({actions, gql}) {
         const newp = await cool()
         console.log(newp.data.products.edges)
         console.log(newp.data.products.edges[0].node.databaseId)
@@ -99,7 +99,7 @@ const client = new ApolloClient({
 			actions.createPage({
 				path: edge.node.slug,
 				component: slash( singleProductPageTemplate ),
-				context: { id: edge.node.databaseId },
+				context: { id: edge.node.databaseId, slug: edge.node.slug },
 			})
             
 		})

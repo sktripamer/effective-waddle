@@ -65,7 +65,7 @@
 		const { createPage } = actions;
 		return new Promise((resolve, reject) => {
 		  graphql(`
-			{
+		  query GET_POSTS 	{
 				products {
 					edges {
 						node {

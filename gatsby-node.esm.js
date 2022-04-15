@@ -1,6 +1,9 @@
 import {ApolloClient, gql, HttpLink, InMemoryCache } from "@apollo/client";
 import fetch from "cross-fetch";
 const path = require(`path`);
+const { slash }         = require( `gatsby-core-utils` );
+const singleProductPageTemplate = require.resolve( `src/templates/product/index.js` );
+
 
 const productQuery = gql`
 query GET_POSTS {
@@ -93,7 +96,7 @@ const client = new ApolloClient({
 			const id = edge.node.databaseId
 			actions.createPage({
 				path: slug,
-				component: path.resolve(`src/templates/singleProduct.js`),
+				component: slash( singleProductPageTemplate ),
 				context: { id },
 			})
 		})

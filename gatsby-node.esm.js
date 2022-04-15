@@ -91,7 +91,7 @@ const client = new ApolloClient({
 		data.products.edges.forEach(edge => {
 			const slug = edge.node.databaseId
 			const id = edge.node.databaseId
-			actions.createPages({
+			actions.createPage({
 				path: slug,
 				component: path.resolve(`.src/templates/singleProduct.js`),
 				context: { id },

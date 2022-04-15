@@ -18,17 +18,33 @@
 	exports.createSchemaCustomization = ({ actions }) => {
 		const { createTypes } = actions
 		const typeDefs = `
-		type products implements Node @dontInfer {	
-			edges {
-				node {
-					databaseId: ID!
-				}
-			}
+		type products implements Node {	
+			edges: Edges
 		}
-		
+		type Edges implements Node {	
+			node: Node
+		}
+		type Node implements Node {	
+			databaseId: ID!
+		}
 		`
 		createTypes(typeDefs)
 	}
+
+	exports.createSchemaCustomization = ({ actions }) => {
+		const { createTypes } = actions
+		const typeDefs = `
+		  type MarkdownRemark implements Node {
+			frontmatter: Frontmatter
+		  }
+		  type Frontmatter {
+			tags: [String!]!
+		  }
+		`
+		createTypes(typeDefs)
+	  }
+
+
 	const GET_POSTS = `
 	query GET_POSTS {
 		products {

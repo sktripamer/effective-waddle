@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMutation, gql } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 
 const singleProduct = ( props ) => {
 

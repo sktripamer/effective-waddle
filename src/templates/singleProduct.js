@@ -6,7 +6,7 @@ const singleProduct = ( props ) => {
     const { pageContext: { id, slug } } = props;
 
     const query = gql`
-    query SingleProductQuery($id: String!) {
+    query SingleProductQuery($id: ID!) {
         product(id: $id, idType: DATABASE_ID) {
             description
             name

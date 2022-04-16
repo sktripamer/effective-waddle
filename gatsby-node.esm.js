@@ -73,7 +73,7 @@ const client = new ApolloClient({
             products {
                 edges {
                     node {
-                        databaseId
+                        id
                         slug
                     }
                 }
@@ -88,18 +88,18 @@ const client = new ApolloClient({
 	exports.createPages = async function({actions, gql}) {
         const newp = await cool()
         console.log(newp.data.products.edges)
-        console.log(newp.data.products.edges[0].node.databaseId)
+        console.log(newp.data.products.edges[0].node.id)
 		const { data } = await cool()
 		
 		data.products.edges.forEach(edge => {
 
 			const slug = edge.node.slug
-			const id = edge.node.databaseId
+			const id = edge.node.id
             console.log(id)
 			actions.createPage({
 				path: edge.node.slug,
 				component: slash( singleProductPageTemplate ),
-				context: { id: edge.node.databaseId, slug: edge.node.slug },
+				context: { id: edge.node.id, slug: edge.node.slug },
 			})
             
 		})

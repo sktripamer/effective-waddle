@@ -72,12 +72,22 @@ const client = new ApolloClient({
         query: gql`query GET_POSTS {
             products {
                 edges {
-                    node {
-                        id
+                  node {
+                    id
+                    slug
+                    name
+                    description(format: RAW)
+                    type
+                    featured
+                    productCategories {
+                      nodes {
+                        name
                         slug
+                      }
                     }
+                  }
                 }
-            }
+              }
         }`
       })
         .then(result =>{ return result});
@@ -86,20 +96,14 @@ const client = new ApolloClient({
      
 
 	exports.createPages = async function({actions, gql}) {
-        const newp = await cool()
-        console.log(newp.data.products.edges)
-        console.log(newp.data.products.edges[0].node.id)
 		const { data } = await cool()
 		
 		data.products.edges.forEach(edge => {
 
-			const slug = edge.node.slug
-			const id = edge.node.id
-            console.log(id)
 			actions.createPage({
-				path: edge.node.slug,
+				path: `${edge.node.productCategories.nodes[0].slug}/${edge.node.slug}`,
 				component: slash( singleProductPageTemplate ),
-				context: { id: edge.node.id, slug: edge.node.slug },
+				context: { id: edge.node.id, slug: edge.node.slug, name: edge.node.name, type: edge.node.type, description: edge.node.description, featured: edge.node.featured, cat: edge.node.productCategories.nodes[0].name},
 			})
             
 		})

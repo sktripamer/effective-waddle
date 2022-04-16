@@ -7,7 +7,7 @@ const singleProduct = ( props ) => {
 
     const query = gql`
     query SingleProductQuery($id: ID!) {
-        product(id: $id, idType: DATABASE_ID) {
+        product(id: $id) {
             description
             name
           }

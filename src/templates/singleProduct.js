@@ -15,7 +15,7 @@ const singleProduct = ( props ) => {
     `
     
       const { loading, error, data } = useQuery(query, {
-        variables: { input: id },
+        variables: { id: id },
       });
     
       if (loading) return <p>Loading ...</p>;

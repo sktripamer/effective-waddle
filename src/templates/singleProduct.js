@@ -72,7 +72,7 @@ console.log(props.pageContext)
         <div>
        yy
       <div>{data.product.name}</div>
-      <div>{cool.data.product.attributes.nodes[0].name}</div>
+      <div>{data.product.attributes.nodes[0].name}</div>
     </div>
         
         }

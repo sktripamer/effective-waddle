@@ -46,6 +46,9 @@ if (type === "SIMPLE") {
     `
 }
 const VariationCart = (e) => {
+    if (varSelect===undefined) {
+        console.log(data.product.variations.nodes[0].databaseId)
+    }
     console.log(varSelect)
 }
 const variationClick = (e) => {

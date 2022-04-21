@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery, gql } from "@apollo/client";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
     const { pageContext: { id, slug, name, description, cat, type } } = props;
@@ -63,8 +63,10 @@ const variationClick = (e) => {
       });
     
       if (loading) return <p>Loading ...</p>;
-      varSelector(data.product.variations.nodes[0].databaseId)
-
+    
+      useEffect(() => {
+        varSelector(data.product.variations.nodes[0].databaseId)
+      }, []);
 console.log(props.pageContext)
     return (
         <div>

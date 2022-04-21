@@ -61,12 +61,12 @@ const variationClick = (e) => {
       const { loading, error, data } = useQuery(query, {
         variables: { id: id },
       });
-    
+      useEffect(() => {
+       if (!loading) varSelector(data.product.variations.nodes[0].databaseId)
+      }, []);
       if (loading) return <p>Loading ...</p>;
     
-      useEffect(() => {
-        varSelector(data.product.variations.nodes[0].databaseId)
-      }, []);
+
 console.log(props.pageContext)
     return (
         <div>

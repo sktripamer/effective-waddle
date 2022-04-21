@@ -3,6 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 import { useState , useEffect } from "react";
 const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
+    const [clickedItem, setClickedItem] = useState(0);
     const { pageContext: { id, slug, name, description, cat, type } } = props;
 let query;
 
@@ -50,20 +51,14 @@ const VariationCart = (e) => {
 const variationClick = (e) => {
     console.log(e.target.dataset.id)
     //find variation and set it
-    data.product.variations.nodes.forEach(variation => {
-        if (variation.name.includes(e.target.dataset.id)) {
-            varSelector(variation.databaseId)
-            console.log(variation.databaseId)
-        }
-    })
+    setClickedItem(parseInt(e.target.dataset.idindex));
+    data.product.variations.nodes[e.target.dataset.idindex].databaseId
   }
     
       const { loading, error, data } = useQuery(query, {
         variables: { id: id },
       });
-      useEffect(() => {
-       if (!loading) varSelector(data.product.variations.nodes[0].databaseId)
-      }, []);
+
       if (loading) return <p>Loading ...</p>;
     
 
@@ -86,7 +81,7 @@ console.log(props.pageContext)
        yy
       <div>{data.product.name}</div>
       <div>{data.product.attributes.nodes[0].name}</div>
-      {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el) =><div onClick={variationClick} data-id={el}>{el}</div>)}
+      {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el, index) =><div className={index === clickedItem ? "is-checked" : ""} onClick={variationClick} data-idindex={index} data-id={el}>{el}</div>)}
       <button onClick={VariationCart}>add to cart</button>
     </div>
         

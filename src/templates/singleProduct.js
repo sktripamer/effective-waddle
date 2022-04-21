@@ -52,7 +52,7 @@ const variationClick = (e) => {
     console.log(e.target.dataset.id)
     //find variation and set it
     setClickedItem(parseInt(e.target.dataset.idindex));
-    data.product.variations.nodes[e.target.dataset.idindex].databaseId
+    varSelector(data.product.variations.nodes[e.target.dataset.idindex].databaseId)
   }
     
       const { loading, error, data } = useQuery(query, {

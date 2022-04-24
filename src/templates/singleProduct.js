@@ -1,6 +1,8 @@
 import React from 'react';
 import { useQuery, gql } from "@apollo/client";
 import { useState , useEffect } from "react";
+import Layout from "../components/Layout";
+import Navbar from "../components/Navbar";
 const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
     const [clickedItem, setClickedItem] = useState(0);
@@ -48,8 +50,10 @@ if (type === "SIMPLE") {
 const VariationCart = (e) => {
     if (varSelect===undefined) {
         console.log(data.product.variations.nodes[0].databaseId)
-    }
-    console.log(varSelect)
+    } else {
+        console.log(varSelect)
+    } 
+   
 }
 const variationClick = (e) => {
     console.log(e.target.dataset.id)
@@ -67,6 +71,8 @@ const variationClick = (e) => {
 
 console.log(props.pageContext)
     return (
+        <Layout>
+        <Navbar />
         <div>
         {type === "SIMPLE"
         ? (
@@ -91,6 +97,7 @@ console.log(props.pageContext)
         }
     
     </div>
+    </Layout>
     );
 }
 

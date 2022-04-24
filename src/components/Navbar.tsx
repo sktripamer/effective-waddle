@@ -16,13 +16,13 @@ export default function Navbar(props) {
       <ul>
         
         <li>Home</li>
-          <a dropdown>Shop
+          <a class='dropdown'>Shop
       <div class="link-dropdown active2">
       <label>Shirt Collections</label>
       <label>Hat Collections</label>
       <label>All Products</label>
     </div></a>
-          <a dropdown>Resources
+          <a class='dropdown'>Resources
       <div class="link-dropdown active2">
       <label>Everything Entrepreneurial Blog</label>
       <label>Help Desk</label>

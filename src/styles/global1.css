@@ -1970,13 +1970,13 @@ navbar {
 }
 
 
-a[dropdown] {
+a.dropdown {
 	position: relative;
   display:block;
   line-height:50px;
 }
 
-a[dropdown]:hover .active2 {
+a.dropdown:hover .active2 {
 	display: block;
 }
 

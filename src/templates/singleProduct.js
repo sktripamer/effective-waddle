@@ -71,7 +71,7 @@ const variationClick = (e) => {
 
 console.log(props.pageContext)
     return (
-        <Layout>
+        <Layout htmlClassName="scroll">
         <Navbar />
         <div>
         {type === "SIMPLE"

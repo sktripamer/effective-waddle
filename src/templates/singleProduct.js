@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
     const [clickedItem, setClickedItem] = useState(0);
+    const [count, setCount] = useState(1);
     const { pageContext: { id, slug, name, description, cat, type } } = props;
 let query;
 
@@ -71,7 +72,7 @@ const variationClick = (e) => {
     
 
 console.log(props.pageContext)
-const [count, setCount] = useState(1);
+
 let incrementCount = () => {
     setCount(count + 1);
   };

@@ -3,7 +3,13 @@ import { ReactNode } from "react";
 import { Helmet } from 'react-helmet';
 import Header from "./Header";
 
-export default function Layout({ htmlClassName }: {htmlClassName: string} , { children }: { children: ReactNode }) {
+interface IProps {
+  htmlClassName: string
+  children: ReactNode
+}
+
+
+export default function Layout({ htmlClassName, children }: IProps) {
   console.log(htmlClassName)
   return (
     <>

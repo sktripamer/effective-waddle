@@ -3,17 +3,11 @@ import { ReactNode } from "react";
 import { Helmet } from 'react-helmet';
 import Header from "./Header";
 
-interface IProps {
-  htmlClassName: string
-}
-
-
-export default function Layout({ children }: { children: ReactNode },{ htmlClassName }: IProps) {
+export default function Layout({ children }: { children: ReactNode }, { htmlClassName = '' }: {htmlClassName: string}) {
   console.log(htmlClassName)
-  console.log(this.IProps.htmlClassName)
   return (
     <>
-          <Helmet >
+          <Helmet>
         <html className={htmlClassName} lang="en" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>

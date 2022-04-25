@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { Helmet } from 'react-helmet';
 import Header from "./Header";
 
-export default function Layout({ children }: { children: ReactNode }, { htmlClassName = 'a' }: {htmlClassName: string}) {
+export default function Layout({ children }: { children: ReactNode }, { htmlClassName }: {htmlClassName: string}) {
   console.log(htmlClassName)
   return (
     <>

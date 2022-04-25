@@ -63,7 +63,7 @@ const variationClick = (e) => {
     setClickedItem(parseInt(e.target.dataset.idindex));
     varSelector(data.product.variations.nodes[e.target.dataset.idindex].databaseId)
   }
-    
+
       const { loading, error, data } = useQuery(query, {
         variables: { id: id },
       });
@@ -83,6 +83,10 @@ let incrementCount = () => {
       }
 
   };
+
+  const changeCount = (e) => {
+      setCount(e.target.value.replace(/\D/,''))
+  }
 
     return (
         <Layout htmlClassName={"scroll"}>
@@ -108,7 +112,7 @@ let incrementCount = () => {
       <div>
         <div class="count">
       
-     <input type="tel" value={count} onChange={event => setState({count: event.target.value.replace(/\D/,'')})}/>
+     <input type="tel" value={count} onChange={changeCount}/>
           <h3>Count:</h3>
           <h1>{count}</h1>
         </div>

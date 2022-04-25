@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { Helmet } from 'react-helmet';
 import Header from "./Header";
 
-export default function Layout( { htmlClassName }: {htmlClassName: string}) {
+export default function Layout({ htmlClassName }: {htmlClassName: string} , { children }: { children: ReactNode }) {
   console.log(htmlClassName)
   return (
     <>
@@ -19,7 +19,7 @@ export default function Layout( { htmlClassName }: {htmlClassName: string}) {
       </Helmet>
       <title>revrevdev</title>
 
-      {/* <main>{children}</main> */}
+      <main>{children}</main>
     </>
   );
 }

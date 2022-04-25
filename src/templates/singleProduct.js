@@ -34,6 +34,11 @@ if (type === "SIMPLE") {
                       }
                     }
                     name
+                    featuredImage {
+                      node {
+                        sourceUrl
+                      }
+                    }
                   }
                 }
                 attributes {
@@ -43,19 +48,34 @@ if (type === "SIMPLE") {
                   }
                 }
                 price
+                name
+                galleryImages {
+                  nodes {
+                    sourceUrl
+                  }
+                }
               }
           }
     }
     `
 }
 const VariationCart = (e) => {
-    console.log(count)
-    if (varSelect===undefined) {
-        console.log(data.product.variations.nodes[0].databaseId)
-    } else {
-        console.log(varSelect)
-    } 
    
+    let dbID;
+    let varName;
+    let varImage;
+    let varPrice;
+       dbID =  data.product.variations.nodes[clickedItem].databaseId
+       varName =  data.product.variations.nodes[clickedItem].name
+       varImage =  data.product.variations.nodes[clickedItem].featuredImage.node.sourceUrl
+       varPrice = Number(data.data.product.price.replace(/[^0-9.-]+/g,""));
+   console.log(dbID)
+   console.log(varName)
+   console.log(varImage)
+   console.log(count)
+   console.log(varPrice)
+   console.log(count * varPrice)
+
 }
 const variationClick = (e) => {
     console.log(e.target.dataset.id)
@@ -85,7 +105,7 @@ let incrementCount = () => {
   };
 
   const changeCount = (e) => {
-      setCount(e.target.value.replace(/\D/,''))
+      setCount(parseInt(e.target.value.replace(/\D/,'')))
   }
 
     return (

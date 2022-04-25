@@ -48,6 +48,7 @@ if (type === "SIMPLE") {
     `
 }
 const VariationCart = (e) => {
+    console.log(count)
     if (varSelect===undefined) {
         console.log(data.product.variations.nodes[0].databaseId)
     } else {
@@ -70,6 +71,18 @@ const variationClick = (e) => {
     
 
 console.log(props.pageContext)
+const [count, setCount] = useState(1);
+let incrementCount = () => {
+    setCount(count + 1);
+  };
+
+  let decrementCount = () => {
+      if (count >= 2) {
+        setCount(count - 1);
+      }
+
+  };
+
     return (
         <Layout htmlClassName={"scroll"}>
         <Navbar />
@@ -91,6 +104,19 @@ console.log(props.pageContext)
       <div>{data.product.name}</div>
       <div>{data.product.attributes.nodes[0].name}</div>
       {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el, index) =><div className={index === clickedItem ? "is-checked" : ""} onClick={variationClick} data-idindex={index} data-id={el}>{el}</div>)}
+      <div>
+        <div class="count">
+      
+     <input type="tel" value={count} onChange={event => setState({count: event.target.value.replace(/\D/,'')})}/>
+          <h3>Count:</h3>
+          <h1>{count}</h1>
+        </div>
+        <div class="buttons">
+          <button onClick={decrementCount}>-</button>
+          <button onClick={incrementCount}>+</button>
+        </div>
+      </div>
+      
       <button onClick={VariationCart}>add to cart</button>
     </div>
         

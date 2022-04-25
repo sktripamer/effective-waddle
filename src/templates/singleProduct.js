@@ -68,7 +68,7 @@ const VariationCart = (e) => {
        dbID =  data.product.variations.nodes[clickedItem].databaseId
        varName =  data.product.variations.nodes[clickedItem].name
        varImage =  data.product.variations.nodes[clickedItem].featuredImage.node.sourceUrl
-       varPrice = Number(data.data.product.price.replace(/[^0-9.-]+/g,""));
+       varPrice = Number(data.product.price.replace(/[^0-9.-]+/g,""));
    console.log(dbID)
    console.log(varName)
    console.log(varImage)

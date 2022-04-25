@@ -10,6 +10,7 @@ interface IProps {
 
 export default function Layout({ children }: { children: ReactNode },{ htmlClassName }: IProps) {
   console.log(htmlClassName)
+  console.log(this.IProps.htmlClassName)
   return (
     <>
           <Helmet >

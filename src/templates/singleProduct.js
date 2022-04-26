@@ -5,10 +5,14 @@ import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
+
     const [clickedItem, setClickedItem] = useState(0);
     const [count, setCount] = useState(1);
     const [addedToCart, setAddedToCart] = useState(false)
     const { pageContext: { id, slug, name, description, cat, type } } = props;
+    useEffect(() => {
+        console.log('useeffect run')
+      }, [clickedItem]);
 let query;
 
 if (type === "SIMPLE") {
@@ -125,7 +129,7 @@ const variationClick = (e) => {
       });
 
       if (loading) return <p>Loading ...</p>;
-    
+    setClickedItem(0)
 
 console.log(props.pageContext)
 
@@ -148,6 +152,7 @@ let incrementCount = () => {
         <Layout htmlClassName={"scroll"}>
         <Navbar />
         <div>
+            
         {type === "SIMPLE"
         ? (
             
@@ -160,6 +165,7 @@ let incrementCount = () => {
         
           )
         : 
+        
         <div>
        yy
       <div>{data.product.name}</div>

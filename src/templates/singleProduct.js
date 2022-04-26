@@ -7,6 +7,7 @@ const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
     const [clickedItem, setClickedItem] = useState(0);
     const [count, setCount] = useState(1);
+    const [addedToCart, setAddedToCart] = useState(false)
     const { pageContext: { id, slug, name, description, cat, type } } = props;
 let query;
 
@@ -61,22 +62,55 @@ if (type === "SIMPLE") {
 }
 const VariationCart = (e) => {
    
-    let dbID;
-    let varName;
-    let varImage;
-    let varPrice;
-       dbID =  data.product.variations.nodes[clickedItem].databaseId
-       varName =  data.product.variations.nodes[clickedItem].name
-       varImage =  data.product.variations.nodes[clickedItem].featuredImage.node.sourceUrl
-       varPrice = Number(data.product.price.replace(/[^0-9.-]+/g,""));
-   console.log(dbID)
-   console.log(varName)
-   console.log(varImage)
-   console.log(count)
-   console.log(varPrice)
-   console.log(count * varPrice)
+
+      let dbID =  data.product.variations.nodes[clickedItem].databaseId
+      let varName =  data.product.variations.nodes[clickedItem].name
+      let varImage =  data.product.variations.nodes[clickedItem].featuredImage.node.sourceUrl
+      let varPrice = Number(data.product.price.replace(/[^0-9.-]+/g,""));
+
+   let tempCart = function() {
+    try {
+    return JSON.parse(localStorage.cart)
+    } catch {return []}      
+}
+
+  let cartObj = {
+    ID: dbID,
+    name: varName,
+    url: varImage,
+    quantity: count,
+    price: varPrice,
+    total: count * varPrice
+   }
+
+   let cartModifier = tempCart();
+   let cartItemFound = false;
+
+
+   //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
+   tempCart().forEach((cartitem, index) => {
+    if (cartitem.ID = cartObj.ID) {
+       
+        cartModifier[index].quantity = cartObj.quantity
+        cartModifier[index].total = cartObj.total
+        cartItemFound = true;
+
+    }
+ 
+   });
+
+
+   //if no duplicate cart item is found to already exist in localstorage cart array, simply add it to the array.
+   if (cartItemFound === false) {
+       cartModifier.push(cartObj)
+   }
+
+   localStorage.setItem('cart', cartModifier)
 
 }
+
+
+
 const variationClick = (e) => {
     console.log(e.target.dataset.id)
     //find variation and set it

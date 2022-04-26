@@ -13,7 +13,7 @@ const singleProduct = ( props ) => {
     useEffect(() => {
         
         if (typeof data !== 'undefined' && data !== null) {
-            console.log(data.product.variations.nodes[0].databaseId)
+            console.log(data.product.variations.nodes[clickedItem].databaseId)
         } 
       }, [clickedItem]);
 let query;

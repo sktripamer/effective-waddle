@@ -11,7 +11,7 @@ const singleProduct = ( props ) => {
     const [addedToCart, setAddedToCart] = useState(false)
     const { pageContext: { id, slug, name, description, cat, type } } = props;
     useEffect(() => {
-        console.log('useeffect run')
+        console.log(data.product.variations.nodes[clickedItem].databaseId)
       }, [clickedItem]);
 let query;
 
@@ -129,7 +129,7 @@ const variationClick = (e) => {
       });
 
       if (loading) return <p>Loading ...</p>;
-    setClickedItem(0)
+    console.log(data.product.variations.nodes[0].databaseId)
 
 console.log(props.pageContext)
 

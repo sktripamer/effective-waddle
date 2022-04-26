@@ -105,7 +105,7 @@ const VariationCart = (e) => {
        cartModifier.push(cartObj)
    }
 
-   localStorage.setItem('cart', cartModifier)
+   localStorage.setItem('cart', JSON.stringify(cartModifier))
 
 }
 

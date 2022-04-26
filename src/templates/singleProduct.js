@@ -10,9 +10,7 @@ const singleProduct = ( props ) => {
     const [count, setCount] = useState(1);
     const [addedToCart, setAddedToCart] = useState(false)
     const { pageContext: { id, slug, name, description, cat, type } } = props;
-    useEffect(() => {
-        console.log(data.product.variations.nodes[clickedItem].databaseId)
-      }, [clickedItem]);
+
 let query;
 
 if (type === "SIMPLE") {
@@ -129,6 +127,9 @@ const variationClick = (e) => {
       });
 
       if (loading) return <p>Loading ...</p>;
+      useEffect(() => {
+        console.log(data.product.variations.nodes[clickedItem].databaseId)
+      }, [clickedItem]);
     console.log(data.product.variations.nodes[0].databaseId)
 
 console.log(props.pageContext)

@@ -8,6 +8,7 @@ const singleProduct = ( props ) => {
 
     const [clickedItem, setClickedItem] = useState(0);
     const [count, setCount] = useState(1);
+    const [isClicked, setClicked] = useState(false)
     const [addedToCart, setAddedToCart] = useState(false)
     const { pageContext: { id, slug, name, description, cat, type } } = props;
     useEffect(() => {
@@ -122,6 +123,7 @@ const VariationCart = (e) => {
 
 const variationClick = (e) => {
     console.log(e.target.dataset.id)
+    setClicked(true)
     //find variation and set it
     setClickedItem(parseInt(e.target.dataset.idindex));
     varSelector(data.product.variations.nodes[e.target.dataset.idindex].databaseId)
@@ -132,7 +134,9 @@ const variationClick = (e) => {
       });
 
       if (loading) return <p>Loading ...</p>;
-    console.log(data.product.variations.nodes[0].databaseId)
+    if (isClicked === false) {
+        console.log(data.product.variations.nodes[0].databaseId)
+    } 
 
 console.log(props.pageContext)
 

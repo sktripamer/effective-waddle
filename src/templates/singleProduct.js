@@ -61,12 +61,14 @@ if (type === "SIMPLE") {
     `
 }
 const VariationCart = (e) => {
-   
-
-      let dbID =  data.product.variations.nodes[clickedItem].databaseId
-      let varName =  data.product.variations.nodes[clickedItem].name
-      let varImage =  data.product.variations.nodes[clickedItem].featuredImage.node.sourceUrl
-      let varPrice = Number(data.product.price.replace(/[^0-9.-]+/g,""));
+   let dbID;
+    let varName;
+    let varImage;
+    let varPrice;
+       dbID =  data.product.variations.nodes[clickedItem].databaseId
+       varName =  data.product.variations.nodes[clickedItem].name
+       varImage =  data.product.variations.nodes[clickedItem].featuredImage.node.sourceUrl
+       varPrice = Number(data.product.price.replace(/[^0-9.-]+/g,""));
 
    let tempCart = function() {
     try {
@@ -82,7 +84,7 @@ const VariationCart = (e) => {
     price: varPrice,
     total: count * varPrice
    }
-
+   console.log(cartObj)
    let cartModifier = tempCart();
    let cartItemFound = false;
 

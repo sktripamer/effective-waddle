@@ -5,17 +5,17 @@ import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
+
+    const [clickedItem, setClickedItem] = useState(0);
+    const [count, setCount] = useState(1);
+    const [addedToCart, setAddedToCart] = useState(false)
+    const { pageContext: { id, slug, name, description, cat, type } } = props;
     useEffect(() => {
         
         if (typeof data !== 'undefined' && data !== null) {
             console.log(data.product.variations.nodes[0].databaseId)
         } 
       }, [clickedItem]);
-    const [clickedItem, setClickedItem] = useState(0);
-    const [count, setCount] = useState(1);
-    const [addedToCart, setAddedToCart] = useState(false)
-    const { pageContext: { id, slug, name, description, cat, type } } = props;
-
 let query;
 
 if (type === "SIMPLE") {

@@ -91,7 +91,7 @@ const VariationCart = (e) => {
 
    //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
    tempCart().forEach((cartitem, index) => {
-    if (cartitem.ID = cartObj.ID) {
+    if (cartitem.ID === cartObj.ID) {
        
         cartModifier[index].quantity = cartObj.quantity
         cartModifier[index].total = cartObj.total

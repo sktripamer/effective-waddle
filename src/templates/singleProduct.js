@@ -5,7 +5,12 @@ import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
-
+    useEffect(() => {
+        
+        if (typeof data !== 'undefined' && data !== null) {
+            console.log(data.product.variations.nodes[0].databaseId)
+        } 
+      }, [clickedItem]);
     const [clickedItem, setClickedItem] = useState(0);
     const [count, setCount] = useState(1);
     const [addedToCart, setAddedToCart] = useState(false)
@@ -127,9 +132,6 @@ const variationClick = (e) => {
       });
 
       if (loading) return <p>Loading ...</p>;
-      useEffect(() => {
-        console.log(data.product.variations.nodes[clickedItem].databaseId)
-      }, [clickedItem]);
     console.log(data.product.variations.nodes[0].databaseId)
 
 console.log(props.pageContext)

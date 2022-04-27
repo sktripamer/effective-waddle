@@ -151,7 +151,7 @@ const variationClick = (e) => {
         }
      
        });
-       if (alreadyInCart = true) {
+       if (alreadyInCart === true) {
            setAddedToCart(true)
        } else {
            setAddedToCart(false)

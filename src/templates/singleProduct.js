@@ -103,6 +103,7 @@ const VariationCart = (e) => {
        if (cartObj.quantity === 0) {
         cartModifier.splice(index, 1)
         cartItemFound = true;
+        setAddedToCart(false)
        } else {
         cartModifier[index].quantity = cartObj.quantity
         cartModifier[index].total = cartObj.total

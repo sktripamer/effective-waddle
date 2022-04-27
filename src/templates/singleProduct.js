@@ -155,6 +155,7 @@ const variationClick = (e) => {
            setAddedToCart(true)
        } else {
            setAddedToCart(false)
+           setCount(1)
        }
 
   }
@@ -164,7 +165,7 @@ const variationClick = (e) => {
       });
 
       if (loading) return <p>Loading ...</p>;
-    if (isClicked === false) {
+    if (isClicked === false && addedToCart === false) {
         console.log(data.product.variations.nodes[0].databaseId)
         let tempCart = function() {
             try {

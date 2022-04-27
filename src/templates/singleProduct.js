@@ -124,12 +124,9 @@ const VariationCart = (e) => {
   const setLocal = function(key, value) {
     const event = new Event('itemInserted');
   
-    event.value = value; // Optional..
-    event.key = key; // Optional..
-  
     document.dispatchEvent(event);
   
-    localStorage.setItem(this, arguments);
+    localStorage.setItem(key, value);
   };
   setLocal('cart', JSON.stringify(cartModifier))
 

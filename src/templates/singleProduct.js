@@ -100,10 +100,15 @@ const VariationCart = (e) => {
    //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
    tempCart().forEach((cartitem, index) => {
     if (cartitem.ID === cartObj.ID) {
-       
+       if (cartObj.quantity === 0) {
+        cartModifier.splice(index, 1)
+        cartItemFound = true;
+       } else {
         cartModifier[index].quantity = cartObj.quantity
         cartModifier[index].total = cartObj.total
         cartItemFound = true;
+       }
+
 
     }
  
@@ -111,10 +116,10 @@ const VariationCart = (e) => {
 
 
    //if no duplicate cart item is found to already exist in localstorage cart array, simply add it to the array.
-   if (cartItemFound === false) {
+   if (cartItemFound === false && cartObj.quantity !== 0) {
        cartModifier.push(cartObj)
    }
-
+   setAddedToCart(true)
    localStorage.setItem('cart', JSON.stringify(cartModifier))
 
 }
@@ -127,6 +132,31 @@ const variationClick = (e) => {
     //find variation and set it
     setClickedItem(parseInt(e.target.dataset.idindex));
     varSelector(data.product.variations.nodes[e.target.dataset.idindex].databaseId)
+
+    let tempCart = function() {
+        try {
+        return JSON.parse(localStorage.cart)
+        } catch {return []}      
+    }
+    
+       let cartModifier = tempCart();
+        let alreadyInCart = false;
+    
+       //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
+       tempCart().forEach((cartitem, index) => {
+        if (cartitem.ID === data.product.variations.nodes[e.target.dataset.idindex].databaseId) {
+           setCount(cartModifier[index].quantity)
+           alreadyInCart = true;
+    
+        }
+     
+       });
+       if (alreadyInCart = true) {
+           setAddedToCart(true)
+       } else {
+           setAddedToCart(false)
+       }
+
   }
 
       const { loading, error, data } = useQuery(query, {
@@ -136,16 +166,33 @@ const variationClick = (e) => {
       if (loading) return <p>Loading ...</p>;
     if (isClicked === false) {
         console.log(data.product.variations.nodes[0].databaseId)
+        let tempCart = function() {
+            try {
+            return JSON.parse(localStorage.cart)
+            } catch {return []}      
+        }
+        
+           let cartModifier = tempCart();
+        
+        
+           //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
+           tempCart().forEach((cartitem, index) => {
+            if (cartitem.ID === data.product.variations.nodes[0].databaseId) {
+               setCount(cartModifier[index].quantity)
+               setAddedToCart(true)
+        
+            }
+         
+           });
     } 
 
-console.log(props.pageContext)
 
 let incrementCount = () => {
     setCount(count + 1);
   };
 
   let decrementCount = () => {
-      if (count >= 2) {
+      if (count >= 1) {
         setCount(count - 1);
       }
 
@@ -191,7 +238,7 @@ let incrementCount = () => {
         </div>
       </div>
       
-      <button onClick={VariationCart}>add to cart</button>
+      <button onClick={VariationCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
     </div>
         
         }

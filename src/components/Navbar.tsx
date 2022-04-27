@@ -1,11 +1,22 @@
 import * as React from "react";
 import { Link } from "gatsby";
-
+import { useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 
 
 export default function Navbar(props) {
   const { loggedIn, loading } = useAuth();
+  const handleScroll = () => {
+    console.log(JSON.parse(window.localStorage.getItem('cart')));
+  };
+  
+  useEffect(() => {
+    window.addEventListener('storage', handleScroll);
+  
+      return () => {
+        window.removeEventListener('storage', handleScroll);
+      };
+  }, []);
   return (
     <>
      {loading ? (
@@ -28,7 +39,10 @@ export default function Navbar(props) {
       <label>Help Desk</label>
       <label>Contact</label>
     </div></a>
-
+    <a class='dropdown'>Cart
+      <div class="link-dropdown active2 cart-drop">
+      
+    </div></a>
         {!loggedIn ? (
           <>
               <li>Log in</li>

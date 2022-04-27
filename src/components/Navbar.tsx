@@ -9,11 +9,11 @@ export default function Navbar(props) {
 
   
   useEffect(() => {
-    window.addEventListener('storage', () => {
-      // When local storage changes, dump the list to
-      // the console.
-      console.log(JSON.parse(window.localStorage.getItem('cart')));
-    });
+    const localStorageSetHandler = function(e) {
+      console.log(localStorage.getItem('cart'))
+    };
+    
+    document.addEventListener("itemInserted", localStorageSetHandler, false);
   }, []);
   return (
     <>

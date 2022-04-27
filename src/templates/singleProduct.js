@@ -119,8 +119,9 @@ const VariationCart = (e) => {
    //if no duplicate cart item is found to already exist in localstorage cart array, simply add it to the array.
    if (cartItemFound === false && cartObj.quantity !== 0) {
        cartModifier.push(cartObj)
+       setAddedToCart(true)
    }
-   setAddedToCart(true)
+   
    localStorage.setItem('cart', JSON.stringify(cartModifier))
 
 }

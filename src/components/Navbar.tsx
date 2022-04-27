@@ -6,16 +6,14 @@ import useAuth from "../hooks/useAuth";
 
 export default function Navbar(props) {
   const { loggedIn, loading } = useAuth();
-  const handleScroll = () => {
-    console.log(JSON.parse(window.localStorage.getItem('cart')));
-  };
+
   
   useEffect(() => {
-    window.addEventListener('storage', handleScroll);
-  
-      return () => {
-        window.removeEventListener('storage', handleScroll);
-      };
+    window.addEventListener('storage', () => {
+      // When local storage changes, dump the list to
+      // the console.
+      console.log(JSON.parse(window.localStorage.getItem('cart')));
+    });
   }, []);
   return (
     <>

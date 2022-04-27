@@ -6,12 +6,18 @@ import useAuth from "../hooks/useAuth";
 
 export default function Navbar(props) {
   const { loggedIn, loading } = useAuth();
+  const localStorageSetHandler = () => {
+    console.log(localStorage.getItem('cart'))
 
+    return (
+      <div>{localStorage.getItem('cart')}</div>
+    )
+  }
   
   useEffect(() => {
-    const localStorageSetHandler = function(e) {
-      console.log(localStorage.getItem('cart'))
-    };
+    // const localStorageSetHandler = function(e) {
+    //   console.log(localStorage.getItem('cart'))
+    // };
     
     document.addEventListener("itemInserted", localStorageSetHandler, false);
   }, []);
@@ -39,7 +45,7 @@ export default function Navbar(props) {
     </div></a>
     <a class='dropdown'>Cart
       <div class="link-dropdown active2 cart-drop">
-      
+      <div>{localStorageSetHandler()}</div>
     </div></a>
         {!loggedIn ? (
           <>

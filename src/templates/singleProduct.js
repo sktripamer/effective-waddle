@@ -121,7 +121,7 @@ const VariationCart = (e) => {
        cartModifier.push(cartObj)
        setAddedToCart(true)
    }
-   setLocal = function(key, value) {
+  const setLocal = function(key, value) {
     const event = new Event('itemInserted');
   
     event.value = value; // Optional..

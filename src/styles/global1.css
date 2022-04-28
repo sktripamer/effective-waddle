@@ -1286,7 +1286,7 @@ p.result-message-text a {
     height: 100%;
     opacity: 1;
     position: absolute;
-    width: 50%;
+    width: 36%;
     left: 0px;
     background-image:url("https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg");
     z-index: 22;
@@ -1857,11 +1857,10 @@ nav:hover .nav li {
   }
   .register-form h4 {
     color: #e0e0e0;
-    font-family: Verdana;
+    font-family: 'Josefin Sans';
     text-shadow: -1px -1px 1px #111, 2px 2px 1px #3c3c3c;
     font-weight: BOLD;
     font-size: 28px;
-    font-style: italic;
   }
   button {
     display: block;

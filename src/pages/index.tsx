@@ -329,6 +329,8 @@
       /**
        * Hide the Status bar on cross button click.
        */
+
+      setHero("Subscribe to Keep Watching!")
       const onCloseButtonClick = () => {
         setErrorMessage("");
         setShowAlertBar(false);
@@ -516,7 +518,7 @@
               validationSchema={validationSchema}
               labelsColor="secondary" /// The text label color can be root variables or css => #fff
             // withStepperLine /// false as default and If it is false, it hides stepper line
-              nextBtnLabel="Next" /// Next as default
+              nextBtnLabel="Keep Watching" /// Next as default
               prevBtnLabel="Back" /// Prev as default
               submitBtnLabel="Keep Watching" /// Submit as default
               nextBtnColor="primary" /// as default and The color can be root variables or css => #fff
@@ -1030,8 +1032,9 @@
       <div className='powered-container'>
         <div className='powered-by-stripe'></div>
         </div>
-        <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
         <InputField2 label={'email'} name={'email'}/>
+        <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
+
         <CardElement
           id="card-element"
           options={cardStyle}
@@ -1725,8 +1728,8 @@ const noShippingForm = () => {
           <div className='powered-by-stripe'></div>
           </div>
           <div className='new-card-form'>
-          <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
           <InputField2 label={'email'} name={'email'}/>
+          <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
           <CardElement
             id="card-element"
             options={cardStyle}
@@ -2544,8 +2547,8 @@ const noShippingForm = () => {
       <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
       <div className={`step-one-pay ${stepCount}`}>
         <div class="name-email-group">
+        <InputField2 label={'email'} name={'email'}/>
       <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
-      <InputField2 label={'email'} name={'email'}/>
       </div>
       <CardElement
         id="card-element"

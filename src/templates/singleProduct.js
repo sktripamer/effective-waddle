@@ -254,7 +254,7 @@ const variationClick = (e) => {
 
       if (loading) return <p>Loading ...</p>;
     if (isClicked === false && addedToCart === false) {
-        console.log(data.product.variations.nodes[0].databaseId)
+
         let tempCart = function() {
             try {
             return JSON.parse(localStorage.cart)

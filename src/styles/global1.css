@@ -1,3 +1,4 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
 
   @font-face {
     font-family: 'Josefin Sans';
@@ -1967,6 +1968,8 @@ navbar start
 .name-total-cart-cont {
   line-height: 24px;
   align-self: center;
+  margin-right:2em;
+  margin-left: 1em;
 }
 .cart-name {
   font-size: 20px;
@@ -1980,7 +1983,7 @@ navbar start
 .remove-cart-item {
   align-self: center;
   margin-left: auto;
-  padding-left: 2em;
+
   cursor: pointer;
 }
 

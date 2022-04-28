@@ -24,7 +24,19 @@ if (type === "SIMPLE") {
     query SingleProductQuery($id: ID!) {
         product(id: $id, idType: DATABASE_ID) {
             ... on SimpleProduct {
+                name
+                databaseId
                 price
+                galleryImages {
+                  nodes {
+                    sourceUrl
+                  }
+                }
+                featuredImage {
+                  node {
+                    sourceUrl
+                  }
+                }
               }
           }
     }
@@ -68,6 +80,72 @@ if (type === "SIMPLE") {
     }
     `
 }
+
+const SimpleCart = (e) => {
+    let dbID;
+     let varName;
+     let varImage;
+     let varPrice;
+        dbID =  data.product.databaseId
+        varName =  data.product.name
+        varImage =  data.featuredImage.node.sourceUrl
+        varPrice = Number(data.product.price.replace(/[^0-9.-]+/g,""));
+ 
+    let tempCart = function() {
+     try {
+     return JSON.parse(localStorage.cart)
+     } catch {return []}      
+ }
+ 
+   let cartObj = {
+     ID: dbID,
+     name: varName,
+     url: varImage,
+     quantity: count,
+     price: varPrice,
+     total: count * varPrice
+    }
+    console.log(cartObj)
+    let cartModifier = tempCart();
+    let cartItemFound = false;
+ 
+ 
+    //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
+    tempCart().forEach((cartitem, index) => {
+     if (cartitem.ID === cartObj.ID) {
+        if (cartObj.quantity === 0) {
+         cartModifier.splice(index, 1)
+         cartItemFound = true;
+         setAddedToCart(false)
+        } else {
+         cartModifier[index].quantity = cartObj.quantity
+         cartModifier[index].total = cartObj.total
+         cartItemFound = true;
+        }
+ 
+ 
+     }
+  
+    });
+ 
+ 
+    //if no duplicate cart item is found to already exist in localstorage cart array, simply add it to the array.
+    if (cartItemFound === false && cartObj.quantity !== 0) {
+        cartModifier.push(cartObj)
+        setAddedToCart(true)
+    }
+   const setLocal = function(key, value) {
+        
+     localStorage.setItem(key, value);
+     const event = new Event('itemInserted');
+   
+     document.dispatchEvent(event);
+  
+   };
+   setLocal('cart', JSON.stringify(cartModifier))
+ 
+ }
+
 const VariationCart = (e) => {
    let dbID;
     let varName;
@@ -156,10 +234,11 @@ const variationClick = (e) => {
         if (cartitem.ID === data.product.variations.nodes[e.target.dataset.idindex].databaseId) {
            setCount(cartModifier[index].quantity)
            alreadyInCart = true;
-    
+            
         }
-     
+        
        });
+
        if (alreadyInCart === true) {
            setAddedToCart(true)
        } else {
@@ -187,11 +266,18 @@ const variationClick = (e) => {
         
            //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
            tempCart().forEach((cartitem, index) => {
-            if (cartitem.ID === data.product.variations.nodes[0].databaseId) {
-               setCount(cartModifier[index].quantity)
-               setAddedToCart(true)
-        
+            if (type === "SIMPLE") {
+                if (cartitem.ID === data.product.databaseId) {
+                    setCount(cartModifier[index].quantity)
+                    setAddedToCart(true)
+                 }
+            } else {
+                if (cartitem.ID === data.product.variations.nodes[0].databaseId) {
+                    setCount(cartModifier[index].quantity)
+                    setAddedToCart(true)
+                 }
             }
+
          
            });
     } 
@@ -224,7 +310,21 @@ let incrementCount = () => {
             <div>
             aa
           <div>{data.product.name}</div>
-          <div>{data.product.description}</div>
+          <div>{data.product.price}</div>
+          <div>
+        <div class="count">
+      
+     <input type="tel" value={count} onChange={changeCount}/>
+          <h3>Count:</h3>
+          <h1>{count}</h1>
+        </div>
+        <div class="buttons">
+          <button onClick={decrementCount}>-</button>
+          <button onClick={incrementCount}>+</button>
+        </div>
+      </div>
+      
+      <button onClick={SimpleCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
         </div>
         
           )

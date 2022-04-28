@@ -3,6 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 import { useState , useEffect } from "react";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
+import ImageGallery from 'react-image-gallery';
 const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
 
@@ -281,6 +282,10 @@ const variationClick = (e) => {
          
            });
     } 
+    let images = [];
+      data.product.galleryImages.nodes.forEach((galleryImage) => {
+        images.push({"original": galleryImage.sourceUrl})
+      })
 
 
 let incrementCount = () => {
@@ -311,6 +316,7 @@ let incrementCount = () => {
             aa
           <div>{data.product.name}</div>
           <div>{data.product.price}</div>
+          <ImageGallery items={images} showThumbnails={false} showPlayButton={false} showBullets={true} autoPlay={true} showFullscreenButton={false} />
           <div>
         <div class="count">
       
@@ -333,6 +339,7 @@ let incrementCount = () => {
         <div>
        yy
       <div>{data.product.name}</div>
+      <ImageGallery items={images} showThumbnails={false} showPlayButton={false} showBullets={true} autoPlay={true} showFullscreenButton={false} />
       <div>{data.product.attributes.nodes[0].name}</div>
       {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el, index) =><div className={index === clickedItem ? "is-checked" : ""} onClick={variationClick} data-idindex={index} data-id={el}>{el}</div>)}
       <div>

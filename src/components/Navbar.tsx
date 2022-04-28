@@ -8,9 +8,13 @@ export default function Navbar(props) {
   const { loggedIn, loading } = useAuth();
   const localStorageSetHandler = () => {
     console.log(localStorage.getItem('cart'))
-
+    let newA = JSON.parse(localStorage.cart);
     return (
-      <div>{localStorage.getItem('cart')}</div>
+      <>
+      {newA && newA.map((el, index) => 
+      <div class="cart-cont"><img height="42" width="42" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} x {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} class="remove-cart-item">X</div></div>
+      )}
+      </>
     )
   }
   

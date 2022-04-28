@@ -1954,6 +1954,36 @@ nav:hover .nav li {
 navbar start
 */
 
+.cart-cont {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 1em;
+  white-space: nowrap;
+}
+.cart-img {
+  align-self: center;
+}
+.name-total-cart-cont {
+  line-height: 24px;
+  align-self: center;
+}
+.cart-name {
+  font-size: 20px;
+  color: #606060;
+  font-family: "Josefin Sans";
+}
+.cart-item-total {
+  font-size: 16px;
+  margin-left: 2px;
+}
+.remove-cart-item {
+  align-self: center;
+  margin-left: auto;
+  padding-left: 2em;
+  cursor: pointer;
+}
+
 navbar {
   display: flex;
   justify-content: space-between;

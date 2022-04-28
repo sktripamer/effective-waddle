@@ -88,7 +88,7 @@ const SimpleCart = (e) => {
      let varPrice;
         dbID =  data.product.databaseId
         varName =  data.product.name
-        varImage =  data.featuredImage.node.sourceUrl
+        varImage =  data.product.featuredImage.node.sourceUrl
         varPrice = Number(data.product.price.replace(/[^0-9.-]+/g,""));
  
     let tempCart = function() {

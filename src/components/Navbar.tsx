@@ -1,11 +1,12 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 
 
 export default function Navbar(props) {
   const { loggedIn, loading } = useAuth();
+  const [cartRender, setCartRender] = useState(true);
   const localStorageSetHandler = () => {
 
     let tempCart = function() {
@@ -38,6 +39,11 @@ export default function Navbar(props) {
       };
 
       setLocal('cart', JSON.stringify(cartModifier))
+      if (cartRender===true) {
+        setCartRender(false)
+      } else {
+        setCartRender(true)
+      }
     }
     if (newA.length === 0) {
       return (

@@ -8,10 +8,14 @@ export default function Navbar(props) {
   const { loggedIn, loading } = useAuth();
   const localStorageSetHandler = () => {
 
-
+    let tempCart = function() {
+      try {
+      return JSON.parse(localStorage.cart)
+      } catch {return []}
+    }
 
     console.log(localStorage.getItem('cart'))
-    let newA = JSON.parse(localStorage.cart);
+    let newA = tempCart();
 
     const removeFromCart = (e) => {
       let tempCart = function() {
@@ -35,15 +39,26 @@ export default function Navbar(props) {
 
       setLocal('cart', JSON.stringify(cartModifier))
     }
+    if (newA.length === 0) {
+      return (
+        <>
+        <div class="cart-cont-empty">
+          <p>Your cart is empty!</p>
+        </div>
+        <button>Go to Shop</button>
+        </>
+      )
+    } else {
+      return (
+        <>
+        {newA && newA.map((el, index) => 
+        <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} x {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
+        )}
+        </>
+      )
+    }
 
 
-    return (
-      <>
-      {newA && newA.map((el, index) => 
-      <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} x {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
-      )}
-      </>
-    )
   }
   
   useEffect(() => {

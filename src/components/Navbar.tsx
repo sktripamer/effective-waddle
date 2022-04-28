@@ -7,12 +7,40 @@ import useAuth from "../hooks/useAuth";
 export default function Navbar(props) {
   const { loggedIn, loading } = useAuth();
   const localStorageSetHandler = () => {
+
+
+
     console.log(localStorage.getItem('cart'))
     let newA = JSON.parse(localStorage.cart);
+
+    const removeFromCart = (e) => {
+      let tempCart = function() {
+        try {
+        return JSON.parse(localStorage.cart)
+        } catch {return []}
+      }
+    
+      let cartModifier = tempCart();
+       
+      cartModifier.splice(e.target.dataset.index, 1)
+
+      const setLocal = function(key, value) {
+       
+        localStorage.setItem(key, value);
+        const event = new Event('itemInserted');
+      
+        document.dispatchEvent(event);
+     
+      };
+
+      setLocal('cart', JSON.stringify(cartModifier))
+    }
+
+
     return (
       <>
       {newA && newA.map((el, index) => 
-      <div class="cart-cont"><img height="42" width="42" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} x {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} class="remove-cart-item">X</div></div>
+      <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} x {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
       )}
       </>
     )

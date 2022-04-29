@@ -22,6 +22,8 @@ export default function WriteReview(props: { commentOn: Number }) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const values = Object.fromEntries(data);
+  
+    console.log(parseInt(values.rating))
 
    console.log(data)
    console.log(values)

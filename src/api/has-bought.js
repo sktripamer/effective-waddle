@@ -19,7 +19,7 @@ const validateJWT = async (req, res) => {
     }
 
 const addCourse = async(customerID, productID) => {
-    const exists = await axios.get('https://portal.revrevdev.xyz/?better_ld_api=d74dd1094863071982578684bc13be64&better_ld_api_method=has_bought&course_id=' + productID + '&user_id=' + customerID).then(resp => {    
+    const exists = await axios.get('https://portal.revrevdev.xyz/?better_ld_api=d74dd1094863071982578684bc13be64&better_ld_api_method=has_bought&product_id=' + productID + '&user_id=' + customerID).then(resp => {    
       return resp.data;
     });
     return exists;

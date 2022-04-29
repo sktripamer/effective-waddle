@@ -12,12 +12,49 @@ const singleProduct = ( props ) => {
     const [isClicked, setClicked] = useState(false)
     const [addedToCart, setAddedToCart] = useState(false)
     const { pageContext: { id, slug, name, description, cat, type } } = props;
+
+    const email = function() {
+        try {
+          return JSON.parse(localStorage.auth).authToken;
+        } catch {
+          return null;
+        }
+      }
     useEffect(() => {
         
         if (typeof data !== 'undefined' && data !== null) {
             console.log(data.product.variations.nodes[clickedItem].databaseId)
         } 
       }, [clickedItem]);
+
+      useEffect(() => {
+        async function fetchMyAPI() {
+          try {
+            if (email() === null) {
+              console.log('nothing')
+              return;
+            }
+           let sendBody = {
+                token: email(),
+                product: id,
+            }
+
+            const request = await fetch('/api/has-bought', {
+              method: 'POST',
+              body: JSON.stringify(sendBody),
+            });
+            const intent = (await request.json());
+            console.log(intent)
+          } catch (error) {
+            console.log('Failed to get cID');
+            console.log(error);
+            return null;
+          }
+        
+        }
+        fetchMyAPI()
+      }, []);
+
 let query;
 
 if (type === "SIMPLE") {
@@ -38,6 +75,24 @@ if (type === "SIMPLE") {
                     sourceUrl
                   }
                 }
+                reviews {
+                    edges {
+                      node {
+                        dateGmt
+                        content
+                        author {
+                          node {
+                            ... on User {
+                              id
+                              firstName
+                            }
+                          }
+                        }
+                      }
+                    }
+                    averageRating
+                  }
+                  reviewCount
               }
           }
     }
@@ -76,6 +131,24 @@ if (type === "SIMPLE") {
                     sourceUrl
                   }
                 }
+                reviews {
+                    edges {
+                      node {
+                        dateGmt
+                        content
+                        author {
+                          node {
+                            ... on User {
+                              id
+                              firstName
+                            }
+                          }
+                        }
+                      }
+                    }
+                    averageRating
+                  }
+                  reviewCount
               }
           }
     }
@@ -317,7 +390,7 @@ let incrementCount = () => {
           <div>{data.product.name}</div>
           <div>{data.product.price}</div>
           <div class='gallery-cont'>
-          <ImageGallery items={images} showThumbnails={false} showPlayButton={false} showBullets={true} autoPlay={true} showFullscreenButton={false} />
+          <ImageGallery items={images} showPlayButton={false} showBullets={true} autoPlay={true} showFullscreenButton={false} />
           </div>
           <div>
         <div class="count">
@@ -338,12 +411,12 @@ let incrementCount = () => {
           )
         : 
         
-        <div>
-       yy
-      <div>{data.product.name}</div>
-      <div class='gallery-cont'>
-          <ImageGallery items={images} showThumbnails={false} showPlayButton={false} showBullets={true} autoPlay={true} showFullscreenButton={false} />
+        <div class="product-container">
+          <div class='gallery-cont'>
+          <ImageGallery items={images} showPlayButton={false} showBullets={true} autoPlay={true} showFullscreenButton={false} />
           </div>
+      <div>{data.product.name}</div>
+   
       <div>{data.product.attributes.nodes[0].name}</div>
       {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el, index) =><div className={index === clickedItem ? "is-checked" : ""} onClick={variationClick} data-idindex={index} data-id={el}>{el}</div>)}
       <div>

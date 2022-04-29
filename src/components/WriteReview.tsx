@@ -23,6 +23,7 @@ export default function WriteReview(props: { commentOn: Number }) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const values = Object.fromEntries(data);
+    console.log(values)
     updateProfile({
       variables: { commentOn, ...values, },
     }).catch(error => {

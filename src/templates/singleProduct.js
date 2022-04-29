@@ -4,6 +4,8 @@ import { useState , useEffect } from "react";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import ImageGallery from 'react-image-gallery';
+import AuthContent from "../components/AuthContent";
+import WriteReview from "../components/WriteReview";
 const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
 
@@ -12,7 +14,7 @@ const singleProduct = ( props ) => {
     const [isClicked, setClicked] = useState(false)
     const [addedToCart, setAddedToCart] = useState(false)
     const { pageContext: { id, slug, name, description, cat, type } } = props;
-
+    const [hasBought, setBought] = useState(false)
     const email = function() {
         try {
           return JSON.parse(localStorage.auth).authToken;
@@ -45,6 +47,9 @@ const singleProduct = ( props ) => {
             });
             const intent = (await request.json());
             console.log(intent)
+            if (intent.customerID.success === 1) {
+                setBought(true)
+            }
           } catch (error) {
             console.log('Failed to get cID');
             console.log(error);
@@ -433,6 +438,15 @@ let incrementCount = () => {
       </div>
       
       <button onClick={VariationCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
+      {hasBought === true
+      ? (
+      <AuthContent>
+        <WriteReview commentOn={id} />
+      </AuthContent>
+      ) 
+      :
+      ''
+     }
     </div>
         
         }

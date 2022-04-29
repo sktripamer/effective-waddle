@@ -2,7 +2,7 @@ import * as React from "react";
 import { useMutation, gql } from "@apollo/client";
 
 const UPDATE_PROFILE = gql`
-mutation writeReview($commentOn: Int, $content: String, $rating: Int) {
+mutation writeReview($commentOn: Int!, $content: String!, $rating: Int!) {
     writeReview(
       input: {rating: $rating, commentOn: $commentOn, content: $content}
     ) {

@@ -1,20 +1,41 @@
 import * as React from "react";
-import { useMutation, gql } from "@apollo/client";
-
-const UPDATE_PROFILE = gql`
-mutation writeReview($commentOn: Int!, $content: String!, $rating: Int!) {
-    writeReview(
-      input: {rating: $rating, commentOn: $commentOn, content: $content}
-    ) {
-      clientMutationId
-      rating
-    }
-  }
-`;
+import { useQuery, useMutation, gql } from "@apollo/client";
+import {useState } from "react";
 
 
-export default function WriteReview(props: { commentOn: Number }) {
+export default function WriteReview(props: { commentOn: Number, updateComment: String, previous: String, previousContent: String }) {
+    const [updating, setUpdate] = useState(false)
+let UPDATE_PROFILE;
+
+if (props.updateComment === '0') {
+   UPDATE_PROFILE = gql`
+    mutation writeReview($commentOn: Int!, $content: String!, $rating: Int!) {
+        writeReview(
+          input: {rating: $rating, commentOn: $commentOn, content: $content}
+        ) {
+          clientMutationId
+          rating
+        }
+      }
+    `;
+} else {
+    setUpdate(true)
+   UPDATE_PROFILE = gql`
+    mutation updateReview($id: ID, $rating: Int!, $content: String!, $commentOn: Int!) {
+        updateReview(input: {id: $id, rating: $rating, content: $content, commentOn: $commentOn}) {
+            rating
+            clientMutationId
+          }
+      }
+    `;
+}
+
+
+
   const commentOn = props.commentOn;
+  const previous = props.previous;
+  const ID = props.updateComment;
+    const previousContent = props.previousContent;
   const [updateProfile, { data, loading, error }] = useMutation(UPDATE_PROFILE);
   const wasProfileUpdated = Boolean(data?.writeReview?.rating);
 
@@ -26,11 +47,20 @@ export default function WriteReview(props: { commentOn: Number }) {
     const content = values.content;
    console.log(data)
    console.log(values)
+   if (props.updateComment === '0') {
     updateProfile({
-      variables: { commentOn, rating, content },
-    }).catch(error => {
-      console.error(error);
-    });
+        variables: { commentOn, rating, content },
+      }).catch(error => {
+        console.error(error);
+      });
+   } else {
+    updateProfile({
+        variables: { ID, commentOn, rating, content },
+      }).catch(error => {
+        console.error(error);
+      });
+   }
+
   }
 
   return (
@@ -47,7 +77,7 @@ export default function WriteReview(props: { commentOn: Number }) {
           id="profile-first-name"
           type="text"
           name="rating"
-          defaultValue={'10'}
+          defaultValue={previous}
           autoComplete="given-name"
         />
         <label htmlFor="profile-last-name">review content</label>
@@ -55,15 +85,29 @@ export default function WriteReview(props: { commentOn: Number }) {
           id="profile-last-name"
           type="text"
           name="content"
-          defaultValue={''}
+          defaultValue={previousContent}
           autoComplete="family-name"
         />
         {error ? (
           <p className="error-message">{error.message}</p>
         ) : null}
-        <button type="submit" disabled={loading}>
-          {loading ? 'Updating...' : 'Update'}
-        </button>
+
+        {updating === true ?
+        (
+            <button type="submit" disabled={loading}>
+            {loading ? 'Update Review' : 'Update Review'}
+          </button>
+        ) :
+        (
+            <button type="submit" disabled={loading}>
+            {loading ? 'Submit Review' : 'Submit Review'}
+          </button>
+        )
+        
+        }
+
+
+
       </fieldset>
     </form>
     </div>

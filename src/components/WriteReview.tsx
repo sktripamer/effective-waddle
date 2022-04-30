@@ -19,14 +19,12 @@ if (props.updateComment === '0') {
     `;
 } else {
    UPDATE_PROFILE = gql`
-   mutation updateReview($commentOn: Int, $content: String, $id: ID, $rating: Int) {
-    updateReview(
-      input: {id: $id, rating: $rating, commentOn: $commentOn, content: $content}
-    ) {
-      clientMutationId
-      rating
-    }
-  }
+    mutation updateReview($id: ID!, $rating: Int!, $content: String!, $commentOn: Int!) {
+        updateReview(input: {id: $id, rating: $rating, content: $content, commentOn: $commentOn}) {
+            rating
+            clientMutationId
+          }
+      }
     `;
 }
 

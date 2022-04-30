@@ -566,9 +566,9 @@ const renderDelivery = () => {
         <div className='render-tab'>
             <>
         {tab === 0 && renderDescripton()}
-        {tab === 1 && renderAddtional()}
+        {/* {tab === 1 && renderAddtional()}
         {tab === 2 && renderWriteReview()}
-        {tab === 3 && renderDelivery()}
+        {tab === 3 && renderDelivery()} */}
             </>
         </div>
     </div>

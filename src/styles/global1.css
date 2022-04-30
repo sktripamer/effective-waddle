@@ -725,8 +725,10 @@
   .card-error{
     color: #f00;
     font-size: 14px;
-    position: absolute;
+   margin-top: -20px;
+   text-align: left;
   }
+
   .card-error-mobile {
     color: #f00;
     font-size: 14px;
@@ -1855,6 +1857,9 @@ nav:hover .nav li {
     animation: newput .5s forwards;
     opacity: 0;
   }
+  .result-message.hidden {
+    display: none;
+}
   .register-form h4 {
     color: #e0e0e0;
     font-family: 'Josefin Sans';
@@ -1985,7 +1990,9 @@ navbar start
 
   cursor: pointer;
 }
-
+html.scroll {
+  overflow-y: scroll;
+}
 navbar {
   display: flex;
   justify-content: space-between;
@@ -1993,6 +2000,7 @@ navbar {
   position: fixed;
   height:50px;
   width: 100%;
+  z-index: 2;
   background: rgb(225, 20, 68);
   box-shadow: 0 0 8px 4px rgba(0,0,0,0.3);
   box-sizing: border-box;

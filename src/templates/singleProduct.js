@@ -391,7 +391,10 @@ const renderReviews = () => {
     return (
         <>
     {reviewEdges && reviewEdges.map((el) =>
-    {el.node.approved === true ? (
+    <>
+    {console.log(el)}
+    {el.node.approved === true 
+        ? (
         <div className='review-cont'>
         <div class='review-header-cont'>
             <div class='review-profile'></div>
@@ -407,6 +410,8 @@ const renderReviews = () => {
     (
     ''
     )}
+   
+   </>
    )}
     </>
     )

@@ -9,7 +9,7 @@ import AuthContent from "../components/AuthContent";
 import WriteReview from "../components/WriteReview";
 const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
-
+    const [tab, setTab] = useState(0)
     const [clickedItem, setClickedItem] = useState(0);
     const [count, setCount] = useState(1);
     const [isClicked, setClicked] = useState(false)
@@ -396,10 +396,19 @@ let incrementCount = () => {
       }
 
   };
-  const [tab, setTab] = useState(0)
-  const changeTab = (num) => {
-      setTab(num)
+
+  const changeTab = () => {
+      setTab(0)
   }
+  const changeTab1 = () => {
+    setTab(1)
+}
+const changeTab2 = () => {
+    setTab(2)
+}
+const changeTab3 = () => {
+    setTab(3)
+}
 const renderDescripton = () => {
     console.log('render')
     return (
@@ -559,10 +568,10 @@ const renderDelivery = () => {
       
     <div className='product-data-tabs'>
         <div className='product-tabs-cont'>
-         <div onClick={(e) => changeTab(0)} className='product-tabs-desc'>Description</div>
-         {/* <div onClick={(e) => changeTab(1)} className='product-tabs-advanced'>Additional Information</div>
-         <div onClick={(e) => changeTab(2)} className='product-tabs-reviews'>Reviews ({data.product.reviewCount})</div>
-         <div onClick={(e) => changeTab(3)} className='product-tabs-delivery'>Delivery and Returns</div> */}
+         <div onClick={(e) => changeTab()} className='product-tabs-desc'>Description</div>
+         <div onClick={(e) => changeTab1()} className='product-tabs-advanced'>Additional Information</div>
+         {/* <div onClick={(e) => changeTab2()} className='product-tabs-reviews'>Reviews ({data.product.reviewCount})</div>
+         <div onClick={(e) => changeTab3()} className='product-tabs-delivery'>Delivery and Returns</div> */}
         </div>
         <div className='render-tab'>
             <>
@@ -576,7 +585,7 @@ const renderDelivery = () => {
             ''
         )
       }
-      {/* {tab === 1 ?
+      {tab === 1 ?
         (
             <>
             {renderAddtional()}
@@ -586,7 +595,7 @@ const renderDelivery = () => {
             ''
         )
       }
-      {tab === 2 ?
+      {/* {tab === 2 ?
         (
             <>
             {renderWriteReview()}

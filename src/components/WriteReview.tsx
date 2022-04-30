@@ -32,7 +32,7 @@ if (props.updateComment === '0') {
 
   const commentOn = props.commentOn;
   const previous = props.previous;
-  const ID = props.updateComment;
+  const id = props.updateComment;
     const previousContent = props.previousContent;
   const [updateProfile, { data, loading, error }] = useMutation(UPDATE_PROFILE);
   const wasProfileUpdated = Boolean(data?.writeReview?.rating);
@@ -53,7 +53,7 @@ if (props.updateComment === '0') {
       });
    } else {
     updateProfile({
-        variables: { ID, commentOn, rating, content },
+        variables: { id, commentOn, rating, content },
       }).catch(error => {
         console.error(error);
       });

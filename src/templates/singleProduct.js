@@ -560,15 +560,51 @@ const renderDelivery = () => {
         <div className='product-tabs-cont'>
          <div onClick={changeTab(0)} className='product-tabs-desc'>Description</div>
          <div onClick={changeTab(1)} className='product-tabs-advanced'>Additional Information</div>
-         {/* <div onClick={changeTab(2)} className='product-tabs-reviews'>Reviews ({data.product.reviewCount})</div>
-         <div onClick={changeTab(3)} className='product-tabs-delivery'>Delivery and Returns</div> */}
+         <div onClick={changeTab(2)} className='product-tabs-reviews'>Reviews ({data.product.reviewCount})</div>
+         <div onClick={changeTab(3)} className='product-tabs-delivery'>Delivery and Returns</div>
         </div>
         <div className='render-tab'>
             <>
-        {tab === 0 && renderDescripton()}
-        {tab === 1 && renderAddtional()}
-        {/* {tab === 2 && renderWriteReview()}
-        {tab === 3 && renderDelivery()} */}
+        {tab === 0 ?
+        (
+            <>
+            {renderDescripton()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+      {tab === 1 ?
+        (
+            <>
+            {renderAddtional()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+      {tab === 2 ?
+        (
+            <>
+            {renderWriteReview()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+      {tab === 3 ?
+        (
+            <>
+            {renderDelivery()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
             </>
         </div>
     </div>

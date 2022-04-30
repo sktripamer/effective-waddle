@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery, gql } from "@apollo/client";
 import { useState , useEffect } from "react";
-import dompurify from 'dompurify';
+import DOMPurify from 'dompurify';
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import ImageGallery from 'react-image-gallery';
@@ -17,7 +17,7 @@ const singleProduct = ( props ) => {
     const { pageContext: { id, slug, name, description, cat, type } } = props;
     const [hasBought, setBought] = useState(false)
     const sanitizedData = (sendData) => ({
-      __html: dompurify.sanitize(sendData)
+      __html: DOMPurify.sanitize(sendData)
     })
     const email = function() {
         try {

@@ -568,17 +568,17 @@ const renderDelivery = () => {
         {tab === 0 ?
         (
             <>
-          <div>{data.product.description}</div>
+            {renderDescripton()}
             </>
         ) : 
         (
             ''
         )
       }
-      {tab === 1 ?
+      {/* {tab === 1 ?
         (
             <>
-           <div>{data.product.shortDescription}</div>
+            {renderAddtional()}
             </>
         ) : 
         (
@@ -588,28 +588,7 @@ const renderDelivery = () => {
       {tab === 2 ?
         (
             <>
-                {hasBought === true
-      ? (
-      <AuthContent>
-        <WriteReview commentOn={id} previous={previousRating} updateComment={reviewID} previousContent={previousContent} />
-      </AuthContent>
-      ) 
-      :
-      ''
-    }
-    {data.product.reviews.edges.length !== 0
-     ? (
-         <div class='all-review-container'>
-         {renderReviews()}
-         </div>
-     ) : 
-     (
-         <p class='no-reviews'>
-             Be the first to review! After you purchase this product, you'll be able to review.
-        </p>
-     )
-
-     }
+            {renderWriteReview()}
             </>
         ) : 
         (
@@ -619,20 +598,13 @@ const renderDelivery = () => {
       {tab === 3 ?
         (
             <>
-                   <div className='delivery-section'>
-            <h5>Delivery Time</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <h5>Delivery Cost</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <h5>Return Contact Information</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
+            {renderDelivery()}
             </>
         ) : 
         (
             ''
         )
-      }
+      } */}
             </>
         </div>
     </div>

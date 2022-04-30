@@ -17,8 +17,13 @@ const singleProduct = ( props ) => {
     const { pageContext: { id, slug, name, description, cat, type } } = props;
     const [hasBought, setBought] = useState(false)
     const [reviewID, setReviewID] = useState('0')
+    const [tab, setTab] = useState(0)
     const [previousRating, setPreviousRating] = useState('')
     const [previousContent, setPreviousContent] = useState('')
+
+    const changeTab = (num) => {
+        setTab(num)
+    }
     const sanitizedData = (sendData) => ({
       __html: DOMPurify.sanitize(sendData)
     })
@@ -394,10 +399,51 @@ let incrementCount = () => {
       }
 
   };
+
+const renderDescripton = () => {
+    return (
+        <div>{data.product.description}</div>
+    )
+}
+const renderAddtional = () => {
+    return (
+        <div>{data.product.shortDescription}</div>
+    )
+}
+const renderWriteReview = () => {
+    
+    return (
+    <>
+    {hasBought === true
+      ? (
+      <AuthContent>
+        <WriteReview commentOn={id} previous={previousRating} updateComment={reviewID} previousContent={previousContent} />
+      </AuthContent>
+      ) 
+      :
+      ''
+    }
+    {data.product.reviews.edges.length !== 0
+     ? (
+         <div class='all-review-container'>
+         {renderReviews()}
+         </div>
+     ) : 
+     (
+         <p class='no-reviews'>
+             Be the first to review! After you purchase this product, you'll be able to review.
+        </p>
+     )
+
+     }
+    </>
+    )
+}
 const renderReviews = () => {
     const reviewEdges = data.product.reviews.edges;
     return (
         <>
+        
     {reviewEdges && reviewEdges.map((el) =>
     <>
     {console.log(el)}
@@ -422,6 +468,19 @@ const renderReviews = () => {
    </>
    )}
     </>
+    )
+}
+
+const renderDelivery = () => {
+    return (
+        <div className='delivery-section'>
+            <h5>Delivery Time</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h5>Delivery Cost</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h5>Return Contact Information</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
     )
 }
   const changeCount = (e) => {
@@ -496,29 +555,24 @@ const renderReviews = () => {
       </div>
       
       <button onClick={VariationCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
-      {hasBought === true
-      ? (
-      <AuthContent>
-        <WriteReview commentOn={id} previous={previousRating} updateComment={reviewID} previousContent={previousContent} />
-      </AuthContent>
-      ) 
-      :
-      ''
-     }
 
-     {data.product.reviews.edges.length !== 0
-     ? (
-         <div class='all-review-container'>
-         {renderReviews()}
-         </div>
-     ) : 
-     (
-         <p class='no-reviews'>
-             Be the first to review! After you purchase this product, you'll be able to review.
-        </p>
-     )
+    <div className='product-data-tabs'>
+        <div className='product-tabs-cont'>
+         <div onClick={changeTab(0)} className='product-tabs-desc'>Description</div>
+         <div onClick={changeTab(1)} className='product-tabs-advanced'>Additional Information</div>
+         <div onClick={changeTab(2)} className='product-tabs-reviews'>Reviews ({data.product.reviewCount})</div>
+         <div onClick={changeTab(3)} className='product-tabs-delivery'>Delivery and Returns</div>
+        </div>
+        <div className='render-tab'>
+            <>
+        {tab === 0 && renderDescripton()}
+        {tab === 1 && renderAddtional()}
+        {tab === 2 && renderWriteReview()}
+        {tab === 3 && renderDelivery()}
+            </>
+        </div>
+    </div>
 
-     }
     </div>
         
         }

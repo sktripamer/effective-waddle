@@ -17,7 +17,7 @@ const singleProduct = ( props ) => {
     const { pageContext: { id, slug, name, description, cat, type } } = props;
     const [hasBought, setBought] = useState(false)
     const sanitizedData = (sendData) => ({
-      __html: DOMPurify.sanitize(sendData)
+      __html: dompurify.sanitize(sendData)
     })
     const email = function() {
         try {

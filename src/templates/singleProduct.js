@@ -17,13 +17,10 @@ const singleProduct = ( props ) => {
     const { pageContext: { id, slug, name, description, cat, type } } = props;
     const [hasBought, setBought] = useState(false)
     const [reviewID, setReviewID] = useState('0')
-    const [tab, setTab] = useState(0)
+
     const [previousRating, setPreviousRating] = useState('')
     const [previousContent, setPreviousContent] = useState('')
 
-    const changeTab = (num) => {
-        setTab(num)
-    }
     const sanitizedData = (sendData) => ({
       __html: DOMPurify.sanitize(sendData)
     })
@@ -399,7 +396,10 @@ let incrementCount = () => {
       }
 
   };
-
+  const [tab, setTab] = useState(0)
+  const changeTab = (num) => {
+      setTab(num)
+  }
 const renderDescripton = () => {
     return (
         <div>{data.product.description}</div>

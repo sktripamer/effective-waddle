@@ -555,13 +555,13 @@ const renderDelivery = () => {
       </div>
       
       <button onClick={VariationCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
-
+      
     <div className='product-data-tabs'>
         <div className='product-tabs-cont'>
-         <div onClick={changeTab(0)} className='product-tabs-desc'>Description</div>
-         <div onClick={changeTab(1)} className='product-tabs-advanced'>Additional Information</div>
-         <div onClick={changeTab(2)} className='product-tabs-reviews'>Reviews ({data.product.reviewCount})</div>
-         <div onClick={changeTab(3)} className='product-tabs-delivery'>Delivery and Returns</div>
+         <div onClick={(e) => changeTab(0)} className='product-tabs-desc'>Description</div>
+         <div onClick={(e) => changeTab(1)} className='product-tabs-advanced'>Additional Information</div>
+         <div onClick={(e) => changeTab(2)} className='product-tabs-reviews'>Reviews ({data.product.reviewCount})</div>
+         <div onClick={(e) => changeTab(3)} className='product-tabs-delivery'>Delivery and Returns</div>
         </div>
         <div className='render-tab'>
             <>

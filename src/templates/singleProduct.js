@@ -87,16 +87,20 @@ if (type === "SIMPLE") {
                   }
                 }
                 reviews {
-                    nodes {
-                      dateGmt
-                      content
-                      author {
-                        node {
-                          ... on User {
-                            firstName
+                    edges {
+                      node {
+                        approved
+                        author {
+                          node {
+                            ... on User {
+                              firstName
+                            }
                           }
                         }
+                        dateGmt
+                        content
                       }
+                      rating
                     }
                     averageRating
                   }
@@ -142,16 +146,20 @@ if (type === "SIMPLE") {
                   }
                 }
                 reviews {
-                    nodes {
-                      dateGmt
-                      content
-                      author {
-                        node {
-                          ... on User {
-                            firstName
+                    edges {
+                      node {
+                        approved
+                        author {
+                          node {
+                            ... on User {
+                              firstName
+                            }
                           }
                         }
+                        dateGmt
+                        content
                       }
+                      rating
                     }
                     averageRating
                   }
@@ -378,7 +386,31 @@ let incrementCount = () => {
       }
 
   };
-
+const renderReviews = () => {
+    const reviewEdges = data.product.reviews.edges;
+    return (
+        <>
+    {reviewEdges && reviewEdges.map((el) =>
+    {el.node.approved === true ? (
+        <div className='review-cont'>
+        <div class='review-header-cont'>
+            <div class='review-profile'></div>
+            <div class='review-name-date'>
+                <div class='review-name'>{el.node.author.node.firstName}</div>
+                <div class='review-date'>{el.node.dateGmt}</div>
+                <div class={`review-rating rating-${parseInt(el.rating) * 10}`}>{el.rating}</div>
+            </div>
+        </div>
+        <div dangerouslySetInnerHTML={sanitizedData(el.node.content)} class='review-content'></div>
+    </div>
+    ) :
+    (
+    ''
+    )}
+   )}
+    </>
+    )
+}
   const changeCount = (e) => {
       setCount(parseInt(e.target.value.replace(/\D/,'')))
   }
@@ -422,8 +454,19 @@ let incrementCount = () => {
           <div class='gallery-cont'>
           <ImageGallery items={images} showPlayButton={false} showBullets={true} autoPlay={true} showFullscreenButton={false} />
           </div>
-      <div>{data.product.name}</div>
-   
+      <h2>{data.product.name}</h2>
+      {data.product.reviewCount === 0
+      ? (
+        <div class='review-total-cont'>
+            <div class='review-total-empty'></div>
+            <div class='review-total-text'>No reviews yet!</div>
+        </div>
+      ) :
+      <div class='review-total-cont'>
+      <div class={`review-total review-${data.product.reviews.averageRating * 10}`}>{data.product.reviews.averageRating}</div>
+      <div class='review-total-text'>{data.product.reviewCount} reviews</div>
+  </div>
+      }      
       <div>{data.product.attributes.nodes[0].name}</div>
       {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el, index) =><div className={index === clickedItem ? "is-checked" : ""} onClick={variationClick} data-idindex={index} data-id={el}>{el}</div>)}
       <div>
@@ -448,6 +491,20 @@ let incrementCount = () => {
       ) 
       :
       ''
+     }
+
+     {data.product.reviews.edges.length !== 0
+     ? (
+         <div class='all-review-container'>
+         {renderReviews()}
+         </div>
+     ) : 
+     (
+         <p class='no-reviews'>
+             Be the first to review! After you purchase this product, you'll be able to review.
+        </p>
+     )
+
      }
     </div>
         

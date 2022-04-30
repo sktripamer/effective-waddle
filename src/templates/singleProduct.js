@@ -401,6 +401,7 @@ let incrementCount = () => {
       setTab(num)
   }
 const renderDescripton = () => {
+    console.log('render')
     return (
         <div>{data.product.description}</div>
     )
@@ -559,9 +560,9 @@ const renderDelivery = () => {
     <div className='product-data-tabs'>
         <div className='product-tabs-cont'>
          <div onClick={(e) => changeTab(0)} className='product-tabs-desc'>Description</div>
-         <div onClick={(e) => changeTab(1)} className='product-tabs-advanced'>Additional Information</div>
+         {/* <div onClick={(e) => changeTab(1)} className='product-tabs-advanced'>Additional Information</div>
          <div onClick={(e) => changeTab(2)} className='product-tabs-reviews'>Reviews ({data.product.reviewCount})</div>
-         <div onClick={(e) => changeTab(3)} className='product-tabs-delivery'>Delivery and Returns</div>
+         <div onClick={(e) => changeTab(3)} className='product-tabs-delivery'>Delivery and Returns</div> */}
         </div>
         <div className='render-tab'>
             <>

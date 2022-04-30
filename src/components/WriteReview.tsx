@@ -1,9 +1,11 @@
 import * as React from "react";
 import { useQuery, useMutation, gql } from "@apollo/client";
 import {useState } from "react";
+interface ID {
+    updateComment: String
+  }
 
-
-export default function WriteReview(props: { commentOn: Number, updateComment: String, previous: String, previousContent: String }) {
+export default function WriteReview(props: { commentOn: Number, updateComment: ID, previous: String, previousContent: String }) {
 let UPDATE_PROFILE;
 
 if (props.updateComment === '0') {

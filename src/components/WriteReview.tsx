@@ -4,7 +4,6 @@ import {useState } from "react";
 
 
 export default function WriteReview(props: { commentOn: Number, updateComment: String, previous: String, previousContent: String }) {
-    const [updating, setUpdate] = useState(false)
 let UPDATE_PROFILE;
 
 if (props.updateComment === '0') {
@@ -19,7 +18,6 @@ if (props.updateComment === '0') {
       }
     `;
 } else {
-    setUpdate(true)
    UPDATE_PROFILE = gql`
     mutation updateReview($id: ID, $rating: Int!, $content: String!, $commentOn: Int!) {
         updateReview(input: {id: $id, rating: $rating, content: $content, commentOn: $commentOn}) {
@@ -92,7 +90,7 @@ if (props.updateComment === '0') {
           <p className="error-message">{error.message}</p>
         ) : null}
 
-        {updating === true ?
+        {props.updateComment !== '0' ?
         (
             <button type="submit" disabled={loading}>
             {loading ? 'Update Review' : 'Update Review'}

@@ -1,11 +1,9 @@
 import * as React from "react";
 import { useQuery, useMutation, gql } from "@apollo/client";
 import {useState } from "react";
-interface ID {
-    updateComment: String
-  }
 
-export default function WriteReview(props: { commentOn: Number, updateComment: ID, previous: String, previousContent: String }) {
+
+export default function WriteReview(props: { commentOn: Number, updateComment: String, previous: String, previousContent: String }) {
 let UPDATE_PROFILE;
 
 if (props.updateComment === '0') {
@@ -21,7 +19,7 @@ if (props.updateComment === '0') {
     `;
 } else {
    UPDATE_PROFILE = gql`
-    mutation updateReview($id: ID, $rating: Int!, $content: String!, $commentOn: Int!) {
+    mutation updateReview($id: ID!, $rating: Int!, $content: String!, $commentOn: Int!) {
         updateReview(input: {id: $id, rating: $rating, content: $content, commentOn: $commentOn}) {
             rating
             clientMutationId

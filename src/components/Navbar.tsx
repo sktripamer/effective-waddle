@@ -78,7 +78,7 @@ export default function Navbar(props) {
      {loading ? (
       <nav className='navLoading'></nav>
      ) : (
-      <nav className='navloaded'>
+      <navmain className='navloaded main-nav'>
       <ul className={`nav`}>
 
         {!loggedIn ? (
@@ -133,7 +133,7 @@ export default function Navbar(props) {
           </>
         )}
       </ul>
-    </nav>
+    </navmain>
      )}
 
 

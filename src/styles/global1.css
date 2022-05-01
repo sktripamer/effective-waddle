@@ -1429,8 +1429,20 @@ p.result-message-text a {
     position: absolute;
     background-color: #380369;
     transition: .2s all;
-    z-index: 20;
+    z-index: 99;
+    top: 0;
 }
+
+mainnav {
+  top: 0;
+  background-color: #380369;
+  height: 100vh;
+  max-width: 200px;
+  position: absolute;
+  transition: all .2s;
+  z-index: 99;
+}
+
   .nav {
     display: flex;
     margin: 0;
@@ -2000,7 +2012,7 @@ navbar {
   position: fixed;
   height:50px;
   width: 100%;
-  z-index: 2;
+  z-index: 99;
   background: rgb(225, 20, 68);
   box-shadow: 0 0 8px 4px rgba(0,0,0,0.3);
   box-sizing: border-box;

@@ -4,13 +4,13 @@ import { graphql } from 'gatsby';
 
 export default SearchSystem = ({
     data: {
-        products: { nodes },
+        products: { edges },
     },
 }) => {
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s')
     const [searchQuery, setSearchQuery] = useState(query || '');
-    const posts = nodes;
+    const posts = edges;
 
     return (
         <div>
@@ -23,7 +23,7 @@ export default SearchSystem = ({
                 // PostLink will be a component that renders a summary of your post
                 // e.g. the title, date and an excerpt
                 // <PostLink post={post} />
-                <div>{post.name}</div>
+                <div>{post.node.databaseId}</div>
             )}
         </div>
     );
@@ -32,16 +32,12 @@ export default SearchSystem = ({
 export const pageQuery = graphql`
 query {
     products {
-      nodes {
-        slug
-        name
-        productCategories {
-          nodes {
-            slug
-          }
+      edges {
+        node {
+          databaseId
         }
       }
     }
-  }
-  
+    }
+    
 `

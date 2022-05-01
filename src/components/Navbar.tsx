@@ -154,11 +154,17 @@ export default function Navbar(props) {
   return (
     <>
      {loading ? (
-     <navbar class="active"><h4>Menu</h4></navbar>
+     <navbar class="active"> <input type="checkbox" />
+     <span></span>
+     <span></span>
+     <span></span></navbar>
      ) : (
       <navbar class="active">
         {sideNav()}
-      <h4>Menu</h4>
+          <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
       <ul>
         <li>Shop</li>
     <a class='dropdown'>Cart

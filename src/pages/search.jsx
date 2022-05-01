@@ -1,42 +1,31 @@
 import * as React from "react";
 import { graphql } from 'gatsby';
 import SearchBar from '../components/search';
+import SearchSystem from '../components/SearchSystem';
+import { useQuery, gql } from "@apollo/client";
+export default function searchPage() {
 
-export default ({
-  data: {
-      products: { edges },
-  },
-}) => {
-  const { search } = window.location;
-  const query = new URLSearchParams(search).get('s')
-  const [searchQuery, setSearchQuery] = useState(query || '');
-
-  const posts = edges;
-
+  const GET_ORDERS = gql`
+  query {
+    products {
+      edges {
+        node {
+          databaseId
+        }
+      }
+    }
+    }
+    
+  
+  `;
+  const { loading, error, data } = useQuery(GET_ORDERS);
+  if (loading) return <p>Loading ...</p>;
  return (
+
+  
       <div>
-          <h1>Blog</h1>
-          <SearchBar
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-          />
-          {posts.map(post => (
-               <div>{post.node.databaseId}</div>
-          ))}
+<SearchSystem data={data}/>
       </div>
   );
 };
 
-
-export const pageQuery = graphql`
-query {
-  products {
-    edges {
-      node {
-        databaseId
-      }
-    }
-  }
-  }
-  
-`

@@ -1,12 +1,12 @@
 import React from 'react';
 import SearchBar from '../components/search';
-import { graphql } from 'gatsby';
 
-export default SearchSystem = ({
+
+export default function SearchSystem({
     data: {
         products: { edges },
     },
-}) => {
+}) {
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s')
     const [searchQuery, setSearchQuery] = useState(query || '');
@@ -28,16 +28,3 @@ export default SearchSystem = ({
         </div>
     );
 };
-
-export const pageQuery = graphql`
-query {
-    products {
-      edges {
-        node {
-          databaseId
-        }
-      }
-    }
-    }
-    
-`

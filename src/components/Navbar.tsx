@@ -7,6 +7,7 @@ import useAuth from "../hooks/useAuth";
 export default function Navbar(props) {
   const { loggedIn, loading } = useAuth();
   const [cartRender, setCartRender] = useState(true);
+  const [hamburger, setHamburger] = useState(false)
   const localStorageSetHandler = () => {
 
     let tempCart = function() {
@@ -72,13 +73,13 @@ export default function Navbar(props) {
   }
   
   const sideNav = () => {
-
+ 
     return (
       <>
      {loading ? (
-      <nav className='navLoading'></nav>
+      <nav className={`navLoading hm-${hamburger}`}></nav>
      ) : (
-      <navmain className='navloaded main-nav'>
+      <navmain className={`navloaded main-nav hm-${hamburger}`}>
       <ul className={`nav`}>
 
         {!loggedIn ? (
@@ -143,7 +144,10 @@ export default function Navbar(props) {
     )
 
   }
-
+  const handleChange = (e) => {
+    setHamburger(e.target.checked)
+    // do whatever you want with isChecked value
+  }
   useEffect(() => {
     // const localStorageSetHandler = function(e) {
     //   console.log(localStorage.getItem('cart'))
@@ -155,14 +159,14 @@ export default function Navbar(props) {
     <>
      {loading ? (
      <navbar class="active"> 
-     <div><input type="checkbox" />
+     <div><input onChange={e => handleChange(e)} type="checkbox" />
      <span class='hm-1'></span>
      <span class='hm-2'></span>
      <span class='hm-2'></span></div></navbar>
      ) : (
       <navbar class="active">
         {sideNav()}
-        <div><input type="checkbox" />
+        <div><input onChange={e => handleChange(e)} type="checkbox" />
      <span class='hm-1'></span>
      <span class='hm-2'></span>
      <span class='hm-3'></span></div>

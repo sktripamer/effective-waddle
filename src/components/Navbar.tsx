@@ -58,8 +58,12 @@ export default function Navbar(props) {
       return (
         <>
         {newA && newA.map((el, index) => 
-        <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} x {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
+        <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} × {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
         )}
+        <div class="cart-btn-cont">
+          <button>View Cart</button>
+          <button>Checkout</button>
+        </div>
         </>
       )
     }
@@ -67,6 +71,79 @@ export default function Navbar(props) {
 
   }
   
+  const sideNav = () => {
+
+    return (
+      <>
+     {loading ? (
+      <nav className='navLoading'></nav>
+     ) : (
+      <nav className='navloaded'>
+      <ul className={`nav`}>
+
+        {!loggedIn ? (
+          <>
+            <li>
+              <Link to="/log-in">
+                Log In
+              </Link>
+            </li>
+            <li>
+              <Link to="/sign-up">
+                Sign Up
+              </Link>
+            </li>
+          </>
+        ) : (
+          <>
+          <li  className='nav-logo'>
+          <Link to="#home"></Link>
+        </li>
+          <li className='nav-home'>
+          <Link to="#home">
+            Home
+          </Link>
+        </li>
+            <li className='nav-orders'>
+              <Link to="#orders">
+                Orders
+              </Link>
+            </li>
+            <a class='dropdown'>Resources
+      <div class="link-dropdown active2">
+      <label>Everything Entrepreneurial Blog</label>
+      <label>Help Desk</label>
+      <label>Contact</label>
+    </div></a>
+            <li className='nav-payments'>
+              <Link to="#payments">
+                Payments
+              </Link>
+            </li>
+            <li className='nav-profile'>
+              <Link to="#profile">
+                Profile
+              </Link>
+            </li>
+            <li className='nav-courses'>
+              <Link to="#courses">
+                Courses
+              </Link>
+            </li>
+          </>
+        )}
+      </ul>
+    </nav>
+     )}
+
+
+
+
+    </>
+    )
+
+  }
+
   useEffect(() => {
     // const localStorageSetHandler = function(e) {
     //   console.log(localStorage.getItem('cart'))
@@ -80,6 +157,7 @@ export default function Navbar(props) {
      <navbar class="active"><h4>Revival of Revenue</h4></navbar>
      ) : (
       <navbar class="active">
+        {sideNav()}
       <h4>Revival of Revenue</h4>
       <ul>
         

@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from '../components/search';
-
+import { useState } from "react";
 
 export default function SearchSystem({
     data: {

@@ -1,6 +1,8 @@
 import React from 'react';
 import SearchBar from '../components/search';
-export default ({
+import { graphql } from 'gatsby';
+
+export default SearchSystem = ({
     data: {
         products: { nodes },
     },

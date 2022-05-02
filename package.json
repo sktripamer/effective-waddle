@@ -44,6 +44,7 @@
     "react-image-gallery": "^1.2.7",
     "react-lazy-viewport": "git+https://github.com/sktripamer/viewporthtinger.git",
     "react-share": "^4.4.0",
+    "react-use-flexsearch": "^0.1.1",
     "stripe": "^8.191.0",
     "typewriter-effect": "^2.18.2",
     "use-between": "^1.0.1",

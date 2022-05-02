@@ -1,3 +1,30 @@
+import {ApolloClient, gql, HttpLink, InMemoryCache } from "@apollo/client";
+import fetch from "cross-fetch";
+
+const cool = async () => {
+  const hey = await client.query({
+       query: gql`query {
+        products {
+          edges {
+            node {
+              databaseId
+              name
+              slug
+              productCategories {
+                nodes {
+                  slug
+                }
+              }
+            }
+          }
+        }
+        }`
+     })
+       .then(result =>{ return result});
+   return hey;
+ }
+
+
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -32,5 +59,37 @@ module.exports = {
         mergeSecurityHeaders: false,
       },
     },
+    {
+      resolve: 'gatsby-plugin-local-search',
+      options: {
+          name: 'pages',
+          engine: 'flexsearch',
+          query: client.query({
+            query: gql`query {
+             products {
+               edges {
+                 node {
+                  databaseId
+                  name
+                  productCategories {
+                    nodes {
+                      slug
+                    }
+                  }
+                 }
+               }
+             }
+             }`
+          }),
+          ref: 'slug',
+          index:['name'],
+          store: ['name', 'slug'],
+          normalizer: ({ data }) =>
+          data.products.edges.map(node => ({
+              name: node.name,
+              slug: node.productCategories.nodes[0].slug,
+          })),
+      }
+  },
   ],
 };

@@ -82,6 +82,7 @@ module.exports = {
                }
              }
              }`,
+          uri: process.env.GATSBY_WORDPRESS_API_URL,
           ref: 'slug',
           index:['name'],
           store: ['name', 'slug'],

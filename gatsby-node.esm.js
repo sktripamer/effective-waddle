@@ -44,7 +44,15 @@ query GET_POSTS {
 			node: ProductsEdgesNode
 		  }
 		  type ProductsEdgesNode {
-			databaseId: String
+			databaseId: String,
+            name: String,
+            productCategories: NodeProductCategories
+		  }
+          type NodeProductCategories {
+			nodes: ProductsCategoriesNodes
+		  }
+          type ProductsCategoriesNodes {
+			slug: String
 		  }
 		`)
 	  }

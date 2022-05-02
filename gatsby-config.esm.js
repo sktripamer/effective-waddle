@@ -67,8 +67,7 @@ module.exports = {
       options: {
           name: 'pages',
           engine: 'flexsearch',
-          query: client.query({
-            query: gql`query {
+          query: `query {
              products {
                edges {
                  node {
@@ -82,8 +81,7 @@ module.exports = {
                  }
                }
              }
-             }`
-          }),
+             }`,
           ref: 'slug',
           index:['name'],
           store: ['name', 'slug'],

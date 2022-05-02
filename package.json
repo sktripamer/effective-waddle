@@ -30,7 +30,7 @@
     "gatsby": "^3.6.2",
     "gatsby-core-utils": "^2.8.0",
     "gatsby-plugin-gatsby-cloud": "^3.2.1",
-    "gatsby-plugin-local-search" : "git+https://github.com/sktripamer/gatsby-plugin-local-search.git#v2.0.1",
+    "gatsby-plugin-local-search" : "git+https://github.com/angeloashmore/gatsby-plugin-local-search",
     "gatsby-plugin-react-helmet": "^4.13.0",
     "gatsby-plugin-sharp": "^3.8.0",
     "gatsby-source-wordpress": "^5.10.0",

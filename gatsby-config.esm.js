@@ -67,22 +67,95 @@ module.exports = {
       options: {
           name: 'pages',
           engine: 'flexsearch',
-          query: `query {
-             products {
-               edges {
-                 node {
-                  databaseId
-                  name
-                  productCategories {
-                    nodes {
-                      slug
+          query: `{
+            "data": {
+              "products": {
+                "edges": [
+                  {
+                    "node": {
+                      "databaseId": 179,
+                      "name": "Test Hat 2",
+                      "productCategories": {
+                        "nodes": [
+                          {
+                            "slug": "hats"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "databaseId": 171,
+                      "name": "Test Hat 1",
+                      "productCategories": {
+                        "nodes": [
+                          {
+                            "slug": "hats"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "databaseId": 105,
+                      "name": "test subscription",
+                      "productCategories": {
+                        "nodes": [
+                          {
+                            "slug": "uncategorized"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "databaseId": 101,
+                      "name": "test course",
+                      "productCategories": {
+                        "nodes": [
+                          {
+                            "slug": "uncategorized"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "databaseId": 91,
+                      "name": "Revival of Revenue - Hardcover Copy",
+                      "productCategories": {
+                        "nodes": [
+                          {
+                            "slug": "uncategorized"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "databaseId": 30,
+                      "name": "Finish the video for $1!",
+                      "productCategories": {
+                        "nodes": [
+                          {
+                            "slug": "uncategorized"
+                          }
+                        ]
+                      }
                     }
                   }
-                 }
-               }
-             }
-             }`,
-          uri: process.env.GATSBY_WORDPRESS_API_URL,
+                ]
+              }
+            },
+            "extensions": {
+              "debug": []
+            }
+          }`,
           ref: 'slug',
           index:['name'],
           store: ['name', 'slug'],

@@ -11,6 +11,13 @@ export default function searchPage() {
       edges {
         node {
           databaseId
+          name
+          slug
+          productCategories {
+            nodes {
+              slug
+            }
+          }
         }
       }
     }
@@ -22,7 +29,6 @@ export default function searchPage() {
   if (loading) return <p>Loading ...</p>;
  return (
 
-  
       <div>
 <SearchSystem data={data}/>
       </div>

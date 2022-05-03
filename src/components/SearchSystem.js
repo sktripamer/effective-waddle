@@ -1,30 +1,56 @@
 import React from 'react';
 import SearchBar from '../components/search';
+import { StaticQuery, graphql } from "gatsby"
 import { useState } from "react";
+import { useFlexSearch } from 'react-use-flexsearch';
 
-export default function SearchSystem({
+
+const Header = ({
     data: {
-        products: { edges },
+        localSearchPages: { index, store }
     },
-}) {
-    const { search } = window.location;
-    const query = new URLSearchParams(search).get('s')
-    const [searchQuery, setSearchQuery] = useState(query || '');
-    const posts = edges;
+}) => {
 
+    console.log(index)
+    let search;
+    const isBrowser = typeof window !== "undefined";
+    if (isBrowser) search = window.location;
+  
+      const query = new URLSearchParams(search).get('s');
+      const [searchQuery, setSearchQuery] = useState(query || '');
+  
+      
+      const results = useFlexSearch(searchQuery, index, store);
+      const posts = results;
+      return (
+          <div>
+              <h1>Blog</h1>
+              <SearchBar
+                  searchQuery={searchQuery}
+                  setSearchQuery={setSearchQuery}
+              />
+              {posts.map(post => (
+                <>
+                   <div>{post.name}</div>
+                   <div>{post.slug}</div>
+                   </>
+              ))}
+          </div>
+      );
+
+}
+  export default function SearchSystem() {
     return (
-        <div>
-            <h1>Blog</h1>
-            <SearchBar
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-            />
-            {posts.map(post =>
-                // PostLink will be a component that renders a summary of your post
-                // e.g. the title, date and an excerpt
-                // <PostLink post={post} />
-                <div>{post.node.databaseId}</div>
-            )}
-        </div>
-    );
-};
+      <StaticQuery
+        query={graphql`
+        query {
+            localSearchPages {
+              index
+              store
+            }
+          }
+        `}
+        render={data => <Header data={data}/>}
+      />
+    )
+  }

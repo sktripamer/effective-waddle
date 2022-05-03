@@ -533,9 +533,11 @@ const renderDelivery = () => {
         : 
         
         <div class="product-container">
+          <div class='gallery-info-cont'>
           <div class='gallery-cont'>
           <ImageGallery items={images} showPlayButton={false} showBullets={true} autoPlay={true} showFullscreenButton={false} />
           </div>
+          <div className='product-info-cont'>
       <h2>{data.product.name}</h2>
       {data.product.reviewCount === 0
       ? (
@@ -549,17 +551,20 @@ const renderDelivery = () => {
       <div class='review-total-text'>{data.product.reviewCount} reviews</div>
   </div>
       }      
-      <div>{data.product.attributes.nodes[0].name}</div>
+      <div className='attr-cont'>
+      <div className='node-name'>{data.product.attributes.nodes[0].name}</div>
       {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el, index) =><div className={index === clickedItem ? "is-checked" : ""} onClick={variationClick} data-idindex={index} data-id={el}>{el}</div>)}
-      <div>
+      </div>
+      <div className='buttons-addtocart'>
         <div class="buttons">
           <button onClick={decrementCount}>-</button>
           <input type="tel" value={count} onChange={changeCount}/>
           <button onClick={incrementCount}>+</button>
         </div>
+        <button onClick={VariationCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
       </div>
-      
-      <button onClick={VariationCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
+      </div>
+     </div>
       
     <div className='product-data-tabs'>
         <div className={`product-tabs-cont idx-${tab}`}>

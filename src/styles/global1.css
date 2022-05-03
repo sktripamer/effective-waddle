@@ -1587,8 +1587,11 @@ navbar input:checked ~ span.hm-3
   max-width: initial;
 }
 main > div:last-child {
-  margin-left: 70px;
-    margin-right: 70px;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-left: 70px;
+  padding-right: 70px;
 }
 .nav li:first-child:hover {
   background-color: transparent;
@@ -4689,6 +4692,29 @@ div#shows-me-container {
 .preorder-btn-container #payment-form .name-email-group > div > input.form-control.form-control {
   width: 100%;
 }
+
+.gallery-info-cont {
+  display: flex;
+  margin-top: 7em;
+}
+.product-info-cont h2 {
+  font-size: 2.3rem;
+  font-family: "Josefin Sans";
+}
+.product-container {
+  margin: 0 auto;
+  max-width: 1300px;
+}
+
+.gallery-cont {
+  width: 50%;
+}
+
+.product-info-cont {
+  width: 50%;
+  margin-left: 3em;
+}
+
 .searc-former {
   background: #fbf8ff;
   padding-top: 3em;

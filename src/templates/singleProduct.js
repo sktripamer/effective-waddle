@@ -755,6 +755,26 @@ const renderDelivery = () => {
         
         }
     
+
+        <div class='you-might-like-cont'>
+        <h4>Related Products</h4>
+        <div className='mini-product-cont'>
+          <img src={data.product.featuredImage.node.sourceUrl}></img>
+          <div className='mini-title'>{data.product.name}</div>
+          <div className='mini-price'>{data.product.price}</div>
+        </div>
+        <div className='mini-product-cont'>
+          <img src={data.product.featuredImage.node.sourceUrl}></img>
+          <div className='mini-title'>{data.product.name}</div>
+          <div className='mini-price'>{data.product.price}</div>
+        </div>
+        <div className='mini-product-cont'>
+          <img src={data.product.featuredImage.node.sourceUrl}></img>
+          <div className='mini-title'>{data.product.name}</div>
+          <div className='mini-price'>{data.product.price}</div>
+        </div>
+        </div>
+
     </div>
     </Layout>
     );

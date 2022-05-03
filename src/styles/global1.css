@@ -1580,7 +1580,21 @@ navbar input:checked ~ span.hm-3
 .buttons {
   display: flex;
 }
+.attr-option {margin-left:8px;width: 18px;height: 18px;cursor: pointer;    border-radius: 50%;}
 
+.attr-option.is-checked.attr-Red {background-color: #f00;
+  border-radius: 50%;border-width: 0px;}
+
+.attr-Blue {border: 3px solid #0000ff;
+ border-radius: 50%;}
+
+.attr-Red {border: 3px solid #f00;}
+
+.attr-option.is-checked.attr-Blue {
+ background-color: #0000ff;
+    border-radius: 50%;
+    border-width: 0px;
+}
 .navbar-holder ul {
   align-items: center;
   display: flex;
@@ -4772,10 +4786,12 @@ div#shows-me-container {
 }
 .buttons-addtocart {
   display: flex;
+  margin-top: 2em;
 }
 
 .attr-cont {
   display: flex;
+  margin-top: 2em;
 }
 .star-select {width: 24px;
   height: 24px;
@@ -4806,6 +4822,7 @@ div#shows-me-container {
   font-size: 15px;
   color: #787878;
   font-family: Nunito Bold;
+  margin-right: 10px;
 }
 
 .review-total-cont {
@@ -4843,6 +4860,7 @@ button.addcart-btn {
 .product-info-cont h2 {
   font-size: 2.3rem;
   font-family: "Josefin Sans";
+  margin: 0;
 }
 .product-container {
   margin: 0 auto;

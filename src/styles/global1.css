@@ -50,7 +50,7 @@
     --color-yellow-3: #cb6e17;
     --color-yellow-4: #de911d;
     --color-yellow-5: #f0b429;
-    --color-yellow-6: #f7c948;
+    --color-yellow-6: #ff2425;
     --color-yellow-7: #fadb5f;
     --color-yellow-8: #fce588;
     --color-yellow-9: #fff3c4;
@@ -4688,6 +4688,69 @@ div#shows-me-container {
 
 .preorder-btn-container #payment-form .name-email-group > div > input.form-control.form-control {
   width: 100%;
+}
+.searc-former {
+  background: #fbf8ff;
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+.search-bar-title {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  background-image: linear-gradient(155deg,rgba(201,34,40,1),rgba(209,0,52,1) 11%,rgba(219,0,73,1) 22%,rgba(219,0,91,1) 33%,rgba(219,0,113,1) 44%,rgba(209,0,139,1) 56%,rgba(194,0,165,1));
+}
+input#header-search {
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+  background: linear-gradient(302deg,rgba(255,255,255,.12),rgba(255,255,255,0));
+  border: 3px solid #bd9bd4;
+  border-radius: 0;
+  color: #393939;
+  flex: none;
+  height: 38px;
+  margin-bottom: 4px;
+  padding: 0 10px;
+}
+.search-bar-text {
+  margin-left: 20px;
+  font-size: 24px;
+  font-family: "Nunito Bold";
+  margin-top: 6px;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.search-bar-close {
+  line-height: 36px;
+  cursor: pointer;
+  padding: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+}
+.search-btn-container.search-true {
+  backdrop-filter: blur(3px) brightness(.5) contrast(110%);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  z-index: 9999;
+  align-items: flex-start;
+}
+.search-outer-cont {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 1000px;
+  height: fit-content;
+  margin: 0 auto;
+  background: #fff;
+  margin-top: 20%;
 }
 
 .product-tabs-cont {

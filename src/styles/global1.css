@@ -1580,6 +1580,22 @@ navbar input:checked ~ span.hm-3
 .buttons {
   display: flex;
 }
+
+.navbar-holder ul {
+  align-items: center;
+  display: flex;
+  font-size: 1.2rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 1em;
+}
+.navbar-holder li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 0.5rem;
+}
+
 .buttons input {
   width: 44px;
   height: 3rem;
@@ -1595,6 +1611,9 @@ navbar input:checked ~ span.hm-3
   padding-right: 0;
   box-shadow: none;
   outline: none;
+  border: 1px solid #e7e7e7;
+  border-left: transparent;
+  border-right: transparent;
 }
 
 .buttons button {
@@ -2159,14 +2178,42 @@ navbar {
   height:50px;
   width: 100%;
   z-index: 99;
-  background: rgb(225, 20, 68);
+  background: linear-gradient(183deg,#ff1d2d,#c41a72);
   box-shadow: 0 0 8px 4px rgba(0,0,0,0.3);
   box-sizing: border-box;
   color: white;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translatey(-100px);
 }
+navbar > navmain {
+  box-shadow: 0 0 8px 4px rgb(0 0 0 / 20%);
+  background: linear-gradient(310deg, rgba(56,3,105,1) 0%, rgba(94,3,105,1) 100%);
+}
 
+.navbar-title > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-family: "Josefin Sans";
+  font-size: 24px;
+}
+.navbar-holder {
+  position: absolute;
+  width: 100%;
+  max-width: 1300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 a.dropdown {
 	position: relative;
@@ -4871,10 +4918,20 @@ input#header-search {
   max-width: 1000px;
   height: fit-content;
   margin: 0 auto;
-  background: #fff;
+  border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   margin-top: 20%;
 }
+.search-section-results> p {
+  margin-top: -30px;
+  text-align: center;
+}
 
+form.search-former {
+  padding-top: 3em;
+  padding-bottom: 3em;
+  background: #f6f4fa;
+}
 .product-tabs-cont {
   display: flex;
   font-size: 15px;

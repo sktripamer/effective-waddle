@@ -117,7 +117,7 @@ module.exports = {
                       "name": "test subscription",
                       "slug": "test-subscription",
                       "price": "$30.00",
-                      "featuredImage": null,
+                      "featuredImage": "https://portal.revrevdev.xyz/wp-content/uploads/woocommerce-placeholder.png",
                       "productCategories": {
                         "nodes": [
                           {
@@ -133,7 +133,7 @@ module.exports = {
                       "name": "test course",
                       "slug": "test-course",
                       "price": "$20.00",
-                      "featuredImage": null,
+                      "featuredImage": "https://portal.revrevdev.xyz/wp-content/uploads/woocommerce-placeholder.png",
                       "productCategories": {
                         "nodes": [
                           {

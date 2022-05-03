@@ -382,8 +382,7 @@ const variationClick = (e) => {
     } 
     let images = [];
       data.product.galleryImages.nodes.forEach((galleryImage) => {
-        images.push({"original": galleryImage.sourceUrl})
-        images.push({"thumbnail": galleryImage.sourceUrl})
+        images.push({"original": galleryImage.sourceUrl, "thumbnail": galleryImage.sourceUrl})
       })
 
 
@@ -512,7 +511,7 @@ const renderDelivery = () => {
           <div>{data.product.name}</div>
           <div>{data.product.price}</div>
           <div class='gallery-cont'>
-          <ImageGallery items={images} showPlayButton={false} showFullscreenButton={false} />
+          <ImageGallery items={images} showNav={false} showPlayButton={false} showFullscreenButton={false} />
           </div>
           <div>
         <div class="count">

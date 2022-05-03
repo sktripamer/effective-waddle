@@ -552,14 +552,9 @@ const renderDelivery = () => {
       <div>{data.product.attributes.nodes[0].name}</div>
       {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el, index) =><div className={index === clickedItem ? "is-checked" : ""} onClick={variationClick} data-idindex={index} data-id={el}>{el}</div>)}
       <div>
-        <div class="count">
-      
-     <input type="tel" value={count} onChange={changeCount}/>
-          <h3>Count:</h3>
-          <h1>{count}</h1>
-        </div>
         <div class="buttons">
           <button onClick={decrementCount}>-</button>
+          <input type="tel" value={count} onChange={changeCount}/>
           <button onClick={incrementCount}>+</button>
         </div>
       </div>
@@ -567,7 +562,7 @@ const renderDelivery = () => {
       <button onClick={VariationCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
       
     <div className='product-data-tabs'>
-        <div className='product-tabs-cont'>
+        <div className={`product-tabs-cont idx-${tab}`}>
          <div onClick={(e) => changeTab()} className='product-tabs-desc'>Description</div>
          <div onClick={(e) => changeTab1()} className='product-tabs-advanced'>Additional Information</div>
          <div onClick={(e) => changeTab2()} className='product-tabs-reviews'>Reviews ({data.product.reviewCount})</div>

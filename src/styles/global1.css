@@ -1454,10 +1454,42 @@ navmain .link-dropdown {
   box-shadow: 0 10px 15px 0 rgb(0 0 0 / 5%);
   color: #bbb;
   position: absolute;
-  margin-left: 95px;
+  margin-left: 171px;
   top: 0px;
   right: auto;
 }
+.nav-button-cont {
+  display: flex;
+  margin-bottom: 50px;
+}
+navbar .nav {
+  margin-top: 50px;
+  justify-content: flex-start;
+}
+.nav-button-cont > button {
+  width: 50%;
+  border-radius: 0;
+  background: #410a51;
+  background: linear-gradient(181deg, rgb(41 15 65) 0%, rgb(63 23 74) 100%);
+  color: #fff;
+}
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+.render-tab tr > td:first-child {
+  font-weight: bold;
+}
+.render-tab table {
+  width: 100%;
+  width: 25%;
+}
+.nav-button-cont {
+  margin-top: auto;
+  display: flex;
+  margin-bottom: 50px;
+}
+
 navmain .nav a.dropdown {
   margin-right: 0px;
   padding-right: 20px;
@@ -4788,6 +4820,8 @@ div#shows-me-container {
   display: flex;
   margin-top: 2em;
 }
+
+navbar > navmain .nav a.dropdown {padding-left: 20px;padding-right: 80px;}
 
 .attr-cont {
   display: flex;

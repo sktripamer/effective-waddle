@@ -85,53 +85,53 @@ export default function Navbar(props) {
 
         {!loggedIn ? (
           <>
-            <li>
-              <Link to="/log-in">
-                Log In
-              </Link>
-            </li>
-            <li>
-              <Link to="/sign-up">
-                Sign Up
-              </Link>
-            </li>
+       <a class='dropdown'>Home
+      <div class="link-dropdown active2">
+    </div></a>
+            <a class='dropdown'>All Products
+      <div class="link-dropdown active2">
+      <label>View All Products</label>
+      <label>Hats</label>
+      <label>Other categories</label>
+    </div></a>
+    <a class='dropdown'>All Products
+      <div class="link-dropdown active2">
+      <label>Coming Soon!</label>
+    </div></a>
+          <div class='nav-content-section'>
+            placeholder
+
+          </div>
+
+          <div class='nav-button-cont'>
+           <button>cart</button>
+           <button>checkout</button>
+          </div>
           </>
         ) : (
           <>
-          <li  className='nav-logo'>
-          <Link to="#home"></Link>
-        </li>
-          <li className='nav-home'>
-          <Link to="#home">
-            Home
-          </Link>
-        </li>
-            <li className='nav-orders'>
-              <Link to="#orders">
-                Orders
-              </Link>
-            </li>
-            <a class='dropdown'>Resources
+            <a class='dropdown'>Home
       <div class="link-dropdown active2">
-      <label>Everything Entrepreneurial Blog</label>
-      <label>Help Desk</label>
-      <label>Contact</label>
     </div></a>
-            <li className='nav-payments'>
-              <Link to="#payments">
-                Payments
-              </Link>
-            </li>
-            <li className='nav-profile'>
-              <Link to="#profile">
-                Profile
-              </Link>
-            </li>
-            <li className='nav-courses'>
-              <Link to="#courses">
-                Courses
-              </Link>
-            </li>
+            <a class='dropdown'>All Products
+      <div class="link-dropdown active2">
+      <label>View All Products</label>
+      <label>Hats</label>
+      <label>Other categories</label>
+    </div></a>
+    <a class='dropdown'>All Products
+      <div class="link-dropdown active2">
+      <label>Coming Soon!</label>
+    </div></a>
+          <div class='nav-content-section'>
+            placeholder
+
+          </div>
+
+          <div class='nav-button-cont'>
+           <button>cart</button>
+           <button>checkout</button>
+          </div>
           </>
         )}
       </ul>

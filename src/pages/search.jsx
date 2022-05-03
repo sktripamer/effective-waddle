@@ -1,37 +1,38 @@
-import * as React from "react";
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
+import { useFlexSearch } from 'react-use-flexsearch';
 import SearchBar from '../components/search';
-import SearchSystem from '../components/SearchSystem';
-import { useQuery, gql } from "@apollo/client";
-export default function searchPage() {
+export default ({
+    data: {
+        localSearchPages: { index, store }
+    },
+}) => {
+    const { search } = window.location;
+    const query = new URLSearchParams(search).get('s');
+    const [searchQuery, setSearchQuery] = useState(query || '');
 
-  const GET_ORDERS = gql`
-  query {
-    products {
-      edges {
-        node {
-          databaseId
-          name
-          slug
-          productCategories {
-            nodes {
-              slug
-            }
-          }
-        }
-      }
-    }
-    }
-    
-  
-  `;
-  const { loading, error, data } = useQuery(GET_ORDERS);
-  if (loading) return <p>Loading ...</p>;
- return (
+    const posts = unflattenResults(results);
+    const results = useFlexSearch(searchQuery, index, store);
 
-      <div>
-<SearchSystem data={data}/>
-      </div>
-  );
+    return (
+        <div>
+            <h1>Blog</h1>
+            <SearchBar
+				searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+			/>
+            {posts.map(post => (
+                 <div>{post.name}</div>
+            ))}
+        </div>
+    );
 };
 
+export const pageQuery = graphql`
+  query {
+    localSearchPages {
+      index
+      store
+    }
+  }
+`

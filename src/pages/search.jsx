@@ -1,42 +1,12 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import { useFlexSearch } from 'react-use-flexsearch';
-import SearchBar from '../components/search';
-export default ({
-    data: {
-        localSearchPages: { index, store }
-    },
-}) => {
-  console.log(index)
-  let search;
-  const isBrowser = typeof window !== "undefined";
-  if (isBrowser) search = window.location;
+import SearchSystem from '../components/SearchSystem';
 
-    const query = new URLSearchParams(search).get('s');
-    const [searchQuery, setSearchQuery] = useState(query || '');
+export default function SearchPage() {
 
-    
-    const results = useFlexSearch(searchQuery, index, store);
-    const posts = results;
-    return (
-        <div>
-            <h1>Blog</h1>
-            <SearchBar
-				searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-			/>
-            {posts.map(post => (
-                 <div>{post.name}</div>
-            ))}
-        </div>
-    );
-};
+  return (
+    <SearchSystem/>
+  )
 
-export const pageQuery = graphql`
-  query {
-    localSearchPages {
-      index
-      store
-    }
-  }
-`
+}

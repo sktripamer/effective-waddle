@@ -4864,7 +4864,9 @@ button.image-gallery-thumbnail.active {
 .mini-product-cont img {width: 90%;margin-left: 5%;}
 
 .mini-title {font-size: 24px;font-family: 'Nunito Bold';}
+.cart-btn-cont {display: flex;justify-content: space-evenly;}
 
+.cart-btn-cont > button {background: linear-gradient(206deg,#ff1d2d,#c41ab8);color: #fff;width: 40%;border-radius: 0;}
 .mini-price {font-family: Nunito Regular;font-size: 18px;}
 .star-select {width: 24px;
   height: 24px;

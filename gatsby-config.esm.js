@@ -161,9 +161,9 @@ module.exports = {
           store: ['name', 'slug'],
           normalizer: ({ data }) =>
           data.products.edges.map(node => ({
-              name: node.name,
-              slug: node.productCategories.nodes[0].slug,
-          })),
+            name: node.node.name,
+            slug: node.node.productCategories.nodes[0].slug,
+        })),
       }
   },
   ],

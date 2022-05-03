@@ -184,13 +184,20 @@ export default function Navbar(props) {
      <span class='hm-1'></span>
      <span class='hm-2'></span>
      <span class='hm-3'></span></div>
-      <ul>
+     <div className="navbar-title">
+     <ul>
         <li>Shop</li>
+        </ul>
+     </div>
+
+     <div className="navbar-holder">
+      <ul>
         <li onClick={() => setLoadSearch(true)}>Search</li>
     <a class='dropdown'>Cart
       <div class="link-dropdown active2 cart-drop">
       <div>{localStorageSetHandler()}</div>
     </div></a>
+</div>
         {!loggedIn ? (
           <>
           </>

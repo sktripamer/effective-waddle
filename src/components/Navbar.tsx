@@ -2,12 +2,13 @@ import * as React from "react";
 import { Link } from "gatsby";
 import { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
-
+import SearchSystem from '../components/SearchSystem';
 
 export default function Navbar(props) {
   const { loggedIn, loading } = useAuth();
   const [cartRender, setCartRender] = useState(true);
   const [hamburger, setHamburger] = useState(false)
+  const [loadSearch, setLoadSearch] = useState(false)
   const localStorageSetHandler = () => {
 
     let tempCart = function() {
@@ -157,6 +158,19 @@ export default function Navbar(props) {
   }, []);
   return (
     <>
+    <div className={`search-btn-container search-${loadSearch}`}>
+    {true == loadSearch
+                ? (
+                 <div className='search-outer-cont'>
+                   <div className="search-bar-title">
+                      <div className="search-bar-text">Search</div>
+                      <div onClick={() => setLoadSearch(false)} className='search-bar-close'>X</div>
+                   </div>
+                    <SearchSystem/>
+                   </div>
+                  )
+                : ""}
+    </div>
      {loading ? (
      <navbar class="active"> 
      <div><input onChange={e => handleChange(e)} type="checkbox" />
@@ -172,6 +186,7 @@ export default function Navbar(props) {
      <span class='hm-3'></span></div>
       <ul>
         <li>Shop</li>
+        <li onClick={() => setLoadSearch(true)}>Search</li>
     <a class='dropdown'>Cart
       <div class="link-dropdown active2 cart-drop">
       <div>{localStorageSetHandler()}</div>

@@ -12,7 +12,7 @@ return (
     >
         <label htmlFor="header-search">
             <span className="visually-hidden">
-                Search blog posts
+                Search products
             </span>
         </label>
         <input

@@ -7,7 +7,10 @@ export default ({
         localSearchPages: { index, store }
     },
 }) => {
-    const { search } = window.location;
+  let search;
+  const isBrowser = typeof window !== "undefined";
+  if (isBrowser) search = window.location;
+
     const query = new URLSearchParams(search).get('s');
     const [searchQuery, setSearchQuery] = useState(query || '');
 

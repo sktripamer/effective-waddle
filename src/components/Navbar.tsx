@@ -197,15 +197,10 @@ export default function Navbar(props) {
       <div class="link-dropdown active2 cart-drop">
       <div>{localStorageSetHandler()}</div>
     </div></a>
-</div>
-        {!loggedIn ? (
-          <>
-          </>
-        ) : (
-          <>
-          </>
-        )}
+
+
       </ul>
+      </div>
     </navbar>
      )}
 

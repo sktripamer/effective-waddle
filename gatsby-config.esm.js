@@ -75,6 +75,13 @@ module.exports = {
                     "node": {
                       "databaseId": 179,
                       "name": "Test Hat 2",
+                      "slug": "test-hat-2",
+                      "price": "$15.00",
+                      "featuredImage": {
+                        "node": {
+                          "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/04/baggy-cap-navy-blue-500x500-1.jpg"
+                        }
+                      },
                       "productCategories": {
                         "nodes": [
                           {
@@ -88,6 +95,13 @@ module.exports = {
                     "node": {
                       "databaseId": 171,
                       "name": "Test Hat 1",
+                      "slug": "test-hat-1",
+                      "price": "$20.00",
+                      "featuredImage": {
+                        "node": {
+                          "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/04/plain-red-cap-500x500-1.jpg"
+                        }
+                      },
                       "productCategories": {
                         "nodes": [
                           {
@@ -101,6 +115,9 @@ module.exports = {
                     "node": {
                       "databaseId": 105,
                       "name": "test subscription",
+                      "slug": "test-subscription",
+                      "price": "$30.00",
+                      "featuredImage": null,
                       "productCategories": {
                         "nodes": [
                           {
@@ -114,6 +131,9 @@ module.exports = {
                     "node": {
                       "databaseId": 101,
                       "name": "test course",
+                      "slug": "test-course",
+                      "price": "$20.00",
+                      "featuredImage": null,
                       "productCategories": {
                         "nodes": [
                           {
@@ -127,6 +147,13 @@ module.exports = {
                     "node": {
                       "databaseId": 91,
                       "name": "Revival of Revenue - Hardcover Copy",
+                      "slug": "revival-of-revenue-hardcover-copy",
+                      "price": "$30.00",
+                      "featuredImage": {
+                        "node": {
+                          "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/03/mockup-1.png"
+                        }
+                      },
                       "productCategories": {
                         "nodes": [
                           {
@@ -140,6 +167,13 @@ module.exports = {
                     "node": {
                       "databaseId": 30,
                       "name": "Finish the video for $1!",
+                      "slug": "test-product",
+                      "price": "$1.00",
+                      "featuredImage": {
+                        "node": {
+                          "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2021/12/mockup-1.png"
+                        }
+                      },
                       "productCategories": {
                         "nodes": [
                           {
@@ -158,12 +192,14 @@ module.exports = {
           }`,
           ref: 'databaseId',
           index:['name'],
-          store: ['name', 'slug'],
+          store: ['name', 'slug', 'price', 'image'],
           normalizer: ({ data }) =>
           data.products.edges.map(node => ({
             databaseId: node.node.databaseId,
             name: node.node.name,
-            slug: node.node.productCategories.nodes[0].slug,
+            slug: node.node.productCategories.nodes[0].slug + '/' + node.node.slug,
+            price: node.node.price,
+            image: node.node.featuredImage.node.sourceUrl
         })),
       }
   },

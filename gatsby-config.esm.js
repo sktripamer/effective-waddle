@@ -156,11 +156,12 @@ module.exports = {
               "debug": []
             }
           }`,
-          ref: 'slug',
+          ref: 'databaseId',
           index:['name'],
           store: ['name', 'slug'],
           normalizer: ({ data }) =>
           data.products.edges.map(node => ({
+            databaseId: node.node.databaseId,
             name: node.node.name,
             slug: node.node.productCategories.nodes[0].slug,
         })),

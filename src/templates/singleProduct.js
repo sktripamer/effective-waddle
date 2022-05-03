@@ -684,7 +684,7 @@ const renderDelivery = () => {
       }      
       <div className='attr-cont'>
       <div className='node-name'>{data.product.attributes.nodes[0].name}</div>
-      {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el, index) =><div className={index === clickedItem ? "is-checked" : ""} onClick={variationClick} data-idindex={index} data-id={el}>{el}</div>)}
+      {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el, index) =><div className={index === clickedItem ? `attr-option is-checked attr-` + el: "attr-option attr-" + el} onClick={variationClick} data-idindex={index} data-id={el}></div>)}
       </div>
       <div className='buttons-addtocart'>
         <div class="buttons">

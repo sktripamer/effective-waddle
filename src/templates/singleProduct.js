@@ -512,7 +512,7 @@ const renderDelivery = () => {
           <div>{data.product.name}</div>
           <div>{data.product.price}</div>
           <div class='gallery-cont'>
-          <ImageGallery items={images} showNav={false} showPlayButton={false} showFullscreenButton={false} />
+          <ImageGallery items={images} showPlayButton={false} showFullscreenButton={false} />
           </div>
           <div>
         <div class="count">
@@ -536,7 +536,7 @@ const renderDelivery = () => {
         <div class="product-container">
           <div class='gallery-info-cont'>
           <div class='gallery-cont'>
-          <ImageGallery items={images} showNav={false} showPlayButton={false} showFullscreenButton={false} />
+          <ImageGallery items={images} showPlayButton={false} showFullscreenButton={false} />
           </div>
           <div className='product-info-cont'>
       <h2>{data.product.name}</h2>

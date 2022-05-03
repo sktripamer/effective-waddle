@@ -7,6 +7,7 @@ export default ({
         localSearchPages: { index, store }
     },
 }) => {
+  console.log(index)
   let search;
   const isBrowser = typeof window !== "undefined";
   if (isBrowser) search = window.location;

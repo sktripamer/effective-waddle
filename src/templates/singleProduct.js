@@ -692,7 +692,7 @@ const renderDelivery = () => {
           <input type="tel" value={count} onChange={changeCount}/>
           <button onClick={incrementCount}>+</button>
         </div>
-        <button onClick={VariationCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
+        <button className={`addcart-btn added-${addedToCart}`} onClick={VariationCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
       </div>
       </div>
      </div>

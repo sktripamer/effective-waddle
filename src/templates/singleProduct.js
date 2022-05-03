@@ -413,12 +413,12 @@ const changeTab3 = () => {
 const renderDescripton = () => {
     console.log('render')
     return (
-        <div>{data.product.description}</div>
+        <div dangerouslySetInnerHTML={sanitizedData(data.product.description)} ></div>
     )
 }
 const renderAddtional = () => {
     return (
-        <div>{data.product.shortDescription}</div>
+      <div dangerouslySetInnerHTML={sanitizedData(data.product.shortDescription)} ></div>
     )
 }
 const renderWriteReview = () => {

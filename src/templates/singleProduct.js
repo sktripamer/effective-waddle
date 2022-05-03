@@ -535,7 +535,7 @@ const renderDelivery = () => {
         <div class="product-container">
           <div class='gallery-info-cont'>
           <div class='gallery-cont'>
-          <ImageGallery items={images} showPlayButton={false} showFullscreenButton={false} />
+          <ImageGallery items={images} showNav={false} showPlayButton={false} showFullscreenButton={false} />
           </div>
           <div className='product-info-cont'>
       <h2>{data.product.name}</h2>
@@ -681,8 +681,10 @@ const renderDelivery = () => {
 
   </div>
       }      
+      <div className='product-pricer'>  <h3>{data.product.price}</h3></div>
+      <div className='product-short-desc'><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p></div>
       <div className='attr-cont'>
-      <div className='node-name'>{data.product.attributes.nodes[0].name}</div>
+      <div className='node-name'>{data.product.attributes.nodes[0].name}:</div>
       {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el, index) =><div className={index === clickedItem ? `attr-option is-checked attr-` + el: "attr-option attr-" + el} onClick={variationClick} data-idindex={index} data-id={el}></div>)}
       </div>
       <div className='buttons-addtocart'>

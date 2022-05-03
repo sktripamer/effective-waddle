@@ -1479,10 +1479,11 @@ tr:nth-child(odd) {
 }
 .render-tab tr > td:first-child {
   font-weight: bold;
+  width: 25%;
 }
 .render-tab table {
   width: 100%;
-  width: 25%;
+
 }
 .nav-button-cont {
   margin-top: auto;

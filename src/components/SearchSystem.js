@@ -18,17 +18,40 @@ const Header = ({
   
       const query = new URLSearchParams(search).get('s');
       const [searchQuery, setSearchQuery] = useState(query || '');
-  
+    
       
       const results = useFlexSearch(searchQuery, index, store);
       const posts = results;
+      const noSearch = (searchQuery !== '' && !(posts.length > 0));
       return (
-          <div>
-              <h1>Blog</h1>
+          <div className='search-section'>
               <SearchBar
                   searchQuery={searchQuery}
                   setSearchQuery={setSearchQuery}
               />
+
+            {noSearch === true ?
+
+            (
+                <div className='search-section-results'>
+                    <p>No results! Try a different search.</p>
+                </div>
+            ) :
+
+            (
+                <div className='search-section-results'>
+                {posts.map(post => (
+                <>
+                   <div>{post.name}</div>
+                   <div>{post.slug}</div>
+                   </>
+              ))}
+               </div>
+            )
+            
+            
+            }
+
               {posts.map(post => (
                 <>
                    <div>{post.name}</div>

@@ -14,9 +14,9 @@ export default ({
     const query = new URLSearchParams(search).get('s');
     const [searchQuery, setSearchQuery] = useState(query || '');
 
-    const posts = results;
+    
     const results = useFlexSearch(searchQuery, index, store);
-
+    const posts = results;
     return (
         <div>
             <h1>Blog</h1>

@@ -3955,8 +3955,8 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
 
   <div class="peek-inside-container">
 
-
-<div class="book">
+<div className="book-obj-cont">
+<div class="book2">
   <div class="book-cover cover2">
     <div class="effect"></div>
     <div class="light"></div>
@@ -3964,7 +3964,7 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
   <div class="book-inside">
   </div>
 </div>
-
+</div>
 
 </div>
 

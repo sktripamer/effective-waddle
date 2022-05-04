@@ -3984,6 +3984,7 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
   </div>
 
   <div class={`peek-inside-container ${book2}`}>
+    <div className="peek-inner-cont">
   <div onClick={closeBook} class='close-preorder'>X</div>
 <div style={Object.assign({transform: `scale(${book2Scale})` })}  className="book-obj-cont">
 <div onMouseOver={hoverBook} onMouseOut={leaveHoverBook} onClick={openBook} class="book2">
@@ -3995,7 +3996,7 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
   </div>
 </div>
 </div>
-
+</div>
 </div>
 
 

@@ -3953,6 +3953,21 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
 
   </div>
 
+  <div class="peek-inside-container">
+
+
+<div class="book">
+  <div class="book-cover cover2">
+    <div class="effect"></div>
+    <div class="light"></div>
+  </div>
+  <div class="book-inside">
+  </div>
+</div>
+
+
+</div>
+
 
 <div id='shows-me-container'>
   <div class='show-me-title'>PK'S BOOK SHOWS ME HOW TO...</div>

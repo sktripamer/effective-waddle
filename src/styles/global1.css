@@ -4241,7 +4241,9 @@ main > div.main-main {
   justify-content: center;
   align-items: center;
 }
-
+.idle .book2 {
+  animation: bellshake 5s cubic-bezier(0.55, 0.08, 0.19, 0.97) 2s infinite forwards;
+}
 
 .book2 {
   width: 225px;
@@ -4303,6 +4305,44 @@ main > div.main-main {
   -webkit-transition: all .5s ease;
 }
 
+.open .book-cover.cover2 {
+  transform: perspective(2000px) rotateY(-118deg);
+}
+.peek-inside-container.open {
+  height: 100%;
+left: 0;
+position: absolute;
+top: 0;
+width: 100%;
+z-index: 9999;
+backdrop-filter: brightness(0.5);
+}
+@keyframes bookopen {
+  0% {
+   transform: perspective(2000px) rotateY(0deg);
+  }
+
+  12.667% {
+   transform:  perspective(2000px) rotateY(0deg);
+  }
+32.667% {
+   transform:  perspective(2000px) rotateY(-25deg);
+  }
+  42.667% {
+   transform:  perspective(2000px) rotateY(-25deg);
+  }
+    62.667% {
+   transform:  perspective(2000px) rotateY(0deg);
+  }
+    
+  100% {
+    transform: perspective(2000px) rotateY(0deg);
+  }
+}
+
+
+
+.idle .book-cover {animation: bookopen 5s cubic-bezier(0.55, 0.08, 0.19, 0.97) 2s infinite forwards;}
 .book2:hover { cursor:pointer; }
 
 .book2:hover .book-cover {

@@ -2768,6 +2768,36 @@ const noShippingForm = () => {
         setArchtype(1)
         setArchtypeClick(true)
       }
+      const [book2, setBook2] = useState('idle')
+      const [book2Scale, setBook2Scale] = useState(1);
+
+      const openBook = () => {
+        setBook2('open')
+        //1.555 is ratio of heght / width of the book css properties
+        if (window.innerHeight / window.innerWidth <= 1.555) {
+          //height is bottleneck
+          setBook2Scale((window.innerHeight * .9) / 350)
+      } else {
+        //width is bottleneck
+        setBook2Scale((window.innerWidth * .9) / 225)
+      }
+      }
+      const hoverBook = () => {
+        if (setBook2 === 'open') return;
+        setBook2('hover')
+      }
+      const leaveHoverBook = () => {
+        if (setBook2 === 'open') return;
+        setBook2('idle')
+      }
+
+      const closeBook = () => {
+        setBook2Scale(1)
+        setBook2('idle')
+      }
+      // idle state: bellshake animation, slight open book animation
+      //hover state: stop bellshake/slight open, do the hover animatin like already is
+      //open state: clicked book/activated. pulls it up full screen with text inside.
       const setArchtype2 = () => {
         setArchtype(2)
         setArchtypeClick(true)
@@ -3953,10 +3983,10 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
 
   </div>
 
-  <div class="peek-inside-container">
-
-<div className="book-obj-cont">
-<div class="book2">
+  <div class={`peek-inside-container ${book2}`}>
+  <div onClick={closeBook} class='close-preorder'>X</div>
+<div style={Object.assign({transform: `scale(${book2Scale})` })}  className="book-obj-cont">
+<div onMouseOver={hoverBook} onMouseOut={leaveHoverBook} onClick={openBook} class="book2">
   <div class="book-cover cover2">
     <div class="effect"></div>
     <div class="light"></div>

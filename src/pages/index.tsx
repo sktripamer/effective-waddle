@@ -2783,11 +2783,11 @@ const noShippingForm = () => {
       }
       }
       const hoverBook = () => {
-        if (setBook2 === 'open') return;
+        if (book2 === 'open') return;
         setBook2('hover')
       }
       const leaveHoverBook = () => {
-        if (setBook2 === 'open') return;
+        if (book2 === 'open') return;
         setBook2('idle')
       }
 

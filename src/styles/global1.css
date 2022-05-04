@@ -4230,11 +4230,13 @@ main > div.main-main {
   overflow-x: hidden;
   overflow-y: scroll;
 }
+.book-obj-cont {
+  transition: .5s all;
+}
 
-
-.peak-inside-container {
+.peek-inside-container {
   width:100%;
-  height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;

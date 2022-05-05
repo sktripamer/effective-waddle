@@ -4128,7 +4128,7 @@ transition: .4s all;
     background-repeat: no-repeat;
     background-size: 123%;
     border-bottom-left-radius: 8px;
-    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     padding-left: 18px;
     padding-right: 12px;
     padding-top: 10px;
@@ -4152,8 +4152,8 @@ transition: .4s all;
   .mb-rightdisplay-section {
     height: 410px;
     width: 100%; 
+    border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
     background: url(https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg),linear-gradient(286deg,#771383,#a21010);
     background-position: 100% 0;
     background-repeat: no-repeat;

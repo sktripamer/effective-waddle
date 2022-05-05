@@ -3012,6 +3012,7 @@ navbar end
     -webkit-text-fill-color: initial;
     transition: .3s all;
     background-size: 200% 200%;
+    transform: scale(1.05);
 }
 .y-preorderbtn:hover {
   text-shadow: 0px 0px 3px #d3d3d3;

@@ -4111,30 +4111,30 @@ transition: .4s all;
 
   .minibook-container {
     display: flex;
-    margin-left: 1em;
-      margin-right: 1em;
-      height: 450px;
+    width: 90%;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
   }
 
   #minibook-container {
     margin: 20px auto;
     max-width: 1300px;
+    display: flex;
   }
 
   .mb-left-section {
-    padding-left: 30px;
-    padding-right: 2px;
-    width: 25%;
-    padding-top: 10px;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    background: url(https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg), #0a00a8eb;
+    background: url(https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg),#0a00a8eb;
     background-position: 100% 0;
     background-repeat: no-repeat;
-    background-size: 175%;
-    display: flex;  
-    flex-direction: column;
-    justify-content: center;
+    background-size: 123%;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    padding-left: 18px;
+    padding-right: 12px;
+    padding-top: 10px;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 
   .preorder-btn-container.true {
@@ -4150,7 +4150,8 @@ transition: .4s all;
   }
 
   .mb-rightdisplay-section {
-    width: 59%;
+    height: 410px;
+    width: 100%; 
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     background: url(https://portal.revrevdev.xyz/wp-content/uploads/STARS.svg),linear-gradient(286deg,#771383,#a21010);
@@ -4213,17 +4214,33 @@ transition: .4s all;
   }
   .mb-cont {
     cursor: pointer;
+    margin-left: 4px;
+    margin-right: 4px;
+    display: inline-block;
+    white-space: normal;
+    width: 170px;
+}
+::-webkit-scrollbar{
+  height: 10px;
+
+}
+.mb-photo {
+  width: 70px;
+  height: 110px;
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg);
+  background-size: cover;
 }
   .mb-content {
+    height: 410px;
+    margin-left: 10px;
+    margin-right: 25px;
+    width: 98%;
     opacity: 0;
+    overflow: auto;
+    padding-left: 20px;
+    padding-right: 20px;
     position: absolute;
     visibility: hidden;
-    margin-right: 25px;
-    padding-right: 20px;
-    padding-left: 20px;
-    height: 450px;
-    overflow: auto;
-    margin-left: 10px;
   }
   .mb-content-title {
     font-family: 'Josefin Sans';

@@ -2773,9 +2773,10 @@ const noShippingForm = () => {
 
       const openBook = () => {
         document.getElementById("mockup-element").scrollIntoView({behavior: "smooth", block: "center"});
-        setBook2('open')
+     
         const timer = setTimeout(() => {
                 //1.555 is ratio of heght / width of the book css properties
+                setBook2('open')
           if (window.innerHeight / window.innerWidth <= 1.555) {
             //height is bottleneck
             setBook2Scale((window.innerHeight * .9) / 350)
@@ -2783,7 +2784,7 @@ const noShippingForm = () => {
           //width is bottleneck
           setBook2Scale((window.innerWidth * .9) / 225)
         }
-        }, 120);
+        }, 100);
         return () => clearTimeout(timer);
   
 
@@ -4005,6 +4006,7 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
 </div>
 </div>
 </div>
+<div onClick={() => setBook2('idle')} class="darken-book"></div>
 </div>
 
 

@@ -4319,7 +4319,6 @@ main > div.main-main {
 }
 .darken-book {
   position: fixed;
-  display: none;
   top: 0;
   width: 100vw;
   opacity: 0;
@@ -4328,9 +4327,32 @@ main > div.main-main {
   transition: .5s all;
   left: 0;
 }
+
+.idle .close-preorder, .hover .close-preorder {
+  display: none;
+}
+.open .close-preorder {
+  top: 0;
+  font-size: 24px;
+  margin-right: 24px;
+  color: #fff;
+}
+.mockup-element:before {
+  content: '';
+  width: 150px;
+  position: absolute;
+  height: 138px;
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/lookinside.png);
+  z-index: 3;
+  margin-left: -400px;
+  margin-top: 75px;
+  transform: rotateZ(12deg);
+  animation: grow 5s cubic-bezier(0.42, 0.04, 0.58, 1) 2s infinite forwards;
+}
 .open .darken-book {
   backdrop-filter: brightness(0.5);
   display: block;
+  
   transition: .5s all;
   opacity: 1;
 }

@@ -4349,6 +4349,19 @@ main > div.main-main {
   transform: rotateZ(12deg);
   animation: grow 5s cubic-bezier(0.42, 0.04, 0.58, 1) 2s infinite forwards;
 }
+@keyframes grow {
+  0% {
+       transform: rotateZ(12deg) scale(1);
+     
+   }
+   50% {
+       transform:rotateZ(12deg) scale(1.1);
+   }
+     100% {
+       transform:rotateZ(12deg) scale(1);
+   }
+}
+
 .open .darken-book {
   backdrop-filter: brightness(0.5);
   display: block;

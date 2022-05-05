@@ -2850,59 +2850,60 @@ const noShippingForm = () => {
       const goRight = () => {
         if (minibook===7) {
           setMinibook(1)
-          shiftView(1)
+          shiftView(".mb-cont.mb1")
         } else {
           setMinibook(minibook + 1)
-          shiftView(minibook + 1)
+          shiftView(".mb-cont.mb" + (minibook + 1))
         }
         setMinibookClick(true)
       }
       const shiftView = (el) => {
-        el.parentNode.scroll({left: el.offsetLeft - (el.parentNode.clientWidth / 2), behavior: 'smooth'});
+        const qselect = document.querySelector(el)
+        qselect.parentNode.scroll({left: qselect.offsetLeft - (qselect.parentNode.clientWidth / 2), behavior: 'smooth'});
       }
       const goLeft = () => {
         if (minibook===1) {
           setMinibook(7)
-          shiftView(7)
+          shiftView(".mb-cont.mb7")
         } else {
           setMinibook(minibook - 1)
-          shiftView(minibook - 1)
+          shiftView(".mb-cont.mb" + (minibook - 1))
         }
         setMinibookClick(true)
       }
       const setMinibook1 = () => {
         setMinibook(1)
-        shiftView(1)
+        shiftView(".mb-cont.mb1")
         setMinibookClick(true)
       }
       const setMinibook2 = () => {
         setMinibook(2)
-        shiftView(2)
+        shiftView(".mb-cont.mb2")
         setMinibookClick(true)
       }
       const setMinibook3 = () => {
         setMinibook(3)
-        shiftView(3)
+        shiftView(".mb-cont.mb3")
         setMinibookClick(true)
       }
       const setMinibook4 = () => {
         setMinibook(4)
-        shiftView(4)
+        shiftView(".mb-cont.mb4")
         setMinibookClick(true)
       }
       const setMinibook5 = () => {
         setMinibook(5)
-        shiftView(5)
+        shiftView(".mb-cont.mb5")
         setMinibookClick(true)
       }
       const setMinibook6 = () => {
         setMinibook(6)
-        shiftView(6)
+        shiftView(".mb-cont.mb6")
         setMinibookClick(true)
       }
       const setMinibook7 = () => {
         setMinibook(7)
-        shiftView(7)
+        shiftView(".mb-cont.mb7")
         setMinibookClick(true)
       }
       const setReadMore = () => {
@@ -3039,10 +3040,10 @@ useEffect(() => {
       setMinibook(minibook => {
           const updatedCounter = minibook + 1;
           if (updatedCounter === 8) {
-              shiftView(1)
+              shiftView(".mb-cont.mb1")
               return 1;
           }
-          shiftView(updatedCounter)
+          shiftView(".mb-cont.mb" + updatedCounter)
           return updatedCounter;
       }); // use callback function to set the state
     

@@ -4232,14 +4232,20 @@ main > div.main-main {
 }
 .book-obj-cont {
   transition: .5s all;
+  position: relative;
+    z-index: 2;
 }
+.mockup-element:after {content: '';
+  width: 420px;
+  height: 174px;
+  position: absolute;
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/book2mockup.png);margin-left: -82px;margin-top: -46px;z-index: 1;}
 
+.mockup-element {position: relative;}
 .peek-inside-container {
-  width:100%;
-
+  height: 600px;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 
@@ -4248,7 +4254,6 @@ main > div.main-main {
   height: 350px;
   position:relative;
   text-align: center;
-  margin:2.5%;
 }
 
 .book-cover {
@@ -4256,7 +4261,8 @@ main > div.main-main {
   z-index:2;
   width: 100%;
       transform: translateZ(1px) perspective(2000px);
-  height: 100%;
+      height: 96%;
+      top: 2%;
   transform-origin: 0 50%;
   -webkit-transform-origin: 0 50%;
   background: #111;
@@ -4307,7 +4313,7 @@ main > div.main-main {
 div.open .book-cover.cover2 {
   transform: perspective(2000px) rotateY(-118deg);
 }
-.peek-inside-container.open {
+.open .peek-inner-cont {
   height: 100%;
 left: 0;
 position: absolute;
@@ -4315,6 +4321,11 @@ top: 0;
 width: 100%;
 z-index: 9999;
 backdrop-filter: brightness(0.5);
+}
+.peek-inner-cont {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 .idle .book-obj-cont {
   animation: bellshake 5s cubic-bezier(.55,.08,.19,.97) 2s infinite forwards;

@@ -2784,7 +2784,7 @@ const noShippingForm = () => {
           //width is bottleneck
           setBook2Scale((window.innerWidth * .9) / 225)
         }
-        }, 100);
+        }, 180);
         return () => clearTimeout(timer);
   
 
@@ -2799,6 +2799,12 @@ const noShippingForm = () => {
       }
 
       const closeBook = () => {
+        setBook2Scale(1)
+        setBook2('idle')
+      }
+
+      const closeBook2 = () => {
+        if (book2 !== 'open') return;
         setBook2Scale(1)
         setBook2('idle')
       }
@@ -3989,10 +3995,11 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
   </div>
 
   </div>
-
+  <div class="show-me-title">READ THE FIRST PAGE OF PK'S BOOK NOW!</div>
+  <div class="subheader-title">Start your Revival of Revenue now and peek inside to read the first page of PK's book.</div>
   <div class={`peek-inside-container ${book2}`}>
     <div id='mockup-element' className='mockup-element'>
-    <div className="peek-inner-cont">
+    <div onClick={closeBook2} className="peek-inner-cont">
   <div onClick={closeBook} class='close-preorder'>X</div>
 <div style={Object.assign({transform: `scale(${book2Scale})` })}  className="book-obj-cont">
 <div onMouseOver={hoverBook} onMouseOut={leaveHoverBook} onClick={openBook} class="book2">
@@ -4008,7 +4015,7 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
 </div>
 <div onClick={() => setBook2('idle')} class="darken-book"></div>
 </div>
-
+<div onClick={openBook} class="y-preorderbtn">Read The First Page</div>
 
 <div id='shows-me-container'>
   <div class='show-me-title'>PK'S BOOK SHOWS ME HOW TO...</div>

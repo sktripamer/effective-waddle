@@ -3870,9 +3870,9 @@ useEffect(() => {
       </div>  
       <div class="y-image-contain"><div class="y-image-cont"></div></div>
     </div>
-    <div style={Object.assign({'background-position-y': `${plaxVal}%` })} class='bg-renderer-pl'></div>
+   
     </div>
-=
+    <div style={Object.assign({'background-position-y': `${plaxVal}%` })} class='bg-renderer-pl'></div>
     </div>
  
   {/* <div id='compare-container'>

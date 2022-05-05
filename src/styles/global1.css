@@ -2994,7 +2994,13 @@ navbar end
     max-width: 1300px;
     align-items: flex-start;
   }
-
+  .mb-section-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
   .y-preorderbtn {
     text-align: center;
     font-size: 26px;
@@ -4246,18 +4252,21 @@ transition: .4s all;
     color: #cfcfcf;
     font-family: 'Josefin Sans';
     line-height: 20px;
+    margin-top: 10px;
   }
   .mb-subtitle {
     font-size: 14px;
-    margin-top: -8px;
+    margin-top: -2px;
     margin-bottom: 8px;
     color: #bbb;
   }
   .mb-content-content {
     color: #e2e2e2;
-    margin-top: 8px;
-    max-width: 890px;
     margin-bottom: 8px;
+    margin-top: 8px;
+    column-count: 2;
+    text-align: justify;
+    column-gap: 25px;
   }
   .mbb1 .mb-content.mb1 {
     animation: mbcontent .4s forwards;

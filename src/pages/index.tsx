@@ -2772,15 +2772,21 @@ const noShippingForm = () => {
       const [book2Scale, setBook2Scale] = useState(1);
 
       const openBook = () => {
+        document.getElementById("mockup-element").scrollIntoView({behavior: "smooth", block: "center"});
         setBook2('open')
-        //1.555 is ratio of heght / width of the book css properties
-        if (window.innerHeight / window.innerWidth <= 1.555) {
-          //height is bottleneck
-          setBook2Scale((window.innerHeight * .9) / 350)
-      } else {
-        //width is bottleneck
-        setBook2Scale((window.innerWidth * .9) / 225)
-      }
+        const timer = setTimeout(() => {
+                //1.555 is ratio of heght / width of the book css properties
+          if (window.innerHeight / window.innerWidth <= 1.555) {
+            //height is bottleneck
+            setBook2Scale((window.innerHeight * .9) / 350)
+        } else {
+          //width is bottleneck
+          setBook2Scale((window.innerWidth * .9) / 225)
+        }
+        }, 120);
+        return () => clearTimeout(timer);
+  
+
       }
       const hoverBook = () => {
         if (book2 === 'open') return;
@@ -3984,6 +3990,7 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
   </div>
 
   <div class={`peek-inside-container ${book2}`}>
+    <div id='mockup-element' className='mockup-element'>
     <div className="peek-inner-cont">
   <div onClick={closeBook} class='close-preorder'>X</div>
 <div style={Object.assign({transform: `scale(${book2Scale})` })}  className="book-obj-cont">
@@ -3994,6 +4001,7 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
   </div>
   <div class="book-inside">
   </div>
+</div>
 </div>
 </div>
 </div>

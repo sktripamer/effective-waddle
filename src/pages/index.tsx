@@ -2969,7 +2969,7 @@ const handleScroll = () => {
      }
      
      if (plax.getBoundingClientRect().top < window.innerHeight && plax.getBoundingClientRect().bottom > 0) {
-      setPlax((plax.getBoundingClientRect().top + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom))) / (window.innerHeight + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom)) ) * 3)
+      setPlax((plax.getBoundingClientRect().top + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom))) / (window.innerHeight + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom)) ) * 6)
    }
 };
 
@@ -3921,40 +3921,54 @@ useEffect(() => {
     <div class='minibook-container'>
     <div class='mb-left-section'>
     <div onClick={setMinibook1} class='mb-cont mb1'>
+      <div class='mb-section-cont'>
     <div class='mb-photo'></div>
       <div class='mb-title'>Offense Wins Championships</div>
       <div class='mb-subtitle'>Mini Book #1</div>
       </div>
+      </div>
     <div onClick={setMinibook2} class='mb-cont mb2'>
+    <div class='mb-section-cont'>
     <div class='mb-photo'></div>
     <div class='mb-title'>Maximum Wage</div>
       <div class='mb-subtitle'>Mini Book #2</div>
       </div>
+      </div>
     <div onClick={setMinibook3} class='mb-cont mb3'>
+    <div class='mb-section-cont'>
     <div class='mb-photo'></div>
     <div class='mb-title'>Create Your Own Economy</div>
       <div class='mb-subtitle'>Mini Book #3</div>
       </div>
+      </div>
     <div onClick={setMinibook4} class='mb-cont mb4'>
+    <div class='mb-section-cont'>
     <div class='mb-photo'></div>
     <div class='mb-title'>Enter God’s Economy</div>
       <div class='mb-subtitle'>Mini Book #4</div>
       </div>
+      </div>
     <div onClick={setMinibook5} class='mb-cont mb5'>
+    <div class='mb-section-cont'>
     <div class='mb-photo'></div>
     <div class='mb-title'>Elevate in TheJetstream</div>
       <div class='mb-subtitle'>Mini Book #5</div>
       </div>
+      </div>
     <div onClick={setMinibook6} class='mb-cont mb6'>
+    <div class='mb-section-cont'>
     <div class='mb-photo'></div>
     <div class='mb-title'>Experience Your Revival of Revenue</div>
       <div class='mb-subtitle'>Mini Book #6</div>
       </div>
+      </div>
     <div onClick={setMinibook7} class='mb-cont mb7'>
+    <div class='mb-section-cont'>
     <div class='mb-photo'></div>
     <div class='mb-title'>Entrepreneurial Education in Business, Ministry, &amp; Politics</div>
       <div class='mb-subtitle'>Mini Book #7</div>
        </div>
+  </div>
       </div>
 
       <div class='mb-rightdisplay-section'>

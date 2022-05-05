@@ -4008,6 +4008,15 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
     <div class="light"></div>
   </div>
   <div class="book-inside">
+  <div class='modal-book-cont'>
+    <div class="modal-book-title">Chapter 1</div>
+    <div class="modal-book-title-text">OFFENSE WINS CHAMPIONSHIPS</div>
+    <div class='modal-boo-content'>
+    <p>In Mini Book #1, discover how to build your personalized high-octane Offensive Playbook, Defensive Playbook, and Special Teams Playbook. Your Offensive Playbook shows you how to score more touchdowns by maximizing your income. Your Defensive Playbook shows you how to prevent touchdowns by minimizing your expenses. Your Special Teams Playbook shows you how to manage field position and score extra points by multiplying investments and managing taxation. Together, you are managing a complete game as the head coach of your household. However, the #1 threat to you as an Entrepreneurial is hitting the Middle Class, the Masses, and Main Street Small Business harder every year. People aren’t scoring enough touchdowns. Mini Book #1 helps you make more money, increase your income, and generate more revenue by Going On Offense like an Entrepreneurial. Remember, “Entrepreneurship is living a few years of your life like most people won’t, so that you can spend the rest of your life like most people can’t.”</p>
+    <p>Why Are We Talking About Minimum Wage? In Mini Book #2 Maximum Wage, Patrick Kucera shows you how to go from a Minimized Wage to your Maximum Wage. Maximum wage is about making the most amount of money in the least amount of time and with the least amount of effort. Unlike Offense Wins Championships, this chapter is not focused on creating multiple sources of income. Rather, Maximum Wage is focused on how to generate more revenue from each source of income. To do so, you must Get OFF Bad Trades. This concept pertains to how you maximize every time you trade your time for dollars. After reading this chapter, you will discover how to earn your Maximum Wage in 5 entrepreneurial steps: STEP #1: Reposition Your Progression as a Micro Market Maker STEP #2: Revalue What You Produce and Prove It STEP #3: Rebrand Your Business Promise STEP #4: Restructure How You Are Paid STEP #5: Renegotiate Your Maximum Wage</p>
+    <div onClick={preReveal} class="y-preorderbtnsmall">Pre-Order My Copy Now!</div>
+    </div>
+  </div>
   </div>
 </div>
 </div>

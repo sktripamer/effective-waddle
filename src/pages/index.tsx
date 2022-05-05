@@ -2933,8 +2933,11 @@ function preHide3() {
 }
   const [shadowPosition, setShadowPosition] = useState(20);
   const [scrollPosition, setScrollPosition] = useState(180);
+  const [plaxVal, setPlax] = useState(0);
 const handleScroll = () => {
   let elScrollPos = document.querySelector('.book-section-cont').getBoundingClientRect().top;
+  let plax = document.querySelector('.y-container');
+
   let vwport = window.screen.availHeight * .80;
      if (elScrollPos <= 0) {
       if (Math.abs(elScrollPos) > vwport) {
@@ -2949,6 +2952,10 @@ const handleScroll = () => {
       setScrollPosition(180)
       setShadowPosition(20)
      }
+     
+     if (plax.getBoundingClientRect().top < window.innerHeight && plax.getBoundingClientRect().bottom > 0) {
+      setPlax((plax.getBoundingClientRect().top + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom))) / (window.innerHeight + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom)) ) * 10)
+   }
 };
 
 useEffect(() => {
@@ -3557,7 +3564,7 @@ useEffect(() => {
     <div class="book-section">
     
 		<div style={Object.assign({transform: `rotateY(${scrollPosition}deg)` }, {boxShadow: `20px 20px 20px rgb(0 0 0 / ${shadowPosition}%)`})} class="book"> 
-			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg"></img>
+			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover2.jpg"></img>
 		</div>
 	</div>
   <div class="book-section-hero-cta">
@@ -3588,49 +3595,49 @@ useEffect(() => {
 
 <div class='archtype-title'>WHICH ONE ARE YOU?</div>
   <div id='archetype-container' class={`acc${archetype}`}>
-    <div onClick={setArchtype1} class='arch-cont ac1'>
+    <div onClick={setArchtype1} onHover={setArchtype1} class='arch-cont ac1'>
       <div class='arch-title'></div>
 
       <div class='arch-text'>I work for myself. I “eat what I kill” and I need help growing my current business or starting a new business in this post-pandemic economy. I’m always looking for new ways to make money, new entrepreneurial opportunities, and new business networks. It’s lonely working alone, and <strong>I’m ready to build my business beyond me.</strong> I’m tired of working in my business, and I’m ready to work on my business.</div>
  
     </div>
-    <div onClick={setArchtype2} class='arch-cont ac2'>
+    <div onHover={setArchtype2} onClick={setArchtype2} class='arch-cont ac2'>
       <div class='arch-title'></div>
 
       <div class='arch-text'> I resigned from my job, I’m investing in myself, and <strong>I’m ready to turn my business ideas into business income.</strong> I just need to know how. I believe in freedom to live, freedom to think, freedom speak, freedom to create, and freedom to profit in America and around the world!</div>
 
     </div>
-    <div onClick={setArchtype3} class='arch-cont ac3'>
+    <div onHover={setArchtype3} onClick={setArchtype3} class='arch-cont ac3'>
       <div class='arch-title'></div>
 
       <div class='arch-text'>I’m a 28 year old millennial working a job I don’t like for a company I don’t care about. <strong>I’m building a side hustle</strong> to overcome student debt, escape the corporate trap, and achieve financial independence in 3 years.</div>
 
     </div>
-    <div onClick={setArchtype4} class='arch-cont ac4'>
+    <div onHover={setArchtype4} onClick={setArchtype4} class='arch-cont ac4'>
       <div class='arch-title'></div>
 
       <div class='arch-text'>I’m a 44 year old executive working late most nights, raising a family, and <strong>saving money to start a business</strong> so I can leave my job where I’m overworked and under appreciated.</div>
 
     </div>
-    <div onClick={setArchtype5} class='arch-cont ac5'>
+    <div onHover={setArchtype5} onClick={setArchtype5} class='arch-cont ac5'>
       <div class='arch-title'></div>
 
       <div class='arch-text'> I’m a stay-at-home parent raising kids, starting my own business, and married to my partner who earns steady income from a full-time job. <strong>We just need to survive and get ahead financially together.</strong></div>
 
     </div>
-    <div onClick={setArchtype6} class='arch-cont ac6'>
+    <div onHover={setArchtype6} onClick={setArchtype6} class='arch-cont ac6'>
       <div class='arch-title'></div>
 
       <div class='arch-text'>I’m retired from the military, or retired in general, and I’m living on steady income from my pension or social security funds. <strong>I’m ready to turn my passions into profits by investing in my own business.</strong></div>
 
     </div>
-    <div onClick={setArchtype7} class='arch-cont ac7'>
+    <div onHover={setArchtype7} onClick={setArchtype7} class='arch-cont ac7'>
       <div class='arch-title'></div>
 
       <div class='arch-text'>I’m just a pastor trying to minister in the non-profit world and <strong>I’m open to making more money in the for-profit world</strong> to take care of my ministry and my family.</div>
 
     </div>
-    <div onClick={setArchtype8} class='arch-cont ac8'>
+    <div onHover={setArchtype8} onClick={setArchtype8} class='arch-cont ac8'>
       <div class='arch-title'></div>
 
       <div class='arch-text'>I’m a minimalist who loves to travel. <strong>I focus on how to run my business virtually, and how to build my business on the go.</strong> I value experiences first, and running my own company gives me this freedom to be mobile.</div>
@@ -3863,7 +3870,9 @@ useEffect(() => {
       </div>  
       <div class="y-image-contain"><div class="y-image-cont"></div></div>
     </div>
+    <div style={Object.assign({'background-position-y': `${plaxVal}%` })} class='bg-renderer-pl'></div>
     </div>
+=
     </div>
  
   {/* <div id='compare-container'>

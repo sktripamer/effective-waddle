@@ -2771,8 +2771,9 @@ const noShippingForm = () => {
       const [book2, setBook2] = useState('idle')
       const [book2Scale, setBook2Scale] = useState(1);
 
-      const openBook = () => {
-        document.getElementById("mockup-element").scrollIntoView({behavior: "smooth", block: "center"});
+      const openBook = (e) => {
+        if (document.getElementsByClassName('y-preorderbtnsmall')[0] === event.target) return;
+        document.getElementsByClassName("main-main")[0].scroll({top: document.getElementById("mockup-element").offsetTop + 300 - (window.innerHeight /2), behavior: 'smooth'});
      
         const timer = setTimeout(() => {
                 //1.555 is ratio of heght / width of the book css properties
@@ -2926,7 +2927,8 @@ const noShippingForm = () => {
         setPreorderButton(true)
         setPreorder(true)
     }
-    function preRevealBook2() {
+    function preRevealBook2(e) {
+   
       setBook2('idle')
       setPreorderButton(true)
       setPreorder(true)

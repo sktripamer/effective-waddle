@@ -3572,48 +3572,48 @@ navbar end
   }
 
   .arch-cont.ac1:before {
-    background: linear-gradient(181deg,rgb(255 255 255/64%),rgb(255 255 255/80%)), url(https://portal.revrevdev.xyz/wp-content/uploads/self.jpeg);
+    background: linear-gradient(181deg,rgb(255 255 255/54%),rgb(255 255 255/70%)), url(https://portal.revrevdev.xyz/wp-content/uploads/self.jpeg);
     background-position: 24%;
     background-size: cover;
 }
 .arch-cont.ac2:before {
-  background: linear-gradient(181deg,rgb(255 255 255/64%),rgb(255 255 255/80%)) ,url(https://portal.revrevdev.xyz/wp-content/uploads/resigned.jpeg);
+  background: linear-gradient(181deg,rgb(255 255 255/54%),rgb(255 255 255/70%)) ,url(https://portal.revrevdev.xyz/wp-content/uploads/resigned.jpeg);
   background-position: 40%;
   background-size: cover;
 }
 
 .arch-cont.ac3:before {
-  background: linear-gradient(181deg,rgb(255 255 255/64%),rgb(255 255 255/80%)), url(https://portal.revrevdev.xyz/wp-content/uploads/millenial.jpeg);
+  background: linear-gradient(181deg,rgb(255 255 255/54%),rgb(255 255 255/70%)), url(https://portal.revrevdev.xyz/wp-content/uploads/millenial.jpeg);
   background-position: 35%;
   background-size: cover;
 }
 
 .arch-cont.ac4:before {
-  background: linear-gradient(181deg,rgb(255 255 255/64%),rgb(255 255 255/80%)), url(https://portal.revrevdev.xyz/wp-content/uploads/executive.jpeg);
+  background: linear-gradient(181deg,rgb(255 255 255/54%),rgb(255 255 255/70%)), url(https://portal.revrevdev.xyz/wp-content/uploads/executive.jpeg);
   background-position: 62%;
   background-size: cover;
 }
 
 .arch-cont.ac5:before {
-  background: linear-gradient(181deg,rgb(255 255 255/64%),rgb(255 255 255/80%)), url(https://portal.revrevdev.xyz/wp-content/uploads/parent.jpeg);
+  background: linear-gradient(181deg,rgb(255 255 255/54%),rgb(255 255 255/70%)), url(https://portal.revrevdev.xyz/wp-content/uploads/parent.jpeg);
   background-position: 40%;
   background-size: cover;
 }
 
 .arch-cont.ac6:before {
-  background: linear-gradient(181deg,rgb(255 255 255/64%),rgb(255 255 255/80%)), url(https://portal.revrevdev.xyz/wp-content/uploads/retired.jpeg);
+  background: linear-gradient(181deg,rgb(255 255 255/54%),rgb(255 255 255/70%)), url(https://portal.revrevdev.xyz/wp-content/uploads/retired.jpeg);
   background-position: 66%;
   background-size: cover;
 }
 
 .arch-cont.ac7:before {
-  background: linear-gradient(181deg,rgb(255 255 255/64%),rgb(255 255 255/80%)), url(https://portal.revrevdev.xyz/wp-content/uploads/ministry.jpeg);
+  background: linear-gradient(181deg,rgb(255 255 255/54%),rgb(255 255 255/70%)), url(https://portal.revrevdev.xyz/wp-content/uploads/ministry.jpeg);
   background-position: 64%;
   background-size: cover;
 }
 
 .arch-cont.ac8:before {
-  background: linear-gradient(181deg,rgb(255 255 255/64%),rgb(255 255 255/80%)), url(https://portal.revrevdev.xyz/wp-content/uploads/nomad.jpeg);
+  background: linear-gradient(181deg,rgb(255 255 255/54%),rgb(255 255 255/70%)), url(https://portal.revrevdev.xyz/wp-content/uploads/nomad.jpeg);
   background-position: 57%;
   background-size: cover;
 }
@@ -4160,15 +4160,7 @@ transition: .4s all;
     background-size: 100%;
   }
 
-  .mb-title:before {
-    content: '';
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.84 0-16-7.16-16-16S15.16 8 24 8s16 7.16 16 16-7.16 16-16 16z' fill='%23fff'/%3E%3Cpath d='M0 0h48v48H0z' fill='none'/%3E%3C/svg%3E");
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    background-size: contain;
-    margin-left: -22px;
-  }
+
   .mbb1 .mb1 .mb-title:before {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M24 14c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0-10C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.84 0-16-7.16-16-16S15.16 8 24 8s16 7.16 16 16-7.16 16-16 16z' fill='%23fff'/%3E%3Cpath d='M0 0h48v48H0z' fill='none'/%3E%3C/svg%3E");
   }
@@ -4219,6 +4211,7 @@ transition: .4s all;
     display: inline-block;
     white-space: normal;
     width: 170px;
+    text-align: center;
 }
 ::-webkit-scrollbar{
   height: 10px;

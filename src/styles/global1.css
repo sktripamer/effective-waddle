@@ -4235,13 +4235,21 @@ main > div.main-main {
   position: relative;
     z-index: 2;
 }
-.mockup-element:after {content: '';
-  width: 420px;
+.mockup-element:after {
+  content: "";
   height: 174px;
+  margin-top: 431px;
   position: absolute;
-  background: url(https://portal.revrevdev.xyz/wp-content/uploads/book2mockup.png);margin-left: -82px;margin-top: -46px;z-index: 1;}
+  width: 420px;
+  z-index: 1;
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/book2mockup.png)}
 
-.mockup-element {position: relative;}
+.mockup-element {    position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+ }
 .peek-inside-container {
   height: 600px;
   display: flex;
@@ -4309,18 +4317,33 @@ main > div.main-main {
   transition: all .5s ease;
   -webkit-transition: all .5s ease;
 }
-
+.darken-book {
+  position: fixed;
+  display: none;
+  top: 0;
+  width: 100vw;
+  opacity: 0;
+  height: 100vh;
+  pointer-events: none;
+  transition: .5s all;
+  left: 0;
+}
+.open .darken-book {
+  backdrop-filter: brightness(0.5);
+  display: block;
+  transition: .5s all;
+  opacity: 1;
+}
 div.open .book-cover.cover2 {
   transform: perspective(2000px) rotateY(-118deg);
 }
 .open .peek-inner-cont {
   height: 100%;
-left: 0;
-position: absolute;
-top: 0;
-width: 100%;
-z-index: 9999;
-backdrop-filter: brightness(0.5);
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
 }
 .peek-inner-cont {
   align-items: center;

@@ -2941,10 +2941,8 @@ div#say-hello-list-container {
 }
 
 .hello-list-number {
-  -webkit-text-fill-color: transparent;
+  color: #ee091c;
   align-items: baseline;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(#ee091c,#850b90);
   display: flex;
   font-family: Josefin Sans;
   font-size: clamp(16px,5vw,80px);

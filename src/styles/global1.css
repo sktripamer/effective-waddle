@@ -282,6 +282,7 @@ margin: 2em auto 1em auto;
 }
 .white-hero-p span {
     font-style: italic;
+    margin-right: 4px;
 }
 
 .final-p-section {
@@ -1087,13 +1088,16 @@ p.result-message-text a {
     margin-top: 30px;
   }
   @media (max-width: 666px) {
+    div.book-section-content-cont {
+      margin-top: 55vh;
+  }
     div.y-preorderbtn {
-      font-size: 19px;
-      padding: 8px 16px;
+      font-size: 18px;
+      padding: 8px 12px;
     }
     div.y-preorderbtnsmall {
-      font-size: 19px;
-      padding: 8px 16px;
+      font-size: 18px;
+      padding: 8px 12px;
     }
 div.book-section {
   transform: translateY(-50%) scale(0.8);
@@ -4520,7 +4524,7 @@ main > div.main-main {
 
 
 .book-section-content-cont {
-  margin-top: 41vh;
+  margin-top: 80vh;
 }
 
 .y-preorderbtnsmall {

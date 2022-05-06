@@ -231,7 +231,25 @@ margin: 2em auto 1em auto;
     padding-left: 1em;
     padding-right: 1em;
 }
-
+.white-sh-l {
+  font-family: Nunito Bold;
+  margin: 0em auto 0em;
+  max-width: 950px;
+  color: #fff;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+}
+.white-hero-1p {
+  color: #fff;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+  font-family: Nunito Regular;
+  font-size: 1.2em;
+  margin: 0em auto 0em;
+  max-width: 850px;
+}
 .white-hero-p {
     color: #fff;
     text-align: center;

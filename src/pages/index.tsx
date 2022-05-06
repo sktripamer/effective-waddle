@@ -3447,7 +3447,8 @@ useEffect(() => {
     </div>
               <div class='main-main'>
               <div className="main-vid-area">
-              <h1 className="revival-of-revenue">Welcome to your <span>Revival of Revenue</span></h1>
+              <h1 className="revival-of-revenue">Experience your <span>Revival of Revenue</span></h1>
+              <h2 className="white-sh">Bringing to Life the Business Income in You</h2>
               <div className={`rev-optin-mobile ${boxVisible}`}>
         <div className='time-section'>
                 <div className='time-remaining'>{titleText}</div>
@@ -3580,7 +3581,42 @@ useEffect(() => {
             
         </div>
     </div>   
-      
+    <h2 className="white-sh">Entrepreneurs are more likely to succeed when they follow a proven system. 
+Today, the system is broken, and the Great Resignation is underway. 
+Underappreciated employees are escaping the 9-5 rat race for a more 
+profitable, meaningful, and flexible lifestyle… 
+</h2>
+<h2 className="white-sh">Isn’t it time to become your own boss?</h2>
+<p className="white-hero-p">You are not alone if you don’t know how to start a business. 
+“Entrepreneurial” may be a new word to you, or perhaps you already 
+live entrepreneurially but business is hard. Either way, you need help; you need a “Roadmap to Revenue” that shows you exactly how to succeed.</p>
+    <p className="white-hero-p">After all, elementary school, high school, and college didn’t prepare you 
+to start your own business. Worse, your job conditioned you to depend on 
+someone else’s business rather than become your own business.
+</p>
+<h1 className='white-h'>We need a Revival of Revenue in Business, Ministry, &amp; Politics</h1>
+<h2 className="white-sh-l">Businesses run on <span>revenue</span>. Ministries run on <span>donations</span>.</h2>
+<h2 className="white-sh-l">Governments run on <span>taxes</span>. And households run on <span>income</span>.</h2>
+<h2 className="white-sh-l">For profit, nonprofit, or public sector, everything runs on <span>money</span>.</h2>
+<h2 className="white-sh">Today, millions of Americans need a Revival of Revenue
+that answers this 21st century <span>“money problem”</span> with a 
+more profitable model that anyone can follow. 
+</h2>
+<p className="white-hero-p">The average American needs a new path to success that doesn’t 
+depend on Big Universities for <span>over-priced degrees</span>, Big Corporations 
+for <span>under-paying jobs</span>, or Big Governments for <span>inflationary handouts</span>.
+</p>
+
+<p className="white-hero-1p">At a time when our nation is experiencing cultural conflict, </p>
+<p className="white-hero-1p">demographic differences, political confusion, and economic </p>
+<p className="white-hero-1p">frustration, we don’t need more of the same. </p>
+<p className="white-hero-1p"><span>We don’t need jobs. We need job creators. </span></p>
+<p className="white-hero-1p">And we need a model to create job creators, </p>
+<p className="white-hero-1p">so anyone with an entrepreneurial idea can build a business.</p>
+
+<p className="white-hero-1p">What if that person is you?</p>
+<p className="white-hero-1p">Is it time you go into business?</p>
+<p className="white-hero-1p">Isn’t it time you experience your Revival of Revenue?</p>
     </div>
     <div class="book-section-cont">
     <div class="book-section">
@@ -3602,9 +3638,7 @@ useEffect(() => {
     <div id='say-hello-container'>
     <div class="say-hello-bg"></div>
   </div> */}
-{isBrowser && (<Suspense fallback={<div></div>}>
-				<SayHello />
-</Suspense>)}
+
 {isBrowser && (<Suspense fallback={<div></div>}>
 				<SayHelloList />
 </Suspense>)}
@@ -3754,6 +3788,10 @@ useEffect(() => {
           </div>  
     </div> */}
   </div>
+  {isBrowser && (<Suspense fallback={<div></div>}>
+				<SayHello />
+</Suspense>)}
+
 {/* 
 
   <div id='say-hello-list-container'>

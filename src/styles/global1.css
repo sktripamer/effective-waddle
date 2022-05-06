@@ -217,7 +217,51 @@
     justify-content: space-between;
     align-items: flex-end;
   }
+  .white-sh-l span {
+    display: inline;
+    font-style: italic;
+}
 
+.white-sh {
+color: #fff;
+    text-align: center;
+    font-family: 'Nunito Bold';
+margin: 2em auto 1em auto;
+    max-width: 950px;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.white-hero-p {
+    color: #fff;
+    text-align: center;
+    font-family: 'Nunito Regular';
+    margin: 0.5em auto 1em auto;
+    max-width: 850px;
+    padding-left: 1em;
+    font-size: 1.2em;
+    padding-right: 1em;
+}
+
+.white-h {
+    font-size: 2.1rem;
+    letter-spacing: 0;
+    margin: 2.5em auto 3em auto;
+    text-align: center;
+    color: #fff;
+    padding-left: 1em;
+    padding-right: 1em;
+    max-width: 1300px;
+    font-family: 'Josefin Sans';
+    text-transform: uppercase;
+}
+.white-hero-p span {
+    font-style: italic;
+}
+
+.final-p-section {
+    margin-top: 3em;
+}
   .next-btn.stepback {
     padding: 6px 25px;
     width: 20%;
@@ -1015,6 +1059,25 @@ p.result-message-text a {
     margin-top: 30px;
   }
   @media (max-width: 666px) {
+    h2.white-sh {
+      font-size: 1.3em;
+  }
+
+  p.white-hero-p {
+    font-size: 1.05em;
+}
+h1.white-h {
+  font-size: 1.8em;
+}
+
+h2.white-sh-l {
+  font-size: 1.3em;
+}
+
+p.white-hero-1p {
+  font-size: 1.05em;
+}
+
     div.hello-list-number {
       font-size: 54px;
     line-height: 54px;
@@ -1266,6 +1329,7 @@ p.result-message-text a {
     max-width: 1500px;
     padding-left: 4rem;
     padding-right: 4rem;
+    transition: all .25s ease-out;
   }
   .more-details {
     color: #d4d4d4;

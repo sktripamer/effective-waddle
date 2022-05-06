@@ -46,9 +46,9 @@ module.exports = {
         url: process.env.GATSBY_WORDPRESS_API_URL,
 
         schema: {
-          requestConcurrency: 5, // currently set to 5
-          perPage: 20, // currently set to 20
-          previewRequestConcurrency: 2, // currently set to 2
+          requestConcurrency: 1, // currently set to 5
+          perPage: 1, // currently set to 20
+          previewRequestConcurrency: 1, // currently set to 2
           
         },
         type: {

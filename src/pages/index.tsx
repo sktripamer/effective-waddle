@@ -2960,7 +2960,7 @@ const handleScroll = () => {
   let elScrollPos = document.querySelector('.book-section-cont').getBoundingClientRect().top;
   let plax = document.querySelector('.y-container');
 
-  let vwport = window.screen.availHeight * .80;
+  let vwport = window.innerHeight * .80;
      if (elScrollPos <= 0) {
       if (Math.abs(elScrollPos) > vwport) {
         setScrollPosition(23)
@@ -3586,7 +3586,7 @@ Today, the system is broken, and the Great Resignation is underway.
 Underappreciated employees are escaping the 9-5 rat race for a more 
 profitable, meaningful, and flexible lifestyle… 
 </h2>
-<h2 className="white-sh">Isn’t it time to become your own boss?</h2>
+<h2 className="white-sh ">Isn’t it time to become your own boss?</h2>
 <p className="white-hero-p">You are not alone if you don’t know how to start a business. 
 “Entrepreneurial” may be a new word to you, or perhaps you already 
 live entrepreneurially but business is hard. Either way, you need help; you need a “Roadmap to Revenue” that shows you exactly how to succeed.</p>
@@ -3613,10 +3613,11 @@ for <span>under-paying jobs</span>, or Big Governments for <span>inflationary ha
 <p className="white-hero-1p"><span>We don’t need jobs. We need job creators. </span></p>
 <p className="white-hero-1p">And we need a model to create job creators, </p>
 <p className="white-hero-1p">so anyone with an entrepreneurial idea can build a business.</p>
-
+<div class='final-p-section'>
 <p className="white-hero-1p">What if that person is you?</p>
 <p className="white-hero-1p">Is it time you go into business?</p>
 <p className="white-hero-1p">Isn’t it time you experience your Revival of Revenue?</p>
+</div>
     </div>
     <div class="book-section-cont">
     <div class="book-section">

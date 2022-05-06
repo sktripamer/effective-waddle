@@ -398,6 +398,7 @@
       }
     }
     @media (max-width: 1050px) {
+
       div.vid-section-cta {
         font-size: 1.7rem;
       }
@@ -1091,6 +1092,15 @@
       position: relative;
       margin-top: 30px;
     }
+
+    @media (max-width: 666px) and (min-height: 800px) { 
+
+      .book-section-cont div.book-section-content-cont {
+          margin-top: 90vh;
+      }
+      }
+
+
     @media (max-width: 666px) {
       div.book-section-content-cont {
         margin-top: 72vh;
@@ -2885,18 +2895,23 @@
     }
 
     .hello-list-heading {
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-image: linear-gradient(202deg, #fff,#e1e1e1);
+      line-height: 30px;
       font-family: Josefin Sans;
       font-size: 26px;
+      filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.12)) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.14)) drop-shadow(0 1px 8px rgba(0, 0, 0, 0.12)) drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));
       width: 100%;
-      background-image: linear-gradient( rgb(238 9 28) 0%, rgb(133 11 144) 100% );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     .hello-list-number-cont {
       position: relative;
       width: 20%;
-
+      display: flex;
+      float: right;
+      justify-content: flex-end;
+      margin-right: 1em;
     }
 
     .hello-list-number-cont:after {
@@ -2923,14 +2938,9 @@
     }
 
     .hello-list-subheading {
-      -webkit-text-fill-color: transparent;
-      -webkit-background-clip: text;
-      background-image: linear-gradient(202deg, #fff,#e1e1e1);
-      line-height: 30px;
-      font-family: Josefin Sans;
-      font-size: 26px;
-      filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.12)) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.14)) drop-shadow(0 1px 8px rgba(0, 0, 0, 0.12)) drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));
-      width: 100%;
+      font-family: 'Nunito Regular';
+      color: #fff;
+      max-width: 400px;
     }
 
     .hello-list-item.h-first {

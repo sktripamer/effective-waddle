@@ -103,19 +103,19 @@
     }
         
 
-        // exports.createPages = async function({actions, gql}) {
-        //     const { data } = await cool()
+        exports.createPages = async function({actions, gql}) {
+            const { data } = await cool()
             
-        //     data.products.edges.forEach(edge => {
+            data.products.edges.forEach(edge => {
 
-        //         actions.createPage({
-        //             path: `${edge.node.productCategories.nodes[0].slug}/${edge.node.slug}`,
-        //             component: slash( singleProductPageTemplate ),
-        //             context: { id: edge.node.databaseId, slug: edge.node.slug, name: edge.node.name, type: edge.node.type, description: edge.node.description, featured: edge.node.featured, cat: edge.node.productCategories.nodes[0].name},
-        //         })
+                actions.createPage({
+                    path: `${edge.node.productCategories.nodes[0].slug}/${edge.node.slug}`,
+                    component: slash( singleProductPageTemplate ),
+                    context: { id: edge.node.databaseId, slug: edge.node.slug, name: edge.node.name, type: edge.node.type, description: edge.node.description, featured: edge.node.featured, cat: edge.node.productCategories.nodes[0].name},
+                })
                 
-        //     })
-        // }
+            })
+        }
 
 
 

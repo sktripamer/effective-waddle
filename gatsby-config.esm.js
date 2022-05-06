@@ -44,6 +44,11 @@ module.exports = {
       },
       options: {
         url: process.env.GATSBY_WORDPRESS_API_URL,
+        schema: {
+          requestConcurrency: 2, // currently set to 5
+          previewRequestConcurrency: 5, // currently set to 2
+          perPage: 20,
+        },
         type: {
           Customer: {
             exclude: true,

@@ -12,6 +12,10 @@
     font-family: 'Nunito Bold';
     src: url(../fonts/nunitobold.woff2) format('woff2');
   }
+  @font-face {
+    font-family: 'Poppins';
+    src: url(../fonts/poppins.woff2) format('woff2');
+  }
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -390,6 +394,9 @@ margin: 2em auto 1em auto;
     }
   }
   @media (max-width: 1050px) {
+    div.vid-section-cta {
+      font-size: 1.7rem;
+    }
     div.hello-list-item.h-first {
       margin-left: -10%;
   }
@@ -1080,6 +1087,18 @@ p.result-message-text a {
     margin-top: 30px;
   }
   @media (max-width: 666px) {
+    div.y-preorderbtn {
+      font-size: 20px;
+      padding: 8px 16px;
+    }
+    div.y-preorderbtnsmall {
+      font-size: 20px;
+      padding: 8px 16px;
+    }
+div.book-section {
+  transform: translateY(-50%) scale(0.8);
+}
+
     h2.white-sh {
       font-size: 1.3em;
   }
@@ -3087,6 +3106,7 @@ navbar end
     margin-bottom: 2px;
 }
   .y-preorderbtn {
+    font-family: 'Poppins';
     text-align: center;
     font-size: 26px;
     line-height: 28px;
@@ -3103,12 +3123,34 @@ navbar end
     -webkit-text-fill-color: initial;
     transition: .3s all;
     background-size: 200% 200%;
-    transform: scale(1.05);
+
 }
+.y-preorderbtn:after {content: '';
+  position: absolute;
+  border-radius: 100000000000000px;top: 20%;
+  left: 2px;
+  width: 0;
+  height: 60%;
+  background-color: rgba(255,255,255,0.4);
+ 
+    
+         transition: none;}
+
+.y-preorderbtn:hover:after {width: 105%;
+  background-color: rgba(255,255,255,0);
+
+         transition: all 0.4s ease-in-out;height: 100%;top: 0%;}
 .y-preorderbtn:hover {
+  transform: scale(1.05);
   text-shadow: 0px 0px 3px #d3d3d3;
   transition: .3s all;
-  filter: drop-shadow(0 0 0.75rem #00000080) saturate(1.1);
+  filter: drop-shadow(0 0 0.75rem #00000080) saturate(1.5);
+}
+.y-preorderbtnsmall:hover {
+  transform: scale(1.05);
+  text-shadow: 0px 0px 3px #d3d3d3;
+  transition: .3s all;
+  filter: drop-shadow(0 0 0.75rem #00000080) saturate(1.5);
 }
   .y-image-contain {
     width: 40%;
@@ -4476,6 +4518,7 @@ main > div.main-main {
     font-size: .6em;margin-top: .2em;margin-bottom: .7em;color: #cc0213;}
 
 .y-preorderbtnsmall {
+  font-family: 'Poppins';
   text-align: center;
   font-size: 8px;
   line-height: 10px;
@@ -5084,6 +5127,8 @@ div#shows-me-container {
   font-family: Josefin Sans;
   font-size: 2.1rem;
   margin-top: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 20px;
   text-align: center;
 }

@@ -3618,6 +3618,11 @@ for <span>under-paying jobs</span>, or Big Governments for <span>inflationary ha
 <p className="white-hero-1p">Is it time you go into business?</p>
 <p className="white-hero-1p">Isn’t it time you experience your Revival of Revenue?</p>
 </div>
+
+{isBrowser && (<Suspense fallback={<div></div>}>
+				<SayHelloList />
+</Suspense>)}
+
     </div>
     <div class="book-section-cont">
     <div class="book-section">
@@ -3645,9 +3650,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
     <div class="say-hello-bg"></div>
   </div> */}
 
-{isBrowser && (<Suspense fallback={<div></div>}>
-				<SayHelloList />
-</Suspense>)}
+
 
 
 <button onClick={preReveal}>test1</button>

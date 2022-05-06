@@ -2763,6 +2763,7 @@ const noShippingForm = () => {
       const [readmore, setReadmore] = useState(false)
       const [archetypeClick, setArchtypeClick] = useState(false)
       const [minibookClick, setMinibookClick] = useState(false)
+      const [bookWidth, setBookWidth] = useState(0)
       const titleRef = useRef(null)
       const setArchtype1 = () => {
         setArchtype(1)
@@ -2990,7 +2991,7 @@ useEffect(() => {
 
 
       useEffect(() => {
-
+        setBookWidth(document.querySelector('.book-section .book img').height * .625)
         async function fetchMyAPI() {
           timeoutResolver(6000).then(() =>  lastResort());
         }
@@ -3607,9 +3608,7 @@ depend on Big Universities for <span>over-priced degrees</span>, Big Corporation
 for <span>under-paying jobs</span>, or Big Governments for <span>inflationary handouts</span>.
 </p>
 
-<p className="white-hero-1p">At a time when our nation is experiencing cultural conflict, </p>
-<p className="white-hero-1p">demographic differences, political confusion, and economic </p>
-<p className="white-hero-1p">frustration, we don’t need more of the same. </p>
+<p className="white-hero-1p">At a time when our nation is experiencing cultural conflict, demographic differences, political confusion, and economic frustration, we don’t need more of the same.</p>
 <p className="white-hero-1p"><span>We don’t need jobs. We need job creators. </span></p>
 <p className="white-hero-1p">And we need a model to create job creators, </p>
 <p className="white-hero-1p">so anyone with an entrepreneurial idea can build a business.</p>
@@ -3627,7 +3626,7 @@ for <span>under-paying jobs</span>, or Big Governments for <span>inflationary ha
     <div class="book-section-cont">
     <div class="book-section">
     
-		<div style={Object.assign({transform: `rotateY(${scrollPosition}deg)` }, {boxShadow: `20px 20px 20px rgb(0 0 0 / ${shadowPosition}%)`})} class="book"> 
+		<div style={Object.assign({width: `${bookWidth}px`,transform: `rotateY(${scrollPosition}deg)` }, {boxShadow: `20px 20px 20px rgb(0 0 0 / ${shadowPosition}%)`})} class="book"> 
 			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover2.jpg"></img>
 		</div>
 	</div>

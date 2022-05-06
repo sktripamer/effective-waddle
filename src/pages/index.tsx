@@ -3627,12 +3627,14 @@ for <span>under-paying jobs</span>, or Big Governments for <span>inflationary ha
 		</div>
 	</div>
   <div class="book-section-hero-cta">
+    <div class='book-section-content-cont'>           
   <h2 className="white-sh">Get PK’s Book to Build Your Dream Business!</h2>
   <p className="white-hero-p">Pre Order your copy today to get CHAPTER 1 sent right to your inbox!
 By pre ordering today, you will also INSTANTLY unlock our limited time
- <span>BOOK BUNDLE</span>! Get the book plus its <span>BONUS REVENUE MAP</span> revealing <span>The 7 Steps to Becoming Your Own Boss & Turning Your Passions into Profit Today</span>!
+ <span> BOOK BUNDLE!</span> Get the book plus its <span>BONUS REVENUE MAP</span> revealing <span>The 7 Steps to Becoming Your Own Boss & Turning Your Passions into Profit Today!</span>
 </p>
     <div onClick={preReveal} class="y-preorderbtn">Pre-Order My Book Bundle Now!</div>
+    </div>   
     </div>
 </div>
     

@@ -240,6 +240,9 @@ margin: 2em auto 1em auto;
   padding-right: 1em;
   text-align: center;
 }
+.white-sh span {
+  display: inline;
+}
 .white-hero-1p {
   color: #fff;
   padding-left: 1em;

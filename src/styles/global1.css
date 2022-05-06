@@ -407,7 +407,7 @@ input.react-dropdown-select-input {
 }
 
 .hello-list-content-cont {
-  width: 500px;
+  width: fit-content
 }
 @media (max-width: 1050px) {
 div.hello-list-number-cont {
@@ -2898,6 +2898,7 @@ div#say-hello-container {
 .hello-list-title {
   display: flex;
   justify-content: center;
+  margin-left: -3%;
 }
 
 .hello-list-item {

@@ -4517,6 +4517,12 @@ main > div.main-main {
 .modal-book-title-text {font-family: 'JOSEFIN SANS';
     font-size: .6em;margin-top: .2em;margin-bottom: .7em;color: #cc0213;}
 
+
+
+.book-section-content-cont {
+  margin-top: 41vh;
+}
+
 .y-preorderbtnsmall {
   font-family: 'Poppins';
   text-align: center;
@@ -5251,6 +5257,7 @@ div#shows-me-container {
   display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-bottom: 20vh;
 }
 
 .compare-today-subtext:after {

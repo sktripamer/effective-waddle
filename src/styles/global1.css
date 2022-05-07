@@ -2020,9 +2020,14 @@ width: 48px;
 
 .white-super-h {font-family: 'Josefin Sans';font-size: 2.1em;text-align: center;margin-bottom: 0.5em;color: #fff;background-image: linear-gradient(#fff,#c6c6c6);
     -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;margin-top: 2.5em;text-transform: uppercase;}
+    -webkit-background-clip: text;margin-top: 2.5em;text-transform: uppercase;
+    filter: drop-shadow(0 3px 4px rgba(0,0,0,.12)) drop-shadow(0 3px 3px rgba(0,0,0,.14)) drop-shadow(0 1px 8px rgba(0,0,0,.12)) drop-shadow(0 -2px 2px rgba(0,0,0,.1));
+  }
 
-.icons-container {display: flex;width: 100%;margin-top: 6em;margin-bottom: 5em;justify-content: center;}
+.icons-container {display: flex;width: 100%;margin-top: 6em;margin-bottom: 5em;justify-content: center;
+
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.12)) drop-shadow(0 1px 18px rgba(0, 0, 0, 0.14)) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.12)) drop-shadow(0 -2px 3px rgba(0, 0, 0, 0.1));
+}
 
 .icon-section {width: 32.5%;padding-top: 1.5em;padding-bottom: 1.5em;display: flex;align-items: center;}
 

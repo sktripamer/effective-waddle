@@ -3946,6 +3946,32 @@ How in the world can I make more money?
     </div>
   </div> */}
 
+
+  <div class='three-icons-container'>
+  <div class='seam-paper-1'></div>
+  <div class='three-icons-content'>
+    <div class='white-super-h'>Anyone can experience your Revival of Revenue</div>
+    <div class='white-sh'>You can start making building on your goals today</div>
+    <div class='icons-container'>
+      <div class='icon-section'>
+        <div class='icon-1'></div>
+        <div class='icon-section-text'>Learn how your Revival of Revenue works with PK</div>
+      </div>
+      <div class='icon-section'>
+      <div class='icon-2'></div>
+        <div class='icon-section-text'>Participate in courses with hundreds of others like you</div>
+      </div>
+      <div class='icon-section'>
+      <div class='icon-3'></div>
+        <div class='icon-section-text'>Bring value to yourself and those around you</div>
+      </div>
+    </div>
+  </div>
+  <div class='seam-paper-2'></div>
+  </div>
+
+
+
   <div class='read-more-container'>
     <div class='read-more-title'>
     EXPERIENCE YOUR ENTREPRENEURIAL JOURNEY

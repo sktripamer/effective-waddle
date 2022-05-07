@@ -410,6 +410,13 @@ input.react-dropdown-select-input {
   width: fit-content
 }
 @media (max-width: 1050px) {
+  .main-main div.read-more-title {
+    font-size: 40px;
+
+  }
+  div.archtype-title {
+    font-size: 44px;
+}
   div.compare-today-subtext:after, div.compare-tomorrow-subtext:before {
   
     height: 10px;
@@ -1122,13 +1129,7 @@ div#card-element {
 }
 
 @media (max-width: 666px) and (min-height: 800px) { 
-  div.compare-tomorrow-subtext:before {
-    margin-left: -14px;
-}
-  
-  div.compare-today-subtext:after {
-    margin-left: 6px;
-}
+
   .book-section-cont div.book-section-content-cont {
       margin-top: 90vh;
   }
@@ -1136,6 +1137,22 @@ div#card-element {
 
 
 @media (max-width: 666px) {
+  div.compare-tomorrow-subtext:before {
+    margin-left: -14px;
+}
+  
+  div.compare-today-subtext:after {
+    margin-left: 6px;
+}
+
+.main-main div.read-more-title {
+  font-size: 28px;
+}
+
+  .main-main div.archtype-title {
+    font-size: 28px;
+}
+
   #compare-container div.compare-today-subtext:after, #compare-container div.compare-tomorrow-subtext:before {
     background-size: contain;
     content: "";
@@ -3903,6 +3920,18 @@ div#book-container:before {
 .compare-today-subtext:nth-child(11) {
   animation: opacitystartlist 1s 5s forwards;
 }
+.compare-today-subtext:nth-child(12) {
+  animation: opacitystartlist 1s 5.5s forwards;
+}
+.compare-today-subtext:nth-child(13) {
+  animation: opacitystartlist 1s 6s forwards;
+}
+.compare-today-subtext:nth-child(14) {
+  animation: opacitystartlist 1s 6.5s forwards;
+}
+.compare-today-subtext:nth-child(15) {
+  animation: opacitystartlist 1s 7s forwards;
+}
 .compare-tomorrow-subtext:nth-child(1) {
   animation: opacitystartlist2 1s forwards;
 }
@@ -3935,6 +3964,18 @@ div#book-container:before {
 }
 .compare-tomorrow-subtext:nth-child(11) {
   animation: opacitystartlist2 1s 5s forwards;
+}
+.compare-tomorrow-subtext:nth-child(12) {
+  animation: opacitystartlist2 1s 5.5s forwards;
+}
+.compare-tomorrow-subtext:nth-child(13) {
+  animation: opacitystartlist2 1s 6s forwards;
+}
+.compare-tomorrow-subtext:nth-child(14) {
+  animation: opacitystartlist2 1s 6.5s forwards;
+}
+.compare-tomorrow-subtext:nth-child(15) {
+  animation: opacitystartlist2 1s 7s forwards;
 }
 /* 
 .compare-today-subtext:nth-child(1) {
@@ -5243,10 +5284,11 @@ font-family: Josefin Sans;
 }
 
 .read-more-content {
-margin: 12px 20px;
--webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(#ee091c,#850b90);
+  margin: 12px auto;
+  max-width: 800px;
+  padding: 0.5em;
+  color: #76010b;
+  font-family: 'Nunito Regular';
 }
 
 .preorder-book-section {
@@ -5408,6 +5450,8 @@ color: #fc1d36;
 font-family: Josefin Sans;
 font-size: 58px;
 font-weight: 700;
+padding-right: 1em;
+padding-left: 1em;
 text-align: center;
 margin-bottom:20px;
 margin-top: 120px;

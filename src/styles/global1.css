@@ -4399,6 +4399,7 @@ transition: .4s all;
     background-image: linear-gradient(#b00a60,#b00a60);
     color: #ef1b3d;
     z-index: 1;
+    text-transform: initial;
     bottom: 0;
 }
 

@@ -1125,11 +1125,11 @@ div.j-heading:first-child {font-size: 9.5vw;}
 
 div.j-headingj1 {font-size: 6.2vw;}
 
-div.j-first .typewrap1 {font-size: 7.4VW;margin-top: 0;}
-div.j-second .typewrap2 {font-size: 7.4VW;margin-top: 0;}
+div.j-first .typewrap1 {font-size: 7VW;margin-top: 0;}
+div.j-second .typewrap2 {font-size: 11VW;margin-top: 0;}
 div.j-third .typewrap3 {font-size: 7.4VW;margin-top: 0;}
 
-div.Typewriter {margin-top: 0;margin-bottom: 60px;}
+div.Typewriter {    margin-top: 18px;margin-bottom: 60px;}
 
 div.j-image-cont {width: 70%;}
 
@@ -1141,10 +1141,30 @@ div.j-headingj3 {font-size: 4.55vw;}
     margin-right: 6.5%;
     margin-left: 6.5%;
   }
-
-  .j-second div.j-paragraph {
-    margin-top: 0em;
-  }
+  div.j-first span.Typewriter__cursor {
+    font-size: 7VW;
+    margin-top: 0;
+    position: relative;
+    top: -0.1em;
+}
+div.j-second span.Typewriter__cursor {
+  font-size: 11VW;
+  margin-top: 0;
+  position: relative;
+  top: -0.1em;
+}
+div.j-third span.Typewriter__cursor {
+  font-size: 7.4VW;
+  margin-top: 0;
+  position: relative;
+  top: -0.1em;
+}
+div.j-first span.Typewriter__cursor {
+  font-size: 7VW;
+  margin-top: 0;
+  position: relative;
+  top: -0.1em;
+}
   .hello-list-title div.hello-list-number-cont {
     width: 20%;
 }
@@ -3127,23 +3147,34 @@ div#say-hello-list-container {
 }
 .j-headingj1 {
   font-size: 2.4vw;
+  color: #320ce3;
+    font-family: Josefin Sans;
+    white-space: nowrap;
 }
 .j-headingj2 {
   font-size: 2.12vw;
+  color: #320ce3;
+    font-family: Josefin Sans;
+    white-space: nowrap;
 }
 .j-headingj3 {
   font-size: 1.78vw;
+  color: #320ce3;
+    font-family: Josefin Sans;
+    white-space: nowrap;
 }
 
 .j-paragraph.false .j-invisible {display: none;}
 
-.j-paragraph {width: 45%;margin-right: auto;margin-left: 6.5%;color: #76010b;}
+.j-paragraph {width: 40%;margin-right: auto;margin-left: 6.5%;color: #76010b;}
 
 .j-paragraph.true .click-to-read-j {display: none;}
 
 .click-to-read-j {font-family: 'Nunito Bold';
   cursor: pointer;}
-
+  .j-second .j-paragraph {
+    width: 35%;
+}
 .j-visible {font-family: 'Nunito Regular';}
 
 .j-heading:first-child {font-size: 3.7vw;}

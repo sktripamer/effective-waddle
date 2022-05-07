@@ -1116,6 +1116,35 @@ div#card-element {
 
 
 @media (max-width: 666px) {
+
+div.journey-item div.j-paragraph {width: 100%;margin-right: 6.5%;margin-left: 6.5%;}
+
+div.j-text {width: 90%;}
+
+div.j-heading:first-child {font-size: 9.5vw;}
+
+div.j-headingj1 {font-size: 6.2vw;}
+
+div.j-first .typewrap1 {font-size: 7.4VW;margin-top: 0;}
+div.j-second .typewrap2 {font-size: 7.4VW;margin-top: 0;}
+div.j-third .typewrap3 {font-size: 7.4VW;margin-top: 0;}
+
+div.Typewriter {margin-top: 0;margin-bottom: 60px;}
+
+div.j-image-cont {width: 70%;}
+
+div.j-headingj2 {font-size: 5.42vw;}
+
+div.j-headingj3 {font-size: 4.55vw;}
+  div.journey-item div.j-paragraph {
+    width: 100%;
+    margin-right: 6.5%;
+    margin-left: 6.5%;
+  }
+
+  .j-second div.j-paragraph {
+    margin-top: 0em;
+  }
   .hello-list-title div.hello-list-number-cont {
     width: 20%;
 }
@@ -3087,12 +3116,58 @@ div#say-hello-list-container {
   }  
 
 }
+.j-paragraph {
+  width: 45%;
+    margin-left: 6.7%;
+    margin-right: auto;
+    color: #76010b;
+}
+.j-heading:first-child {
+  font-size: 3.7vw;
+}
+.j-headingj1 {
+  font-size: 2.4vw;
+}
+.j-headingj2 {
+  font-size: 2.12vw;
+}
+.j-headingj3 {
+  font-size: 1.78vw;
+}
+
+.j-paragraph.false .j-invisible {display: none;}
+
+.j-paragraph {width: 45%;margin-right: auto;margin-left: 6.5%;color: #76010b;}
+
+.j-paragraph.true .click-to-read-j {display: none;}
+
+.click-to-read-j {font-family: 'Nunito Bold';
+  cursor: pointer;}
+
+.j-visible {font-family: 'Nunito Regular';}
+
+.j-heading:first-child {font-size: 3.7vw;}
+
+.j-first .j-paragraph {margin-top: -3em;}
+
+.j-second .j-paragraph {margin-right: 4.5%;margin-left: auto;margin-top: -3em;}
+
+.j-third .j-paragraph {margin-top: 3em;}
+
+.j-first .typewrap1 {font-size: 2.4VW;
+  white-space: nowrap;}
+
+.j-second .typewrap2 {font-size: 2.4VW;
+  white-space: nowrap;}
+.j-third .typewrap3 {font-size: 2.4VW;
+  white-space: nowrap;}
 
 .journey-item {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   margin-bottom: 200px;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 }
@@ -3724,13 +3799,14 @@ div#compare-container {
 div#archetype-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .arch-cont {
   cursor: pointer;
   height: 500px;
   width: 25%;
-  transition: .3s all;
+  transition: .2s all;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -4278,6 +4354,7 @@ transition: .4s all;
   transition: height .6s, opacity .3s;
   overflow-y: hidden;
   width: 90%;
+  max-width: 400px;
   z-index: -1;
   margin: 0 auto;
 
@@ -4980,15 +5057,24 @@ text-align: left;
 .Typewriter {
 font-family: 'Josefin Sans';
 color: #e80a24;
-font-size: clamp(12px, 2.1vw, 70px);
+font-size: 3.4VW;
+white-space: nowrap;
 margin-top: 16px;
 height: 40px;
 }
 
 span.typewrap1:before {
-content:'I Need '
+content:'FEAR OF '
 
 }
+span.typewrap2:before {
+  content:'FEAR OF '
+  
+  }
+  span.typewrap3:before {
+    content:'LACK OF '
+    
+    }
 
 
 

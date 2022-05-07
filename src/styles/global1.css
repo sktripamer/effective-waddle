@@ -1116,7 +1116,54 @@ div#card-element {
 
 
 @media (max-width: 666px) {
+  div.acc1 .ac1 .arch-title:after {
 
+    font-size: 30px;
+
+    }
+    
+    div.acc2 .ac2 .arch-title:after {
+      font-size: 30px;
+    }
+    
+    div.acc3 .ac3 .arch-title:after {
+      font-size: 30px;
+    }
+    
+    
+    div.acc4 .ac4 .arch-title:after {
+      font-size: 30px;
+    }
+    
+    
+    div.acc5 .ac5 .arch-title:after {
+      font-size: 30px;
+    }
+    
+    div.acc6 .ac6 .arch-title:after {
+      font-size: 30px;
+    }
+    
+    div.acc7 .ac7 .arch-title:after {
+      font-size: 30px;
+    }
+    
+    div.acc8 .ac8 .arch-title:after {
+      font-size: 30px;
+    }
+
+    div.arch-title:after {
+      font-size: 22px;
+    }
+div.arch-title:before {
+  font-size: 18px;
+
+  line-height: 18px;
+}
+div.arch-text {
+  font-size: 13px;
+  width: 95%;
+}
 div.journey-item div.j-paragraph {width: 100%;margin-right: 6.5%;margin-left: 6.5%;}
 
 div.j-text {width: 90%;}
@@ -3832,7 +3879,9 @@ div#archetype-container {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
+.journey-item.j-third {
+  margin-bottom: 80px;
+}
 .arch-cont {
   cursor: pointer;
   height: 500px;
@@ -4272,8 +4321,10 @@ transition: .4s all;
     content: "";
     height: 100%;
     position: absolute;
-    width: 100%;
+    width: 90%;
+    line-height: 22px;
     left: 0;
+    margin-left:5%;
     font-family: 'Nunito Bold';
     font-size: 22px;
     top: 90%;

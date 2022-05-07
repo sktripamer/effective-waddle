@@ -410,6 +410,12 @@ input.react-dropdown-select-input {
   width: fit-content
 }
 @media (max-width: 1050px) {
+  div.compare-today-subtext:after, div.compare-tomorrow-subtext:before {
+  
+    height: 10px;
+    margin-top: 9px;
+    width: 10px;
+}
   div.compare-title-1, div.compare-title-2 {font-size: 60px;}
 
 div.compare-title-1>span, div.compare-title-2>span {font-size: 24px;}
@@ -1116,7 +1122,13 @@ div#card-element {
 }
 
 @media (max-width: 666px) and (min-height: 800px) { 
-
+  div.compare-tomorrow-subtext:before {
+    margin-left: -14px;
+}
+  
+  div.compare-today-subtext:after {
+    margin-left: 6px;
+}
   .book-section-cont div.book-section-content-cont {
       margin-top: 90vh;
   }
@@ -1124,6 +1136,14 @@ div#card-element {
 
 
 @media (max-width: 666px) {
+  #compare-container div.compare-today-subtext:after, #compare-container div.compare-tomorrow-subtext:before {
+    background-size: contain;
+    content: "";
+    height: 8px;
+    margin-top: 5px;
+    position: absolute;
+    width: 8px;
+}
   div.compare-title-vs {
     font-size: 16px;
 }
@@ -3704,6 +3724,7 @@ div#what-container {
   text-align: end;
   margin-right: 10%;
   margin-top: 6px;
+  position: relative;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-image: linear-gradient(90deg, rgba(50,12,227,1) 20%, rgba(224,10,45,1) 100%);
@@ -3713,6 +3734,7 @@ div#what-container {
 opacity: 0;
   margin-left: 10%;
   margin-top: 6px;
+  position: relative;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-image: linear-gradient(270deg, rgba(50,12,227,1) 20%, rgba(224,10,45,1) 100%);
@@ -5647,7 +5669,7 @@ width: 12px;
 background-size: contain;
 height: 12px;
 margin-left: 10px;
-margin-top: 10px;
+margin-top: 11px;
 position: absolute;
 }
 
@@ -5659,7 +5681,7 @@ width: 12px;
 background-size: contain;
 height: 12px;
 margin-left: -20px;
-margin-top: 10px;
+margin-top: 11px;
 position: absolute;
 }
 

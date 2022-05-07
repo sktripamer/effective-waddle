@@ -2782,15 +2782,15 @@ const noShippingForm = () => {
       }
       const setReadLessj1 = () => {
         setReadmorej1(false)
-        j1Ref.current.scrollIntoView()
+        j1Ref.current.scrollIntoView({block: 'center'})
       }
       const setReadLessj2 = () => {
         setReadmorej2(false)
-        j2Ref.current.scrollIntoView()
+        j2Ref.current.scrollIntoView({block: 'center'})
       }
       const setReadLessj3 = () => {
         setReadmorej3(false)
-        j3Ref.current.scrollIntoView()
+        j3Ref.current.scrollIntoView({block: 'center'})
       }
       const setArchtype1 = () => {
         setArchtype(1)
@@ -3743,10 +3743,10 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
     <div class="journey-item j-first">
         <div class="j-text">
             <div class="j-heading">The #1 Reason Why</div>
-            <div class="j-heading">People Don’t Start a Business</div>
+            <div class="j-headingj1">People Don’t Start a Business</div>
               <div class="j-transform"><Typewriter
     options={{
-      strings: ['Failure', 'Mistakes','Social Status'],
+      strings: ['FAILURE', 'MISTAKES','SOCIAL STATUS'],
       autoStart: true,
       wrapperClassName: 'typewrap1',
       loop: true,
@@ -3776,10 +3776,10 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
     <div class="journey-item j-second">
         <div class="j-text">
         <div class="j-heading">The #1 Reason Why</div>
-            <div class="j-heading">People Don’t Follow Their Dreams</div>
+            <div class="j-headingj2">People Don’t Follow Their Dreams</div>
              <div class="j-transform"><Typewriter
   options={{
-    strings: ['Loss', 'Risk','Debt', 'Harm'],
+    strings: ['LOSS', 'RISK','DEBT', 'HARM'],
     autoStart: true,
     wrapperClassName: 'typewrap2',
     loop: true,
@@ -3808,10 +3808,10 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
     <div class="journey-item j-third">
         <div class="j-text">
         <div class="j-heading">The #1 Reason Why</div>
-            <div class="j-heading"> People Give Up On Their Business Ideas</div>
+            <div class="j-headingj3"> People Give Up On Their Business Ideas</div>
              <div class="j-transform"><Typewriter
     options={{
-      strings: ['Vision', 'Direction','Initiative', 'Conviction'],
+      strings: ['VISION', 'DIRECTION','INITIATIVE', 'CONVICTION'],
       autoStart: true,
       wrapperClassName: 'typewrap3',
       loop: true,

@@ -1124,6 +1124,9 @@ div#card-element {
 
 
 @media (max-width: 666px) {
+  div.compare-title-vs {
+    font-size: 16px;
+}
   #compare-container div.compare-title-1, #compare-container div.compare-title-2 {font-size: 36px;}
 
 #compare-container div.compare-title-1>span, #compare-container div.compare-title-2>span {font-size: 18px;margin-top: 0;line-height: 18px;}
@@ -3653,6 +3656,7 @@ div#what-container {
   align-items: center;
   border-bottom: 10px solid;
   border-image-slice: 1;
+  position: relative;
   border-width: 5px;
   border-image-source: linear-gradient(90deg, rgba(50,12,227,1) 0%, rgba(224,10,45,1) 50%, rgba(50,12,227,1) 100%);
 }

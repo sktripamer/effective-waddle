@@ -3168,6 +3168,7 @@ div#say-hello-list-container {
   font-size: 26px;
   filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.12)) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.14)) drop-shadow(0 1px 8px rgba(0, 0, 0, 0.12)) drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));
   width: 100%;
+  margin-top: 8px;
 }
 
 .hello-list-number-cont {

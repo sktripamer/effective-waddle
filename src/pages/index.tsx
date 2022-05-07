@@ -3951,7 +3951,7 @@ How in the world can I make more money?
   <div class='seam-paper-1'></div>
   <div class='three-icons-content'>
     <div class='white-super-h'>Anyone can experience your Revival of Revenue</div>
-    <div class='white-sh'>You can start making building on your goals today</div>
+    <h2 class='white-sh-l'>You can start building on your goals today</h2>
     <div class='icons-container'>
       <div class='icon-section'>
         <div class='icon-1'></div>

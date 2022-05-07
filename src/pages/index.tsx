@@ -2980,12 +2980,15 @@ const handleScroll = () => {
       setPlax((plax.getBoundingClientRect().top + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom))) / (window.innerHeight + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom)) ) * 6)
    }
 };
-
+const reportWindowSize = () => {
+  setBookWidth(document.querySelector('.book-section .book img').height * .625)
+}
 useEffect(() => {
   document.querySelector('.main-main').addEventListener('scroll', handleScroll, { passive: true });
-
+  window.addEventListener('resize', reportWindowSize);
     return () => {
       document.querySelector('.main-main').removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', reportWindowSize);
     };
 }, []);
 

@@ -11,31 +11,38 @@ export default function CompareList() {
 
     <div class='compare-text-container'>
         <div class='compare-today-container'> 
-            <div class="compare-today-subtext">Getting Minimized</div>
-            <div class="compare-today-subtext">Choosing a Monotonous Lifestyle</div>
-            <div class="compare-today-subtext">Accepting An Underappreciated Work-life</div>
-            <div class="compare-today-subtext">Selling Your Talents at a Wholesale Discount</div>
-            <div class="compare-today-subtext">Living On One Income Source</div>
-            <div class="compare-today-subtext">Working Everyday for Money</div>
-            <div class="compare-today-subtext">Losing Under the Laws of Addition</div>
-            <div class="compare-today-subtext">Only Cutting Expenses to “Make Money”</div>  
-            <div class="compare-today-subtext">Settling for a Stagnant Career</div>
-            <div class="compare-today-subtext">Renting Your Time to Your Employer</div>
-            <div class="compare-today-subtext">Doing the Same Work Everyday</div>
-
+            <div class="compare-today-subtext">Monotonous Work</div>
+            <div class="compare-today-subtext">Cookie-Cutter</div>
+            <div class="compare-today-subtext">Apathetic Work Life</div>
+            <div class="compare-today-subtext">My Boss’ Ideas</div>
+            <div class="compare-today-subtext">9 - 5 Schedules</div>
+            <div class="compare-today-subtext">Limited Salary</div>
+            <div class="compare-today-subtext">Traded My Time for Dollars</div>
+            <div class="compare-today-subtext">Working for a Boss</div>  
+            <div class="compare-today-subtext">Minimized Wage</div>
+            <div class="compare-today-subtext">Investing in Others</div>
+            <div class="compare-today-subtext">One Source of Income</div>
+            <div class="compare-today-subtext">You Work For Money</div>
+            <div class="compare-today-subtext">Laws of Addition</div>
+            <div class="compare-today-subtext">Budget</div>
+            <div class="compare-today-subtext">Rented My Time</div>
         </div>
         <div class='compare-tomorrow-container'>
-            <div class="compare-tomorrow-subtext">Getting Maximized</div>
-            <div class="compare-tomorrow-subtext">Creating a Meaningful Life</div>
-            <div class="compare-tomorrow-subtext">Recruiting, Hiring, &amp; Blessing Those You Lead</div>
-            <div class="compare-tomorrow-subtext">Selling Your Skill Sets at a Retail Premium</div>
-            <div class="compare-tomorrow-subtext">Generating Multiple Revenue Streams</div>
-            <div class="compare-tomorrow-subtext">Allowing Money to Work for You</div>
-            <div class="compare-tomorrow-subtext">Winning With the Laws of Multiplication</div>
-            <div class="compare-tomorrow-subtext">Increasing Revenue to Actually Make Money</div>
-            <div class="compare-tomorrow-subtext">Striving to Lead a Meaningful Life</div>
-            <div class="compare-tomorrow-subtext">Owning Your Time as a Business Owner</div>
-            <div class="compare-tomorrow-subtext">Learning Something New Every Week</div>
+            <div class="compare-tomorrow-subtext">Meaningful Work</div>
+            <div class="compare-tomorrow-subtext">Creative Solutions</div>
+            <div class="compare-tomorrow-subtext">Passionate Work Life</div>
+            <div class="compare-tomorrow-subtext">My Best Ideas</div>
+            <div class="compare-tomorrow-subtext">Flexible Schedules</div>
+            <div class="compare-tomorrow-subtext">Unlimited Revenue</div>
+            <div class="compare-tomorrow-subtext">Trade My Mind for Dollars</div>
+            <div class="compare-tomorrow-subtext">Became My Own Boss</div>
+            <div class="compare-tomorrow-subtext">Maximum Wage</div>
+            <div class="compare-tomorrow-subtext">Investing in Myself</div>
+            <div class="compare-tomorrow-subtext">Multiple Revenue Streams</div>
+            <div class="compare-tomorrow-subtext">Money Works For You</div>
+            <div class="compare-tomorrow-subtext">Laws of Multiplication</div>
+            <div class="compare-tomorrow-subtext">Actually Making Money</div>
+            <div class="compare-tomorrow-subtext">Owning My Time</div>
 
         </div>
     </div>

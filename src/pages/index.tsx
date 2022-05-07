@@ -3974,7 +3974,7 @@ How in the world can I make more money?
 
   <div class='read-more-container'>
     <div class='read-more-title'>
-    EXPERIENCE YOUR ENTREPRENEURIAL JOURNEY
+    WHY START YOUR REVIVAL OF REVENUE?
     </div>
     <div class={`read-more-content ${readmore}`}>
       <div ref={titleRef} class='always-visible'>

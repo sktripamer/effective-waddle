@@ -1135,6 +1135,13 @@ div#card-element {
   margin-bottom: 100px;
 }
 
+@supports (-webkit-touch-callout: none) {
+  main div.main-vid-area {
+    margin-left:0;
+  }
+}
+
+
 @media (max-width: 666px) and (min-height: 800px) { 
 
   .book-section-cont div.book-section-content-cont {

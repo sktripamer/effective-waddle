@@ -17,7 +17,8 @@
     } from '@vime/react';
     import Dashboard from "../components/Dashboard";
     const SayHello = React.lazy(() => import("../components/say-hello"));
-    const SayHelloList = React.lazy(() => import("../components/say-hello-list"));
+    //const SayHelloList = React.lazy(() => import("../components/say-hello-list"));
+    import SayHelloList from "../components/say-hello-list";
     const CompareList = React.lazy(() => import("../components/compare"));
     const WhichOne = React.lazy(() => import("../components/WhichOne"));
     const Minibook = React.lazy(() => import("../components/Minibook"));

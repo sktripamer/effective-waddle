@@ -2768,6 +2768,7 @@ const noShippingForm = () => {
       const [archetypeClick, setArchtypeClick] = useState(false)
       const [minibookClick, setMinibookClick] = useState(false)
       const [bookWidth, setBookWidth] = useState(0)
+      const [windowWidth, setWindowWidth] = useState(0)
       const titleRef = useRef(null)
 
       const setArchtype1 = () => {
@@ -2902,6 +2903,7 @@ function preHide3() {
   setPreorder3(false)
 }
   const [shadowPosition, setShadowPosition] = useState(20);
+  const [yPosition, setYPosition] = useState(135);
   const [scrollPosition, setScrollPosition] = useState(180);
   const [plaxVal, setPlax] = useState(0);
 const handleScroll = () => {
@@ -2913,12 +2915,15 @@ const handleScroll = () => {
       if (Math.abs(elScrollPos) > vwport) {
         setScrollPosition(23)
         setShadowPosition(20)
+        setYPosition(35)
       } else {
+        setYPosition( 135 -  (100 * (Math.abs(elScrollPos) / vwport)) )
         setScrollPosition( 180 -  (157 * (Math.abs(elScrollPos) / vwport)) )
         setShadowPosition( Math.abs(20 -  (40 * (Math.abs(elScrollPos) / vwport))) )
       }
   
      } else {
+      setYPosition(135)
       setScrollPosition(180)
       setShadowPosition(20)
      }
@@ -2929,6 +2934,7 @@ const handleScroll = () => {
 };
 const reportWindowSize = () => {
   setBookWidth(document.querySelector('.book-section .book img').height * .625)
+  setWindowWidth(window.innerWidth)
 }
 useEffect(() => {
   window.addEventListener('scroll', handleScroll, { passive: true });
@@ -2941,6 +2947,7 @@ useEffect(() => {
 
 
       useEffect(() => {
+        setWindowWidth(window.innerWidth)
         setBookWidth(document.querySelector('.book-section .book img').height * .625)
         async function fetchMyAPI() {
           timeoutResolver(6000).then(() =>  lastResort());
@@ -3509,7 +3516,7 @@ someone else’s business rather than become your own business.
 
     </div>
     <div class="book-section-cont">
-    <div class="book-section">
+    <div style={windowWidth > 666 ? Object.assign({transform: `translateY(-${yPosition}vh)`}) : Object.assign({transform: `translateY(-${yPosition}vh) scale(.8)`})} class="book-section">
     
 		<div style={Object.assign({width: `${bookWidth}px`,transform: `rotateY(${scrollPosition}deg)` }, {boxShadow: `20px 20px 20px rgb(0 0 0 / ${shadowPosition}%)`})} class="book"> 
 			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover2.jpg"></img>

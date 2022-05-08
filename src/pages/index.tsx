@@ -19,11 +19,14 @@
     const SayHello = React.lazy(() => import("../components/say-hello"));
     const SayHelloList = React.lazy(() => import("../components/say-hello-list"));
     const CompareList = React.lazy(() => import("../components/compare"));
+    const WhichOne = React.lazy(() => import("../components/WhichOne"));
+    const Minibook = React.lazy(() => import("../components/Minibook"));
+    const TypeText = React.lazy(() => import("../components/TypeText"));
     //import CustomizableVideoPlayer from '@folly-systems/custom-react-player'
     import useAuth, { User } from "../hooks/useAuth";
     //import UnAuthContent from "../components/UnAuthContent";
     import {loadStripe} from '@stripe/stripe-js/pure';
-    import Typewriter from 'typewriter-effect';
+
     import {
       CardElement,
       Elements,
@@ -2761,37 +2764,12 @@ const noShippingForm = () => {
       const [archetype, setArchtype] = useState(1)
       const [minibook, setMinibook] = useState(1)
       const [readmore, setReadmore] = useState(false)
-      const [readmorej1, setReadmorej1] = useState(false)
-      const [readmorej2, setReadmorej2] = useState(false)
-      const [readmorej3, setReadmorej3] = useState(false)
+
       const [archetypeClick, setArchtypeClick] = useState(false)
       const [minibookClick, setMinibookClick] = useState(false)
       const [bookWidth, setBookWidth] = useState(0)
       const titleRef = useRef(null)
-      const j1Ref = useRef(null)
-      const j2Ref = useRef(null)
-      const j3Ref = useRef(null)
-      const setj1 = () => {
-        setReadmorej1(true)
-      }
-      const setj2 = () => {
-        setReadmorej2(true)
-      }
-      const setj3 = () => {
-        setReadmorej3(true)
-      }
-      const setReadLessj1 = () => {
-        setReadmorej1(false)
-        j1Ref.current.scrollIntoView({block: 'center'})
-      }
-      const setReadLessj2 = () => {
-        setReadmorej2(false)
-        j2Ref.current.scrollIntoView({block: 'center'})
-      }
-      const setReadLessj3 = () => {
-        setReadmorej3(false)
-        j3Ref.current.scrollIntoView({block: 'center'})
-      }
+
       const setArchtype1 = () => {
         setArchtype(1)
         setArchtypeClick(true)
@@ -2801,7 +2779,7 @@ const noShippingForm = () => {
 
       const openBook = (e) => {
         if (document.getElementsByClassName('y-preorderbtnsmall')[0] === event.target) return;
-        document.getElementsByClassName("main-main")[0].scroll({top: document.getElementById("mockup-element").offsetTop + 300 - (window.innerHeight /2), behavior: 'smooth'});
+        window.scroll({top: document.getElementById("mockup-element").offsetTop + 300 - (window.innerHeight /2), behavior: 'smooth'});
      
         const timer = setTimeout(() => {
                 //1.555 is ratio of heght / width of the book css properties
@@ -2881,65 +2859,7 @@ const noShippingForm = () => {
         setArchtype(8)
         setArchtypeClick(true)
       }
-      const goRight = () => {
-        if (minibook===7) {
-          setMinibook(1)
-          shiftView(".mb-cont.mb1")
-        } else {
-          setMinibook(minibook + 1)
-          shiftView(".mb-cont.mb" + (minibook + 1))
-        }
-        setMinibookClick(true)
-      }
-      const shiftView = (el) => {
-        const qselect = document.querySelector(el)
-        qselect.parentNode.scroll({left: qselect.offsetLeft - (qselect.parentNode.clientWidth / 2), behavior: 'smooth'});
-      }
-      const goLeft = () => {
-        if (minibook===1) {
-          setMinibook(7)
-          shiftView(".mb-cont.mb7")
-        } else {
-          setMinibook(minibook - 1)
-          shiftView(".mb-cont.mb" + (minibook - 1))
-        }
-        setMinibookClick(true)
-      }
-      const setMinibook1 = () => {
-        setMinibook(1)
-        shiftView(".mb-cont.mb1")
-        setMinibookClick(true)
-      }
-      const setMinibook2 = () => {
-        setMinibook(2)
-        shiftView(".mb-cont.mb2")
-        setMinibookClick(true)
-      }
-      const setMinibook3 = () => {
-        setMinibook(3)
-        shiftView(".mb-cont.mb3")
-        setMinibookClick(true)
-      }
-      const setMinibook4 = () => {
-        setMinibook(4)
-        shiftView(".mb-cont.mb4")
-        setMinibookClick(true)
-      }
-      const setMinibook5 = () => {
-        setMinibook(5)
-        shiftView(".mb-cont.mb5")
-        setMinibookClick(true)
-      }
-      const setMinibook6 = () => {
-        setMinibook(6)
-        shiftView(".mb-cont.mb6")
-        setMinibookClick(true)
-      }
-      const setMinibook7 = () => {
-        setMinibook(7)
-        shiftView(".mb-cont.mb7")
-        setMinibookClick(true)
-      }
+     
       const setReadMore = () => {
         setReadmore(true)
       }
@@ -3011,10 +2931,10 @@ const reportWindowSize = () => {
   setBookWidth(document.querySelector('.book-section .book img').height * .625)
 }
 useEffect(() => {
-  document.querySelector('.main-main').addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('scroll', handleScroll, { passive: true });
   window.addEventListener('resize', reportWindowSize);
     return () => {
-      document.querySelector('.main-main').removeEventListener('scroll', handleScroll);
+     window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', reportWindowSize);
     };
 }, []);
@@ -3046,52 +2966,8 @@ useEffect(() => {
 
 
         }, []);
-      
-        useEffect(() => {
-          if (archetypeClick===false) {
 
-        let timer = setInterval(() => {
 
-          setArchtype(archetype => {
-              const updatedCounter = archetype + 1;
-              if (updatedCounter === 9) {
-                  
-                  return 1;
-              }
-
-              return updatedCounter;
-          }); // use callback function to set the state
-        
-      }, 5000);
-      
-      
-      return () => clearInterval(timer); // cleanup the timer
-
-    }
-    }, [archetypeClick]);
-
-    useEffect(() => {
-      if (minibookClick===false) {
-
-    let timer2 = setInterval(() => {
-
-      setMinibook(minibook => {
-          const updatedCounter = minibook + 1;
-          if (updatedCounter === 8) {
-              shiftView(".mb-cont.mb1")
-              return 1;
-          }
-          shiftView(".mb-cont.mb" + updatedCounter)
-          return updatedCounter;
-      }); // use callback function to set the state
-    
-  }, 5000);
-  
-  
-  return () => clearInterval(timer2); // cleanup the timer
-
-}
-}, [minibookClick]);
   
         useEffect(() => {
     
@@ -3479,7 +3355,7 @@ useEffect(() => {
               <div class='main-main'>
               <div className="main-vid-area">
               <h1 className="revival-of-revenue">Experience your <span>Revival of Revenue</span></h1>
-              <h2 className="white-sh">Bringing to Life the Business Income in You</h2>
+              <h2 className="white-sh-l">Bringing to Life the Business Income in You</h2>
               <div className={`rev-optin-mobile ${boxVisible}`}>
         <div className='time-section'>
                 <div className='time-remaining'>{titleText}</div>
@@ -3625,28 +3501,7 @@ live entrepreneurially but business is hard. Either way, you need help; you need
 to start your own business. Worse, your job conditioned you to depend on 
 someone else’s business rather than become your own business.
 </p>
-<h1 className='white-h'>We need a Revival of Revenue in Business, Ministry, &amp; Politics</h1>
-<h2 className="white-sh-l">Businesses run on <span>revenue</span>. Ministries run on <span>donations</span>.</h2>
-<h2 className="white-sh-l">Governments run on <span>taxes</span>. And households run on <span>income</span>.</h2>
-<h2 className="white-sh-l">For profit, nonprofit, or public sector, everything runs on <span>money</span>.</h2>
-<h2 className="white-sh">Today, millions of Americans need a Revival of Revenue
-that answers this 21st century <span>“money problem”</span> with a 
-more profitable model that anyone can follow. 
-</h2>
-<p className="white-hero-p">The average American needs a new path to success that doesn’t 
-depend on Big Universities for <span>over-priced degrees</span>, Big Corporations 
-for <span>under-paying jobs</span>, or Big Governments for <span>inflationary handouts</span>.
-</p>
 
-<p className="white-hero-1p">At a time when our nation is experiencing cultural conflict, demographic differences, political confusion, and economic frustration, we don’t need more of the same.</p>
-<p className="white-hero-1p"><span>We don’t need jobs. We need job creators. </span></p>
-<p className="white-hero-1p">And we need a model to create job creators, </p>
-<p className="white-hero-1p">so anyone with an entrepreneurial idea can build a business.</p>
-<div class='final-p-section'>
-<p className="white-hero-1p">What if that person is you?</p>
-<p className="white-hero-1p">Is it time you go into business?</p>
-<p className="white-hero-1p">Isn’t it time you experience your Revival of Revenue?</p>
-</div>
 
 {isBrowser && (<Suspense fallback={<div></div>}>
 				<SayHelloList />
@@ -3679,272 +3534,18 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
     <div class="say-hello-bg"></div>
   </div> */}
 
-
-
-<div id='jounrey-list-container'>
-    <div class="journey-item j-first">
-        <div class="j-text">
-            <div class="j-heading">The #1 Reason Why</div>
-            <div class="j-headingj1">People Don’t Start a Business</div>
-              <div class="j-transform"><Typewriter
-    options={{
-      strings: ['FAILURE', 'MISTAKES','SOCIAL STATUS'],
-      autoStart: true,
-      wrapperClassName: 'typewrap1',
-      loop: true,
-    }}
-  /></div>
-        </div>   
-        <div class="j-image-cont">
-        <div class="j-image"></div>
-        </div> 
-        <div class={`j-paragraph ${readmorej1}`}>
-          <div ref={j1Ref} class='j-visible'>
-            <p>
-          42.6% of American entrepreneurs experience fear of failure. Thomas Edison said, "Many of life's failures are people who did not realize how close they were to success when they gave up." "I have not failed,” he said. “I've just found ten thousand ways that won't work." Thomas Edison understood that failure was a naturally occurring event that coincided with success. You must fail to succeed. By failing, you identify how not to fail again, and you go on to find new ways to succeed. 
-          </p>
-          </div>
-          <div onClick={setj1} class='click-to-read-j'>Read More</div> 
-          <div class='j-invisible'>
-            <p>Here’s a real world model of failure and success. Whether you are a professional leading a company, a pastor leading a church, or a politician leading a constituent, every great idea starts with the <b>Birth of the Vision.</b> These are usually good times for leaders. Everyone believes in the future, and nobody has faced failure, which, again, is a naturally occurring event on your way to success.</p>
-            <p>Then, inevitably, comes obstacles that often lead to the <b>Death of the Vision.</b> The majority of leaders and believers quit here. Faced with failure, the vision often dies. </p>
-            <p>Only the bravest visionaries still believe, and usually they alone experience the final phase of this journey of success. This phase is called the <b>Rebirth of the Vision.</b> After learning ways to fail, you also discover ways to succeed. In doing so, you overcome Death of the Vision and experience Rebirth of the Vision!</p>
-            <p>You see, successes and failures have one thing in common. Every success story is littered with failures. The difference between your story leading to success versus ending in failure is simple: Did you stop at failure or did you leverage your failures to achieve successes?</p>
-            <p>The Rebirth of the Vision is a true story of success, and this success can be financial, but it can also be based on achieving goals that align with your life values, lifestyle goals, and relationships. Regardless, this success can rarely be achieved by avoiding failure. Fear of Failure makes sense, but overcoming it makes all the difference. Pursue your vision for your life and experience your Revival of Revenue today!</p>
-            <div onClick={setReadLessj1} class='click-to-read-less'>Read Less</div> 
-          </div>
-          </div> 
-    </div>
-    <div class="journey-item j-second">
-        <div class="j-text">
-        <div class="j-heading">The #1 Reason Why</div>
-            <div class="j-headingj2">People Don’t Follow Their Dreams</div>
-             <div class="j-transform"><Typewriter
-  options={{
-    strings: ['LOSS', 'RISK','DEBT', 'HARM'],
-    autoStart: true,
-    wrapperClassName: 'typewrap2',
-    loop: true,
-  }}
-/></div>
-        </div>   
-        <div class="j-image-cont">
-          <div class="j-image"></div>
-          </div>
-          <div class={`j-paragraph ${readmorej2}`}>
-          <div ref={j2Ref} class='j-visible'>
-            <p>
-            The risk and financial instability of running my own business is terrifying. What if I can't pay for rent because of a bad month? Even if I can start a business, I have no idea how to grow it. I'm scared that I will just be a small business forever and will never be able to replace my current job. I don't want to be stuck always playing credit card catch up, but I don't want to fall into an even worse position either. How can I overcome this crippling fear I have? 
-          </p>
-          </div>
-          <div onClick={setj2} class='click-to-read-j'>Read More</div> 
-          <div class='j-invisible'>
-            <p>I failed. They won't see me in the same way any more. I knew I was in over my head. There is no coming back from this one. I should have given up a long time ago. This was a stupid idea. It's not my fault. I feel ashamed. I'm a loser. It was impossible anyways. It was a pipe dream. </p>
-            <p>I'm scared of others seeing me differently. I am afraid of being rejected by others. 
-                You may relate. Fear of loss, fear of failure, and fear of the unknown are only a few of a host of fears evoked by the idea of starting your own business.</p>
-            <p>Challenges usually are not a bad thing but sometimes the walls are so high that I don't know what to do anymore. Life is a gauntlet of challenges that I am facing everyday. Trying to create another source of income is another obstacle on top of the ever growing pile. Why would I want to make my life harder than it already is? How is adding more challenges to my life going to help me? If only there was a way to get past my current financial challenges without adding new ones to the list.</p>
-            <div onClick={setReadLessj2} class='click-to-read-less'>Read Less</div> 
-          </div>
-          </div> 
-    </div>
-    <div class="journey-item j-third">
-        <div class="j-text">
-        <div class="j-heading">The #1 Reason Why</div>
-            <div class="j-headingj3"> People Give Up On Their Business Ideas</div>
-             <div class="j-transform"><Typewriter
-    options={{
-      strings: ['VISION', 'DIRECTION','INITIATIVE', 'CONVICTION'],
-      autoStart: true,
-      wrapperClassName: 'typewrap3',
-      loop: true,
-    }}
-  /></div>
-        </div>   
-        <div class="j-image-cont">
-          <div class="j-image"></div>
-          </div> 
-          <div class={`j-paragraph ${readmorej3}`}>
-          <div ref={j3Ref} class='j-visible'>
-            <p>
-            Lack of vision is the #1 reason why aspiring entrepreneurs can’t find a clear path forward. It's amazing that we can search for anything we want on the internet yet we don't even know what to search for. How are you supposed to know which way to go when there are so many dead ends and pitfalls in life? The problem in life is clear but I just don't have the time to figure out which way is the best way out.  I need to make more money. If only there was a map to help give me the direction I need to see clearly and avoid these financial pitfalls that I have seen others fall into. I don't want to move without being able to see where I am going, it's too dangerous.
- 
-          </p>
-          </div>
-          <div onClick={setj3} class='click-to-read-j'>Read More</div> 
-          <div class='j-invisible'>
-            <p>What do you want to be when you grow up? We were asked this question a lot as kids. Most of us wanted to be something like an astronaut, or to be a celebrity or even a firefighter that saves people. We had a clear vision of the person we wanted to be when we grew up. How many of us actually took steps to manifest that vision we had as kids though? If you ever took steps towards your vision did you ever think to yourself “maybe this isn't what I wanted after all.” There are also some of us that never strayed from our childhood vision and continued toward it no matter how hard it got or how many people said they couldn't do it. 
- </p>
-            <p>Most successful leaders usually have a clear vision that they are following. A lot of people may feel lost in life. Not knowing where you are going is the definition of lacking vision.What if you start heading down a path and realize that it's not what you wanted or a waste of time? Ift feels like there are either too many options or no real options at all. There are so many different things I could aim for but what if they are dead ends and I waste years of my life going in the wrong direction? After all there are no promises in life. If only I had foresight and could see into the future.</p>
-            <p>Unfortunately we don't have foresight, we only have our imaginations. The only way to ensure what our future becomes is by creating it ourselves with our own two hands (If you have no hands you can still create your own future by the way).  </p>
-            <p>“Where there is no vision, the people perish: but he that keepeth the law, happy is he.”  Proverbs 29:18 KJV</p>
-            <div onClick={setReadLessj3} class='click-to-read-less'>Read Less</div> 
-          </div>
-          </div>  
-    </div>
-    {/* <div class="journey-item j-fourth">
-        <div class="j-text">
-            <div class="j-heading">My Entrepreneurial</div>
-             <div class="j-subheading">Risk</div>
-             <div class="j-transform"><Typewriter
-    options={{
-      strings: ['Failure', 'Monetary Loss', 'Financial Liabilities', 'Regulatory Errors', 'Political Mandates' , 'Economic Meltdowns' ,'Business Competition' ,'Reputational Injury'],
-      autoStart: true,
-      wrapperClassName: 'typewrap4',
-      loop: true,
-    }}
-  /></div>
-        </div>   
-        <div class="j-image-cont">
-          <div class="j-image"></div>
-          </div>  
-    </div>
-    <div class="journey-item j-fifth">
-        <div class="j-text">
-            <div class="j-heading">My Entrepreneurial</div>
-             <div class="j-subheading">Reward</div>
-             <div class="j-transform"><Typewriter
-    options={{
-      strings: ['Personal Achievements', 'Financial Independence', 'New Relationships', 'Opportunities to Help People', 'Changing the World' , 'Generational Wealth' ,'Economic Freedom' ,'Tax Write Offs'],
-      autoStart: true,
-      wrapperClassName: 'typewrap5',
-      loop: true,
-    }}
-  /></div>
-        </div>   
-        <div class="j-image-cont">
-          <div class="j-image"></div>
-          </div>  
-    </div> */}
-  </div>
+{isBrowser && (<Suspense fallback={<div></div>}>
+				<TypeText />
+</Suspense>)}
 
   {isBrowser && (<Suspense fallback={<div></div>}>
 				<SayHello />
 </Suspense>)}
-<div class='archtype-title'>WHICH ONE ARE YOU?</div>
-  <div id='archetype-container' class={`acc${archetype}`}>
-    <div onClick={setArchtype1} onMouseEnter={setArchtype1} class='arch-cont ac1'>
-      <div class='arch-title'></div>
 
-      <div class='arch-text'><p>I am underpaid. I am just doing my job for a boss I don’t like. I’m trying to pay the bills and make it in life. I live paycheck to paycheck and barely make it from month to month. Honestly, sometimes it is hard to breathe! I’ve cut every expense I can and tried every budget plan out there. It hasn’t worked for me. I always feel broke. I struggle to ever get ahead financially. I need a better paying job but can’t seem to find one out there. I just need to make more money!
-How in the world can I make more money?
-</p><p>You need to stop being minimized and start maximizing your wage! it’s time to Experience your revival of revenue!
-</p>
-<p>BE ENCOURAGED! YOU CAN DO IT! You might have to learn a few new skills, but we live in  the Information Age. Technology has made it easier to reach more people, in less time to make more money than ever before. Less money is required to start than it ever did as well. C’mon I’ll show you how!
-</p>
-</div>
- 
-    </div>
-    <div onMouseEnter={setArchtype2} onClick={setArchtype2} class='arch-cont ac2'>
-      <div class='arch-title'></div>
+{isBrowser && (<Suspense fallback={<div></div>}>
+				<WhichOne />
+</Suspense>)}
 
-      <div class='arch-text'><p>I am under-appreciated. I live in the Corp rat race. I work late most nights and the company stress and pressure usually finds me on the weekends. My personal life suffers. I am overworked and feel pressure most of the time. I feel marginalized. I hate the word “quarterly”! There’s got to be another way to live life. I am tired of using my talents to build somebody else’s company so they can live their dream. I want to build my dream. I want to experience the freedom that those that I work for enjoy themselves. I want to turn my own ideas into income for my own company.</p>
-      <p>What’s the best way to do that? It’s time to Stop playing defense! It’s time to Go on Offense! Offense wins championships these days!</p>
-      </div>
-
-    </div>
-    <div onMouseEnter={setArchtype3} onClick={setArchtype3} class='arch-cont ac3'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'>
-      <p>I am frustrated. I recently graduated from high school or college. What do I do with my life? How do I make it on my own? I want a home and I want to get married and raise a family. I’m saddled with a backpack of bricks called college debt. How did I get here? This isn’t what I was promised by my college professors and my parents. I’m just starting my life and trying to make it on my own. I wonder how I can do it?
-</p>
-      <p>I’m working for a company that pays me about as much as care, very little. I don’t make enough money to live the life I want to live. I want to have a life of freedom, travel and live a nomadic life, the minimalist life. I see others doing it and living that lifestyle. I want to know how I can do it too. I am trying to start a side hustle to make more money and hopefully quit my job someday to live the lifestyle I want to live.
-</p>
-<p>How do I turn my passions into a profitable lifestyle? You are off to a great start! You need to stop being dependent on others and start becoming independent yourself. You need more than money. YOU NEED TO CREATE YOUR OWN ECONOMY in the only economy that you can truly control… that’s your own!</p>
-      </div>
-
-    </div>
-    <div onMouseEnter={setArchtype4} onClick={setArchtype4} class='arch-cont ac4'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'>
-      <p>I am surviving. Business is a Battlefield! I own a business but it feels more like the business owns me. I started this business to get away from my job but my business has become more like a job! Ironically, I thought I would have more free time but I spend a lot of my time working for free. Go figure! Every day is a battle to be profitable just to keep the doors open and make payroll. I am always the last one to get paid. Owning your own company can be so chaotic at times that it takes a toll on my family and even my personal health. Frankly, sometimes I feel the pressure in my chest. It’s a constant grind to navigate the gauntlet of challenges that I wake up and face every day. I feel alone. Who can help me? I treat myself worse than my boss used to treat me. Somehow, I gave birth to a business that I didn’t know what it would take to raise it. Sometimes I wonder if it is all worth it. I wonder if I should quit and shut it down. Do I double down and try harder to make it work? I feel trapped and wonder how I can leave my business even if I wanted to.
-</p>
-      <p>How do I create a more profitable life, both personally and professionally? To live your most profitable life, you need to elevate above the turbulence of life and get InTheJetstream! Let’s go, I can lead you there!
-</p>
-      </div>
-    </div>
-    <div onMouseEnter={setArchtype5} onClick={setArchtype5} class='arch-cont ac5'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'>
-      <p>I am searching. I resigned from my job and am looking for something new to do. The pandemic changed everything. I need to move myself to make more money in these times of change, pain, and even persecution. The world is not the same and the playing field for the workforce has changed. The pendulum of power has shifted between employee and employer and I am not going back to what I was doing before. I am entering a new season in life. I guess I have to take a leap of faith.
-</p>
-      <p>How do I overcome my fear? What is my next move? You need to enter The Matrix! You can create your revival of revenue! I’ll see you inside The Matrix!
-</p>
-      </div>
-    </div>
-    <div onMouseEnter={setArchtype6} onClick={setArchtype6} class='arch-cont ac6'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'>
-      <p>I am always running. Life is so busy! Run run run. Kids are so expensive! Money money money! I want a better work life balance. I’m a stay at home parent so I can spend more time with my kids, but I need to be able to make money while I am with them. As the kids grow our need to make more grows. They need $30 as babies, $300 As kids, $3000 in high school, then $30,000 for college. Where does it end?</p>
-      <p>Sometimes I think… Hey God, if you’re up there, please help me make more money!</p>
-      <p>I have found that spending less and living on a budget is not the only solution. I can only cut so much. I am married and my spouse earns steady income from a full-time job that provides steady income and some benefits. This allows me to work from home and start my own business. Our goal is for my business to eventually make enough money where we can maybe work together one day.</p>
-      <p>PK, you are happily married and raised six children. How did you manage it all? I needed a revival of revenue myself. That’s why I created the matrix! I took the five assets that I own and the five actions that I control and created my own Revival of Revenue. It worked for me and my family and it can work for you and your family.</p>
-      </div>
-    </div>
-    <div onMouseEnter={setArchtype7} onClick={setArchtype7} class='arch-cont ac7'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'>
-      <p>I am overwhelmed. Life in the ministry is hard enough. Lacking money makes it even more difficult. I live in a constant struggle to create enough money to fund the ministry. My church is full of people that are constantly under financial pressure. This pressure makes my phone ring and  people come to my office. I don’t feel like I have answers for them financially. I can relate. I am constantly torn between taking care of God’s family and my own family. Torn between the house of God and my own household. It’s not easy at all. There has got to be a better way to share The Good News and avoid experiencing so much discouraging news financially. “Lord, What am I doing wrong? Why do so many people struggle financially?”
-</p>
-      <p>PK, how did you do it in both business and ministry? What do I need to do differently? 
-</p>
-      <p>You need to come bilingual! You need to operate in the nonprofit world with the skill sets of the for-profit world. This is not something you will be taught in Bible college but it was role modeled by Jesus to his disciples. That is why as The entrepreneurial Evangelist I teach entrepreneurial evangelism, proprietary pastoring, marketplace ministry and impact investing.
-</p>
-      <p>Just like in business, it is undeniable that money has a way of making your ministry more effective and more efficient. Money to ministry can be like oxygen that breathes life into a smoldering fire. If you want to experience Revival fire in your ministry, learn how to change the brand of Christianity with me from asking people for money to teaching them how to make it. It will make all the difference in the world to both you and them!
-</p>
-      </div>
-    </div>
-    <div onMouseEnter={setArchtype8} onClick={setArchtype8} class='arch-cont ac8'>
-      <div class='arch-title'></div>
-
-      <div class='arch-text'>
-      <p>I am frightened. I am retired living on a fixed income. My fixed income has not fixed my retirement income problem. I need to make more money. My monthly check does not pay my monthly bills. My prescription drugs cost more than my Social Security check. My pension helps but does not make me profitable enough. Stock market collapses, taxes, and inflation have left me older and more vulnerable and not knowing what else I can do. I don’t want to burden my kids either. I never thought I would be in this place. It’s actually quite frightening!
-</p>
-      <p>At my age, what else can I do?
-</p>
-      <p>Years ago your plight would be a problem, but not today! Retired folks and Senior citizens everywhere are making money they never imagined they could. You just need to enter the matrix and experiencing your own Revival The Revenue!</p>
-      </div>
-    </div>
-  </div>  
-
-
-
-
-{/* 
-
-  <div id='say-hello-list-container'>
-    <div class="hello-list-item h-first">
-      <div class="hello-list-title">
-        <div class="hello-list-number-cont">
-        <div class="hello-list-number">1</div>
-        </div>
-        <div class="hello-list-heading">Lorum Ipsum  <div class="hello-list-subheading">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></div>
-      </div>
-       
-    </div>
-    <div class="hello-list-item h-second">
-      <div class="hello-list-title">
-        <div class="hello-list-number-cont">
-        <div class="hello-list-number">2</div>
-        </div>
-        <div class="hello-list-heading">Lorum Ipsum  <div class="hello-list-subheading">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></div>
-      </div>
-      
-    </div>
-    <div class="hello-list-item h-third">
-      <div class="hello-list-title">
-        <div class="hello-list-number-cont">
-        <div class="hello-list-number">3</div>
-      </div>
-        <div class="hello-list-heading">Lorum Ipsum  <div class="hello-list-subheading">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></div>
-      </div>
-      
-    </div>
-  </div> */}
 
 
   <div class='three-icons-container'>
@@ -4082,191 +3683,11 @@ How in the world can I make more money?
     </div>
     <div style={Object.assign({'background-position-y': `${plaxVal}%` })} class='bg-renderer-pl'></div>
     </div>
- 
-  {/* <div id='compare-container'>
-    <div class='compare-title-container'>
-        <div class="compare-title-1">My Life <span>Today</span></div>
-        <div class="compare-title-vs">VS</div>
-        <div class="compare-title-2">My Life <span>Tomorrow</span></div>
-    </div>
 
-    <div class='compare-text-container'>
-        <div class='compare-today-container'>
-            <div class="compare-today-subtext">Lorem ipsum dolor sit amet</div>
-            <div class="compare-today-subtext">Lorem ipsum dolor sit amet</div>
-            <div class="compare-today-subtext">Lorem ipsum dolor sit amet</div>
-            <div class="compare-today-subtext">Lorem ipsum dolor sit amet</div>
-        </div>
-        <div class='compare-tomorrow-container'>
-            <div class="compare-tomorrow-subtext">Lorem ipsum dolor sit amet</div>
-            <div class="compare-tomorrow-subtext">Lorem ipsum dolor sit amet</div>
-            <div class="compare-tomorrow-subtext">Lorem ipsum dolor sit amet</div>
-            <div class="compare-tomorrow-subtext">Lorem ipsum dolor sit amet</div>
-        </div>
-    </div>
-  </div>   */}
+{isBrowser && (<Suspense fallback={<div></div>}>
+				<Minibook />
+</Suspense>)}
 
-<div class='minib-r-cont'>
-
-<div class='show-me-title'>WHAT'S INSIDE <span>REVIVAL OF REVENUE?</span></div>
-  <div id='minibook-container' class={`mbb${minibook}`}>
-  <div onClick={goLeft} class='mb-left-arrow'></div>
-    <div class='minibook-container'>
-    <div class='mb-left-section'>
-    <div onClick={setMinibook1} class='mb-cont mb1'>
-      <div class='mb-section-cont'>
-    <div class='mb-photo'></div>
-      <div class='mb-title'>Offense Wins Championships</div>
-      <div class='mb-subtitle'>Mini Book #1</div>
-      </div>
-      </div>
-    <div onClick={setMinibook2} class='mb-cont mb2'>
-    <div class='mb-section-cont'>
-    <div class='mb-photo'></div>
-    <div class='mb-title'>Maximum Wage</div>
-      <div class='mb-subtitle'>Mini Book #2</div>
-      </div>
-      </div>
-    <div onClick={setMinibook3} class='mb-cont mb3'>
-    <div class='mb-section-cont'>
-    <div class='mb-photo'></div>
-    <div class='mb-title'>Create Your Own Economy</div>
-      <div class='mb-subtitle'>Mini Book #3</div>
-      </div>
-      </div>
-    <div onClick={setMinibook4} class='mb-cont mb4'>
-    <div class='mb-section-cont'>
-    <div class='mb-photo'></div>
-    <div class='mb-title'>Enter God’s Economy</div>
-      <div class='mb-subtitle'>Mini Book #4</div>
-      </div>
-      </div>
-    <div onClick={setMinibook5} class='mb-cont mb5'>
-    <div class='mb-section-cont'>
-    <div class='mb-photo'></div>
-    <div class='mb-title'>Elevate in TheJetstream</div>
-      <div class='mb-subtitle'>Mini Book #5</div>
-      </div>
-      </div>
-    <div onClick={setMinibook6} class='mb-cont mb6'>
-    <div class='mb-section-cont'>
-    <div class='mb-photo'></div>
-    <div class='mb-title'>Experience Your Revival of Revenue</div>
-      <div class='mb-subtitle'>Mini Book #6</div>
-      </div>
-      </div>
-    <div onClick={setMinibook7} class='mb-cont mb7'>
-    <div class='mb-section-cont'>
-    <div class='mb-photo'></div>
-    <div class='mb-title'>Entrepreneurial Education in Business, Ministry, &amp; Politics</div>
-      <div class='mb-subtitle'>Mini Book #7</div>
-       </div>
-  </div>
-      </div>
-
-      <div class='mb-rightdisplay-section'>
-    <div class='mb-right-section'>
-      <div class='mb-content mb1'>
-      <div class='mb-content-pretitle'>Mini Book #1</div>
-      <div class='mb-content-title'>Offense Wins Championships</div>
-      <div class='mb-content-posttitle'>How to Go ON Offense!</div>
-      <div className="mb-content-cont">
-        <div class='mb-content-picture'></div>
-      <div class='mb-content-content'>In Mini Book #1, discover how to build your personalized high-octane Offensive Playbook, Defensive Playbook, and Special Teams Playbook. Your Offensive Playbook shows you how to score more touchdowns by maximizing your income. Your Defensive Playbook shows you how to prevent touchdowns by minimizing your expenses. Your Special Teams Playbook shows you how to manage field position and score extra points by multiplying investments and managing taxation. Together, you are managing a complete game as the head coach of your household. However, the #1 threat to you as an Entrepreneurial is hitting the Middle Class, the Masses, and Main Street Small Business harder every year. People aren’t scoring enough touchdowns. Mini Book #1 helps you make more money, increase your income, and generate more revenue by Going On Offense like an Entrepreneurial. Remember, “Entrepreneurship is living a few years of your life like most people won’t, so that you can spend the rest of your life like most people can’t.”</div>
-      </div>
-      </div>
-    </div>
-    <div class='mb-right-section'>
-      <div class='mb-content mb2'>
-      <div class='mb-content-pretitle'>Mini Book #2</div>
-      <div class='mb-content-title'>Maximum Wage</div>
-      <div class='mb-content-posttitle'>How to Get OFF Bad Trades</div>
-      <div className="mb-content-cont">
-        <div class='mb-content-picture'></div>
-      <div class='mb-content-content'>Why Are We Talking About Minimum Wage? In Mini Book #2 Maximum Wage, Patrick Kucera shows you how to go from a Minimized Wage to your Maximum Wage. Maximum wage is about making the most amount of money in the least amount of time and with the least amount of effort. Unlike Offense Wins Championships, this chapter is not focused on creating multiple sources of income. Rather, Maximum Wage is focused on how to generate more revenue from each source of income. To do so, you must Get OFF Bad Trades. This concept pertains to how you maximize every time you trade your time for dollars. After reading this chapter, you will discover how to earn your Maximum Wage in 5 entrepreneurial steps:
-STEP #1: Reposition Your Progression as a Micro Market Maker
-STEP #2: Revalue What You Produce and Prove It
-STEP #3: Rebrand Your Business Promise
-STEP #4: Restructure How You Are Paid
-STEP #5: Renegotiate Your Maximum Wage</div>
-</div>
-      </div>
-    </div>
-    <div class='mb-right-section'>
-      <div class='mb-content mb3'>
-      <div class='mb-content-pretitle'>Mini Book #3</div>
-      <div class='mb-content-title'>Create Your Own Economy</div>
-      <div class='mb-content-posttitle'>Get OUT of the BIG’s Economy</div>
-      <div className="mb-content-cont">
-        <div class='mb-content-picture'></div>
-      <div class='mb-content-content'>In Mini Book #3 Create Your Own Economy, I’m going to show you how to create your own economy in the only economy that you can truly control, and that’s your own economy. You will discover how to S.E.L.F. Empower, S.E.L.F. Educate, and S.E.L.F. Employ to create more than a business. In today’s world, you must Create Your Own Economy. Learn how to go from Serf to SELF and how to move from the “Industrial” Revolution to the INDIVIDUAL Revolution. You Are the Economy! But corporations, universities, and governments will make you WORK for the economy if you don’t own and control your own profitability. I call them the BIGs: 
-BIG Banking
-BIG Tech
-BIG Media
-BIG Pharma
-BIG Business
-BIG Education
-BIG Government
-I’m going to show you how to get out from their control by understanding the Trifecta. There are three major economies that directly affect you: My Economy, Man’s Manipulated Economy, and the Maker’s Economy. Discover how to exit man’s manipulated economy. Navigate the gauntlet of challenges of life today without leaving “success” up to chance. Overcome the stress of making ends meet at home every month. Your economy is your home. It is the management of one’s household. In Mini Book #3 Create Your Own Economy, maximize the agility, anti-fragility, and abundance of your personal economy, and get out of the manipulated economy!</div>
-     </div>
-      </div>
-    </div>
-
-    <div class='mb-right-section'>
-      <div class='mb-content mb4'>
-      <div class='mb-content-pretitle'>Mini Book #4</div>
-      <div class='mb-content-title'>Enter God’s Economy</div>
-      <div class='mb-content-posttitle'>Get IN God’s Economy</div>
-      <div className="mb-content-cont">
-        <div class='mb-content-picture'></div>
-      <div class='mb-content-content'>There are two economies, one with God and one without God. Which one are you in? If God is the Creator, He is the Original Entrepreneur. If you understand God’s Economy, you were created to co-create with Him. He is your Good Dad, raising you by His side to learn His creative ways and redemptive solutions. However, you have a Bad Dad, too. Your Bad Dad seeks to turn you away from your calling to co-create with Good Dad. His goal is to prompt you to reject your God-given story, which your Good Dad wrote about you in the Best Selling Book of All Time. God’s Word. By entering God’s Economy, you are co-creating with Good Dad, by “Putting God Back into the Equation of Making Money”. This is not about the revenue you make but the relationship you make with the Almighty as you pursue the Almighty dollar. God’s Economy is a call to “Bring Life Back to Work and Work Back to Life”. Discover the myths and misunderstandings about God and Money in Mini Book #4 God’s Economy! Where could you go if you entered God’s Economy?</div>
-      </div>
-      </div>
-    </div>
-    <div class='mb-right-section'>
-      <div class='mb-content mb5'>
-      <div class='mb-content-pretitle'>Mini Book #5</div>
-      <div class='mb-content-title'>Elevate in TheJetstream</div>
-      <div class='mb-content-posttitle'>Go UP in TheJetstream</div>
-      <div className="mb-content-cont">
-        <div class='mb-content-picture'></div>
-      <div class='mb-content-content'>What could you accomplish if you elevated in TheJetstream? What if you moved through the speed of life as if the wind were always at your back. TheJetstream is at a higher elevation. It is where revelation lives. It is the most profitable way to live life, but what you consider to be profit may differ from what someone else believes is true profit. Learn how to fly above the turbulence of life in PK’s Jetstream Theory. Discover how to use thermals, updrafts, and downdrafts to your advantage by mastering the Laws of Lift:
-1st Law Of Lift: How You Think
-2nd Law Of Lift: How You Feel
-3rd Law Of Lift: How You Act
-4th Law Of Lift: How You Interact
-Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
-</div>
-      </div>
-    </div>
-    <div class='mb-right-section'>
-      <div class='mb-content mb6'>
-      <div class='mb-content-pretitle'>Mini Book #6</div>
-      <div class='mb-content-title'>Experience Your Revival of Revenue</div>
-      <div class='mb-content-posttitle'>Lorem Ipsum Dolor</div>
-      <div className="mb-content-cont">
-        <div class='mb-content-picture'></div>
-      <div class='mb-content-content'>In Mini Book #6 Experience Your Revival of Revenue, I’m going to show you the Vital Signs of Revival and the Vital Sign of Revenue that measure whether your business is alive. I’m going to show you the 5 Assets that Everyone Owns and the 5 Actions that Everyone Controls. God Has Trademarked You for a Purpose! Therefore, you are going to be given a choice. I call this the Value System TradeOff. You must choose “the red pill” or “the blue pill” before you enter the Revival of Revenue Matrix. If you enter, I am going to show you the 25 Quadrant Revival of Revenue Matrix, which breaks down in easy steps your entire entrepreneurial journey. You will discover the exact skillsets I learned as a child and the profitable systems I have used my entire adult life to help people, pastors, professionals, and politicians experience their own Revival of Revenue! What could you do if you experienced your Revival of Revenue today? Let’s get started together! </div>
-      </div>
-      </div>
-    </div>
-    <div class='mb-right-section'>
-      <div class='mb-content mb7'>
-      <div class='mb-content-pretitle'>Mini Book #7</div>
-      <div class='mb-content-title'>Entrepreneurial Education in Business, Ministry, &amp; Politics</div>
-      <div class='mb-content-posttitle'>Lorem Ipsum Dolor</div>
-      <div className="mb-content-cont">
-        <div class='mb-content-picture'></div>
-      <div class='mb-content-content'>What Would The World Look Like If Everyone Was More Entrepreneurial? I close my mini book series with this futuristic question. I also deliver a winning word and a dire warning regarding the United States of America, future generations, and the warped nature of our education system. The future is dark if good people don’t step up. Marxism is afoot in America’s classrooms. Communism, the political arm of Marxists thought, is a power grab from “We the People”. Sadly, Socialism is like a good girl dating a bad boy; in time, she is likely to get toppled by Marxist agendas. But younger generations question whether capitalism is any better. Crony capitalism is fake capitalism. Manipulated markets are nothing like free markets. Younger generations in particular are feeling the pain of the BIGs taking over markets at the expense of the Middle Class, the Masses, and Main Street Small Business. But the tide is turning with the advent and adoption of blockchains and Web 3 technologies. A capitalistic future that seizes the economy back from the BIGs and embeds freedom, values, and economic opportunity into the underlying technology running the free world economy is finally possible. The time is now to fight for technological freedoms suitable for entrepreneurship. Yes, freedom is the best ecosystem for entrepreneurials. Imagine a world of creators who share in the freedom, profits, and abundance of the economy. I take a closer look at the current educational system and how we can train the next generation to fight for opportunity, profits, values, and freedoms across America and around the world. Starting as a child, I share my story in business, ministry, and politics, and I share what we can do as Entrepreneurials in Business, Frontliners in Ministry, and Free Marketers in Politics to lead America back to its original DNA. I believe in the DNA of an American. I believe in the foundation in which our country was built. I encourage you to reflect on this Word: “Remember the Heights from Which You Have Fallen.” I plead for America to return to a nation “Under God”. I cry “Long Live the Dream!”</div>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    <div onClick={goRight} class='mb-right-arrow'></div>
-  </div>
-
-  </div>
   <div class="show-me-title">READ THE FIRST PAGE OF PK'S BOOK NOW!</div>
   <div class="subheader-title">Start your Revival of Revenue now and peek inside to read the first page of PK's book.</div>
   <div class={`peek-inside-container ${book2}`}>

@@ -2909,24 +2909,8 @@ function preHide3() {
   const [scrollPosition, setScrollPosition] = useState(180);
   const [plaxVal, setPlax] = useState(0);
 const handleScroll = () => {
-  let elScrollPos = document.querySelector('.book-section-cont').getBoundingClientRect().top;
   let plax = document.querySelector('.y-container');
 
-  let vwport = window.innerHeight * .80;
-     if (elScrollPos <= 0) {
-      if (Math.abs(elScrollPos) > vwport) {
-        setScrollPosition(23)
-        setShadowPosition(20)
- 
-      } else {
-        setScrollPosition( 180 -  (157 * (Math.abs(elScrollPos) / vwport)) )
-        setShadowPosition( Math.abs(20 -  (40 * (Math.abs(elScrollPos) / vwport))) )
-      }
-  
-     } else {
-      setScrollPosition(180)
-      setShadowPosition(20)
-     }
 
      const element = document.getElementsByClassName("book-section")[0]
      const element2 = document.getElementById('say-hello-list-container')
@@ -2942,16 +2926,21 @@ const handleScroll = () => {
         // scroll is above top pos
         console.log('above top', yPosition)
         setYClass('margin-relative')   
+        setScrollPosition(180)
+        setShadowPosition(20)
      }
      if (window.scrollY > yPosition && window.scrollY < ogYPos) {
        //within the bounds, set to absoltue etc
-
+      setScrollPosition(180 - 157 * (window.scrollY - yPosition) / (ogYPos - yPosition))
+      setShadowPosition(Math.abs(20 - 40 * (window.scrollY - yPosition) / (ogYPos - yPosition)))
        setYClass('fixed') 
      }
 
      if (window.scrollY > ogYPos) {
        console.log('below', ogYPos)
        //past it, set back
+       setScrollPosition(23)
+       setShadowPosition(20)
        setYClass('nomargin-relative')  
      }
      if (plax.getBoundingClientRect().top < window.innerHeight && plax.getBoundingClientRect().bottom > 0) {

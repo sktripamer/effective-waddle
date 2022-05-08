@@ -2968,7 +2968,9 @@ useEffect(() => {
         const absoluteElementTop = elementRect.top + window.pageYOffset;
         const absoluteElementTop2 = elementRect2.top + window.pageYOffset;
         setogYPos(absoluteElementTop - (element.offsetHeight / 2) - (window.innerHeight / 2)) //bottom of section
+        console.log('bottom', absoluteElementTop - (element.offsetHeight / 2) - (window.innerHeight / 2))
         setYPosition(absoluteElementTop2 + (element.offsetHeight / 2) - (window.innerHeight / 2)) //top of secton
+        console.log('top',absoluteElementTop2 + (element.offsetHeight / 2) - (window.innerHeight / 2))
         setWindowWidth(window.innerWidth)
         setBookWidth(document.querySelector('.book-section .book img').height * .625)
         async function fetchMyAPI() {
@@ -3532,9 +3534,8 @@ someone else’s business rather than become your own business.
 </p>
 
 
-{isBrowser && (<Suspense fallback={<div></div>}>
 				<SayHelloList />
-</Suspense>)}
+
 
     </div>
     <div class="book-section-cont">

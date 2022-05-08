@@ -2781,8 +2781,8 @@ const noShippingForm = () => {
 
       const openBook = (e) => {
         if (document.getElementsByClassName('y-preorderbtnsmall')[0] === event.target) return;
-        window.scroll({top: document.getElementById("mockup-element").offsetTop + 300 - (window.innerHeight /2), behavior: 'smooth'});
-     
+        document.getElementById("mockup-element").scrollIntoView({behavior: "smooth", block: "center"});
+        document.getElementsByTagName( 'html' )[0].classList.add('noover')
         const timer = setTimeout(() => {
                 //1.555 is ratio of heght / width of the book css properties
                 setBook2('open')
@@ -2818,15 +2818,17 @@ const noShippingForm = () => {
         if (document.getElementsByClassName('y-preorderbtnsmall')[0] === event.target) {
           setBook2Scale(1)
           setBook2('idle')
+          document.getElementsByTagName( 'html' )[0].classList.remove('noover')
           return;
         }
         if(document.getElementsByClassName('peek-inner-cont')[0] !== event.target) return;
         setBook2Scale(1)
         setBook2('idle')
+        document.getElementsByTagName( 'html' )[0].classList.remove('noover')
       }
       const closeBook2 = () => {
         if (book2 !== 'open') return;
-
+        document.getElementsByTagName( 'html' )[0].classList.remove('noover')
         setBook2Scale(1)
         setBook2('idle')
       }

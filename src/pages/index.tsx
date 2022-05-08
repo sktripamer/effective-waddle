@@ -2902,8 +2902,11 @@ function preHide3() {
   setPreorderButton(false)
   setPreorder3(false)
 }
-  const [shadowPosition, setShadowPosition] = useState(20);
-  const [yPosition, setYPosition] = useState(130);
+  const [shadowPosition, setShadowPosition] = useState('');
+  const [yPosition, setYPosition] = useState(0);
+  const [yClass, setYClass] = useState('margin-relative')
+  const [ogYPos, setogYPos] = useState(0);
+  const [bookHeroClass, setBookHeroClass] = useState('margin')
   const [scrollPosition, setScrollPosition] = useState(180);
   const [plaxVal, setPlax] = useState(0);
 const handleScroll = () => {
@@ -2915,19 +2918,30 @@ const handleScroll = () => {
       if (Math.abs(elScrollPos) > vwport) {
         setScrollPosition(23)
         setShadowPosition(20)
-        setYPosition(50)
+ 
       } else {
-        setYPosition( 130 -  (80 * (Math.abs(elScrollPos) / vwport)) )
         setScrollPosition( 180 -  (157 * (Math.abs(elScrollPos) / vwport)) )
         setShadowPosition( Math.abs(20 -  (40 * (Math.abs(elScrollPos) / vwport))) )
       }
   
      } else {
-      setYPosition(130)
       setScrollPosition(180)
       setShadowPosition(20)
      }
-     
+
+     if (window.scrollY <= yPosition) {
+        // scroll is above top pos
+        setYClass('margin-relative')   
+     }
+     if (window.scrollY > yPosition && window.scrollY < ogYPos) {
+       //within the bounds, set to absoltue etc
+       setYClass('fixed') 
+     }
+
+     if (window.scrollY > ogYPos) {
+       //past it, set back
+       setYClass('nomargin-relative')  
+     }
      if (plax.getBoundingClientRect().top < window.innerHeight && plax.getBoundingClientRect().bottom > 0) {
       setPlax((plax.getBoundingClientRect().top + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom))) / (window.innerHeight + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom)) ) * 6)
    }
@@ -2947,6 +2961,14 @@ useEffect(() => {
 
 
       useEffect(() => {
+        const element = document.getElementsByClassName("book-section")[0]
+        const element2 = document.getElementsByClassName("book-section-hero-cta")[0]
+        const elementRect = element2.getBoundingClientRect();
+        const elementRect2 = element.getBoundingClientRect();
+        const absoluteElementTop = elementRect.top + window.pageYOffset;
+        const absoluteElementTop2 = elementRect2.top + window.pageYOffset;
+        setogYPos(absoluteElementTop - (element.offsetHeight / 2) - (window.innerHeight / 2)) //bottom of section
+        setYPosition(absoluteElementTop2 + (element.offsetHeight / 2) - (window.innerHeight / 2)) //top of secton
         setWindowWidth(window.innerWidth)
         setBookWidth(document.querySelector('.book-section .book img').height * .625)
         async function fetchMyAPI() {
@@ -3516,8 +3538,8 @@ someone else’s business rather than become your own business.
 
     </div>
     <div class="book-section-cont">
-    {/* <div style={windowWidth > 666 ? Object.assign({transform: `translateY(-${yPosition}vh)`}) : Object.assign({transform: `translateY(-${yPosition}vh) scale(.8)`})} class="book-section"> */}
-    <div class="book-section">
+
+    <div class={`book-section ${yClass}`}>
 		<div style={Object.assign({width: `${bookWidth}px`,transform: `rotateY(${scrollPosition}deg)` }, {boxShadow: `20px 20px 20px rgb(0 0 0 / ${shadowPosition}%)`})} class="book"> 
 			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover2.jpg"></img>
 		</div>

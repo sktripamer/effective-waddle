@@ -4495,7 +4495,7 @@ transition: .4s all;
 body {
   -webkit-transform: none;
   
-  overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 div#___gatsby {-webkit-transform: none;}
@@ -5652,7 +5652,7 @@ justify-content: center;
 align-items: center;
 transform-style: preserve-3d;
 perspective: 1000px;
-position: sticky;
+position: relative;
   top: 50%;
   transform: translate(0, -50%);
   margin-bottom: -50px;

@@ -4931,7 +4931,7 @@ height: 174px;
 margin-top: 431px;
 position: absolute;
 width: 420px;
-z-index: 1;
+z-index: -1;
 background: url(https://portal.revrevdev.xyz/wp-content/uploads/book2mockup.png)}
 
 .mockup-element {    position: relative;
@@ -4963,7 +4963,7 @@ color: #470006;
 
 
 .book-section-content-cont {
-margin-top: 80vh;
+  margin-top: 65vh;
 }
 .open + .y-preorderbtn {
   opacity: 0;

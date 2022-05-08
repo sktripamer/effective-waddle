@@ -3516,8 +3516,8 @@ someone else’s business rather than become your own business.
 
     </div>
     <div class="book-section-cont">
-    <div style={windowWidth > 666 ? Object.assign({transform: `translateY(-${yPosition}vh)`}) : Object.assign({transform: `translateY(-${yPosition}vh) scale(.8)`})} class="book-section">
-    
+    {/* <div style={windowWidth > 666 ? Object.assign({transform: `translateY(-${yPosition}vh)`}) : Object.assign({transform: `translateY(-${yPosition}vh) scale(.8)`})} class="book-section"> */}
+    <div class="book-section">
 		<div style={Object.assign({width: `${bookWidth}px`,transform: `rotateY(${scrollPosition}deg)` }, {boxShadow: `20px 20px 20px rgb(0 0 0 / ${shadowPosition}%)`})} class="book"> 
 			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover2.jpg"></img>
 		</div>

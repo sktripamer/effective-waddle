@@ -1138,7 +1138,7 @@ div#card-element {
 @media (max-width: 666px) and (min-height: 800px) { 
 
   .book-section-cont div.book-section-content-cont {
-      margin-top: 90vh;
+
   }
   }
 
@@ -1294,7 +1294,7 @@ div.j-first span.Typewriter__cursor {
     width: 20%;
 }
   div.book-section-content-cont {
-    margin-top: 72vh;
+
 }
   div.y-preorderbtn {
     font-size: 18px;
@@ -4964,7 +4964,7 @@ color: #470006;
 
 
 .book-section-content-cont {
-  margin-top: 65vh;
+
 }
 .open + .y-preorderbtn {
   opacity: 0;

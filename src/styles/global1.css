@@ -1144,6 +1144,24 @@ div#card-element {
 
 
 @media (max-width: 666px) {
+
+ div.book-section-cont > div.margin-relative {
+  transform: scale(0.8);
+  
+  
+  }
+  
+  div.book-section-cont > div.fixed {
+
+      transform: translate(50%,-50%) scale(0.8);
+
+  }
+  div.book-section-cont > div.nomargin-relative {
+    transform: scale(0.8);
+  
+  }
+
+
   div.main-main div#archetype-container > div.arch-cont {
     height: 330px;
     width: 100% !important;
@@ -1302,8 +1320,7 @@ div.j-first span.Typewriter__cursor {
   }
 
 div.book-section {
-transform: translateY(-50%) scale(0.8);
-margin-top: 35vh;
+
 }
 
   h2.white-sh {
@@ -2434,6 +2451,7 @@ form input:focus {
     opacity:0;
 }
 main .main-vid-area{
+  margin-left: -10px;
   background-image: linear-gradient( 270deg, hsl(240deg 80% 40% / .7) 0%, hsl(275deg 100% 34% / .7) 31%, hsl(294deg 100% 31% / .7) 48%, hsl(310deg 100% 34% / .7) 60%, hsl(321deg 100% 38% / .7) 71%, hsl(330deg 100% 42% / .7) 80%, hsl(336deg 100% 44% / .7) 87%, hsl(342deg 100% 46% / .7) 93%, hsl(347deg 100% 47% / .7) 97%, hsl(358deg 88% 53% / .7) 100%), url(https://portal.revrevdev.xyz/wp-content/uploads/bg.jpg);
         background-position: 100% 0;
         background-repeat: no-repeat;

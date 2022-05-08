@@ -1132,7 +1132,7 @@ div#card-element {
 .loader-player {
   position: relative;
   margin-top: 30px;
-  margin-bottom: 10vh;
+  margin-bottom: 100px;
 }
 
 @media (max-width: 666px) and (min-height: 800px) { 

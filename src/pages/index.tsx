@@ -2904,9 +2904,7 @@ function preHide3() {
   setPreorder3(false)
 }
   const [shadowPosition, setShadowPosition] = useState('');
-  const [yPosition, setYPosition] = useState(0);
   const [yClass, setYClass] = useState('margin-relative')
-  const [ogYPos, setogYPos] = useState(0);
   const [bookHeroClass, setBookHeroClass] = useState('margin')
   const [scrollPosition, setScrollPosition] = useState(180);
   const [plaxVal, setPlax] = useState(0);
@@ -2929,6 +2927,16 @@ const handleScroll = () => {
       setScrollPosition(180)
       setShadowPosition(20)
      }
+
+     const element = document.getElementsByClassName("book-section")[0]
+     const element2 = document.getElementById('say-hello-list-container')
+     const element3 = document.getElementsByClassName("book-section-hero-cta")[0]
+      const elementRect1 = element3.getBoundingClientRect();
+     const elementRect2 = element2.getBoundingClientRect();
+     const absoluteElementBottom = elementRect2.bottom + window.pageYOffset;
+     const absoluteElementTop = elementRect1.top + window.pageYOffset;
+     let yPosition = absoluteElementBottom + (element.offsetHeight / 2) - (window.innerHeight / 2) + 100
+     let ogYPos =  absoluteElementTop - (element.offsetHeight / 2) - (window.innerHeight / 2)
 
      if (window.scrollY <= yPosition) {
         // scroll is above top pos
@@ -2965,16 +2973,6 @@ useEffect(() => {
 
 
       useEffect(() => {
-        const element = document.getElementsByClassName("book-section")[0]
-        const element2 = document.getElementsByClassName("book-section-hero-cta")[0]
-        const elementRect = element2.getBoundingClientRect();
-        const elementRect2 = element.getBoundingClientRect();
-        const absoluteElementTop = elementRect.top + window.pageYOffset;
-        const absoluteElementTop2 = elementRect2.top + window.pageYOffset;
-        setogYPos(absoluteElementTop - (element.offsetHeight / 2) - (window.innerHeight / 2)) //bottom of section
-        console.log('bottom', absoluteElementTop - (element.offsetHeight / 2) - (window.innerHeight / 2))
-        setYPosition(absoluteElementTop2 + (element.offsetHeight / 2) - (window.innerHeight / 2)) //top of secton
-        console.log('top',absoluteElementTop2 + (element.offsetHeight / 2) - (window.innerHeight / 2))
         setWindowWidth(window.innerWidth)
         setBookWidth(document.querySelector('.book-section .book img').height * .625)
         async function fetchMyAPI() {

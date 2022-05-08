@@ -2810,6 +2810,7 @@ const noShippingForm = () => {
       const closeBook = () => {
         setBook2Scale(1)
         setBook2('idle')
+        document.getElementsByTagName( 'html' )[0].classList.remove('noover')
       }
       
       const closeBook2outside = (e) => {
@@ -2880,7 +2881,7 @@ const noShippingForm = () => {
         setPreorder(true)
     }
     function preRevealBook2(e) {
-   
+      document.getElementsByTagName( 'html' )[0].classList.remove('noover')
       setBook2('idle')
       setPreorderButton(true)
       setPreorder(true)

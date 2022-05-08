@@ -34,6 +34,7 @@ background-clip: content-box;
 }
 .main-main {
   width: 100vw;
+  -webkit-transform: none;
 }
 
 :root {
@@ -151,7 +152,7 @@ main {
   padding: 4rem 1rem 0; */
   background: #fff;
   display: flex;
-
+  -webkit-transform: none;
 }
 
 .powered-by-stripe-small {
@@ -2439,6 +2440,7 @@ main .main-vid-area{
         padding-bottom: 100px;
         min-height: 1200px;
         background-attachment: fixed;
+        -webkit-transform: none;
 }
 
 div.input-group {
@@ -4488,7 +4490,15 @@ transition: .4s all;
   text-transform: uppercase;
   padding: 4px;
   position: relative;
+  z-index: 3;
 }
+body {
+  -webkit-transform: none;
+}
+
+div#___gatsby {-webkit-transform: none;}
+
+div#gatsby-focus-wrapper {-webkit-transform: none;}
 
 .arch-cont:after {
   background-image: linear-gradient(#ee091cab,#900b68bd);

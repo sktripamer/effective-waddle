@@ -4494,6 +4494,8 @@ transition: .4s all;
 }
 body {
   -webkit-transform: none;
+  
+  overflow-x: hidden;
 }
 
 div#___gatsby {-webkit-transform: none;}

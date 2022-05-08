@@ -2903,7 +2903,7 @@ function preHide3() {
   setPreorder3(false)
 }
   const [shadowPosition, setShadowPosition] = useState(20);
-  const [yPosition, setYPosition] = useState(135);
+  const [yPosition, setYPosition] = useState(125);
   const [scrollPosition, setScrollPosition] = useState(180);
   const [plaxVal, setPlax] = useState(0);
 const handleScroll = () => {
@@ -2917,13 +2917,13 @@ const handleScroll = () => {
         setShadowPosition(20)
         setYPosition(35)
       } else {
-        setYPosition( 135 -  (100 * (Math.abs(elScrollPos) / vwport)) )
+        setYPosition( 125 -  (90 * (Math.abs(elScrollPos) / vwport)) )
         setScrollPosition( 180 -  (157 * (Math.abs(elScrollPos) / vwport)) )
         setShadowPosition( Math.abs(20 -  (40 * (Math.abs(elScrollPos) / vwport))) )
       }
   
      } else {
-      setYPosition(135)
+      setYPosition(125)
       setScrollPosition(180)
       setShadowPosition(20)
      }

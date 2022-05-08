@@ -2932,14 +2932,17 @@ const handleScroll = () => {
 
      if (window.scrollY <= yPosition) {
         // scroll is above top pos
+        console.log('above top', yPosition)
         setYClass('margin-relative')   
      }
      if (window.scrollY > yPosition && window.scrollY < ogYPos) {
        //within the bounds, set to absoltue etc
+
        setYClass('fixed') 
      }
 
      if (window.scrollY > ogYPos) {
+       console.log('below', ogYPos)
        //past it, set back
        setYClass('nomargin-relative')  
      }

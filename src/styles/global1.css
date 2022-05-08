@@ -32,7 +32,9 @@ border-radius: 20px;
 border: 6px solid #a21826;
 background-clip: content-box;
 }
-
+.main-main {
+  width: 100vw;
+}
 
 :root {
   --border-radius: 8px;
@@ -1140,6 +1142,10 @@ div#card-element {
 
 
 @media (max-width: 666px) {
+  div.main-main div#archetype-container > div.arch-cont {
+    height: 330px;
+    width: 100% !important;
+}
   div.compare-tomorrow-subtext:before {
     margin-left: -14px;
 }
@@ -4491,6 +4497,7 @@ transition: .4s all;
   position: absolute;
   opacity: 0;
   height: 100%;
+  z-index: 0;
 }
 
 
@@ -4509,7 +4516,7 @@ transition: .4s all;
     -webkit-background-clip: text;
     background-image: linear-gradient(#b00a60,#b00a60);
     color: #ef1b3d;
-    z-index: 1;
+    z-index: 4;
     text-transform: initial;
     bottom: 0;
 }
@@ -4527,7 +4534,7 @@ transition: .4s all;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-image: linear-gradient(#ee091c,#850b90);
-  z-index: 1;
+  z-index: 8;
 
 }
 .acc1 .ac1 .arch-title {

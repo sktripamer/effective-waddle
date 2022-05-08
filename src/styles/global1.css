@@ -5647,16 +5647,12 @@ margin-top: -4px;
 
 .book-section
 {
-display: flex;
-justify-content: center;
-align-items: center;
-transform-style: preserve-3d;
-perspective: 1000px;
-position: relative;
-  top: 50%;
-  transform: translate(0, -50%);
-  margin-bottom: -50px;
-  margin-top: 50vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+  position: relative;
+  transform: none;
 }
 .book-section .book
 {

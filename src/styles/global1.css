@@ -1132,6 +1132,7 @@ div#card-element {
 .loader-player {
   position: relative;
   margin-top: 30px;
+  margin-bottom: 10vh;
 }
 
 @media (max-width: 666px) and (min-height: 800px) { 
@@ -5644,6 +5645,24 @@ margin-top: -4px;
   background-position: 0% 50%;
 }
 }
+div.margin-relative {
+	margin-bottom: auto;
+position: relative;
+
+}
+
+div.fixed {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%,-50%);
+    margin-bottom: 0;
+}
+div.nomargin-relative {
+	margin-bottom: 0;
+position: relative;
+
+}
 
 .book-section
 {
@@ -5653,6 +5672,7 @@ margin-top: -4px;
   perspective: 1000px;
   position: relative;
   transform: none;
+  margin-bottom: auto;
 }
 .book-section .book
 {
@@ -5709,8 +5729,9 @@ object-fit: cover;
 height: 200vh;
 display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-bottom: 20vh;
+  transform: none;
 }
 
 .compare-today-subtext:after {

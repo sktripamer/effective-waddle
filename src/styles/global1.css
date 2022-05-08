@@ -92,7 +92,9 @@ background-clip: content-box;
   --box-shadow-15: rgba(0, 0, 0, 0.2) 0px 8px 9px -5px,
     rgba(0, 0, 0, 0.14) 0px 15px 22px 2px, rgba(0, 0, 0, 0.12) 0px 6px 28px 5px;
 }
-
+*:not(html) {
+  -webkit-transform: translate3d(0, 0, 0);
+}
 html,
 body {
   padding: 0;
@@ -105,6 +107,7 @@ body {
 
 html {
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -1289,10 +1292,7 @@ div.j-first span.Typewriter__cursor {
     font-size: 18px;
     padding: 8px 12px;
   }
-  div.y-preorderbtnsmall {
-    font-size: 12px;
-    padding: 8px 12px;
-  }
+
 div.book-section {
 transform: translateY(-50%) scale(0.8);
 margin-top: 35vh;
@@ -4900,16 +4900,7 @@ background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/seamless.j
 z-index: 0;
 }
 
-html {
-overflow: hidden;
-}
-main > div.main-main {
-margin:0;
-width: 100vw;
-height: 100vh;
-overflow-x: hidden;
-overflow-y: scroll;
-}
+
 .book-obj-cont {
 transition: .5s all;
 position: relative;

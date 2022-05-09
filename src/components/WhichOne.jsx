@@ -61,7 +61,7 @@ export default function WhichOne() {
   }, [archetypeClick]);
 return (
     <>
-<div class='archtype-title'>WHICH ONE ARE YOU?</div>
+<div class='archtype-title'><span>WHICH </span><span>ONE </span><span>ARE </span><span>YOU?</span></div>
   <div id='archetype-container' class={`acc${archetype}`}>
     <div onClick={setArchtype1} onMouseEnter={setArchtype1} class='arch-cont ac1'>
       <div class='arch-title'></div>

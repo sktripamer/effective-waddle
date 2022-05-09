@@ -446,6 +446,7 @@ div.y-container .y-preorderbtn {
 div.y-heading {
   font-size: 38px;
   text-align: center;
+  margin-left: 0;
 }
 
 div.y-text-cont {
@@ -1200,6 +1201,9 @@ div#card-element {
 
 
 @media (max-width: 666px) {
+  .y-content-container div.y-heading {
+    font-size: 28px;
+}
   div.y-cont div.y-image-contain {
 
     max-width: 300px;
@@ -2179,7 +2183,8 @@ width: 48px;
   float: left;
   aspect-ratio: 1 / 1.625;
   background-size: contain;
-  margin-left: 12px;
+  margin-left: 2px;
+  margin-right: 14px;
   margin-bottom: -1px;
   margin-top: 2px;
   filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.12)) drop-shadow(0 3px 1px rgba(0, 0, 0, 0.14)) drop-shadow(0 1px 5px rgba(0, 0, 0, 0.12)) drop-shadow(0 -1px 2px rgba(0, 0, 0, 0.1));
@@ -3627,7 +3632,6 @@ filter: drop-shadow(0 0 0.75rem #00000080) saturate(1.5);
   width: 40%;
   height: fit-content;
   padding: 20px;
-  margin-right: 20px;
   background: linear-gradient(146deg,#770095,#ab0018);
   border-radius: 20px;
   filter: drop-shadow(0 0 0.55rem #181818);
@@ -3652,16 +3656,16 @@ border-radius: 10px;
 
 
 .y-cta {
-  text-align: left;
+  text-align: center;
   font-weight: bold;
   color: #fff;
   font-size: 24px;
   font-style: italic;
-  margin-left: 4rem;
   font-family: 'Nunito Bold';
+  margin-top: 3em;
 }
 .y-container .y-preorderbtn {
-  margin-left: 0px;
+
   margin-top: 40px;
   margin-bottom: 80px;
 }
@@ -3986,6 +3990,7 @@ div#why-container {
   margin-top: 40px;
   padding: 30px;
   text-align: left;
+  margin-left: 50px;
 }
 
 .w-heading {
@@ -5033,8 +5038,8 @@ z-index: 1;
 background-size: 5%;
 bottom: 0;
 content: " ";
-width: 500%;
-height: 500%;
+width: 600%;
+height: 600%;
 top: -250%;
 left: -250%;
 transform: rotate(-30deg);
@@ -5042,8 +5047,13 @@ position: absolute;
 background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/seamless.jpg);
 z-index: 0;
 }
-
-
+.y-cont.y-second-el {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.y-heading.second-h {
+  text-align: end;
+}
 .book-obj-cont {
 transition: .5s all;
 position: relative;

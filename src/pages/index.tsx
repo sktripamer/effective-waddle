@@ -2887,9 +2887,7 @@ const noShippingForm = () => {
     }
     function preRevealBook2(e) {
       document.getElementsByTagName( 'html' )[0].classList.remove('noover')
-      if (windowWidth > 950) {
         document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
-      }
     
       setBook2('idle')
       setPreorderButton(true)

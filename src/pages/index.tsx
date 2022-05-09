@@ -2933,7 +2933,8 @@ const handleScroll = () => {
      const absoluteElementTop = elementRect1.top + window.pageYOffset;
      let yPosition = absoluteElementBottom + (element.offsetHeight / 2) - (window.innerHeight / 2) + 100
      let ogYPos =  absoluteElementTop - (element.offsetHeight / 2) - (window.innerHeight / 2)
-
+     const between = (window.scrollY - yPosition) / (ogYPos - yPosition)
+     const sinbetween = -(Math.cos(Math.PI * between) - 1) / 2
      if (window.scrollY <= yPosition) {
         // scroll is above top pos
         console.log('above top', yPosition)
@@ -2943,8 +2944,8 @@ const handleScroll = () => {
      }
      if (window.scrollY > yPosition && window.scrollY < ogYPos) {
        //within the bounds, set to absoltue etc
-      setScrollPosition(180 - 157 * (window.scrollY - yPosition) / (ogYPos - yPosition))
-      setShadowPosition(Math.abs(20 - 40 * (window.scrollY - yPosition) / (ogYPos - yPosition)))
+      setScrollPosition(180 - 157 * sinbetween)
+      setShadowPosition(Math.abs(20 - 40 * sinbetween))
        setYClass('fixed') 
      }
 

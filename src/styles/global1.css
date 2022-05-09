@@ -147,20 +147,7 @@ a {
 * {
   box-sizing: border-box;
 }
-main:after {
-  content: '';
-  position: fixed;
-  height: 100vh;
-  width: 10px;
-  right: 0px;
-  top: 0;
-  margin-right: 0px;
-  background: #373737;
-  opacity: 0;
-}
-main.modalup:after {
-opacity: 1;
-}
+
 main {
   /* margin: 0 auto 4rem;
   max-width: 1000px;
@@ -170,6 +157,10 @@ main {
   -webkit-transform: none;
   margin-left: -10px;
   padding-left: 10px;
+
+}
+main.modalup {
+  overflow-y: scroll;
 }
 
 .powered-by-stripe-small {
@@ -433,6 +424,7 @@ input.react-dropdown-select-input {
   width: fit-content
 }
 @media (max-width: 1050px) {
+
   .main-main div.read-more-title {
     font-size: 40px;
 
@@ -2129,9 +2121,13 @@ width: 48px;
 
 .seam-paper-2 {width: 100%;
     height: 100px;
-    background: url(https://portal.revrevdev.xyz/wp-content/uploads/paper2.png);}
+    background: url(https://portal.revrevdev.xyz/wp-content/uploads/paper2.png);
+    margin-top: -2px;
+  }
 
-.three-icons-content {background: #303030;}
+.three-icons-content {background: #303030;
+  margin-top: -1px;
+}
 
 .white-super-h {
   
@@ -5098,7 +5094,7 @@ transition: all .5s ease;
 .darken-book {
 position: fixed;
 
-width: 110vw;
+width: 100vw;
 background: rgb(0 0 0 / 50%);
 opacity: 0;
 height: 110vh;
@@ -5150,6 +5146,7 @@ display: block;
 
 transition: .5s all;
 opacity: 1;
+overflow: scroll;
 }
 div.open .book-cover.cover2 {
 transform: perspective(2000px) rotateY(-118deg);

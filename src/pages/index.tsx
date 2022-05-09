@@ -2781,7 +2781,7 @@ const noShippingForm = () => {
 
       const openBook = (e) => {
         if (document.getElementsByClassName('y-preorderbtnsmall')[0] === event.target) return;
-        document.getElementById("mockup-element").scrollIntoView({behavior: "smooth", block: "center"});
+        window.scrollTo({top: document.getElementsByClassName("peek-inner-cont")[0].getBoundingClientRect().top + window.pageYOffset + 300  - (window.innerHeight / 2),behavior: 'smooth'})
         document.getElementsByTagName( 'html' )[0].classList.add('noover')
         document.getElementsByTagName( 'main' )[0].classList.add('modalup')
         const timer = setTimeout(() => {
@@ -2931,8 +2931,7 @@ const handleScroll = () => {
      const absoluteElementTop = elementRect1.top + window.pageYOffset;
      let yPosition = absoluteElementBottom + (element.offsetHeight / 2) - (window.innerHeight / 2) + 100
      let ogYPos =  absoluteElementTop - (element.offsetHeight / 2) - (window.innerHeight / 2)
-     const between = (window.scrollY - yPosition) / (ogYPos - yPosition)
-     const sinbetween = -(Math.cos(Math.PI * between) - 1) / 2
+    
      if (window.scrollY <= yPosition) {
         // scroll is above top pos
         console.log('above top', yPosition)
@@ -2941,6 +2940,8 @@ const handleScroll = () => {
         setShadowPosition(20)
      }
      if (window.scrollY > yPosition && window.scrollY < ogYPos) {
+      const between = (window.scrollY - yPosition) / (ogYPos - yPosition)
+      const sinbetween = -(Math.cos(Math.PI * between) - 1) / 2
        //within the bounds, set to absoltue etc
       setScrollPosition(180 - 157 * sinbetween)
       setShadowPosition(Math.abs(20 - 40 * sinbetween))

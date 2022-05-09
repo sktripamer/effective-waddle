@@ -4843,14 +4843,14 @@ div#gatsby-focus-wrapper {-webkit-transform: none;}
 
 .minibook-container {
   display: flex;
-  width: 90%;
+  width: 84%;
   flex-direction: column-reverse;
   flex-wrap: nowrap;
 }
 
 #minibook-container {
   margin: 20px auto;
-  max-width: 1300px;
+  max-width: 1400px;
   display: flex;
 }
 
@@ -4867,6 +4867,8 @@ div#gatsby-focus-wrapper {-webkit-transform: none;}
   width: 100%;
   overflow-x: auto;
   white-space: nowrap;
+  display: inline;
+  text-align: center;
 }
 
 .preorder-btn-container.true {
@@ -4942,18 +4944,26 @@ div#gatsby-focus-wrapper {-webkit-transform: none;}
   margin-right: 4px;
   display: inline-block;
   white-space: normal;
-  width: 170px;
+  width: 120px;
   text-align: center;
 }
 ::-webkit-scrollbar{
 height: 10px;
 
 }
+
+.mbb1 .mb1 .mb-photo, .mbb2 .mb2 .mb-photo, .mbb3 .mb3 .mb-photo, .mbb4 .mb4 .mb-photo, .mbb5 .mb5 .mb-photo, .mbb6 .mb6 .mb-photo, .mbb7 .mb7 .mb-photo {
+  transform: scale(1.1);
+  filter: drop-shadow(0px 0px 6px #ffffff78) brightness(1.1);
+}
+
+
 .mb-photo {
-width: 70px;
-height: 110px;
+  height: 154px;
+  width: 98px;
 background: url(https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg);
 background-size: cover;
+filter: drop-shadow(2px 2px 2px transparent) brightness(1);
 }
 .mb-content {
   height: 410px;
@@ -5758,6 +5768,7 @@ text-align: center;
 }
 
 .mb-right-arrow {
+  margin-left: 20px;
 width:8%;
 background-size: contain;
 background-repeat: no-repeat;
@@ -5768,6 +5779,7 @@ background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-
 }
 
 .mb-left-arrow {
+  margin-right: 20px;
 width:8%;
 background-size: contain;
 background-repeat: no-repeat;

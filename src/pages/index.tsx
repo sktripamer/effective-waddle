@@ -3642,6 +3642,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
     </div>
     <div class={`read-more-content ${readmore}`}>
       <div ref={titleRef} class='always-visible'>
+      <div class="mockup-read"></div>
         <p>There’s a map for everything under the sun— everything you need to know and everywhere you want to go… Except for how to navigate your entrepreneurial journey.</p>
         <p><strong>The entrepreneurial journey is like one big question mark.</strong> It’s basically 3D Tetris for business, and every block on the board is moving too fast; critical blocks are missing; repeatedly rearranging the blocks is a frantic hopeless strategy, and time is not on your side. </p>
         <p>What is your entrepreneurial journey? Your entrepreneurial journey is every step of the business creation process from the conception of your business idea to the go-to-market promotion of your business product. It is a journey of ups and down, which, for those who win, can take you higher up in life.</p>
@@ -3694,6 +3695,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 
         </ol>
 </p>
+<div class="mockup-more"></div>
 <p class='p-title'><strong>INSTEAD OF TAKING MONTHS, LEVERAGE IN MINUTES HOW TO:</strong> </p>  
 <p>
         <ol>
@@ -3736,13 +3738,22 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
         <div class="y-subheading">Everyday self-employed people ask me, “How in the world do I make more money? And how can I make money multiple ways?” Employees ask me, “How can I do more for God? How can I start a meaningful business from nothing?” Executives ask me, “Where is America going as a nation? How do you think we can navigate today’s political turmoil and economic challenges?” Everyone wants to maximize their wage, increase their personal income, and generate more business revenue, but doing so while doing something they love. They just don’t know how…UNTIL NOW! I wrote this book because, like so many people, I needed a Revival of Revenue myself.</div>
         <div class="y-signature"></div>
         <div class="y-cta-cont">
+        </div>
+      </div>  
+      <div class="y-image-contain"><div class="y-image-cont"></div></div>
+    </div>
+    <div class="y-heading">WHY I WROTE <span>REVIVAL OF REVENUE</span> FOR YOU</div>
+    <div class="y-cont y-second-el">
+      <div class="y-text-cont">
+        <div class="y-subheading">Everyday self-employed people ask me, “How in the world do I make more money? And how can I make money multiple ways?” Employees ask me, “How can I do more for God? How can I start a meaningful business from nothing?” Executives ask me, “Where is America going as a nation? How do you think we can navigate today’s political turmoil and economic challenges?” Everyone wants to maximize their wage, increase their personal income, and generate more business revenue, but doing so while doing something they love. They just don’t know how…UNTIL NOW! I wrote this book because, like so many people, I needed a Revival of Revenue myself.</div>
+        <div class="y-signature"></div>
+        <div class="y-cta-cont">
         <div class="y-cta">Order your copy now</div>
         <div onClick={preReveal} class="y-preorderbtn">Pre-Order My Copy Now!</div>
         </div>
       </div>  
       <div class="y-image-contain"><div class="y-image-cont"></div></div>
     </div>
-   
     </div>
     <div style={Object.assign({'background-position-y': `${plaxVal}%` })} class='bg-renderer-pl'></div>
     </div>

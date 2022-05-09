@@ -2783,6 +2783,7 @@ const noShippingForm = () => {
         if (document.getElementsByClassName('y-preorderbtnsmall')[0] === event.target) return;
         document.getElementById("mockup-element").scrollIntoView({behavior: "smooth", block: "center"});
         document.getElementsByTagName( 'html' )[0].classList.add('noover')
+        document.getElementsByTagName( 'main' )[0].classList.add('modalup')
         const timer = setTimeout(() => {
                 //1.555 is ratio of heght / width of the book css properties
                 setBook2('open')
@@ -2811,6 +2812,7 @@ const noShippingForm = () => {
         setBook2Scale(1)
         setBook2('idle')
         document.getElementsByTagName( 'html' )[0].classList.remove('noover')
+        document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
       }
       
       const closeBook2outside = (e) => {
@@ -2820,16 +2822,19 @@ const noShippingForm = () => {
           setBook2Scale(1)
           setBook2('idle')
           document.getElementsByTagName( 'html' )[0].classList.remove('noover')
+          document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
           return;
         }
         if(document.getElementsByClassName('peek-inner-cont')[0] !== event.target) return;
         setBook2Scale(1)
         setBook2('idle')
         document.getElementsByTagName( 'html' )[0].classList.remove('noover')
+        document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
       }
       const closeBook2 = () => {
         if (book2 !== 'open') return;
         document.getElementsByTagName( 'html' )[0].classList.remove('noover')
+        document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
         setBook2Scale(1)
         setBook2('idle')
       }
@@ -2882,6 +2887,10 @@ const noShippingForm = () => {
     }
     function preRevealBook2(e) {
       document.getElementsByTagName( 'html' )[0].classList.remove('noover')
+      if (windowWidth > 950) {
+        document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
+      }
+    
       setBook2('idle')
       setPreorderButton(true)
       setPreorder(true)

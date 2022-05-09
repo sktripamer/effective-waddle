@@ -2778,10 +2778,30 @@ const noShippingForm = () => {
       }
       const [book2, setBook2] = useState('idle')
       const [book2Scale, setBook2Scale] = useState(1);
-
+      function scrollToSmoothly(pos, time) {
+        var currentPos = window.pageYOffset;
+        var start = null;
+        if(time == null) time = 500;
+        pos = +pos, time = +time;
+        window.requestAnimationFrame(function step(currentTime) {
+            start = !start ? currentTime : start;
+            var progress = currentTime - start;
+            if (currentPos < pos) {
+                window.scrollTo(0, ((pos - currentPos) * progress / time) + currentPos);
+            } else {
+                window.scrollTo(0, currentPos - ((currentPos - pos) * progress / time));
+            }
+            if (progress < time) {
+                window.requestAnimationFrame(step);
+            } else {
+                window.scrollTo(0, pos);
+            }
+        });
+    }
       const openBook = (e) => {
         if (document.getElementsByClassName('y-preorderbtnsmall')[0] === event.target) return;
-        window.scrollTo({top: document.getElementsByClassName("peek-inner-cont")[0].getBoundingClientRect().top + window.pageYOffset + 300  - (window.innerHeight / 2),behavior: 'smooth'})
+        scrollToSmoothly(document.getElementsByClassName("peek-inner-cont")[0].getBoundingClientRect().top + window.pageYOffset + 300  - (window.innerHeight / 2), 200)
+ 
         document.getElementsByTagName( 'html' )[0].classList.add('noover')
         document.getElementsByTagName( 'main' )[0].classList.add('modalup')
         const timer = setTimeout(() => {
@@ -2794,7 +2814,7 @@ const noShippingForm = () => {
           //width is bottleneck
           setBook2Scale((window.innerWidth * .9) / 225)
         }
-        }, 180);
+        }, 200);
         return () => clearTimeout(timer);
   
 

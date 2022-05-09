@@ -3638,7 +3638,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 
   <div class='read-more-container'>
     <div class='read-more-title'>
-    WHY START YOUR REVIVAL OF REVENUE?
+    <span>WHY </span><span>START </span><span>YOUR </span><span>REVIVAL </span><span>OF </span><span>REVENUE?</span>
     </div>
     <div class={`read-more-content ${readmore}`}>
       <div ref={titleRef} class='always-visible'>
@@ -3763,7 +3763,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 				<Minibook />
 </Suspense>)}
 
-  <div class="show-me-title">READ THE FIRST PAGE OF PK'S BOOK NOW!</div>
+  <div class="show-me-title"><span>READ </span><span>THE </span><span>FIRST </span><span>PAGE </span><span>OF </span><span>PK'S </span><span>BOOK </span><span>NOW!</span></div>
   <div class="subheader-title">Start your Revival of Revenue now and peek inside to read the first page of PK's book.</div>
   <div class={`peek-inside-container ${book2}`}>
     <div id='mockup-element' className='mockup-element'>
@@ -3795,7 +3795,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 <div onClick={openBook} class="y-preorderbtn">Read The First Page</div>
 
 <div id='shows-me-container'>
-  <div class='show-me-title'>PK'S BOOK SHOWS ME HOW TO...</div>
+  <div class='show-me-title'><span>PK'S </span><span>BOOK </span><span>SHOWS </span><span>ME </span><span>HOW </span><span>TO...</span></div>
   <div class='show-me-grid'>
     <div class="show-me-item">Begin My Entrepreneurial Journey on Day 1</div>
     <div class="show-me-item">Go-to-Market By Following a 25-Step Entrepreneurial Journey</div>
@@ -3828,7 +3828,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 <label>Email</label>
 <input required className='bottom-section-form-name' placeholder="Email" autocomplete="email" name={'email'}/>
 </div>
-      <button className='bottom-btn' id="submit">
+      <button className='y-preorderbtn' id="submit">
 <span id="button-text">Subscribe Me!
 </span>
 </button>

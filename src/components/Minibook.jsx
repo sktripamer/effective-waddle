@@ -90,7 +90,7 @@ export default function Minibook() {
 return (
 <div class='minib-r-cont'>
 
-<div class='show-me-title'>WHAT'S INSIDE <span>REVIVAL OF REVENUE?</span></div>
+<div class='show-me-title'><span>WHAT'S </span><span>INSIDE </span><span>REVIVAL </span><span>OF </span><span>REVENUE?</span></div>
   <div id='minibook-container' class={`mbb${minibook}`}>
   <div onClick={goLeft} class='mb-left-arrow'></div>
     <div class='minibook-container'>

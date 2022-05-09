@@ -425,6 +425,14 @@ input.react-dropdown-select-input {
 }
 @media (max-width: 1050px) {
 
+
+  div.y-cont.y-second-el {
+    flex-direction: column-reverse;
+}
+
+
+  }
+
   div.y-subheading {
     font-size: 18px;
 }
@@ -3876,20 +3884,24 @@ div#what-container {
   text-align: end;
   margin-right: 10%;
   margin-top: 6px;
+  width: 500px;
+  max-width: 500px;
   position: relative;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
-  background-image: linear-gradient(90deg, rgba(50,12,227,1) 20%, rgba(224,10,45,1) 100%);
+  background-image: linear-gradient(90deg, rgba(50,12,227,1) 50%, rgba(224,10,45,1) 100%);
 }
 
 .compare-tomorrow-subtext {
 opacity: 0;
   margin-left: 10%;
   margin-top: 6px;
+  width: 500px;
+  max-width: 500px;
   position: relative;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
-  background-image: linear-gradient(270deg, rgba(50,12,227,1) 20%, rgba(224,10,45,1) 100%);
+  background-image: linear-gradient(270deg, rgba(50,12,227,1) 50%, rgba(224,10,45,1) 100%);
 }
 .compare-title-vs {
   font-family: 'Josefin Sans';
@@ -3924,6 +3936,9 @@ opacity: 0;
   padding-top: 16px;
   width: 50%;
   border-right: 5px solid #e00a2d;
+  display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 /* 
 .compare-today-subtext {
@@ -5370,13 +5385,13 @@ position: relative;
 .click-to-read:after {
 content: "\2304";
 position: absolute;
-margin-top: -2px;
+margin-top: -5px;
 margin-left: 8px;
 }
 .click-to-read:before {
 content: "\2304";
 position: absolute;
-margin-top: -2px;
+margin-top: -5px;
 margin-left: -16px;
 }
 .click-to-read-less {

@@ -1262,26 +1262,31 @@ span.Typewriter__cursor {
     padding-top: 10px;
 }
   div.bonus-realprice {
-    font-size: 32px;
+    font-size: 28px;
 }
   div.preorder-book-image {
-    max-height: 250px;
+    max-height: 240px;
+}
+div.bonus-flag {
+  margin-bottom: 0.3em;
 }
   div.payment-area-cont > div {
     width: 100%;
 }
 div.register-form .bonus-flag h4 {
   display: inline-block;
-  font-size: 18px;
+  font-size: 16px;
 }
 div.payment-area-content h3.bonus-header {
+  
+  margin-bottom: 0.7em;
   font-size: 1em;
 }
 div.payment h2 {
   font-size: 1.6em;
 }
 div.payment h3 {
-  font-size: 1.1em;
+  font-size: 0.8em;
 }
 div.payment-area-cont {
 
@@ -5739,7 +5744,7 @@ justify-content: space-between;
 .preorder-btn-container .register-form.col-md-6 {
   display: flex;
   flex-direction: column;
-  height: 95%;
+  height: 100%;
   overflow-y: auto;
   max-width: 100%;
 }

@@ -1255,18 +1255,39 @@ span.Typewriter__cursor {
 
 }
 
+.before-text {
+  background-image: linear-gradient(90deg,#320ce3,#e00a2d);
+    color: #e00a2d;
+    margin-right: 5%;
+    text-align: end;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: Josefin Sans;
+    font-size: 80px;
+    width: 100%;
+}
 
+.after-text {
+  background-image: linear-gradient(270deg,#320ce3,#e00a2d);
+    color: #320ce3;
+    margin-left: 5%;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: Josefin Sans;
+    font-size: 80px;
+    width: 100%;
+}
 
 @media (max-width: 666px) {
   div.mockup-element:before {
     margin-left: -100px;
-    margin-top: -10px;
+    margin-top: -20px;
     animation: grow2 5s cubic-bezier(.42,.04,.58,1) 2s infinite forwards;
     transform: rotate(35deg);
     z-index: 99;
 }
   div.subheader-title {
-    margin-bottom: 3em;
+    margin-bottom: 4em;
 }
   #minibook-container div.mb-left-arrow {
     margin-left:10px

@@ -2841,8 +2841,6 @@ const noShippingForm = () => {
         if (document.getElementsByClassName('y-preorderbtnsmall')[0] === event.target) {
           setBook2Scale(1)
           setBook2('idle')
-          document.getElementsByTagName( 'html' )[0].classList.remove('noover')
-          document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
           return;
         }
         if(document.getElementsByClassName('peek-inner-cont')[0] !== event.target) return;
@@ -2907,9 +2905,8 @@ const noShippingForm = () => {
         setPreorderButton(true)
         setPreorder(true)
     }
-    function preRevealBook2(e) {
-      document.getElementsByTagName( 'html' )[0].classList.add('noover')
-        document.getElementsByTagName( 'main' )[0].classList.add('modalup')
+    function  preRevealBook2(e) {
+
     
       setBook2('idle')
       setPreorderButton(true)

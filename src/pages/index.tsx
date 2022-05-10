@@ -2776,6 +2776,7 @@ const noShippingForm = () => {
       const [bookWidth, setBookWidth] = useState(0)
       const [windowWidth, setWindowWidth] = useState(0)
       const [windowHeight, setWindowHeight] = useState(0)
+      const [prevScroll, setPrevScroll] = useState(0)
       const titleRef = useRef(null)
 
       const setArchtype1 = () => {
@@ -2906,13 +2907,19 @@ const noShippingForm = () => {
       const currentVideoState = () => {
         return videoTime;
       }
+      function preventDefault(e) {
+        e.preventDefault();
+    }
       function preReveal() {
+        setPrevScroll(window.scrollY)
         document.getElementsByTagName( 'html' )[0].classList.add('noover')
         document.getElementsByTagName( 'main' )[0].classList.add('modalup')
         document.getElementsByTagName( 'html' )[0].style.cssText = `height:${windowHeight}px`;
         document.getElementsByTagName( 'body' )[0].style.cssText = `height:${windowHeight}px`;
         setPreorderButton(true)
         setPreorder(true)
+        document.getElementsByClassName('preorder-btn-container')[0].addEventListener('pointermove',  preventDefault)
+        document.getElementsByClassName('preorder-btn-container')[0].addEventListener('touchmove',  preventDefault)
     }
     function  preRevealBook2(e) {
 
@@ -2934,12 +2941,17 @@ const noShippingForm = () => {
     setPreorder3(true)
 }
     function preHide() {
-      document.getElementsByTagName( 'html' )[0].classList.remove('noover')
-      document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
       document.getElementsByTagName( 'html' )[0].style.cssText = ``;
       document.getElementsByTagName( 'body' )[0].style.cssText = ``;
+      window.scrollTo(prevScroll)
+      document.getElementsByTagName( 'html' )[0].classList.remove('noover')
+      document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
+
+   
       setPreorderButton(false)
       setPreorder(false)
+      document.getElementsByClassName('preorder-btn-container')[0].removeEventListener('pointermove',  preventDefault)
+      document.getElementsByClassName('preorder-btn-container')[0].removeEventListener('touchmove',  preventDefault)
   }
   function preHide2() {
     document.getElementsByTagName( 'html' )[0].classList.remove('noover')

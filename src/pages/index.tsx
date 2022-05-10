@@ -2909,8 +2909,8 @@ const noShippingForm = () => {
       function preReveal() {
         document.getElementsByTagName( 'html' )[0].classList.add('noover')
         document.getElementsByTagName( 'main' )[0].classList.add('modalup')
-        document.getElementsByTagName( 'html' )[0].style.height = windowHeight
-        document.getElementsByTagName( 'body' )[0].style.height = windowHeight
+        document.getElementsByTagName( 'html' )[0].style.cssText = `height:${windowHeight}px`;
+        document.getElementsByTagName( 'body' )[0].style.cssText = `height:${windowHeight}px`;
         setPreorderButton(true)
         setPreorder(true)
     }
@@ -2936,8 +2936,8 @@ const noShippingForm = () => {
     function preHide() {
       document.getElementsByTagName( 'html' )[0].classList.remove('noover')
       document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
-      document.getElementsByTagName( 'html' )[0].style.removeProperty('height')
-      document.getElementsByTagName( 'body' )[0].style.removeProperty('height')
+      document.getElementsByTagName( 'html' )[0].style.cssText = ``;
+      document.getElementsByTagName( 'body' )[0].style.cssText = ``;
       setPreorderButton(false)
       setPreorder(false)
   }

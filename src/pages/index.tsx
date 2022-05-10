@@ -2775,6 +2775,7 @@ const noShippingForm = () => {
       const [minibookClick, setMinibookClick] = useState(false)
       const [bookWidth, setBookWidth] = useState(0)
       const [windowWidth, setWindowWidth] = useState(0)
+      const [windowHeight, setWindowHeight] = useState(0)
       const titleRef = useRef(null)
 
       const setArchtype1 = () => {
@@ -2808,6 +2809,7 @@ const noShippingForm = () => {
         scrollToSmoothly(document.getElementsByClassName("peek-inner-cont")[0].getBoundingClientRect().top + window.pageYOffset + 300  - (window.innerHeight / 2), 200)
  
         document.getElementsByTagName( 'html' )[0].classList.add('noover')
+
         document.getElementsByTagName( 'main' )[0].classList.add('modalup')
         const timer = setTimeout(() => {
                 //1.555 is ratio of heght / width of the book css properties
@@ -2907,6 +2909,8 @@ const noShippingForm = () => {
       function preReveal() {
         document.getElementsByTagName( 'html' )[0].classList.add('noover')
         document.getElementsByTagName( 'main' )[0].classList.add('modalup')
+        document.getElementsByTagName( 'html' )[0].style.height = windowHeight
+        document.getElementsByTagName( 'body' )[0].style.height = windowHeight
         setPreorderButton(true)
         setPreorder(true)
     }
@@ -2932,6 +2936,8 @@ const noShippingForm = () => {
     function preHide() {
       document.getElementsByTagName( 'html' )[0].classList.remove('noover')
       document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
+      document.getElementsByTagName( 'html' )[0].style.removeProperty('height')
+      document.getElementsByTagName( 'body' )[0].style.removeProperty('height')
       setPreorderButton(false)
       setPreorder(false)
   }
@@ -2996,6 +3002,7 @@ const handleScroll = () => {
 const reportWindowSize = () => {
   setBookWidth(document.querySelector('.book-section .book img').height * .625)
   setWindowWidth(window.innerWidth)
+  setWindowHeight(window.innerHeight)
   const element = document.getElementsByClassName("book-section")[0]
   const element2 = document.getElementById('say-hello-list-container')
   const element3 = document.getElementsByClassName("book-section-hero-cta")[0]
@@ -3040,6 +3047,7 @@ useEffect(() => {
 
       useEffect(() => {
         setWindowWidth(window.innerWidth)
+        setWindowHeight(window.innerHeight - 1)
         setBookWidth(document.querySelector('.book-section .book img').height * .625)
         async function fetchMyAPI() {
           timeoutResolver(6000).then(() =>  lastResort());

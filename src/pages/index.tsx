@@ -1710,7 +1710,11 @@ const noShippingForm = () => {
 
       return (
         <div className={`payment register-form col-md-6 status-${status} load-${doneLoading} step-${currentStep} success-${succeeded}`}>
-            <h2>Test Course purchase</h2>
+            <h2>{props.header}</h2>
+            <h3>{props.subheader}</h3>
+            <div class='payment-area-cont'>
+              <div class='payment-area-content'>{props.content}</div>
+              <div class='payment-area-pay'>
            {methodProcessing ? (
                 <></>
               ) : (
@@ -1771,7 +1775,8 @@ const noShippingForm = () => {
         </div>
           
         </form>
-
+        </div>
+        </div>
         </div>
       );
 
@@ -3414,7 +3419,7 @@ useEffect(() => {
                   
                   <Elements stripe={stripePromise}>
                     <div onClick={preHide} class='close-preorder'>X</div>
-                  <StepSix shipping={true} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
+                  <StepSix content={<><div class="preorder-book-image"></div><h3 class="bonus-header">Get a <span>FREE</span> Bonus Revenue Map with your order!</h3><div class="bonus-flag"><h4>Worth $77.00!</h4></div><div class="bonus-price"><div class="bonus-preprice">$107.00</div><div class="bonus-realprice">$28.95</div></div></>} header={'Revival Of Revenue Book Bundle'} subheader={"Order PK's book and get CHAPTER 1 sent right to your inbox, plus its BONUS REVENUE MAP revealing The 7 Steps to Becoming Your Own Boss & Turning Your Passions into Profit Today!"} shipping={true} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
                   </Elements>
                 
                   )

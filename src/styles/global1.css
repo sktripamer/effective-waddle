@@ -1242,6 +1242,14 @@ span.Typewriter__cursor {
 
 
 @media (max-width: 666px) {
+  div.j-third div.j-paragraph {
+    margin-top: 3em;
+}
+  div.j-third div.j-transform {margin-top: 0;}
+div.j-first div.j-transform {
+  margin-top: 0;
+}
+div.j-second div.j-transform {margin-top: 0;}
   div.j-heading-big {
     display: none;
   
@@ -1428,7 +1436,7 @@ div.journey-item div.j-paragraph {width: 100%;margin-right: 6.5%;margin-left: 6.
 
 div.j-text {width: 90%;}
 
-div.j-heading:first-child {font-size: 9.5vw; display: block;}
+div.j-heading:first-child {font-size: 9.1vw; display: block;}
 
 div.j-headingj1 {font-size: 6.2vw;display: block;}
 
@@ -3481,6 +3489,9 @@ div#say-hello-list-container {
   font-family: Josefin Sans;
   white-space: nowrap;
   color: #320ce3;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(#8d74ff,#320ce3);
 }
 .j-subheading {
   color: #320ce3;
@@ -3501,7 +3512,17 @@ div#say-hello-list-container {
   line-height: 10vw;
   margin-left: -0.4vw;
 }
+.j-heading-big {width: 90%;color: #320ce3;
+  font-family: Josefin Sans;
+  
+  white-space: nowrap;margin-bottom: 1em;-webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(#8d74ff,#320ce3);}
 
+.j-heading-big span {
+  background: linear-gradient(#6442ff,#320ce3);-webkit-text-fill-color: initial;border-radius: .1em;color: #fff;padding: 0.2em;padding-top: 0.3em;}
+
+.j-first .j-heading-big {font-size: 3.7vw;}
 .j-third .j-subheading {
   font-family: Josefin Sans;
   font-size: 7.8vw;
@@ -3580,6 +3601,9 @@ div#say-hello-list-container {
   color: #320ce3;
     font-family: Josefin Sans;
     white-space: nowrap;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(#8d74ff,#320ce3);
 }
 .j-headingj2 {
   display: none;
@@ -3587,6 +3611,9 @@ div#say-hello-list-container {
   color: #320ce3;
     font-family: Josefin Sans;
     white-space: nowrap;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(#8d74ff,#320ce3);
 }
 .j-headingj3 {
   display: none;
@@ -3594,39 +3621,75 @@ div#say-hello-list-container {
   color: #320ce3;
     font-family: Josefin Sans;
     white-space: nowrap;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(#8d74ff,#320ce3);
 }
-
+.j-heading span {
+  background: linear-gradient(#6442ff,#320ce3);
+  -webkit-text-fill-color: initial;
+  border-radius: 0.1em;
+  color: #fff;
+  padding: 0.2em;
+  padding-top: 0.3em;
+}
 .j-paragraph.false .j-invisible {display: none;}
 
-.j-paragraph {width: 40%;margin-right: auto;margin-left: 6.5%;color: #76010b;}
+.j-paragraph {width: 45%;margin-right: auto;margin-left: 6.5%;color: #76010b;}
 
 .j-paragraph.true .click-to-read-j {display: none;}
 
 .click-to-read-j {font-family: 'Nunito Bold';
   cursor: pointer;}
   .j-second .j-paragraph {
-    width: 35%;
+    width: 45.5%;
 }
+
+.j-second .j-heading-big {font-size: 3.41vw;}
+
+.j-second .j-transform {margin-top: -30%;}
+
 .j-visible {font-family: 'Nunito Regular';}
 
 .j-heading:first-child {font-size: 3.7vw;}
 
-.j-first .j-paragraph {margin-top: -3em;}
+.j-first .j-paragraph {    margin-top: -11%;}
 
-.j-second .j-paragraph {margin-right: 4.5%;margin-left: auto;margin-top: -3em;}
+.j-second .j-paragraph {margin-right: 4.5%;margin-left: auto;margin-top: -11%;}
 
-.j-third .j-paragraph {margin-top: 3em;}
+.j-third .j-paragraph {margin-top: -11%;}
 
-.j-first .typewrap1 {font-size: 2.4VW;
+.j-third .j-heading-big {font-size: 3.05vw;}
+.j-first span.Typewriter__cursor {
+  font-size: 4vw;
+  position: relative;
+  top: -8px;
+  display: inline-block;
+}
+.j-second span.Typewriter__cursor {
+  font-size: 5vw;
+  position: relative;
+  top: -12px;
+  display: inline-block;
+}
+.j-third span.Typewriter__cursor {
+  font-size: 4vw;
+  position: relative;
+  top: -7px;
+  display: inline-block;
+}
+
+.j-third .j-transform {margin-top: -30%;}
+.j-first .typewrap1 {font-size: 4.2VW;
   white-space: nowrap;   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-image: linear-gradient(#ee091c,#850b90);}
 
-.j-second .typewrap2 {font-size: 2.4VW;
+.j-second .typewrap2 {font-size: 5.5VW;
   white-space: nowrap;   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-image: linear-gradient(#ee091c,#850b90);}
-.j-third .typewrap3 {font-size: 2.4VW;
+.j-third .typewrap3 {font-size: 4.2VW;
   white-space: nowrap;   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-image: linear-gradient(#ee091c,#850b90);}
@@ -3635,7 +3698,7 @@ div#say-hello-list-container {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  margin-bottom: 200px;
+  margin-bottom: 260px;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
@@ -5865,7 +5928,9 @@ display: initial;
 color: #b3b3b3;
 margin-left: 8px;
 }
-
+.j-first .j-transform {
+  margin-top: -30%;
+}
 
 .j-first .j-image {
 background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/lifestyle.png);

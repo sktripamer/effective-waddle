@@ -36,8 +36,9 @@ export default function TypeText() {
 
 <div id='jounrey-list-container'>
     <div class="journey-item j-first">
+    <div class="j-heading-big">The <span>#1 Reason</span> Why People Don’t Start a Business</div>
         <div class="j-text">
-            <div class="j-heading">The #1 Reason Why</div>
+            <div class="j-heading">The <span>#1 Reason</span> Why</div>
             <div class="j-headingj1">People Don’t Start a Business</div>
               <div class="j-transform"><Typewriter
     options={{
@@ -69,8 +70,9 @@ export default function TypeText() {
           </div> 
     </div>
     <div class="journey-item j-second">
+    <div class="j-heading-big">The <span>#1 Reason</span> Why People Don’t Follow Their Dreams</div>
         <div class="j-text">
-        <div class="j-heading">The #1 Reason Why</div>
+        <div class="j-heading">The <span>#1 Reason</span> Why</div>
             <div class="j-headingj2">People Don’t Follow Their Dreams</div>
              <div class="j-transform"><Typewriter
   options={{
@@ -101,9 +103,10 @@ export default function TypeText() {
           </div> 
     </div>
     <div class="journey-item j-third">
+    <div class="j-heading-big">The <span>#1 Reason</span> Why People Give Up On Their Business Ideas</div>
         <div class="j-text">
-        <div class="j-heading">The #1 Reason Why</div>
-            <div class="j-headingj3"> People Give Up On Their Business Ideas</div>
+        <div class="j-heading">The <span>#1 Reason</span> Why</div>
+            <div class="j-headingj3">People Give Up On Their Business Ideas</div>
              <div class="j-transform"><Typewriter
     options={{
       strings: ['VISION', 'DIRECTION','INITIATIVE', 'CONVICTION'],

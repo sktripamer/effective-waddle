@@ -2902,34 +2902,46 @@ const noShippingForm = () => {
         return videoTime;
       }
       function preReveal() {
+        document.getElementsByTagName( 'html' )[0].classList.add('noover')
+        document.getElementsByTagName( 'main' )[0].classList.add('modalup')
         setPreorderButton(true)
         setPreorder(true)
     }
     function preRevealBook2(e) {
-      document.getElementsByTagName( 'html' )[0].classList.remove('noover')
-        document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
+      document.getElementsByTagName( 'html' )[0].classList.add('noover')
+        document.getElementsByTagName( 'main' )[0].classList.add('modalup')
     
       setBook2('idle')
       setPreorderButton(true)
       setPreorder(true)
   }
     function preReveal2() {
+      document.getElementsByTagName( 'html' )[0].classList.add('noover')
+      document.getElementsByTagName( 'main' )[0].classList.add('modalup')
       setPreorderButton(true)
       setPreorder2(true)
   }
   function preReveal3() {
+    document.getElementsByTagName( 'html' )[0].classList.add('noover')
+    document.getElementsByTagName( 'main' )[0].classList.add('modalup')
     setPreorderButton(true)
     setPreorder3(true)
 }
     function preHide() {
+      document.getElementsByTagName( 'html' )[0].classList.remove('noover')
+      document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
       setPreorderButton(false)
       setPreorder(false)
   }
   function preHide2() {
+    document.getElementsByTagName( 'html' )[0].classList.remove('noover')
+    document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
     setPreorderButton(false)
     setPreorder2(false)
 }
 function preHide3() {
+  document.getElementsByTagName( 'html' )[0].classList.remove('noover')
+  document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
   setPreorderButton(false)
   setPreorder3(false)
 }

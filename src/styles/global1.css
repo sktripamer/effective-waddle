@@ -2336,30 +2336,31 @@ position: absolute;
 width: 48px;
 }
 .mockup-more {
+  padding-bottom: 61.7%;
   background: url(https://portal.revrevdev.xyz/wp-content/uploads/more-mockup.jpg);
-  width: 33%;
-  float: right;
-  aspect-ratio: 1 / 1.625;
+  width: 37%;
   background-size: contain;
-  margin-right: 16px;
-  margin-bottom: -1px;
-  margin-top: 2px;
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.12)) drop-shadow(0 3px 1px rgba(0, 0, 0, 0.14)) drop-shadow(0 1px 5px rgba(0, 0, 0, 0.12)) drop-shadow(0 -1px 2px rgba(0, 0, 0, 0.1));
+  float: right;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.12)) drop-shadow(0 3px 1px rgba(0,0,0,.14)) drop-shadow(0 1px 5px rgba(0,0,0,.12)) drop-shadow(0 -1px 2px rgba(0,0,0,.1));
 }
 .mockup-read {
   background: url(https://portal.revrevdev.xyz/wp-content/uploads/read-mockup.jpg);
-  width: 30%;
-  float: left;
-  aspect-ratio: 1 / 1.625;
   background-size: contain;
-  margin-left: 2px;
-  margin-right: 14px;
-  margin-bottom: -1px;
-  margin-top: 2px;
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.12)) drop-shadow(0 3px 1px rgba(0, 0, 0, 0.14)) drop-shadow(0 1px 5px rgba(0, 0, 0, 0.12)) drop-shadow(0 -1px 2px rgba(0, 0, 0, 0.1));
+  float: left;
+  margin: 2px 14px -1px 2px;
+  width: 38%;
+  padding-bottom: 61.53%;
+  overflow: hidden;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.12)) drop-shadow(0 3px 1px rgba(0,0,0,.14)) drop-shadow(0 1px 5px rgba(0,0,0,.12)) drop-shadow(0 -1px 2px rgba(0,0,0,.1)); 
 }
 
-
+.read-more-section-cta {
+  margin-top: 5em;
+  text-align: center;
+  font-family: 'Nunito Bold';
+  font-size: 1.6em;
+  margin-bottom: 1em;
+}
 .three-icons-container {display: flex;flex-direction: column;margin-top: 100px;
 
   background: linear-gradient(180deg, rgba(255,255,255,1) 1%, rgba(48,48,48,1) 2%, rgba(48,48,48,1) 98%, rgba(255,255,255,1) 99%);
@@ -5113,10 +5114,15 @@ div#gatsby-focus-wrapper {-webkit-transform: none;}
   display: inline;
   text-align: center;
 }
-
+.mockup-read-cont {
+  width: 77%;
+}
 .preorder-btn-container.true {
   backdrop-filter: blur(10px);
-  background-image: linear-gradient(155deg,rgba(201,34,40,.8),rgba(209,0,52,.8) 11%,rgba(219,0,73,.8) 22%,rgba(219,0,91,.8) 33%,rgba(219,0,113,.8) 44%,rgba(209,0,139,.8) 56%,rgba(194,0,165,.8) 67%,rgba(171,0,194,.8) 78%,rgba(131,0,224,.8) 89%,rgba(33,29,252,.8));
+  background-image: linear-gradient(155deg,rgba(201,34,40,.8),rgba(209,0,52,.8) 11%,rgba(219,0,73,.8) 22%,rgba(219,0,91,.8) 33%,rgba(219,0,113,.8) 44%,rgba(209,0,139,.8) 56%,rgba(194,0,165,.8) 67%,rgba(171,0,194,.8) 78%,rgba(131,0,224,.8) 89%,rgba(33,29,252,.8)), url(https://portal.revrevdev.xyz/wp-content/uploads/bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   height: 100%;
   left: 0;
   position: fixed;

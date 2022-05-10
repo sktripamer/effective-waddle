@@ -1228,8 +1228,24 @@ div#card-element {
   .mb-content-picture-small {
 display: none;
 }
+span.Typewriter__cursor {
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(#ee091c,#850b90);
+}
+
+.j-heading-big {
+  display: block;
+
+}
+
+
 
 @media (max-width: 666px) {
+  div.j-heading-big {
+    display: none;
+  
+  }
   div.show-me-item {
     width: 75%;
     margin-top: 0.6em;
@@ -1412,21 +1428,24 @@ div.journey-item div.j-paragraph {width: 100%;margin-right: 6.5%;margin-left: 6.
 
 div.j-text {width: 90%;}
 
-div.j-heading:first-child {font-size: 9.5vw;}
+div.j-heading:first-child {font-size: 9.5vw; display: block;}
 
-div.j-headingj1 {font-size: 6.2vw;}
+div.j-headingj1 {font-size: 6.2vw;display: block;}
 
-div.j-first .typewrap1 {font-size: 7VW;margin-top: 0;}
-div.j-second .typewrap2 {font-size: 11VW;margin-top: 0;}
-div.j-third .typewrap3 {font-size: 7.4VW;margin-top: 0;}
+div.j-first .typewrap1 {font-size: 7VW;margin-top: 0;
+}
+div.j-second .typewrap2 {font-size: 11VW;margin-top: 0;
+}
+div.j-third .typewrap3 {font-size: 7.4VW;margin-top: 0; 
+}
 
 div.Typewriter {    margin-top: 18px;margin-bottom: 60px;}
 
 div.j-image-cont {width: 70%;}
 
-div.j-headingj2 {font-size: 5.42vw;}
+div.j-headingj2 {font-size: 5.42vw;display: block;}
 
-div.j-headingj3 {font-size: 4.55vw;}
+div.j-headingj3 {font-size: 4.55vw;display: block;}
   div.journey-item div.j-paragraph {
     width: 100%;
     margin-right: 6.5%;
@@ -3454,7 +3473,7 @@ div#say-hello-list-container {
 
 
 .j-text {
-  width: 33%;
+  width: 44%;
 }
 
 .j-heading {
@@ -3552,21 +3571,25 @@ div#say-hello-list-container {
     color: #76010b;
 }
 .j-heading:first-child {
+  display: none;
   font-size: 3.7vw;
 }
 .j-headingj1 {
+  display: none;
   font-size: 2.4vw;
   color: #320ce3;
     font-family: Josefin Sans;
     white-space: nowrap;
 }
 .j-headingj2 {
+  display: none;
   font-size: 2.12vw;
   color: #320ce3;
     font-family: Josefin Sans;
     white-space: nowrap;
 }
 .j-headingj3 {
+  display: none;
   font-size: 1.78vw;
   color: #320ce3;
     font-family: Josefin Sans;
@@ -3595,12 +3618,18 @@ div#say-hello-list-container {
 .j-third .j-paragraph {margin-top: 3em;}
 
 .j-first .typewrap1 {font-size: 2.4VW;
-  white-space: nowrap;}
+  white-space: nowrap;   -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(#ee091c,#850b90);}
 
 .j-second .typewrap2 {font-size: 2.4VW;
-  white-space: nowrap;}
+  white-space: nowrap;   -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(#ee091c,#850b90);}
 .j-third .typewrap3 {font-size: 2.4VW;
-  white-space: nowrap;}
+  white-space: nowrap;   -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(#ee091c,#850b90);}
 
 .journey-item {
   display: flex;
@@ -3621,7 +3650,7 @@ div#say-hello-list-container {
   flex-direction: row-reverse;
 }
 .j-image-cont {
-  width: 40%;
+  width: 31%;
 }
 
 .y-heading {

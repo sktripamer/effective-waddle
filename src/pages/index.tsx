@@ -2943,7 +2943,7 @@ const noShippingForm = () => {
     function preHide() {
       document.getElementsByTagName( 'html' )[0].style.cssText = ``;
       document.getElementsByTagName( 'body' )[0].style.cssText = ``;
-      window.scrollTo(prevScroll)
+      window.scrollTo(0, prevScroll)
       document.getElementsByTagName( 'html' )[0].classList.remove('noover')
       document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
 

@@ -435,6 +435,9 @@ input.react-dropdown-select-input {
   width: fit-content
 }
 @media (max-width: 1050px) {
+  div.before-text, div.after-text {
+    font-size: 60px;
+  }
   div.bonus-preprice {
     margin-right: 10px;
     margin-left: -100px;
@@ -1261,6 +1264,8 @@ span.Typewriter__cursor {
 
 }
 
+
+
 .before-text {
   background-image: linear-gradient(90deg,#320ce3,#e00a2d);
     color: #e00a2d;
@@ -1285,6 +1290,12 @@ span.Typewriter__cursor {
 }
 
 @media (max-width: 666px) {
+
+  #compare-container div.before-text,#compare-container div.after-text {
+    font-size: 36px;
+  }
+
+
   div.mockup-element:before {
     margin-left: -100px;
     margin-top: -20px;

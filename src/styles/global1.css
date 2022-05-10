@@ -169,7 +169,13 @@ main.modalup {
 }
 
 .powered-by-stripe-small {
-  display:none;
+  background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/stripe-small-min.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 32px;
+  position: absolute;
+  width: 126px;
 }
 @keyframes neon1 {
   from {
@@ -2664,6 +2670,7 @@ input:focus + .svg-img-item {
   background-size: contain;
   height: 38px;
   width: 152px;
+  display: none;
 }
 .powered-container {
   display: flex;

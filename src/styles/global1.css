@@ -4138,6 +4138,7 @@ div#what-container {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-image: linear-gradient(90deg, rgba(50,12,227,1) 0%, rgba(224,10,45,1) 100%);
+  margin-bottom: 4px;
 }
 
 .compare-title-2 {
@@ -4149,6 +4150,7 @@ div#what-container {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-image: linear-gradient(270deg, rgba(50,12,227,1) 0%, rgba(224,10,45,1) 100%);
+  margin-bottom: 4px;
 }
 
 .compare-title-1 > span {

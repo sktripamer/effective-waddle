@@ -1281,7 +1281,7 @@ span.Typewriter__cursor {
 .after-text {
   background-image: linear-gradient(270deg,#320ce3,#e00a2d);
     color: #320ce3;
-    margin-left: 5%;
+
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-family: Josefin Sans;
@@ -5286,8 +5286,8 @@ transition: .2s all;
 .mb-content-picture {
   background: url(https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg);
   background-size: cover;
-  height: 280px;
-  width: 174px;
+  height: 356px;
+  width: 219px;
   transition: .2s all;
   margin-bottom: 11px;
   margin-right: 10px;
@@ -5741,6 +5741,7 @@ margin-top: -5px;
 margin-left: -16px;
 }
 .click-to-read-less {
+  margin-top: 4em;
 text-align: center;
 font-weight: bold;
 cursor: pointer;

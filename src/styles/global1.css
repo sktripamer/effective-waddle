@@ -988,9 +988,14 @@ font-weight: bold;
 }
 
 .payment h2 {
-color: #1204fe;
-font-family: 'Josefin Sans';
-margin-bottom: 20px;
+  color: #ffffff;
+  font-family: Josefin Sans;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+  padding-left: 0.5em;
+  text-transform: uppercase;
+  padding-right: 0.5em;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.12)) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.14)) drop-shadow(0 1px 8px rgba(0, 0, 0, 0.12)) drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));
 }
 .result-message-success:before {
 position: absolute;
@@ -3590,7 +3595,6 @@ div#say-hello-list-container {
     margin-left: 6.7%;
     margin-right: auto;
     color: #76010b;
-    max-width: 650px;
 }
 .j-heading:first-child {
   display: none;
@@ -3643,14 +3647,14 @@ div#say-hello-list-container {
 .click-to-read-j {font-family: 'Nunito Bold';
   cursor: pointer;}
   .j-second .j-paragraph {
-    width: 45.5%;
+    width: 45.5%;    max-width: 650px;
 }
 
 .j-second .j-heading-big {font-size: 3.41vw;}
 
 .j-second .j-transform {margin-top: -30%;}
 
-.j-visible {font-family: 'Nunito Regular';}
+.j-visible {font-family: 'Nunito Regular';     max-width: 650px;}
 
 .j-heading:first-child {font-size: 3.7vw;}
 
@@ -5686,11 +5690,11 @@ justify-content: space-between;
 }
 
 .preorder-btn-container .register-form.col-md-6 {
-max-width: 100%;
-  height: 95%;
   display: flex;
   flex-direction: column;
+  height: 95%;
   justify-content: center;
+  max-width: 100%;
 }
 
 .preorder-book-section {
@@ -5736,6 +5740,94 @@ padding-top: 7px;
 font-family: 'Josefin Sans';
 filter: drop-shadow(0 0 0.75rem #00000080);
 }
+.payment h3 {font-family: 'Nunito Bold';padding-left: 1em;padding-right: 1em;color: #f1f1f1;margin: 0 auto;max-width: 1200px;font-size: 1.3em;}
+
+.payment-area-cont {display: flex;width: 100%;margin: 0 auto;max-width: 1300px;align-items: center;}
+
+.payment-area-cont > div {width: 50%;}
+
+.preorder-book-image {background: url(https://portal.revrevdev.xyz/wp-content/uploads/checkout-mockup.png);aspect-ratio: 681/475;background-size: cover;margin: 0 auto;width: 80%;}
+
+h3.bonus-header {font-family: 'Josefin Sans';text-transform: uppercase;font-size: 1.3em;margin-top: .4em;line-height: 1.8em;margin-bottom: 1em;}
+
+.bonus-header span {background: linear-gradient(#ed1c24,#bc2558);
+    border-radius: 0.1em;
+    color: #fff;
+    padding: 0.4em 0.2em 0.2em;filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.12)) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.14)) drop-shadow(0 1px 8px rgba(0, 0, 0, 0.12)) drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));}
+
+.bonus-flag h4:before {border: 1.25em solid #e51e2d;
+    content: "";
+    position: absolute;
+    top: 0;border-right: none;
+    border-left-color: transparent;
+    left: -1.25em;border-right-color: initial;
+    border-left-color: transparent;}
+
+.bonus-flag h4 {
+    
+    background: #e51e2d;
+    color: #fcfcf9;
+    display: inline-block;
+    
+    font-family: 'Josefin Sans';font-size: 1.5em;
+    letter-spacing: .06em;
+    line-height: 2.5em;
+    margin: 0 auto 0.5em;
+    padding: 0 1em;
+    position: relative;
+    text-transform: uppercase;filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.02))
+          drop-shadow(0 1px 5px rgba(0, 0, 0, 0.04))
+          drop-shadow(0 2px 2px rgba(0, 0, 0, 0.12))
+          drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.1));
+;;
+;;text-shadow: 3px 2px 0px rgb(0 0 0 / 30%);}
+
+.bonus-flag {text-align: center;margin-bottom: 1em;}
+
+.bonus-flag h4:after {content: '';border: 1.25em solid #e51e2d;
+    content: "";
+    position: absolute;
+    top: 0;border-left: none;
+    border-right-color: transparent;
+    right: -1.25em;border-left-color: initial;
+    }
+
+.bonus-price {display: flex;justify-content: center;}
+
+.bonus-preprice {background-position: center 0;
+background-repeat: no-repeat;
+color: #fff;
+filter: drop-shadow(0 0 0.75rem #00000080);
+font-family: 'Nunito Regular';
+font-size: 1.4em;
+margin-left: -100px;margin-right: 22px;
+
+
+
+padding-top: 7px;}
+
+.bonus-preprice:after {content: '';
+position: absolute;
+width: 100%;
+height: 100%;
+left: 0;
+background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/slashs.png);
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+margin-top: -17px;
+opacity: 0.7;transform: rotate(17deg);}
+
+.bonus-realprice {color: #fff;
+margin-top: -30px;
+font-weight: bold;
+font-size: 48px;
+background-repeat: no-repeat;
+background-position: center 0px;
+line-height: 96px;
+padding-top: 7px;
+font-family: 'NUNITO BOLD';
+text-underline-offset: 6px;text-decoration: underline;filter: drop-shadow(0 0 0.75rem #00000080);text-decoration-color: #e51e2d;}
 .preorder-btn-container .powered-by-stripe-final {
 margin-left: 1px;
 }

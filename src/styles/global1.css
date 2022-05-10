@@ -1258,6 +1258,19 @@ span.Typewriter__cursor {
 
 
 @media (max-width: 666px) {
+  div.mockup-element:before {
+    margin-left: -100px;
+    margin-top: -10px;
+    animation: grow2 5s cubic-bezier(.42,.04,.58,1) 2s infinite forwards;
+    transform: rotate(35deg);
+    z-index: 99;
+}
+  div.subheader-title {
+    margin-bottom: 3em;
+}
+  #minibook-container div.mb-left-arrow {
+    margin-left:10px
+  }
   div.bonus-preprice:after {
     height: 80%;
     margin-top: -15px;
@@ -1310,8 +1323,10 @@ div.j-second div.j-transform {margin-top: 0;}
   
   }
   div.show-me-item {
-    width: 75%;
+
     margin-top: 0.6em;
+    width: 85%;
+    margin-left: 10px;
 }
   div.book-heading {
     font-size: 38px;
@@ -1348,16 +1363,16 @@ div.mb-content {
     width: 70px;
     height: 112px;
 }
-
+.picture-small-cont {
+  width: 70%;
+    margin: 0 auto;
+}
   div.mb-content-picture-small {
+    padding-bottom: 160%;
     background: url(https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg);
     background-size: cover;
-    width: 50%;
-    aspect-ratio: .625;
-    margin: 8px auto;
-    transition: .2s all;
-    flex-shrink: 0;
     display: block;
+    margin: 8px auto;
 }
 
   div.mb-content-picture {
@@ -4070,11 +4085,8 @@ div#what-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 10px solid;
-  border-image-slice: 1;
   position: relative;
-  border-width: 5px;
-  border-image-source: linear-gradient(90deg, rgba(50,12,227,1) 0%, rgba(224,10,45,1) 50%, rgba(50,12,227,1) 100%);
+
 }
 
 .compare-title-1 {
@@ -5383,16 +5395,16 @@ margin-bottom: 4em;
 }
 
 .modal-book-cont p {font-size: 0.35em;text-align: justify;
-text-indent: 10px;margin-bottom: .5rem;font-family: Nunito Regular;
+text-indent: 10px;margin-bottom: .3rem;font-family: Nunito Regular;
 color: #470006;
 }
 
 .modal-book-cont {margin-right: 0.8em;margin-left: 0.3em;}
 
-.modal-book-title {font-family: 'JOSEFIN SANS';font-size: .8em;margin-top: 1em;color: #cc0213;}
+.modal-book-title {font-family: 'JOSEFIN SANS';font-size: .8em;margin-top: 0.3em;color: #cc0213;}
 
 .modal-book-title-text {font-family: 'JOSEFIN SANS';
-  font-size: .6em;margin-top: .2em;margin-bottom: .7em;color: #cc0213;}
+  font-size: .6em;margin-top: .2em;margin-bottom: .1em;color: #cc0213;}
 
 
 
@@ -5420,7 +5432,7 @@ border-radius: 100000000000000px;
 -webkit-text-fill-color: initial;
 transition: .3s all;
 background-size: 200% 200%;
-margin-top: 12px;
+margin-top: 4px;
 }
 
 .book2 {
@@ -5531,7 +5543,18 @@ animation: grow 5s cubic-bezier(0.42, 0.04, 0.58, 1) 2s infinite forwards;
     transform:rotateZ(12deg) scale(1);
 }
 }
-
+@keyframes grow2 {
+  0% {
+      transform: rotateZ(35deg) scale(1);
+    
+  }
+  50% {
+      transform:rotateZ(35deg) scale(1.1);
+  }
+    100% {
+      transform:rotateZ(35deg) scale(1);
+  }
+  }
 .open .darken-book {
 
 display: block;
@@ -5700,7 +5723,15 @@ position: absolute;
 width: 100%;
 height: 50px;
 margin-top: -50px;
-background: linear-gradient(to bottom, transparent 0%, white 100%);
+background: linear-gradient(180deg,#ffffff00 0,#fff);
+}
+.compare-title-container:after {
+  width: 100%;
+  position: absolute;
+  content: '';
+  height: 5px;
+  bottom: 0;
+  background: linear-gradient(90deg,#320ce3,#e00a2d 50%,#320ce3);
 }
 .more-to-read {
 display: none;

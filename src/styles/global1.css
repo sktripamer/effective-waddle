@@ -373,6 +373,21 @@ form .secondstep label {
 }
 
 
+.preorder-bookimg-cont {
+  position: relative;
+
+  margin: 0 auto;
+}
+.preorder-bookimg-cont:before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: calc((475 / 656) * 100%);
+}
+
+
+
+
 #payment-form .ship-citystate input.form-control.form-control {
   width: 48%;
 }
@@ -435,6 +450,16 @@ input.react-dropdown-select-input {
   width: fit-content
 }
 @media (max-width: 1050px) {
+
+  .j-third div.j-paragraph {
+    font-size:1em;
+  }
+  .j-second div.j-paragraph {
+    font-size:1em;
+  }
+  .j-first div.j-paragraph {
+    font-size:1em;
+  }
   div.show-me-title {
     font-size: 42px;
     line-height: 50px;
@@ -529,7 +554,7 @@ div.y-image-contain {
 
 div.compare-title-1>span, div.compare-title-2>span {font-size: 24px;}
 
-div.compare-today-container, div.compare-tomorrow-container {font-size: 18px;}
+div.compare-today-container, div.compare-tomorrow-container {font-size: 20px;}
   div.icon-section-text {
     font-size: 12px;
 }
@@ -1306,8 +1331,17 @@ span.Typewriter__cursor {
 }
 
 @media (max-width: 666px) {
+  div.j-visible {
+    max-width: unset;
+  }
+  
+div.preorder-bookimg-cont {
+
+  width: 300px;
+
+}
   div.minib-r-cont div.show-me-title {
-    font-size: 27px;
+    font-size: 26px;
     line-height: 40px;
 }
   #compare-container div.before-text,#compare-container div.after-text {
@@ -1316,11 +1350,14 @@ span.Typewriter__cursor {
 
 
   div.mockup-element:before {
-    margin-left: -100px;
-    margin-top: -20px;
     animation: grow2 5s cubic-bezier(.42,.04,.58,1) 2s infinite forwards;
+    margin-left: -100px;
+    margin-top: -10px;
     transform: rotate(35deg);
     z-index: 99;
+    height: 100px;
+    width: 108px;
+    background-size: cover;
 }
   div.subheader-title {
     margin-bottom: 4em;
@@ -1340,9 +1377,7 @@ span.Typewriter__cursor {
   div.bonus-realprice {
     font-size: 28px;
 }
-  div.preorder-book-image {
-    max-height: 240px;
-}
+
 div.bonus-flag {
   margin-bottom: 0.3em;
 }
@@ -1395,7 +1430,7 @@ div.book-subheading {
   font-size: 24px;
 }
   div.show-me-title {
-    font-size: 29px;
+    font-size: 28px;
 }
 
   div.show-me-grid {
@@ -1506,7 +1541,7 @@ div.mb-content {
 
 #compare-container div.compare-title-1>span, #compare-container div.compare-title-2>span {font-size: 18px;margin-top: 0;line-height: 18px;}
 
-#compare-container div.compare-today-container, #compare-container div.compare-tomorrow-container {font-size: 12px;}
+#compare-container div.compare-today-container, #compare-container div.compare-tomorrow-container {font-size: 14px;}
   div.icons-container {flex-direction: column;}
 
 div.icon-section:first-child {clip-path: none;margin-left: 0;width: 100%;padding-left: 12%;padding-right: 15%;}
@@ -1572,9 +1607,12 @@ div.arch-text {
 div.arch-cont div.arch-title:after {
   font-size: 32px;
 }
-div.journey-item div.j-paragraph {width: 100%;margin-right: 6.5%;margin-left: 6.5%;}
+div.journey-item div.j-paragraph {margin-top: -8%;width: 100%;margin-right: 6.5%;margin-left: 6.5%;}
 
-div.j-text {width: 90%;}
+
+div#jounrey-list-container div.j-third div.j-paragraph {
+  margin-top: 3em;
+}
 
 div.j-heading:first-child {font-size: 9.1vw; display: block;}
 
@@ -3800,13 +3838,17 @@ div#say-hello-list-container {
 
 .j-second .j-transform {margin-top: -30%;}
 
-.j-visible {font-family: 'Nunito Regular';     max-width: 650px;}
+.j-visible {font-family: 'Nunito Regular';     max-width: 45vw;}
 
 .j-heading:first-child {font-size: 3.7vw;}
 
-.j-first .j-paragraph {    margin-top: -11%;}
+.j-first .j-paragraph {       margin-top: -18%;
+  font-size: 1.3vw;}
 
-.j-second .j-paragraph {margin-right: 4.5%;margin-left: auto;margin-top: -11%;}
+.j-second .j-paragraph {    margin-left: auto;
+  margin-right: 4.5%;
+  margin-top: -18%;
+  font-size: 1.3vw;}
 
 .j-third .j-paragraph {margin-top: -11%;}
 
@@ -4205,6 +4247,7 @@ div#what-container {
   transform: none;
 }
 .compare-today-subtext {
+  font-size: 22px;
   opacity: 0;
   text-align: end;
   margin-right: 10%;
@@ -4252,6 +4295,7 @@ opacity: 0;
   padding-top: 16px;
   font-size: 22px;
   width: 50%;
+  white-space: nowrap;
 }
 
 .compare-today-container {
@@ -4264,6 +4308,7 @@ opacity: 0;
   display: flex;
     flex-direction: column;
     align-items: flex-end;
+    white-space: nowrap;
 }
 /* 
 .compare-today-subtext {
@@ -5918,8 +5963,15 @@ filter: drop-shadow(0 0 0.75rem #00000080);
 
 .payment-area-cont > div {width: 50%;}
 
-.preorder-book-image {background: url(https://portal.revrevdev.xyz/wp-content/uploads/checkout-mockup.png);aspect-ratio: 681/475;background-size: cover;margin: 0 auto;width: 80%;}
-
+.preorder-book-image {
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/checkout-mockup.png);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 h3.bonus-header {font-family: 'Josefin Sans';text-transform: uppercase;font-size: 1.3em;margin-top: .4em;line-height: 1.8em;margin-bottom: 1em;}
 
 .bonus-header span {background: linear-gradient(#ed1c24,#bc2558);
@@ -6385,8 +6437,20 @@ height: 12px;
 margin-left: 10px;
 margin-top: 11px;
 position: absolute;
+top: 0;
 }
+.compare-tomorrow-subtext span {display: table;background-image: linear-gradient(270deg,#320ce3 50%,#e00a2d);-webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;position: relative;
+  width: 500px;
+  max-width: 500px;margin-top: -6px;}
 
+.compare-today-subtext span {display: table;
+  background-image: linear-gradient(90deg,#320ce3 50%,#e00a2d);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  position: relative;
+  width: 500px;
+  max-width: 500px;margin-top: -6px;}
 
 .compare-tomorrow-subtext:before {
 content: '';
@@ -6397,6 +6461,7 @@ height: 12px;
 margin-left: -20px;
 margin-top: 11px;
 position: absolute;
+top: 0;
 }
 
 .vid-section-cta span {

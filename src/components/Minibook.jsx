@@ -147,9 +147,11 @@ return (
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
       <div class='mb-content-picture-small'></div>
+        <div class='mb-title-content'>
       <div class='mb-content-pretitle'>Mini Book #1</div>
       <div class='mb-content-title'>Offense Wins Championships</div>
       <div class='mb-content-posttitle'>How to Go ON Offense!</div>
+      </div>
       </div>
       <div class='picture-small-cont'>
 
@@ -165,9 +167,11 @@ return (
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
       <div class='mb-content-picture-small'></div>
+      <div class='mb-title-content'>
       <div class='mb-content-pretitle'>Mini Book #2</div>
       <div class='mb-content-title'>Maximum Wage</div>
       <div class='mb-content-posttitle'>How to Get OFF Bad Trades</div>
+      </div>
       </div>
       <div class='picture-small-cont'>
  
@@ -188,9 +192,11 @@ STEP #5: Renegotiate Your Maximum Wage</div>
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
       <div class='mb-content-picture-small'></div>
+      <div class='mb-title-content'>
       <div class='mb-content-pretitle'>Mini Book #3</div>
       <div class='mb-content-title'>Create Your Own Economy</div>
       <div class='mb-content-posttitle'>Get OUT of the BIG’s Economy</div>
+      </div>
       </div>
       <div class='picture-small-cont'>
 
@@ -215,9 +221,11 @@ I’m going to show you how to get out from their control by understanding the T
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
       <div class='mb-content-picture-small'></div>
+      <div class='mb-title-content'>
       <div class='mb-content-pretitle'>Mini Book #4</div>
       <div class='mb-content-title'>Enter God’s Economy</div>
       <div class='mb-content-posttitle'>Get IN God’s Economy</div>
+      </div>
       </div>
       <div class='picture-small-cont'>
 
@@ -233,9 +241,11 @@ I’m going to show you how to get out from their control by understanding the T
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
       <div class='mb-content-picture-small'></div>
+      <div class='mb-title-content'>
       <div class='mb-content-pretitle'>Mini Book #5</div>
       <div class='mb-content-title'>Elevate in TheJetstream</div>
       <div class='mb-content-posttitle'>Go UP in TheJetstream</div>
+      </div>
       </div>
       <div class='picture-small-cont'>
 
@@ -257,9 +267,11 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
       <div class='mb-content-picture-small'></div>
+      <div class='mb-title-content'>
       <div class='mb-content-pretitle'>Mini Book #6</div>
       <div class='mb-content-title'>Experience Your Revival of Revenue</div>
       <div class='mb-content-posttitle'>Lorem Ipsum Dolor</div>
+      </div>
       </div>
       <div class='picture-small-cont'>
 
@@ -275,9 +287,11 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
       <div class='mb-content-picture-small'></div>
+      <div class='mb-title-content'>
       <div class='mb-content-pretitle'>Mini Book #7</div>
       <div class='mb-content-title'>Entrepreneurial Education in Business, Ministry, &amp; Politics</div>
       <div class='mb-content-posttitle'>Lorem Ipsum Dolor</div>
+      </div>
       </div>
       <div class='picture-small-cont'>
 

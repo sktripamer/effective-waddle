@@ -6375,13 +6375,26 @@ position: relative;
 
 .book-section
 {
-  align-items: center;
+  /* align-items: center;
   display: flex;
   justify-content: center;
   perspective: 1000px;
   position: relative;
   transform: none;
-  margin-bottom: auto;
+  margin-bottom: auto; */
+
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transform-style: preserve-3d;
+	perspective: 1000px;
+  position: sticky;
+    top: 50%;
+    transform: translate(0, -50%);
+    margin-bottom: -50px;
+    margin-top: 50vh;
+
 }
 .book-section .book
 {
@@ -6435,12 +6448,16 @@ object-fit: cover;
 }
 
 .book-section-cont {
-height: 200vh;
+/* height: 200vh;
 display: flex;
   flex-direction: column;
   justify-content: flex-end;
   margin-bottom: 20vh;
-  transform: none;
+  transform: none; */
+  height: 200vh;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .compare-today-subtext:after {

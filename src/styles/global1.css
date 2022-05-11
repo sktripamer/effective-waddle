@@ -1244,8 +1244,14 @@ div#card-element {
     margin-left:0;
   }
 }
-
-
+.mb-title-cont {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.mb-title-content {
+  width: 75%;
+}
 @media (max-width: 666px) and (min-height: 800px) { 
 
   .book-section-cont div.book-section-content-cont {
@@ -1397,7 +1403,9 @@ div.book-subheading {
     align-items: center;
 }
   div.mb-content-title {
-    font-size: 22px;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 10px;
 }
 div.mb-content-posttitle {
   font-size: 18px;
@@ -1420,11 +1428,15 @@ div.mb-content {
     margin: 0 auto;
 }
   div.mb-content-picture-small {
-    padding-bottom: 160%;
     background: url(https://portal.revrevdev.xyz/wp-content/uploads/cover.jpg);
     background-size: cover;
     display: block;
-    margin: 8px auto;
+    margin: 0 auto;
+    margin-right: 13px;
+    margin-top: 14px;
+    height: 147px;
+    width: 92px;
+    flex-shrink: 0;
 }
 
   div.mb-content-picture {
@@ -1508,38 +1520,38 @@ div.icon-section > div.icon-section-text {font-size: 14px;}
 div.icon-section:first-child>.icon-section-text {padding-right: 0;}
   div.acc1 .ac1 .arch-title:after {
 
-    font-size: 28px;
+    font-size: 44px;
 
     }
     
     div.acc2 .ac2 .arch-title:after {
-      font-size: 28px;
+      font-size: 44px;
     }
     
     div.acc3 .ac3 .arch-title:after {
-      font-size: 28px;
+      font-size: 44px;
     }
     
     
     div.acc4 .ac4 .arch-title:after {
-      font-size: 28px;
+      font-size: 44px;
     }
     
     
     div.acc5 .ac5 .arch-title:after {
-      font-size: 28px;
+      font-size: 44px;
     }
     
     div.acc6 .ac6 .arch-title:after {
-      font-size: 28px;
+      font-size: 44px;
     }
     
     div.acc7 .ac7 .arch-title:after {
-      font-size: 28px;
+      font-size: 44px;
     }
     
     div.acc8 .ac8 .arch-title:after {
-      font-size: 28px;
+      font-size: 44px;
     }
     div.white-super-h {
       font-size: 1.4em;
@@ -1549,13 +1561,16 @@ div.icon-section:first-child>.icon-section-text {padding-right: 0;}
     margin: 0 auto;
 }
 div.arch-title:before {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 16px;
 }
 div.arch-text {
   font-size: 13px;
   width: 75%;
   margin-top: 40px;
+}
+div.arch-cont div.arch-title:after {
+  font-size: 32px;
 }
 div.journey-item div.j-paragraph {width: 100%;margin-right: 6.5%;margin-left: 6.5%;}
 
@@ -6250,7 +6265,8 @@ position: relative;
   font-size: 18px;
   margin-bottom: -10px;
   font-family: 'Nunito Regular';
-  margin-top: 20px;
+  margin-bottom: 0px;
+  margin-top: 10px;
 }
 
 .mb-content-posttitle {

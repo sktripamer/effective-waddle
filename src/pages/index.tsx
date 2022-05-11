@@ -2965,51 +2965,69 @@ function preHide3() {
   setPreorderButton(false)
   setPreorder3(false)
 }
-  const [shadowPosition, setShadowPosition] = useState('');
+  const [shadowPosition, setShadowPosition] = useState(20);
   const [yClass, setYClass] = useState('margin-relative')
   const [bookHeroClass, setBookHeroClass] = useState('margin')
   const [scrollPosition, setScrollPosition] = useState(180);
   const [plaxVal, setPlax] = useState(0);
 const handleScroll = () => {
-  let plax = document.querySelector('.y-container');
-
-
-     const element = document.getElementsByClassName("book-section")[0]
-     const element2 = document.getElementById('say-hello-list-container')
-     const element3 = document.getElementsByClassName("book-section-hero-cta")[0]
-      const elementRect1 = element3.getBoundingClientRect();
-     const elementRect2 = element2.getBoundingClientRect();
-     const absoluteElementBottom = elementRect2.bottom + window.pageYOffset;
-     const absoluteElementTop = elementRect1.top + window.pageYOffset;
-     let yPosition = absoluteElementBottom + (element.offsetHeight / 2) - (window.innerHeight / 2) + 100
-     let ogYPos =  absoluteElementTop - (element.offsetHeight / 2) - (window.innerHeight / 2)
-    
-     if (window.scrollY <= yPosition) {
-        // scroll is above top pos
-        console.log('above top', yPosition)
-        setYClass('margin-relative')   
-        setScrollPosition(180)
+  let elScrollPos = document.querySelector('.book-section-cont').getBoundingClientRect().top;
+  let vwport = window.screen.availHeight * .80;
+     if (elScrollPos <= 0) {
+      if (Math.abs(elScrollPos) > vwport) {
+        setScrollPosition(23)
         setShadowPosition(20)
-     }
-     if (window.scrollY > yPosition && window.scrollY < ogYPos) {
-      const between = (window.scrollY - yPosition) / (ogYPos - yPosition)
-      const sinbetween = -(Math.cos(Math.PI * between) - 1) / 2
-       //within the bounds, set to absoltue etc
-      setScrollPosition(180 - 157 * sinbetween)
-      setShadowPosition(Math.abs(20 - 40 * sinbetween))
-       setYClass('fixed') 
+      } else {
+        setScrollPosition( 180 -  (157 * (Math.abs(elScrollPos) / vwport)) )
+        setShadowPosition( Math.abs(20 -  (40 * (Math.abs(elScrollPos) / vwport))) )
+      }
+  
+     } else {
+      setScrollPosition(180)
+      setShadowPosition(20)
      }
 
-     if (window.scrollY > ogYPos) {
-       console.log('below', ogYPos)
-       //past it, set back
-       setScrollPosition(23)
-       setShadowPosition(20)
-       setYClass('nomargin-relative')  
-     }
-     if (plax.getBoundingClientRect().top < window.innerHeight && plax.getBoundingClientRect().bottom > 0) {
-      setPlax((plax.getBoundingClientRect().top + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom))) / (window.innerHeight + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom)) ) * 6)
-   }
+
+
+
+  // let plax = document.querySelector('.y-container');
+
+
+  //    const element = document.getElementsByClassName("book-section")[0]
+  //    const element2 = document.getElementById('say-hello-list-container')
+  //    const element3 = document.getElementsByClassName("book-section-hero-cta")[0]
+  //     const elementRect1 = element3.getBoundingClientRect();
+  //    const elementRect2 = element2.getBoundingClientRect();
+  //    const absoluteElementBottom = elementRect2.bottom + window.pageYOffset;
+  //    const absoluteElementTop = elementRect1.top + window.pageYOffset;
+  //    let yPosition = absoluteElementBottom + (element.offsetHeight / 2) - (window.innerHeight / 2) + 100
+  //    let ogYPos =  absoluteElementTop - (element.offsetHeight / 2) - (window.innerHeight / 2)
+    
+  //    if (window.scrollY <= yPosition) {
+  //       // scroll is above top pos
+  //       console.log('above top', yPosition)
+  //       setYClass('margin-relative')   
+  //       setScrollPosition(180)
+  //       setShadowPosition(20)
+  //    }
+  //    if (window.scrollY > yPosition && window.scrollY < ogYPos) {
+  //     const between = (window.scrollY - yPosition) / (ogYPos - yPosition)
+  //      //within the bounds, set to absoltue etc
+  //     setScrollPosition(180 - 157 * between)
+  //     setShadowPosition(Math.abs(20 - 40 * between))
+  //      setYClass('fixed') 
+  //    }
+
+  //    if (window.scrollY > ogYPos) {
+  //      console.log('below', ogYPos)
+  //      //past it, set back
+  //      setScrollPosition(23)
+  //      setShadowPosition(20)
+  //      setYClass('nomargin-relative')  
+  //    }
+  //    if (plax.getBoundingClientRect().top < window.innerHeight && plax.getBoundingClientRect().bottom > 0) {
+  //     setPlax((plax.getBoundingClientRect().top + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom))) / (window.innerHeight + (Math.abs(plax.getBoundingClientRect().top - plax.getBoundingClientRect().bottom)) ) * 6)
+  //  }
 };
 const reportWindowSize = () => {
   setBookWidth(document.querySelector('.book-section .book img').height * .625)

@@ -3693,11 +3693,11 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 
   <div class='read-more-container'>
     <div class='read-more-title'>
-    <span>WHY </span><span>START </span><span>YOUR </span><span>REVIVAL </span><span>OF </span><span>REVENUE?</span>
+    <span>WHY </span><span>START </span><span>YOUR </span><em><span>REVIVAL </span><span>OF </span><span>REVENUE?</span></em>
     </div>
     <div class={`read-more-content ${readmore}`}>
       <div ref={titleRef} class='always-visible'>
-      <div class="mockup-read"></div>
+      <div class='mockup-read-cont'><div class="mockup-read"></div></div>
         <p>There’s a map for everything under the sun— everything you need to know and everywhere you want to go… Except for how to navigate your entrepreneurial journey.</p>
         <p><strong>The entrepreneurial journey is like one big question mark.</strong> It’s basically 3D Tetris for business, and every block on the board is moving too fast; critical blocks are missing; repeatedly rearranging the blocks is a frantic hopeless strategy, and time is not on your side. </p>
         <p>What is your entrepreneurial journey? Your entrepreneurial journey is every step of the business creation process from the conception of your business idea to the go-to-market promotion of your business product. It is a journey of ups and down, which, for those who win, can take you higher up in life.</p>
@@ -3722,7 +3722,8 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
   <p>As a result, you may turn to business gurus. But business gurus may be too specific for your ultimate end goal. Business gurus specialize in business specialties. Think of each specialty like a silo. You go deep, but you probably go too deep. At least for a start up. What they train is singular in nature. One. Thing. At. A. Time. When you are starting a business, you don’t need to learn everything about one thing right now. That’s too much information on one topic. You will likely be faced with a bunch of different types of problems all at once, the so all you need is help knocking out key obstacles in your entrepreneurial journey.</p>
   <p>Remember why you started your entrepreneurial journey. <strong>You are on a mission to start creating, and since you hope to own and control what you create, you need a business.</strong> You are not on a mission to become a business motivational speaker or a business guru. You simply want to become a business. Where should someone like you start learning?</p>
   <p>Great question! The entrepreneurial journey feels like a fractured system of hundreds of business parts that don’t fit together. At least not at first. Each part makes up the entrepreneurial engine, and that engine powers your car, which we call your business. Unless you know what part you need, where to find each part, and how to install each part, you are out of luck. Your business is going nowhere soon. You need a mechanic for your car the same way you need a Revival of Revenue for your business. If you ever hope to get out of the world of ideas—if you decide to drive your business on the highways of revenue—you need a way to bring the business parts together to create a business engine.</p>
-  <p>You need all the information in one place. <strong>I call these Revenue Maps.</strong></p>   
+  <p>You need all the information in one place. <strong>I call these Revenue Maps.</strong></p> 
+  <div class="mockup-more"></div>  
   <p>Imagine a map that showed you every step of the entrepreneurial journey, and gave you answers to the questions that you actually need answered on a daily basis, such as, “What do I do first? Where do I go to find solutions? How much does each issue cost to solve? Who can help me each step of the way? When can I start testing my ideas? Why am I starting my business? Who am I in business to help?”</p>
   <p>You need a Revenue Map the same way every driver needs a car manual. How do you start a business that is safe to rev up? What if you hope to drive your car fast, pedal to the metal, pushing RPMs and higher speeds as your business grows? Regardless of whether you already have entrepreneurial exposure or no business experience, the entrepreneurial journey is confusing and vulnerable to failure, error, and loss for anyone. Experienced entrepreneurs need help. Inexperienced entrepreneurials need twice the help. That’s why Revenue Maps help you navigate the gauntlet of challenges of starting a business.</p>
   <p>Each Revenue Map tackles a highly specific problem that you will likely face somewhere along your entrepreneurial journey. In fact, that’s why we design Revenue Maps for each step and most problems entrepreneurials face. <strong>All you need to do is follow.</strong> By following each Revenue Map, your entrepreneurial journey will finally be ready-to-go, easy-to-follow, and not confusing. Not impossible. The goal of each Revenue Map is quite simple:</p>
@@ -3750,7 +3751,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 
         </ol>
 </p>
-<div class="mockup-more"></div>
+
 <p class='p-title'><strong>INSTEAD OF TAKING MONTHS, LEVERAGE IN MINUTES HOW TO:</strong> </p>  
 <p>
         <ol>
@@ -3797,7 +3798,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
       </div>  
       <div class="y-image-contain"><div class="y-image-cont"></div></div>
     </div>
-    <div class="y-heading second-h">WHY I WROTE <span>REVIVAL OF REVENUE</span> FOR YOU</div>
+  
     <div class="y-cont y-second-el">
       <div class="y-text-cont">
         <div class="y-subheading">Everyday self-employed people ask me, “How in the world do I make more money? And how can I make money multiple ways?” Employees ask me, “How can I do more for God? How can I start a meaningful business from nothing?” Executives ask me, “Where is America going as a nation? How do you think we can navigate today’s political turmoil and economic challenges?” Everyone wants to maximize their wage, increase their personal income, and generate more business revenue, but doing so while doing something they love. They just don’t know how…UNTIL NOW! I wrote this book because, like so many people, I needed a Revival of Revenue myself.</div>
@@ -3818,7 +3819,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 				<Minibook />
 </Suspense>)}
 
-  <div class="show-me-title"><span>READ </span><span>THE </span><span>FIRST </span><span>PAGE </span><span>OF </span><span>PK'S </span><span>BOOK </span><span>NOW!</span></div>
+  <div class="show-me-title"><span>READ </span><span>THE </span><span>FIRST </span><span>PAGE </span><em><span>OF </span><span>PK'S </span><span>BOOK </span><span>NOW!</span></em></div>
   <div class="subheader-title">Start your Revival of Revenue now and peek inside to read the first page of PK's book.</div>
   <div class={`peek-inside-container ${book2}`}>
     <div id='mockup-element' className='mockup-element'>
@@ -3850,7 +3851,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 <div onClick={openBook} class="y-preorderbtn">Read The First Page</div>
 
 <div id='shows-me-container'>
-  <div class='show-me-title'><span>PK'S </span><span>BOOK </span><span>SHOWS </span><span>ME </span><span>HOW </span><span>TO...</span></div>
+  <div class='show-me-title'><span>PK'S </span><span>BOOK </span><span>SHOWS </span><span>ME </span><em><span>HOW </span><span>TO...</span></em></div>
   <div class='show-me-grid'>
     <div class="show-me-item">Begin My Entrepreneurial Journey on Day 1</div>
     <div class="show-me-item">Go-to-Market By Following a 25-Step Entrepreneurial Journey</div>

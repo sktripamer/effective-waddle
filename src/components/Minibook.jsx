@@ -90,7 +90,7 @@ export default function Minibook() {
 return (
 <div class='minib-r-cont'>
 
-<div class='show-me-title'><span>WHAT'S </span><span>INSIDE </span><span>REVIVAL </span><span>OF </span><span>REVENUE?</span></div>
+<div class='show-me-title'><span>WHAT'S </span><span>INSIDE </span><em><span>REVIVAL </span><span>OF </span><span>REVENUE?</span></em></div>
   <div id='minibook-container' class={`mbb${minibook}`}>
   <div onClick={goLeft} class='mb-left-arrow'></div>
     <div class='minibook-container'>
@@ -146,12 +146,13 @@ return (
        
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
+      <div class='mb-content-picture-small'></div>
       <div class='mb-content-pretitle'>Mini Book #1</div>
       <div class='mb-content-title'>Offense Wins Championships</div>
       <div class='mb-content-posttitle'>How to Go ON Offense!</div>
       </div>
       <div class='picture-small-cont'>
-      <div class='mb-content-picture-small'></div>
+
       </div>
       <div class='mb-content-content'>In Mini Book #1, discover how to build your personalized high-octane Offensive Playbook, Defensive Playbook, and Special Teams Playbook. Your Offensive Playbook shows you how to score more touchdowns by maximizing your income. Your Defensive Playbook shows you how to prevent touchdowns by minimizing your expenses. Your Special Teams Playbook shows you how to manage field position and score extra points by multiplying investments and managing taxation. Together, you are managing a complete game as the head coach of your household. However, the #1 threat to you as an Entrepreneurial is hitting the Middle Class, the Masses, and Main Street Small Business harder every year. People aren’t scoring enough touchdowns. Mini Book #1 helps you make more money, increase your income, and generate more revenue by Going On Offense like an Entrepreneurial. Remember, “Entrepreneurship is living a few years of your life like most people won’t, so that you can spend the rest of your life like most people can’t.”</div>
       </div>
@@ -163,12 +164,13 @@ return (
     
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
+      <div class='mb-content-picture-small'></div>
       <div class='mb-content-pretitle'>Mini Book #2</div>
       <div class='mb-content-title'>Maximum Wage</div>
       <div class='mb-content-posttitle'>How to Get OFF Bad Trades</div>
       </div>
       <div class='picture-small-cont'>
-      <div class='mb-content-picture-small'></div>
+ 
       </div>
       <div class='mb-content-content'>Why Are We Talking About Minimum Wage? In Mini Book #2 Maximum Wage, Patrick Kucera shows you how to go from a Minimized Wage to your Maximum Wage. Maximum wage is about making the most amount of money in the least amount of time and with the least amount of effort. Unlike Offense Wins Championships, this chapter is not focused on creating multiple sources of income. Rather, Maximum Wage is focused on how to generate more revenue from each source of income. To do so, you must Get OFF Bad Trades. This concept pertains to how you maximize every time you trade your time for dollars. After reading this chapter, you will discover how to earn your Maximum Wage in 5 entrepreneurial steps:
 STEP #1: Reposition Your Progression as a Micro Market Maker
@@ -185,12 +187,13 @@ STEP #5: Renegotiate Your Maximum Wage</div>
      
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
+      <div class='mb-content-picture-small'></div>
       <div class='mb-content-pretitle'>Mini Book #3</div>
       <div class='mb-content-title'>Create Your Own Economy</div>
       <div class='mb-content-posttitle'>Get OUT of the BIG’s Economy</div>
       </div>
       <div class='picture-small-cont'>
-      <div class='mb-content-picture-small'></div>
+
       </div>
       <div class='mb-content-content'>In Mini Book #3 Create Your Own Economy, I’m going to show you how to create your own economy in the only economy that you can truly control, and that’s your own economy. You will discover how to S.E.L.F. Empower, S.E.L.F. Educate, and S.E.L.F. Employ to create more than a business. In today’s world, you must Create Your Own Economy. Learn how to go from Serf to SELF and how to move from the “Industrial” Revolution to the INDIVIDUAL Revolution. You Are the Economy! But corporations, universities, and governments will make you WORK for the economy if you don’t own and control your own profitability. I call them the BIGs: 
 BIG Banking
@@ -211,12 +214,13 @@ I’m going to show you how to get out from their control by understanding the T
     
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
+      <div class='mb-content-picture-small'></div>
       <div class='mb-content-pretitle'>Mini Book #4</div>
       <div class='mb-content-title'>Enter God’s Economy</div>
       <div class='mb-content-posttitle'>Get IN God’s Economy</div>
       </div>
       <div class='picture-small-cont'>
-      <div class='mb-content-picture-small'></div>
+
       </div>
       <div class='mb-content-content'>There are two economies, one with God and one without God. Which one are you in? If God is the Creator, He is the Original Entrepreneur. If you understand God’s Economy, you were created to co-create with Him. He is your Good Dad, raising you by His side to learn His creative ways and redemptive solutions. However, you have a Bad Dad, too. Your Bad Dad seeks to turn you away from your calling to co-create with Good Dad. His goal is to prompt you to reject your God-given story, which your Good Dad wrote about you in the Best Selling Book of All Time. God’s Word. By entering God’s Economy, you are co-creating with Good Dad, by “Putting God Back into the Equation of Making Money”. This is not about the revenue you make but the relationship you make with the Almighty as you pursue the Almighty dollar. God’s Economy is a call to “Bring Life Back to Work and Work Back to Life”. Discover the myths and misunderstandings about God and Money in Mini Book #4 God’s Economy! Where could you go if you entered God’s Economy?</div>
       </div>
@@ -228,12 +232,13 @@ I’m going to show you how to get out from their control by understanding the T
      
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
+      <div class='mb-content-picture-small'></div>
       <div class='mb-content-pretitle'>Mini Book #5</div>
       <div class='mb-content-title'>Elevate in TheJetstream</div>
       <div class='mb-content-posttitle'>Go UP in TheJetstream</div>
       </div>
       <div class='picture-small-cont'>
-      <div class='mb-content-picture-small'></div>
+
       </div>
       <div class='mb-content-content'>What could you accomplish if you elevated in TheJetstream? What if you moved through the speed of life as if the wind were always at your back. TheJetstream is at a higher elevation. It is where revelation lives. It is the most profitable way to live life, but what you consider to be profit may differ from what someone else believes is true profit. Learn how to fly above the turbulence of life in PK’s Jetstream Theory. Discover how to use thermals, updrafts, and downdrafts to your advantage by mastering the Laws of Lift:
 1st Law Of Lift: How You Think
@@ -251,12 +256,13 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
     
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
+      <div class='mb-content-picture-small'></div>
       <div class='mb-content-pretitle'>Mini Book #6</div>
       <div class='mb-content-title'>Experience Your Revival of Revenue</div>
       <div class='mb-content-posttitle'>Lorem Ipsum Dolor</div>
       </div>
       <div class='picture-small-cont'>
-      <div class='mb-content-picture-small'></div>
+
       </div>
       <div class='mb-content-content'>In Mini Book #6 Experience Your Revival of Revenue, I’m going to show you the Vital Signs of Revival and the Vital Sign of Revenue that measure whether your business is alive. I’m going to show you the 5 Assets that Everyone Owns and the 5 Actions that Everyone Controls. God Has Trademarked You for a Purpose! Therefore, you are going to be given a choice. I call this the Value System TradeOff. You must choose “the red pill” or “the blue pill” before you enter the Revival of Revenue Matrix. If you enter, I am going to show you the 25 Quadrant Revival of Revenue Matrix, which breaks down in easy steps your entire entrepreneurial journey. You will discover the exact skillsets I learned as a child and the profitable systems I have used my entire adult life to help people, pastors, professionals, and politicians experience their own Revival of Revenue! What could you do if you experienced your Revival of Revenue today? Let’s get started together! </div>
       </div>
@@ -268,12 +274,13 @@ Life Is Hard So Take A Breath. It is time to Elevate in TheJetstream!</div>
      
       <div className="mb-content-cont">
       <div class='mb-title-cont'>
+      <div class='mb-content-picture-small'></div>
       <div class='mb-content-pretitle'>Mini Book #7</div>
       <div class='mb-content-title'>Entrepreneurial Education in Business, Ministry, &amp; Politics</div>
       <div class='mb-content-posttitle'>Lorem Ipsum Dolor</div>
       </div>
       <div class='picture-small-cont'>
-      <div class='mb-content-picture-small'></div>
+
       </div>
       <div class='mb-content-content'>What Would The World Look Like If Everyone Was More Entrepreneurial? I close my mini book series with this futuristic question. I also deliver a winning word and a dire warning regarding the United States of America, future generations, and the warped nature of our education system. The future is dark if good people don’t step up. Marxism is afoot in America’s classrooms. Communism, the political arm of Marxists thought, is a power grab from “We the People”. Sadly, Socialism is like a good girl dating a bad boy; in time, she is likely to get toppled by Marxist agendas. But younger generations question whether capitalism is any better. Crony capitalism is fake capitalism. Manipulated markets are nothing like free markets. Younger generations in particular are feeling the pain of the BIGs taking over markets at the expense of the Middle Class, the Masses, and Main Street Small Business. But the tide is turning with the advent and adoption of blockchains and Web 3 technologies. A capitalistic future that seizes the economy back from the BIGs and embeds freedom, values, and economic opportunity into the underlying technology running the free world economy is finally possible. The time is now to fight for technological freedoms suitable for entrepreneurship. Yes, freedom is the best ecosystem for entrepreneurials. Imagine a world of creators who share in the freedom, profits, and abundance of the economy. I take a closer look at the current educational system and how we can train the next generation to fight for opportunity, profits, values, and freedoms across America and around the world. Starting as a child, I share my story in business, ministry, and politics, and I share what we can do as Entrepreneurials in Business, Frontliners in Ministry, and Free Marketers in Politics to lead America back to its original DNA. I believe in the DNA of an American. I believe in the foundation in which our country was built. I encourage you to reflect on this Word: “Remember the Heights from Which You Have Fallen.” I plead for America to return to a nation “Under God”. I cry “Long Live the Dream!”</div>
       </div>

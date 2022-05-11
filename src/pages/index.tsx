@@ -2966,7 +2966,8 @@ function preHide3() {
   setPreorder3(false)
 }
   const [shadowPosition, setShadowPosition] = useState(20);
-  const [yClass, setYClass] = useState('margin-relative')
+  // const [yClass, setYClass] = useState('margin-relative')
+  const [yClass, setYClass] = useState('')
   const [bookHeroClass, setBookHeroClass] = useState('margin')
   const [scrollPosition, setScrollPosition] = useState(180);
   const [plaxVal, setPlax] = useState(0);

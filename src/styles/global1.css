@@ -1318,6 +1318,7 @@ span.Typewriter__cursor {
 }
   div.subheader-title {
     margin-bottom: 4em;
+    font-size: 1.3em;
 }
   #minibook-container div.mb-left-arrow {
     margin-left:10px
@@ -1388,7 +1389,7 @@ div.book-subheading {
   font-size: 24px;
 }
   div.show-me-title {
-    font-size: 34px;
+    font-size: 29px;
 }
 
   div.show-me-grid {
@@ -1475,7 +1476,7 @@ div.mb-content {
 }
 
   .main-main div.archtype-title {
-    font-size: 34px;
+    font-size: 27px;
 }
 
   #compare-container div.compare-today-subtext:after, #compare-container div.compare-tomorrow-subtext:before {
@@ -2409,7 +2410,8 @@ width: 48px;
   background: url(https://portal.revrevdev.xyz/wp-content/uploads/more-mockup.jpg);
   width: 37%;
   background-size: contain;
-  float: right;
+  float: left;
+  margin-right: 8px;
   filter: drop-shadow(0 2px 2px rgba(0,0,0,.12)) drop-shadow(0 3px 1px rgba(0,0,0,.14)) drop-shadow(0 1px 5px rgba(0,0,0,.12)) drop-shadow(0 -1px 2px rgba(0,0,0,.1));
 }
 .mockup-read {
@@ -2424,7 +2426,7 @@ width: 48px;
 }
 
 .read-more-section-cta {
-  margin-top: 5em;
+  margin-top: 1em;  
   text-align: center;
   font-family: 'Nunito Bold';
   font-size: 1.6em;
@@ -5817,7 +5819,11 @@ font-size: 46px;
 text-align: center;
 font-family: Josefin Sans;
 }
-div.read-more-title > span {
+.read-more-title em {
+  display: table;
+  margin: 0 auto;
+}
+div.read-more-title  span {
   font-style: normal;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;

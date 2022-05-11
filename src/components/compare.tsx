@@ -17,15 +17,14 @@ export default function CompareList() {
             <div class="compare-today-subtext">My Boss’ Ideas</div>
             <div class="compare-today-subtext">9 - 5 Schedules</div>
             <div class="compare-today-subtext">Limited Salary</div>
-            <div class="compare-today-subtext">Traded My Time for Dollars</div>
             <div class="compare-today-subtext">Working for a Boss</div>  
             <div class="compare-today-subtext">Minimized Wage</div>
             <div class="compare-today-subtext">Investing in Others</div>
-            <div class="compare-today-subtext">One Source of Income</div>
             <div class="compare-today-subtext">You Work For Money</div>
             <div class="compare-today-subtext">Laws of Addition</div>
             <div class="compare-today-subtext">Budget</div>
             <div class="compare-today-subtext">Rented My Time</div>
+            <div class="compare-today-subtext">Only One Source<span> of Wage Income</span></div>
         </div>
         <div class='compare-tomorrow-container'>
             <div class="compare-tomorrow-subtext">Meaningful Work</div>
@@ -34,15 +33,14 @@ export default function CompareList() {
             <div class="compare-tomorrow-subtext">My Best Ideas</div>
             <div class="compare-tomorrow-subtext">Flexible Schedules</div>
             <div class="compare-tomorrow-subtext">Unlimited Revenue</div>
-            <div class="compare-tomorrow-subtext">Trade My Mind for Dollars</div>
             <div class="compare-tomorrow-subtext">Became My Own Boss</div>
             <div class="compare-tomorrow-subtext">Maximum Wage</div>
             <div class="compare-tomorrow-subtext">Investing in Myself</div>
-            <div class="compare-tomorrow-subtext">Multiple Revenue Streams</div>
             <div class="compare-tomorrow-subtext">Money Works For You</div>
             <div class="compare-tomorrow-subtext">Laws of Multiplication</div>
             <div class="compare-tomorrow-subtext">Actually Making Money</div>
             <div class="compare-tomorrow-subtext">Owning My Time</div>
+            <div class="compare-tomorrow-subtext">Multiple Business <span>Revenue Streams</span></div>
 
         </div>
     </div>

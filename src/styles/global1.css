@@ -456,9 +456,11 @@ input.react-dropdown-select-input {
   }
   .j-second div.j-paragraph {
     font-size:1em;
+    margin-top: -16%;
   }
   .j-first div.j-paragraph {
     font-size:1em;
+    margin-top: -18%;
   }
   div.show-me-title {
     font-size: 42px;
@@ -1331,6 +1333,12 @@ span.Typewriter__cursor {
 }
 
 @media (max-width: 666px) {
+
+
+  div.j-text {
+    width: 90%;
+  }
+
   div.j-visible {
     max-width: unset;
   }
@@ -3831,7 +3839,7 @@ div#say-hello-list-container {
 .click-to-read-j {font-family: 'Nunito Bold';
   cursor: pointer;}
   .j-second .j-paragraph {
-    width: 45.5%;    max-width: 650px;
+
 }
 
 .j-second .j-heading-big {font-size: 3.41vw;}
@@ -3842,15 +3850,16 @@ div#say-hello-list-container {
 
 .j-heading:first-child {font-size: 3.7vw;}
 
-.j-first .j-paragraph {       margin-top: -18%;
+.j-first .j-paragraph {           margin-top: -22%;
   font-size: 1.3vw;}
 
 .j-second .j-paragraph {    margin-left: auto;
   margin-right: 4.5%;
-  margin-top: -18%;
+  margin-top: -19%;
   font-size: 1.3vw;}
 
-.j-third .j-paragraph {margin-top: -11%;}
+.j-third .j-paragraph {    margin-top: -19%;
+  font-size: 1.3vw;}
 
 .j-third .j-heading-big {font-size: 3.05vw;}
 .j-first span.Typewriter__cursor {

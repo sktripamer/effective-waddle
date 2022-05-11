@@ -42,6 +42,7 @@ background-clip: content-box;
 .main-main {
   width: 100vw;
   -webkit-transform: none;
+  overflow-x:hidden;
 }
 
 :root {

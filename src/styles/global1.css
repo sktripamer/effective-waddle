@@ -6384,21 +6384,13 @@ position: relative;
   transform: none;
   margin-bottom: auto; */
 
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	transform-style: preserve-3d;
-	perspective: 1000px;
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
   position: sticky;
-    top: 50%;
-    transform: translate(0, -50%);
-    margin-bottom: -50px;
-    margin-top: 50vh;
+  top: calc(50% - 270px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 
 }
 .book-section .book
@@ -6460,9 +6452,6 @@ display: flex;
   margin-bottom: 20vh;
   transform: none; */
   height: 200vh;
-  display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .compare-today-subtext:after {

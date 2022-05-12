@@ -3652,7 +3652,9 @@ someone else’s business rather than become your own business.
 			<img src="https://portal.revrevdev.xyz/wp-content/uploads/cover2.jpg"></img>
 		</div>
 	</div>
-  <div class="book-section-hero-cta">
+
+</div>
+<div class="book-section-hero-cta">
     <div class='book-section-content-cont'>           
   <h2 className="white-sh">Get PK’s Book to Build Your Dream Business!</h2>
   <p className="white-hero-p">Pre Order your copy today to get CHAPTER 1 sent right to your inbox!
@@ -3662,8 +3664,6 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
     <div onClick={preReveal} class="y-preorderbtn">Pre-Order My Book Bundle Now!</div>
     </div>   
     </div>
-</div>
-    
 
 </div>
 {/*  

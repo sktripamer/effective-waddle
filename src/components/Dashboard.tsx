@@ -15,7 +15,7 @@ export default function Dashboard({ children }: { children: ReactNode }) {
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"/>
 <meta content="yes" name="apple-mobile-web-app-capable" />
 
-<meta name="viewport" content="width=device-width, initial-scale = 0.86, maximum-scale=3.0, minimum-scale=0.86"/>
+<meta name="viewport" content="width=device-width, initial-scale = 0.98, maximum-scale=3.0, minimum-scale=0.98"/>
 <meta name="msapplication-TileColor" content="#da532c"/>
 <meta name="theme-color" content="#ffffff"/>
       </Helmet>

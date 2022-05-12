@@ -2770,7 +2770,7 @@ const noShippingForm = () => {
       const [archetype, setArchtype] = useState(1)
       const [minibook, setMinibook] = useState(1)
       const [readmore, setReadmore] = useState(false)
-
+    
       const [archetypeClick, setArchtypeClick] = useState(false)
       const [minibookClick, setMinibookClick] = useState(false)
       const [bookWidth, setBookWidth] = useState(0)
@@ -3516,19 +3516,7 @@ useEffect(() => {
               <div className="main-vid-area">
               <h1 className="revival-of-revenue">Experience your <span>Revival of Revenue</span></h1>
               <h2 className="white-sh-l">Bringing to Life the Business Income in You</h2>
-              <div className={`rev-optin-mobile ${boxVisible}`}>
-        <div className='time-section'>
-                <div className='time-remaining'>{titleText}</div>
-                
-    </div>
-    <h4 className="mb-2">{heroText}</h4>
-    <div className="more-detail">{moreDetails}</div>
-    {error && (
-          <div className="card-error-mobile" role="alert">
-            {error}
-          </div>
-        )}
-    </div>
+
               <div className={`loader-player ${revealer} ${playerSize}`}>
             
     <div className={`rev-loadin`}><div className='inner-loadin'></div></div>         
@@ -3570,53 +3558,61 @@ useEffect(() => {
           />
         </Video>
         <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg`}></div><div className={`tap-to-unmute-text`}>Click to unmute</div></div>
-        <div className={`rev-optin ${boxVisible}`}>
-    <div className='time-section'>
-                <div className='time-remaining'>{titleText}</div>
-    </div>
-
-          {1 == videoStatus
-                ? showAlertBar && (
+       
+      {667 <= windowWidth ?
+    (
+      <div className={`rev-optin ${boxVisible}`}>
+      <div className='time-section'>
+                  <div className='time-remaining'>{titleText}</div>
+      </div>
+  
+            {1 == videoStatus
+                  ? showAlertBar && (
+                      
+  
+                    <RegisterOpt setLoggedIn={setLoggedIn} />  
+          
+                    )
+                  : ""}
+                  {2 == videoStatus
+                  ? showAlertBar && (
+                      
+  
+                    <StepTwo />  
+          
+                    )
+                  : ""}
+                  {3 == videoStatus
+                  ? showAlertBar && (
+                      
+  
+                    <StepThree />  
+          
+                    )
+                  : ""}
+                    {4 == videoStatus
+                  ? showAlertBar && (
+                    <Elements stripe={stripePromise}>
+                    <StepFour />  
+                    </Elements>
+                    )
+                  : ""}
+                  {5 == videoStatus
+                  ? showAlertBar && (
+                      
                     
-
-                  <RegisterOpt setLoggedIn={setLoggedIn} />  
-        
-                  )
-                : ""}
-                {2 == videoStatus
-                ? showAlertBar && (
-                    
-
-                  <StepTwo />  
-        
-                  )
-                : ""}
-                {3 == videoStatus
-                ? showAlertBar && (
-                    
-
-                  <StepThree />  
-        
-                  )
-                : ""}
-                  {4 == videoStatus
-                ? showAlertBar && (
-                  <Elements stripe={stripePromise}>
-                  <StepFour />  
-                  </Elements>
-                  )
-                : ""}
-                {5 == videoStatus
-                ? showAlertBar && (
-                    
+                    <Elements stripe={stripePromise}>
+                    <StepFive />  
+                    </Elements>
                   
-                  <Elements stripe={stripePromise}>
-                  <StepFive />  
-                  </Elements>
-                
-                  )
-                : ""}
-                </div>
+                    )
+                  : ""}
+                  </div>
+    ):''} 
+
+
+
+
         <Ui>
         <ClickToPlay />
         <IconLibrary name="my-library" resolver={(iconName) => `/icons/${iconName}.svg`}  />
@@ -3647,7 +3643,37 @@ useEffect(() => {
       </Player> }
             
         </div>
-    </div>   
+    </div> 
+
+{667 > windowWidth ?
+(
+<>
+<div className={`rev-optin-mobile ${boxVisible}`}>
+
+
+
+{1 == videoStatus
+            ? showAlertBar && (
+                
+
+              <RegisterOpt setLoggedIn={setLoggedIn} />  
+    
+              )
+            : ""}
+
+
+{error && (
+      <div className="card-error-mobile" role="alert">
+        {error}
+      </div>
+    )}
+</div>  
+</>
+):''}
+
+
+
+
     <h2 className="white-sh">Entrepreneurs are more likely to succeed when they follow a proven system. 
 Today, the system is broken, and the Great Resignation is underway. 
 Underappreciated employees are escaping the 9-5 rat race for a more 

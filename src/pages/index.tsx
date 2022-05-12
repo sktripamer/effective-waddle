@@ -2972,21 +2972,41 @@ function preHide3() {
   const [scrollPosition, setScrollPosition] = useState(180);
   const [plaxVal, setPlax] = useState(0);
 const handleScroll = () => {
-  let elScrollPos = document.querySelector('.book-section-cont').getBoundingClientRect().top;
-  let vwport = window.screen.availHeight * .80;
-     if (elScrollPos <= 0) {
-      if (Math.abs(elScrollPos) > vwport) {
-        setScrollPosition(23)
-        setShadowPosition(20)
-      } else {
-        setScrollPosition( 180 -  (157 * (Math.abs(elScrollPos) / vwport)) )
-        setShadowPosition( Math.abs(20 -  (40 * (Math.abs(elScrollPos) / vwport))) )
-      }
+
+  let startVal =document.querySelector('.book-section-cont').getBoundingClientRect().top + window.pageYOffset - window.innerHeight / 2 + 305
+
+  if (window.scrollY >= startVal) {
+    setScrollPosition(180)
+    setShadowPosition(20)
+    return;
+  }
+  let endVal = document.querySelector('.book-section-content-cont').getBoundingClientRect().top + window.pageYOffset - window.innerHeight * .75
   
-     } else {
-      setScrollPosition(180)
-      setShadowPosition(20)
-     }
+  if (window.scrollY <= endVal) {
+    setScrollPosition(23)
+    setShadowPosition(20)
+    return;
+  }
+  let between = (window.scrollY - startVal) / (endVal - startVal)
+  //within the bounds, set to absoltue etc
+  setScrollPosition(180 - 157 * between)
+  setShadowPosition(Math.abs(20 - 40 * between))
+
+
+  // let vwport = window.screen.availHeight * .80;
+  //    if (elScrollPos <= 0) {
+  //     if (Math.abs(elScrollPos) > vwport) {
+  //       setScrollPosition(23)
+  //       setShadowPosition(20)
+  //     } else {
+  //       setScrollPosition( 180 -  (157 * (Math.abs(elScrollPos) / vwport)) )
+  //       setShadowPosition( Math.abs(20 -  (40 * (Math.abs(elScrollPos) / vwport))) )
+  //     }
+  
+  //    } else {
+  //     setScrollPosition(180)
+  //     setShadowPosition(20)
+  //    }
 
 
 

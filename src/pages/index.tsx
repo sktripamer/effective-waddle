@@ -2918,8 +2918,8 @@ const noShippingForm = () => {
         document.getElementsByTagName( 'body' )[0].style.cssText = `height:${windowHeight}px`;
         setPreorderButton(true)
         setPreorder(true)
-        document.getElementsByClassName('preorder-btn-container')[0].addEventListener('pointermove',  preventDefault)
-        document.getElementsByClassName('preorder-btn-container')[0].addEventListener('touchmove',  preventDefault)
+        // document.getElementsByClassName('preorder-btn-container')[0].addEventListener('pointermove',  preventDefault)
+        // document.getElementsByClassName('preorder-btn-container')[0].addEventListener('touchmove',  preventDefault)
     }
     function  preRevealBook2(e) {
 
@@ -2950,8 +2950,8 @@ const noShippingForm = () => {
    
       setPreorderButton(false)
       setPreorder(false)
-      document.getElementsByClassName('preorder-btn-container')[0].removeEventListener('pointermove',  preventDefault)
-      document.getElementsByClassName('preorder-btn-container')[0].removeEventListener('touchmove',  preventDefault)
+      // document.getElementsByClassName('preorder-btn-container')[0].removeEventListener('pointermove',  preventDefault)
+      // document.getElementsByClassName('preorder-btn-container')[0].removeEventListener('touchmove',  preventDefault)
   }
   function preHide2() {
     document.getElementsByTagName( 'html' )[0].classList.remove('noover')

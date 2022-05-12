@@ -767,8 +767,8 @@ div.rev-optin.reveal.final>div.payment.register-form.col-md-6 {
     height: 3.1rem;
   }
   div.time-remaining {
-    font-size: 2.2rem;
-    margin-top: -2px;
+    font-size: 3rem;
+
 }
 div.rev-optin>div.register-form.col-md-6 {
 }
@@ -799,8 +799,9 @@ div.rev-optin {
 }
 
 div.rev-optin:after {
-  background: linear-gradient(
-68deg,#3200838c 50%,rgb(35 35 35/5%));
+    background: linear-gradient(68deg,#320083f0 50%,rgb(35 35 35/5%)), url("data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 436 800'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url(%23linear-gradient);%7D.cls-2%7Bfill:url(%23linear-gradient-2);%7D.cls-3%7Bfill:url(%23linear-gradient-3);%7D.cls-4%7Bfill:url(%23linear-gradient-4);%7D.cls-5%7Bfill:url(%23linear-gradient-5);%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='323.6' y1='40.74' x2='309.81' y2='773' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0.11' stop-color='%231614ff'/%3E%3Cstop offset='0.74' stop-color='%23c52127'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient-2' x1='119.24' y1='36.9' x2='105.45' y2='769.15' xlink:href='%23linear-gradient'/%3E%3ClinearGradient id='linear-gradient-3' x1='226.53' y1='38.92' x2='212.74' y2='771.17' xlink:href='%23linear-gradient'/%3E%3ClinearGradient id='linear-gradient-4' x1='325.36' y1='40.78' x2='311.58' y2='773.03' xlink:href='%23linear-gradient'/%3E%3ClinearGradient id='linear-gradient-5' x1='123.37' y1='36.97' x2='109.58' y2='769.23' xlink:href='%23linear-gradient'/%3E%3C/defs%3E%3Cpath class='cls-1' d='M360.19,213.56a74.77,74.77,0,0,0,30.61-33.31,105.4,105.4,0,0,0,10-45.42q0-41-26.4-64.66T300,46.48h-78v262.2h39.33l11.38-83.21v-.15h0v0h33.9l54.21,83.36H420Zm-21.33-50.41q-9.45,12.3-30.08,12.3h-36V96.36h36.37q23.08,0,31.13,13a51.07,51.07,0,0,1,8,27.25Q348.3,150.88,338.86,163.15Z'/%3E%3Cpath class='cls-2' d='M135.11,46Q87.2,46,60.79,69.69t-26.4,64.66a105.32,105.32,0,0,0,10,45.42A74.74,74.74,0,0,0,75,213.08L15.15,308.2H74.26l54.21-83.36h33.85l0-.2,0,.2h.07v.54l11.7,82.82h39V46Zm27.28,129h-36q-20.62,0-30.08-12.29t-9.44-26.54a51,51,0,0,1,8-27.25q8.06-13,31.13-13h36.37Z'/%3E%3Cpath class='cls-3' d='M324.08,529.91,217.28,779.2,110.49,529.91h55.3l53.4,134.36,50.22-134.36Z'/%3E%3Cpolygon class='cls-4' points='332.36 354.42 332.36 354.37 262.29 354.36 262.29 398.52 349.54 398.52 349.54 398.55 381.52 398.55 364.92 437.92 323.58 437.92 323.58 437.9 262.29 437.89 262.29 482.61 345.04 482.61 328.22 521.99 222.25 521.98 222.26 314.98 360.87 314.99 360.87 315.05 418.14 315.05 400.92 354.42 332.36 354.42'/%3E%3Cpolygon class='cls-5' points='214.37 314.95 214.37 521.95 107.26 521.95 90.06 482.58 174.33 482.58 174.33 437.86 89.82 437.86 89.82 437.89 70.78 437.89 53.31 398.52 87.08 398.52 87.08 398.49 174.33 398.49 174.33 354.33 75.76 354.33 75.76 354.3 34.77 354.3 18 314.92 87.37 314.92 87.37 314.95 214.37 314.95'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 }
@@ -1211,7 +1212,7 @@ div.rev-optin-mobile > h4.mb-2 {
 
 
 div.rev-optin-mobile > div.time-section > .time-remaining {
-  font-size: 2.1rem;
+  font-size: 3rem;
   padding-bottom: 30px;
 }
 button.ml-auto.btn.btn-primary {
@@ -2016,15 +2017,18 @@ h2 span {
   transition: .8s all  ease-in;
   
 }
-
+.time-section {
+  transform: none;
+}
 .rev-optin:after {
   content: '';
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
-  background: linear-gradient(
-    68deg,#320083e0 50%,rgb(35 35 35/5%));
+    background: linear-gradient(68deg,#320083f0 50%,rgb(35 35 35/5%)), url("data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 436 800'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:url(%23linear-gradient);%7D.cls-2%7Bfill:url(%23linear-gradient-2);%7D.cls-3%7Bfill:url(%23linear-gradient-3);%7D.cls-4%7Bfill:url(%23linear-gradient-4);%7D.cls-5%7Bfill:url(%23linear-gradient-5);%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='323.6' y1='40.74' x2='309.81' y2='773' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0.11' stop-color='%231614ff'/%3E%3Cstop offset='0.74' stop-color='%23c52127'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient-2' x1='119.24' y1='36.9' x2='105.45' y2='769.15' xlink:href='%23linear-gradient'/%3E%3ClinearGradient id='linear-gradient-3' x1='226.53' y1='38.92' x2='212.74' y2='771.17' xlink:href='%23linear-gradient'/%3E%3ClinearGradient id='linear-gradient-4' x1='325.36' y1='40.78' x2='311.58' y2='773.03' xlink:href='%23linear-gradient'/%3E%3ClinearGradient id='linear-gradient-5' x1='123.37' y1='36.97' x2='109.58' y2='769.23' xlink:href='%23linear-gradient'/%3E%3C/defs%3E%3Cpath class='cls-1' d='M360.19,213.56a74.77,74.77,0,0,0,30.61-33.31,105.4,105.4,0,0,0,10-45.42q0-41-26.4-64.66T300,46.48h-78v262.2h39.33l11.38-83.21v-.15h0v0h33.9l54.21,83.36H420Zm-21.33-50.41q-9.45,12.3-30.08,12.3h-36V96.36h36.37q23.08,0,31.13,13a51.07,51.07,0,0,1,8,27.25Q348.3,150.88,338.86,163.15Z'/%3E%3Cpath class='cls-2' d='M135.11,46Q87.2,46,60.79,69.69t-26.4,64.66a105.32,105.32,0,0,0,10,45.42A74.74,74.74,0,0,0,75,213.08L15.15,308.2H74.26l54.21-83.36h33.85l0-.2,0,.2h.07v.54l11.7,82.82h39V46Zm27.28,129h-36q-20.62,0-30.08-12.29t-9.44-26.54a51,51,0,0,1,8-27.25q8.06-13,31.13-13h36.37Z'/%3E%3Cpath class='cls-3' d='M324.08,529.91,217.28,779.2,110.49,529.91h55.3l53.4,134.36,50.22-134.36Z'/%3E%3Cpolygon class='cls-4' points='332.36 354.42 332.36 354.37 262.29 354.36 262.29 398.52 349.54 398.52 349.54 398.55 381.52 398.55 364.92 437.92 323.58 437.92 323.58 437.9 262.29 437.89 262.29 482.61 345.04 482.61 328.22 521.99 222.25 521.98 222.26 314.98 360.87 314.99 360.87 315.05 418.14 315.05 400.92 354.42 332.36 354.42'/%3E%3Cpolygon class='cls-5' points='214.37 314.95 214.37 521.95 107.26 521.95 90.06 482.58 174.33 482.58 174.33 437.86 89.82 437.86 89.82 437.89 70.78 437.89 53.31 398.52 87.08 398.52 87.08 398.49 174.33 398.49 174.33 354.33 75.76 354.33 75.76 354.3 34.77 354.3 18 314.92 87.37 314.92 87.37 314.95 214.37 314.95'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .register-form.col-md-6 {

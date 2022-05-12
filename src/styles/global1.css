@@ -4581,6 +4581,7 @@ div#compare-container {
   padding-top: 80px;
   padding-bottom: 80px;
   overflow-x: hidden;
+  width: calc(100vw - 10px);
 }
 
 
@@ -5230,6 +5231,7 @@ div#gatsby-focus-wrapper {-webkit-transform: none;}
 }
 
 #minibook-container {
+  width: calc(100vw - 10px);
   margin: 20px auto;
   max-width: 1800px;
   justify-content: space-around;

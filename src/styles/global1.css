@@ -40,7 +40,7 @@ border: 6px solid #a21826;
 background-clip: content-box;
 }
 .main-main {
-  width: calc(100vw - 10px);
+  width: 100vw;
   -webkit-transform: none;
 
 }
@@ -162,7 +162,6 @@ main {
   display: flex;
   -webkit-transform: none;
   margin-left: -10px;
-  padding-left: 10px;
 
 }
 main.modalup {

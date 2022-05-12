@@ -2975,7 +2975,8 @@ const handleScroll = () => {
 
   let startVal =document.querySelector('.book-section-cont').getBoundingClientRect().top + window.pageYOffset - window.innerHeight / 2 + 305
 
-  if (window.scrollY >= startVal) {
+  if (window.scrollY <= startVal) {
+    //scroll position below start
     setScrollPosition(180)
     setShadowPosition(20)
     return;
@@ -2983,6 +2984,7 @@ const handleScroll = () => {
   let endVal = document.querySelector('.book-section-content-cont').getBoundingClientRect().top + window.pageYOffset - window.innerHeight * .75
   
   if (window.scrollY >= endVal) {
+    // scroll pos below end
     setScrollPosition(23)
     setShadowPosition(20)
     return;

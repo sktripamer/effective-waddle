@@ -5526,6 +5526,8 @@ margin-bottom: 4em;
 .modal-book-cont p {font-size: 0.35em;text-align: justify;
 text-indent: 10px;margin-bottom: .3rem;font-family: Nunito Regular;
 color: #470006;
+padding-right: 5px;
+
 }
 .modal-book-cont::-webkit-scrollbar {
   width: 4px;

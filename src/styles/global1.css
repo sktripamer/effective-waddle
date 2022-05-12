@@ -153,7 +153,9 @@ a {
 * {
   box-sizing: border-box;
 }
-
+.rest-of-content {
+  overflow-x:hidden;
+}
 main {
   /* margin: 0 auto 4rem;
   max-width: 1000px;
@@ -162,7 +164,7 @@ main {
   display: flex;
   -webkit-transform: none;
   margin-left: -10px;
-  padding-left: 10px;
+
 
 }
 main.modalup {

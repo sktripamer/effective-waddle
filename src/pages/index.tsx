@@ -3692,7 +3692,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
     <div id='say-hello-container'>
     <div class="say-hello-bg"></div>
   </div> */}
-
+<div class='rest-of-content'>
 {isBrowser && (<Suspense fallback={<div></div>}>
 				<TypeText />
 </Suspense>)}
@@ -3934,7 +3934,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
   </div>
 
 
-
+  </div>
   </div>
             </Dashboard>
           )

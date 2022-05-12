@@ -40,7 +40,7 @@ border: 6px solid #a21826;
 background-clip: content-box;
 }
 .main-main {
-  width: 100vw;
+  width: calc(100vw - 10px);
   -webkit-transform: none;
 
 }
@@ -4578,6 +4578,7 @@ div#compare-container {
   background: #fff;
   padding-top: 80px;
   padding-bottom: 80px;
+  overflow-x: hidden;
 }
 
 
@@ -6451,7 +6452,7 @@ display: flex;
   justify-content: flex-end;
   margin-bottom: 20vh;
   transform: none; */
-  height: 200vh;
+  height: 200vh;  
 }
 
 .compare-today-subtext:after {

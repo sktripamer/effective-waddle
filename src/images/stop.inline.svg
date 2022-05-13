@@ -1,0 +1,4 @@
+<svg class="stopper" width="240" height="240" viewbox="0 0 240 240">
+<circle id="stopwatchbg" cx="120" cy="120" r="100"/>
+<circle id="stopwatchload" cx="120" cy="120" r="100"/>
+</svg>

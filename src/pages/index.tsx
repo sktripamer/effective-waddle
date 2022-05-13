@@ -27,7 +27,7 @@
     import useAuth, { User } from "../hooks/useAuth";
     //import UnAuthContent from "../components/UnAuthContent";
     import {loadStripe} from '@stripe/stripe-js/pure';
-    import Stopwatch from '..images/stop.inline.svg';
+    import Stopwatch from '../images/stop.inline.svg';
     import {
       CardElement,
       Elements,

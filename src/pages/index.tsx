@@ -27,7 +27,7 @@
     import useAuth, { User } from "../hooks/useAuth";
     //import UnAuthContent from "../components/UnAuthContent";
     import {loadStripe} from '@stripe/stripe-js/pure';
-
+    import Stopwatch from '..images/stop.inline.svg';
     import {
       CardElement,
       Elements,
@@ -1073,12 +1073,7 @@
 
     }
 
-     const stopwatch = () => (
-<svg className="stopper" width="240" height="240" viewBox="0 0 240 240">
-	<circle id="stopwatchbg" cx="120" cy="120" r="100" />
-  <circle id="stopwatchload" cx="120" cy="120" r="100" />
-</svg>
-    );
+ 
 
     const StepSix = (props) => {
       let [shipping, setShipping] = useState(false);
@@ -3569,7 +3564,7 @@ useEffect(() => {
         <div className={`rev-optin ${boxVisible}`}>
       <div className='time-section'>
         <>
-                    {stopwatch}
+                    <Stopwatch/>
                   <div className='time-remaining'>{titleText}</div>
                   </>
       </div> 

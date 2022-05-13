@@ -2041,7 +2041,30 @@ h2 span {
 .register-form {
   z-index: 1;
 }
+svg.stopper {
+	transform-origin:center;
+	transform: rotate(-90deg);
+	margin:200px auto;
+	display:block
+}
+circle#stopwatchload {
+  fill: transparent;
+  stroke: black;
+  stroke-width: 10;
+  stroke-dasharray: 700;
+  stroke-dashoffset: 690;
+  animation: rotate 30s linear infinite;
+}
+#stopwatchbg {
+  fill: transparent;
 
+}
+
+@keyframes rotate {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 .time-remaining {
   FONT-WEIGHT: 700;
   color: hsla(0,0%,100%,.5);

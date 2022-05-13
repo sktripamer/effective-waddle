@@ -454,6 +454,9 @@ input.react-dropdown-select-input {
   width: fit-content
 }
 @media (max-width: 1050px) {
+  div.compare-today-subtext {
+    font-size: 20px;
+}
 
   .j-third div.j-paragraph {
     font-size:1em;
@@ -1338,6 +1341,9 @@ span.Typewriter__cursor {
 }
 
 @media (max-width: 666px) {
+  #compare-container div.compare-today-subtext {
+    font-size: 14px;
+}
 
 
   div.j-text {

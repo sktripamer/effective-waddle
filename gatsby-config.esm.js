@@ -58,6 +58,14 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
     "gatsby-plugin-react-helmet",
     {
       resolve: `gatsby-plugin-gatsby-cloud`,

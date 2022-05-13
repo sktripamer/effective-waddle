@@ -1072,6 +1072,14 @@
     );
 
     }
+
+     const stopwatch = () => (
+<svg className="stopper" width="240" height="240" viewBox="0 0 240 240">
+	<circle id="stopwatchbg" cx="120" cy="120" r="100" />
+  <circle id="stopwatchload" cx="120" cy="120" r="100" />
+</svg>
+    );
+
     const StepSix = (props) => {
       let [shipping, setShipping] = useState(false);
       const [currentStep, setCurrentStep] = useState(1);
@@ -3558,13 +3566,16 @@ useEffect(() => {
           />
         </Video>
         <div onClick={unmuteClick} id="tap-mute" className={`tap-to-unmute ${muteClass}`}><div className={`tap-to-unmute-svg`}></div><div className={`tap-to-unmute-text`}>Click to unmute</div></div>
-       
+        <div className={`rev-optin ${boxVisible}`}>
+      <div className='time-section'>
+        <>
+                    {stopwatch}
+                  <div className='time-remaining'>{titleText}</div>
+                  </>
+      </div> 
       {667 <= windowWidth ?
     (
-      <div className={`rev-optin ${boxVisible}`}>
-      <div className='time-section'>
-                  <div className='time-remaining'>{titleText}</div>
-      </div>
+     <>
   
             {1 == videoStatus
                   ? showAlertBar && (
@@ -3607,10 +3618,10 @@ useEffect(() => {
                   
                     )
                   : ""}
-                  </div>
+     </>            
     ):''} 
 
-
+    </div>
 
 
         <Ui>

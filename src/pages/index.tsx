@@ -3447,6 +3447,8 @@ useEffect(() => {
           const unmuteClick = () => {
           player.current!.muted = false;
           pushScrollLock(document.getElementsByClassName('loader-player')[0]);
+          document.getElementsByTagName("html")[0].style.overflow = "hidden";
+          document.getElementsByClassName("loader-player")[0].classList.add("engaged");
             setMuteClass("rev-mute")
           };
           const onClick = () => {
@@ -3725,6 +3727,7 @@ useEffect(() => {
 </div>  
 </>
 ):''}
+<div class='focusmode'></div>
 </div>
 <div class='rest-of-hero-content'>
 

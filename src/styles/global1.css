@@ -2050,7 +2050,7 @@ h2 span {
 
 svg.stopper {
 	position: relative;
-	display:none;
+	display:block;
 	z-index:23;
 }
 circle#stopwatchload {

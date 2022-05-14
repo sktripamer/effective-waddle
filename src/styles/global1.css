@@ -2050,7 +2050,7 @@ h2 span {
 
 svg.stopper {
 	position: relative;
-	display:block;
+	display:none;
 	z-index:23;
 }
 circle#stopwatchload {
@@ -2079,13 +2079,17 @@ stroke:  #8D1A59;
   stroke-width: 5;
 }
 #pausestop1 {
-	fill: transparent;
+  display: none;
+  fill: hsl(0deg 0% 100% / 89%);
+  filter: drop-shadow(2px 4px 6px black);
 }
 #pausestop2 {
-	fill: transparent;
+  display: none;
+  fill: hsl(0deg 0% 100% / 89%);
+  filter: drop-shadow(2px 4px 6px black);
 }
 #stopwatchbg {
-  fill: transparent;
+  display: none;
 
 }
 #stopwatch-time {

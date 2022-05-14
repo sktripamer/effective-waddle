@@ -2,7 +2,7 @@
 	<circle id="stopwatchborder" cx="100" cy="100" r="37"/>
 	<circle id="stopwatchborder3" cx="100" cy="100" r="73"/>
 		<circle id="stopwatchborder2" cx="100" cy="100" r="66"/>
-<text id="stopwatch-time" x="50%" y="50%" dominant-baseline="central" text-anchor="middle">30</text>
+<text id="stopwatch-time" x="50%" y="49%" dominant-baseline="central" text-anchor="middle">30</text>
 <rect id="pausestop1" x="84.38" y="79.79" width="11.47" height="40.41"/><rect id="pausestop2" x="104.15" y="79.79" width="11.47" height="40.41"/>
 
 <circle id="stopwatchload" cx="100" cy="100" r="50"/>

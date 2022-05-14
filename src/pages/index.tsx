@@ -3608,7 +3608,7 @@ useEffect(() => {
       <div className='time-section'>
         <>
                     <Stopwatch/>
-                  <div className='time-remaining'>{titleText}</div>
+                 
                   </>
       </div> 
       {667 <= windowWidth ?

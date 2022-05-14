@@ -2047,25 +2047,46 @@ h2 span {
 .register-form {
   z-index: 1;
 }
+
 svg.stopper {
-	transform-origin:center;
-	transform: rotate(-90deg);
-	margin:200px auto;
+
 	display:block
 }
 circle#stopwatchload {
   fill: transparent;
-  stroke: black;
-  stroke-width: 10;
-  stroke-dasharray: 700;
-  stroke-dashoffset: 690;
-  animation: rotate 30s linear infinite;
+	transform-origin:center;
+		transform: rotate(-90deg);
+  stroke:  #C11C4E;
+  stroke-width: 30;
+  stroke-dasharray: 315;
+  stroke-dashoffset: 313;
+  animation: rotate 30s linear forwards;
 }
+#stopwatchborder {
+  fill: transparent;
+stroke:  #3b0a78;
+  stroke-width: 5;
+}
+#stopwatchborder2 {
+  fill: transparent;
+stroke: #3b0a78;
+  stroke-width: 3;
+}
+#stopwatchborder3 {
+  fill: transparent;
+stroke:  #3b0a78;
+  stroke-width: 5;
+}
+
 #stopwatchbg {
   fill: transparent;
 
 }
-
+#stopwatch-time {
+	    fill: hsla(0,0%,100%,.5);
+    font-size: 3rem;
+    text-shadow: #bbb 0 0 1px, #fff 0 -1px 2px, #313131ed 0 -3px 2px, rgb(0 0 0 / 95%) 0 10px 15px;
+}
 @keyframes rotate {
   to {
     stroke-dashoffset: 0;

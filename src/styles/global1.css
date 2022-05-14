@@ -2052,6 +2052,7 @@ svg.stopper {
 	position: relative;
 	display:block;
 	z-index:23;
+  margin: 0 auto;
 }
 circle#stopwatchload {
   fill: transparent;

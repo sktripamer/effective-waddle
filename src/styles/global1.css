@@ -2065,17 +2065,17 @@ circle#stopwatchload {
 }
 #stopwatchborder {
   fill: transparent;
-stroke:  #63093f;
+stroke:  #8D1A59;
   stroke-width: 5;
 }
 #stopwatchborder2 {
   fill: transparent;
-stroke: #63093f;
+stroke: #8D1A59;
   stroke-width: 3;
 }
 #stopwatchborder3 {
   fill: transparent;
-stroke:  #63093f;
+stroke:  #8D1A59;
   stroke-width: 5;
 }
 #pausestop1 {
@@ -2098,6 +2098,7 @@ stroke:  #63093f;
     stroke-dashoffset: 0;
   }
 }
+
 
 .time-remaining {
   FONT-WEIGHT: 700;

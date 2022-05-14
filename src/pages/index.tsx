@@ -27,6 +27,11 @@
     import useAuth, { User } from "../hooks/useAuth";
     //import UnAuthContent from "../components/UnAuthContent";
     import {loadStripe} from '@stripe/stripe-js/pure';
+    import {
+      pushScrollLock,
+      removeScrollLock,
+  } from '@polymer/iron-overlay-behavior/iron-scroll-manager';
+  
     import Stopwatch from '../images/stop.inline.svg';
     import {
       CardElement,
@@ -3441,6 +3446,7 @@ useEffect(() => {
           }
           const unmuteClick = () => {
           player.current!.muted = false;
+          pushScrollLock(document.getElementsByClassName('loader-player')[0]);
             setMuteClass("rev-mute")
           };
           const onClick = () => {

@@ -2094,6 +2094,8 @@ stroke:  #8D1A59;
 }
 #stopwatch-time {
 	    fill: hsla(0,0%,100%,.5);
+      font-weight: bold;
+      letter-spacing: -.1em;
     font-size: 3rem;
     text-shadow: #bbb 0 0 1px, #fff 0 -1px 2px, #313131ed 0 -3px 2px, rgb(0 0 0 / 95%) 0 10px 15px;
 }

@@ -3142,15 +3142,53 @@ useEffect(() => {
           //   player.current!.pause()
           // }
           if (currentTimeb > 3 && LoginVerify() === false ) {
+            const restartAnimations = (element) => {
+              for (const animation of document.getAnimations()) {
+                if (element.contains((animation.effect).target)) {
+                  animation.cancel();
+                  animation.play();
+                }
+              }
+            };
+            const restartPauseAnimations = (element) => {
+              for (const animation of document.getAnimations()) {
+                if (element.contains((animation.effect).target)) {
+                  animation.cancel();
+                  animation.pause();
+                }
+              }
+            };
+            let stoptime = document.getElementById('stopwatch-time')
+            let pausestop1 = document.getElementById('pausestop1')
+            let pausestop2 = document.getElementById('pausestop2')
             setHero("Time's almost up!");
             setDetails('Enter your info to continue watching and get amazing deals and breaking news');
             setBoxVisible('reveal')
           //if (currentTime > 3 ) {
               if (Math.floor(33 - currentTimeb) !== titleText ) {
                 setTitleText(Math.floor(33.99 - currentTimeb));
+
+                stoptime.textContent = Math.floor(33.99 - currentTimeb).toString()
+                stoptime.style.display = 'block'
+                document.getElementById('stopwatchload').style.animationDelay = `-${30 - Math.floor(33.99 - currentTimeb)}s`
+                
+                if (player.current!.playing === false) {
+                  restartPauseAnimations(document.getElementById('stopwatchload'))
+                } else {
+                  restartAnimations(document.getElementById('stopwatchload'))
+                }
+                pausestop1.style.display = 'none'
+                pausestop2.style.display = 'none'
+                //turn off pause, turn on text
               }
               if (currentTimeb > 33) {
+                //turn off text, turn on pause
                 setCurrentTime(32);
+                document.getElementById('stopwatchload').style.animationDelay = `-30s`
+                restartAnimations(document.getElementById('stopwatchload'))
+                stoptime.style.display = 'none'
+                pausestop1.style.display = 'block'
+                pausestop2.style.display = 'block'
                 player.current!.pause()
               }
               setVideoStatus(1)
@@ -3676,7 +3714,8 @@ useEffect(() => {
 </div>  
 </>
 ):''}
-
+</div>
+<div class='rest-of-hero-content'>
 
 
 

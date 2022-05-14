@@ -3143,15 +3143,15 @@ useEffect(() => {
           // }
           if (currentTimeb > 3 && LoginVerify() === false ) {
             const restartAnimations = (element) => {
-              for (const animation of document.getAnimations()) {
+              for (const animation of element.getAnimations()) {
                 if (element.contains((animation.effect).target)) {
                   animation.cancel();
-                  animation.play();
+                  animation.pause();
                 }
               }
             };
             const restartPauseAnimations = (element) => {
-              for (const animation of document.getAnimations()) {
+              for (const animation of element.getAnimations()) {
                 if (element.contains((animation.effect).target)) {
                   animation.cancel();
                   animation.pause();
@@ -3170,7 +3170,7 @@ useEffect(() => {
 
                 stoptime.textContent = Math.floor(33.99 - currentTimeb).toString()
                 stoptime.style.display = 'block'
-                document.getElementById('stopwatchload').style.animationDelay = `-${30 - Math.floor(33.99 - currentTimeb)}s`
+                document.getElementById('stopwatchload').style.animationDelay = `-${30 - (33.99 - currentTimeb)}s`
                 
                 if (player.current!.playing === false) {
                   restartPauseAnimations(document.getElementById('stopwatchload'))
@@ -3489,6 +3489,11 @@ useEffect(() => {
           }
           const playTransition = () => {
             console.log('play transition begin')
+            for (const animation of document.getElementById('stopwatchload').getAnimations()) {
+              if (document.getElementById('stopwatchload').contains((animation.effect).target)) {
+                animation.play();
+              }
+            }
           }
           const playStart = () => {
             console.log('play started')

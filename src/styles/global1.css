@@ -657,6 +657,8 @@ div.prev-name-on-card, div.prev-email, div.prev-last-box {
 }
 .loader-player {
   position: relative;
+  transform: none;
+    overflow: hidden;
 }
   div.final-mobile-hero {
     display:block;
@@ -1181,6 +1183,7 @@ button.ml-auto.btn.btn-success:after {
   animation: newput .5s forwards;
 
 }
+.loader-player.engaged .focusmode {    overflow-y: scroll;content: '';position: fixed;width: 100vw;height: 100vh;background: #00000078;left: 0;top: 0;z-index: 2;transform: none;}
 
 .rev-optin-mobile.reveal {
   max-height: 400px;
@@ -1193,6 +1196,8 @@ button.ml-auto.btn.btn-success:after {
     background-position: 100% 0;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    z-index: 3;
 }
 .rev-optin-mobile.hidden {
   opacity: 0;
@@ -2096,7 +2101,7 @@ stroke:  #8D1A59;
 #stopwatch-time {
 	    fill: hsla(0,0%,100%,.5);
       font-weight: bold;
-      letter-spacing: -.1em;
+
     font-size: 3rem;
     text-shadow: #bbb 0 0 1px, #fff 0 -1px 2px, #313131ed 0 -3px 2px, rgb(0 0 0 / 95%) 0 10px 15px;
 }
@@ -3555,6 +3560,7 @@ display: none;
     position: absolute;
     top: 0;
     width: 100%;
+    z-index: 3;
   }
   .revealer-el .rev-player-cont {
 

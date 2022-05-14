@@ -2049,14 +2049,15 @@ h2 span {
 }
 
 svg.stopper {
-
-	display:block
+	position: relative;
+	display:block;
+	z-index:23;
 }
 circle#stopwatchload {
   fill: transparent;
 	transform-origin:center;
 		transform: rotate(-90deg);
-  stroke:  #C11C4E;
+  stroke:  url(#prefix__a);
   stroke-width: 30;
   stroke-dasharray: 315;
   stroke-dashoffset: 313;
@@ -2064,20 +2065,25 @@ circle#stopwatchload {
 }
 #stopwatchborder {
   fill: transparent;
-stroke:  #3b0a78;
+stroke:  #63093f;
   stroke-width: 5;
 }
 #stopwatchborder2 {
   fill: transparent;
-stroke: #3b0a78;
+stroke: #63093f;
   stroke-width: 3;
 }
 #stopwatchborder3 {
   fill: transparent;
-stroke:  #3b0a78;
+stroke:  #63093f;
   stroke-width: 5;
 }
-
+#pausestop1 {
+	fill: transparent;
+}
+#pausestop2 {
+	fill: transparent;
+}
 #stopwatchbg {
   fill: transparent;
 
@@ -2092,6 +2098,7 @@ stroke:  #3b0a78;
     stroke-dashoffset: 0;
   }
 }
+
 .time-remaining {
   FONT-WEIGHT: 700;
   color: hsla(0,0%,100%,.5);

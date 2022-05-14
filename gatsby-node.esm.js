@@ -27,6 +27,10 @@
                         test: /@vime/,
                         use: loaders.null(),
                     },
+                    {
+                        test: /@polymer/,
+                        use: loaders.null(),
+                    },
                     ],
                 },
                 })

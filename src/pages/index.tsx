@@ -3529,7 +3529,7 @@ useEffect(() => {
             if (firstPlay===true) {
               document.getElementsByTagName("html")[0].style.overflow = "hidden";
               document.getElementsByClassName("loader-player")[0].classList.add("engaged");
-              if (boxVisible.contains('reveal')) {
+              if (boxVisible.includes('reveal')) {
                 try {
                   scrollToSmoothly(document.getElementsByClassName('rev-optin-mobile')[0].getBoundingClientRect().bottom + window.pageYOffset - window.innerHeight, 200)
                 } catch {

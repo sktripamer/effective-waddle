@@ -3138,8 +3138,25 @@ useEffect(() => {
 
         }, []);
 
-
-  
+        const restartAnimations = (element) => {
+          for (const animation of element.getAnimations()) {
+            if (element.contains((animation.effect).target)) {
+              animation.cancel();
+              animation.pause();
+            }
+          }
+        };
+        const restartPauseAnimations = (element) => {
+          for (const animation of element.getAnimations()) {
+            if (element.contains((animation.effect).target)) {
+              animation.cancel();
+              animation.pause();
+            }
+          }
+        };
+        const stoptime = document.getElementById('stopwatch-time')
+        const pausestop1 = document.getElementById('pausestop1')
+        const pausestop2 = document.getElementById('pausestop2')
         useEffect(() => {
     
         
@@ -3150,25 +3167,8 @@ useEffect(() => {
           //   player.current!.pause()
           // }
           if (currentTimeb > 3 && LoginVerify() === false ) {
-            const restartAnimations = (element) => {
-              for (const animation of element.getAnimations()) {
-                if (element.contains((animation.effect).target)) {
-                  animation.cancel();
-                  animation.pause();
-                }
-              }
-            };
-            const restartPauseAnimations = (element) => {
-              for (const animation of element.getAnimations()) {
-                if (element.contains((animation.effect).target)) {
-                  animation.cancel();
-                  animation.pause();
-                }
-              }
-            };
-            let stoptime = document.getElementById('stopwatch-time')
-            let pausestop1 = document.getElementById('pausestop1')
-            let pausestop2 = document.getElementById('pausestop2')
+ 
+
             setHero("Time's almost up!");
             setDetails('Enter your info to continue watching and get amazing deals and breaking news');
             setBoxVisible('reveal')
@@ -3176,7 +3176,6 @@ useEffect(() => {
               scrollToSmoothly(document.getElementsByClassName('rev-optin-mobile')[0].getBoundingClientRect().bottom + window.pageYOffset - window.innerHeight, 200)
             } catch {
                }
-          //if (currentTime > 3 ) {
               if (Math.floor(33 - currentTimeb) !== titleText ) {
                 setTitleText(Math.floor(33.99 - currentTimeb));
 
@@ -3205,6 +3204,8 @@ useEffect(() => {
               }
               setVideoStatus(1)
             } 
+
+
             if (currentTimeb > 36 && step2verify() === true ) {
               setHero("Time's almost up!");
               setDetails('Just enter 3 emails of people that need to see this');
@@ -3213,12 +3214,27 @@ useEffect(() => {
                 scrollToSmoothly(document.getElementsByClassName('rev-optin-mobile')[0].getBoundingClientRect().bottom + window.pageYOffset - window.innerHeight, 200)
               } catch {
                  }
-            //if (currentTime > 3 ) {
                 if (Math.floor(66 - currentTimeb) !== titleText ) {
                   setTitleText(Math.floor(66.99 - currentTimeb));
+                  stoptime.textContent = Math.floor(66.99 - currentTimeb).toString()
+                  stoptime.style.display = 'block'
+                  document.getElementById('stopwatchload').style.animationDelay = `-${30 - (66.99 - currentTimeb)}s`
+                  
+                  if (player.current!.playing === false) {
+                    restartPauseAnimations(document.getElementById('stopwatchload'))
+                  } else {
+                    restartAnimations(document.getElementById('stopwatchload'))
+                  }
+                  pausestop1.style.display = 'none'
+                  pausestop2.style.display = 'none'
                 }
                 if (currentTimeb > 66) {
                   setCurrentTime(65);
+                  document.getElementById('stopwatchload').style.animationDelay = `-30s`
+                  restartAnimations(document.getElementById('stopwatchload'))
+                  stoptime.style.display = 'none'
+                  pausestop1.style.display = 'block'
+                  pausestop2.style.display = 'block'
                   player.current!.pause()
                 }
                 setVideoStatus(2)
@@ -3240,9 +3256,25 @@ useEffect(() => {
             //if (currentTime > 3 ) {
                 if (Math.floor(99 - currentTimeb) !== titleText ) {
                   setTitleText(Math.floor(99.99 - currentTimeb));
+                  stoptime.textContent = Math.floor(99.99 - currentTimeb).toString()
+                  stoptime.style.display = 'block'
+                  document.getElementById('stopwatchload').style.animationDelay = `-${30 - (99.99 - currentTimeb)}s`
+                  
+                  if (player.current!.playing === false) {
+                    restartPauseAnimations(document.getElementById('stopwatchload'))
+                  } else {
+                    restartAnimations(document.getElementById('stopwatchload'))
+                  }
+                  pausestop1.style.display = 'none'
+                  pausestop2.style.display = 'none'
                 }
                 if (currentTimeb > 99) {
                   setCurrentTime(98);
+                  document.getElementById('stopwatchload').style.animationDelay = `-30s`
+                  restartAnimations(document.getElementById('stopwatchload'))
+                  stoptime.style.display = 'none'
+                  pausestop1.style.display = 'block'
+                  pausestop2.style.display = 'block'
                   player.current!.pause()
                 }
                 setVideoStatus(3)
@@ -3265,9 +3297,25 @@ useEffect(() => {
             //if (currentTime > 3 ) {
                 if (Math.floor(132 - currentTimeb) !== titleText ) {
                   setTitleText(Math.floor(132.99 - currentTimeb));
+                  stoptime.textContent = Math.floor(132.99 - currentTimeb).toString()
+                  stoptime.style.display = 'block'
+                  document.getElementById('stopwatchload').style.animationDelay = `-${30 - (132.99 - currentTimeb)}s`
+                  
+                  if (player.current!.playing === false) {
+                    restartPauseAnimations(document.getElementById('stopwatchload'))
+                  } else {
+                    restartAnimations(document.getElementById('stopwatchload'))
+                  }
+                  pausestop1.style.display = 'none'
+                  pausestop2.style.display = 'none'
                 }
                 if (currentTimeb > 132) {
                   setCurrentTime(131);
+                  document.getElementById('stopwatchload').style.animationDelay = `-30s`
+                  restartAnimations(document.getElementById('stopwatchload'))
+                  stoptime.style.display = 'none'
+                  pausestop1.style.display = 'block'
+                  pausestop2.style.display = 'block'
                   player.current!.pause()
                 }
                 setVideoStatus(4)

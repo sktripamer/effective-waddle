@@ -452,6 +452,17 @@ input.react-dropdown-select-input {
   width: fit-content
 }
 @media (max-width: 1050px) {
+
+  body vm-player {
+    --vm-control-spacing: 2px;
+    --vm-control-padding: 2px;
+  }
+
+  .time-section svg.stopper {
+    height: 120px;
+    width: 120px;
+  }
+  
   div.compare-today-subtext {
     font-size: 20px;
 }
@@ -1353,6 +1364,10 @@ span.Typewriter__cursor {
 }
 
 @media (max-width: 666px) {
+  div.time-section svg.stopper {
+    height: 90px;
+    width: 90px;
+  }
   #compare-container div.compare-today-subtext {
     font-size: 14px;
 }
@@ -1851,7 +1866,7 @@ div.firststep-btn {
   padding: 6px 12px;
 }
   div.rev-optin {
-    display: flex;
+
   }
 
   div.powered-container {

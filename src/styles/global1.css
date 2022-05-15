@@ -17,7 +17,7 @@
   src: url(../fonts/poppins.woff2) format('woff2');
 }
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 html.noover {
   overflow-y: hidden;
@@ -34,10 +34,9 @@ html.noover body {
 }
 
 ::-webkit-scrollbar-thumb {
-background-color: #d6dee1;
-border-radius: 20px;
-border: 6px solid #a21826;
-background-clip: content-box;
+  background-clip: content-box;
+  background-color: #a21826b3;
+  border-radius: 40px;
 }
 .main-main {
   width: 100vw;
@@ -117,7 +116,7 @@ body {
 }
 
 html {
-  overflow-y: scroll;
+  overflow-y: overlay;
  
 }
 
@@ -1178,7 +1177,7 @@ button.ml-auto.btn.btn-success:after {
   animation: newput .5s forwards;
 
 }
-.loader-player.engaged .focusmode {    overflow-y: scroll;content: '';position: fixed;width: 100vw;height: 100vh;background: #00000078;left: 0;top: 0;z-index: 2;transform: none;}
+.loader-player.engaged .focusmode {  backdrop-filter: brightness(0.66) blur(10px);  overflow-y: scroll;content: '';position: fixed;width: 100vw;height: 100vh;background: #00000078;left: 0;top: 0;z-index: 2;transform: none;}
 
 .rev-optin-mobile.reveal {
   max-height: 400px;

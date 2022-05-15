@@ -411,6 +411,7 @@
         onError: (error) => {
           if (error) {
             if (!isEmpty(error)) {
+              localStorage.removeItem('auth')
               setErrorMessage(error.graphQLErrors[0].message);
             }
           }

@@ -3169,6 +3169,10 @@ useEffect(() => {
             setHero("Time's almost up!");
             setDetails('Enter your info to continue watching and get amazing deals and breaking news');
             setBoxVisible('reveal')
+            try {
+              scrollToSmoothly(document.getElementsByClassName('rev-optin-mobile')[0].getBoundingClientRect().bottom + window.pageYOffset - window.innerHeight, 200)
+            } catch {
+               }
           //if (currentTime > 3 ) {
               if (Math.floor(33 - currentTimeb) !== titleText ) {
                 setTitleText(Math.floor(33.99 - currentTimeb));
@@ -3202,6 +3206,10 @@ useEffect(() => {
               setHero("Time's almost up!");
               setDetails('Just enter 3 emails of people that need to see this');
               setBoxVisible('reveal')
+              try {
+                scrollToSmoothly(document.getElementsByClassName('rev-optin-mobile')[0].getBoundingClientRect().bottom + window.pageYOffset - window.innerHeight, 200)
+              } catch {
+                 }
             //if (currentTime > 3 ) {
                 if (Math.floor(66 - currentTimeb) !== titleText ) {
                   setTitleText(Math.floor(66.99 - currentTimeb));
@@ -3222,6 +3230,10 @@ useEffect(() => {
               setHero("Time's almost up!");
               setDetails('Share this video to any of these social media channels to get your code to keep watching');
               setBoxVisible('reveal')
+              try {
+                scrollToSmoothly(document.getElementsByClassName('rev-optin-mobile')[0].getBoundingClientRect().bottom + window.pageYOffset - window.innerHeight, 200)
+              } catch {
+                 }
             //if (currentTime > 3 ) {
                 if (Math.floor(99 - currentTimeb) !== titleText ) {
                   setTitleText(Math.floor(99.99 - currentTimeb));
@@ -3243,6 +3255,10 @@ useEffect(() => {
               setHero("The Ending is Nuts");
               setDetails('Find out what comes next for just one crisp dollar');
               setBoxVisible('reveal')
+              try {
+                scrollToSmoothly(document.getElementsByClassName('rev-optin-mobile')[0].getBoundingClientRect().bottom + window.pageYOffset - window.innerHeight, 200)
+              } catch {
+                 }
             //if (currentTime > 3 ) {
                 if (Math.floor(132 - currentTimeb) !== titleText ) {
                   setTitleText(Math.floor(132.99 - currentTimeb));
@@ -3438,8 +3454,12 @@ useEffect(() => {
       // 	status: false,
       // 	speed: 1,
       //   });
-
-          
+        
+          const closeFocus = () => {
+            document.getElementsByTagName("html")[0].style.overflow = "";
+          document.getElementsByClassName("loader-player")[0].classList.remove("engaged");
+          player.current!.pause()
+          }
 
           const onMutedChange = () => {
             setMuteClass("rev-mute")
@@ -3449,6 +3469,16 @@ useEffect(() => {
          
           document.getElementsByTagName("html")[0].style.overflow = "hidden";
           document.getElementsByClassName("loader-player")[0].classList.add("engaged");
+          if (boxVisible.contains('reveal')) {
+            try {
+              scrollToSmoothly(document.getElementsByClassName('rev-optin-mobile')[0].getBoundingClientRect().bottom + window.pageYOffset - window.innerHeight, 200)
+            } catch {
+              scrollToSmoothly(document.getElementById('vm-player-1').getBoundingClientRect().top + window.pageYOffset + (document.getElementById('vm-player-1').offsetHeight / 2)  - (window.innerHeight / 2), 200)
+            }
+          } else {
+            scrollToSmoothly(document.getElementById('vm-player-1').getBoundingClientRect().top + window.pageYOffset + (document.getElementById('vm-player-1').offsetHeight / 2)  - (window.innerHeight / 2), 200)
+          }
+          
             setMuteClass("rev-mute")
           };
           const onClick = () => {
@@ -3496,6 +3526,19 @@ useEffect(() => {
             console.log('playing changed')
           }
           const playTransition = () => {
+            if (firstPlay===true) {
+              document.getElementsByTagName("html")[0].style.overflow = "hidden";
+              document.getElementsByClassName("loader-player")[0].classList.add("engaged");
+              if (boxVisible.contains('reveal')) {
+                try {
+                  scrollToSmoothly(document.getElementsByClassName('rev-optin-mobile')[0].getBoundingClientRect().bottom + window.pageYOffset - window.innerHeight, 200)
+                } catch {
+                  scrollToSmoothly(document.getElementById('vm-player-1').getBoundingClientRect().top + window.pageYOffset + (document.getElementById('vm-player-1').offsetHeight / 2)  - (window.innerHeight / 2), 200)
+                }
+              } else {
+                scrollToSmoothly(document.getElementById('vm-player-1').getBoundingClientRect().top + window.pageYOffset + (document.getElementById('vm-player-1').offsetHeight / 2)  - (window.innerHeight / 2), 200)
+              }
+            }
             console.log('play transition begin')
             for (const animation of document.getElementById('stopwatchload').getAnimations()) {
               if (document.getElementById('stopwatchload').contains((animation.effect).target)) {
@@ -3727,7 +3770,8 @@ useEffect(() => {
 </div>  
 </>
 ):''}
-<div class='focusmode'></div>
+<div onClick={closeFocus} class='close-focus'></div>
+<div onClick={closeFocus} class='focusmode'></div>
 </div>
 <div class='rest-of-hero-content'>
 

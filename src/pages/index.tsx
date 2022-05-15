@@ -2815,6 +2815,7 @@ const noShippingForm = () => {
     }
       const openBook = (e) => {
         if (document.getElementsByClassName('y-preorderbtnsmall')[0] === event.target) return;
+        if (book2 === 'open') return;
         scrollToSmoothly(document.getElementsByClassName("peek-inner-cont")[0].getBoundingClientRect().top + window.pageYOffset + 300  - (window.innerHeight / 2), 200)
  
         document.getElementsByTagName( 'html' )[0].classList.add('noover')

@@ -12,6 +12,7 @@
       PlaybackControl,
       VolumeControl,
       ControlSpacer,
+      Scrim,
       IconLibrary,
       Captions,
     } from '@vime/react';
@@ -3739,6 +3740,7 @@ useEffect(() => {
 
               </ControlGroup>
             </Controls>
+            <Scrim />
           </Ui>
           {/* <DefaultUi /> */}
       </Player> }

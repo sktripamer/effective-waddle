@@ -5713,18 +5713,15 @@ transition: all .5s ease;
 -webkit-transition: all .5s ease;
 }
 .darken-book {
-position: fixed;
-
-width: 100vw;
-background: rgb(0 0 0 / 50%);
-opacity: 0;
-height: 110vh;
-pointer-events: none;
-transition: .5s all;
-position: fixed;
-    right: 50%;
-    top: 50%;
-    transform: translate(50%,-50%);
+  position: fixed;
+  left: 0;
+  transition: all .2s;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background: rgb(0 0 0/50%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .idle .close-preorder, .hover .close-preorder {

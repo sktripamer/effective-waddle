@@ -3169,7 +3169,7 @@ margin-left: auto;
 cursor: pointer;
 }
 html.scroll {
-overflow-y: scroll;
+overflow-y: overlay;
 }
 navbar {
 display: flex;
@@ -6722,6 +6722,9 @@ navbar > navmain .nav a.dropdown {padding-left: 20px;padding-right: 80px;}
 
 .render-tab {
 font-family: 'Nunito Regular';
+}
+.success-true button#submit {
+  display: none;
 }
 .product-short-desc {
 font-family: 'Nunito Regular';

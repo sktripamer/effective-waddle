@@ -38,11 +38,11 @@
           let course1 = params.cart.find(e => e.ID === 101);
           if (subscription1 != null) await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
           if (course1 != null) await addCourse(newID);
-          if (params.savePayment === false) await deleteCard(paymentIntent,customer, paymentIntent.payment_method)
+          if (params.savePayment === false) await deleteCard(paymentIntent.payment_method)
           return res.status(200).json({new: true, newUser})
           // still need to create woo order
       }
-
+      
       //if new account is null, and authtoken is not null, try to process authtoken.
       if (params.newAccount === null && params.token !== null) {
           try {
@@ -53,7 +53,7 @@
                   let course1 = params.cart.find(e => e.ID === 101);
                 if (subscription1 != null) await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
                 if (course1 != null) await addCourse(decoded.data.user.id);
-                if (params.savePayment === false) await deleteCard(paymentIntent,customer, paymentIntent.payment_method)
+                if (params.savePayment === false) await deleteCard(paymentIntent.payment_method)
                   return res.status(200).json(true)
                   // still need to create woo order
                 });
@@ -190,12 +190,7 @@
           "set_paid": true,
           "status": "completed",
           "customer_id": userID,
-          "line_items": [
-            {
-              "product_id": orderCart,
-              "quantity": 1
-            }
-          ],
+          "line_items": orderCart,
         }
 
       if (params.shippingData !==null) {
@@ -222,10 +217,9 @@
         return responser;
   }
 
-  const deleteCard = async(customerID, paymentID) => {
+  const deleteCard = async(paymentID) => {
 
-    const deleted = await stripe.customers.deleteSource(
-      customerID,
+    const deleted =  await stripe.paymentMethods.detach(
       paymentID
     );
       return deleted

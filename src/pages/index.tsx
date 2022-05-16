@@ -797,6 +797,7 @@
     }
 
     const StepFour = () => {
+      const [paymentStatus, setPaymentStatus] = useState('incomplete');
       const {playing, setPlaying } = useBetween(useShareableState);
       const {videoStatus, setVideoStatus } = useBetween(useShareableState);
       const {videoTime, setVideoTime } = useBetween(useShareableState);
@@ -987,7 +988,18 @@
       setError(event.error ? event.error.message : "");
       //if nameform ref name is 4+ characters and email is valid, do this. else don't do this.
     };
-
+    const handleSuccess = () => {
+      setTimeout(() => {
+        localStorage.removeItem("s4")
+      localStorage.setItem("s5", "y")
+      setVideoStatus(0)
+      setBoxVisible('release')
+        player.current!.play()
+      }, 1400)
+     return (
+       <></>
+     )
+    }
     const handleSubmit = async (ev: { preventDefault: () => void; }) => {
       const form = nameForm.current
       ev.preventDefault();
@@ -1039,40 +1051,15 @@
       <div className='payment register-form col-md-6'>
         <h4 className="mb-2">{heroText}</h4>
         <div className="more-details">{moreDetails}</div>
-      <form id="payment-form" ref={nameForm} onSubmit={handleSubmit}>
-      <div className='powered-container'>
-        <div className='powered-by-stripe'></div>
-        </div>
-        <InputField2 label={'email'} name={'email'}/>
-        <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
+        <StepSix changeStatus={paymentStatus => setPaymentStatus(paymentStatus)} cart={[{'ID':30, 'quantity':1}]}content={''} header={heroText} subheader={heroText} shipping={false} success={["Payment successful! Check your email for more deails."]} />  
+        <>
+        {"succeeded" === paymentStatus ?
+        (
+          handleSuccess
+        ):''
 
-        <CardElement
-          id="card-element"
-          options={cardStyle}
-          onChange={handleChange}
-        />
-        <div className='powered-by-stripe-small'></div>
-        <div className='card-charge'>Your card will be charged $1.00</div>
-        
-        <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
-          <span id="button-text">
-            {processing ? (
-              <div className="spinner" id="spinner">Keep Watching</div>
-            ) : (
-              "Keep Watching"
-            )}
-          </span>
-        </button>
-        {error && (
-          <div className="card-error" role="alert">
-            {error}
-          </div>
-        )}
-        <div className={succeeded ? "result-message" : "result-message hidden"}>
-         <div className='result-message-success'> Payment succeeded!</div>
-        </div>
-        
-      </form>
+        }
+        </>
 
 
       </div>
@@ -1373,7 +1360,11 @@
           return null;
         }
       }
+      const [checked, setChecked] = useState(true);
 
+      const handleCheck = () => {
+        setChecked(!checked);
+      };
       useEffect(() => {
         async function fetchMyAPI() {
           console.log('start here')
@@ -1485,6 +1476,7 @@
           setError(null);
           setProcessing(false);
           setSucceeded(true);
+          props.changeStatus('succeeded')
         }
 
 
@@ -1492,6 +1484,7 @@
           setError(null);
           setProcessing(false);
           setSucceeded(true);
+          props.changeStatus('succeeded')
 
         } 
 
@@ -1519,7 +1512,7 @@
           let ex = {
             token: tokenGet(),
             //cart: JSON.parse(localStorage.cart),
-            cart: [105],
+            cart: props.cart,
             newAccount: newAccuntEmail,
           }
   
@@ -1565,6 +1558,7 @@
             shippingData: null,
             metafield: "onedollar",
             metavalue: true,
+            savePayment: checked,
           }
 
           if (shipping===true) {
@@ -1753,6 +1747,11 @@ const noShippingForm = () => {
             options={cardStyle}
             onChange={handleChange}
           />
+          
+           <label className="save-payment">
+      <input type="checkbox" checked={checked} onChange={handleCheck} />
+      Save payment method
+    </label>
           </div>
           <div className='powered-by-stripe-small'></div>
           <div className='payment-infos'>
@@ -3463,21 +3462,6 @@ useEffect(() => {
         }
 
 
-        const tester1 = async (ev: { preventDefault: () => void; }) => {
-          ev.preventDefault();
-          const intent = await testIntent1();
-          console.log(intent);
-        }
-        const tester2 = async (ev: { preventDefault: () => void; }) => {
-          ev.preventDefault();
-          const intent = await testIntent2();
-          console.log(intent.paymentIntent.client_secret);
-        }
-        const tester3 = async (ev: { preventDefault: () => void; }) => {
-          ev.preventDefault();
-          const intent = await testIntent3();
-          console.log(intent);
-        }
 
 
       // const useMountEffect = (fun) => useEffect(fun, [loggedIn, setLoggedIn])
@@ -3635,7 +3619,7 @@ useEffect(() => {
                   
                   <Elements stripe={stripePromise}>
                     <div onClick={preHide} class='close-preorder'>X</div>
-                  <StepSix cart={[{}]}content={<><div class='preorder-bookimg-cont'><div class="preorder-book-image"></div></div><h3 class="bonus-header">Get a <span>FREE</span> Bonus Revenue Map with your order!</h3><div class="bonus-flag"><h4>Worth $77.00!</h4></div><div class="bonus-price"><div class="bonus-preprice">$107.00</div><div class="bonus-realprice">$28.95</div></div></>} header={'Revival Of Revenue Book Bundle'} subheader={"Order PK's book and get CHAPTER 1 sent right to your inbox, plus its BONUS REVENUE MAP revealing The 7 Steps to Becoming Your Own Boss & Turning Your Passions into Profit Today!"} shipping={true} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
+                  <StepSix cart={[{'ID':91, 'quantity':1}]}content={<><div class='preorder-bookimg-cont'><div class="preorder-book-image"></div></div><h3 class="bonus-header">Get a <span>FREE</span> Bonus Revenue Map with your order!</h3><div class="bonus-flag"><h4>Worth $77.00!</h4></div><div class="bonus-price"><div class="bonus-preprice">$107.00</div><div class="bonus-realprice">$28.95</div></div></>} header={'Revival Of Revenue Book Bundle'} subheader={"Order PK's book and get CHAPTER 1 sent right to your inbox, plus its BONUS REVENUE MAP revealing The 7 Steps to Becoming Your Own Boss & Turning Your Passions into Profit Today!"} shipping={true} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
                   </Elements>
                 
                   )

@@ -2052,6 +2052,7 @@ background-repeat: repeat, repeat, no-repeat;
   left: -300px;
   z-index: 22;
   transition: .8s all  ease-in;
+  pointer-events: none;
   
 }
 .time-section {
@@ -6724,6 +6725,9 @@ navbar > navmain .nav a.dropdown {padding-left: 20px;padding-right: 80px;}
 font-family: 'Nunito Regular';
 }
 .success-true button#submit {
+  display: none;
+}
+.success-true .paybtn-cont {
   display: none;
 }
 .product-short-desc {

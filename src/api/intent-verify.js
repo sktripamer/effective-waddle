@@ -21,7 +21,7 @@
       const mapLoop = async _ => {
           const promises = params.cart.map(async pID => {
               const priceOfProduct = await getPrice(pID)
-              total += parseInt(priceOfProduct)
+              total += (parseInt(priceOfProduct) * pID.quantity)
               return priceOfProduct
           })
           const totalPrice = await Promise.all(promises)
@@ -34,8 +34,11 @@
       //if new account is not null, and authtoken is null, try to process new account.
       if (params.newAccount !== null && params.token === null) {
           const newUser = await createNewUser(params.newAccount);
-          if (params.cart[0] == 105)  await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
-          if (params.cart[0] === 105) await addCourse(newID);
+          let subscription1 = params.cart.find(e => e.ID === 105);
+          let course1 = params.cart.find(e => e.ID === 101);
+          if (subscription1 != null) await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
+          if (course1 != null) await addCourse(newID);
+          if (params.savePayment === false) await deleteCard(paymentIntent,customer, paymentIntent.payment_method)
           return res.status(200).json({new: true, newUser})
           // still need to create woo order
       }
@@ -46,8 +49,11 @@
               jwt.verify(params.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
                   await saveUser(decoded.data.user.id); //saves acf data
                   await createOrder(decoded.data.user.id);
-                if (params.cart[0] === 105) await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
-                if (params.cart[0] === 105) await addCourse(decoded.data.user.id);
+                  let subscription1 = params.cart.find(e => e.ID === 105);
+                  let course1 = params.cart.find(e => e.ID === 101);
+                if (subscription1 != null) await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
+                if (course1 != null) await addCourse(decoded.data.user.id);
+                if (params.savePayment === false) await deleteCard(paymentIntent,customer, paymentIntent.payment_method)
                   return res.status(200).json(true)
                   // still need to create woo order
                 });
@@ -69,7 +75,7 @@
               Authorization: `Basic ` + process.env.WC_SECRET,
           }
       };
-        const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wc/v3/products/' + pID, axiosConfig)
+        const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wc/v3/products/' + pID.ID, axiosConfig)
         .then(resp => {  
           if (resp.data.price.includes('.')) {
               return resp.price.replace(/\./g, '');
@@ -175,13 +181,18 @@
               Authorization: `Basic ` + process.env.WC_SECRET,
           }
         };
+        let orderCart = [];
+
+        params.cart.forEach(o => {
+    orderCart.push({'product_id':o.ID, 'quantity': o.quantity})
+});
         let data = {
           "set_paid": true,
           "status": "completed",
           "customer_id": userID,
           "line_items": [
             {
-              "product_id": params.cart[0],
+              "product_id": orderCart,
               "quantity": 1
             }
           ],
@@ -209,6 +220,15 @@
         return err;
         })
         return responser;
+  }
+
+  const deleteCard = async(customerID, paymentID) => {
+
+    const deleted = await stripe.customers.deleteSource(
+      customerID,
+      paymentID
+    );
+      return deleted
   }
 
   const createSubscription = async(customerID, paymentID) => {

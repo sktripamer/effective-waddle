@@ -803,264 +803,35 @@
       const {videoTime, setVideoTime } = useBetween(useShareableState);
       const {player } = useBetween(useShareableState);
 
-    const [succeeded, setSucceeded] = useState(false);
-    const {error, setError } = useBetween(useShareableState);
-    const [processing, setProcessing] = useState("");
-    const [disabled, setDisabled] = useState(true);
-    const [clientSecret, setClientSecret] = useState("");
-    const nameForm = useRef(null);
-    const [successMessage, setSuccessMessage] = useState("");
-    const [showAlertBar, setShowAlertBar] = useState(true);
     const { boxVisible, setBoxVisible } = useBetween(useShareableState);
-    const [status, setStatus] = React.useState(0) // 0: no show, 1: show yes, 2: show no.
-    const stripe = useStripe();
-    const elements = useElements();
+
     const {moreDetails, setDetails } = useBetween(useShareableState);
     const {heroText, setHero } = useBetween(useShareableState);
-    // useEffect(() => {
-    //   window
-    //     .fetch("/api/payment-intent", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({
-    //            amount: 500,
-    //       }),
-    //     })
-    //     .then((res) => {
-    //       return res.json();
-    //     })
-    //     .then((body) => {
-    //       console.log(body)
-    //       setClientSecret(body.body.client_secret);
-    //     });
-    // }, []);
 
-    const radioHandler = (status) => {
-      setStatus(status);
-    };
-
-
-
-    async function createIntent() {
-      try {
-        let tokenGet = function() {
-          let authTokenData = localStorage.getItem("auth");
-          if (!isEmpty(authTokenData)) {
-            authTokenData = JSON.parse(authTokenData);
-            if (!isEmpty(authTokenData.authToken)) {
-            return JSON.parse(localStorage.auth).authToken;
-            } else {
-            return null;
-            }
-          } else {
-            return null;
-          }
-        }
-        let ex = {
-          token: tokenGet(),
-          //cart: JSON.parse(localStorage.cart),
-          cart: [30],
-          newAccount: null,
-        }
-
-        const request = await fetch('/api/intent-init', {
-          method: 'POST',
-          body: JSON.stringify(ex),
-        });
-        const intent = (await request.json());
-        console.log(intent)
-        return intent;
-      } catch (error1) {
-        console.log('Failed to create intent');
-        console.log(error1);
-        return null;
-      }
-    }
-
-    async function intentVerify(paymentIntent) {
-      try {
-        let tokenGet = function() {
-          let authTokenData = localStorage.getItem("auth");
-          if (!isEmpty(authTokenData)) {
-            authTokenData = JSON.parse(authTokenData);
-            if (!isEmpty(authTokenData.authToken)) {
-            return JSON.parse(localStorage.auth).authToken;
-            } else {
-            return null;
-            }
-          } else {
-            return null;
-          }
-        }
-        let ex = {
-          token: tokenGet(),
-          //cart: JSON.parse(localStorage.cart),
-          cart: [30],
-          intent:paymentIntent,
-          newAccount: null,
-          shippingData: null,
-          metafield: "onedollar",
-          metavalue: true,
-        }
-
-        const request = await fetch('/api/intent-verify', {
-          method: 'POST',
-          body: JSON.stringify(ex),
-        });
-        const intent = (await request.json());
-        console.log(intent)
-        return intent;
-      } catch (error1) {
-        console.log('Failed to verify intent');
-        console.log(error1);
-        return null;
-      }
-    }
-    // async function createIntent() {
-    //   try {
-    //     const form = nameForm.current
-    //     const email = form['firstname'].value + "@@" + JSON.parse(localStorage.auth).authToken 
-    //     const request = await fetch('/api/create-intent', {
-    //       method: 'POST',
-    //       body: email,
-    //     });
-    //     const intent = (await request.json());
-    //     return intent;
-    //   } catch (error1) {
-    //     console.log('Failed to create intent');
-    //     console.log(error1);
-    //     return null;
-    //   }
-    // }
-
-    async function setPayment(cID) {
-      try {
-        // Retrieve email and username of the currently logged in user.
-        // getUserFromDB() is *your* implemention of getting user info from the DB
-
-        const email = cID + "@@" + JSON.parse(localStorage.auth).authToken 
-        const request = await fetch('/api/set-payment-method', {
-          method: 'POST',
-          body: email,
-        });
-        const intent = (await request.json());
-        // Update your user in DB to store the customerID
-        // updateUserInDB() is *your* implementation of updating a user in the DB
-        return intent;
-      } catch (error2) {
-        console.log('Failed to create intent');
-        console.log(error2);
-        return null;
-      }
-    }
-
-
-    const cardStyle = {
-      style: {
-        base: {
-          color: "#fff",
-          iconColor: "#fff",
-          fontFamily: "Arial, sans-serif",
-          fontSmoothing: "antialiased",
-          fontSize: "16px",
-          "::placeholder": {
-            color: "#9e9e9e",
-          },
-        },
-        invalid: {
-          color: "#fa755a",
-          iconColor: "#fa755a",
-        },
-      },
-    };
-
-    // const getCustomer = async (ev) => {
-    //   ev.preventDefault();
-    //   const custobj = await getCustomerObj();
-    //   console.log(custobj)
-    // }
-
-
-    const handleChange = async (event: { empty: boolean | ((prevState: boolean) => boolean); error: { message: any; }; }) => {
-      setDisabled(event.empty);
-      setError(event.error ? event.error.message : "");
-      //if nameform ref name is 4+ characters and email is valid, do this. else don't do this.
-    };
-    const handleSuccess = () => {
-      setTimeout(() => {
-        localStorage.removeItem("s4")
-      localStorage.setItem("s5", "y")
-      setVideoStatus(0)
-      setBoxVisible('release')
-        player.current!.play()
-      }, 1400)
-     return (
-       <></>
-     )
-    }
-    const handleSubmit = async (ev: { preventDefault: () => void; }) => {
-      const form = nameForm.current
-      ev.preventDefault();
-      setProcessing(true);
-      const intent = await createIntent();
-      console.log(intent.paymentIntent.client_secret)
-      //setClientSecret(intent.body.client_secret);
-      const payload = await stripe.confirmCardPayment(intent.paymentIntent.client_secret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-          billing_details: {
-            name:  form['firstname'].value,
-            email: form['email'].value,
-          }
-        },
-      
-      });
-
-      if (payload.error) {
-        setError(`${payload.error.message}`);
-        setProcessing(false);
-      } else {
-        console.log(payload.paymentIntent)
-        const verifyIntent = await intentVerify(payload.paymentIntent.id);
-        console.log(verifyIntent)
-        if (verifyIntent === true) {
-          setError(null);
-          setProcessing(false);
-          setSucceeded(true);
-        
+    useEffect(() => {
+      if (paymentStatus === 'succeeded') {
+        const timeoutID = setTimeout(() => {
           localStorage.removeItem("s4")
           localStorage.setItem("s5", "y")
           setVideoStatus(0)
           setBoxVisible('release')
             player.current!.play()
-  
-          setSuccessMessage("first payment complete");
-        } else {
-          setProcessing(false);
-        }
-
+        }, 1400);
+      return () => clearTimeout(timeoutID );
       }
-    };
-
-
-
+      if (paymentStatus === 'canceled') {
+        localStorage.removeItem("s4")
+        localStorage.setItem("s5", "y")
+        setVideoStatus(0)
+        setBoxVisible('release')
+        player.current!.play()
+      }
+  }, [paymentStatus]);
 
     return (
-      <div className='payment register-form col-md-6'>
-        <StepSix changeStatus={paymentStatus => setPaymentStatus(paymentStatus)} cart={[{'ID':30, 'quantity':1}]}content={''} header={heroText} subheader={moreDetails} shipping={false} success={["Payment successful! Check your email for more deails."]} />  
-        <>
-        {"succeeded" === paymentStatus ?
-        (
-          handleSuccess
-        ):''
-
-        }
-        </>
-
-
-      </div>
+     <>
+        <StepSix optional={true} button={'Unlock Revenue Map'} changeStatus={paymentStatus => setPaymentStatus(paymentStatus)} cart={[{'ID':30, 'quantity':1}]}content={''} header={heroText} subheader={moreDetails} shipping={false} success={["Payment successful! Check your email for more deails."]} />  
+      </>
     );
 
     }
@@ -1600,7 +1371,9 @@
       const prevStep = () => {
         setCurrentStep(1)
       }
-
+      const cancelPayment = () => {
+        props.changeStatus('canceled')
+      }
 
       const getButtonId = (e) => {
         setDisabled(false)
@@ -1639,6 +1412,15 @@ const noShippingForm = () => {
 
 
   return (
+    <>
+    {props.optional === true ?
+    (
+<div className='paybtn-cont'>
+<div onClick={cancelPayment} className={`next-btn stepback`}>
+        <span id="button-text">
+          No thanks
+        </span>
+      </div>
     <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
     <span id="button-text">
       {processing ? (
@@ -1648,6 +1430,24 @@ const noShippingForm = () => {
       )}
     </span>
   </button>
+  </div>
+    ):
+  (
+    <div className='paybtn-cont'>
+    <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
+    <span id="button-text">
+      {processing ? (
+        <div className="spinner" id="spinner">{props.button}</div>
+      ) : (
+        `${props.button}`
+      )}
+    </span>
+  </button>
+  </div>
+  )
+  
+  }
+</>
   )
 }
   const drawShippingForm = () => {

@@ -27,7 +27,7 @@ const getIntent = async (req, res) => {
             const mapLoop = async _ => {
                 const promises = params.cart.map(async pID => {
                     const priceOfProduct = await getPrice(pID)
-                    total += parseInt(priceOfProduct)
+                    total += (parseInt(priceOfProduct) * pID.quantity)
                     return priceOfProduct
                 })
                 const totalPrice = await Promise.all(promises)
@@ -52,7 +52,7 @@ const getIntent = async (req, res) => {
              const mapLoop = async _ => {
                  const promises = params.cart.map(async pID => {
                      const priceOfProduct = await getPrice(pID)
-                     total += parseInt(priceOfProduct)
+                     total += (parseInt(priceOfProduct) * pID.quantity)
                      return priceOfProduct
                  })
                  const totalPrice = await Promise.all(promises)
@@ -136,7 +136,7 @@ const getPrice = async (pID) => {
             Authorization: `Basic ` + process.env.WC_SECRET,
         }
     };
-      const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wc/v3/products/' + pID, axiosConfig)
+      const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wc/v3/products/' + pID.ID, axiosConfig)
       .then(resp => {  
         if (resp.data.price.includes('.')) {
             return resp.price.replace(/\./g, '');

@@ -1161,6 +1161,11 @@
               radioHandler(1)
               return;
             }
+            if (intent.paymentMethod.data.length < 1) {
+              setDoneLoading(true)
+              radioHandler(1)
+              return;
+            }
             setArray(intent.paymentMethod.data);
             console.log()
             
@@ -1552,7 +1557,7 @@ const noShippingForm = () => {
       Save payment method
     </label>
           </div>
-          <div className='powered-by-stripe-small'></div>
+   
           <div className='payment-infos'>
             <div className="prev-name-on-card">{prevName}</div>
             <div className="prev-email">{prevEmail}</div> 
@@ -1571,7 +1576,7 @@ const noShippingForm = () => {
           {shipping === true && drawShippingForm()}
           {shipping === false && noShippingForm()}
 
-
+          <div className='powered-by-stripe-small'></div>
           {error && (
             <div className="card-error" role="alert">
               {error}

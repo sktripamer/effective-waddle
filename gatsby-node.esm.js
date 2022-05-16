@@ -82,7 +82,7 @@
     const cool = async () => {
     const hey = await client.query({
             query: gql`query GET_POSTS {
-                products {
+                products(first: 100) {
                     edges {
                     node {
                         databaseId

@@ -1642,9 +1642,9 @@ const noShippingForm = () => {
     <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
     <span id="button-text">
       {processing ? (
-        <div className="spinner" id="spinner">Order Course</div>
+        <div className="spinner" id="spinner">{props.button}</div>
       ) : (
-        "Order Course"
+        `${props.button}`
       )}
     </span>
   </button>
@@ -1696,9 +1696,9 @@ const noShippingForm = () => {
       <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
             <span id="button-text">
               {processing ? (
-                <div className="spinner" id="spinner">Order Course</div>
+                <div className="spinner" id="spinner">{props.button}</div>
               ) : (
-                "Order Course"
+                `${props.button}`
               )}
             </span>
           </button>
@@ -3618,7 +3618,7 @@ useEffect(() => {
                   
                   <Elements stripe={stripePromise}>
                     <div onClick={preHide} class='close-preorder'>X</div>
-                  <StepSix cart={[{'ID':91, 'quantity':1}]}content={<><div class='preorder-bookimg-cont'><div class="preorder-book-image"></div></div><h3 class="bonus-header">Get a <span>FREE</span> Bonus Revenue Map with your order!</h3><div class="bonus-flag"><h4>Worth $77.00!</h4></div><div class="bonus-price"><div class="bonus-preprice">$107.00</div><div class="bonus-realprice">$28.95</div></div></>} header={'Revival Of Revenue Book Bundle'} subheader={"Order PK's book and get CHAPTER 1 sent right to your inbox, plus its BONUS REVENUE MAP revealing The 7 Steps to Becoming Your Own Boss & Turning Your Passions into Profit Today!"} shipping={true} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
+                  <StepSix button={'Unlock Revenue Map'} cart={[{'ID':91, 'quantity':1}]}content={<><div class='preorder-bookimg-cont'><div class="preorder-book-image"></div></div><h3 class="bonus-header">Get a <span>FREE</span> Bonus Revenue Map with your order!</h3><div class="bonus-flag"><h4>Worth $77.00!</h4></div><div class="bonus-price"><div class="bonus-preprice">$107.00</div><div class="bonus-realprice">$28.95</div></div></>} header={'Revival Of Revenue Book Bundle'} subheader={"Order PK's book and get CHAPTER 1 sent right to your inbox, plus its BONUS REVENUE MAP revealing The 7 Steps to Becoming Your Own Boss & Turning Your Passions into Profit Today!"} shipping={true} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
                   </Elements>
                 
                   )

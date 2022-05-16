@@ -1049,9 +1049,7 @@
 
     return (
       <div className='payment register-form col-md-6'>
-        <h4 className="mb-2">{heroText}</h4>
-        <div className="more-details">{moreDetails}</div>
-        <StepSix changeStatus={paymentStatus => setPaymentStatus(paymentStatus)} cart={[{'ID':30, 'quantity':1}]}content={''} header={heroText} subheader={heroText} shipping={false} success={["Payment successful! Check your email for more deails."]} />  
+        <StepSix changeStatus={paymentStatus => setPaymentStatus(paymentStatus)} cart={[{'ID':30, 'quantity':1}]}content={''} header={heroText} subheader={moreDetails} shipping={false} success={["Payment successful! Check your email for more deails."]} />  
         <>
         {"succeeded" === paymentStatus ?
         (
@@ -1716,8 +1714,9 @@ const noShippingForm = () => {
         <div className={`payment register-form col-md-6 status-${status} load-${doneLoading} step-${currentStep} success-${succeeded}`}>
             <h2>{props.header}</h2>
             <h3>{props.subheader}</h3>
-            <div class='payment-area-cont'>
+            <div class={props.content == '' ? 'payment-area-cont no-content': 'payment-area-cont'}>
               <div class='payment-area-content'>{props.content}</div>
+      
               <div class='payment-area-pay'>
            {methodProcessing ? (
                 <></>

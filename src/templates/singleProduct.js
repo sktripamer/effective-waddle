@@ -11,6 +11,7 @@ const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
     const [tab, setTab] = useState(0)
     const [clickedItem, setClickedItem] = useState(0);
+    const [clickedItem2, setClickedItem2] = useState(0);
     const [count, setCount] = useState(1);
     const [isClicked, setClicked] = useState(false)
     const [addedToCart, setAddedToCart] = useState(false)
@@ -122,62 +123,78 @@ if (type === "SIMPLE") {
 } else {
     query = gql`
     query SingleProductQuery($id: ID!) {
-        product(id: $id, idType: DATABASE_ID) {
-            ... on VariableProduct {
-                variations {
-                  nodes {
-                    databaseId
-                    attributes {
-                      nodes {
-                        value
-                      }
-                    }
-                    name
-                    featuredImage {
-                      node {
-                        sourceUrl
-                      }
-                    }
-                  }
+      product(id: $id, idType: DATABASE_ID) {
+        ... on VariableProduct {
+          variations(first: 100) {
+            nodes {
+              databaseId
+              attributes {
+                nodes {
+                  value
                 }
-                attributes {
-                  nodes {
-                    name
-                    options
-                  }
-                }
-                price
-                name
-                description
-                shortDescription
-                galleryImages {
-                  nodes {
-                    sourceUrl
-                  }
-                }
-                reviews {
-                    edges {
-                      node {
-                        approved
-                        author {
-                          node {
-                            ... on User {
-                              firstName
-                            }
-                          }
-                        }
-                        dateGmt
-                        content
-                      }
-                      rating
-                    }
-                    averageRating
-                  }
-                  reviewCount
               }
+              name
+              featuredImage {
+                node {
+                  sourceUrl
+                }
+              }
+              stockStatus
+              price
+            }
           }
+          attributes {
+            nodes {
+              name
+              options
+            }
+          }
+          price
+          name
+          description
+          shortDescription
+          galleryImages {
+            nodes {
+              sourceUrl
+            }
+          }
+          reviews {
+            edges {
+              node {
+                approved
+                author {
+                  node {
+                    ... on User {
+                      firstName
+                    }
+                  }
+                }
+                dateGmt
+                content
+              }
+              rating
+            }
+            averageRating
+          }
+          reviewCount
+        }
+      }
     }
+    
     `
+}
+function slugify(text) {
+  return text
+    .toString()                           // Cast to string (optional)
+    .normalize('NFKD')            // The normalize() using NFKD method returns the Unicode Normalization Form of a given string.
+    .toLowerCase()                  // Convert the string to lowercase letters
+    .trim()    
+      .replace('×', 'x')
+      .replace(/\./g, '-')
+    .replace(/\//ig, '-') 
+    .replace(/\s+/g, '-')            // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')     // Remove all non-word chars
+    .replace(/\-\-+/g, '-');        // Replace multiple - with single -
 }
 
 const SimpleCart = (e) => {
@@ -250,10 +267,23 @@ const VariationCart = (e) => {
     let varName;
     let varImage;
     let varPrice;
-       dbID =  data.product.variations.nodes[clickedItem].databaseId
-       varName =  data.product.variations.nodes[clickedItem].name
-       varImage =  data.product.variations.nodes[clickedItem].featuredImage.node.sourceUrl
-       varPrice = Number(data.product.price.replace(/[^0-9.-]+/g,""));
+
+    let attr1 = data.product.attributes.nodes[0].options[clickedItem]
+    let attr2 = data.product.attributes.nodes[0].options[clickedItem2]
+    let selectedItem;
+
+    data.product.variations.nodes.forEach(el => {
+      if (slugify(el.attributes.nodes[0].value) === attr1) {
+           if (slugify(el.attributes.nodes[1].value) === attr2) {
+                   selectedItem = el;
+           }
+      }
+})
+    
+       dbID = selectedItem.databaseId
+       varName =  selectedItem.name
+       varImage =  selectedItem.featuredImage.node.sourceUrl
+       varPrice = Number(selectedItem.price.replace(/[^0-9.-]+/g,""));
 
    let tempCart = function() {
     try {
@@ -317,6 +347,20 @@ const variationClick = (e) => {
     setClicked(true)
     //find variation and set it
     setClickedItem(parseInt(e.target.dataset.idindex));
+
+    let attr1 = data.product.attributes.nodes[0].options[parseInt(e.target.dataset.idindex)]
+    let attr2 = data.product.attributes.nodes[0].options[clickedItem2]
+    let selectedItem;
+
+    data.product.variations.nodes.forEach(el => {
+      if (slugify(el.attributes.nodes[0].value) === attr1) {
+           if (slugify(el.attributes.nodes[1].value) === attr2) {
+                   selectedItem = el.databaseId
+           }
+      }
+})
+
+
     varSelector(data.product.variations.nodes[e.target.dataset.idindex].databaseId)
 
     let tempCart = function() {
@@ -330,7 +374,7 @@ const variationClick = (e) => {
     
        //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
        tempCart().forEach((cartitem, index) => {
-        if (cartitem.ID === data.product.variations.nodes[e.target.dataset.idindex].databaseId) {
+        if (cartitem.ID === selectedItem) {
            setCount(cartModifier[index].quantity)
            alreadyInCart = true;
             
@@ -347,6 +391,54 @@ const variationClick = (e) => {
 
   }
 
+  const variationClick2 = (e) => {
+    console.log(e.target.dataset.id)
+    setClicked(true)
+    //find variation and set it
+    setClickedItem2(parseInt(e.target.dataset.idindex));
+
+
+    let attr1 = data.product.attributes.nodes[0].options[clickedItem]
+    let attr2 = data.product.attributes.nodes[0].options[parseInt(e.target.dataset.idindex)]
+    let selectedItem;
+
+    data.product.variations.nodes.forEach(el => {
+      if (slugify(el.attributes.nodes[0].value) === attr1) {
+           if (slugify(el.attributes.nodes[1].value) === attr2) {
+                   selectedItem = el.databaseId
+           }
+      }
+})
+
+    varSelector(data.product.variations.nodes[e.target.dataset.idindex].databaseId)
+
+    let tempCart = function() {
+        try {
+        return JSON.parse(localStorage.cart)
+        } catch {return []}      
+    }
+    
+       let cartModifier = tempCart();
+        let alreadyInCart = false;
+    
+       //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
+       tempCart().forEach((cartitem, index) => {
+        if (cartitem.ID === selectedItem) {
+           setCount(cartModifier[index].quantity)
+           alreadyInCart = true;
+            
+        }
+        
+       });
+
+       if (alreadyInCart === true) {
+           setAddedToCart(true)
+       } else {
+           setAddedToCart(false)
+           setCount(1)
+       }
+
+  }
       const { loading, error, data } = useQuery(query, {
         variables: { id: id },
       });
@@ -681,11 +773,23 @@ const renderDelivery = () => {
 
   </div>
       }      
-      <div className='product-pricer'>  <h3>{data.product.price}</h3></div>
+      <div className='product-pricer'><h3>{data.product.price}</h3></div>
       <div className='product-short-desc'><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p></div>
       <div className='attr-cont'>
+      <div class='node-attr-cont'>
       <div className='node-name'>{data.product.attributes.nodes[0].name}:</div>
       {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el, index) =><div className={index === clickedItem ? `attr-option is-checked attr-` + el: "attr-option attr-" + el} onClick={variationClick} data-idindex={index} data-id={el}></div>)}
+     </div>
+     {data.product.attributes.nodes.length > 1 ? 
+      (
+<>
+<div class='node-attr-cont'>
+      <div className='node-name'>{data.product.attributes.nodes[1].name}:</div>
+      {data.product.attributes.nodes[1].options && data.product.attributes.nodes[1].options.map((el, index) =><div className={index === clickedItem2 ? `attr-option is-checked attr-` + el: "attr-option attr-" + el} onClick={variationClick2} data-idindex={index} data-id={el}></div>)}
+     </div>
+</>
+      ) :('')
+    }
       </div>
       <div className='buttons-addtocart'>
         <div class="buttons">

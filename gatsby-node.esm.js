@@ -156,8 +156,11 @@
     const shirtData = async () =>  await shirts();
 
         exports.createPages = async function({actions, gql}) {
+            console.log('here123')
             const finalShirtData = [shirtData]
+            console.log(finalShirtData)
             finalShirtData.forEach(edge => {
+                console.log('inside')
                 actions.createPage({
                     path: `shop/shirts`,
                     component: slash( hatsPageTemplate ),

@@ -2,6 +2,7 @@
     import fetch from "cross-fetch";
     const { slash }         = require( `gatsby-core-utils` );
     const singleProductPageTemplate = require.resolve( `./src/templates/singleProduct.js` );
+    const hatsPageTemplate = require.resolve( `./src/templates/hatsCat.js` );
     // const path = require(`path`);
 
     const productQuery = gql`
@@ -107,13 +108,73 @@
     }
         
 
+   
+//272 is shirts id.
+//hardcode these queries for now, since we want higher degree of customization for only a few cats.
+
+      const shirts = async () => {
+        const hey = await client.query({
+                query: gql` query GET_SHIRTS {
+                    products(first: 100, where: {categoryId: 272}) {
+                      edges {
+                        node {
+                          databaseId
+                          slug
+                          name
+                          featured
+                          productCategories {
+                            nodes {
+                              slug
+                            }
+                          }
+                          reviewCount
+                          averageRating
+                          ... on VariableProduct {
+                            price
+                            featuredImage {
+                              node {
+                                sourceUrl
+                              }
+                            }
+                          }
+                          ... on SimpleProduct {
+                            price
+                            featuredImage {
+                              node {
+                                sourceUrl
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }`
+            })
+                .then(result =>{ return result});
+            return hey;
+        }
+            
+
+        exports.createPages = async function({actions, gql}) {
+            const { data } = await shirts()
+            
+                actions.createPage({
+                    path: `shop/shirts`,
+                    component: slash( hatsPageTemplate ),
+                    context: { pagedata: data},
+                })
+                
+            
+        }
+
+
         exports.createPages = async function({actions, gql}) {
             const { data } = await cool()
             
             data.products.edges.forEach(edge => {
 
                 actions.createPage({
-                    path: `${edge.node.productCategories.nodes[0].slug}/${edge.node.slug}`,
+                    path: `shop/${edge.node.productCategories.nodes[0].slug}/${edge.node.slug}`,
                     component: slash( singleProductPageTemplate ),
                     context: { id: edge.node.databaseId, slug: edge.node.slug, name: edge.node.name, type: edge.node.type, description: edge.node.description, featured: edge.node.featured, cat: edge.node.productCategories.nodes[0].name},
                 })

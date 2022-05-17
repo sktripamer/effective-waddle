@@ -18,7 +18,8 @@ const singleProduct = ( props ) => {
     const { pageContext: { id, slug, name, description, cat, type } } = props;
     const [hasBought, setBought] = useState(false)
     const [reviewID, setReviewID] = useState('0')
-
+    const [variationPrice, setVariationPrice] = useState('0')
+    const [variationNoStock, setVariationNoStock] = useState(false)
     const [previousRating, setPreviousRating] = useState('')
     const [previousContent, setPreviousContent] = useState('')
 
@@ -73,6 +74,24 @@ const singleProduct = ( props ) => {
         
         }
         fetchMyAPI()
+        if (type !== "SIMPLE"){
+          let attr1 = data.product.attributes.nodes[0].options[clickedItem]
+          let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
+          let selectedItem;
+      
+          data.product.variations.nodes.forEach(el => {
+            if (slugify(el.attributes.nodes[0].value) === attr1) {
+                 if (slugify(el.attributes.nodes[1].value) === attr2) {
+                         setVariationPrice(el.price);
+                         if (el.stockStatus === "IN_STOCK") {
+                          setVariationNoStock(false)
+                         } else {
+                          setVariationNoStock(true)
+                         }
+                 }
+            }
+      })
+        }
       }, []);
 
 let query;
@@ -269,7 +288,7 @@ const VariationCart = (e) => {
     let varPrice;
 
     let attr1 = data.product.attributes.nodes[0].options[clickedItem]
-    let attr2 = data.product.attributes.nodes[0].options[clickedItem2]
+    let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
     let selectedItem;
 
     data.product.variations.nodes.forEach(el => {
@@ -356,6 +375,12 @@ const variationClick = (e) => {
       if (slugify(el.attributes.nodes[0].value) === attr1) {
            if (slugify(el.attributes.nodes[1].value) === attr2) {
                    selectedItem = el.databaseId
+                   setVariationPrice(el.price);
+                         if (el.stockStatus === "IN_STOCK") {
+                          setVariationNoStock(false)
+                         } else {
+                          setVariationNoStock(true)
+                         }
            }
       }
 })
@@ -406,6 +431,12 @@ const variationClick = (e) => {
       if (slugify(el.attributes.nodes[0].value) === attr1) {
            if (slugify(el.attributes.nodes[1].value) === attr2) {
                    selectedItem = el.databaseId
+                   setVariationPrice(el.price);
+                         if (el.stockStatus === "IN_STOCK") {
+                          setVariationNoStock(false)
+                         } else {
+                          setVariationNoStock(true)
+                         }
            }
       }
 })
@@ -773,7 +804,7 @@ const renderDelivery = () => {
 
   </div>
       }      
-      <div className='product-pricer'><h3>{data.product.price}</h3></div>
+      <div className='product-pricer'><h3>{variationPrice}</h3></div>
       <div className='product-short-desc'><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p></div>
       <div className='attr-cont'>
       <div class='node-attr-cont'>
@@ -797,7 +828,11 @@ const renderDelivery = () => {
           <input type="tel" value={count} onChange={changeCount}/>
           <button onClick={incrementCount}>+</button>
         </div>
-        <button className={`addcart-btn added-${addedToCart}`} onClick={VariationCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
+        {variationNoStock===true ? 
+        (
+          <div class='no-stock-text'>This item variation is out of stock! Try selecting a different one.</div>
+        ):''}
+        <button disabled={variationNoStock} className={`addcart-btn added-${addedToCart}`} onClick={VariationCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
       </div>
       </div>
      </div>

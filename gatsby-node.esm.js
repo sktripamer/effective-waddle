@@ -155,21 +155,21 @@
         }
     const shirtData = async () =>  await shirts();
 
-        // exports.createPages = async function({actions, gql}) {
-        //     const { data } = await shirts()
-        //     data.products.edges.forEach(edge => {
-        //         actions.createPage({
-        //             path: `shop/shirts`,
-        //             component: slash( hatsPageTemplate ),
-        //             context: { pagedata: data},
-        //         })
-        //     })
-        // }
-        actions.createPage({
-            path: `shop/shirts`,
-            component: slash( hatsPageTemplate ),
-            context: { pagedata: shirtData},
-          })
+        exports.createPages = async function({actions, gql}) {
+            const finalShirtData = [shirtData]
+            finalShirtData.forEach(edge => {
+                actions.createPage({
+                    path: `shop/shirts`,
+                    component: slash( hatsPageTemplate ),
+                    context: { pagedata: edge},
+                })
+            })
+        }
+        // actions.createPage({
+        //     path: `shop/shirts`,
+        //     component: slash( hatsPageTemplate ),
+        //     context: { pagedata: shirtData},
+        //   })
         // exports.onCreatePage = ({ actions }) => {
         //     const { data } = await shirts()
         //     const { createPage } = actions

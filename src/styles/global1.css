@@ -2446,8 +2446,16 @@ transform: rotate(-45deg) translate(0, -1px);
 .buttons {
 display: flex;
 }
-.attr-option {margin-left:8px;width: 18px;height: 18px;cursor: pointer;    border-radius: 50%;}
-
+.attr-option {    border-radius: 50%;
+  cursor: pointer;
+  height: 32px;
+  margin-left: 8px;
+  width: 32px;
+  border: 2px solid #d3d3d3;
+}
+.attr-option.is-checked {
+  border-color: #000;
+}
 .attr-option.is-checked.attr-Red {background-color: #f00;
 border-radius: 50%;border-width: 0px;}
 
@@ -6744,8 +6752,66 @@ display: flex;
 margin-top: 2em;
 padding-bottom: 2em;
   border-bottom: 1px solid #dbdbdb;
+  flex-direction: column;
 }
-
+.node-attr-cont {
+  display: flex;
+  margin-bottom: 1.3em;
+}
+.attr-option.attr-3xl:after {
+  content: '3XL';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  line-height: 27px;
+}
+.attr-option.attr-2xl:after {
+  content: '2XL';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  line-height: 27px;
+  text-align: center;
+}
+.attr-option.attr-xl:after {
+  content: 'XL';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  line-height: 27px;
+}
+.attr-option.attr-s:after {
+  content: 'S';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  line-height: 27px;
+}
+.attr-option.attr-m:after {
+  content: 'M';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  line-height: 27px;
+}
+.attr-option.attr-l:after {
+  content: 'L';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  line-height: 27px;
+}
 .product-pricer {
 display: inline-block;
 padding-bottom: 0.5em;
@@ -6802,8 +6868,14 @@ font-size: 15px;
 color: #787878;
 font-family: Nunito Bold;
 margin-right: 10px;
+line-height: 35px;
 }
-
+.attr-option.attr-navy {
+  background: #000080;
+}
+.attr-option.attr-black {
+  background: #000;
+}
 .review-total-cont {
 display: flex;
 }

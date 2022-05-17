@@ -165,7 +165,7 @@
         //         })
         //     })
         // }
-        createPage({
+        exports.createPage({
             path: `shop/shirts`,
             component: slash( hatsPageTemplate ),
             context: { pagedata: shirtData},

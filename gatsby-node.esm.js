@@ -153,20 +153,34 @@
                 .then(result =>{ return result});
             return hey;
         }
-            
+    const shirtData =  await shirts()
 
-        exports.createPages = async function({actions, gql}) {
-            const { data } = await shirts()
-            
-                actions.createPage({
-                    path: `shop/shirts`,
-                    component: slash( hatsPageTemplate ),
-                    context: { pagedata: data},
-                })
-                
-            
-        }
-
+        // exports.createPages = async function({actions, gql}) {
+        //     const { data } = await shirts()
+        //     data.products.edges.forEach(edge => {
+        //         actions.createPage({
+        //             path: `shop/shirts`,
+        //             component: slash( hatsPageTemplate ),
+        //             context: { pagedata: data},
+        //         })
+        //     })
+        // }
+        createPage({
+            path: `shop/shirts`,
+            component: slash( hatsPageTemplate ),
+            context: { pagedata: shirtData},
+          })
+        // exports.onCreatePage = ({ actions }) => {
+        //     const { data } = await shirts()
+        //     const { createPage } = actions
+          
+        //     // You can access the variable "house" in your page queries now
+        //     createPage({
+        //         path: `shop/shirts`,
+        //         component: slash( hatsPageTemplate ),
+        //         context: { pagedata: data},
+        //     })
+        //   }
 
         exports.createPages = async function({actions, gql}) {
             const { data } = await cool()

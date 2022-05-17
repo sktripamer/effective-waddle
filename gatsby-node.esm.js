@@ -153,7 +153,7 @@
                 .then(result =>{ return result});
             return hey;
         }
-    const shirtData =  await shirts()
+    const shirtData = async () =>  await shirts();
 
         // exports.createPages = async function({actions, gql}) {
         //     const { data } = await shirts()

@@ -155,19 +155,7 @@
         }
     const shirtData = async () =>  await shirts();
 
-        exports.createPages = async function({actions, gql}) {
-            console.log('here123')
-            const finalShirtData = [shirtData]
-            console.log(finalShirtData)
-            finalShirtData.forEach(edge => {
-                console.log('inside')
-                actions.createPage({
-                    path: `shop/shirts`,
-                    component: slash( hatsPageTemplate ),
-                    context: { pagedata: edge},
-                })
-            })
-        }
+
         // actions.createPage({
         //     path: `shop/shirts`,
         //     component: slash( hatsPageTemplate ),
@@ -187,7 +175,17 @@
 
         exports.createPages = async function({actions, gql}) {
             const { data } = await cool()
-            
+            console.log('here123')
+            const finalShirtData = [shirtData]
+            console.log(finalShirtData)
+            finalShirtData.forEach(edge => {
+                console.log('inside')
+                actions.createPage({
+                    path: `shop/shirts`,
+                    component: slash( hatsPageTemplate ),
+                    context: { pagedata: edge},
+                })
+            })
             data.products.edges.forEach(edge => {
 
                 actions.createPage({

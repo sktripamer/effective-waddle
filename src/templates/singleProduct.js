@@ -77,30 +77,6 @@ const singleProduct = ( props ) => {
 
       }, []);
 
-      useEffect(() => {
-        
-        if (typeof data !== 'undefined' && data !== null) {
-           
-      if (type !== "SIMPLE"){
-        let attr1 = data.product.attributes.nodes[0].options[clickedItem]
-        let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
-        let selectedItem;
-    
-        data.product.variations.nodes.forEach(el => {
-          if (slugify(el.attributes.nodes[0].value) === attr1) {
-               if (slugify(el.attributes.nodes[1].value) === attr2) {
-                       setVariationPrice(el.price);
-                       if (el.stockStatus === "IN_STOCK") {
-                        setVariationNoStock(false)
-                       } else {
-                        setVariationNoStock(true)
-                       }
-               }
-          }
-    })
-      }
-        } 
-      }, [data]);
 let query;
 
 if (type === "SIMPLE") {
@@ -481,6 +457,30 @@ const variationClick = (e) => {
         variables: { id: id },
       });
 
+      useEffect(() => {
+        
+        if (typeof data !== 'undefined' && data !== null) {
+           
+      if (type !== "SIMPLE"){
+        let attr1 = data.product.attributes.nodes[0].options[clickedItem]
+        let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
+        let selectedItem;
+    
+        data.product.variations.nodes.forEach(el => {
+          if (slugify(el.attributes.nodes[0].value) === attr1) {
+               if (slugify(el.attributes.nodes[1].value) === attr2) {
+                       setVariationPrice(el.price);
+                       if (el.stockStatus === "IN_STOCK") {
+                        setVariationNoStock(false)
+                       } else {
+                        setVariationNoStock(true)
+                       }
+               }
+          }
+    })
+      }
+        } 
+      }, [data]);
       if (loading) return <p>Loading ...</p>;
     if (isClicked === false && addedToCart === false) {
 

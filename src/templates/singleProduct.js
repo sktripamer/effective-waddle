@@ -351,7 +351,7 @@ const variationClick = (e) => {
     setClickedItem(parseInt(e.target.dataset.idindex));
 
     let attr1 = data.product.attributes.nodes[0].options[parseInt(e.target.dataset.idindex)]
-    let attr2 = data.product.attributes.nodes[0].options[clickedItem2]
+    let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
     let selectedItem;
 
     data.product.variations.nodes.forEach(el => {
@@ -407,7 +407,7 @@ const variationClick = (e) => {
 
 
     let attr1 = data.product.attributes.nodes[0].options[clickedItem]
-    let attr2 = data.product.attributes.nodes[0].options[parseInt(e.target.dataset.idindex)]
+    let attr2 = data.product.attributes.nodes[1].options[parseInt(e.target.dataset.idindex)]
     let selectedItem;
 
     data.product.variations.nodes.forEach(el => {

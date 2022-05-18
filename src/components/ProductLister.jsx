@@ -3,13 +3,16 @@ import StarRating from '../components/StarRating';
 export default function ProductLister(props) {
     let renderItems = []
     props.allData.data.products.edges.forEach( edge => {
-        edge.node.productTags.edges.forEach( tags => {
-            if (props.filter === 'all') {
-                renderItems.push(edge)
-            } else if (tags.node.name === props.filter) {
-                renderItems.push(edge)
-            }
-        })
+        if (props.filter === 'all') {
+            renderItems.push(edge)
+        }  else {
+            edge.node.productTags.edges.forEach( tags => {
+                if (tags.node.name === props.filter) {
+                     renderItems.push(edge)
+                 }
+             })
+        }
+
     
     })
 

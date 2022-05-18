@@ -15,30 +15,45 @@ const hatsCat = ( props ) => {
     const { pageContext: { pagedata } } = props;
     const [activeTag, setActiveTag] = useState("all")
 
-
+const restartAnimation = () => {
+    for (const animation of document.getElementsByClassName('all-products-cont')[0].getAnimations()) {
+        if (document.getElementsByClassName('all-products-cont')[0].contains((animation.effect).target)) {
+          animation.cancel();
+          animation.play();
+        }
+      }
+}
     const onClick1 = () => {
         setActiveTag("all")
+        restartAnimation()
     }
     const onClick2 = () => {
         setActiveTag("T-shirts")
+        restartAnimation()
     }
     const onClick3 = () => {
         setActiveTag("Hoodies")
+        restartAnimation()
     }
     const onClick4 = () => {
         setActiveTag("Tank Tops")
+        restartAnimation()
     }
     const onClick5 = () => {
         setActiveTag("Long Sleeves")
+        restartAnimation()
     }
     const onClick6 = () => {
         setActiveTag("Polos")
+        restartAnimation()
     }
     const onClick7 = () => {
         setActiveTag("Men's")
+        restartAnimation()
     }
     const onClick8 = () => {
         setActiveTag("Women's")
+        restartAnimation()
     }
     console.log(pagedata)
 

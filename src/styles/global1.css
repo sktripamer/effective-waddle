@@ -4762,6 +4762,14 @@ div#archetype-container {
   flex-direction: column;
   justify-content: center;
 }
+
+.image-gallery-image > img {
+  object-fit: contain;
+  width: 100%;
+}
+div.image-gallery-slide {
+  width: calc(100% + 1px);
+}
 .arch-cont:before {
   content: '';
     position: absolute;
@@ -6840,7 +6848,21 @@ font-family: 'Nunito Bold';
 .rating-cont {
 padding-bottom: 1.5em;
 }
-.mini-product-cont {padding: 10px;width: 30%;}
+
+.cat-gallery-cont {max-width: 1000px;
+  width: 50vw;
+  margin: 0 auto;}
+
+.tag-cont {display: flex;}
+
+.ind-tag {margin-right: 8px;}
+
+.all-products-cont {display: flex;flex-wrap: wrap;}
+h1.cat-page-header {
+  margin-top: 4em;
+}
+
+.mini-product-cont {padding: 10px;width: 33.33%;}
 
 .you-might-like-cont {display: flex;justify-content: space-between;margin-top: 5em;margin-bottom: 5em;}
 

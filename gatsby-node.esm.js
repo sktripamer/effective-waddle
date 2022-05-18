@@ -114,7 +114,7 @@
 
       const shirts = async () => {
         const hey = await client.query({
-                query: gql` query GET_SHIRTS {
+                query: gql`query GET_SHIRTS {
                     products(first: 100, where: {categoryId: 272}) {
                       edges {
                         node {
@@ -145,10 +145,18 @@
                               }
                             }
                           }
+                          productTags {
+                            edges {
+                              node {
+                                name
+                              }
+                            }
+                          }
                         }
                       }
                     }
-                  }`
+                  }
+                  `
             })
                 .then(result =>{ return result});
             return hey;

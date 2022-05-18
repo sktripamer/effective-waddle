@@ -19,12 +19,14 @@ export default function ProductLister(props) {
 
 return (
     <>
-    {renderItems.map(item => <div class='mini-product-cont'>
+    {renderItems.map(item => <Link to={`shirts/${item.node.slug}`}>
+              <div class='mini-product-cont'>
         <img src={item.node.featuredImage.node.sourceUrl}/>
         <div class='mini-title'>{item.node.name}</div>
         <div class='mini-review'>{<StarRating total={item.node.averageRating}/>}</div>
         <div class='mini-price'>{item.node.price}</div>
-    </div>)}    
+    </div>
+    </Link>)}    
     
     </>
 

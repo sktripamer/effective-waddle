@@ -19,6 +19,8 @@ const hatsCat = ( props ) => {
             <div className='image-gallery-image'>
               <img
                   src={item.original}
+                  srcSet={item.srcSet}
+                    sizes={item.sizes}
               />
       
               {

@@ -17,13 +17,13 @@ export default function ProductLister(props) {
     
     })
     const changePage = (e) => {
-        navigate(`shirts/${e.target.dataset.link}`)
+        console.log(e.target.dataset.idlink)
+        navigate(e.target.dataset.idlink)
     }
-    Math.random().toString(36).substr(2, 5)
 return (
     <>
     {renderItems.map(item =>
-              <div onClick={changePage} data-link={item.node.slug} class={`mini-product-cont ${Math.random().toString(36).slice(2, 7)}`}>
+              <div onClick={changePage} data-idlink={item.node.slug} class={`mini-product-cont ${Math.random().toString(36).slice(2, 7)}`}>
         <img src={item.node.featuredImage.node.sourceUrl}/>
         <div class='mini-title'>{item.node.name}</div>
         <div class='mini-review'>{<StarRating total={item.node.averageRating}/>}</div>

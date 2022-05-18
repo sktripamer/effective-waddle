@@ -182,7 +182,7 @@
                 actions.createPage({
                     path: `shop/shirts`,
                     component: slash( hatsPageTemplate ),
-                    context: { pagedata: edge},
+                    context: { pagedata: finalShirtData},
                 })
             
             data.products.edges.forEach(edge => {

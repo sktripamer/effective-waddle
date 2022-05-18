@@ -6857,7 +6857,8 @@ padding-bottom: 1.5em;
 
 .ind-tag {margin-right: 8px;}
 
-.all-products-cont {display: flex;flex-wrap: wrap;}
+.all-products-cont {display: flex;flex-wrap: wrap; opacity: 0;
+  animation: .2s newput .1s forwards;}
 h1.cat-page-header {
   margin-top: 4em;
 }

@@ -12,7 +12,6 @@ export default function HeroRender(props) {
                   srcSet={item.srcSet}
                     sizes={item.sizes}
               />
-      
               {
                 item.title &&
                   <span className='image-gallery-description'>
@@ -32,9 +31,10 @@ export default function HeroRender(props) {
           )
     }
 
-    let items = [];
+  const [useItems, setUseItems] = useState([]);
 
     useEffect(() => {
+        let items = [];
         props.herodata.data.products.edges.forEach( edge => {
             if (edge.node.featured === true) {
                 let tempObj = {
@@ -48,10 +48,15 @@ export default function HeroRender(props) {
                 items.push(tempObj)
             }
         })
-    }, []);
+        setUseItems(items)
 
+    }, []);
+    console.log(useItems)
 return (
-    <ImageGallery showThumbnails={false} showFullscreenButton={false} showPlayButton={false} items={items}/>
+    <>
+    {console.log(useItems)}
+    <ImageGallery showThumbnails={false} showFullscreenButton={false} showPlayButton={false} items={useItems}/>
+    </>
 )
 
 

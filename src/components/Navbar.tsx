@@ -145,6 +145,25 @@ export default function Navbar(props) {
     )
 
   }
+  let offsetY = 100;
+
+
+  const handleScroller = () => {
+    if (window.pageYOffset > offsetY) {
+      document.querySelector('navbar').classList.remove('active')
+    } else {
+      document.querySelector('navbar').classList.add('active')
+      
+    }
+    
+    offsetY = window.pageYOffset > 100 ? window.pageYOffset : 100
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroller, { passive: true });
+      return () => {
+       window.removeEventListener('scroll', handleScroller);
+      };
+  }, []);
   const handleChange = (e) => {
     setHamburger(e.target.checked)
     // do whatever you want with isChecked value

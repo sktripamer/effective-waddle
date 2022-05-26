@@ -70,7 +70,10 @@ const restartAnimation = () => {
         restartAnimation()
     }
     console.log(pagedata)
-
+    const changePage = (e) => {
+        console.log(e.target.dataset.idlink)
+        navigate(e.target.dataset.idlink)
+    }
     return (
         <Layout htmlClassName={"scroll"}>
         <Navbar />

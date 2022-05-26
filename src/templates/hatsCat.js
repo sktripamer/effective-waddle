@@ -13,16 +13,17 @@ import WriteReview from "../components/WriteReview";
 
 function slugify(text) {
     return text
-      .toString()                           // Cast to string (optional)
-      .normalize('NFKD')            // The normalize() using NFKD method returns the Unicode Normalization Form of a given string.
-      .toLowerCase()                  // Convert the string to lowercase letters
+      .toString()                          
+      .normalize('NFKD')           
+      .toLowerCase()                  
       .trim()    
         .replace('×', 'x')
         .replace(/\./g, '-')
       .replace(/\//ig, '-') 
-      .replace(/\s+/g, '-')            // Replace spaces with -
-      .replace(/[^\w\-]+/g, '')     // Remove all non-word chars
-      .replace(/\-\-+/g, '-');        // Replace multiple - with single -
+      .replace(/\s+/g, '-')            
+      .replace(/[^\w\-]+/g, '')     
+      .replace(/\-\-+/g, '-')
+      .concat(' ');        
   }
 
 const hatsCat = ( props ) => {
@@ -91,7 +92,7 @@ const restartAnimation = () => {
                 </div>
                 <div class='all-products-cont'>
                     {pagedata.data.products.edges.map(item =>
-        <div onClick={changePage} data-idlink={item.node.slug} class={`mini-product-cont ${item.node.productTags.edges.map(tags => slugify(tags.node.name) + ' ' )}`}>
+        <div onClick={changePage} data-idlink={item.node.slug} class={`mini-product-cont ${item.node.productTags.edges.map(tags => slugify(tags.node.name) )}`}>
         <img src={item.node.featuredImage.node.sourceUrl}/>
         <div class='mini-title'>{item.node.name}</div>
         <div class='mini-review'>{<StarRating total={item.node.averageRating}/>}</div>

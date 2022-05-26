@@ -6,10 +6,24 @@ import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import ProductLister from "../components/ProductLister";
 import HeroRender from "../components/HeroRender";
+import StarRating from '../components/StarRating';
 import ImageGallery from 'react-image-gallery';
 import AuthContent from "../components/AuthContent";
 import WriteReview from "../components/WriteReview";
 
+function slugify(text) {
+    return text
+      .toString()                           // Cast to string (optional)
+      .normalize('NFKD')            // The normalize() using NFKD method returns the Unicode Normalization Form of a given string.
+      .toLowerCase()                  // Convert the string to lowercase letters
+      .trim()    
+        .replace('×', 'x')
+        .replace(/\./g, '-')
+      .replace(/\//ig, '-') 
+      .replace(/\s+/g, '-')            // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')     // Remove all non-word chars
+      .replace(/\-\-+/g, '-');        // Replace multiple - with single -
+  }
 
 const hatsCat = ( props ) => {
     const { pageContext: { pagedata } } = props;
@@ -28,31 +42,31 @@ const restartAnimation = () => {
         restartAnimation()
     }
     const onClick2 = () => {
-        setActiveTag("T-shirts")
+        setActiveTag("t-shirts")
         restartAnimation()
     }
     const onClick3 = () => {
-        setActiveTag("Hoodies")
+        setActiveTag("hoodies")
         restartAnimation()
     }
     const onClick4 = () => {
-        setActiveTag("Tank Tops")
+        setActiveTag("tank-tops")
         restartAnimation()
     }
     const onClick5 = () => {
-        setActiveTag("Long Sleeves")
+        setActiveTag("long-sleeves")
         restartAnimation()
     }
     const onClick6 = () => {
-        setActiveTag("Polos")
+        setActiveTag("polos")
         restartAnimation()
     }
     const onClick7 = () => {
-        setActiveTag("Men's")
+        setActiveTag("mens")
         restartAnimation()
     }
     const onClick8 = () => {
-        setActiveTag("Women's")
+        setActiveTag("womens")
         restartAnimation()
     }
     console.log(pagedata)
@@ -68,12 +82,19 @@ const restartAnimation = () => {
             </div>
 
             <h3>All shirts</h3>
-            <div class='all-shirts-cont'>
+            <div class={`all-shirts-cont ${activeTag}`}>
                 <div class={`tag-cont ${activeTag.replace("'", '').replace(' ', '')}`}>
                     <div onClick={onClick1} class='ind-tag tag-all'>All</div><div onClick={onClick2} class='ind-tag tag-t-shirts'>T-shirts</div><div onClick={onClick3} class='ind-tag tag-hoodies'>Hoodies</div><div onClick={onClick4} class='ind-tag tag-tanktops'>Tank Tops</div><div onClick={onClick5} class='ind-tag tag-longsleeves'>Long Sleeves</div><div onClick={onClick6} class='ind-tag tag-polos'>Polos</div><div onClick={onClick7} class='ind-tag tag-mens'>Men's</div><div onClick={onClick8} class='ind-tag tag-womens'>Women's</div>
                 </div>
                 <div class='all-products-cont'>
-                    <ProductLister allData={pagedata} filter={activeTag}/>
+                    {pagedata.data.products.edges.map(item =>
+        <div onClick={changePage} data-idlink={item.node.slug} class={`mini-product-cont ${item.node.productTags.edges.map(tags => slugify(tags.node.name) + ' ' )}`}>
+        <img src={item.node.featuredImage.node.sourceUrl}/>
+        <div class='mini-title'>{item.node.name}</div>
+        <div class='mini-review'>{<StarRating total={item.node.averageRating}/>}</div>
+        <div class='mini-price'>{item.node.price}</div>
+        </div>
+   )}    
                 </div>
 
             </div>

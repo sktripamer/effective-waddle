@@ -92,7 +92,7 @@ const restartAnimation = () => {
                 </div>
                 <div class='all-products-cont'>
                     {pagedata.data.products.edges.map(item =>
-        <div onClick={changePage} data-idlink={item.node.slug} class={`mini-product-cont ${item.node.productTags.edges.map(tags => slugify(tags.node.name) )}`}>
+        <div onClick={changePage} data-idlink={item.node.slug} class={`mini-product-cont ${item.node.productTags.edges.map(tags => slugify(tags.node.name) ).join('')}`}>
         <img src={item.node.featuredImage.node.sourceUrl}/>
         <div class='mini-title'>{item.node.name}</div>
         <div class='mini-review'>{<StarRating total={item.node.averageRating}/>}</div>

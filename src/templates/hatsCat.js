@@ -10,6 +10,7 @@ import StarRating from '../components/StarRating';
 import ImageGallery from 'react-image-gallery';
 import AuthContent from "../components/AuthContent";
 import WriteReview from "../components/WriteReview";
+import { navigate } from 'gatsby';
 
 function slugify(text) {
     return text
@@ -72,6 +73,7 @@ const restartAnimation = () => {
     }
     console.log(pagedata)
     const changePage = (e) => {
+        console.log(e)
         console.log(e.target.dataset.idlink)
         navigate(e.target.dataset.idlink)
     }

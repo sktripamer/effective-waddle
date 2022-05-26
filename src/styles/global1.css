@@ -6849,6 +6849,20 @@ font-family: 'Nunito Bold';
 padding-bottom: 1.5em;
 }
 
+
+.t-shirts > .all-products-cont > .t-shirts {display: block;}
+
+.mini-product-cont {display: none;}
+
+.all .mini-product-cont {display: block;}
+
+.hoodies > .all-products-cont > .hoodies {display: block;}
+.tank-tops > .all-products-cont > .tank-tops {display: block;}
+.long-sleeves > .all-products-cont > .long-sleeves {display: block;}
+.polos > .all-products-cont > .polos {display: block;}
+.mens > .all-products-cont > .mens {display: block;}
+.womens > .all-products-cont > .womens {display: block;}
+
 .cat-gallery-cont {max-width: 1000px;
   width: 50vw;
   margin: 0 auto;}
@@ -6863,17 +6877,19 @@ h1.cat-page-header {
   margin-top: 4em;
 }
 
-.mini-product-cont {padding: 10px;width: 33.33%;}
+.mini-product-cont {padding: 10px;width: 33.33%;    cursor: pointer;}
 
 .you-might-like-cont {display: flex;justify-content: space-between;margin-top: 5em;margin-bottom: 5em;}
 
 .you-might-like-cont h4 {position: absolute;margin-top: -1em;}
 
-.mini-product-cont img {width: 90%;margin-left: 5%;}
+.mini-product-cont img {width: 90%;margin-left: 5%;     pointer-events: none;}
 
-.mini-title {font-size: 24px;font-family: 'Nunito Bold';}
+.mini-title {font-size: 24px;font-family: 'Nunito Bold';pointer-events: none;}
 .cart-btn-cont {display: flex;justify-content: space-evenly;}
-
+.mini-product-cont > div {
+  pointer-events: none;
+}
 .cart-btn-cont > button {background: linear-gradient(206deg,#ff1d2d,#c41ab8);color: #fff;width: 40%;border-radius: 0;}
 .mini-price {font-family: Nunito Regular;font-size: 18px;}
 .star-select {width: 24px;

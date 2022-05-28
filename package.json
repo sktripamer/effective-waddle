@@ -47,7 +47,7 @@
     "react-image-gallery": "^1.2.7",
     "react-lazy-viewport": "git+https://github.com/sktripamer/viewporthtinger.git",
     "react-share": "^4.4.0",
-    "react-spring-carousel": "git+https://github.com/Emiliano-Bucci/react-spring-carousel.git#v1.10.0",
+    "react-spring-carousel": "git+https://github.com/sktripamer/react-spring-carousel.git",
     "react-use-flexsearch": "^0.1.1",
     "stripe": "^8.191.0",
     "typewriter-effect": "^2.18.2",

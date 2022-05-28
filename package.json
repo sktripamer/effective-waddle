@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.20",
-    "@farbenmeer/react-spring-slider": "^1.5.2",
+
     "@polymer/iron-overlay-behavior": "^3.0.3",
     "@stripe/react-stripe-js": "^1.6.0",
     "@stripe/stripe-js": "^1.21.1",
@@ -47,6 +47,7 @@
     "react-image-gallery": "^1.2.7",
     "react-lazy-viewport": "git+https://github.com/sktripamer/viewporthtinger.git",
     "react-share": "^4.4.0",
+    "react-spring-carousel": "^1.9.29",
     "react-use-flexsearch": "^0.1.1",
     "stripe": "^8.191.0",
     "typewriter-effect": "^2.18.2",

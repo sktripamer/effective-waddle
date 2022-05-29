@@ -49,10 +49,10 @@ export default function HeroRender(props) {
 
             id: `item-${index}`,
             renderItem: (
-              <div onClick={goToProduct} idindex={i.link} className='heroproduct-render'>
-                <div className='heroproduct-img-cont'><img src={edge.node.featuredImage.node.sourceUrl}/></div>
-                <div className='heroproduct-title'>{edge.node.name}</div>
-                <div className='heroproduct-price'>{edge.node.price}</div>
+              <div onClick={goToProduct} idindex={'shirts/' + i.node.slug} className='heroproduct-render'>
+                <div className='heroproduct-img-cont'><img src={i.node.featuredImage.node.sourceUrl}/></div>
+                <div className='heroproduct-title'>{i.node.name}</div>
+                <div className='heroproduct-price'>{i.node.price}</div>
               </div>
             ),
             

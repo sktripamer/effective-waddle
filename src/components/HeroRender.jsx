@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect, useRef } from "react";
 import ImageGallery from 'react-image-gallery';
-import { useSpringCarousel } from 'react-spring-carousel-js'
+import { useSpringCarousel } from 'react-spring-carousel'
 
 export default function HeroRender(props) {
 
@@ -10,32 +10,7 @@ export default function HeroRender(props) {
         navigate(e.target.dataset.idlink)
     }
 
-    const heroRenderer = (item) => {
-        return (
-            <div className='image-gallery-image'>
-              <img
-                  src={item.original}
-                  srcSet={item.srcSet}
-                    sizes={item.sizes}
-              />
-              {
-                item.title &&
-                  <span className='image-gallery-description'>
-                    {item.title}
-                    {
-                      item.link &&
-                        <a className='my-own-class' href={item.link}>
-                          {item.title}
-                        </a>
-                    }
-                  </span>
-              }
-              <span className='image-gallery-price'>
-                {item.price}
-              </span>
-            </div>
-          )
-    }
+
 
   const [useItems, setUseItems] = useState([]);
 
@@ -66,7 +41,8 @@ export default function HeroRender(props) {
         slideToNextItem 
       } = useSpringCarousel({
         withLoop: true,
-        items: useItems.map((i) => ({
+        items: props.herodata.data.products.edges.forEach( i => ({
+
             id: i.id,
             renderItem: (
               <div onClick={goToProduct} idindex={i.link} className='heroproduct-render'>
@@ -75,6 +51,7 @@ export default function HeroRender(props) {
                 <div className='heroproduct-price'>{i.price}</div>
               </div>
             ),
+            
           })),
       });
 return (

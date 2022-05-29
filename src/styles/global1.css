@@ -2530,6 +2530,23 @@ max-width: 1300px;
 margin: 0 auto;
 padding-left: 70px;
 padding-right: 70px;
+background: #fff;
+    box-shadow: 0 0 4px rgb(0 0 0 / 15%);
+}
+html.scroll main {
+  background-color: #e9e9e9;
+}
+@media (max-width: 1400px) {
+  html.scroll main>div:last-child{
+    max-width: 1000px;
+  }
+
+}
+@media (max-width: 1100px) {
+  html.scroll main>div:last-child{
+    max-width: 800px;
+  }
+
 }
 .nav li:first-child:hover {
 background-color: transparent;
@@ -3184,6 +3201,19 @@ cursor: pointer;
 html.scroll {
 overflow-y: overlay;
 }
+.heroproduct-img-cont {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.heroproduct-render {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 navbar {
 display: flex;
 justify-content: space-between;
@@ -3193,7 +3223,6 @@ height:50px;
 width: 100%;
 z-index: 99;
 background: linear-gradient(183deg,#ff1d2d,#c41a72);
-box-shadow: 0 0 8px 4px rgba(0,0,0,0.3);
 box-sizing: border-box;
 color: white;
 opacity: 0;

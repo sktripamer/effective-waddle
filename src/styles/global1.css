@@ -3202,13 +3202,13 @@ html.scroll {
 overflow-y: overlay;
 }
 .heroproduct-img-cont {
+  padding-bottom: 100%;
   width: 100%;
-  height: 100%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 }
-
+.heroproduct-cont {
+  display: flex;
+    flex-direction: row;
+}
 .heroproduct-render {
   display: flex;
   flex-direction: column;

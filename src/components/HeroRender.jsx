@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect, useRef } from "react";
 import ImageGallery from 'react-image-gallery';
-import { useSpringCarousel } from 'react-spring-carousel'
+import { useSpringCarousel } from 'react-spring-carousel-js'
 
 export default function HeroRender(props) {
 

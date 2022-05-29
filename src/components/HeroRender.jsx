@@ -50,7 +50,7 @@ export default function HeroRender(props) {
             id: `item-${index}`,
             renderItem: (
               <div onClick={goToProduct} idindex={'shirts/' + i.node.slug} className='heroproduct-render'>
-                <div style={Object.assign({'background': `url(${i.node.featuredImage.node.sourceUrl})` })} className='heroproduct-img-cont'></div>
+                <div style={Object.assign({'background': `url(${i.node.featuredImage.node.sourceUrl})` }, {'background-size': 'contain'}, {'background-repeat': 'no-repeat'}, {'background-position': 'center'})} className='heroproduct-img-cont'></div>
                 <div className='heroproduct-title'>{i.node.name}</div>
                 <div className='heroproduct-price'>{i.node.price}</div>
               </div>
@@ -61,7 +61,7 @@ export default function HeroRender(props) {
       });
 return (
     <>
-        <div>
+        <div className='heroproduct-cont'>
         <button className='heroprev' onClick={slideToPrevItem}>Prev item</button>
         {carouselFragment}
         <button className='heronext' onClick={slideToNextItem}>Next item</button>

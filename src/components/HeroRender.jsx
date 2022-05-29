@@ -42,7 +42,7 @@ export default function HeroRender(props) {
         slideToNextItem 
       } = useSpringCarousel({
         withLoop: true,
-        items: featureFilter.forEach( i, index => 
+        items: props.herodata.data.products.edges.forEach( i, index => 
             
             
             ({

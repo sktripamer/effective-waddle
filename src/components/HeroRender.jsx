@@ -10,7 +10,7 @@ export default function HeroRender(props) {
         navigate(e.target.dataset.idlink)
     }
 
-
+ const featureFilter = props.herodata.data.products.edges.filter(edge => edge.node.featured === true);
 
   const [useItems, setUseItems] = useState([]);
 
@@ -35,24 +35,29 @@ export default function HeroRender(props) {
 
     }, []);
     console.log(useItems)
+
     const { 
         carouselFragment, 
         slideToPrevItem, 
         slideToNextItem 
       } = useSpringCarousel({
         withLoop: true,
-        items: props.herodata.data.products.edges.forEach( i => ({
+        items: featureFilter.forEach( i, index => 
+            
+            
+            ({
 
-            id: i.id,
+            id: `item-${index}`,
             renderItem: (
               <div onClick={goToProduct} idindex={i.link} className='heroproduct-render'>
-                <div className='heroproduct-img-cont'><img src={i.original}/></div>
-                <div className='heroproduct-title'>{i.title}</div>
-                <div className='heroproduct-price'>{i.price}</div>
+                <div className='heroproduct-img-cont'><img src={edge.node.featuredImage.node.sourceUrl}/></div>
+                <div className='heroproduct-title'>{edge.node.name}</div>
+                <div className='heroproduct-price'>{edge.node.price}</div>
               </div>
             ),
             
-          })),
+          })
+          ),
       });
 return (
     <>

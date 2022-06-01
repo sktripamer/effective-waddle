@@ -1,4 +1,5 @@
 import React from 'react';
+import { navigate } from 'gatsby';
 import { useState, useEffect, useRef } from "react";
 import ImageGallery from 'react-image-gallery';
 import { useSpringCarousel } from 'react-spring-carousel-js'
@@ -42,14 +43,14 @@ export default function HeroRender(props) {
         slideToNextItem 
       } = useSpringCarousel({
         withLoop: true,
-        items: props.herodata.data.products.edges.map( (i, index) => 
+        items: featureFilter.map( (i, index) => 
             
             
             ({
 
             id: `item-${index}`,
             renderItem: (
-              <div onClick={goToProduct} idindex={'shirts/' + i.node.slug} className='heroproduct-render'>
+              <div onClick={goToProduct} idlink={'shirts/' + i.node.slug} className='heroproduct-render'>
                 <div style={Object.assign({'background': `url(${i.node.featuredImage.node.sourceUrl})` }, {'background-size': 'contain'}, {'background-repeat': 'no-repeat'}, {'background-position': 'center'})} className='heroproduct-img-cont'></div>
                 <div className='heroproduct-title'>{i.node.name}</div>
                 <div className='heroproduct-price'>{i.node.price}</div>

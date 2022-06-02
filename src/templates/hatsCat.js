@@ -27,6 +27,7 @@ function slugify(text) {
       .concat(' ');        
   }
 
+
 const hatsCat = ( props ) => {
     const { pageContext: { pagedata } } = props;
     const [activeTag, setActiveTag] = useState("all")

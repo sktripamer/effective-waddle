@@ -3203,7 +3203,24 @@ overflow-y: overlay;
 }
 .heroproduct-img-cont {
   padding-bottom: 100%;
-  width: 100%;
+  width: calc(100% - 2px);
+  margin-left: 1px;
+}
+.heroproduct-price {
+  font-family: Nunito Regular;
+  font-size: 18px;
+}
+
+h2.featured-header {
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(#ee091c,#850b90);
+  font-family: 'Josefin Sans';
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2em;
+  margin-top: 4em;
+  margin-bottom: 2em;
 }
 .heroproduct-cont {
   display: flex;
@@ -6511,7 +6528,21 @@ transform: scaleX(-1);
 cursor: pointer;
 background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='451.847px' height='451.847px' viewBox='0 0 451.847 451.847' style='enable-background:new 0 0 451.847 451.847;' xml:space='preserve'%3E%3Cg%3E%3Cdefs%3E%3ClinearGradient id='logo-gradient' x1='50%25' y1='0%25' x2='50%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23cc22ff'%3E%3Canimate attributeName='stop-color' values='%23cc22ff; %23ff2233; %23cc22ff' dur='5s' repeatCount='indefinite'%3E%3C/animate%3E%3C/stop%3E%3Cstop offset='100%25' stop-color='%2301FF89'%3E%3Canimate attributeName='stop-color' values='%23ff2233; %23cc22ff; %23ff2233' dur='5s' repeatCount='indefinite'%3E%3C/animate%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23logo-gradient)' d='M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0 c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744 c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z'/%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E%0A");
 }
+button.heroprev {background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: initial;cursor: pointer;
+  
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='451.847px' height='451.847px' viewBox='0 0 451.847 451.847' style='enable-background:new 0 0 451.847 451.847;' xml:space='preserve'%3E%3Cg%3E%3Cdefs%3E%3ClinearGradient id='logo-gradient' x1='50%25' y1='0%25' x2='50%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23cc22ff'%3E%3Canimate attributeName='stop-color' values='%23cc22ff; %23ff2233; %23cc22ff' dur='5s' repeatCount='indefinite'%3E%3C/animate%3E%3C/stop%3E%3Cstop offset='100%25' stop-color='%2301FF89'%3E%3Canimate attributeName='stop-color' values='%23ff2233; %23cc22ff; %23ff2233' dur='5s' repeatCount='indefinite'%3E%3C/animate%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23logo-gradient)' d='M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0 c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744 c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z'/%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E%0A");padding: 0;
+  width: 70px;}
 
+button.heronext {background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  transform: scaleX(-1);background-color: initial;cursor: pointer;
+  
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='451.847px' height='451.847px' viewBox='0 0 451.847 451.847' style='enable-background:new 0 0 451.847 451.847;' xml:space='preserve'%3E%3Cg%3E%3Cdefs%3E%3ClinearGradient id='logo-gradient' x1='50%25' y1='0%25' x2='50%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23cc22ff'%3E%3Canimate attributeName='stop-color' values='%23cc22ff; %23ff2233; %23cc22ff' dur='5s' repeatCount='indefinite'%3E%3C/animate%3E%3C/stop%3E%3Cstop offset='100%25' stop-color='%2301FF89'%3E%3Canimate attributeName='stop-color' values='%23ff2233; %23cc22ff; %23ff2233' dur='5s' repeatCount='indefinite'%3E%3C/animate%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23logo-gradient)' d='M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0 c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744 c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z'/%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E%0A");padding: 0;
+  width: 70px;}
 .mb-left-arrow {
   margin-right: 20px;
 width:8%;
@@ -6893,9 +6924,13 @@ padding-bottom: 1.5em;
 .womens > .all-products-cont > .womens {display: block;}
 
 .cat-gallery-cont {max-width: 1000px;
-  width: 50vw;
+  width: 100%;
   margin: 0 auto;}
-
+  div[data-testid="use-spring-carousel-wrapper"] {
+    width: 60% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
 .tag-cont {display: flex;}
 
 .ind-tag {margin-right: 8px;}
@@ -6904,6 +6939,20 @@ padding-bottom: 1.5em;
   animation: .2s newput .1s forwards;}
 h1.cat-page-header {
   margin-top: 4em;
+  margin-top: 3.5em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    background-image: linear-gradient(90deg, rgba(238,9,28,0.7) 0%, rgba(194,10,81,.7) 100%), url(https://portal.revrevdev.xyz/wp-content/uploads/2022/06/shirtbg.jpg);
+    background-size: cover;
+    background-position: center;
+    margin-left: -70px;
+    margin-right: -70px;
+    font-family: 'Josefin Sans';
+    text-transform: uppercase;
+    padding-left: 70px;
+    padding-right: 70px;
+    color: #fff;
+    font-size: 2.3em;
 }
 
 .mini-product-cont {padding: 10px;width: 33.33%;    cursor: pointer;}

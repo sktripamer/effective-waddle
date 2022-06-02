@@ -5,7 +5,6 @@ import DOMPurify from 'dompurify';
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import ProductLister from "../components/ProductLister";
-
 import HeroRender from "../components/HeroRender";
 import StarRating from '../components/StarRating';
 import ImageGallery from 'react-image-gallery';

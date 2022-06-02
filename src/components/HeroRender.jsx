@@ -43,6 +43,7 @@ export default function HeroRender(props) {
         slideToNextItem 
       } = useSpringCarousel({
         withLoop: true,
+        itemsPerSlide: 2,
         items: featureFilter.map( (i, index) => 
             
             
@@ -51,6 +52,7 @@ export default function HeroRender(props) {
             id: `item-${index}`,
             renderItem: (
               <div onClick={goToProduct} idlink={'shirts/' + i.node.slug} className='heroproduct-render'>
+
                 <div style={Object.assign({'background': `url(${i.node.featuredImage.node.sourceUrl})` }, {'background-size': 'contain'}, {'background-repeat': 'no-repeat'}, {'background-position': 'center'})} className='heroproduct-img-cont'></div>
                 <div className='heroproduct-title'>{i.node.name}</div>
                 <div className='heroproduct-price'>{i.node.price}</div>

@@ -12,6 +12,7 @@ import AuthContent from "../components/AuthContent";
 import WriteReview from "../components/WriteReview";
 import { navigate } from 'gatsby';
 
+
 function slugify(text) {
     return text
       .toString()                          

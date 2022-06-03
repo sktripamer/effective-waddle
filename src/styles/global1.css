@@ -2268,6 +2268,12 @@ stroke:  #8D1A59;
   color: #c5c5c5ab;
   font-style: italic;
 }
+nav.image-gallery-thumbnails-container {
+  height: auto;
+  background-color: initial;
+  position: initial;
+  top: initial;
+}
 nav {
   min-width: 70px;
   max-width: 70px;
@@ -3214,6 +3220,7 @@ overflow-y: overlay;
   padding-bottom: 100%;
   width: calc(100% - 2px);
   margin-left: 1px;
+  pointer-events: none;
 }
 .heroproduct-price {
   font-family: Nunito Regular;

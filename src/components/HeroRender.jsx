@@ -12,10 +12,22 @@ export default function HeroRender(props) {
     }
 
  const featureFilter = props.herodata.data.products.edges.filter(edge => edge.node.featured === true);
-
+const [windowWidth, setWindowWidth] = useState(2)
   const [useItems, setUseItems] = useState([]);
-
+  const reportWindowSize = () => {
+    if (window.innerWidth > 666) {
+        setWindowWidth(2)
+    } else {
+        setWindowWidth(1)
+    }
+  }
     useEffect(() => {
+        setWindowWidth(window.innerWidth)
+        if (window.innerWidth > 666) {
+            setWindowWidth(2)
+        } else {
+            setWindowWidth(1)
+        }
         let items = [];
         let itemIndex = 1;
         props.herodata.data.products.edges.forEach( edge => {
@@ -33,8 +45,12 @@ export default function HeroRender(props) {
             }
         })
         setUseItems(items)
-
+        window.addEventListener('resize', reportWindowSize);
+        return () => {
+          window.removeEventListener('resize', reportWindowSize);
+        };
     }, []);
+
     console.log(useItems)
 
     const { 
@@ -43,7 +59,7 @@ export default function HeroRender(props) {
         slideToNextItem 
       } = useSpringCarousel({
         withLoop: true,
-        itemsPerSlide: 2,
+        itemsPerSlide: windowWidth,
         items: featureFilter.map( (i, index) => 
             
             

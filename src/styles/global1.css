@@ -133,7 +133,7 @@ h3 {
   background-image: linear-gradient(#ee091c,#850b90);
   font-family: Josefin Sans;
   font-size: 2em;
-  margin-bottom: 0.5em;
+
   margin-top: 2em;
   text-transform: uppercase;
 }
@@ -3227,7 +3227,40 @@ overflow-y: overlay;
   font-size: 18px;
   text-align: center;
 }
-
+.breadcrumbs-cont {
+  margin-top: 6.5em;
+  display: flex;
+}
+h4.all-subheader {
+  font-size: 1.4em;
+  font-family: 'Nunito Bold';
+  margin-bottom: 1.4em;
+  color: #512e8a;
+}
+.bread-item.bread-active {
+  cursor: initial;
+}
+.bread-item {
+  text-transform: uppercase;
+  font-family: 'Nunito Bold';
+  font-size: .8em;
+  padding-left: 1.5em;
+  cursor: pointer;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #c7c7c7;
+}
+.bread-item:before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg id='Capa_1' data-name='Capa 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 39.02 67.55'%3E%3Cpath d='M9.11,70.14a5.25,5.25,0,0,1-3.71-9L30.21,36.36,5.4,11.55a5.25,5.25,0,0,1,7.42-7.42L41.35,32.65a5.26,5.26,0,0,1,0,7.42L12.82,68.6A5.25,5.25,0,0,1,9.11,70.14Z' transform='translate(-3.86 -2.59)'/%3E%3C/svg%3E"); 
+  width: 10px;
+  height: 10px;
+  margin-left: -1em;
+  margin-top: 0.25em;
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 h2.featured-header {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
@@ -3237,7 +3270,7 @@ h2.featured-header {
   text-align: center;
   font-size: 2.6em;
   margin-top: 3em;
-  margin-bottom: 2em;
+
 }
 .heroproduct-cont {
   display: flex;
@@ -3255,6 +3288,7 @@ h2.featured-header {
   font-size: 1.6em;
   text-align: center;
   padding: 6px;
+  color: #512e8a;
 }
 .mini-product-cont .rating-cont {
   padding-bottom: 0.2em;
@@ -6964,29 +6998,44 @@ padding-bottom: 1.5em;
 }
 .tag-cont {display: flex;
   flex-wrap: wrap;}
-.t-shirts .ind-tag.tag-t-shirts {border-color: #000;border-width: 2px;font-weight: bold;}
-.all .ind-tag.tag-all {border-color: #000;border-width: 2px;font-weight: bold;}
-.hoodies .ind-tag.tag-hoodies {border-color: #000;border-width: 2px;font-weight: bold;}
-.tank-tops .ind-tag.tag-tanktops {border-color: #000;border-width: 2px;font-weight: bold;}
-.long-sleeves .ind-tag.tag-longsleeves {border-color: #000;border-width: 2px;font-weight: bold;}
-.polos .ind-tag.tag-polos {border-color: #000;border-width: 2px;font-weight: bold;}
-.mens .ind-tag.tag-mens {border-color: #000;border-width: 2px;font-weight: bold;}
-.womens .ind-tag.tag-womens {border-color: #000;border-width: 2px;font-weight: bold;}
-
-.ind-tag {margin-right: 8px;
+.t-shirts .ind-tag.tag-t-shirts {border-color: #512e8a;border-width: 2px;font-weight: bold;}
+.all .ind-tag.tag-all {border-color: #512e8a;border-width: 2px;font-weight: bold;}
+.hoodies .ind-tag.tag-hoodies {border-color: #512e8a;border-width: 2px;font-weight: bold;}
+.tank-tops .ind-tag.tag-tanktops {border-color: #512e8a;border-width: 2px;font-weight: bold;}
+.long-sleeves .ind-tag.tag-longsleeves {border-color: #512e8a;border-width: 2px;font-weight: bold;}
+.polos .ind-tag.tag-polos {border-color: #512e8a;border-width: 2px;font-weight: bold;}
+.mens .ind-tag.tag-mens {border-color: #512e8a;border-width: 2px;font-weight: bold;}
+.womens .ind-tag.tag-womens {border-color: #512e8a;border-width: 2px;font-weight: bold;}
+h4.featured-subheader {
+  font-family: 'Nunito Bold';
+  text-align: center;
+  color: #512e8a;
+  margin-bottom: 3em;
+  font-size: 1.8em;
+}
+.ind-tag {    color: #512e8a;margin-right: 8px;
   margin-right: 8px;
   margin-top: 8px;
   border: 1px solid #bdbdbd;
   padding-left: 4px;
   padding-right: 4px;
   border-radius: 4px;
+  font-family: 'Nunito Regular';
   cursor: pointer;}
-
+  h1.cat-page-header span {
+    animation: none;
+    font-size: 1.8rem;
+    font-family: 'Nunito Bold';
+    text-transform: none;
+    max-width: 700px;
+    padding-top: 1em;
+    margin: 0;
+}
 .all-products-cont {display: flex;flex-wrap: wrap; opacity: 0;
   animation: .2s newput .1s forwards;}
 h1.cat-page-header {
   margin-top: 4em;
-  margin-top: 3.5em;
+  margin-top: 1.4em;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
     background-image: linear-gradient(90deg, rgba(238,9,28,0.7) 0%, rgba(194,10,81,.7) 100%), url(https://portal.revrevdev.xyz/wp-content/uploads/2022/06/shirtbg.jpg);
@@ -7010,7 +7059,7 @@ h1.cat-page-header {
 
 .mini-product-cont img {width: 90%;margin-left: 5%;     pointer-events: none;}
 
-.mini-title {font-size: 24px;font-family: 'Nunito Bold';pointer-events: none;}
+.mini-title {font-size: 24px;font-family: 'Nunito Bold';pointer-events: none;color: #512e8a;}
 .cart-btn-cont {display: flex;justify-content: space-evenly;}
 .mini-product-cont > div {
   pointer-events: none;

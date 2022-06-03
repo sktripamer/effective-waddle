@@ -7,6 +7,7 @@ import { useSpringCarousel } from 'react-spring-carousel-js'
 export default function HeroRender(props) {
 
     const goToProduct = (e) => {
+        console.log(e)
         console.log(e.target.dataset.idlink)
         navigate(e.target.dataset.idlink)
     }
@@ -67,7 +68,7 @@ const [windowWidth, setWindowWidth] = useState(2)
 
             id: `item-${index}`,
             renderItem: (
-              <div onClick={goToProduct} data-idlink={'shirts/' + i.node.slug} className='heroproduct-render'>
+              <div onClick={goToProduct} data-idlink={i.node.slug} className='heroproduct-render'>
 
                 <div style={Object.assign({'background': `url(${i.node.featuredImage.node.sourceUrl})` }, {'background-size': 'contain'}, {'background-repeat': 'no-repeat'}, {'background-position': 'center'})} className='heroproduct-img-cont'></div>
                 <div className='heroproduct-title'>{i.node.name}</div>

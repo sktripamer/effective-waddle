@@ -73,6 +73,12 @@ const restartAnimation = () => {
         restartAnimation()
     }
     console.log(pagedata)
+    const goToShop = () => {
+        navigate('/shop')
+    }
+    const goToHome = () => {
+        navigate('/')
+    }
     const changePage = (e) => {
         console.log(e)
         console.log(e.target.dataset.idlink)
@@ -83,7 +89,8 @@ const restartAnimation = () => {
         <Navbar />
         <div>
         <div class='breadcrumbs-cont'>
-                    <div class='bread-item'>Shop</div>
+                    <div onClick={goToHome} class='bread-item bread-home'>Home</div>
+                    <div onClick={goToShop} class='bread-item'>Shop</div>
                     <div class='bread-item bread-active'>Shirts</div>
                 </div>
             <h1 class='cat-page-header'>Revival of Revenue Shirts Collection<span>Show off your fresh Entrepreneurial fits in style with our exclusive shirts and hoodies.</span></h1>

@@ -82,15 +82,15 @@ const restartAnimation = () => {
         <Layout htmlClassName={"scroll"}>
         <Navbar />
         <div>
-            <h1 class='cat-page-header'>Revival of Revenue Shirts Collection</h1>
-            <h2 class='cat-page-subheader'>Show off your fresh Entrepreneurial fits in style with our exclusive shirts and hoodies.</h2>
-            <h2 class='featured-header'>Featured Shirts</h2>
-            <h4 class='featured-subheader'>Our top picks for entrepreneurs of all walks of life</h4>
-            <div class='cat-gallery-cont'>
-                <div class='breadcrumbs-cont'>
+        <div class='breadcrumbs-cont'>
                     <div class='bread-item'>Shop</div>
                     <div class='bread-item bread-active'>Shirts</div>
                 </div>
+            <h1 class='cat-page-header'>Revival of Revenue Shirts Collection<span>Show off your fresh Entrepreneurial fits in style with our exclusive shirts and hoodies.</span></h1>
+            <h2 class='featured-header'>Featured Shirts</h2>
+            <h4 class='featured-subheader'>Our top picks for entrepreneurs of all walks of life</h4>
+            <div class='cat-gallery-cont'>
+
             <HeroRender herodata={pagedata}/>
             </div>
 

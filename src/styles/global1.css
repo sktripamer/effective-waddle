@@ -128,8 +128,14 @@ h2 {
   line-height: 1.3;
 }
 h3 {
-  font-size: 1.5rem;
-  line-height: 1.4;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(#ee091c,#850b90);
+  font-family: Josefin Sans;
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  margin-top: 2em;
+  text-transform: uppercase;
 }
 h4 {
   font-size: 1.3rem;
@@ -2543,6 +2549,9 @@ html.scroll main {
 
 }
 @media (max-width: 1100px) {
+  div.heroproduct-title {
+    font-size: 1.3em;
+}
   html.scroll main>div:last-child{
     max-width: 800px;
   }
@@ -3209,6 +3218,7 @@ overflow-y: overlay;
 .heroproduct-price {
   font-family: Nunito Regular;
   font-size: 18px;
+  text-align: center;
 }
 
 h2.featured-header {
@@ -3218,19 +3228,31 @@ h2.featured-header {
   font-family: 'Josefin Sans';
   text-transform: uppercase;
   text-align: center;
-  font-size: 2em;
-  margin-top: 4em;
+  font-size: 2.6em;
+  margin-top: 3em;
   margin-bottom: 2em;
 }
 .heroproduct-cont {
   display: flex;
     flex-direction: row;
+    margin-left: -70px;
+    margin-right: -70px;
 }
 .heroproduct-render {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+.heroproduct-title {
+  font-family: 'Josefin Sans';
+  font-size: 1.6em;
+  text-align: center;
+  padding: 6px;
+}
+.mini-product-cont .rating-cont {
+  padding-bottom: 0.2em;
+}
+
 navbar {
 display: flex;
 justify-content: space-between;
@@ -3245,6 +3267,8 @@ color: white;
 opacity: 0;
 transform: translatey(-100px);
 transition: transform .3s cubic-bezier(.4,0,.2,1), opacity .15s linear .285s;
+max-width: 1300px;
+left: calc(calc(100% - 1300px) / 2);
 }
 navbar > navmain {
 box-shadow: 0 0 8px 4px rgb(0 0 0 / 20%);
@@ -6927,13 +6951,29 @@ padding-bottom: 1.5em;
   width: 100%;
   margin: 0 auto;}
   div[data-testid="use-spring-carousel-wrapper"] {
-    width: 60% !important;
+    width: 80%!important;
     margin-left: auto;
     margin-right: auto;
 }
-.tag-cont {display: flex;}
+.tag-cont {display: flex;
+  flex-wrap: wrap;}
+.t-shirts .ind-tag.tag-t-shirts {border-color: #000;border-width: 2px;font-weight: bold;}
+.all .ind-tag.tag-all {border-color: #000;border-width: 2px;font-weight: bold;}
+.hoodies .ind-tag.tag-hoodies {border-color: #000;border-width: 2px;font-weight: bold;}
+.tank-tops .ind-tag.tag-tanktops {border-color: #000;border-width: 2px;font-weight: bold;}
+.long-sleeves .ind-tag.tag-longsleeves {border-color: #000;border-width: 2px;font-weight: bold;}
+.polos .ind-tag.tag-polos {border-color: #000;border-width: 2px;font-weight: bold;}
+.mens .ind-tag.tag-mens {border-color: #000;border-width: 2px;font-weight: bold;}
+.womens .ind-tag.tag-womens {border-color: #000;border-width: 2px;font-weight: bold;}
 
-.ind-tag {margin-right: 8px;}
+.ind-tag {margin-right: 8px;
+  margin-right: 8px;
+  margin-top: 8px;
+  border: 1px solid #bdbdbd;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 4px;
+  cursor: pointer;}
 
 .all-products-cont {display: flex;flex-wrap: wrap; opacity: 0;
   animation: .2s newput .1s forwards;}
@@ -6952,10 +6992,10 @@ h1.cat-page-header {
     padding-left: 70px;
     padding-right: 70px;
     color: #fff;
-    font-size: 2.3em;
+    font-size: 2.8em;
 }
 
-.mini-product-cont {padding: 10px;width: 33.33%;    cursor: pointer;}
+.mini-product-cont {padding: 10px;width: 33.33%;    cursor: pointer;margin-bottom: 1.4em;}
 
 .you-might-like-cont {display: flex;justify-content: space-between;margin-top: 5em;margin-bottom: 5em;}
 

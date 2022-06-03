@@ -5,6 +5,7 @@ import DOMPurify from 'dompurify';
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import ProductLister from "../components/ProductLister";
+
 import HeroRender from "../components/HeroRender";
 import StarRating from '../components/StarRating';
 import ImageGallery from 'react-image-gallery';
@@ -26,7 +27,6 @@ function slugify(text) {
       .replace(/\-\-+/g, '-')
       .concat(' ');        
   }
-
 
 const hatsCat = ( props ) => {
     const { pageContext: { pagedata } } = props;
@@ -83,12 +83,19 @@ const restartAnimation = () => {
         <Navbar />
         <div>
             <h1 class='cat-page-header'>Revival of Revenue Shirts Collection</h1>
+            <h2 class='cat-page-subheader'>Show off your fresh Entrepreneurial fits in style with our exclusive shirts and hoodies.</h2>
             <h2 class='featured-header'>Featured Shirts</h2>
+            <h4 class='featured-subheader'>Our top picks for entrepreneurs of all walks of life</h4>
             <div class='cat-gallery-cont'>
+                <div class='breadcrumbs-cont'>
+                    <div class='bread-item'>Shop</div>
+                    <div class='bread-item bread-active'>Shirts</div>
+                </div>
             <HeroRender herodata={pagedata}/>
             </div>
 
             <h3>All shirts</h3>
+            <h4 class='all-subheader'>Browse all of our shirts to find the one for you</h4>
             <div class={`all-shirts-cont ${activeTag}`}>
                 <div class={`tag-cont ${activeTag.replace("'", '').replace(' ', '')}`}>
                     <div onClick={onClick1} class='ind-tag tag-all'>All</div><div onClick={onClick2} class='ind-tag tag-t-shirts'>T-shirts</div><div onClick={onClick3} class='ind-tag tag-hoodies'>Hoodies</div><div onClick={onClick4} class='ind-tag tag-tanktops'>Tank Tops</div><div onClick={onClick5} class='ind-tag tag-longsleeves'>Long Sleeves</div><div onClick={onClick6} class='ind-tag tag-polos'>Polos</div><div onClick={onClick7} class='ind-tag tag-mens'>Men's</div><div onClick={onClick8} class='ind-tag tag-womens'>Women's</div>

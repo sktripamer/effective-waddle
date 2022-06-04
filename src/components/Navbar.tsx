@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import SearchSystem from '../components/SearchSystem';
+import { navigate } from 'gatsby';
 
 export default function Navbar(props) {
   const { loggedIn, loading } = useAuth();
@@ -211,8 +212,26 @@ export default function Navbar(props) {
 
      <div className="navbar-holder">
       <ul>
-        <li onClick={() => setLoadSearch(true)}>Search</li>
-    <a class='dropdown'>Cart
+        <li onClick={() =>navigate('/')}>Home</li>
+        <a class='dropdown'>Get Started
+      <div class="link-dropdown active2 drop-get-started">
+      <div>aa</div>
+    </div></a>
+    <a class='dropdown'>Shop
+      <div class="link-dropdown active2 drop-shop">
+      <div>aa</div>
+    </div></a>
+    <a class='dropdown'>Enroll
+      <div class="link-dropdown active2 drop-enroll">
+      <div>aa</div>
+    </div></a>
+    <a class='dropdown'>Resources
+      <div class="link-dropdown active2 drop-resources">
+      <div>aa</div>
+    </div></a>
+    <li onClick={() =>navigate('/account')}>A</li>
+        <li onClick={() => setLoadSearch(true)}>S</li>
+    <a class='dropdown'>C
       <div class="link-dropdown active2 cart-drop">
       <div>{localStorageSetHandler()}</div>
     </div></a>

@@ -2587,9 +2587,9 @@ html.scroll main {
 html body main navbar {
   left:0;
 }
-.bread-item.bread-home {
-  font-size:1px;
-  color:#fff;
+div.bread-home {
+  font-size: 0;
+ 
 }
 div.heroproduct-cont {
   margin-left: -20px;

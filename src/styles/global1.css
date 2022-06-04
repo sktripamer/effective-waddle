@@ -2566,7 +2566,10 @@ html.scroll main {
   transform: translate(0, -50%);
   top: 50%;
 }
+div.bread-home {
+  font-size: 0;
 
+}
 @media (max-width: 800px) {
   div.navbar-title {
     left: 50%;
@@ -2587,10 +2590,7 @@ html.scroll main {
 html body main navbar {
   left:0;
 }
-div.bread-home {
-  font-size: 0;
- 
-}
+
 div.heroproduct-cont {
   margin-left: -20px;
   margin-right: -20px;

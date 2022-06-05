@@ -239,7 +239,7 @@ const resizeHandler = () => {
         <li onClick={() => setLoadSearch(true)}>S</li>
     <a class='dropdown'>C
       <div class="link-dropdown active2 cart-drop">
-      <div>{localStorageSetHandler()}</div>
+      <div></div>
     </div></a>
 
 

@@ -209,7 +209,43 @@ const resizeHandler = () => {
      <div><input onChange={e => handleChange(e)} type="checkbox" />
      <span class='hm-1'></span>
      <span class='hm-2'></span>
-     <span class='hm-2'></span></div></navbar>
+     <span class='hm-2'></span></div>
+     <div className="navbar-title">
+     <ul>
+        <li>Shop</li>
+        </ul>
+     </div>
+
+     <div className="navbar-holder">
+      <ul>
+        <li onClick={() =>navigate('/')}>Home</li>
+        <a class='dropdown down-get-started'>Get Started
+      <div style={Object.assign({'left': `-${getStarted}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-get-started">
+      <div>aa</div>
+    </div></a>
+    <a class='dropdown'>Shop
+      <div class="link-dropdown active2 drop-shop">
+      <div>aa</div>
+    </div></a>
+    <a class='dropdown'>Enroll
+      <div class="link-dropdown active2 drop-enroll">
+      <div>aa</div>
+    </div></a>
+    <a class='dropdown'>Resources
+      <div class="link-dropdown active2 drop-resources">
+      <div>aa</div>
+    </div></a>
+    <li onClick={() =>navigate('/account')}>A</li>
+        <li onClick={() => setLoadSearch(true)}>S</li>
+    <a class='dropdown'>C
+      <div class="link-dropdown active2 cart-drop">
+      <div>{localStorageSetHandler()}</div>
+    </div></a>
+
+
+      </ul>
+      </div>
+     </navbar>
      ) : (
       <navbar class="active">
         {sideNav()}

@@ -10,6 +10,8 @@ export default function Navbar(props) {
   const [cartRender, setCartRender] = useState(true);
   const [hamburger, setHamburger] = useState(false)
   const [loadSearch, setLoadSearch] = useState(false)
+  const [getStarted, setGetStarted] = useState(0)
+  const [navbarWidth, setNavbarWidth] = useState(0)
   const localStorageSetHandler = () => {
 
     let tempCart = function() {
@@ -159,10 +161,19 @@ export default function Navbar(props) {
     
     offsetY = window.pageYOffset > 100 ? window.pageYOffset : 100
   }
+
+const resizeHandler = () => {
+  setNavbarWidth(document.querySelector('navbar').getBoundingClientRect().width)
+  const navWidth = document.querySelector('navbar').getBoundingClientRect().width;
+  setGetStarted(document.getElementsByClassName('down-get-started')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
+}
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroller, { passive: true });
+    window.addEventListener('resize', resizeHandler);
       return () => {
        window.removeEventListener('scroll', handleScroller);
+       window.removeEventListener('resize', resizeHandler);
       };
   }, []);
   const handleChange = (e) => {
@@ -173,7 +184,9 @@ export default function Navbar(props) {
     // const localStorageSetHandler = function(e) {
     //   console.log(localStorage.getItem('cart'))
     // };
-    
+    setNavbarWidth(document.querySelector('navbar').getBoundingClientRect().width)
+    const navWidth = document.querySelector('navbar').getBoundingClientRect().width;
+  setGetStarted(document.getElementsByClassName('down-get-started')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
     document.addEventListener("itemInserted", localStorageSetHandler, false);
   }, []);
   return (
@@ -213,8 +226,8 @@ export default function Navbar(props) {
      <div className="navbar-holder">
       <ul>
         <li onClick={() =>navigate('/')}>Home</li>
-        <a class='dropdown'>Get Started
-      <div class="link-dropdown active2 drop-get-started">
+        <a class='dropdown down-get-started'>Get Started
+      <div style={Object.assign({'left': `-${getStarted}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-get-started">
       <div>aa</div>
     </div></a>
     <a class='dropdown'>Shop

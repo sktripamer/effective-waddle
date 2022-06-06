@@ -11,6 +11,9 @@ export default function Navbar(props) {
   const [hamburger, setHamburger] = useState(false)
   const [loadSearch, setLoadSearch] = useState(false)
   const [getStarted, setGetStarted] = useState(0)
+  const [shop, setShop] = useState(0)
+  const [enroll, setEnroll] = useState(0)
+  const [resources, setResources] = useState(0)
   const [navbarWidth, setNavbarWidth] = useState(0)
   const localStorageSetHandler = () => {
 
@@ -166,6 +169,9 @@ const resizeHandler = () => {
   setNavbarWidth(document.querySelector('navbar').getBoundingClientRect().width)
   const navWidth = document.querySelector('navbar').getBoundingClientRect().width;
   setGetStarted(document.getElementsByClassName('down-get-started')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
+  setShop(document.getElementsByClassName('down-shop')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
+  setEnroll(document.getElementsByClassName('down-enroll')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
+  setResources(document.getElementsByClassName('down-resources')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
 }
 
   useEffect(() => {
@@ -187,6 +193,9 @@ const resizeHandler = () => {
     setNavbarWidth(document.querySelector('navbar').getBoundingClientRect().width)
     const navWidth = document.querySelector('navbar').getBoundingClientRect().width;
   setGetStarted(document.getElementsByClassName('down-get-started')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
+  setShop(document.getElementsByClassName('down-shop')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
+  setEnroll(document.getElementsByClassName('down-enroll')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
+  setResources(document.getElementsByClassName('down-resources')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
     document.addEventListener("itemInserted", localStorageSetHandler, false);
   }, []);
   return (
@@ -223,15 +232,15 @@ const resizeHandler = () => {
       <div style={Object.assign({'left': `-${getStarted}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-get-started">
       <div>aa</div>
     </div></a>
-    <a class='dropdown'>Shop
+    <a class='dropdown down-shop'>Shop
       <div class="link-dropdown active2 drop-shop">
       <div>aa</div>
     </div></a>
-    <a class='dropdown'>Enroll
+    <a class='dropdown down-enroll'>Enroll
       <div class="link-dropdown active2 drop-enroll">
       <div>aa</div>
     </div></a>
-    <a class='dropdown'>Resources
+    <a class='dropdown down-resources'>Resources
       <div class="link-dropdown active2 drop-resources">
       <div>aa</div>
     </div></a>
@@ -266,16 +275,16 @@ const resizeHandler = () => {
       <div style={Object.assign({'left': `-${getStarted}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-get-started">
       <div>aa</div>
     </div></a>
-    <a class='dropdown'>Shop
-      <div class="link-dropdown active2 drop-shop">
+    <a class='dropdown down-shop'>Shop
+      <div style={Object.assign({'left': `-${shop}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-shop">
       <div>aa</div>
     </div></a>
-    <a class='dropdown'>Enroll
-      <div class="link-dropdown active2 drop-enroll">
+    <a class='dropdown down-enroll'>Enroll
+      <div style={Object.assign({'left': `-${enroll}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-enroll">
       <div>aa</div>
     </div></a>
-    <a class='dropdown'>Resources
-      <div class="link-dropdown active2 drop-resources">
+    <a class='dropdown down-resources'>Resources
+      <div style={Object.assign({'left': `-${resources}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-resources">
       <div>aa</div>
     </div></a>
     <li onClick={() =>navigate('/account')}>A</li>

@@ -273,7 +273,32 @@ const resizeHandler = () => {
         <li onClick={() =>navigate('/')}>Home</li>
         <a class='dropdown down-get-started'>Get Started
       <div style={Object.assign({'left': `-${getStarted}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-get-started">
-      <div>aa</div>
+      <div class='navcont-cont'>
+        <div class='navcont-50'>
+          <div class='navitem-50'>
+            <div class='navitem-text'>RevRev Starter Kit</div>
+            <img src={'/place.jpg'}/>
+          </div>
+          <div class='navitem-50'>
+            <div class='navitem-text'>The TM5 Matrix Course</div>
+            <img src={'/place.jpg'}/>
+          </div>
+          <div class='navitem-50'>
+            <div class='navitem-text'>The Exodus Workshop</div>
+            <img src={'/place.jpg'}/>
+          </div>
+          <div class='navitem-50'>
+            <div class='navitem-text'>Ask PK Consultation</div>
+            <img src={'/place.jpg'}/>
+          </div>
+        </div>
+        <div class='navcont-50'>
+        <div class='navitem-100'>
+            <div class='navitem-text'>Entrepreneurial Espresso Challenge</div>
+            <img src={'/place.jpg'}/>
+          </div>
+        </div>
+      </div>
     </div></a>
     <a class='dropdown down-shop'>Shop
       <div style={Object.assign({'left': `-${shop}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-shop">

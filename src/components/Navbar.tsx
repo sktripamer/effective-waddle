@@ -276,26 +276,36 @@ const resizeHandler = () => {
       <div class='navcont-cont'>
         <div class='navcont-50'>
           <div class='navitem-50'>
+            <div class='navitemind'>
             <div class='navitem-text'>RevRev Starter Kit</div>
             <img src={'/place.jpg'}/>
+            </div>
           </div>
           <div class='navitem-50'>
+          <div class='navitemind'>
             <div class='navitem-text'>The TM5 Matrix Course</div>
             <img src={'/place.jpg'}/>
+            </div>
           </div>
           <div class='navitem-50'>
+          <div class='navitemind'>
             <div class='navitem-text'>The Exodus Workshop</div>
             <img src={'/place.jpg'}/>
+            </div>
           </div>
           <div class='navitem-50'>
+          <div class='navitemind'>
             <div class='navitem-text'>Ask PK Consultation</div>
             <img src={'/place.jpg'}/>
+            </div>
           </div>
         </div>
         <div class='navcont-50'>
         <div class='navitem-100'>
+        <div class='navitemind'>
             <div class='navitem-text'>Entrepreneurial Espresso Challenge</div>
             <img src={'/place.jpg'}/>
+            </div>
           </div>
         </div>
       </div>

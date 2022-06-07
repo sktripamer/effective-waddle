@@ -7349,20 +7349,20 @@ padding-bottom: 3em;
 .search-bar-title {
 border-top-left-radius: 5px;
 border-top-right-radius: 5px;
-display: flex;
-justify-content: space-between;
-background-image: linear-gradient(332deg,rgba(20,20,184,1),rgba(101,0,173,1) 31%,rgba(142,0,158,1) 48%,rgba(173,0,144,1) 60%,rgba(194,0,126,1) 71%,rgba(214,0,107,1) 80%,rgba(224,0,90,1) 87%,rgba(235,0,70,1) 93%,rgba(240,0,52,1) 97%,rgba(241,30,37,1));
+
+background: linear-gradient(183deg,#ff1d2d,#c41a72);
 }
 input#header-search {
 width: 90%;
 margin: 0 auto;
 display: block;
 background: linear-gradient(302deg,rgba(255,255,255,.12),rgba(255,255,255,0));
-border: 3px solid #bd9bd4;
+border: 3px solid #e71c49;
 border-radius: 0;
 color: #393939;
 flex: none;
-height: 38px;
+height: 2.3em;
+font-size: 1.2em;
 margin-bottom: 4px;
 padding: 0 10px;
 }
@@ -7373,6 +7373,7 @@ font-family: "Nunito Bold";
 margin-top: 6px;
 margin-bottom: 6px;
 color: #fff;
+text-align: center;
 }
 
 .search-bar-close {
@@ -7382,6 +7383,9 @@ padding: 6px;
 padding-left: 20px;
 padding-right: 20px;
 color: #fff;
+position: absolute;
+    top: 0;
+    right: 0;
 }
 .search-btn-container.search-true {
 backdrop-filter: blur(3px) brightness(.5) contrast(110%);
@@ -7398,12 +7402,12 @@ align-items: flex-start;
 display: flex;
 flex-direction: column;
 width: 80%;
-max-width: 800px;
+max-width: 600px;
 height: fit-content;
 margin: 0 auto;
 border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-margin-top: 20%;
+margin-top: 10%;
 }
 .search-section-results> p {
 margin-top: -30px;

@@ -256,7 +256,7 @@ const resizeHandler = () => {
       </div>
      </navbar>
      ) : (
-      <navbar class="active">
+      <navbar onMouseEnter={resizeHandler} class="active">
         {sideNav()}
         <div><input onChange={e => handleChange(e)} type="checkbox" />
      <span class='hm-1'></span>

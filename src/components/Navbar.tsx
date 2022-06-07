@@ -221,7 +221,7 @@ const resizeHandler = () => {
      <span class='hm-2'></span></div>
      <div className="navbar-title">
      <ul>
-        <li>Shop</li>
+     <li>REVIVAL<em>OF</em><em>REVENUE</em></li>
         </ul>
      </div>
 

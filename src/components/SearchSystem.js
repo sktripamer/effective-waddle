@@ -1,9 +1,9 @@
 import React from 'react';
 import SearchBar from '../components/search';
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, navigate } from "gatsby"
 import { useState } from "react";
 import { useFlexSearch } from 'react-use-flexsearch';
-import { navigate } from "gatsby";
+
 
 const Header = ({
     data: {

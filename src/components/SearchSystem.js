@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from '../components/search';
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, navigate } from "gatsby"
 import { useState } from "react";
 import { useFlexSearch } from 'react-use-flexsearch';
 
@@ -40,11 +40,15 @@ const Header = ({
 
             (
                 <div className='search-section-results'>
-                {posts.map(post => (
-                <>
-                   <div>{post.name}</div>
-                   <div>{post.slug}</div>
-                   </>
+                               {posts.map(post => (
+                <div onClick={() => navigate(post.slug)} class='search-item-cont'>
+                  <img class='search-item-img' src={post.image}/>
+                  <div class='search-item-content-cont'>
+                    <div class='search-item-name'>{post.name}</div>
+                    <div class='search-item-price'>{post.price}</div>
+                  </div>
+                   
+                   </div>
               ))}
                </div>
             )
@@ -52,12 +56,7 @@ const Header = ({
             
             }
 
-              {posts.map(post => (
-                <>
-                   <div>{post.name}</div>
-                   <div>{post.slug}</div>
-                   </>
-              ))}
+             
           </div>
       );
 

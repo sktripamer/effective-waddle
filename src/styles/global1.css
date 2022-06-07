@@ -2572,14 +2572,14 @@ div.bread-home {
 
 }
 @media (max-width: 800px) {
-  .navbar-home {display: none;}
-  a.down-get-started {display: none;}
+  main .navbar-home {display: none;}
+  main a.down-get-started {display: none;}
 
-  a.down-shop {display: none;}
+  main a.down-shop {display: none;}
   
-  a.down-enroll {display: none;}
+  main a.down-enroll {display: none;}
   
-  a.down-resources {display: none;}
+  main a.down-resources {display: none;}
   
   
   main div.navbar-title {
@@ -3454,7 +3454,7 @@ a.dropdown {
   font-family: 'Nunito Bold';
 position: relative;
 display:block;
-line-height:50px;
+line-height: 64px;
 cursor: pointer;
 padding-left: 0.4em;
     padding-right: 0.4em;

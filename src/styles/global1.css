@@ -3469,6 +3469,27 @@ box-shadow: inset -12px -12px 30px 5px rgb(201 7 81), inset 12px 12px 30px 5px r
 
 }
 
+.navcont-50 {width: 50%;display: flex;flex-wrap: wrap;margin-top: 1.5em;}
+
+.navcont-cont {display: flex;}
+
+.navitem-50 {width: 50%;padding-left: 1em;padding-right: .5em;}
+
+.navitemind > img {background-size: cover;max-width: 100%;}
+
+.navitem-100 {width: 100%;padding-bottom: 2.8em;padding-right: 1.5em;}
+
+.navitem-100 > img {max-width: 100%;}
+
+.navitem-text {position: absolute;z-index: 2;top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);text-align: center;}
+
+.navcont-50 > .navitem-50:nth-of-type(2n) {padding-right: 1em;padding-left: .5em;}
+
+.navcont-50 > .navitem-50:nth-of-type(1n+3) {margin-top: -1.3em;}
+
+
 .link-dropdown label {
 cursor: pointer;
 padding: 1em 2em;

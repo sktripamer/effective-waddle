@@ -277,25 +277,25 @@ const resizeHandler = () => {
         <div class='navcont-50'>
           <div class='navitem-50'>
             <div class='navitemind'>
-            <div class='navitem-text'>RevRev Starter Kit</div>
+            <div class='navitem-text'><span>RevRev </span><span>Starter </span><span>Kit</span></div>
             <img src={'/place.jpg'}/>
             </div>
           </div>
           <div class='navitem-50'>
           <div class='navitemind'>
-            <div class='navitem-text'>The TM5 Matrix Course</div>
+            <div class='navitem-text'><span>The </span><span>TM5 </span><span>Matrix </span><span>Course</span></div>
             <img src={'/place.jpg'}/>
             </div>
           </div>
           <div class='navitem-50'>
           <div class='navitemind'>
-            <div class='navitem-text'>The Exodus Workshop</div>
+            <div class='navitem-text'><span>The </span><span>Exodus </span><span>Workshop</span></div>
             <img src={'/place.jpg'}/>
             </div>
           </div>
           <div class='navitem-50'>
           <div class='navitemind'>
-            <div class='navitem-text'>Ask PK Consultation</div>
+            <div class='navitem-text'><span>Ask </span><span>PK </span><span>Consultation</span></div>
             <img src={'/place.jpg'}/>
             </div>
           </div>
@@ -303,7 +303,7 @@ const resizeHandler = () => {
         <div class='navcont-50'>
         <div class='navitem-100'>
         <div class='navitemind'>
-            <div class='navitem-text'>Entrepreneurial Espresso Challenge</div>
+            <div class='navitem-text'><span>Entrepreneurial </span><span>Espresso </span><span>Challenge</span></div>
             <img src={'/place.jpg'}/>
             </div>
           </div>

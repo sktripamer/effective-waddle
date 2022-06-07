@@ -264,13 +264,13 @@ const resizeHandler = () => {
      <span class='hm-3'></span></div>
      <div className="navbar-title">
      <ul>
-        <li>Shop</li>
+     <li>REVIVAL<em>OF</em><em>REVENUE</em></li>
         </ul>
      </div>
 
      <div className="navbar-holder">
       <ul>
-        <li onClick={() =>navigate('/')}>Home</li>
+        <li className="navbar-home" onClick={() =>navigate('/')}>Home</li>
         <a class='dropdown down-get-started'>Get Started
       <div style={Object.assign({'left': `-${getStarted}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-get-started">
       <div class='navcont-cont'>

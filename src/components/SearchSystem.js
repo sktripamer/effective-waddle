@@ -51,6 +51,13 @@ const Header = ({
             
             
             }
+
+              {posts.map(post => (
+                <>
+                   <div>{post.name}</div>
+                   <div>{post.slug}</div>
+                   </>
+              ))}
           </div>
       );
 

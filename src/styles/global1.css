@@ -3454,11 +3454,16 @@ a.dropdown:hover {
 }
 a.dropdown:hover .active2 {
 display: block;
+animation: newput .2s forwards;
 }
 
-.active2 { display: none; }
-
+.active2 { display: none;
+  opacity: 0; }
+.navitemind:hover>img {
+  transform: scale(1.1);
+}
 .link-dropdown {
+  cursor: default;
 position: absolute;
 color: #bbbbbb;
 top: 50px;
@@ -3469,13 +3474,54 @@ box-shadow: inset -12px -12px 30px 5px rgb(201 7 81), inset 12px 12px 30px 5px r
 
 }
 
+.navitemind:hover .navitem-text span {
+  background-image: linear-gradient(#fff,#afafaf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.navitemind:hover .navitem-text {
+  transform: translate(-50%,-50%) scale(1.05);
+}
+.navitem-text span {
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(#ee091c,#850b90);
+  -webkit-background-clip: text;
+  background: unset;
+  border-radius: unset;
+  height: unset;
+  position: unset;
+  transform-origin: unset;
+  transition: unset;
+  width: unset;
+  margin-bottom: unset;
+  z-index: unset;
+  font-family: 'Josefin Sans';
+  font-size: 1.3em;
+  display: inline-block;
+  margin-left: unset;
+}
+
+.navitemind:hover .navitem-text span {
+  background-image: linear-gradient(#fff,#afafaf);
+} 
+.navitemind:after {content: '';width: 100%;height: 100%;position: absolute;left: 0;top: 0;    background-image: linear-gradient(181deg,rgb(249 249 249 / 54%),rgb(255 255 255 / 70%));}
+.navitem-text span {-webkit-text-fill-color: transparent;
+  background-image: linear-gradient(#ee091c,#850b90);
+  -webkit-background-clip: text;}
+
+.navitemind:hover::after {background-image: linear-gradient(#ee0947c2,#510b90bd);}
+
+.navitemind {
+  overflow: hidden;
+  cursor: pointer;
+}
 .navcont-50 {width: 50%;display: flex;flex-wrap: wrap;margin-top: 1.5em;}
 
 .navcont-cont {display: flex;}
 
 .navitem-50 {width: 50%;padding-left: 1em;padding-right: .5em;}
 
-.navitemind > img {background-size: cover;max-width: 100%;}
+.navitemind > img {background-size: cover;max-width: 100%;transition: .2s all; filter: grayscale(0.7);}
 
 .navitem-100 {width: 100%;padding-bottom: 2.8em;padding-right: 1.5em;}
 
@@ -3483,7 +3529,7 @@ box-shadow: inset -12px -12px 30px 5px rgb(201 7 81), inset 12px 12px 30px 5px r
 
 .navitem-text {position: absolute;z-index: 2;top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);text-align: center;}
+  transform: translate(-50%, -50%);text-align: center;    transition: .2s all;}
 
 .navcont-50 > .navitem-50:nth-of-type(2n) {padding-right: 1em;padding-left: .5em;}
 

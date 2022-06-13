@@ -4020,7 +4020,7 @@ pointer-events: none;
 
 .seam-paper-render {
   background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/cutout.jpg);
-  padding-top: 26.3%;
+  padding-top: 25.9%;
   background-size: contain;
 }
 .book-render.rdmr {
@@ -4031,6 +4031,8 @@ pointer-events: none;
   background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/heromockup.png);
   padding-top: 26.3%;
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 
@@ -4038,6 +4040,8 @@ pointer-events: none;
   background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/hello.jpg);
   padding-top: 26.3%;
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 div#say-hello-container {

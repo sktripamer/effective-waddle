@@ -4029,10 +4029,14 @@ pointer-events: none;
 
 .hero-render-all {
   background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/heromockup.png);
-  padding-top: 26.3%;
-  background-size: contain;
+  background-position: 50%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-size: contain;
+  padding-top: 53.3%;
+  margin-top: -120px;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 

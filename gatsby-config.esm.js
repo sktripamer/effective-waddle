@@ -55,7 +55,7 @@ module.exports = {
           Customer: {
             exclude: true,
           },
-          Taxonomies: {
+          Taxonomy: {
             exclude: true,
           },
         },

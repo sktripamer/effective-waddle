@@ -2723,7 +2723,7 @@ useEffect(() => {
 </div>
 <div class='rest-of-hero-content'>
 
-
+    <div class="hero-render-all"></div>
 
     <h2 className="white-sh">Entrepreneurs are more likely to succeed when they follow a proven system. 
 Today, the system is broken, and the Great Resignation is underway. 
@@ -2770,9 +2770,9 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
     <div class="say-hello-bg"></div>
   </div> */}
 <div class='rest-of-content'>
-{isBrowser && (<Suspense fallback={<div></div>}>
+{/* {isBrowser && (<Suspense fallback={<div></div>}>
 				<TypeText />
-</Suspense>)}
+</Suspense>)} */}
 
   {isBrowser && (<Suspense fallback={<div></div>}>
 				<SayHello />
@@ -2786,7 +2786,10 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 
   <div class='three-icons-container'>
   <div class='seam-paper-1'></div>
-  <div class='three-icons-content'>
+  <div class='seam-paper-render'></div>
+
+
+  {/* <div class='three-icons-content'>
     <div class='white-super-h'>Anyone can experience your Revival of Revenue</div>
     <h2 class='white-sh-l'>You can start building on your goals today</h2>
     <div class='icons-container'>
@@ -2803,7 +2806,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
         <div class='icon-section-text'>Bring value to yourself and those around you</div>
       </div>
     </div>
-  </div>
+  </div> */}
   <div class='seam-paper-2'></div>
   </div>
 
@@ -2836,12 +2839,13 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
   <li>Win Your Work to Wealth - <span>You Work Everyday. You Just Don’t Know How to Achieve Profitability &amp; Acquire Wealth.</span></li>
   </ol>
   </p>
+  <div class="mockup-more"></div>  
   <p>The majority of entrepreneurial speakers, books, and courses teach simple principles of business. While these principles lead to success, they are often too general to help you start a business.<strong> You don’t need to listen to business principles on podcasts for years waiting to get started.</strong> That’s too general. Even more importantly, that’s too slow.</p>
   <p>As a result, you may turn to business gurus. But business gurus may be too specific for your ultimate end goal. Business gurus specialize in business specialties. Think of each specialty like a silo. You go deep, but you probably go too deep. At least for a start up. What they train is singular in nature. One. Thing. At. A. Time. When you are starting a business, you don’t need to learn everything about one thing right now. That’s too much information on one topic. You will likely be faced with a bunch of different types of problems all at once, the so all you need is help knocking out key obstacles in your entrepreneurial journey.</p>
   <p>Remember why you started your entrepreneurial journey. <strong>You are on a mission to start creating, and since you hope to own and control what you create, you need a business.</strong> You are not on a mission to become a business motivational speaker or a business guru. You simply want to become a business. Where should someone like you start learning?</p>
   <p>Great question! The entrepreneurial journey feels like a fractured system of hundreds of business parts that don’t fit together. At least not at first. Each part makes up the entrepreneurial engine, and that engine powers your car, which we call your business. Unless you know what part you need, where to find each part, and how to install each part, you are out of luck. Your business is going nowhere soon. You need a mechanic for your car the same way you need a Revival of Revenue for your business. If you ever hope to get out of the world of ideas—if you decide to drive your business on the highways of revenue—you need a way to bring the business parts together to create a business engine.</p>
   <p>You need all the information in one place. <strong>I call these Revenue Maps.</strong></p> 
-  <div class="mockup-more"></div>  
+
   <p>Imagine a map that showed you every step of the entrepreneurial journey, and gave you answers to the questions that you actually need answered on a daily basis, such as, “What do I do first? Where do I go to find solutions? How much does each issue cost to solve? Who can help me each step of the way? When can I start testing my ideas? Why am I starting my business? Who am I in business to help?”</p>
   <p>You need a Revenue Map the same way every driver needs a car manual. How do you start a business that is safe to rev up? What if you hope to drive your car fast, pedal to the metal, pushing RPMs and higher speeds as your business grows? Regardless of whether you already have entrepreneurial exposure or no business experience, the entrepreneurial journey is confusing and vulnerable to failure, error, and loss for anyone. Experienced entrepreneurs need help. Inexperienced entrepreneurials need twice the help. That’s why Revenue Maps help you navigate the gauntlet of challenges of starting a business.</p>
   <p>Each Revenue Map tackles a highly specific problem that you will likely face somewhere along your entrepreneurial journey. In fact, that’s why we design Revenue Maps for each step and most problems entrepreneurials face. <strong>All you need to do is follow.</strong> By following each Revenue Map, your entrepreneurial journey will finally be ready-to-go, easy-to-follow, and not confusing. Not impossible. The goal of each Revenue Map is quite simple:</p>
@@ -2892,6 +2896,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 
         </ol>
 </p>
+<div class="book-render rdmr"></div>
 <div class="read-more-section-cta">Begin your Revival of Revenue today!</div>
 <div onClick={preReveal} class="y-preorderbtn">Pre-Order My Copy Now!</div>
 <div onClick={setReadLess} class='click-to-read-less'>Read Less</div> 

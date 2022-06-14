@@ -2956,8 +2956,8 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
   </div>
   <div class="book-inside">
   <div class='modal-book-cont'>
-   <div onClick={preRevealBook2} class="y-preorderbtnsmall">Pre-Order My Copy Now!</div>
-    </div>
+    <div onClick={preRevealBook2} class="y-preorderbtnsmall">Pre-Order My Copy Now!</div>
+
   </div>
   </div>
 </div>

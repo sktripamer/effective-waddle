@@ -4032,9 +4032,9 @@ pointer-events: none;
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: contain;
-  padding-top: 53.3%;
-  margin-top: -120px;
-  max-width: 1300px;
+  padding-top: 40.3%;
+  margin-top: -60px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -6123,7 +6123,7 @@ transition: all .5s ease;
   left: 0;
   transition: all .2s;
   width: 100vw;
-  height: 100vh;
+  height: 103vh;
   top: 0;
   background: rgb(0 0 0/50%);
   opacity: 0;
@@ -6247,7 +6247,9 @@ width: 70%;
 }
 
 .book-inside{
-background: #fefefe;
+  background: url(https://portal.revrevdev.xyz/wp-content/uploads/page.jpg);
+  background-position: center;
+  background-size: contain;
 border: 1px solid #930202;
 border-radius: 3px;
 box-shadow: 10px 40px 40px -10px #00000030, inset -2px 0 0 #930202, inset -3px 0 0 #dbdbdb, inset -4px 0 0 #fefefe, inset -5px 0 0 #dbdbdb, inset -6px 0 0 #fefefe, inset -7px 0 0 #dbdbdb, inset -8px 0 0 #fefefe, inset -9px 0 0 #dbdbdb;
@@ -6255,7 +6257,7 @@ height: 96%;
 position: relative;
 top: 2%;
 width: calc(100% - 2px);
-background-color: #fefefe;
+
 }
 @keyframes bellshake {
 0% {

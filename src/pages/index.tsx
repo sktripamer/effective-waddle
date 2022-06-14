@@ -1669,7 +1669,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
         setArchtypeClick(true)
       }
       const [book2, setBook2] = useState('idle')
-      const [book2Scale, setBook2Scale] = useState(1);
+      const [book2Scale, setBook2Scale] = useState(.25);
       function scrollToSmoothly(pos, time) {
         var currentPos = window.pageYOffset;
         var start = null;
@@ -1703,10 +1703,10 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
                 setBook2('open')
           if (window.innerHeight / window.innerWidth <= 1.555) {
             //height is bottleneck
-            setBook2Scale((window.innerHeight * .9) / 350)
+            setBook2Scale(((window.innerHeight * .9) / 350) / 4)
         } else {
           //width is bottleneck
-          setBook2Scale((window.innerWidth * .9) / 225)
+          setBook2Scale(((window.innerWidth * .9) / 225) / 4)
         }
         }, 200);
         return () => clearTimeout(timer);
@@ -1723,7 +1723,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
       }
 
       const closeBook = () => {
-        setBook2Scale(1)
+        setBook2Scale(.25)
         setBook2('idle')
         document.getElementsByTagName( 'html' )[0].classList.remove('noover')
         document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
@@ -1733,12 +1733,12 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
         console.log(e.target)
         if (book2 !== 'open') return;
         if (document.getElementsByClassName('y-preorderbtnsmall')[0] === event.target) {
-          setBook2Scale(1)
+          setBook2Scale(.25)
           setBook2('idle')
           return;
         }
         if(document.getElementsByClassName('peek-inner-cont')[0] !== event.target) return;
-        setBook2Scale(1)
+        setBook2Scale(.25)
         setBook2('idle')
         document.getElementsByTagName( 'html' )[0].classList.remove('noover')
         document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
@@ -1747,7 +1747,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
         if (book2 !== 'open') return;
         document.getElementsByTagName( 'html' )[0].classList.remove('noover')
         document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
-        setBook2Scale(1)
+        setBook2Scale(.25)
         setBook2('idle')
       }
       // idle state: bellshake animation, slight open book animation

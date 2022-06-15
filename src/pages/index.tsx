@@ -2723,7 +2723,15 @@ useEffect(() => {
 </div>
 <div class='rest-of-hero-content'>
 
-    <div class="hero-render-all"></div>
+    <div class="hero-render-all">
+
+      <div class='hero-render-content'>
+        <div class='hero-render-title'>Preorder your copy of PK's Book Now!</div>
+        <div onClick={preReveal} class="y-preorderbtn">Pre-Order My Copy Now!</div>
+      </div>
+
+
+    </div>
 
     <h2 className="white-sh">Entrepreneurs are more likely to succeed when they follow a proven system. 
 Today, the system is broken, and the Great Resignation is underway. 
@@ -2956,7 +2964,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
   </div>
   <div class="book-inside">
   <div class='modal-book-cont'>
-    <div onClick={preRevealBook2} class="y-preorderbtnsmall">Pre-Order My Copy Now!</div>
+    <div onClick={preRevealBook2} class="y-preorderbtn">Pre-Order My Copy Now!</div>
 
   </div>
   </div>

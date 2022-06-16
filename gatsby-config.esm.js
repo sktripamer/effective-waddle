@@ -101,6 +101,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$30.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-denim-t-shirt-black-front-62758f6f2e306.jpg"
@@ -120,6 +121,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$25.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/denim-hat-blue-front-62758c99c14d6.jpg"
@@ -139,6 +141,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$25.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/organic-ribbed-beanie-black-front-62758b9bc42ca.jpg"
@@ -158,6 +161,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$25.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/womens-racerback-tank-top-heather-white-front-62756a730fb92.jpg"
@@ -177,6 +181,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$25.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/mens-staple-tank-top-black-front-627569d9591ec.jpg"
@@ -196,6 +201,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$20.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/iphone-case-iphone-12-pro-max-case-with-phone-62754bd6447b8.jpg"
@@ -215,6 +221,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$30.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/premium-polo-shirt-black-front-62754ae533556.jpg"
@@ -234,6 +241,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$20.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/iphone-case-iphone-xs-max-case-with-phone-627549a916b18.jpg"
@@ -253,6 +261,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$20.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/speckled-iphone-case-iphone-11-case-on-phone-62754903a0eaa.jpg"
@@ -272,6 +281,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$20.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/iphone-case-iphone-12-pro-case-with-phone-6275487c30269.jpg"
@@ -291,6 +301,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$25.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/womens-muscle-tank-white-front-627547ebef4b3.jpg"
@@ -310,6 +321,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$25.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/mens-staple-tank-top-asphalt-front-627544d608ace.jpg"
@@ -329,6 +341,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$40.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-heavy-blend-hoodie-black-front-627543f0d0547.jpg"
@@ -348,6 +361,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$30.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/closed-back-structured-cap-dark-navy-front-62753f9f7bc42.jpg"
@@ -367,6 +381,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$20.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/cuffed-beanie-heather-grey-front-62753f108ce52.jpg"
@@ -386,6 +401,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$27.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/classic-dad-hat-khaki-front-62753e5e6fa4b.jpg"
@@ -405,6 +421,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$45.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-premium-hoodie-white-front-62753cb6144d2.jpg"
@@ -424,6 +441,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$28.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-tri-blend-t-shirt-charcoal-black-triblend-front-62753b0b31483.jpg"
@@ -443,6 +461,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$35.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-long-sleeve-tee-maroon-front-6275378daecbb.jpg"
@@ -462,6 +481,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$35.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-long-sleeve-tee-black-heather-front-627534827ddf8.jpg"
@@ -481,6 +501,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$30.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-staple-t-shirt-army-front-6275332f961ab.jpg"
@@ -500,6 +521,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$18.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/enamel-mug-white-12oz-front-62753225d2623.jpg"
@@ -519,6 +541,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$25.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/classic-dad-hat-white-front-62745dcccfe9a.jpg"
@@ -538,6 +561,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$25.00 - $25.50",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-basic-softstyle-t-shirt-black-front-62745ac671d90.jpg"
@@ -557,6 +581,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$25.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/mens-curved-hem-t-shirt-black-front-62745990a1de6.jpg"
@@ -576,6 +601,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$25.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/enamel-mug-white-12oz-front-627459416a219.jpg"
@@ -595,6 +621,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$3.00 - $3.50",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/kiss-cut-stickers-3x3-default-6274588a32f8e.jpg"
@@ -614,6 +641,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$3.00 - $3.50",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/kiss-cut-stickers-3x3-default-627458672cdab.jpg"
@@ -633,6 +661,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$3.00 - $3.50",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/kiss-cut-stickers-3x3-default-627457f56cf4e.jpg"
@@ -652,6 +681,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$30.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-staple-t-shirt-red-front-6274574c6ad0e.jpg"
@@ -671,6 +701,7 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$26.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/classic-dad-hat-white-front-627455d239bc1.jpg"
@@ -690,13 +721,14 @@ module.exports = {
                           }
                         ]
                       },
+                      "price": "$25.00",
                       "featuredImage": {
                         "node": {
                           "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-basic-softstyle-t-shirt-white-front-627454062f880.jpg"
                         }
                       }
                     }
-                  }
+                  },
                 ]
               }
             },

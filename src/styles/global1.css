@@ -4044,7 +4044,7 @@ pointer-events: none;
 }
 
 .matrix-item {
-  background-image: url('/images/matrix.png');
+  background-image: url('https://portal.revrevdev.xyz/wp-content/uploads/matrix.png');
   padding-bottom: 56.25%;
   background-size: contain;
 }

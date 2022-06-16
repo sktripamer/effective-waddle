@@ -4037,6 +4037,17 @@ pointer-events: none;
   margin-bottom: 5em;
 }
 
+.matrix-cont {
+  max-width: 1300px;
+  margin:0 auto;
+  padding:1em;
+}
+
+.matrix-item {
+  background-image: url('/images/matrix.png');
+  padding-bottom: 56.25%;
+  background-size: contain;
+}
 .hero-render-content {
   position: absolute;
   top: 50%;

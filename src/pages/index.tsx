@@ -34,6 +34,7 @@
   } from '@polymer/iron-overlay-behavior/iron-scroll-manager';
   
     import Stopwatch from '../images/stop.inline.svg';
+    import Graph from '../images/graph.inline.svg';
     import {
       CardElement,
       Elements,
@@ -2733,6 +2734,9 @@ useEffect(() => {
 
     </div>
 
+    <div class='graphsvg'>
+    <Graph/>
+      </div>
     <h2 className="white-sh">Entrepreneurs are more likely to succeed when they follow a proven system. 
 Today, the system is broken, and the Great Resignation is underway. 
 Underappreciated employees are escaping the 9-5 rat race for a more 

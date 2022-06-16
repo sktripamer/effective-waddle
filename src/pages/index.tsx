@@ -2750,7 +2750,9 @@ live entrepreneurially but business is hard. Either way, you need help; you need
 to start your own business. Worse, your job conditioned you to depend on 
 someone else’s business rather than become your own business.
 </p>
-
+<div class='matrix-cont'>
+  <div class='matrix-item'></div>
+</div>
 
 				<SayHelloList />
 
@@ -2766,9 +2768,7 @@ someone else’s business rather than become your own business.
 
 </div>
 
-<div class='matrix-cont'>
-  <div class='matrix-item'></div>
-</div>
+
 
 <div class="book-section-hero-cta">
     <div class='book-section-content-cont'>           

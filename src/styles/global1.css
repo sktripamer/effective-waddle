@@ -4027,13 +4027,29 @@ pointer-events: none;
 .book-render.rdmr {
  margin: 0 auto;
 }
+.hero-render-title {
+  font-family: 'Josefin Sans';
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2em;
+  animation: neon1 1.5s ease-in-out infinite alternate;
+  color: #fff;
+  margin-bottom: 5em;
+}
 
+.hero-render-content {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%,-50%);
+  width: 100%;
+}
 .graphsvg {
 
   max-width:1300px;
-  width:70%;
+  width:60%;
   margin:100px auto;
-  margin-left:8%;
+  margin-left:16%;
 }
 #graphsvg {
   overflow: visible;

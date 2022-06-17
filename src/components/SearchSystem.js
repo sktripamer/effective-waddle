@@ -41,7 +41,7 @@ const Header = ({
             (
                 <div className='search-section-results'>
                                {posts.map(post => (
-                <div onClick={() => navigate('shop/' + post.slug)} class='search-item-cont'>
+                <div onClick={() => navigate('/shop/' + post.slug)} class='search-item-cont'>
                   <img width="100" height="100" class='search-item-img' src={post.image}/>
                   <div class='search-item-content-cont'>
                     <div class='search-item-name'>{post.name}</div>

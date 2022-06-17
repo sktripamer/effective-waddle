@@ -2539,7 +2539,7 @@ max-width: initial;
 }
 html.scroll main>div:last-child{
 width: 100%;
-max-width: 1300px;
+max-width: 1600px;
 margin: 0 auto;
 padding-left: 70px;
 padding-right: 70px;
@@ -2553,8 +2553,7 @@ html.scroll main {
 }
 @media (max-width: 1400px) {
   main navbar {
-    max-width: 1000px;
-    left: calc(50% - 500px);
+
 }
   html.scroll main>div:last-child{
     max-width: 1000px;
@@ -2641,8 +2640,7 @@ main .mini-title {
   font-size: 18px;
 }
   body main navbar {
-    max-width: 800px;
-    left: calc(50% - 400px);
+
 }
   div.heroproduct-title {
     font-size: 1.3em;
@@ -3452,8 +3450,6 @@ color: white;
 opacity: 0;
 transform: translatey(-100px);
 transition: transform .3s cubic-bezier(.4,0,.2,1), opacity .15s linear .285s;
-max-width: 1300px;
-left: calc(calc(100% - 1300px) / 2);
 }
 navbar > navmain {
 box-shadow: 0 0 8px 4px rgb(0 0 0 / 20%);
@@ -3477,7 +3473,7 @@ font-size: 24px;
 .navbar-holder {
 position: absolute;
 width: 100%;
-max-width: 1300px;
+max-width: 1600px;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);

@@ -337,7 +337,7 @@ const resizeHandler = () => {
       <div>aa</div>
     </div></a>
     <li onClick={() =>navigate('/account')}>A</li>
-        <li class='search-icon' onClick={() => setLoadSearch(true)}>S</li>
+        <li class='search-icon' onClick={() => setLoadSearch(true)}></li>
         <li onClick={() => setLoadCart(true)}>C</li>
 
 

@@ -10,6 +10,7 @@ export default function Navbar(props) {
   const [cartRender, setCartRender] = useState(true);
   const [hamburger, setHamburger] = useState(false)
   const [loadSearch, setLoadSearch] = useState(false)
+  const [loadCart, setLoadCart] = useState(false)
   const [getStarted, setGetStarted] = useState(0)
   const [shop, setShop] = useState(0)
   const [enroll, setEnroll] = useState(0)
@@ -213,6 +214,19 @@ const resizeHandler = () => {
                   )
                 : ""}
     </div>
+    <div className={`cart-btn-container cart-${loadCart}`}>
+    {true == loadCart
+                ? (
+                 <div className='cart-outer-cont'>
+                   <div className="cart-bar-title">
+                      <div className="cart-bar-text">Cart</div>
+                      <div onClick={() => setLoadCart(false)} className='search-bar-close'>X</div>
+                   </div>
+                   {localStorageSetHandler()}
+                   </div>
+                  )
+                : ""}
+    </div>
      {loading ? (
      <navbar class="active"> 
      <div><input onChange={e => handleChange(e)} type="checkbox" />
@@ -324,10 +338,7 @@ const resizeHandler = () => {
     </div></a>
     <li onClick={() =>navigate('/account')}>A</li>
         <li onClick={() => setLoadSearch(true)}>S</li>
-    <a class='dropdown'>C
-      <div class="link-dropdown active2 cart-drop">
-      <div>{localStorageSetHandler()}</div>
-    </div></a>
+        <li onClick={() => setLoadCart(true)}>C</li>
 
 
       </ul>

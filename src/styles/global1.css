@@ -1983,7 +1983,7 @@ h2 span {
 .regular .rev-player {
   margin: 0 auto;
   transition: all .25s ease-out;
-  max-width: 1300px;
+  max-width: 1000px;
   padding-left: 4rem;
   padding-right: 4rem;
 }
@@ -1996,7 +1996,7 @@ h2 span {
 }
 .regular .rev-loadin {
   margin: 0 auto;
-  max-width: 1300px;
+  max-width: 1000px;
   padding-left: 4rem;
   padding-right: 4rem;
 }
@@ -3292,8 +3292,7 @@ navbar > div {
 
 .cart-bar-title {
   background: linear-gradient(183deg,#ff1d2d,#c41a72);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+
 }
 
 .cart-bar-text {
@@ -3310,8 +3309,8 @@ display: flex;
 flex-direction: row;
 flex-wrap: nowrap;
 padding: 1em;
-min-width: 350px;
-width: 50vw;
+
+width: 100%;
 max-width: 600px;
 background: #f6f4fa;
 padding-bottom: 3em;
@@ -3422,6 +3421,7 @@ h2.featured-header {
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 8px;
   cursor: pointer;
 }
 .heroproduct-title {
@@ -4069,9 +4069,13 @@ pointer-events: none;
   text-transform: uppercase;
   text-align: center;
   font-size: 2em;
+  filter: drop-shadow(0 0 40px #000);
   animation: neon1 1.5s ease-in-out infinite alternate;
   color: #fff;
   margin-bottom: 5em;
+}
+.hero-render-content .y-preorderbtn {
+  filter: drop-shadow(0 0 40px #000) saturate(1);
 }
 .search-item-cont {
   display: flex;
@@ -8113,9 +8117,6 @@ padding-top: 3em;
 padding-bottom: 3em;
 }
 .search-bar-title {
-border-top-left-radius: 5px;
-border-top-right-radius: 5px;
-
 background: linear-gradient(183deg,#ff1d2d,#c41a72);
 }
 

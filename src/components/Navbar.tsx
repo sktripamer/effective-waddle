@@ -167,8 +167,8 @@ export default function Navbar(props) {
   }
 
 const resizeHandler = () => {
-  setNavbarWidth(document.querySelector('navbar').getBoundingClientRect().width)
-  const navWidth = document.querySelector('navbar').getBoundingClientRect().width;
+  setNavbarWidth(document.querySelector('.navbar-holder').getBoundingClientRect().width)
+  const navWidth = document.querySelector('.navbar-holder').getBoundingClientRect().width;
   setGetStarted(document.getElementsByClassName('down-get-started')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
   setShop(document.getElementsByClassName('down-shop')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
   setEnroll(document.getElementsByClassName('down-enroll')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)

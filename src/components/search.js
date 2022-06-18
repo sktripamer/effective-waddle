@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function SearchBar({ searchQuery, setSearchQuery }) {
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         e.preventDefault();
     }
 return (

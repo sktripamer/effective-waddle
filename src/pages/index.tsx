@@ -2528,8 +2528,7 @@ useEffect(() => {
     </div>
               <div class='main-main'>
               <div className="main-vid-area">
-              <h1 className="revival-of-revenue">Experience your <span>Revival of Revenue</span></h1>
-              <h2 className="white-sh-l">Bringing to Life the Business Income in You</h2>
+            
 
               <div className={`loader-player ${revealer} ${playerSize}`}>
             
@@ -2723,7 +2722,8 @@ useEffect(() => {
 <div onClick={closeFocus} class='focusmode'></div>
 </div>
 <div class='rest-of-hero-content'>
-
+<h1 className="revival-of-revenue">Experience your <span>Revival of Revenue</span></h1>
+              <h2 className="white-sh-l">Bringing to Life the Business Income in You</h2>
     <div class="hero-render-all">
 
       <div class='hero-render-content'>
@@ -2799,7 +2799,21 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 				<WhichOne />
 </Suspense>)}
 
-
+<div id='shows-list-container'>
+  <div class='show-me-title'><span>PK'S </span><span>BOOK </span><span>SHOWS </span><span>ME </span><em><span>HOW </span><span>TO...</span></em></div>
+  <ul class="show-lister">
+    <li>List Title <span>List subtitle Lorum Ipsum Dolor</span></li>
+    <li>List Title <span>List subtitle Lorum Ipsum Dolor</span></li>
+    <li>List Title <span>List subtitle Lorum Ipsum Dolor</span></li>
+    <li>List Title <span>List subtitle Lorum Ipsum Dolor</span></li>
+    <li>List Title <span>List subtitle Lorum Ipsum Dolor</span></li>
+    <li>List Title <span>List subtitle Lorum Ipsum Dolor</span></li>
+    <li>List Title <span>List subtitle Lorum Ipsum Dolor</span></li>
+    <li>List Title <span>List subtitle Lorum Ipsum Dolor</span></li>
+    <li>List Title <span>List subtitle Lorum Ipsum Dolor</span></li>
+    <li>List Title <span>List subtitle Lorum Ipsum Dolor</span></li>
+</ul>
+</div>
 
   <div class='three-icons-container'>
   <div class='seam-paper-1'></div>
@@ -2827,6 +2841,10 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
   <div class='seam-paper-2'></div>
   </div>
 
+
+  {isBrowser && (<Suspense fallback={<div></div>}>
+				<CompareList />
+</Suspense>)}
 
 
   <div class='read-more-container'>
@@ -2922,10 +2940,6 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
   </div>
 </div>
 
-  {isBrowser && (<Suspense fallback={<div></div>}>
-				<CompareList />
-</Suspense>)}
-
 <div class="y-container">
     <div class='y-content-container'>
     <div class="y-heading">WHY I WROTE <span>REVIVAL OF REVENUE</span></div>
@@ -2940,6 +2954,7 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
     </div>
   
     <div class="y-cont y-second-el">
+    <div class="y-heading">...FOR YOU</div>
       <div class="y-text-cont">
         <div class="y-subheading">Everyday self-employed people ask me, “How in the world do I make more money? And how can I make money multiple ways?” Employees ask me, “How can I do more for God? How can I start a meaningful business from nothing?” Executives ask me, “Where is America going as a nation? How do you think we can navigate today’s political turmoil and economic challenges?” Everyone wants to maximize their wage, increase their personal income, and generate more business revenue, but doing so while doing something they love. They just don’t know how…UNTIL NOW! I wrote this book because, like so many people, I needed a Revival of Revenue myself.</div>
 
@@ -2949,17 +2964,19 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
     </div>
     <div class="y-cta-cont">
         <div class="y-cta">Order your copy now</div>
+        <p className="white-hero-p">Pre Order your copy today to get CHAPTER 1 sent right to your inbox!
+By pre ordering today, you will also INSTANTLY unlock our limited time
+ <span> BOOK BUNDLE!</span> Get the book plus its <span>BONUS REVENUE MAP</span> revealing <span>The 7 Steps to Becoming Your Own Boss & Turning Your Passions into Profit Today!</span>
+</p>
         <div onClick={preReveal} class="y-preorderbtn">Pre-Order My Copy Now!</div>
         </div>
     </div>
     <div style={Object.assign({'background-position-y': `${plaxVal}%` })} class='bg-renderer-pl'></div>
     </div>
 
-{isBrowser && (<Suspense fallback={<div></div>}>
-				<Minibook />
-</Suspense>)}
 
-  <div class="show-me-title"><span>READ </span><span>THE </span><span>FIRST </span><span>PAGE </span><em><span>OF </span><span>PK'S </span><span>BOOK </span><span>NOW!</span></em></div>
+
+    <div class="show-me-title"><span>READ </span><span>THE </span><span>FIRST </span><span>PAGE </span><em><span>OF </span><span>PK'S </span><span>BOOK </span><span>NOW!</span></em></div>
   <div class="subheader-title">Start your Revival of Revenue now and peek inside to read the first page of PK's book.</div>
   <div class={`peek-inside-container ${book2}`}>
     <div id='mockup-element' className='mockup-element'>
@@ -2984,6 +3001,11 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
 <div onClick={closeBook2} class="darken-book"></div>
 </div>
 <div onClick={openBook} class="y-preorderbtn">Read The First Page</div>
+
+
+{isBrowser && (<Suspense fallback={<div></div>}>
+				<Minibook />
+</Suspense>)}
 
 <div id='shows-me-container'>
   <div class='show-me-title'><span>PK'S </span><span>BOOK </span><span>SHOWS </span><span>ME </span><em><span>HOW </span><span>TO...</span></em></div>

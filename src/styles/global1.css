@@ -310,11 +310,57 @@ max-width: 850px;
   font-size: 1.2em;
   padding-right: calc(1em + 10px);
 }
+.y-heading.y-sec {
+  text-align: right;
+}
+
+ul.graph-list {
+  columns: 3;
+  list-style-type: none;
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding:0;
+}
+
+ul.graph-list li {
+  font-family: 'Josefin Sans';
+  text-transform: uppercase;
+  font-size: 1.5em;
+  color: #fff;
+  height: 165px;
+  text-align: center;
+  break-inside: avoid-column;
+}
+
+ul.graph-list li span {
+  display: table;
+  font-family: 'Nunito Regular';
+  font-size: .7em;
+  margin: 0 auto;
+}
+
+.graphtitlecont {
+  margin-top: 5em;
+}
+ul.graph-list li:nth-child(2) {height: 100px; padding-top:5px;}
+ul.graph-list li:nth-child(1) {
+border-bottom: 5px solid #ef4141;
+padding-bottom: 5px;
+margin-top: -5px;
+padding-top: 10px;
+}
+ul.graph-list li:nth-child(3) {
+  border-bottom: 5px solid #000;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
 
 .white-h {
   font-size: 2.1rem;
   letter-spacing: 0;
-  margin: 2.5em auto 3em auto;
+  margin: 1em auto;
+  margin-top:3em;
   text-align: center;
   color: #fff;
   padding-left: 1em;
@@ -1370,6 +1416,9 @@ span.Typewriter__cursor {
 }
 
 @media (max-width: 666px) {
+  div.hero-render-title {
+    font-size: 1.2em;
+  }
   div.time-section svg.stopper {
     height: 90px;
     width: 90px;
@@ -4808,7 +4857,7 @@ transform: translate(604.8px, -275px);
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: contain;
-  padding-top: 22.3%;
+  padding-top: clamp(100px, 47.3%, 441px);
   margin-top: 30px;
   max-width: 870px;
   margin-left: auto;
@@ -7811,6 +7860,7 @@ div.archtype-title span {
 .minib-r-cont {
 background: #fff;
 padding-top: 10px;
+margin-top: 2em;
 }
 
 .preorder-book-oldprice:after {

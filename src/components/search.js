@@ -6,8 +6,7 @@ export default function SearchBar({ searchQuery, setSearchQuery }) {
     }
 return (
     <form onSubmit={handleSubmit} className='search-former'
-        action="/"
-        method="get"
+        
         autoComplete="off"
     >
         <label htmlFor="header-search">
@@ -20,7 +19,7 @@ return (
             onInput={(e) => setSearchQuery(e.target.value)}
             type="text"
             id="header-search"
-            placeholder="Search for products"
+            placeholder="Search our store..."
             name="s"
         />
     </form>

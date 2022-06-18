@@ -341,7 +341,7 @@ ul.graph-list li span {
 }
 
 .graphtitlecont {
-  margin-top: 5em;
+  margin-top: 7em;
 }
 ul.graph-list li:nth-child(2) {height: 100px; padding-top:5px;}
 ul.graph-list li:nth-child(1) {
@@ -4216,7 +4216,8 @@ ul.show-lister {
 }
 
 .graphsvg {
-  margin: 100px auto;
+  margin: 50px auto;
+  margin-bottom: 110px;
   max-width: 1150px;
   width: 70%;
 }
@@ -7858,9 +7859,8 @@ div.archtype-title span {
 }
 
 .minib-r-cont {
-background: #fff;
 padding-top: 10px;
-margin-top: 2em;
+
 }
 
 .preorder-book-oldprice:after {

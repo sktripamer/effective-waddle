@@ -1954,7 +1954,7 @@ h1.revival-of-revenue {
   text-align: center;
   font-family: 'Josefin Sans';
   text-transform: uppercase;
-  padding-top: 40px;
+  padding-top: 10px;
 }
 h1 span {
 display: table;
@@ -2734,7 +2734,7 @@ width: 48px;
   background: url(https://portal.revrevdev.xyz/wp-content/uploads/more-mockup.jpg);
   width: 37%;
   background-size: contain;
-  float: left;
+  float: right;
   margin-right: 8px;
   filter: drop-shadow(0 2px 2px rgba(0,0,0,.12)) drop-shadow(0 3px 1px rgba(0,0,0,.14)) drop-shadow(0 1px 5px rgba(0,0,0,.12)) drop-shadow(0 -1px 2px rgba(0,0,0,.1));
 }
@@ -3131,6 +3131,7 @@ main .main-vid-area{
         min-height: 1200px;
         background-attachment: fixed;
         -webkit-transform: none;
+        padding-top: 1px;
 }
 
 div.input-group {
@@ -4126,7 +4127,7 @@ img.search-item-img {
 
 .search-section-results {height: 400px;overflow: overlay;}
 .matrix-cont {
-  max-width: 1300px;
+  max-width: 1150px;
   margin:0 auto;
   padding:1em;
 }
@@ -4145,12 +4146,30 @@ img.search-item-img {
     transform: translate(0,-50%);
     top: 50%;
 }
-.graphsvg {
+ul.show-lister {
+  columns: 2;
+  list-style-type: auto;
+  width: 70%;
+  margin: 0 auto;
+  color: #512e8a;
+}
 
-  max-width:1300px;
-  width:60%;
-  margin:100px auto;
-  margin-left:16%;
+.show-lister li {
+  font-family: 'Nunito Bold';
+  font-size: 1.5em;
+  margin-bottom: .5em;
+}
+
+.show-lister li span {
+  display: table;
+  font-family: 'Nunito Regular';
+  font-size: 1em;
+}
+
+.graphsvg {
+  margin: 100px auto;
+  max-width: 1150px;
+  width: 70%;
 }
 #graphsvg {
   overflow: visible;
@@ -4789,8 +4808,8 @@ transform: translate(604.8px, -275px);
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: contain;
-  padding-top: 30.3%;
-
+  padding-top: 22.3%;
+  margin-top: 30px;
   max-width: 870px;
   margin-left: auto;
   margin-right: auto;

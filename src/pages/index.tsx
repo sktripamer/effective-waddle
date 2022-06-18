@@ -2733,7 +2733,13 @@ useEffect(() => {
 
 
     </div>
-
+    <div class='graphtitlecont'>
+      <ul class='graph-list'>
+        <li>You<span>INFLATION-ADJUSTED U.S. MEDIAN INCOME</span></li>
+        <li>Vs</li>
+        <li>The Market<span>INFLATION-ADJUSTED S+P 500</span></li>
+      </ul>
+    </div>
     <div class='graphsvg'>
     <Graph/>
       </div>
@@ -2750,6 +2756,7 @@ live entrepreneurially but business is hard. Either way, you need help; you need
 to start your own business. Worse, your job conditioned you to depend on 
 someone else’s business rather than become your own business.
 </p>
+<div class="white-h">TM5 MATRIX</div>
 <div class='matrix-cont'>
   <div class='matrix-item'></div>
 </div>
@@ -2952,9 +2959,9 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
       </div>  
       <div class="y-image-contain"><div class="y-image-cont"></div></div>
     </div>
-  
+    <div class="y-heading y-sec">...FOR YOU</div>
     <div class="y-cont y-second-el">
-    <div class="y-heading">...FOR YOU</div>
+   
       <div class="y-text-cont">
         <div class="y-subheading">Everyday self-employed people ask me, “How in the world do I make more money? And how can I make money multiple ways?” Employees ask me, “How can I do more for God? How can I start a meaningful business from nothing?” Executives ask me, “Where is America going as a nation? How do you think we can navigate today’s political turmoil and economic challenges?” Everyone wants to maximize their wage, increase their personal income, and generate more business revenue, but doing so while doing something they love. They just don’t know how…UNTIL NOW! I wrote this book because, like so many people, I needed a Revival of Revenue myself.</div>
 

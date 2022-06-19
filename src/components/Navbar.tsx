@@ -99,7 +99,7 @@ export default function Navbar(props) {
         <button>Go to Shop</button>
         </>
       )
-    } else if(viewOffer === false) {
+    } else{
       setCartText('Cart')
       return (
         <>
@@ -112,11 +112,7 @@ export default function Navbar(props) {
         </div>
         </>
       )
-    } else {
-      return (
-        <></>
-      )
-    }
+    } 
     // else if(viewOffer === true) {
     //   let offerIndex = 0;
     //   setCartText('Limited Time Offer')

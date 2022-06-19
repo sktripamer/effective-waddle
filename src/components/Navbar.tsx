@@ -87,6 +87,7 @@ export default function Navbar(props) {
         setCartRender(true)
       }
     }
+    
     if (newA.length === 0) {
       setCartText('Cart')
       return (
@@ -106,45 +107,46 @@ export default function Navbar(props) {
         )}
         <div class="cart-btn-cont">
           <button onClick={() => setLoadCart(false)}>Keep Shopping</button>
-          <button onClick={() => setViewOffer(true)}>Checkout</button>
+          <button>Checkout</button>
         </div>
         </>
       )
-    } else if(viewOffer === true) {
-      let offerIndex = 0;
-      setCartText('Limited Time Offer')
-      offers.forEach((offerItem, index) => {
-        tempCart().forEach((cartitem, index2) => {
+    } 
+    // else if(viewOffer === true) {
+    //   let offerIndex = 0;
+    //   setCartText('Limited Time Offer')
+    //   offers.forEach((offerItem, index) => {
+    //     tempCart().forEach((cartitem, index2) => {
           
-          if (cartitem.ID === offerItem.ID) {
-            //cart contains this offer item. dont use.
-            offerIndex++
-          }
+    //       if (cartitem.ID === offerItem.ID) {
+    //         //cart contains this offer item. dont use.
+    //         offerIndex++
+    //       }
 
-        })
+    //     })
 
      
-       });
-       if (offerIndex === offers.length) setViewOffer(false);
-      return (
-        <>
-        {offerIndex === offers.length ? (
-          <>
+    //    });
+    //    if (offerIndex === offers.length) setViewOffer(false);
+    //   return (
+    //     <>
+    //     {offerIndex === offers.length ? (
+    //       <>
         
-          </>
-        ): (
-          <>
-          <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={offers[offerIndex].url}/><div class="name-total-cart-cont"><div class="cart-name">{offers[offerIndex].name}</div></div><div class='offer-price'>{offers[offerIndex].price}</div></div>
-          <div class="cart-btn-cont">
-          <button onClick={() => navigate('/checkout')}>No, I'll Pass</button>
-          <button onClick={addOffer(offers[offerIndex])}>Include In Cart</button>
-        </div>
-          </>
-        )}
+    //       </>
+    //     ): (
+    //       <>
+    //       <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={offers[offerIndex].url}/><div class="name-total-cart-cont"><div class="cart-name">{offers[offerIndex].name}</div></div><div class='offer-price'>{offers[offerIndex].price}</div></div>
+    //       <div class="cart-btn-cont">
+    //       <button onClick={() => navigate('/checkout')}>No, I'll Pass</button>
+    //       <button onClick={addOffer(offers[offerIndex])}>Include In Cart</button>
+    //     </div>
+    //       </>
+    //     )}
        
-        </>
-      )
-    }
+    //     </>
+    //   )
+    // }
 
 
   }

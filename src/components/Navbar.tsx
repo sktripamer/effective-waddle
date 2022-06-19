@@ -60,7 +60,7 @@ export default function Navbar(props) {
       setLocally('cart', JSON.stringify(newA))
       navigate('/checkout')
     }
-    
+
     const removeFromCart = (e) => {
       let tempCart = function() {
         try {
@@ -112,7 +112,11 @@ export default function Navbar(props) {
         </div>
         </>
       )
-    } 
+    } else {
+      return (
+        <></>
+      )
+    }
     // else if(viewOffer === true) {
     //   let offerIndex = 0;
     //   setCartText('Limited Time Offer')

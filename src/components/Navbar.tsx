@@ -138,12 +138,7 @@ export default function Navbar(props) {
        if (offerIndex === offers.length) setViewOffer(false);
        console.log(offerIndex)
       return (
-        <>
-        {offerIndex === offers.length ? (
-          <>
         
-          </>
-        ): (
           <>
           <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={offers[offerIndex].url}/><div class="name-total-cart-cont"><div class="cart-name">{offers[offerIndex].name}</div></div><div class='offer-price'>{offers[offerIndex].price}</div></div>
           <div class="cart-btn-cont">
@@ -151,9 +146,8 @@ export default function Navbar(props) {
           <button>Include In Cart</button>
         </div>
           </>
-        )}
+        
        
-        </>
       )
     }
 

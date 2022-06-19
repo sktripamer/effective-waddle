@@ -32,7 +32,7 @@
       pushScrollLock,
       removeScrollLock,
   } from '@polymer/iron-overlay-behavior/iron-scroll-manager';
-  
+  import useOnScreen from "../hooks/useOnScreen";
     import Stopwatch from '../images/stop.inline.svg';
     import Graph from '../images/graph.inline.svg';
     import {
@@ -1665,6 +1665,10 @@ By pre ordering today, you will also INSTANTLY unlock our limited time
       const [prevScroll, setPrevScroll] = useState(0)
       const titleRef = useRef(null)
 
+      const headerTwoRef = useRef()
+      const visible = useOnScreen(headerTwoRef, "-60px")
+
+
       const setArchtype1 = () => {
         setArchtype(1)
         setArchtypeClick(true)
@@ -2740,7 +2744,7 @@ useEffect(() => {
         <li>The Market<span>INFLATION-ADJUSTED S+P 500</span></li>
       </ul>
     </div>
-    <div class='graphsvg'>
+    <div ref={headerTwoRef} class={`graphsvg ${visible && "enteranim"}`}>
     <Graph/>
       </div>
     <h2 className="white-sh">Entrepreneurs are more likely to succeed when they follow a proven system. 

@@ -46,7 +46,10 @@ export default function Navbar(props) {
 
 
   const localStorageSetHandler = () => {
-
+    const switchViews = () => {
+      setLoadCart(false)
+      setViewOffer(true)
+    }
     let tempCart = function() {
       try {
       return JSON.parse(localStorage.cart)
@@ -112,7 +115,7 @@ export default function Navbar(props) {
         )}
         <div class="cart-btn-cont">
           <button onClick={() => setLoadCart(false)}>Keep Shopping</button>
-          <button onClick={() => setViewOffer(true)}>Checkout</button>
+          <button onClick={switchViews}>Checkout</button>
         </div>
         </>
       )
@@ -132,6 +135,7 @@ export default function Navbar(props) {
      
        });
        if (offerIndex === offers.length) setViewOffer(false);
+       console.log(offerIndex)
       return (
         <>
         {offerIndex === offers.length ? (

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 export default function useOnScreen(ref, rootMargin = "0px") {
   const [isVisible, setIsVisible] = useState(false)
   const [firstVisible, setFirstVisible] = useState(false)
-  if (firstVisible === true) return true;
   useEffect(() => {
     if (ref.current == null) return
     const observer = new IntersectionObserver(
@@ -22,5 +21,5 @@ export default function useOnScreen(ref, rootMargin = "0px") {
     }
   }, [ref.current, rootMargin])
 
-  return isVisible
+  return firstVisible
 }

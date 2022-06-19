@@ -16,6 +16,35 @@ export default function Navbar(props) {
   const [enroll, setEnroll] = useState(0)
   const [resources, setResources] = useState(0)
   const [navbarWidth, setNavbarWidth] = useState(0)
+  const [viewOffer, setViewOffer] = useState(false)
+  const [cartText, setCartText] = useState('Cart')
+  const offers = [
+    {
+      "ID": 1509,
+      "name": "Entrepreneurial Espresso Denim T-Shirt - Black, L",
+      "url": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-denim-t-shirt-black-front-62758f6f2e306.jpg",
+      "quantity": 1,
+      "price": 30
+  },
+  {
+    "ID": 1184,
+    "name": "REVREV Men's Premium Polo - Black, 2XL",
+    "url": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/premium-polo-shirt-black-front-62754ae533556.jpg",
+    "quantity": 1,
+    "price": 30
+}
+  ]
+
+    const setLocally = function(key, value) {
+        
+      localStorage.setItem(key, value);
+      const event = new Event('itemInserted');
+    
+      document.dispatchEvent(event);
+   
+    };
+
+
   const localStorageSetHandler = () => {
 
     let tempCart = function() {
@@ -26,7 +55,11 @@ export default function Navbar(props) {
 
     console.log(localStorage.getItem('cart'))
     let newA = tempCart();
-
+    const addOffer = (whatToAdd) => {
+      newA.push(whatToAdd)
+      setLocally('cart', JSON.stringify(newA))
+      navigate('/checkout')
+    }
     const removeFromCart = (e) => {
       let tempCart = function() {
         try {
@@ -55,6 +88,7 @@ export default function Navbar(props) {
       }
     }
     if (newA.length === 0) {
+      setCartText('Cart')
       return (
         <>
         <div class="cart-cont-empty">
@@ -63,16 +97,51 @@ export default function Navbar(props) {
         <button>Go to Shop</button>
         </>
       )
-    } else {
+    } else if(viewOffer === false) {
+      setCartText('Cart')
       return (
         <>
         {newA && newA.map((el, index) => 
         <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} × {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
         )}
         <div class="cart-btn-cont">
-          <button>View Cart</button>
-          <button>Checkout</button>
+          <button onClick={() => setLoadCart(false)}>Keep Shopping</button>
+          <button onClick={() => setViewOffer(true)}>Checkout</button>
         </div>
+        </>
+      )
+    } else if(viewOffer === true) {
+      let offerIndex = 0;
+      setCartText('Limited Time Offer')
+      offers.forEach((offerItem, index) => {
+        tempCart().forEach((cartitem, index2) => {
+          
+          if (cartitem.ID === offerItem.ID) {
+            //cart contains this offer item. dont use.
+            offerIndex++
+          }
+
+        })
+
+     
+       });
+       if (offerIndex === offers.length) setViewOffer(false);
+      return (
+        <>
+        {offerIndex === offers.length ? (
+          <>
+        
+          </>
+        ): (
+          <>
+          <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={offers[offerIndex].url}/><div class="name-total-cart-cont"><div class="cart-name">{offers[offerIndex].name}</div></div><div class='offer-price'>{offers[offerIndex].price}</div></div>
+          <div class="cart-btn-cont">
+          <button onClick={() => navigate('/checkout')}>No, I'll Pass</button>
+          <button onClick={addOffer(offers[offerIndex])}>Include In Cart</button>
+        </div>
+          </>
+        )}
+       
         </>
       )
     }
@@ -219,7 +288,7 @@ const resizeHandler = () => {
                 ? (
                  <div className='cart-outer-cont'>
                    <div className="cart-bar-title">
-                      <div className="cart-bar-text">Cart</div>
+                      <div className="cart-bar-text">{cartText}</div>
                       <div onClick={() => setLoadCart(false)} className='search-bar-close'>X</div>
                    </div>
                    {localStorageSetHandler()}

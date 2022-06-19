@@ -104,8 +104,22 @@ export default function Navbar(props) {
         <button>Go to Shop</button>
         </>
       )
-    }
-    else if(viewOffer === true) {
+    } else if(viewOffer === false) {
+      if (cartText !== "Cart") {
+        setCartText('Cart')
+      }
+      return (
+        <>
+        {newA && newA.map((el, index) => 
+        <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} × {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
+        )}
+        <div class="cart-btn-cont">
+          <button onClick={() => setLoadCart(false)}>Keep Shopping</button>
+          <button onClick={() => setViewOffer(true)}>Checkout</button>
+        </div>
+        </>
+      )
+    } else if(viewOffer === true) {
       let offerIndex = 0;
       setCartText('Limited Time Offer')
       offers.forEach((offerItem, index) => {
@@ -141,22 +155,6 @@ export default function Navbar(props) {
         </>
       )
     }
-    else if(viewOffer === false) {
-      if (cartText !== "Cart") {
-        setCartText('Cart')
-      }
-      return (
-        <>
-        {newA && newA.map((el, index) => 
-        <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} × {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
-        )}
-        <div class="cart-btn-cont">
-          <button onClick={() => setLoadCart(false)}>Keep Shopping</button>
-          <button onClick={setViewOffer(true)}>Checkout</button>
-        </div>
-        </>
-      )
-    } 
 
 
   }

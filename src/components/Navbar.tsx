@@ -91,38 +91,10 @@ export default function Navbar(props) {
       }
     }
     
-    if (newA.length === 0) {
-      if (cartText !== "Cart") {
-        setCartText('Cart')
-      }
-      
-      return (
-        <>
-        <div class="cart-cont-empty">
-          <p>Your cart is empty!</p>
-        </div>
-        <button>Go to Shop</button>
-        </>
-      )
-    } else if(viewOffer === false) {
-      if (cartText !== "Cart") {
-        setCartText('Cart')
-      }
-      return (
-        <>
-        {newA && newA.map((el, index) => 
-        <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} × {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
-        )}
-        <div class="cart-btn-cont">
-          <button onClick={() => setLoadCart(false)}>Keep Shopping</button>
-          <button onClick={() => setViewOffer(true)}>Checkout</button>
-        </div>
-        </>
-      )
-    } else if(viewOffer === true) {
+    if (viewOffer === true) {
       console.log(viewOffer)
       let offerIndex = 0;
-      setCartText('Limited Time Offer')
+     // setCartText('Limited Time Offer')
       offers.forEach((offerItem, index) => {
         tempCart().forEach((cartitem, index2) => {
           
@@ -148,6 +120,37 @@ export default function Navbar(props) {
           </>
         
        
+      )
+    }
+
+
+    if (newA.length === 0) {
+      // if (cartText !== "Cart") {
+      //   setCartText('Cart')
+      // }
+      
+      return (
+        <>
+        <div class="cart-cont-empty">
+          <p>Your cart is empty!</p>
+        </div>
+        <button>Go to Shop</button>
+        </>
+      )
+    } else {
+      // if (cartText !== "Cart") {
+      //   setCartText('Cart')
+      // }
+      return (
+        <>
+        {newA && newA.map((el, index) => 
+        <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} × {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
+        )}
+        <div class="cart-btn-cont">
+          <button onClick={() => setLoadCart(false)}>Keep Shopping</button>
+          <button onClick={() => setViewOffer(true)}>Checkout</button>
+        </div>
+        </>
       )
     }
 

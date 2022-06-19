@@ -90,7 +90,7 @@ export default function Navbar(props) {
     }
     
     if (newA.length === 0) {
-      setCartText('Cart')
+     // setCartText('Cart')
       return (
         <>
         <div class="cart-cont-empty">
@@ -100,7 +100,7 @@ export default function Navbar(props) {
         </>
       )
     } else{
-      setCartText('Cart')
+    //  setCartText('Cart')
       return (
         <>
         {newA && newA.map((el, index) => 

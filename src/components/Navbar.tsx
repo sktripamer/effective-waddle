@@ -115,7 +115,7 @@ export default function Navbar(props) {
           <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={offers[offerIndex].url}/><div class="name-total-cart-cont"><div class="cart-name">{offers[offerIndex].name}</div></div><div class='offer-price'>{offers[offerIndex].price}</div></div>
           <div class="cart-btn-cont">
           <button onClick={() => navigate('/checkout')}>No, I'll Pass</button>
-          <button>Include In Cart</button>
+          <button onClick={() => addOffer(offers[offerIndex])}>Include In Cart</button>
         </div>
           </>
         

@@ -134,10 +134,12 @@ export default function Navbar(props) {
        })
        newSubtotal += tempOffers[0].price
        if (!newSubtotal.toString().includes('.')) newSubtotal = newSubtotal.toString() + '.00'
+       let offerPrice: any = tempOffers[0].price;
+       if (!offerPrice.toString().includes('.')) offerPrice = offerPrice.toString() + '.00'
       return (
         
           <>
-          <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={tempOffers[0].url}/><div class="name-total-cart-cont"><div class="cart-name">{tempOffers[0].name}</div></div><div class='offer-price'>{tempOffers[0].price}</div></div>
+          <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={tempOffers[0].url}/><div class="name-total-cart-cont"><div class="cart-name">{tempOffers[0].name}</div></div><div class='offer-price'>{offerPrice}</div></div>
           <div class='cart-divider'></div>
           <div class='cart-subtotal-cont'>
           <div class='cart-subtotal-text'>Shipping & taxes calculated at checkout</div>

@@ -15,7 +15,7 @@ async function handleSubmit(e) {
         code:couponCode
     }
     const request = await fetch('/api/check-coupon', {
-        method: 'POST',
+        method: 'GET',
         body: JSON.stringify(ex),
       });
       const intent = (await request.json());

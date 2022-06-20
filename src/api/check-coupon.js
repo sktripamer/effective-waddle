@@ -1,16 +1,13 @@
 import axios from 'axios'
 let params;
 const checkCoupon = async (req, res) => {
-    try {
-        params = JSON.parse(req.body);
-        //params.code, params.cart
-        const safeCode = params.code.replace(/[^a-zA-Z0-9]/g, "");
-        if (safeCode == '') return res.status(400)
-        const couponInfo = await getCoupon(safeCode)
-        return res.status(200).json({couponInfo})
-    } catch(e) {
-        return res.status(400).json({e})
-    }
+    params = JSON.parse(req.body);
+    //params.code, params.cart
+    return  res.status(200).json(params.code)
+    const safeCode = params.code.replace(/[^a-zA-Z0-9]/g, "");
+    if (safeCode == '') return res.status(400)
+    const couponInfo = await getCoupon(safeCode)
+    return res.status(200).json({couponInfo})
 }
 
 const getCoupon = async (code) => {

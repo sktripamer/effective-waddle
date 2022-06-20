@@ -101,7 +101,8 @@ export default function Navbar(props) {
     if (viewOffer === true) {
       console.log(viewOffer)
       let removeThese = [];
-     setCartText('Limited Time Offer')
+      if (cartText !== 'Limited Time Offer')  setCartText('Limited Time Offer')
+    
       offers.forEach((offerItem, index) => {
         tempCart().forEach((cartitem, index2) => {
           

@@ -61,11 +61,16 @@ export default function Navbar(props) {
       return JSON.parse(localStorage.cart)
       } catch {return []}
     }
-    let subtotal: any = 0;
+    let subtotal = 0;
+    let finalsub = ''
     tempCart().forEach((tempitem, index) => {
       subtotal += tempitem.total
     })
-    if (!subtotal.toString().includes('.')) subtotal = subtotal.toString() + '.00'
+    if (!subtotal.toString().includes('.')) {
+      finalsub = subtotal.toString() + '.00'
+    } else {
+      finalsub = subtotal.toString()
+    }
     console.log(localStorage.getItem('cart'))
     let newA = tempCart();
     const addOffer = (whatToAdd) => {
@@ -128,22 +133,32 @@ export default function Navbar(props) {
         return
         }
        console.log(offerIndex)
-       let newSubtotal: any = 0;
+       let newSubtotal = 0;
+       let finalnewsub = '';
        tempCart().forEach((tempitem, index) => {
         newSubtotal += tempitem.total
        })
        newSubtotal += tempOffers[0].price
-       if (!newSubtotal.toString().includes('.')) newSubtotal = newSubtotal.toString() + '.00'
-       let offerPrice: any = tempOffers[0].price;
-       if (!offerPrice.toString().includes('.')) offerPrice = offerPrice.toString() + '.00'
+       if (!newSubtotal.toString().includes('.')) {
+        finalnewsub = newSubtotal.toString() + '.00'
+    } else {
+      finalnewsub = newSubtotal.toString()
+    }
+    let offerPrice = tempOffers[0].price;
+    let newOfferPrice = '';
+    if (!offerPrice.toString().includes('.')) {
+      newOfferPrice = offerPrice.toString() + '.00'
+  } else {
+    newOfferPrice = offerPrice.toString()
+  }
       return (
         
           <>
-          <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={tempOffers[0].url}/><div class="name-total-cart-cont"><div class="cart-name">{tempOffers[0].name}</div></div><div class='offer-price'>{offerPrice}</div></div>
+          <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={tempOffers[0].url}/><div class="name-total-cart-cont"><div class="cart-name">{tempOffers[0].name}</div></div><div class='offer-price'>{tempOffers[0].price}</div></div>
           <div class='cart-divider'></div>
           <div class='cart-subtotal-cont'>
           <div class='cart-subtotal-text'>Shipping & taxes calculated at checkout</div>
-          <div class='cart-subtotal-amount'>New Subtotal ${newSubtotal}</div>
+          <div class='cart-subtotal-amount'>New Subtotal ${finalnewsub}</div>
         </div>
           <div class="cart-btn-cont">
           <button onClick={() => navigate('/checkout')}>No, I'll Pass</button>
@@ -183,7 +198,7 @@ export default function Navbar(props) {
         <div class='cart-divider'></div>
         <div class='cart-subtotal-cont'>
           <div class='cart-subtotal-text'>Shipping & taxes calculated at checkout</div>
-          <div class='cart-subtotal-amount'>Subtotal ${subtotal}</div>
+          <div class='cart-subtotal-amount'>Subtotal ${finalsub}</div>
         </div>
         <div class="cart-btn-cont">
           <button onClick={() => setLoadCart(false)}>Keep Shopping</button>

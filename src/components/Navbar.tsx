@@ -46,6 +46,7 @@ export default function Navbar(props) {
 
 
   const localStorageSetHandler = () => {
+    let offerIndex = 0;
     const switchViews = () => {
       setLoadCart(false)
       setViewOffer(true)
@@ -59,6 +60,7 @@ export default function Navbar(props) {
     console.log(localStorage.getItem('cart'))
     let newA = tempCart();
     const addOffer = (whatToAdd) => {
+      offerIndex = 0; 
       newA.push(whatToAdd)
       setLocally('cart', JSON.stringify(newA))
       navigate('/checkout')
@@ -93,29 +95,36 @@ export default function Navbar(props) {
     
     if (viewOffer === true) {
       console.log(viewOffer)
-      let offerIndex = 0;
+      let removeThese = [];
      // setCartText('Limited Time Offer')
       offers.forEach((offerItem, index) => {
         tempCart().forEach((cartitem, index2) => {
           
           if (cartitem.ID === offerItem.ID) {
             //cart contains this offer item. dont use.
-            offerIndex++
+           removeThese.push(index)
           }
 
         })
 
      
        });
-       if (offerIndex === offers.length) setViewOffer(false);
+       let tempOffers = offers;
+       for (var i = removeThese.length -1; i >= 0; i--)
+        tempOffers.splice(removeThese[i],1);
+
+       if (tempOffers.length === 0) {
+         navigate('/checkout');
+        return
+        }
        console.log(offerIndex)
       return (
         
           <>
-          <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={offers[offerIndex].url}/><div class="name-total-cart-cont"><div class="cart-name">{offers[offerIndex].name}</div></div><div class='offer-price'>{offers[offerIndex].price}</div></div>
+          <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={tempOffers[0].url}/><div class="name-total-cart-cont"><div class="cart-name">{tempOffers[0].name}</div></div><div class='offer-price'>{tempOffers[0].price}</div></div>
           <div class="cart-btn-cont">
           <button onClick={() => navigate('/checkout')}>No, I'll Pass</button>
-          <button onClick={() => addOffer(offers[offerIndex])}>Include In Cart</button>
+          <button onClick={() => addOffer(tempOffers[0])}>Include In Cart</button>
         </div>
           </>
         

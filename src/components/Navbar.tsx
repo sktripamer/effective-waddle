@@ -29,14 +29,16 @@ export default function Navbar(props) {
       "name": "Entrepreneurial Espresso Denim T-Shirt - Black, L",
       "url": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-denim-t-shirt-black-front-62758f6f2e306.jpg",
       "quantity": 1,
-      "price": 30
+      "price": 30,
+      "total": 30
   },
   {
     "ID": 1184,
     "name": "REVREV Men's Premium Polo - Black, 2XL",
     "url": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/premium-polo-shirt-black-front-62754ae533556.jpg",
     "quantity": 1,
-    "price": 30
+    "price": 30,
+    "total": 30
 }
   ]
 
@@ -154,7 +156,7 @@ export default function Navbar(props) {
       return (
         
           <>
-          <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={tempOffers[0].url}/><div class="name-total-cart-cont"><div class="cart-name">{tempOffers[0].name}</div></div><div class='offer-price'>{tempOffers[0].price}</div></div>
+          <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={tempOffers[0].url}/><div class="name-total-cart-cont"><div class="cart-name">{tempOffers[0].name}</div></div><div class='offer-price'>${newOfferPrice}</div></div>
           <div class='cart-divider'></div>
           <div class='cart-subtotal-cont'>
           <div class='cart-subtotal-text'>Shipping & taxes calculated at checkout</div>

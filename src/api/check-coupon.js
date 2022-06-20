@@ -3,7 +3,7 @@ let params;
 const checkCoupon = async (req, res) => {
     params = JSON.parse(req.body);
     //params.code, params.cart
-    const safeCode = params.code.replaceAll("[^a-zA-Z0-9]", "");
+    const safeCode = params.code.replace(/[^a-zA-Z0-9]/g, "");
     if (safeCode == '') return res.status(400)
     const couponInfo = await getCoupon(safeCode)
     return res.status(200).json({couponInfo})

@@ -4,7 +4,7 @@ export default function Checkout() {
 const [loading, setLoading] = useState(false)
 const couponForm = useRef(null);
 
-const handleSubmit = (e) => {
+async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true)
     const form = couponForm.current

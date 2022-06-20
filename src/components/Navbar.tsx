@@ -18,6 +18,11 @@ export default function Navbar(props) {
   const [navbarWidth, setNavbarWidth] = useState(0)
   const [viewOffer, setViewOffer] = useState(false)
   const [cartText, setCartText] = useState('Cart')
+  const enterCart = () => {
+    setViewOffer(false)
+    setCartText('Cart')
+    setLoadCart(true)
+  }
   const offers = [
     {
       "ID": 1509,
@@ -96,7 +101,7 @@ export default function Navbar(props) {
     if (viewOffer === true) {
       console.log(viewOffer)
       let removeThese = [];
-     // setCartText('Limited Time Offer')
+     setCartText('Limited Time Offer')
       offers.forEach((offerItem, index) => {
         tempCart().forEach((cartitem, index2) => {
           
@@ -424,7 +429,7 @@ const resizeHandler = () => {
     </div></a>
     <li onClick={() =>navigate('/account')}>A</li>
         <li class='search-icon' onClick={() => setLoadSearch(true)}></li>
-        <li onClick={() => setLoadCart(true)}>C</li>
+        <li onClick={enterCart}>C</li>
 
 
       </ul>

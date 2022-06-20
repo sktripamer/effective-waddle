@@ -61,7 +61,11 @@ export default function Navbar(props) {
       return JSON.parse(localStorage.cart)
       } catch {return []}
     }
-
+    let subtotal: any = 0;
+    tempCart().forEach((tempitem, index) => {
+      subtotal += tempitem.total
+    })
+    if (!subtotal.toString().includes('.')) subtotal = subtotal.toString() + '.00'
     console.log(localStorage.getItem('cart'))
     let newA = tempCart();
     const addOffer = (whatToAdd) => {
@@ -124,10 +128,21 @@ export default function Navbar(props) {
         return
         }
        console.log(offerIndex)
+       let newSubtotal: any = 0;
+       tempCart().forEach((tempitem, index) => {
+        newSubtotal += tempitem.total
+       })
+       newSubtotal += tempOffers[0].price
+       if (!newSubtotal.toString().includes('.')) newSubtotal = newSubtotal.toString() + '.00'
       return (
         
           <>
           <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={tempOffers[0].url}/><div class="name-total-cart-cont"><div class="cart-name">{tempOffers[0].name}</div></div><div class='offer-price'>{tempOffers[0].price}</div></div>
+          <div class='cart-divider'></div>
+          <div class='cart-subtotal-cont'>
+          <div class='cart-subtotal-text'>Shipping & taxes calculated at checkout</div>
+          <div class='cart-subtotal-amount'>New Subtotal ${newSubtotal}</div>
+        </div>
           <div class="cart-btn-cont">
           <button onClick={() => navigate('/checkout')}>No, I'll Pass</button>
           <button onClick={() => addOffer(tempOffers[0])}>Include In Cart</button>
@@ -162,6 +177,11 @@ export default function Navbar(props) {
         {newA && newA.map((el, index) => 
         <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} × {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
         )}
+        </div>
+        <div class='cart-divider'></div>
+        <div class='cart-subtotal-cont'>
+          <div class='cart-subtotal-text'>Shipping & taxes calculated at checkout</div>
+          <div class='cart-subtotal-amount'>Subtotal ${subtotal}</div>
         </div>
         <div class="cart-btn-cont">
           <button onClick={() => setLoadCart(false)}>Keep Shopping</button>

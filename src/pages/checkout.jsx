@@ -3,10 +3,12 @@ import React, { useState, useRef, useEffect } from 'react';
 export default function Checkout() {
 const [loading, setLoading] = useState(false);
 const [cartRender, setCartRender] = useState(true);
+const isBrowser = typeof window !== "undefined";
 const couponForm = useRef(null);
 useEffect(() => {
     document.addEventListener("itemInserted", localStorageSetHandler, false);
-    document.addEventListener("storage", reRender, false);
+    if (isBrowser) window.addEventListener("storage", reRender, false);
+  
 }, []);
 
 

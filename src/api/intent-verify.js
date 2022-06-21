@@ -15,7 +15,16 @@
 
       if (params.intent == null) return res.status(400); //no payment intent included in check, exit.
       paymentIntent = await stripe.paymentIntents.retrieve(params.intent);
-
+      let metacart = []
+      params.cart.forEach((item, index) => {
+          let pusher = {
+                  i: item.ID,
+                  q: item.quantity,
+                  p: item.price,
+                  t: item.total
+          }
+          metacart.push(pusher)
+      })
       if (JSON.stringify(params.cart) !== paymentIntent.metadata.cart) return res.status(400); // cart from intent and verifier mismatch, exit.
       let total = 0;
       const mapLoop = async _ => {
@@ -76,7 +85,8 @@
           }
       };
         const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wc/v3/products/' + pID.ID, axiosConfig)
-        .then(resp => {  
+        .then(resp => { 
+          //if cart contains coupon for this ID, double check the coupon is valid as such, and reduce price  
           if (resp.data.price.includes('.')) {
               return resp.price.replace(/\./g, '');
           } else {

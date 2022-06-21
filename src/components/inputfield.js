@@ -18,11 +18,10 @@ export default function InputField2({name,label}) {
   );
 
 }
-
 const isUserValidated = () => {
   let userLoggedInData = "";
 
-  if (undefined !== window) {
+  if (typeof window !== "undefined") {
     let authTokenData = localStorage.getItem("auth");
 
     if (!isEmpty(authTokenData)) {

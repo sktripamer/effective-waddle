@@ -60,7 +60,11 @@ const localStorageSetHandler = () => {
         };
     
         setLocal('cart', JSON.stringify(cartModifier))
-
+        if (cartRender===true) {
+            setCartRender(false)
+          } else {
+            setCartRender(true)
+          }
     }
     if (newA.length === 0) {
         // if (cartText !== "Cart") {

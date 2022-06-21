@@ -25,7 +25,7 @@
           }
           metacart.push(pusher)
       })
-      if (JSON.stringify(params.cart) !== paymentIntent.metadata.cart) return res.status(400); // cart from intent and verifier mismatch, exit.
+      if (JSON.stringify(metacart) !== paymentIntent.metadata.cart) return res.status(400); // cart from intent and verifier mismatch, exit.
       let total = 0;
       const mapLoop = async _ => {
           const promises = params.cart.map(async pID => {

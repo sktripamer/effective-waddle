@@ -6,15 +6,20 @@ const [cartRender, setCartRender] = useState(true);
 const couponForm = useRef(null);
 useEffect(() => {
     document.addEventListener("itemInserted", localStorageSetHandler, false);
-    document.addEventListener("storage", localStorageSetHandler, false);
+    document.addEventListener("storage", reRender, false);
 }, []);
 
-const localStorageSetHandler = () => {
+
+const reRender = () => {
+    console.log('rerender')
     if (cartRender===true) {
         setCartRender(false)
       } else {
         setCartRender(true)
       }
+}
+const localStorageSetHandler = () => {
+
     console.log('triggered')
     let tempCart = function() {
         try {

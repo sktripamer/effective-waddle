@@ -7,11 +7,17 @@ const isBrowser = typeof window !== "undefined";
 const couponForm = useRef(null);
 useEffect(() => {
     document.addEventListener("itemInserted", localStorageSetHandler, false);
-    if (isBrowser) window.addEventListener("storage", localStorageSetHandler, false);
+    if (isBrowser) window.addEventListener("storage", reRender, false);
   
 }, []);
 
 
+const reRender = () => {
+    console.log('rerender')
+    const event = new Event('itemInserted');
+        
+    document.dispatchEvent(event);
+}
 const localStorageSetHandler = () => {
 
     console.log('triggered')

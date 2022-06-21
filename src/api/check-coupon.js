@@ -14,7 +14,7 @@ const checkCoupon = async (req, res) => {
    if (couponInfo.length === 1) {
     if (couponInfo[0].discount_type === 'fixed_product' && couponInfo[0].limit_usage_to_x_items === 1) {
         //fixed product discount and only applies once
-        cartIndex = -1;
+        let cartIndex = -1;
         couponInfo[0].product_ids.forEach((couponProduct, index) => {
             params.cart.forEach((cartProduct, index2) => {
               if (couponProduct === cartProduct.ID) cartIndex = index2;

@@ -893,11 +893,7 @@ const drawShippingForm = () => {
         <div className='powered-by-stripe'></div>
         </div>
         <div className='new-card-form'>
-        {isBrowser ? (
-            <InputField2 label={'email'} name={'email'}/>
-          ): (
-          <></>
-          )}
+        <InputField2 label={'email'} name={'email'}/>
         <input className={'form-control form-control'} placeholder="Name on Card" name={'firstname'}/>
         <CardElement
           id="card-element"

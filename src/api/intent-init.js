@@ -80,7 +80,6 @@ const getIntent = async (req, res) => {
 
 
 const createCustomer = async (emailSend) => {
-    
     try {
 
       const customerID = await stripe.customers.create({
@@ -113,14 +112,23 @@ const getCustomer = async (uID) => {
 }
 
 const createIntent = async (cID, cartTotal) => {
-   
+    let metacart = []
+    params.cart.forEach((item, index) => {
+    let pusher = {
+            i: item.ID,
+            q: item.quantity,
+            p: item.price,
+            t: item.total
+    }
+    metacart.push(pusher)
+})
     try {
     const paymentIntent = await stripe.paymentIntents.create({
         amount: cartTotal,
         currency: 'usd',
         customer: cID,
         setup_future_usage: "off_session",
-        metadata: {'cart': JSON.stringify(params.cart)},
+        metadata: {'cart': JSON.stringify(metacart)},
       });
      
       return paymentIntent;
@@ -138,6 +146,7 @@ const getPrice = async (pID) => {
     };
       const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wc/v3/products/' + pID.ID, axiosConfig)
       .then(resp => {  
+          //if cart contains coupon for this ID, double check the coupon is valid as such, and reduce price
         if (resp.data.price.includes('.')) {
             return resp.price.replace(/\./g, '');
         } else {

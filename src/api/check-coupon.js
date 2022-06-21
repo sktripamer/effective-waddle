@@ -22,7 +22,7 @@ const checkCoupon = async (req, res) => {
         })
         if (cartIndex >= 0) {
             //coupon is valid and in the users cart
-            let newprice = params.cart[cartIndex].price - parseFloat(coupon.couponInfo[0].amount);
+            let newprice = params.cart[cartIndex].price - parseFloat(couponInfo[0].amount);
             params.cart[cartIndex].price = newprice;
             params.cart[cartIndex].code = couponInfo[0].code;
             let newCart =  params.cart

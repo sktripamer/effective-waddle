@@ -136,7 +136,7 @@ async function handleSubmit(e) {
     const couponCode = form['coupon'].value 
 
     let ex = {
-        cart:{},
+        cart: JSON.parse(localStorage.cart),
         code:couponCode
     }
     const request = await fetch('/api/check-coupon', {

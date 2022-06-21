@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 export default function Checkout() {
-const [loading, setLoading] = useState(false)
+const [loading, setLoading] = useState(false);
+const [cartRender, setCartRender] = useState(true);
 const couponForm = useRef(null);
 useEffect(() => {
     document.addEventListener("itemInserted", localStorageSetHandler, false);
@@ -9,6 +10,12 @@ useEffect(() => {
 }, []);
 
 const localStorageSetHandler = () => {
+    if (cartRender===true) {
+        setCartRender(false)
+      } else {
+        setCartRender(true)
+      }
+    console.log('triggered')
     let tempCart = function() {
         try {
         return JSON.parse(localStorage.cart)

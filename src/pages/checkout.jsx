@@ -27,9 +27,25 @@ useEffect(() => {
 
 const reRender = () => {
     console.log('rerender')
-    const event = new Event('itemInserted');
-        
-    document.dispatchEvent(event);
+    let tempCart = function() {
+        try {
+        return JSON.parse(localStorage.cart)
+        } catch {return []}
+    }
+    const setLocal = function(key, value) {
+         
+        localStorage.setItem(key, value);
+        const event = new Event('itemInserted');
+      
+        document.dispatchEvent(event);
+     
+      };
+      setLocal('cart', JSON.stringify(tempCart()))
+      if (cartRender===true) {
+        setCartRender(false)
+      } else {
+        setCartRender(true)
+      }
 }
 const localStorageSetHandler = () => {
 

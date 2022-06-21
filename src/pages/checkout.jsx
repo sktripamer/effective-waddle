@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import {loadStripe} from '@stripe/stripe-js/pure';
+    import {loadStripe} from '@stripe/stripe-js/pure';
 import {
     CardElement,
     Elements,
@@ -7,12 +7,13 @@ import {
     useElements,
   } from '@stripe/react-stripe-js'; 
   import { isEmpty } from 'lodash';
-  const [stripePromise, setStripePromise] = useState(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
-   
+ 
   import InputField2 from '../components/inputfield';
   import Select from "react-dropdown-select";
 
 export default function Checkout() {
+const [stripePromise, setStripePromise] = useState(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
+   
 const [loading, setLoading] = useState(false);
 const [cartRender, setCartRender] = useState(true);
 const isBrowser = typeof window !== "undefined";

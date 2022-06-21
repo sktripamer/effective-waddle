@@ -9,7 +9,7 @@ import {
   
   import InputField2 from '../components/inputfield';
   import Select from "react-dropdown-select";
-  
+
 export default function Checkout() {
 const [loading, setLoading] = useState(false);
 const [cartRender, setCartRender] = useState(true);
@@ -133,7 +133,9 @@ async function handleSubmit(e) {
     <div class='checkout-page'>
         <div class='checkout-header-bar'></div>
         <div class='checkout-form-section'>
+        <Elements stripe={stripePromise}>
         <StepSix button={'Pay'} content={'aa'} header={'checkout'} subheader={"a"} shipping={true} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
+        </Elements>
         </div>
         <div class='checkout-cart-section'>
             <div class='checkout-cart-cont'>{localStorageSetHandler()}</div>

@@ -5,9 +5,8 @@ const [loading, setLoading] = useState(false)
 const couponForm = useRef(null);
 useEffect(() => {
     document.addEventListener("itemInserted", localStorageSetHandler, false);
+    document.addEventListener("storage", localStorageSetHandler, false);
 }, []);
-
-
 
 const localStorageSetHandler = () => {
     let tempCart = function() {
@@ -47,11 +46,7 @@ const localStorageSetHandler = () => {
         };
     
         setLocal('cart', JSON.stringify(cartModifier))
-        if (cartRender===true) {
-          setCartRender(false)
-        } else {
-          setCartRender(true)
-        }
+
     }
     if (newA.length === 0) {
         // if (cartText !== "Cart") {

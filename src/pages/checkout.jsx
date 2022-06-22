@@ -155,7 +155,7 @@ async function handleSubmit(e) {
          
           };
       
-          setLocal('cart', JSON.stringify(intent.cart))
+          setLocal('cart', JSON.stringify(intent.newCart))
       }
       console.log(intent)
 }

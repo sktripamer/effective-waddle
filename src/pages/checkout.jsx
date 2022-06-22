@@ -186,7 +186,7 @@ let hasShipping = false;
         <div class='checkout-form-section'>
         <Elements stripe={stripePromise}>
             
-        <StepSix button={'Pay'} header={'checkout'} shipping={true} subheader={"a"} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
+        <StepSix button={'Pay'} header={'checkout'} shipping={hasShipping} subheader={"a"} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
         </Elements>
         </div>
         <div class='checkout-cart-section'>
@@ -225,7 +225,6 @@ const StepSix = (props) => {
     let [shipping, setShipping] = useState(false);
     const [currentStep, setCurrentStep] = useState(1);
     if (props.shipping === true) {
-        console.log('setting shipping')
        [shipping, setShipping] = useState(true);
     }
 

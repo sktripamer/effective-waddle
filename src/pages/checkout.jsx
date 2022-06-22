@@ -52,9 +52,9 @@ queryCart().forEach((queryitem, index) => {
       }
       `
 })
-queryString = `query isVirtual {
+queryString = `\`query isVirtual {
  ${loopedQuery}   
-}`
+}\``
 console.log(queryString)
 const query = gql`${queryString}`
 

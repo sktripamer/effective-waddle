@@ -14,21 +14,14 @@ import {
 
 export default function Checkout() {
 const [stripePromise, setStripePromise] = useState(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
-   
+
 const [cloading, setcLoading] = useState(false);
 const [cartRender, setCartRender] = useState(true);
-const [useShipping, setUseShipping] = useState(false);
+
 const isBrowser = typeof window !== "undefined";
 const couponForm = useRef(null);
 useEffect(() => {
-    let tempCart = function() {
-        try {
-        return JSON.parse(localStorage.cart)
-        } catch {return []}
-    }
-    tempCart().forEach((item, index) => {
-        if (item.v === false) setUseShipping(true)
-    })
+
     document.addEventListener("itemInserted", localStorageSetHandler, false);
     if (isBrowser) window.addEventListener("storage", reRender, false);
   
@@ -142,7 +135,7 @@ const localStorageSetHandler = () => {
 
 async function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true)
+    setcLoading(true)
     const form = couponForm.current
     const couponCode = form['coupon'].value 
 
@@ -155,7 +148,7 @@ async function handleSubmit(e) {
         body: JSON.stringify(ex),
       });
       const intent = (await request.json());
-      setLoading(false)
+      setcLoading(false)
       if (intent.success === true) {
         const setLocal = function(key, value) {
          
@@ -219,9 +212,17 @@ async function handleSubmit(e) {
 const StepSix = (props) => {
     let [shipping, setShipping] = useState(false);
     const [currentStep, setCurrentStep] = useState(1);
-    if (props.shipping === true) {
-       [shipping, setShipping] = useState(true);
+
+    let tempCart = function() {
+        try {
+        return JSON.parse(localStorage.cart)
+        } catch {return []}
     }
+    tempCart().forEach((item, index) => {
+        if (item.v === false) [shipping, setShipping] = useState(true);
+    })
+
+    
 
 
 
@@ -898,9 +899,8 @@ const drawShippingForm = () => {
           <h2>{props.header}</h2>
           <h3>{props.subheader}</h3>
           <div class={props.content == '' ? 'payment-area-cont no-content': 'payment-area-cont'}>
-            <div class='payment-area-content'>{props.content}</div>
-    
-            <div class='payment-area-pay'>
+       
+            <div class='payment-area-pay-checkout'>
          {methodProcessing ? (
               <></>
             ) : (

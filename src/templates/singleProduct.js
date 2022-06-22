@@ -131,6 +131,7 @@ if (type === "SIMPLE") {
           variations(first: 100) {
             nodes {
               databaseId
+              virtual
               attributes {
                 nodes {
                   value
@@ -155,7 +156,6 @@ if (type === "SIMPLE") {
           price
           name
           description
-          virtual
           shortDescription
           galleryImages {
             nodes {

@@ -156,6 +156,11 @@ async function handleSubmit(e) {
           };
       
           setLocal('cart', JSON.stringify(intent.newCart))
+          if (cartRender===true) {
+            setCartRender(false)
+          } else {
+            setCartRender(true)
+          }
       }
       console.log(intent)
 }

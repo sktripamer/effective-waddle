@@ -212,16 +212,21 @@ async function handleSubmit(e) {
 const StepSix = (props) => {
     let [shipping, setShipping] = useState(false);
     const [currentStep, setCurrentStep] = useState(1);
-
+    let hasShipping = false
     let tempCart = function() {
         try {
         return JSON.parse(localStorage.cart)
         } catch {return []}
     }
     tempCart().forEach((item, index) => {
-        if (item.v === false) [shipping, setShipping] = useState(true);
+        if (item.v === false) {
+            hasShipping = true;
+        }
     })
-
+    if (hasShipping === true) {
+        console.log('setting true ship')
+        [shipping, setShipping] = useState(true);
+    }
     
 
 

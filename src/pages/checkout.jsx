@@ -26,38 +26,6 @@ useEffect(() => {
   
 }, []);
 
-let queryCart = function() {
-    try {
-    return JSON.parse(localStorage.cart)
-    } catch {return []}
-}
-let queryString = '';
-let loopedQuery = '';
-
-queryCart().forEach((queryitem, index) => {
-    loopedQuery += `product${index}: product(id: ${queryitem.ID}, idType: DATABASE_ID) {
-        ... on SimpleProduct {
-          virtual
-        }
-        ... on VariableProduct {
-          
-          variations {
-            edges {
-              node {
-                virtual
-              }
-            }
-          }
-        }
-      }
-      `
-})
-queryString = `\`query isVirtual {
- ${loopedQuery}   
-}\``
-console.log(queryString)
-const query = gql`${queryString}`
-
 
 
 const reRender = () => {
@@ -200,9 +168,6 @@ async function handleSubmit(e) {
       console.log(intent)
 }
 
-const { loading, error, data } = useQuery(query);
-if (loading) return <p>Loading ...</p>;
-console.log(data)
 
   return (
     <div class='checkout-page'>

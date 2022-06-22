@@ -168,14 +168,25 @@ async function handleSubmit(e) {
       }
       console.log(intent)
 }
-
+let hasShipping = false;
+    let tempCart = function() {
+        try {
+        return JSON.parse(localStorage.cart)
+        } catch {return []}
+    }
+    tempCart().forEach((item, index) => {
+        if (item.v === false) {
+            hasShipping = true;
+        }
+    })
 
   return (
     <div class='checkout-page'>
         <div class='checkout-header-bar'></div>
         <div class='checkout-form-section'>
         <Elements stripe={stripePromise}>
-        <StepSix button={'Pay'} header={'checkout'} subheader={"a"} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
+            
+        <StepSix button={'Pay'} header={'checkout'} shipping={hasShipping} subheader={"a"} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
         </Elements>
         </div>
         <div class='checkout-cart-section'>
@@ -210,24 +221,13 @@ async function handleSubmit(e) {
 }
 
 const StepSix = (props) => {
+
     let [shipping, setShipping] = useState(false);
     const [currentStep, setCurrentStep] = useState(1);
-    let hasShipping = false
-    let tempCart = function() {
-        try {
-        return JSON.parse(localStorage.cart)
-        } catch {return []}
+    if (props.shipping === true) {
+        console.log('setting shipping')
+       [shipping, setShipping] = useState(true);
     }
-    tempCart().forEach((item, index) => {
-        if (item.v === false) {
-            hasShipping = true;
-        }
-    })
-    if (hasShipping === true) {
-        console.log('setting true ship')
-        [shipping, setShipping] = useState(true);
-    }
-    
 
 
 

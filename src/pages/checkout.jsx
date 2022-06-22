@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useQuery, gql } from "@apollo/client";
     import {loadStripe} from '@stripe/stripe-js/pure';
 import {
     CardElement,
@@ -14,8 +15,9 @@ import {
 export default function Checkout() {
 const [stripePromise, setStripePromise] = useState(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
    
-const [loading, setLoading] = useState(false);
+const [cloading, setcLoading] = useState(false);
 const [cartRender, setCartRender] = useState(true);
+const [useShipping, setUseShipping] = useState(false);
 const isBrowser = typeof window !== "undefined";
 const couponForm = useRef(null);
 useEffect(() => {
@@ -23,6 +25,38 @@ useEffect(() => {
     if (isBrowser) window.addEventListener("storage", reRender, false);
   
 }, []);
+
+let queryCart = function() {
+    try {
+    return JSON.parse(localStorage.cart)
+    } catch {return []}
+}
+let queryString = '';
+let loopedQuery = '';
+
+queryCart().forEach((queryitem, index) => {
+    loopedQuery = `  product${index}: product(id: ${queryitem.ID}, idType: DATABASE_ID) {
+        ... on SimpleProduct {
+          virtual
+        }
+        ... on VariableProduct {
+          
+          variations {
+            edges {
+              node {
+                virtual
+              }
+            }
+          }
+        }
+      }
+      `
+})
+queryString = `query isVirtual {
+ ${loopedQuery}   
+}`
+const query = gql`${queryString}`
+
 
 
 const reRender = () => {
@@ -165,19 +199,23 @@ async function handleSubmit(e) {
       console.log(intent)
 }
 
+const { loading, error, data } = useQuery(query);
+if (loading) return <p>Loading ...</p>;
+console.log(data)
+
   return (
     <div class='checkout-page'>
         <div class='checkout-header-bar'></div>
         <div class='checkout-form-section'>
         <Elements stripe={stripePromise}>
-        <StepSix button={'Pay'} content={'aa'} header={'checkout'} subheader={"a"} shipping={true} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
+        <StepSix button={'Pay'} header={'checkout'} subheader={"a"} shipping={useShipping} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
         </Elements>
         </div>
         <div class='checkout-cart-section'>
             <div class='checkout-cart-cont'>{localStorageSetHandler()}</div>
             <div class='coupon-section'>
                 <form ref={couponForm} onSubmit={handleSubmit}>
-                <fieldset disabled={loading} aria-busy={loading}>
+                <fieldset disabled={cloading} aria-busy={cloading}>
                     <label htmlFor="coupon-entry">Coupon</label>
                     <input
                     id="coupon-entry"
@@ -185,7 +223,7 @@ async function handleSubmit(e) {
                     name="coupon"
                     required
                     />
-                    <button type="submit" disabled={loading}>
+                    <button type="submit" disabled={cloading}>
                     Apply Coupon
                     </button>
                 </fieldset>

@@ -35,7 +35,7 @@ let queryString = '';
 let loopedQuery = '';
 
 queryCart().forEach((queryitem, index) => {
-    loopedQuery = `  product${index}: product(id: ${queryitem.ID}, idType: DATABASE_ID) {
+    loopedQuery += `product${index}: product(id: ${queryitem.ID}, idType: DATABASE_ID) {
         ... on SimpleProduct {
           virtual
         }
@@ -55,6 +55,7 @@ queryCart().forEach((queryitem, index) => {
 queryString = `query isVirtual {
  ${loopedQuery}   
 }`
+console.log(queryString)
 const query = gql`${queryString}`
 
 

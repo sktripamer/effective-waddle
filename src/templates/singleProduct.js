@@ -87,6 +87,7 @@ if (type === "SIMPLE") {
                 name
                 databaseId
                 price
+                virtual
                 description
                 shortDescription
                 galleryImages {
@@ -154,6 +155,7 @@ if (type === "SIMPLE") {
           price
           name
           description
+          virtual
           shortDescription
           galleryImages {
             nodes {
@@ -204,11 +206,12 @@ const SimpleCart = (e) => {
      let varName;
      let varImage;
      let varPrice;
+     let virt;
         dbID =  data.product.databaseId
         varName =  data.product.name
         varImage =  data.product.featuredImage.node.sourceUrl
         varPrice = Number(data.product.price.replace(/[^0-9.-]+/g,""));
- 
+        virt = data.product.virtual
     let tempCart = function() {
      try {
      return JSON.parse(localStorage.cart)
@@ -221,7 +224,8 @@ const SimpleCart = (e) => {
      url: varImage,
      quantity: count,
      price: varPrice,
-     total: count * varPrice
+     total: count * varPrice,
+     v: virt
     }
     console.log(cartObj)
     let cartModifier = tempCart();
@@ -269,7 +273,7 @@ const VariationCart = (e) => {
     let varName;
     let varImage;
     let varPrice;
-
+    let virt;
     let attr1 = data.product.attributes.nodes[0].options[clickedItem]
     let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
     let selectedItem;
@@ -281,7 +285,7 @@ const VariationCart = (e) => {
            }
       }
 })
-    
+       virt = selectedItem.virtual
        dbID = selectedItem.databaseId
        varName =  selectedItem.name
        varImage =  selectedItem.featuredImage.node.sourceUrl
@@ -299,7 +303,8 @@ const VariationCart = (e) => {
     url: varImage,
     quantity: count,
     price: varPrice,
-    total: count * varPrice
+    total: count * varPrice,
+    v: virt
    }
    console.log(cartObj)
    let cartModifier = tempCart();

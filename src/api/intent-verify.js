@@ -60,10 +60,14 @@
                              total += (productprice * pID.quantity) + (productprice - parseFloat(couponInfo[0].amount))
 
                          }
+                     } else {
+                      couponInvalid = true;
                      }
-                   couponInvalid = true;
+                   
+                 } else {
+                  couponInvalid = true;
                  }
-                 couponInvalid = true;
+                 
               } else {
                  total += (parseInt(priceOfProduct) * pID.quantity)
               }

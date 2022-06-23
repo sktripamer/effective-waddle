@@ -41,7 +41,7 @@ const getIntent = async (req, res) => {
                                })
                                if (productMatch === true) {
                                    let productprice = parseInt(priceOfProduct);
-                                   total += (productprice * pID.quantity) + (productprice - parseFloat(couponInfo[0].amount))
+                                   total += (productprice * pID.quantity) + (productprice -(100 * parseFloat(couponInfo[0].amount)))
 
                                }
                            } else {
@@ -92,7 +92,7 @@ const getIntent = async (req, res) => {
                                 })
                                 if (productMatch === true) {
                                     let productprice = parseInt(priceOfProduct);
-                                    total += (productprice * pID.quantity) + (productprice - parseFloat(couponInfo[0].amount))
+                                    total += (productprice * pID.quantity) + (productprice - (100 * parseFloat(couponInfo[0].amount)))
 
                                 }
                             }

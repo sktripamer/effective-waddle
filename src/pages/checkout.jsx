@@ -894,9 +894,9 @@ const drawShippingForm = () => {
     parsedShippingData = JSON.parse(shippingData)
   }
 
-  if (parsedShippingData.length === 0) {
-    setAddressDisabled(false)
-  }
+  // if (parsedShippingData.length === 0) {
+  //   setAddressDisabled(false)
+  // }
 
   return (
     <div className='shipping-form-data'>

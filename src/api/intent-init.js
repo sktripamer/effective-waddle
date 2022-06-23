@@ -95,10 +95,14 @@ const getIntent = async (req, res) => {
                                     total += (productprice * pID.quantity) + (productprice - (100 * parseFloat(couponInfo[0].amount)))
 
                                 }
+                            } else {
+                                couponInvalid = true;
                             }
-                          couponInvalid = true;
+                          
+                        } else {
+                            couponInvalid = true;
                         }
-                        couponInvalid = true;
+                    
                      } else {
                         total += (parseInt(priceOfProduct) * pID.quantity)
                      }

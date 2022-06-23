@@ -251,7 +251,7 @@ const StepSix = (props) => {
     const [status, setStatus] = useState(0);
     let newA = [];
     const [arrayTest, setArray] = useState({});
-    let shippingData = '';
+    const [shippingData, setShippingData] = useState('');
     const [prevExpY, setPrevExpY] = useState("");
     const [prevExpM, setPrevExpM] = useState("");
     const [prevName, setPrevName] = useState("");
@@ -260,7 +260,7 @@ const StepSix = (props) => {
     const [prevPaymentID, setPrevID] = useState(""); //previous payment ID.
     const [prevLast4, setLast4] = useState("");
     const [clickedItem, setClickedItem] = useState(0);
-    const [clickedAddress, setClickedAddress] = useState(0);
+    // const [clickedAddress, setClickedAddress] = useState(0);
     const [firstDisabled, setFirstDisabled] = useState(false);
     const [country, setCountry] = useState([{
       name: 'United States of America',
@@ -564,8 +564,7 @@ const customNoDataRenderer = () => (
             return;
           }
           setArray(intent.paymentMethod.data);
-        
-          shippingData = intent.address;
+          setShippingData(intent.address);
           console.log(intent)
           
           // Update your user in DB to store the customerID
@@ -862,7 +861,7 @@ return (
 
 const addressClick = (e) => {
  
-  setClickedAddress(parseInt(e.target.dataset.idindex));
+//  setClickedAddress(parseInt(e.target.dataset.idindex));
   document.getElementById("ship-name").value = e.target.dataset.first_name;
   document.getElementById("ship-address1").value = e.target.dataset.address_1;
   document.getElementById("ship-address2").value = e.target.dataset.address_2;
@@ -904,14 +903,14 @@ const drawShippingForm = () => {
 
 {parsedShippingData.length >= 1 ? (
     <div class={`selection-section`}>
-    {parsedShippingData && parsedShippingData.map((el, index) =>
+    {/* {parsedShippingData && parsedShippingData.map((el, index) =>
           <React.Fragment key={index}>
           <div data-address_1={el.address_1} data-address_2={el.address_2} data-city={el.city} data-country={el.country} data-first_name={el.first_name} data-postcode={el.postcode} data-state={el.state} onClick={addressClick} data-idindex={index} className={index === clickedAddress ? "previous-address is-checked" : "previous-address"}>
           <div className="prev-address-1">{el.address_1}</div>
 
     </div>
         </React.Fragment>
-)}
+)} */}
   <div onClick={newAddressButton} className={`new-address`}>+ New Address</div>
     </div>
     ) : (

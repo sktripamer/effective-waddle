@@ -183,49 +183,7 @@ async function handleSubmit(e) {
 }
 
 
-  return (
-    <div class='checkout-page'>
-        <div class='checkout-header-bar'></div>
-        <div class='checkout-form-section'>
-        <Elements stripe={stripePromise}>
-            
-               
-                <StepSix button={'Pay'} header={'checkout'} subheader={"a"} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
-            
-        </Elements>
-        </div>
-        <div class='checkout-cart-section'>
-            <div class='checkout-cart-cont'>{localStorageSetHandler()}</div>
-            <div class='coupon-section'>
-                <form ref={couponForm} onSubmit={handleSubmit}>
-                <fieldset disabled={cloading} aria-busy={cloading}>
-                    <label htmlFor="coupon-entry">Coupon</label>
-                    <input
-                    id="coupon-entry"
-                    type="text"
-                    name="coupon"
-                    required
-                    />
-                    <button type="submit" disabled={cloading}>
-                    Apply Coupon
-                    </button>
-                </fieldset>
-                </form>
-            </div>
-        </div>
-
-
-  
-    </div>
-  )
-
-
-
-
-  
-}
-
-const StepSix = (props) => {
+const StepSix = () => {
 
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -633,7 +591,7 @@ const customNoDataRenderer = () => (
         setError(null);
         setProcessing(false);
         setSucceeded(true);
-        props.changeStatus('succeeded')
+       // props.changeStatus('succeeded')
       }
 
 
@@ -641,7 +599,7 @@ const customNoDataRenderer = () => (
         setError(null);
         setProcessing(false);
         setSucceeded(true);
-        props.changeStatus('succeeded')
+      //  props.changeStatus('succeeded')
 
       } 
 
@@ -760,7 +718,7 @@ const customNoDataRenderer = () => (
       setCurrentStep(1)
     }
     const cancelPayment = () => {
-      props.changeStatus('canceled')
+    //  props.changeStatus('canceled')
     }
 
     const getButtonId = (e) => {
@@ -801,40 +759,21 @@ const noShippingForm = () => {
 
 return (
   <>
-  {props.optional === true ?
-  (
-<div className='paybtn-cont'>
-<div onClick={cancelPayment} className={`next-btn stepback`}>
-      <span id="button-text">
-        No thanks
-      </span>
-    </div>
-  <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
-  <span id="button-text">
-    {processing ? (
-      <div className="spinner" id="spinner">{props.button}</div>
-    ) : (
-      `${props.button}`
-    )}
-  </span>
-</button>
-</div>
-  ):
-(
+
   <div className='paybtn-cont'>
   <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
   <span id="button-text">
     {processing ? (
-      <div className="spinner" id="spinner">{props.button}</div>
+      <div className="spinner" id="spinner">Pay</div>
     ) : (
-      `${props.button}`
+      `Pay`
     )}
   </span>
 </button>
 </div>
-)
 
-}
+
+
 </>
 )
 }
@@ -884,9 +823,9 @@ const drawShippingForm = () => {
     <button className='pay-btn' disabled={processing || disabled || succeeded} id="submit">
           <span id="button-text">
             {processing ? (
-              <div className="spinner" id="spinner">{props.button}</div>
+              <div className="spinner" id="spinner">Pay</div>
             ) : (
-              `${props.button}`
+              `Pay`
             )}
           </span>
         </button>
@@ -900,9 +839,9 @@ const drawShippingForm = () => {
 
     return (
       <div className={`payment register-form col-md-6 status-${status} load-${doneLoading} step-${currentStep} success-${succeeded}`}>
-          <h2>{props.header}</h2>
-          <h3>{props.subheader}</h3>
-          <div class={props.content == '' ? 'payment-area-cont no-content': 'payment-area-cont'}>
+          <h2>Checkout</h2>
+          <h3></h3>
+          <div class={'payment-area-cont'}>
        
             <div class='payment-area-pay-checkout'>
          {methodProcessing ? (
@@ -966,7 +905,7 @@ const drawShippingForm = () => {
         )}
       <div className={"result-message"}>
        <div className='result-message-success'>Payment succeeded!</div>
-       <p className='result-message-text'>{props.success}</p>
+       <p className='result-message-text'>Payment success</p>
       </div>
         
       </form>
@@ -976,3 +915,44 @@ const drawShippingForm = () => {
     );
 
   }
+  return (
+    <div class='checkout-page'>
+        <div class='checkout-header-bar'></div>
+        <div class='checkout-form-section'>
+        <Elements stripe={stripePromise}>
+            
+               {StepSix()}
+                {/* <StepSix button={'Pay'} header={'checkout'} subheader={"a"} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  */}
+            
+        </Elements>
+        </div>
+        <div class='checkout-cart-section'>
+            <div class='checkout-cart-cont'>{localStorageSetHandler()}</div>
+            <div class='coupon-section'>
+                <form ref={couponForm} onSubmit={handleSubmit}>
+                <fieldset disabled={cloading} aria-busy={cloading}>
+                    <label htmlFor="coupon-entry">Coupon</label>
+                    <input
+                    id="coupon-entry"
+                    type="text"
+                    name="coupon"
+                    required
+                    />
+                    <button type="submit" disabled={cloading}>
+                    Apply Coupon
+                    </button>
+                </fieldset>
+                </form>
+            </div>
+        </div>
+
+
+  
+    </div>
+  )
+
+
+
+
+  
+}

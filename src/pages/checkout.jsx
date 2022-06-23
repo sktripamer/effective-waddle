@@ -11,7 +11,7 @@ import {
  
   import InputField2 from '../components/inputfield';
   import Select from "react-dropdown-select";
-
+  let shipping = false;
 export default function Checkout() {
 const [stripePromise, setStripePromise] = useState(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
 
@@ -20,7 +20,7 @@ const [cartRender, setCartRender] = useState(true);
 
 const isBrowser = typeof window !== "undefined";
 const couponForm = useRef(null);
-let shipping = false;
+
     let tempCart = function() {
         try {
         return JSON.parse(localStorage.cart)

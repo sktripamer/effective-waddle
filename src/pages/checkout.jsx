@@ -228,7 +228,7 @@ async function handleSubmit(e) {
 
 const StepSix = (props) => {
 
-
+  const [currentStep, setCurrentStep] = useState(1);
 
 
     const stripe = useStripe();

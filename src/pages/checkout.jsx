@@ -188,11 +188,10 @@ async function handleSubmit(e) {
         <div class='checkout-header-bar'></div>
         <div class='checkout-form-section'>
         <Elements stripe={stripePromise}>
-            {shipping === true ? (
+            
+               
                 <StepSix button={'Pay'} header={'checkout'} subheader={"a"} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
-            ) : (
-                <StepSix button={'Pay'} header={'checkout'} subheader={"a"} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
-            )}
+            
         </Elements>
         </div>
         <div class='checkout-cart-section'>

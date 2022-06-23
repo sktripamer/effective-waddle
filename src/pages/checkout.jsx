@@ -20,6 +20,19 @@ const [cartRender, setCartRender] = useState(true);
 
 const isBrowser = typeof window !== "undefined";
 const couponForm = useRef(null);
+let hasShipping = false;
+    let tempCart = function() {
+        try {
+        return JSON.parse(localStorage.cart)
+        } catch {return []}
+    }
+    tempCart().forEach((item, index) => {
+        if (item.v === false) {
+            hasShipping = true;
+        }
+    })
+
+    
 useEffect(() => {
 
     document.addEventListener("itemInserted", localStorageSetHandler, false);
@@ -168,17 +181,7 @@ async function handleSubmit(e) {
       }
       console.log(intent)
 }
-let hasShipping = false;
-    let tempCart = function() {
-        try {
-        return JSON.parse(localStorage.cart)
-        } catch {return []}
-    }
-    tempCart().forEach((item, index) => {
-        if (item.v === false) {
-            hasShipping = true;
-        }
-    })
+
 
   return (
     <div class='checkout-page'>

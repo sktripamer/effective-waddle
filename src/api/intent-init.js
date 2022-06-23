@@ -31,7 +31,9 @@ const getIntent = async (req, res) => {
                     if (pID.ctype === 'fp1') {
                        const safeCode = pID.code.replace(/[^a-zA-Z0-9]/g, "");
                        const couponInfo = await getCoupon(safeCode)
+                       console.log(couponInfo)
                        if (couponInfo.length === 1) {
+                           console.log(couponInfo.length)
                            if (couponInfo[0].discount_type === 'fixed_product' && couponInfo[0].limit_usage_to_x_items === 1) {
                                let productMatch = false;
                                couponInfo[0].product_ids.forEach((couponProduct, index) => {
@@ -42,10 +44,14 @@ const getIntent = async (req, res) => {
                                    total += (productprice * pID.quantity) + (productprice - parseFloat(couponInfo[0].amount))
 
                                }
+                           } else {
+                            couponInvalid = true;
                            }
-                         couponInvalid = true;
+                        
+                       } else {
+                        couponInvalid = true;
                        }
-                       couponInvalid = true;
+                       
                     } else {
                        total += (parseInt(priceOfProduct) * pID.quantity)
                     }

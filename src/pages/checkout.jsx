@@ -22,20 +22,20 @@ const [cartRender, setCartRender] = useState(true);
 const isBrowser = typeof window !== "undefined";
 const couponForm = useRef(null);
 
-    let tempCart = function() {
-        try {
-        return JSON.parse(localStorage.cart)
-        } catch {return []}
-    }
-    tempCart().forEach((item, index) => {
-        if (item.v === false) {
-            shipping = true;
-        }
-    })
+
 
 
 useEffect(() => {
-
+  let tempCart = function() {
+    try {
+    return JSON.parse(localStorage.cart)
+    } catch {return []}
+}
+tempCart().forEach((item, index) => {
+    if (item.v === false) {
+        shipping = true;
+    }
+})
     document.addEventListener("itemInserted", localStorageSetHandler, false);
     if (isBrowser) window.addEventListener("storage", reRender, false);
   

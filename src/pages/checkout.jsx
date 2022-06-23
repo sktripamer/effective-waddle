@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Layout from "../components/Layout";
 import { useQuery, gql } from "@apollo/client";
     import {loadStripe} from '@stripe/stripe-js/pure';
 import {
@@ -185,6 +186,7 @@ async function handleSubmit(e) {
 
 
   return (
+    <Layout htmlClassName={"scroll"}>
     <div class='checkout-page'>
         <div class='checkout-header-bar'></div>
         <div class='checkout-form-section'>
@@ -218,6 +220,7 @@ async function handleSubmit(e) {
 
   
     </div>
+    </Layout>
   )
 
 
@@ -231,7 +234,7 @@ const StepSix = (props) => {
   const [currentStep, setCurrentStep] = useState(1);
 
   console.log(`shiing`, shipping)
-  
+
     const stripe = useStripe();
     const elements = useElements();
     const isBrowser = typeof window !== "undefined";

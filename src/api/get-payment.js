@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import axios from 'axios'
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
-
+let address;
 const validateJWT = async (req, res) => {
 //validates JWT and gets user ID from payload data. then passes to the next function to get customerID and paymentID from stripe.
     try {
@@ -10,7 +10,7 @@ const validateJWT = async (req, res) => {
             if (customerID == '') return res.status(200).json('');
             const paymentMethod = await getPaymentMethods(customerID);
             if (paymentMethod == '') return res.status(200).json('');
-            return res.status(200).json({paymentMethod})
+            return res.status(200).json({paymentMethod, address})
          
        });
       } catch (e) {
@@ -27,6 +27,9 @@ const getCustomerID = async (uID) => {
         }
       };
      const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig).then(resp => {    
+       
+         address = resp.data.acf.shippingaddress1
+       
        return resp.data.acf.customer_id;
     });
     return responser;

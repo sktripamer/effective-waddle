@@ -222,7 +222,7 @@
 
         if (params.shippingData !==null) {
           let tempship;
-          if (params.previousShippingData !== null) {
+          if (params.previousShippingData !== '') {
             let tempdata = JSON.parse(params.previousShippingData)
             let newtempdata = {
               "first_name": params.shippingData.shippingname,

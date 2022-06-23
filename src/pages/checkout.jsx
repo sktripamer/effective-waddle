@@ -13,9 +13,7 @@ import {
   import InputField2 from '../components/inputfield';
   import Select from "react-dropdown-select";
   let shipping = false;
-  export const setAuth = (authData) => {
-    localStorage.setItem("auth", JSON.stringify(authData));
-  };
+
   
 export default function Checkout() {
 const [stripePromise, setStripePromise] = useState(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
@@ -235,7 +233,9 @@ async function handleSubmit(e) {
 const StepSix = (props) => {
 
   const [currentStep, setCurrentStep] = useState(1);
-
+  const setAuth = (authData) => {
+    localStorage.setItem("auth", JSON.stringify(authData));
+  };
   console.log(`shiing`, shipping)
 
     const stripe = useStripe();

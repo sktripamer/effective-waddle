@@ -959,10 +959,10 @@ const drawShippingForm = () => {
                 </span>
               </div>
         )}
-
+        <>
         {shipping === true && drawShippingForm()}
         {shipping === false && noShippingForm()}
-
+        </>
         <div className='powered-by-stripe-small'></div>
         {error && (
           <div className="card-error" role="alert">

@@ -251,7 +251,7 @@ const StepSix = (props) => {
     const [status, setStatus] = useState(0);
     let newA = [];
     const [arrayTest, setArray] = useState({});
-    const [shippingData, setShippingData] = useState('');
+    let shippingData = '';
     const [prevExpY, setPrevExpY] = useState("");
     const [prevExpM, setPrevExpM] = useState("");
     const [prevName, setPrevName] = useState("");
@@ -564,7 +564,8 @@ const customNoDataRenderer = () => (
             return;
           }
           setArray(intent.paymentMethod.data);
-          setShippingData(intent.address);
+        
+          shippingData = intent.address;
           console.log(intent)
           
           // Update your user in DB to store the customerID

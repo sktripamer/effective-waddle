@@ -246,6 +246,7 @@ const StepSix = (props) => {
     const [methodProcessing, setMethodProcessing] = useState(true);
     const [doneLoading, setDoneLoading] = useState(false);
     const [disabled, setDisabled] = useState(true);
+    const [addressDisabled, setAddressDisabled] = useState(true);
     const nameForm = useRef(null);
     const [status, setStatus] = useState(0);
     let newA = [];
@@ -259,6 +260,7 @@ const StepSix = (props) => {
     const [prevPaymentID, setPrevID] = useState(""); //previous payment ID.
     const [prevLast4, setLast4] = useState("");
     const [clickedItem, setClickedItem] = useState(0);
+    const [clickedAddress, setClickedAddress] = useState(0);
     const [firstDisabled, setFirstDisabled] = useState(false);
     const [country, setCountry] = useState([{
       name: 'United States of America',
@@ -521,9 +523,13 @@ const customNoDataRenderer = () => (
       }
     }
     const [checked, setChecked] = useState(true);
-
+    const [addressChecked, setAddressChecked] = useState(true);
+    const [addressCheckHidden, setAddressCheckHidden] = useState('');
     const handleCheck = () => {
       setChecked(!checked);
+    };
+    const handleAddressCheck = () => {
+      setAddressChecked(!checked);
     };
     useEffect(() => {
       async function fetchMyAPI() {
@@ -722,14 +728,14 @@ const customNoDataRenderer = () => (
           intent:paymentIntent,
           newAccount: newAccuntEmail,
           shippingData: null,
-          metafield: "onedollar",
-          metavalue: true,
+        //  metafield: "onedollar",
+        //  metavalue: true,
           savePayment: checked,
         }
 
         if (shipping===true) {
-          //and if shippingnew = true
-
+          
+          ex.saveShipping = addressChecked;
           ex.previousShippingData = shippingData;
           ex.shippingData = {
             shippingaddress1: form['ship-address1'].value,
@@ -808,6 +814,7 @@ const customNoDataRenderer = () => (
 //onClick={(e) => radioHandler(0)}
 // (el.card.exp_year).toString().slice(-2)
 // ('0' + el.card.exp_month.toString()).toString().slice(-2)
+
 const noShippingForm = () => {
 
 
@@ -850,42 +857,107 @@ return (
 </>
 )
 }
+
+
+const addressClick = (e) => {
+ 
+  setClickedAddress(parseInt(e.target.dataset.idindex));
+  document.getElementById("ship-name").value = e.target.dataset.first_name;
+  document.getElementById("ship-address1").value = e.target.dataset.address_1;
+  document.getElementById("ship-address2").value = e.target.dataset.address_2;
+  document.getElementById("ship-city").value = e.target.dataset.city;
+  document.getElementById("ship-state").value = e.target.dataset.state;
+  document.getElementById("ship-zip").value = e.target.dataset.postcode;
+  document.getElementById("ship-country").value = e.target.dataset.country;
+  setAddressCheckHidden('-hide')
+  setAddressChecked(false)
+  setAddressDisabled(true)
+}
+const newAddressButton = () => {
+
+  document.getElementById("ship-name").value = '';
+  document.getElementById("ship-address1").value ='';
+  document.getElementById("ship-address2").value = '';
+  document.getElementById("ship-city").value = '';
+  document.getElementById("ship-state").value = '';
+  document.getElementById("ship-zip").value = '';
+  document.getElementById("ship-country").value = '';
+  setAddressCheckHidden('')
+  setAddressChecked(true)
+  setAddressDisabled(false)
+
+}
 const drawShippingForm = () => {
+
+  let parsedShippingData = [];
+  if (shippingData !== '') {
+    parsedShippingData = JSON.parse(shippingData)
+  }
+
+  if (parsedShippingData.length === 0) {
+    setAddressDisabled(false)
+  }
 
   return (
     <div className='shipping-form-data'>
+
+{parsedShippingData.length >= 1 ? (
+    <div class={`selection-section`}>
+    {parsedShippingData && parsedShippingData.map((el, index) =>
+          <React.Fragment key={index}>
+          <div data-address_1={el.address_1} data-address_2={el.address_2} data-city={el.city} data-country={el.country} data-first_name={el.first_name} data-postcode={el.postcode} data-state={el.state} onClick={addressClick} data-idindex={index} className={index === clickedAddress ? "previous-address is-checked" : "previous-address"}>
+          <div className="prev-address-1">{el.address_1}</div>
+
+    </div>
+        </React.Fragment>
+)}
+  <div onClick={newAddressButton} className={`new-address`}>+ New Address</div>
+    </div>
+    ) : (
+      <>
+      </>
+      )}
+
+
+
     <div className="ship-name">
 
-    <input required className={'form-control form-control'} placeholder="First and last name" autocomplete="shipping name" name={'name'}/>
+    <input disabled={addressDisabled} id="ship-name" required className={'form-control form-control'} placeholder="First and last name" autocomplete="shipping name" name={'name'}/>
     </div>
     <label>Street Address</label>
     <div className="ship-street">
 
-    <input required className={'form-control form-control'} placeholder="Street and number" autocomplete="shipping address-line1" name={'ship-address1'}/>
-    <input className={'form-control form-control'} placeholder="Apartment, suite, unit, etc (optional)" autocomplete="shipping address-line2" name={'ship-address2'}/>
+    <input disabled={addressDisabled} id="ship-address1" required className={'form-control form-control'} placeholder="Street and number" autocomplete="shipping address-line1" name={'ship-address1'}/>
+    <input disabled={addressDisabled} id="ship-address2" className={'form-control form-control'} placeholder="Apartment, suite, unit, etc (optional)" autocomplete="shipping address-line2" name={'ship-address2'}/>
     </div>
     <label>City / State</label>
-    <div className="ship-citystate">
+    <div  className="ship-citystate">
 
-    <input required className={'form-control form-control'} placeholder="City" name="ship-city" autocomplete="shipping address-level2"/>
-    <input required className={'form-control form-control'} placeholder="State / Province" name="ship-state" autocomplete="shipping address-level1"/>
+    <input disabled={addressDisabled} id="ship-city" required className={'form-control form-control'} placeholder="City" name="ship-city" autocomplete="shipping address-level2"/>
+    <input disabled={addressDisabled} id="ship-state" required className={'form-control form-control'} placeholder="State / Province" name="ship-state" autocomplete="shipping address-level1"/>
     </div>
     <label>Zip Code / Country</label>
     <div className="ship-zipcountry">
-    <input required className={'form-control form-control'} placeholder="Zip / Postal Code" autocomplete="shipping postal-code" name={'ship-zip'}/>
+    <input disabled={addressDisabled} id="ship-zip" required className={'form-control form-control'} placeholder="Zip / Postal Code" autocomplete="shipping postal-code" name={'ship-zip'}/>
     <Select
     options={optionsC} 
     labelField="name"
     valueField="code"
-    name="ship-country" 
+    name="ship-country"
+    id="ship-country" 
     dropdownPosition="top"
     searchBy="name"
     required
+    disabled={addressDisabled}
     closeOnSelect={true}
     values={country}
     noDataRenderer={customNoDataRenderer}
     onChange={values => setCountry(values)}
   />
+    <label className={`save-payment${addressCheckHidden}`}>
+    <input  disabled={addressDisabled} type="checkbox" checked={addressChecked} onChange={handleAddressCheck} />
+    Save Address
+  </label>
   </div>
     <div className='paybtn-cont'>
     <div onClick={prevStep} className={`next-btn stepback`}>

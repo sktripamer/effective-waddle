@@ -57,7 +57,7 @@
                          if (productMatch === true) {
                            coupons.push(safeCode)
                              let productprice = parseInt(priceOfProduct);
-                             total += (productprice * pID.quantity) + (productprice - parseFloat(couponInfo[0].amount))
+                             total += (productprice * pID.quantity) + (productprice - (100 * parseFloat(couponInfo[0].amount)))
 
                          }
                      } else {
@@ -236,7 +236,10 @@
         let orderCart = [];
 
         params.cart.forEach(o => {
-    orderCart.push({'product_id':o.ID, 'quantity': o.quantity})
+          let tempQuantity = o.quantity;
+          if ('cquantity' in o) tempQuantity += o.cquantity
+
+    orderCart.push({'product_id':o.ID, 'quantity': tempQuantity})
 });
         let data = {
           "set_paid": true,
@@ -264,7 +267,7 @@
         })
         data.coupon_lines = couponLineData;
       }
-
+      console.log(JSON.stringify(data))
         const responser = await axios.post('https://portal.revrevdev.xyz/wp-json/wc/v3/orders', JSON.stringify(data), axiosConfig)
         .then((resp) => {
         return resp;

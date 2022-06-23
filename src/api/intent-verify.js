@@ -4,6 +4,7 @@
   let params;
   let paymentIntent;
   let newID;
+  let coupons = [];
   const verifyIntent = async (req, res) => {
       params = JSON.parse(req.body)
 
@@ -17,26 +18,63 @@
       paymentIntent = await stripe.paymentIntents.retrieve(params.intent);
       let metacart = []
       params.cart.forEach((item, index) => {
-          let pusher = {
+          let pusher;
+          if (item.ctype === 'fp1') {
+              pusher = {
+                  i: item.ID,
+                  q: item.quantity,
+                  p: item.price,
+                  t: item.total,
+                  c: item.code,
+                  cq: item.cquantity,
+                  cp: item.cprice
+              }
+          } else {
+              pusher = {
                   i: item.ID,
                   q: item.quantity,
                   p: item.price,
                   t: item.total
-          }
-          metacart.push(pusher)
-      })
+              }
+          }  
+      metacart.push(pusher)
+  })
       if (JSON.stringify(metacart) !== paymentIntent.metadata.cart) return res.status(400); // cart from intent and verifier mismatch, exit.
+      let couponInvalid = false;
       let total = 0;
       const mapLoop = async _ => {
           const promises = params.cart.map(async pID => {
               const priceOfProduct = await getPrice(pID)
-              total += (parseInt(priceOfProduct) * pID.quantity)
+              if (pID.ctype === 'fp1') {
+                 const safeCode = pID.code.replace(/[^a-zA-Z0-9]/g, "");
+                 const couponInfo = await getCoupon(safeCode)
+                 if (couponInfo.length === 1) {
+                     if (couponInfo[0].discount_type === 'fixed_product' && couponInfo[0].limit_usage_to_x_items === 1) {
+                         let productMatch = false;
+                         couponInfo[0].product_ids.forEach((couponProduct, index) => {
+                             if (couponProduct == pID.ID) productMatch = true;
+                         })
+                         if (productMatch === true) {
+                           coupons.push(safeCode)
+                             let productprice = parseInt(priceOfProduct);
+                             total += (productprice * pID.quantity) + (productprice - parseFloat(couponInfo[0].amount))
+
+                         }
+                     }
+                   couponInvalid = true;
+                 }
+                 couponInvalid = true;
+              } else {
+                 total += (parseInt(priceOfProduct) * pID.quantity)
+              }
+              
               return priceOfProduct
           })
           const totalPrice = await Promise.all(promises)
           return total;
       }
       const totalCartPrice = await mapLoop();
+      if (couponInvalid === true) return res.status(400).json({success: false}) //funny business going on with coupons (mismatch), exit.
       if (totalCartPrice != paymentIntent.amount) return res.status(400); //intent and cart checker price mismatch.
       if (paymentIntent.status !== "succeeded") return res.status(400); //not successfull transaction
 
@@ -213,9 +251,15 @@
       "state": params.shippingData.shippingstate,
       "postcode": params.shippingData.shippingzip,
       "country": params.shippingData.shippingcountry
-    }
+          }
       }
-
+      if (coupons.length > 0) {
+        let couponLineData = [];
+        coupons.forEach((cou, index) => {
+          couponLineData.push({'code': cou})
+        })
+        data.coupon_lines = couponLineData;
+      }
 
         const responser = await axios.post('https://portal.revrevdev.xyz/wp-json/wc/v3/orders', JSON.stringify(data), axiosConfig)
         .then((resp) => {
@@ -257,5 +301,15 @@
   return exists;
 
   }
+
+
+  
+const getCoupon = async(code) => {
+  const exists = await axios.get('https://portal.revrevdev.xyz/wp-json/wc/v3/coupons/?code=' + code, {headers: { Authorization: `Basic ` + process.env.WC_SECRET}}).then(resp => {    
+    return resp.data;
+});
+return exists;
+
+}
 
   export default verifyIntent;

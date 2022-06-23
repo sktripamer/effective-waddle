@@ -248,8 +248,10 @@
               "country": params.shippingData.shippingcountry
             }]
           }
-          
-       data.acf['shippingaddress1'] = JSON.stringify(tempship)
+          if (params.saveShipping === true) {
+            data.acf['shippingaddress1'] = JSON.stringify(tempship)
+          }
+     
       }
 
 

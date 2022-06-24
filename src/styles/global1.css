@@ -1155,21 +1155,15 @@ background: linear-gradient(
 
 
 .previous-payment.is-checked {
-  background: linear-gradient( 
-    294deg
-    ,#a2f,#ff2278);
+  background: linear-gradient(294deg,#ff22a7,#ff1b65);
     font-weight: bold;
 }
 .previous-payment.\30 {
-  background: linear-gradient( 
-    294deg
-    ,#a2f,#ff2278);
+  background: linear-gradient(294deg,#ff22a7,#ff1b65);
 }
 
 .new-payment.\31 {
-  background: linear-gradient( 
-294deg
-,#a2f,#ff2278);
+  background: linear-gradient(294deg,#ff22a7,#ff1b65);
 }
 .new-payment {
   border-radius: 3px;

@@ -186,7 +186,7 @@ async function handleSubmit(e) {
 
 
   return (
-    <Layout htmlClassName={"scroll"}>
+    <Layout htmlClassName={"checkout"}>
     <div class='checkout-page'>
         <div class='checkout-header-bar'></div>
         <div class='checkout-form-section'>
@@ -884,8 +884,9 @@ const addressClick = (e) => {
   setAddressChecked(false)
   addressDisabled = true;
 }
-const newAddressButton = () => {
 
+const newAddressButton = () => {
+  setClickedAddress(-1)
   document.getElementById("ship-name").value = '';
   document.getElementById("ship-address1").value ='';
   document.getElementById("ship-address2").value = '';
@@ -917,7 +918,7 @@ console.log(parsedShippingData)
             </div>
           </React.Fragment>
     )}
-    <div onClick={newAddressButton} className={`new-address`}>+ New Address</div>
+    <div onClick={newAddressButton} className={`new-address${addressCheckHidden}`}>+ New Address</div>
       </div>
     )}
 
@@ -957,11 +958,12 @@ console.log(parsedShippingData)
     noDataRenderer={customNoDataRenderer}
     onChange={values => setCountry(values)}
   />
-    <label className={`save-payment${addressCheckHidden}`}>
+
+  </div>
+  <label className={`save-payment${addressCheckHidden}`}>
     <input  disabled={addressDisabled} type="checkbox" checked={addressChecked} onChange={handleAddressCheck} />
     Save Address
   </label>
-  </div>
     <div className='paybtn-cont'>
     <div onClick={prevStep} className={`next-btn stepback`}>
       <span id="button-text">

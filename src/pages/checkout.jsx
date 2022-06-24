@@ -881,7 +881,8 @@ const addressClick = (e) => {
   document.getElementById("ship-zip").value = e.target.dataset.postcode;
   document.getElementById("ship-country").value = e.target.dataset.country;
   setAddressCheckHidden('-hide')
-  setAddressChecked(false)
+  if (addressChecked === true) handleAddressCheck;
+
   addressDisabled = true;
 }
 
@@ -895,7 +896,8 @@ const newAddressButton = () => {
   document.getElementById("ship-zip").value = '';
   document.getElementById("ship-country").value = '';
   setAddressCheckHidden('')
-  setAddressChecked(true)
+  if (addressChecked === false) handleAddressCheck;
+
   addressDisabled = false;
 
 }

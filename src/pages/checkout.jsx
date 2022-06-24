@@ -246,7 +246,7 @@ const StepSix = (props) => {
     const [methodProcessing, setMethodProcessing] = useState(true);
     const [doneLoading, setDoneLoading] = useState(false);
     const [disabled, setDisabled] = useState(true);
-    let parsedShippingData = [];
+    const [parsedShippingData, setParsedShippingData] = useState([])
     let addressDisabled = false;
     const nameForm = useRef(null);
     const [status, setStatus] = useState(0);
@@ -568,12 +568,14 @@ const customNoDataRenderer = () => (
           setShippingData(intent.address);
 
           if (intent.address !== '') {
-            parsedShippingData = JSON.parse(intent.address)
-          }
-        
-          if (parsedShippingData.length === 0) {
+            console.log('here22')
+          
+            setParsedShippingData(JSON.parse(intent.address))
             addressDisabled = false;
           }
+        
+       
+    
           console.log(intent)
           
           // Update your user in DB to store the customerID

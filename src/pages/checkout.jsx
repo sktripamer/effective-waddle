@@ -969,7 +969,7 @@ console.log(parsedShippingData)
 
   </div>
   <label className={`save-payment`}>
-    <input type="checkbox" checked={addressChecked} onChange={handleAddressCheck} />
+    <input type="checkbox" checked={addressChecked} onChange={(event) => setAddressChecked(event.currentTarget.checked)} />
     Save Address
   </label>
     <div className='paybtn-cont'>

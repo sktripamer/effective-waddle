@@ -898,7 +898,7 @@ const drawShippingForm = () => {
   if (parsedShippingData.length === 0) {
     addressDisabled = false;
   }
-
+console.log(parsedShippingData)
   return (
     <div className='shipping-form-data'>
 

@@ -908,7 +908,7 @@ console.log(parsedShippingData)
     {parsedShippingData.length === 0 ? (
       <><div>asd</div></>
     ) : (
-      <div class={`selection-section`}>
+      <div class={`selection-address-form`}>
       {parsedShippingData.map((el, index) =>
             <React.Fragment key={index}>
             <div data-address_1={el.address_1} data-address_2={el.address_2} data-city={el.city} data-country={el.country} data-first_name={el.first_name} data-postcode={el.postcode} data-state={el.state} onClick={addressClick} data-idindex={index} className={index === clickedAddress ? "previous-address is-checked" : "previous-address"}>

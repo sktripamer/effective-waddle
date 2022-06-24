@@ -881,8 +881,8 @@ const addressClick = (e) => {
   document.getElementById("ship-zip").value = e.target.dataset.postcode;
   document.getElementById("ship-country").value = e.target.dataset.country;
   setAddressCheckHidden('-hide')
-  if (addressChecked === true) handleAddressCheck;
-
+  // if (addressChecked === true) handleAddressCheck;
+  console.log('dd')
   addressDisabled = true;
 }
 
@@ -896,7 +896,7 @@ const newAddressButton = () => {
   document.getElementById("ship-zip").value = '';
   document.getElementById("ship-country").value = '';
   setAddressCheckHidden('')
-  if (addressChecked === false) handleAddressCheck;
+  // if (addressChecked === false) handleAddressCheck;
 
   addressDisabled = false;
 
@@ -962,8 +962,8 @@ console.log(parsedShippingData)
   />
 
   </div>
-  <label className={`save-payment${addressCheckHidden}`}>
-    <input  disabled={addressDisabled} type="checkbox" checked={addressChecked} onChange={handleAddressCheck} />
+  <label className={`save-payment`}>
+    <input type="checkbox" checked={addressChecked} onChange={handleAddressCheck} />
     Save Address
   </label>
     <div className='paybtn-cont'>

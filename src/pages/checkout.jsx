@@ -246,7 +246,8 @@ const StepSix = (props) => {
     const [methodProcessing, setMethodProcessing] = useState(true);
     const [doneLoading, setDoneLoading] = useState(false);
     const [disabled, setDisabled] = useState(true);
-    const [addressDisabled, setAddressDisabled] = useState(true);
+
+    let addressDisabled = false;
     const nameForm = useRef(null);
     const [status, setStatus] = useState(0);
     let newA = [];
@@ -260,7 +261,7 @@ const StepSix = (props) => {
     const [prevPaymentID, setPrevID] = useState(""); //previous payment ID.
     const [prevLast4, setLast4] = useState("");
     const [clickedItem, setClickedItem] = useState(0);
-    // const [clickedAddress, setClickedAddress] = useState(0);
+    const [clickedAddress, setClickedAddress] = useState(0);
     const [firstDisabled, setFirstDisabled] = useState(false);
     const [country, setCountry] = useState([{
       name: 'United States of America',
@@ -861,7 +862,7 @@ return (
 
 const addressClick = (e) => {
  
-//  setClickedAddress(parseInt(e.target.dataset.idindex));
+  setClickedAddress(parseInt(e.target.dataset.idindex));
   document.getElementById("ship-name").value = e.target.dataset.first_name;
   document.getElementById("ship-address1").value = e.target.dataset.address_1;
   document.getElementById("ship-address2").value = e.target.dataset.address_2;
@@ -871,7 +872,7 @@ const addressClick = (e) => {
   document.getElementById("ship-country").value = e.target.dataset.country;
   setAddressCheckHidden('-hide')
   setAddressChecked(false)
-  setAddressDisabled(true)
+  addressDisabled = true;
 }
 const newAddressButton = () => {
 
@@ -884,7 +885,7 @@ const newAddressButton = () => {
   document.getElementById("ship-country").value = '';
   setAddressCheckHidden('')
   setAddressChecked(true)
-  setAddressDisabled(false)
+  addressDisabled = false;
 
 }
 const drawShippingForm = () => {
@@ -894,23 +895,23 @@ const drawShippingForm = () => {
     parsedShippingData = JSON.parse(shippingData)
   }
 
-  // if (parsedShippingData.length === 0) {
-  //   setAddressDisabled(false)
-  // }
+  if (parsedShippingData.length === 0) {
+    addressDisabled = false;
+  }
 
   return (
     <div className='shipping-form-data'>
 
 {parsedShippingData.length >= 1 ? (
     <div class={`selection-section`}>
-    {/* {parsedShippingData && parsedShippingData.map((el, index) =>
+    {parsedShippingData && parsedShippingData.map((el, index) =>
           <React.Fragment key={index}>
           <div data-address_1={el.address_1} data-address_2={el.address_2} data-city={el.city} data-country={el.country} data-first_name={el.first_name} data-postcode={el.postcode} data-state={el.state} onClick={addressClick} data-idindex={index} className={index === clickedAddress ? "previous-address is-checked" : "previous-address"}>
           <div className="prev-address-1">{el.address_1}</div>
 
     </div>
         </React.Fragment>
-)} */}
+)}
   <div onClick={newAddressButton} className={`new-address`}>+ New Address</div>
     </div>
     ) : (

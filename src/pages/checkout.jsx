@@ -879,7 +879,10 @@ const addressClick = (e) => {
   document.getElementById("ship-city").value = e.target.dataset.city;
   document.getElementById("ship-state").value = e.target.dataset.state;
   document.getElementById("ship-zip").value = e.target.dataset.postcode;
-  document.getElementById("ship-country").value = e.target.dataset.country;
+  setCountry([{
+    name: 'United States of America',
+    code: e.target.dataset.country
+  }])
   setAddressCheckHidden('-hide')
   // if (addressChecked === true) handleAddressCheck;
   console.log('dd')
@@ -894,7 +897,10 @@ const newAddressButton = () => {
   document.getElementById("ship-city").value = '';
   document.getElementById("ship-state").value = '';
   document.getElementById("ship-zip").value = '';
-  document.getElementById("ship-country").value = '';
+  setCountry([{
+    name: 'United States of America',
+    code: 'US'
+  }])
   setAddressCheckHidden('')
   // if (addressChecked === false) handleAddressCheck;
 

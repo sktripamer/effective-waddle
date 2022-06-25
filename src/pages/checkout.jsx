@@ -263,7 +263,7 @@ const StepSix = (props) => {
     const [prevPaymentID, setPrevID] = useState(""); //previous payment ID.
     const [prevLast4, setLast4] = useState("");
     const [clickedItem, setClickedItem] = useState(0);
-    const [clickedAddress, setClickedAddress] = useState(0);
+    const [clickedAddress, setClickedAddress] = useState(-1);
     const [firstDisabled, setFirstDisabled] = useState(false);
     const [country, setCountry] = useState([{
       name: 'United States of America',
@@ -571,9 +571,22 @@ const customNoDataRenderer = () => (
 
           if (intent.address !== '') {
             console.log('here22')
-          
-            setParsedShippingData(JSON.parse(intent.address))
-            setAddressDisabled(false)
+          let tempdata = JSON.parse(intent.address)
+            setParsedShippingData(tempdata)
+            setAddressDisabled(true)
+  
+            document.getElementById("ship-name").value = tempdata[0].first_name;
+            document.getElementById("ship-address1").value = tempdata[0].address_1;
+            document.getElementById("ship-address2").value = tempdata[0].address_2;
+            document.getElementById("ship-city").value = tempdata[0].city;
+            document.getElementById("ship-state").value = tempdata[0].state;
+            document.getElementById("ship-zip").value = tempdata[0].postcode;
+            setCountry([{
+              name: 'United States of America',
+              code: tempdata[0].country
+            }])
+            setClickedAddress(0)
+            setAddressCheckHidden('-hide')
           }
         
        
@@ -886,7 +899,6 @@ const addressClick = (e) => {
     code: e.target.dataset.country
   }])
   setAddressCheckHidden('-hide')
-  if (addressChecked === true) handleAddressCheck;
   console.log('dd')
 
   setAddressDisabled(true)
@@ -905,7 +917,6 @@ const newAddressButton = () => {
     code: 'US'
   }])
   setAddressCheckHidden('')
-  if (addressChecked === false) handleAddressCheck;
   setAddressDisabled(false)
 
 }

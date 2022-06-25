@@ -132,7 +132,7 @@ const localStorageSetHandler = () => {
           <>
           <div class='cart-all-items'>
           {newA && newA.map((el, index) => 
-          <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} × {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div>{el.code == undefined ? <></> : <div class="cart-item-total cpon">{el.cquantity} × {(el.cprice).toLocaleString('en-US', {style: 'currency', currency: 'USD',})} <span>{el.code}</span></div>}</div>  <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
+          <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div>{el.quantity > 0 ? (<div class="cart-item-total">{el.quantity} × {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div>) : (<></>)}{el.code == undefined ? <></> : <div class="cart-item-total cpon">{el.cquantity} × {(el.cprice).toLocaleString('en-US', {style: 'currency', currency: 'USD',})} <span>{el.code}</span></div>}</div>  <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
           )}
           </div>
           <div class='cart-divider'></div>
@@ -587,7 +587,7 @@ const customNoDataRenderer = () => (
             }])
             setClickedAddress(0)
             setAddressCheckHidden('-hide')
-          }
+          } 
         
        
     
@@ -761,7 +761,12 @@ const customNoDataRenderer = () => (
 
         if (shipping===true) {
           
-          ex.saveShipping = addressChecked;
+          if (clickedAddress === -1) {
+            ex.saveShipping = addressChecked;
+          } else {
+            ex.saveShipping = false;
+          }
+         
           ex.previousShippingData = shippingData;
           ex.shippingData = {
             shippingaddress1: form['ship-address1'].value,
@@ -981,7 +986,7 @@ console.log(parsedShippingData)
   />
 
   </div>
-  <label className={`save-payment`}>
+  <label className={`save-payment${addressCheckHidden}`}>
     <input type="checkbox" checked={addressChecked} onChange={(event) => setAddressChecked(event.currentTarget.checked)} />
     Save Address
   </label>

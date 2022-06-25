@@ -2389,7 +2389,9 @@ html.checkout {
     margin-right: 1em;
     margin-top: 0;
     text-transform: uppercase;
-    width: 300px;
+    max-width: 300px;
+    width: 60%;
+    min-width: 100px;
     font-family: 'Nunito Regular';
   }
 
@@ -2410,18 +2412,21 @@ html.checkout {
           margin-left: 0.7em;
       margin-right: 0.7em;
   }
-
+  .pay-btn:disabled:after {
+    content: unset;
+}
   .coupon-section button {
-      /* width: 30%; */
-      background: none;
-      border: 3px solid #3a1573;
-      color: #512e8a;
-      padding: 14px 18px;
-      border-radius: 0;
-      font-weight: 400;
-      height: 38px;
-      line-height: 0px;
-      font-family: 'Nunito Regular';
+    background: none;
+    border: 3px solid #3a1573;
+    border-radius: 0;
+    display: inline-flex;
+    align-items: center;
+    color: #512e8a;
+    font-family: Nunito Regular;
+    font-weight: 400;
+    height: 38px;
+    line-height: 14px;
+    padding: 14px 18px;
   }
 
 

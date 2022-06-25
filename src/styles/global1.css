@@ -2182,6 +2182,31 @@
 html.checkout {
     overflow-x: hidden;
 }
+p.coupon-p {
+  font-family: 'Nunito Bold';
+  text-align: center;
+  display: none;
+}
+
+p.coupon-p.invalid-status2 {
+  display: block;
+animation: fadeaway .5s 4s forwards;
+}
+
+p.coupon-p.valid-status1 {
+  display: block;
+animation: fadeaway .5s 4s forwards;
+}
+
+p.coupon-p.used-status3 {
+  display: block;
+  animation: fadeaway .5s 4s forwards;
+}
+
+@keyframes fadeaway {
+from  { opacity:1;}
+to    { opacity:0; }
+}
 
   .checkout-page {
     display: flex;

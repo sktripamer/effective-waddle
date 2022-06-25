@@ -2192,7 +2192,13 @@ p.coupon-p.invalid-status2 {
   display: block;
 animation: fadeaway .5s 4s forwards;
 }
-
+.checkout-cart-cont button {
+  background: linear-gradient(206deg,#ff1d2d,#c41ab8);
+  border-radius: 0;
+  color: #fff;
+  margin: 20px auto;
+  width: 40%;
+}
 p.coupon-p.valid-status1 {
   display: block;
 animation: fadeaway .5s 4s forwards;

@@ -207,6 +207,7 @@ async function handleSubmit(e) {
                     id="coupon-entry"
                     type="text"
                     name="coupon"
+                    placeholder='COUPON CODE'
                     required
                     />
                     <button type="submit" disabled={cloading}>
@@ -247,7 +248,8 @@ const StepSix = (props) => {
     const [doneLoading, setDoneLoading] = useState(false);
     const [disabled, setDisabled] = useState(true);
     const [parsedShippingData, setParsedShippingData] = useState([])
-    let addressDisabled = false;
+
+    const [addressDisabled, setAddressDisabled] = useState(false)
     const nameForm = useRef(null);
     const [status, setStatus] = useState(0);
     let newA = [];
@@ -571,7 +573,7 @@ const customNoDataRenderer = () => (
             console.log('here22')
           
             setParsedShippingData(JSON.parse(intent.address))
-            addressDisabled = false;
+            setAddressDisabled(false)
           }
         
        
@@ -884,9 +886,10 @@ const addressClick = (e) => {
     code: e.target.dataset.country
   }])
   setAddressCheckHidden('-hide')
-  // if (addressChecked === true) handleAddressCheck;
+  if (addressChecked === true) handleAddressCheck;
   console.log('dd')
-  addressDisabled = true;
+
+  setAddressDisabled(true)
 }
 
 const newAddressButton = () => {
@@ -902,9 +905,8 @@ const newAddressButton = () => {
     code: 'US'
   }])
   setAddressCheckHidden('')
-  // if (addressChecked === false) handleAddressCheck;
-
-  addressDisabled = false;
+  if (addressChecked === false) handleAddressCheck;
+  setAddressDisabled(false)
 
 }
 const drawShippingForm = () => {

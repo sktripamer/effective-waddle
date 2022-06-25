@@ -193,11 +193,12 @@ async function handleSubmit(e) {
         <Elements stripe={stripePromise}>
             
                
-                <StepSix button={'Pay'} header={'checkout'} subheader={"a"} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
+                <StepSix button={'Pay'} header={'checkout'} subheader={""} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
             
         </Elements>
         </div>
         <div class='checkout-cart-section'>
+          <div class='cart-header-text'>Cart</div>
             <div class='checkout-cart-cont'>{localStorageSetHandler()}</div>
             <div class='coupon-section'>
                 <form ref={couponForm} onSubmit={handleSubmit}>
@@ -931,9 +932,9 @@ const drawShippingForm = () => {
 console.log(parsedShippingData)
   return (
     <div className='shipping-form-data'>
-
+<div class='shipping-info'>Shipping Info</div>
     {parsedShippingData.length === 0 ? (
-      <><div>asd</div></>
+      <></>
     ) : (
       <div class={`selection-address-form`}>
       {parsedShippingData.map((el, index) =>
@@ -1020,6 +1021,7 @@ console.log(parsedShippingData)
           <div class={props.content == '' ? 'payment-area-cont no-content': 'payment-area-cont'}>
        
             <div class='payment-area-pay-checkout'>
+              <div class='pay-with-card'>Pay With Card</div>
          {methodProcessing ? (
               <></>
             ) : (

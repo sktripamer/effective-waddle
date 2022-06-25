@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Layout from "../components/Layout";
+import { navigate } from 'gatsby';
 import { useQuery, gql } from "@apollo/client";
     import {loadStripe} from '@stripe/stripe-js/pure';
 import {
@@ -172,7 +173,11 @@ async function handleSubmit(e) {
     })
     if (couponAlreadyFound === true) {
       document.getElementById("coupon-entry").value = ''
-      setCouponState(3)
+      setCouponState(0)
+      setTimeout(
+        () => setCouponState(3), 
+        100
+      );
       return;
     } 
     let ex = {
@@ -201,11 +206,20 @@ async function handleSubmit(e) {
           } else {
             setCartRender(true)
           }
-          setCouponState(1)
+          
+          setCouponState(0)
+          setTimeout(
+            () => setCouponState(1), 
+            100
+          );
           document.getElementById("coupon-entry").value = ''
 
       } else {
-        setCouponState(2)
+        setCouponState(0)
+        setTimeout(
+          () => setCouponState(2), 
+          100
+        );
         document.getElementById("coupon-entry").value = ''
       }
       console.log(intent)
@@ -217,7 +231,7 @@ async function handleSubmit(e) {
     <Layout htmlClassName={"checkout"}>
     <div class='checkout-page'>
         <div data-current={`current-${currentStep}`} data-total={`total-${totalSteps}`} class='checkout-header-bar'>
-          <div class='back-to-shop'>Shop</div>
+          <div onClick={() => navigate("/shop")} class='back-to-shop'>Shop</div>
         </div>
         <div class='checkout-form-section'>
         <Elements stripe={stripePromise}>

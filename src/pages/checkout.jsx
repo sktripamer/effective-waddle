@@ -19,6 +19,7 @@ export default function Checkout() {
 const [stripePromise, setStripePromise] = useState(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
 const [cloading, setcLoading] = useState(false);
 const [cartRender, setCartRender] = useState(true);
+const [couponState, setCouponState] = useState(0)
 const [currentStep, setStep] = useState(1)
 const [totalSteps, setTotalSteps] = useState(1)
 
@@ -169,7 +170,11 @@ async function handleSubmit(e) {
       }
       }
     })
-    if (couponAlreadyFound === true) return;
+    if (couponAlreadyFound === true) {
+      document.getElementById("coupon-entry").value = ''
+      setCouponState(3)
+      return;
+    } 
     let ex = {
         cart: cartdata,
         code:couponCode
@@ -196,6 +201,12 @@ async function handleSubmit(e) {
           } else {
             setCartRender(true)
           }
+          setCouponState(1)
+          document.getElementById("coupon-entry").value = ''
+
+      } else {
+        setCouponState(2)
+        document.getElementById("coupon-entry").value = ''
       }
       console.log(intent)
       console.log(`shiing`, shipping)
@@ -227,7 +238,7 @@ async function handleSubmit(e) {
                     id="coupon-entry"
                     type="text"
                     name="coupon"
-                    placeholder='COUPON CODE'
+                    placeholder='Coupon code'
                     required
                     />
                     <button type="submit" disabled={cloading}>
@@ -235,6 +246,9 @@ async function handleSubmit(e) {
                     </button>
                 </fieldset>
                 </form>
+                <p class={`coupon-p valid-status${couponState}`}>Coupon added!</p>
+                <p class={`coupon-p invalid-status${couponState}`}>Coupon not valid</p>
+                <p class={`coupon-p used-status${couponState}`}>Coupon already in use</p>
             </div>
         </div>
 

@@ -67,6 +67,7 @@ const reRender = () => {
       } else {
         setCartRender(true)
       }
+      if (isBrowser) window.location.reload()
 }
 
 

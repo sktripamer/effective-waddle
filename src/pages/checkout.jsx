@@ -159,9 +159,11 @@ async function handleSubmit(e) {
     const couponCode = form['coupon'].value 
     let cartdata = JSON.parse(localStorage.cart)
     cartdata.forEach((cartitem, index) => {
+      if ("code" in cartitem)  {
       if (cartitem.code.toLowerCase() === couponCode.toLowerCase()) {
         setcLoading(false)
         return;
+      }
       }
     })
 

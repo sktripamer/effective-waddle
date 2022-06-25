@@ -158,15 +158,17 @@ async function handleSubmit(e) {
     const form = couponForm.current
     const couponCode = form['coupon'].value 
     let cartdata = JSON.parse(localStorage.cart)
+    let couponAlreadyFound = false;
     cartdata.forEach((cartitem, index) => {
-      if ("code" in cartitem)  {
+      if ("code" in cartitem) {
       if (cartitem.code.toLowerCase() === couponCode.toLowerCase()) {
         setcLoading(false)
+        couponAlreadyFound = true;
         return;
       }
       }
     })
-
+    if (couponAlreadyFound === true) return;
     let ex = {
         cart: cartdata,
         code:couponCode

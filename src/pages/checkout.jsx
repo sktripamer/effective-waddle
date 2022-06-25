@@ -157,9 +157,16 @@ async function handleSubmit(e) {
     setcLoading(true)
     const form = couponForm.current
     const couponCode = form['coupon'].value 
+    let cartdata = JSON.parse(localStorage.cart)
+    cartdata.forEach((cartitem, index) => {
+      if (cartitem.code.toLowerCase() === couponCode.toLowerCase()) {
+        setcLoading(false)
+        return;
+      }
+    })
 
     let ex = {
-        cart: JSON.parse(localStorage.cart),
+        cart: cartdata,
         code:couponCode
     }
     const request = await fetch('/api/check-coupon', {
@@ -193,7 +200,9 @@ async function handleSubmit(e) {
   return (
     <Layout htmlClassName={"checkout"}>
     <div class='checkout-page'>
-        <div data-current={`current-${currentStep}`} data-total={`total-${totalSteps}`} class='checkout-header-bar'></div>
+        <div data-current={`current-${currentStep}`} data-total={`total-${totalSteps}`} class='checkout-header-bar'>
+          <div class='back-to-shop'>Shop</div>
+        </div>
         <div class='checkout-form-section'>
         <Elements stripe={stripePromise}>
             

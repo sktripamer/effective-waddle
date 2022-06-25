@@ -18,16 +18,21 @@ export default function AuthContent({ children }: { children: ReactNode }) {
   }, [loggedIn, loading, navigate]);
 
   if (loggedIn) {
-    if (isBrowser) {
-      const authData = {
-        authToken: user.jwtAuthToken,
-        user: {
-          email: user.email
-        }
-      };
-      localStorage.setItem("auth", JSON.stringify(authData));
+    if (user.url.includes('notregistered')) {
+      navigate('/verify');
+    } else {
+      if (isBrowser) {
+        const authData = {
+          authToken: user.jwtAuthToken,
+          user: {
+            email: user.email
+          }
+        };
+        localStorage.setItem("auth", JSON.stringify(authData));
+      }
+      return <>{children}</>;
     }
-    return <>{children}</>;
+
   }
 
   return <p>Loading...</p>;

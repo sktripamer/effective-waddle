@@ -19,6 +19,8 @@ export default function Checkout() {
 const [stripePromise, setStripePromise] = useState(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
 const [cloading, setcLoading] = useState(false);
 const [cartRender, setCartRender] = useState(true);
+const [currentStep, setStep] = useState(1)
+const [totalSteps, setTotalSteps] = useState(1)
 
 const isBrowser = typeof window !== "undefined";
 const couponForm = useRef(null);
@@ -34,6 +36,7 @@ useEffect(() => {
 tempCart().forEach((item, index) => {
     if (item.v === false) {
         shipping = true;
+        setTotalSteps(2)
     }
 })
     document.addEventListener("itemInserted", localStorageSetHandler, false);
@@ -65,6 +68,8 @@ const reRender = () => {
         setCartRender(true)
       }
 }
+
+
 const localStorageSetHandler = () => {
 
     console.log('triggered')
@@ -188,12 +193,12 @@ async function handleSubmit(e) {
   return (
     <Layout htmlClassName={"checkout"}>
     <div class='checkout-page'>
-        <div class='checkout-header-bar'></div>
+        <div data-current={`current-${currentStep}`} data-total={`total-${totalSteps}`} class='checkout-header-bar'></div>
         <div class='checkout-form-section'>
         <Elements stripe={stripePromise}>
             
                
-                <StepSix button={'Pay'} header={'checkout'} subheader={""} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
+                <StepSix setStep={setStep} button={'Pay'} header={'checkout'} subheader={""} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
             
         </Elements>
         </div>
@@ -660,6 +665,7 @@ const customNoDataRenderer = () => (
 
     if (payload.error) {
       setCurrentStep(1)
+      props.setStep(1)
       setError(`${payload.error.message}`);
       setProcessing(false);
     } else {
@@ -805,9 +811,11 @@ const customNoDataRenderer = () => (
 
     const nextStep = () => {
       setCurrentStep(2)
+      props.setStep(2)
     }
     const prevStep = () => {
       setCurrentStep(1)
+      props.setStep(1)
     }
     const cancelPayment = () => {
       props.changeStatus('canceled')

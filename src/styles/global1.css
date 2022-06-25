@@ -2142,18 +2142,37 @@ main {
 
 html.checkout {
 }
-
+.checkout .cart-cont-empty {
+  max-height: 50vh;
+  overflow-y: overlay;
+  max-width: 600px;
+  margin: 0 auto;
+}
 .checkout-form-section {
     height: calc(100vh - 50px);
     width: 50%;
 }
+.checkout input:disabled {
+  color: #a5a5a5;
+  background: linear-gradient(302deg,rgb(255 255 255 / 11%),rgb(205 205 205 / 9%));
+  border: 3px solid #9178a3;
+  opacity: .3;
+}
 
+.checkout input.react-dropdown-select-input:disabled {
+  border: none;
+  background: none;
+}
+
+.checkout-cart-cont {
+  margin-top: 7em;
+}
 .checkout-cart-section {
     height: calc(100vh - 50px);
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
 }
 
 .checkout .payment-area-pay-checkout {

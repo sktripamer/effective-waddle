@@ -73,10 +73,11 @@ async function handleVerify() {
                 ? (
                  <div className='search-outer-cont'>
                    <div className="search-bar-title">
-                      <div className="search-bar-text">Email Sent!</div>
+                      <div className="search-bar-text">Verify Email</div>
                       <div onClick={() =>  setLoginStep(0)} className='search-bar-close'>X</div>
                    </div>
                    <div>
+                     <div class="verify-email-text">Please click the link that we sent to your email to confirm your account.</div>
                    <div id="anim-wrapper">
   <div id="anim-bg">
     <div id="env-wrapper">
@@ -99,15 +100,17 @@ async function handleVerify() {
                   )
                 : ""}
     </div>
-
+     <h1>Revival of Revenue</h1>             
     <form className={`login-form`} method="post" onSubmit={handleSubmit}>
       <fieldset disabled={loading} aria-busy={loading}>
+      <h2>Login</h2>      
         <div className="login-email">
         <div class="inputwrap emailer">
         <input
           id="log-in-email"
-          type="email"
+          type="text"
           name="email"
+          disabled={loadingUser}
           autoComplete="email"
           required
         />
@@ -135,11 +138,14 @@ async function handleVerify() {
         <button type="submit" disabled={loading}>
           {loading ? 'Logging in...' : 'Log in'}
         </button>
-        </div>
+
 
         <Link to="/forgot-password" className="forgot-password-link">
           Forgot password?
         </Link>
+        </div>
+
+
       </fieldset>
       <p className="account-sign-up-message">
         Don&#39;t have an account yet?{' '}

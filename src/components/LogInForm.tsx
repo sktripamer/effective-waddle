@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 
@@ -100,7 +100,7 @@ async function handleVerify() {
                   )
                 : ""}
     </div>
-     <h1>Revival of Revenue</h1>             
+     <h1 onClick={() => navigate('/')}>Revival of Revenue</h1>             
     <form className={`login-form`} method="post" onSubmit={handleSubmit}>
       <fieldset disabled={loading} aria-busy={loading}>
       <h2>Login</h2>      

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "gatsby";
+import { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 
 import { GET_USER } from "../hooks/useAuth";
@@ -21,6 +22,8 @@ export default function LogInForm() {
       { query: GET_USER }
     ],
   });
+  const [loginStep, setLoginStep] = useState(0);
+  const [loadingUser, setLoadingUser] = useState(false);
   const errorMessage = error?.message || '';
   const isEmailValid =
     !errorMessage.includes('empty_email') &&
@@ -45,9 +48,23 @@ export default function LogInForm() {
     });
   }
 
+async function handleVerify() {
+  setLoadingUser(true)
+  const request = await fetch('/api/verify-email', {
+    method: 'POST',
+    body: ((document.getElementById('log-in-email') as HTMLInputElement)).value,
+  });
+  const intent = (await request.json());
+  setLoadingUser(false)
+  console.log(intent)
+
+}
+
+  
   return (
-    <form method="post" onSubmit={handleSubmit}>
+    <form className={`login-form loginstep-${loginStep} checkuser-${loadingUser}`} method="post" onSubmit={handleSubmit}>
       <fieldset disabled={loading} aria-busy={loading}>
+        <div className="login-email">
         <label htmlFor="log-in-email">Email</label>
         <input
           id="log-in-email"
@@ -56,6 +73,10 @@ export default function LogInForm() {
           autoComplete="username"
           required
         />
+       
+        <button className="verify-user-button" onClick={handleVerify} disabled={loadingUser}></button>
+        </div>
+        <div className="login-password">
         <label htmlFor="log-in-password">Password</label>
         <input
           id="log-in-password"
@@ -64,9 +85,7 @@ export default function LogInForm() {
           autoComplete="current-password"
           required
         />
-        <Link to="/forgot-password" className="forgot-password-link">
-          Forgot password?
-        </Link>
+
         {!isEmailValid ? (
           <p className="error-message">Invalid email. Please try again.</p>
         ) : null}
@@ -76,6 +95,11 @@ export default function LogInForm() {
         <button type="submit" disabled={loading}>
           {loading ? 'Logging in...' : 'Log in'}
         </button>
+        </div>
+
+        <Link to="/forgot-password" className="forgot-password-link">
+          Forgot password?
+        </Link>
       </fieldset>
       <p className="account-sign-up-message">
         Don&#39;t have an account yet?{' '}

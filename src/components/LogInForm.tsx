@@ -57,24 +57,64 @@ async function handleVerify() {
   const intent = (await request.json());
   setLoadingUser(false)
   console.log(intent)
-
+  if (intent.exists.message === true) {
+    //trigger email
+    setLoginStep(2)
+  } else {
+    setLoginStep(1)
+  }
 }
 
   
   return (
-    <form className={`login-form loginstep-${loginStep} checkuser-${loadingUser}`} method="post" onSubmit={handleSubmit}>
+  <div className={`login-page loginstep-${loginStep} checkuser-${loadingUser}`}>
+        <div className={`verify-sent-container`}>
+    {2 === loginStep
+                ? (
+                 <div className='search-outer-cont'>
+                   <div className="search-bar-title">
+                      <div className="search-bar-text">Email Sent!</div>
+                      <div onClick={() =>  setLoginStep(0)} className='search-bar-close'>X</div>
+                   </div>
+                   <div>
+                   <div id="anim-wrapper">
+  <div id="anim-bg">
+    <div id="env-wrapper">
+      <div class="speedline line1"></div>
+      <div class="speedline line2"></div>
+      <div class="speedline line3"></div>
+    <i id="env" class="aasd"></i>
+
+    </div>
+  </div>
+  
+    <div id="check-container">
+    <div class="check-stroke1"></div>
+    <div class="check-stroke2"></div>
+  </div>
+
+</div>
+                     </div>
+                   </div>
+                  )
+                : ""}
+    </div>
+
+    <form className={`login-form`} method="post" onSubmit={handleSubmit}>
       <fieldset disabled={loading} aria-busy={loading}>
         <div className="login-email">
-        <label htmlFor="log-in-email">Email</label>
+        <div class="inputwrap emailer">
         <input
           id="log-in-email"
           type="email"
           name="email"
-          autoComplete="username"
+          autoComplete="email"
           required
         />
-       
-        <button className="verify-user-button" onClick={handleVerify} disabled={loadingUser}></button>
+        <div class="label">Email</div>
+        </div>
+  
+        <button className="verify-user-button" onClick={handleVerify} disabled={loadingUser}>Next</button>
         </div>
         <div className="login-password">
         <label htmlFor="log-in-password">Password</label>
@@ -108,5 +148,6 @@ async function handleVerify() {
         </Link>
       </p>
     </form>
+  </div>
   );
 }

@@ -212,10 +212,9 @@
     margin: 100px auto;
     width:0;
     height: 0;
-    background: -moz-linear-gradient(top, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Chrome10-25,Safari5.1-6 */
-  background: #16a0db; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    border: calc(var(--base-size) / 7.5) solid #258dc8;
+
+  background: #e81c48; 
+    border: calc(var(--base-size) / 7.5) solid #3c0a14;
     animation: var(--anim-time) bg-pop ease-in-out forwards;
     overflow: hidden;
     transform: scale(0);
@@ -236,8 +235,7 @@
       display: inline-block;
       line-height: 1;
       background-repeat: no-repeat;
-      filter: drop-shadow(-7px 9px 0px #0d76bd);
-      text-shadow: -15px 15px 0px #0d76bd;
+      filter: drop-shadow(-7px 9px 0 #8b0432);
     animation: mail-stretch var(--anim-time) linear forwards;
   }
   
@@ -295,6 +293,9 @@
       transform: scale(1)
     }
   }
+  .checkuser-true .inputwrap input {
+    pointer-events: none;
+}
   .loginstep-2 .verify-sent-container {
     align-items: flex-start;
     backdrop-filter: blur(3px);
@@ -306,6 +307,7 @@
     opacity: 1;
     width: 100%;
     z-index: 9999;
+    overflow: hidden;
 }
 
 .verify-sent-container {
@@ -348,7 +350,15 @@ content: "";
   background: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' enable-background='new 0 0 50 50' viewBox='0 0 50 50' xml:space='preserve'><path fill='%23DA1849' d='M43.935 25.145c0-10.318-8.364-18.683-18.683-18.683-10.318 0-18.683 8.365-18.683 18.683h4.068c0-8.071 6.543-14.615 14.615-14.615s14.615 6.543 14.615 14.615h4.068z'><animateTransform attributeName='transform' attributeType='xml' dur='.8s' from='0 25 25' repeatCount='indefinite' to='360 25 25' type='rotate'/></path></svg>");
   z-index: 2;
 }
-
+a:hover {
+  color: #ff2238;
+  text-decoration: underline;
+}
+p.error-message {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%); 
+}
 .checkuser-true form.login-form:before {
   position:
   absolute;
@@ -527,15 +537,47 @@ form.login-form {
     transform: rotate(45deg);
     animation: check-stroke1 var(--anim-time) linear forwards;
   }
-  
+  .verify-email-text {
+    font-family: 'Nunito Bold';
+    font-size: 1.2em;
+    padding: 1em;
+    text-align: center;
+    color: #570b1c;
+}
+
+a.goto-email {
+    text-align: center;
+    text-transform: capitalize;
+    display: inline-block;
+    padding: 12px 30px;
+    margin-top: 2em;
+    font-size: 1.5em;
+    border-radius: 10px;
+    font-family: 'Nunito Bold';
+    margin-bottom: 2em;
+    background: #fff;
+    background: linear-gradient(206deg,#ff1d2d,#c41ab8);
+    color: #fff;
+}
+
+a.goto-email:hover {
+    text-decoration: none;
+}
+  .email-sent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+  }
   .check-stroke2 {
     left: 5px;
     top: 8px;
+    height: 4px;
+    width: 9px;
     position: absolute;
     background: white;
     border-radius: 5px;
-    top: 13px;
-    left: 9px;
+
     transform: rotate(-45deg);
     animation: check-stroke2 var(--anim-time) linear forwards;
   }
@@ -3032,11 +3074,24 @@ to    { opacity:0; }
     height: 52px;
     position: relative;
     width: calc(100% - 7.2em);
-    margin-left: calc(50px + 2em);
-    margin-right: 1em;
-    margin-bottom: 1em;
-    margin-top: 1em;
+    margin: 1em 1em 0.2em calc(50px + 2em);
   }
+
+.inputwrap.passworder:after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' enable-background='new 0 0 50 50'%3E%3Cpath fill='%23fff' d='M34 23h-2v-4c0-3.9-3.1-7-7-7s-7 3.1-7 7v4h-2v-4c0-5 4-9 9-9s9 4 9 9v4z'/%3E%3Cpath fill='%23fff' d='M33 40H17c-1.7 0-3-1.3-3-3V25c0-1.7 1.3-3 3-3h16c1.7 0 3 1.3 3 3v12c0 1.7-1.3 3-3 3zM17 24c-.6 0-1 .4-1 1v12c0 .6.4 1 1 1h16c.6 0 1-.4 1-1V25c0-.6-.4-1-1-1H17z'/%3E%3Ccircle fill='%23fff' cx='25' cy='28' r='2'/%3E%3Cpath fill='%23fff' d='M25.5 28h-1l-1 6h3z'/%3E%3C/svg%3E"), linear-gradient(90deg,#f23,#ff2278);
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%, 100%;
+  left: 0;
+  margin-left: -50px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+  
   .inputwrap.emailer:after {
     content: "";
     position: absolute;
@@ -3074,7 +3129,7 @@ to    { opacity:0; }
     font-family: 'Nunito Bold';
     font-size: 1.3em;
     color: #fff;
-    margin-top: 2em;
+    margin-top: 3em;
     border-radius: 5000px;
 }
 

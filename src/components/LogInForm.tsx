@@ -32,6 +32,7 @@ export default function LogInForm() {
   const [loadingUser, setLoadingUser] = useState(false);
   const [emailValidError, setEmailValidError] = useState(false)
   const [goToEmail, setGoToEmail] = useState('')
+  const [emailText, setEmailText] = useState('')
   const errorMessage = error?.message || '';
   const isEmailValid =
     !errorMessage.includes('empty_email') &&
@@ -44,6 +45,7 @@ export default function LogInForm() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setLoadingUser(true)
     const data = new FormData(event.currentTarget);
     const { email, password } = Object.fromEntries(data);
     logIn({
@@ -52,6 +54,7 @@ export default function LogInForm() {
         password,
       }
     }).catch(error => {
+      setLoadingUser(false)
       console.error(error);
     });
   }
@@ -59,6 +62,7 @@ export default function LogInForm() {
 async function handleVerify() {
   setEmailValidError(false)
   let emailvalue = ((document.getElementById('log-in-email') as HTMLInputElement)).value
+  setEmailText(emailvalue)
   setLoadingUser(true)
   if (validateEmail(emailvalue) === false) {
     setLoadingUser(false)
@@ -94,7 +98,7 @@ async function handleVerify() {
                       <div className="search-bar-text">Verify Email</div>
                       <div onClick={() =>  setLoginStep(0)} className='search-bar-close'>X</div>
                    </div>
-                   <div>
+                   <div class='email-sent'>
                      <div class="verify-email-text">Please click the link that we sent to your email to confirm your account.</div>
                    <div id="anim-wrapper">
   <div id="anim-bg">
@@ -131,7 +135,6 @@ async function handleVerify() {
           id="log-in-email"
           type="text"
           name="email"
-          disabled={loadingUser}
           autoComplete="email"
           required
         />
@@ -143,7 +146,10 @@ async function handleVerify() {
         <button className="verify-user-button" onClick={handleVerify} disabled={loadingUser}>Next</button>
         </div>
         <div className="login-password">
-        <label htmlFor="log-in-password">Password</label>
+          <div class='email-to-use'>{emailText}</div>
+
+
+        <div class="inputwrap passworder">
         <input
           id="log-in-password"
           type="password"
@@ -151,21 +157,26 @@ async function handleVerify() {
           autoComplete="current-password"
           required
         />
+        <div class="label">Password</div>
+        </div>
+          <div class='password-clickables'>
+          <div onClick={() =>setLoginStep(0)} class='return-to-email'>Go Back</div>
 
-        {!isEmailValid ? (
-          <p className="error-message">Invalid email. Please try again.</p>
-        ) : null}
-        {!isPasswordValid ? (
-          <p className="error-message">Invalid password. Please try again.</p>
-        ) : null}
-        <button type="submit" disabled={loading}>
-          {loading ? 'Logging in...' : 'Log in'}
-        </button>
-
-
-        <Link to="/forgot-password" className="forgot-password-link">
+          <Link to="/forgot-password" className="forgot-password-link">
           Forgot password?
         </Link>
+          </div>
+
+        {!isEmailValid ? (
+          <p className="error-message">Invalid email or username. Please try again.</p>
+        ) : null}
+        {!isPasswordValid ? (
+          <p className="error-message">Invalid email or username. Please try again.</p>
+        ) : null}
+        <button class="verify-user-button" type="submit" disabled={loading}>
+         Log In
+        </button>
+
         </div>
 
 

@@ -15,6 +15,12 @@ const LOG_IN = gql`
     }
   }
 `;
+function validateEmail(email) 
+    {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
 
 export default function LogInForm() {
   const [logIn, { loading, error }] = useMutation(LOG_IN, {
@@ -24,6 +30,8 @@ export default function LogInForm() {
   });
   const [loginStep, setLoginStep] = useState(0);
   const [loadingUser, setLoadingUser] = useState(false);
+  const [emailValidError, setEmailValidError] = useState(false)
+  const [goToEmail, setGoToEmail] = useState('')
   const errorMessage = error?.message || '';
   const isEmailValid =
     !errorMessage.includes('empty_email') &&
@@ -49,15 +57,25 @@ export default function LogInForm() {
   }
 
 async function handleVerify() {
+  setEmailValidError(false)
+  let emailvalue = ((document.getElementById('log-in-email') as HTMLInputElement)).value
   setLoadingUser(true)
+  if (validateEmail(emailvalue) === false) {
+    setLoadingUser(false)
+    setEmailValidError(true)
+    return;
+  }
+
   const request = await fetch('/api/verify-email', {
     method: 'POST',
-    body: ((document.getElementById('log-in-email') as HTMLInputElement)).value,
+    body: emailvalue,
   });
   const intent = (await request.json());
   setLoadingUser(false)
   console.log(intent)
   if (intent.exists.message === true) {
+    let splitEmail = emailvalue.split('@');
+    setGoToEmail(splitEmail[splitEmail.length - 1])
     //trigger email
     setLoginStep(2)
   } else {
@@ -95,6 +113,9 @@ async function handleVerify() {
   </div>
 
 </div>
+<a class='goto-email' href={`https://${goToEmail}`} target="_blank" rel="noreferrer noopener">
+  {`Go To ${goToEmail.substr(0, goToEmail.lastIndexOf("."))}`}
+</a>
                      </div>
                    </div>
                   )
@@ -116,7 +137,9 @@ async function handleVerify() {
         />
         <div class="label">Email</div>
         </div>
-  
+        {emailValidError === true ? (
+          <p className="error-message">Invalid email. Please try again.</p>
+        ) : null}      
         <button className="verify-user-button" onClick={handleVerify} disabled={loadingUser}>Next</button>
         </div>
         <div className="login-password">

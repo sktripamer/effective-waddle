@@ -125,8 +125,7 @@ async function handleVerify() {
                   )
                 : ""}
     </div>
-     <h1 onClick={() => navigate('/')}>Revival of Revenue</h1>       
-     <div class='login-form-cont'>
+     <h1 onClick={() => navigate('/')}>Revival of Revenue</h1>             
     <form className={`login-form`} method="post" onSubmit={handleSubmit}>
       <fieldset aria-busy={loading}>
       <h2>Login</h2>      
@@ -189,7 +188,7 @@ async function handleVerify() {
         </Link>
       </p>
     </form>
-    </div>      
+    
   </div>
   );
 }

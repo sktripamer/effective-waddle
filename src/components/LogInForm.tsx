@@ -99,7 +99,7 @@ async function handleVerify() {
                       <div onClick={() =>  setLoginStep(0)} className='search-bar-close'>X</div>
                    </div>
                    <div class='email-sent'>
-                     <div class="verify-email-text">Please click the link that we sent to your email to confirm your account.</div>
+                     <div class="verify-email-text">{`Please click the link that we sent to ${emailText} to confirm your account.`}</div>
                    <div id="anim-wrapper">
   <div id="anim-bg">
     <div id="env-wrapper">
@@ -127,7 +127,7 @@ async function handleVerify() {
     </div>
      <h1 onClick={() => navigate('/')}>Revival of Revenue</h1>             
     <form className={`login-form`} method="post" onSubmit={handleSubmit}>
-      <fieldset disabled={loading} aria-busy={loading}>
+      <fieldset aria-busy={loading}>
       <h2>Login</h2>      
         <div className="login-email">
         <div class="inputwrap emailer">

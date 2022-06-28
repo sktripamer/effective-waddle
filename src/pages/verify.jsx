@@ -82,7 +82,6 @@ export default function Verify() {
                 authToken: intent.newJWT,
                 user: {email: intent.email},
               };
-              console.log(authData)
             setAuth(authData);
             setLoadingResults(false);
             setVerifyStep(6) //success stage

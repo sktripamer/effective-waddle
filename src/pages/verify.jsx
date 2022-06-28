@@ -50,7 +50,9 @@ export default function Verify() {
             login: em,
             password: pwd,
           }
-        }).catch(error => {
+        })
+        .then(navigate('dashboard'))
+        .catch(error => {
           setLoadingUser(false)
           console.error(error);
         });
@@ -109,10 +111,11 @@ export default function Verify() {
 
             setLoadingResults(false);
             setVerifyStep(6) //success stage
-            setTimeout(
-                () => gotoLogin(intent.email, document.getElementById('log-in-password').value), 
-                2000
-              );
+            gotoLogin(intent.email, document.getElementById('log-in-password').value)
+            // setTimeout(
+            //     () => , 
+            //     2000
+            //   );
           } else {
               //error with pwd (7 chars), or email/code/timestamp. display error.
               setLoadingResults(false)

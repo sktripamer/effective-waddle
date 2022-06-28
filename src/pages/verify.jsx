@@ -113,7 +113,7 @@ export default function Verify() {
             setVerifyStep(2) //resent verifcation
       } else {
           //check the vars now via api. if it returns true, set password, else show resend dialog
-        setVerifyStep(1) //loading stage
+
         let ex = {
             e: emailParam,
             c: codeParam

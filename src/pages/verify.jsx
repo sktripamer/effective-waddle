@@ -85,6 +85,23 @@ export default function Verify() {
 
       }
 
+
+      async function verifyCode(req) {
+        const request = await fetch('/api/verify-code', {
+            method: 'POST',
+            body: req,
+          });
+          const intent = (await request.json());
+          if (intent.exists.message === true) {
+            //works, now set password.
+            setLoadingResults(false)
+            setVerifyStep(3) //password set stage
+          } else {
+            //doesnt work
+            setLoadingResults(false)
+            setVerifyStep(2) //resend
+          }
+      }
       //pull vars from url. if vars dont exist, show "send verification email" button.
       if (emailParam === null || codeParam === null) {
           //one of the two params is null, show resend dialog.
@@ -98,20 +115,8 @@ export default function Verify() {
             e: emailParam,
             c: codeParam
         }
-        const request = await fetch('/api/verify-code', {
-            method: 'POST',
-            body: JSON.stringify(ex),
-          });
-          const intent = (await request.json());
-          if (intent.exists.message === true) {
-            //works, now set password.
-            setLoadingResults(false)
-            setVerifyStep(3) //password set stage
-          } else {
-            //doesnt work
-            setLoadingResults(false)
-            setVerifyStep(2) //resend
-          }
+        verifyCode(JSON.stringify(ex))
+       
       }
 
 

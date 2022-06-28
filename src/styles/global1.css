@@ -1858,6 +1858,21 @@ a.goto-email:hover {
   }
 
   @media (max-width: 666px) {
+    div.login-page h2, div.verify-page h2 {
+      font-size: 1.6em;
+    margin-bottom: .4em;
+    margin-top: .4em;
+    }
+    main button.verify-user-button {
+      margin: 2.4em auto 0;
+    }
+    p.account-sign-up-message {
+      margin-top: 1.5em;
+  }
+    div.login-page h1, div.verify-page h1 {
+      font-size: 1.3em;
+      line-height: 45px;
+    }
     div.hero-render-title {
       font-size: 1.2em;
     }

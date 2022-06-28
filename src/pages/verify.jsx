@@ -1,8 +1,26 @@
 import * as React from "react";
 import { useState, useEffect, ReactNode } from "react";
 import { navigate } from "gatsby";
+import { useMutation, gql } from "@apollo/client";
+
+const LOG_IN = gql`
+  mutation logIn($login: String!, $password: String!) {
+    loginWithCookies(input: {
+      login: $login
+      password: $password
+    }) {
+      status
+    }
+  }
+`;
 
 export default function Verify() {
+    const [logIn, { loading, error }] = useMutation(LOG_IN, {
+        refetchQueries: [
+          { query: GET_USER }
+        ],
+      });
+
     const isBrowser = typeof window !== "undefined";
     const [verifyStep, setVerifyStep] = useState(1)
     const [loadingResults, setLoadingResults] = useState(true)
@@ -25,6 +43,18 @@ export default function Verify() {
         return re.test(email);
     }
 
+    const gotoLogin = (em, pwd) => {
+        
+        logIn({
+          variables: {
+            login: em,
+            password: pwd,
+          }
+        }).catch(error => {
+          setLoadingUser(false)
+          console.error(error);
+        });
+    }
     const setAuth = (authData) => {
         localStorage.setItem("auth", JSON.stringify(authData));
       };
@@ -78,15 +108,11 @@ export default function Verify() {
           const intent = (await request.json());
           if (intent.exists.message > 0) {
             //password change was successful. now log in with credentials
-            const authData = {
-                authToken: intent.newJWT,
-                user: {email: intent.email},
-              };
-            setAuth(authData);
+
             setLoadingResults(false);
             setVerifyStep(6) //success stage
             setTimeout(
-                () => navigate('/dashboard'), 
+                () => gotoLogin(intent.email, document.getElementById('log-in-password').value), 
                 2000
               );
           } else {

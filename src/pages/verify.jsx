@@ -79,9 +79,10 @@ export default function Verify() {
           if (intent.exists.message > 0) {
             //password change was successful. now log in with credentials
             const authData = {
-                authToken: intent.exists.newJWT,
-                user: {email: intent.exists.email},
+                authToken: intent.newJWT,
+                user: {email: intent.email},
               };
+              console.log(authData)
             setAuth(authData);
             setLoadingResults(false);
             setVerifyStep(6) //success stage

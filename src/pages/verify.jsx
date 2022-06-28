@@ -27,6 +27,7 @@ export default function Verify() {
       //pull vars from url. if vars dont exist, show "send verification email" button.
     console.log(emailParam)
     console.log(codeParam)
+    return <p>aa...</p>;
     } else {
       navigate('/dashboard')
     }
@@ -34,8 +35,9 @@ export default function Verify() {
   } else {
     console.log(emailParam)
     console.log(codeParam)
+    return <p>dd...</p>;
       //user not logged in. pull vars from url.
       //if no vars exist, show some stuff about logging in or registering
   }
-
+  return <p>ww...</p>;
 }

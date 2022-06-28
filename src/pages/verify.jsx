@@ -24,6 +24,10 @@ export default function Verify() {
         var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email);
     }
+
+    const setAuth = (authData) => {
+        localStorage.setItem("auth", JSON.stringify(authData));
+      };
     async function handleVerify() {
         setEmailValidError(false)
         let emailvalue = document.getElementById('log-in-email').value
@@ -72,10 +76,19 @@ export default function Verify() {
             body: JSON.stringify(ex),
           });
           const intent = (await request.json());
-          if (intent.exists.message === true) {
+          if (intent.exists.message > 0) {
             //password change was successful. now log in with credentials
-            setLoadingResults(false)
+            const authData = {
+                authToken: intent.exists.newJWT,
+                user: {email: intent.exists.email},
+              };
+            setAuth(authData);
+            setLoadingResults(false);
             setVerifyStep(6) //success stage
+            setTimeout(
+                () => navigate('/dashboard'), 
+                2000
+              );
           } else {
               //error with pwd (7 chars), or email/code/timestamp. display error.
               setLoadingResults(false)
@@ -209,7 +222,7 @@ export default function Verify() {
         <button className="verify-user-button" onClick={handlePassword} disabled={loadingResults}>Verify Account</button>
     </div>
     <div class='verifystep6'>
-        Success!
+        Success! Logging in...
         </div>
     </div>
 

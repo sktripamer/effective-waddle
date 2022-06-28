@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState, useEffect, ReactNode } from "react";
 import { navigate } from "gatsby";
 import { useMutation, gql } from "@apollo/client";
-
+import { GET_USER } from "../hooks/useAuth";
 const LOG_IN = gql`
   mutation logIn($login: String!, $password: String!) {
     loginWithCookies(input: {
@@ -55,9 +55,7 @@ export default function Verify() {
           console.error(error);
         });
     }
-    const setAuth = (authData) => {
-        localStorage.setItem("auth", JSON.stringify(authData));
-      };
+
     async function handleVerify() {
         setEmailValidError(false)
         let emailvalue = document.getElementById('log-in-email').value

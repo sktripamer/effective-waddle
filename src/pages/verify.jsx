@@ -4,7 +4,7 @@ import { navigate } from "gatsby";
 
 export default function Verify() {
     const isBrowser = typeof window !== "undefined";
-    const [verifyStep, setVerifyStep] = useState(0)
+    const [verifyStep, setVerifyStep] = useState(1)
     const [loadingResults, setLoadingResults] = useState(true)
     const [goToEmail, setGoToEmail] = useState('')
     const [emailText, setEmailText] = useState('')

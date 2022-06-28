@@ -100,6 +100,7 @@ export default function Verify() {
             setVerifyStep(3) //password set stage
           } else {
             //doesnt work
+            setVerifyErr(true)
             setLoadingResults(false)
             setVerifyStep(2) //resend
           }
@@ -166,7 +167,7 @@ export default function Verify() {
     <h1 onClick={() => navigate('/')}>Revival of Revenue</h1> 
     <div class='verify-form'>
     <h2>Verify Email</h2>
-    <div classname='verifystep1'>Loading...</div>
+    <div class='verifystep1'>Loading...</div>
     <div className="verifystep2">
         <div class="inputwrap emailer">
 
@@ -189,7 +190,7 @@ export default function Verify() {
         <button className="verify-user-button" onClick={handleVerify} disabled={loadingResults}>Verify</button>
     </div>  
 
-    <div classname='verifystep3'>
+    <div class='verifystep3'>
     <div class='email-to-use'>{emailParam}</div>
         <div class='set-your-password'>Create your password to continue:</div>
     <div class="inputwrap passworder">
@@ -203,11 +204,11 @@ export default function Verify() {
         <div class="label">Password</div>
         </div>
         {pwdValidError === true ? (
-          <p className="error-message">Invalid email. Please try again.</p>
+          <p className="error-message">Enter a password that is 7 or more characters long.</p>
         ) : null}  
         <button className="verify-user-button" onClick={handlePassword} disabled={loadingResults}>Verify Account</button>
     </div>
-    <div classname='verifystep6'>
+    <div class='verifystep6'>
         Success!
         </div>
     </div>

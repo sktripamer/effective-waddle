@@ -51,7 +51,7 @@ export default function Verify() {
             password: pwd,
           }
         })
-        .then(navigate('dashboard'))
+        .then(navigate('/dashboard'))
         .catch(error => {
           setLoadingUser(false)
           console.error(error);

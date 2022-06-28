@@ -9,6 +9,7 @@ export default function Verify() {
     const [goToEmail, setGoToEmail] = useState('')
     const [emailText, setEmailText] = useState('')
     const [pwdValidError, setPwdValidError] = useState(false)
+    const [emailValidError, setEmailValidError] = useState(false)
     const [verifyErr, setVerifyErr] = useState(false)
     let params;
     let emailParam;

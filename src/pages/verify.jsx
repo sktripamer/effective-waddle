@@ -87,6 +87,7 @@ export default function Verify() {
 
 
       async function verifyCode(req) {
+          if (isBrowser) {
         const request = await fetch('/api/verify-code', {
             method: 'POST',
             body: req,
@@ -101,6 +102,7 @@ export default function Verify() {
             setLoadingResults(false)
             setVerifyStep(2) //resend
           }
+        }
       }
       //pull vars from url. if vars dont exist, show "send verification email" button.
       if (emailParam === null || codeParam === null) {

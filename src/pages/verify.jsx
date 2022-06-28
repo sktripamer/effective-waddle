@@ -105,22 +105,25 @@ export default function Verify() {
           }
         }
       }
+      useEffect(() => {
       //pull vars from url. if vars dont exist, show "send verification email" button.
       if (emailParam === null || codeParam === null) {
-          //one of the two params is null, show resend dialog.
-            if (isBrowser) document.getElementById('log-in-email').value = emailParam
-            setLoadingResults(false)
-            setVerifyStep(2) //resent verifcation
-      } else {
-          //check the vars now via api. if it returns true, set password, else show resend dialog
+        //one of the two params is null, show resend dialog.
+          if (isBrowser) document.getElementById('log-in-email').value = emailParam
+          setLoadingResults(false)
+          setVerifyStep(2) //resent verifcation
+    } else {
+        //check the vars now via api. if it returns true, set password, else show resend dialog
 
-        let ex = {
-            e: emailParam,
-            c: codeParam
-        }
-        verifyCode(JSON.stringify(ex))
-       
+      let ex = {
+          e: emailParam,
+          c: codeParam
       }
+      verifyCode(JSON.stringify(ex))
+     
+    }
+
+      }, []);
 
 
 

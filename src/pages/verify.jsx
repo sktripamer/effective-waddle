@@ -9,9 +9,15 @@ export default function Verify() {
     const isBrowser = typeof window !== "undefined";
     const [email, SetEmail] = useState(null);
     const [verifyCode, setVerifyCode] = useState(null);
-    const params = new URLSearchParams(location.search);
-    const emailParam = params.get("e");
-    const codeParam = params.get("c");
+    let params;
+    let emailParam;
+    let codeParam;
+    if (isBrowser) {
+        params = new URLSearchParams(location.search);
+        emailParam = params.get("e");
+        codeParam = params.get("c");
+    }
+
 
     // useEffect(() => {
 

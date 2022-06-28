@@ -334,7 +334,7 @@ content: "";
     transition: all .25s;
 }
 
-.checkuser-true form.login-form:after {
+.checkuser-true form.login-form:after, .checkuser-true .verify-form:after  {
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: contain;
@@ -361,7 +361,7 @@ p.error-message {
   width: 90%;
     text-align: center;
 }
-.checkuser-true form.login-form:before {
+.checkuser-true form.login-form:before, .checkuser-true .verify-form:before {
   position:
   absolute;
   width:100%;

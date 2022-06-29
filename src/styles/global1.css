@@ -176,8 +176,11 @@
   main.modalup {
     overflow-y: scroll;
   }
-
+  .checkout .step-1 .pay-btn {
+    width: 100%;
+}
   .powered-by-stripe-small {
+    margin-top: 0.7em;
     background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/stripe-small-min.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -2634,6 +2637,22 @@ a.goto-email:hover {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 50px 100%);
     margin-left: -50px;
 }
+
+.checkout-header-bar[data-total="total-1"]:before {
+  content: 'Checkout Step 1/1';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Nunito Bold';
+  font-size: 1.2em;
+  width: 50%;
+  height: 100%;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+}
+
 .checkout-header-bar[data-total="total-2"]:before {
     content: 'Checkout Step 1/2';
     position: absolute;
@@ -9137,7 +9156,7 @@ button.verify-user-button:after {
     line-height: 27px;
   }
 
-.product-preload {
+  html.scroll main > div.product-preload {
   position: relative;
     background-size: contain;
     padding-top: 76.92307692307692%;

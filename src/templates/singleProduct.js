@@ -580,7 +580,7 @@ const variationClick = (e) => {
         } 
       }, [data]);
       if (loading) return (
-        <Layout>
+        <Layout htmlClassName={"scroll"}>
           <Navbar />
         <div class="product-preload">
           

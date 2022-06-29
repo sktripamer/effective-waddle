@@ -22,7 +22,8 @@ const singleProduct = ( props ) => {
     const [variationNoStock, setVariationNoStock] = useState(false)
     const [previousRating, setPreviousRating] = useState('')
     const [previousContent, setPreviousContent] = useState('')
-    let relatedData = [];
+
+    let [relatedFull, setRelatedFull] = useState([])
     const sanitizedData = (sendData) => ({
       __html: DOMPurify.sanitize(sendData)
     })
@@ -533,13 +534,13 @@ const variationClick = (e) => {
       useEffect(() => {
         
         if (typeof data !== 'undefined' && data !== null) {
-           
+          let relatedData = [];
           data.product.related.edges.forEach((el, index) => {
             if (el.node.productCategories.nodes[0].name !== 'Uncategorized') {
                 relatedData.push(el)
             }
         })
-
+        setRelatedFull(relatedData);
 
       if (type !== "SIMPLE"){
         let attr1 = data.product.attributes.nodes[0].options[clickedItem]
@@ -1192,25 +1193,29 @@ const renderDelivery = () => {
         
         }
     
+{relatedFull.length > 0 ?
 
-        <div class='you-might-like-cont'>
-        <h4>Related Products</h4>
-        <div onClick={changePage} data-idlink={`${slugify(relatedData[0].node.productCategories.nodes[0].name)}/${slugify(relatedData[0].node.name)}`} className='mini-product-cont'>
-          <img src={relatedData[1].featuredImage.node.sourceUrl}></img>
-          <div className='mini-title'>{relatedData[0].node.name}</div>
-          <div className='mini-price'>{relatedData[0].node.price}</div>
-        </div>
-        <div onClick={changePage} data-idlink={`${slugify(relatedData[1].node.productCategories.nodes[1].name)}/${slugify(relatedData[1].node.name)}`} className='mini-product-cont'>
-          <img src={data.product.variations.nodes[1].featuredImage.node.sourceUrl}></img>
-          <div className='mini-title'>{relatedData[1].node.name}</div>
-          <div className='mini-price'>{relatedData[1].node.price}</div>
-        </div>
-        <div onClick={changePage} data-idlink={`${slugify(relatedData[2].node.productCategories.nodes[2].name)}/${slugify(relatedData[2].node.name)}`} className='mini-product-cont'>
-          <img src={data.product.variations.nodes[2].featuredImage.node.sourceUrl}></img>
-          <div className='mini-title'>{relatedData[2].node.name}</div>
-          <div className='mini-price'>{relatedData[2].node.price}</div>
-        </div>
-        </div>
+(
+  <div class='you-might-like-cont'>
+  <h4>Related Products</h4>
+  <div onClick={changePage} data-idlink={`${slugify(relatedFull[0].node.productCategories.nodes[0].name)}/${slugify(relatedFull[0].node.name)}`} className='mini-product-cont'>
+    <img src={relatedFull[1].featuredImage.node.sourceUrl}></img>
+    <div className='mini-title'>{relatedFull[0].node.name}</div>
+    <div className='mini-price'>{relatedFull[0].node.price}</div>
+  </div>
+  <div onClick={changePage} data-idlink={`${slugify(relatedFull[1].node.productCategories.nodes[1].name)}/${slugify(relatedFull[1].node.name)}`} className='mini-product-cont'>
+    <img src={relatedFull[1].node.featuredImage.node.sourceUrl}></img>
+    <div className='mini-title'>{relatedFull[1].node.name}</div>
+    <div className='mini-price'>{relatedFull[1].node.price}</div>
+  </div>
+  <div onClick={changePage} data-idlink={`${slugify(relatedFull[2].node.productCategories.nodes[2].name)}/${slugify(relatedFull[2].node.name)}`} className='mini-product-cont'>
+    <img src={relatedFull[2].node.featuredImage.node.sourceUrl}></img>
+    <div className='mini-title'>{relatedFull[2].node.name}</div>
+    <div className='mini-price'>{relatedFull[2].node.price}</div>
+  </div>
+  </div>
+): ('')}
+
 
     </div>
     </Layout>

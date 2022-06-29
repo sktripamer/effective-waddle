@@ -8,9 +8,11 @@ const validateJWT = async (req, res) => {
             jwt.verify(req.body, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
             const customerID = await getCustomerID(decoded.data.user.id);
             console.log(customerID)
-            if (customerID.data.acf.customer_id === undefined) return res.status(200);
+            if (customerID.acf.customer_id === undefined || customerID.acf.customer_id === '') {
+              return res.status(200);
+            } 
             
-            const paymentMethod = await getPaymentMethods(customerID.data.acf.customer_id);
+            const paymentMethod = await getPaymentMethods(customerID.acf.customer_id);
             
             // let sublist = {};
             // for (let i=0; i< paymentMethod.data.length; i++) {
@@ -37,7 +39,7 @@ const getCustomerID = async (uID) => {
         }
       };
      const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig).then(resp => {    
-       return resp;
+       return resp.data;
     });
     return responser;
 }

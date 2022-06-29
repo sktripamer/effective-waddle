@@ -1214,7 +1214,7 @@ const renderDelivery = () => {
         
         }
     
-{relatedFull.length > 0 ?
+{relatedFull.length > 2 ?
 
 (
   <div class='you-might-like-cont'>

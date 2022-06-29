@@ -9,7 +9,7 @@ const validateJWT = async (req, res) => {
             const customerID = await getCustomerID(decoded.data.user.id);
             console.log(customerID)
             if (customerID.acf.customer_id === undefined || customerID.acf.customer_id === '') {
-              return res.status(200);
+              return res.status(200).json(true);
             } 
             
             const paymentMethod = await getPaymentMethods(customerID.acf.customer_id);

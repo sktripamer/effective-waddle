@@ -535,6 +535,7 @@ const variationClick = (e) => {
         
         if (typeof data !== 'undefined' && data !== null) {
           let relatedData = [];
+          console.log(data)
           data.product.related.edges.forEach((el, index) => {
             if (el.node.productCategories.nodes[0].name !== 'Uncategorized') {
                 relatedData.push(el)

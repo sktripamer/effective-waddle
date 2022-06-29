@@ -712,6 +712,46 @@ module.exports = {
                   },
                   {
                     "node": {
+                      "databaseId": 1705,
+                      "name": "Monopolize Mini Course",
+                      "slug": "monopolize-mini-course",
+                      "productCategories": {
+                        "nodes": [
+                          {
+                            "slug": "courses"
+                          }
+                        ]
+                      },
+                      "price": "$99.00",
+                      "featuredImage": {
+                        "node": {
+                          "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/06/course.jpg"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "databaseId": 1735,
+                      "name": "Entrepreneurial Espresso Subscription",
+                      "slug": "entrepreneurial-espresso-subscription",
+                      "productCategories": {
+                        "nodes": [
+                          {
+                            "slug": "courses"
+                          }
+                        ]
+                      },
+                      "price": "$20.00",
+                      "featuredImage": {
+                        "node": {
+                          "sourceUrl": "https://portal.revrevdev.xyz/wp-content/uploads/2022/06/course.jpg"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "node": {
                       "databaseId": 281,
                       "name": "REVREV Short-Sleeve Unisex T-Shirt",
                       "slug": "revrev-short-sleeve-unisex-t-shirt",

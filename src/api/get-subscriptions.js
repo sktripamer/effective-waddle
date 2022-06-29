@@ -14,7 +14,7 @@ const validateJWT = async (req, res) => {
             } 
             
             const paymentMethod = await getPaymentMethods(customerID.acf.customer_id);
-            
+            if (paymentMethod.data.length === 0)  return res.status(200).json(true);
             // let sublist = {};
             // for (let i=0; i< paymentMethod.data.length; i++) {
             // const paymentM = await getPaymentMethod(paymentMethod.data[i].default_payment_method)

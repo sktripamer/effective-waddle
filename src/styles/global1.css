@@ -3315,6 +3315,8 @@ button.verify-user-button:after {
 
   .image-gallery-thumbnails .image-gallery-thumbnails-container {
     max-width: 70px;
+    opacity: 0;
+    animation: newput .4s .3s forwards;
   }
   nav.image-gallery-thumbnails-container {
     height: auto;

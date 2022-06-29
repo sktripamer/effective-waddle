@@ -579,7 +579,12 @@ const variationClick = (e) => {
       }
         } 
       }, [data]);
-      if (loading) return <p>Loading ...</p>;
+      if (loading) return (
+        <div>
+        <Navbar />
+        <div class="product-container preloader"><div class="gallery-info-cont preloader"><div class="gallery-cont preloader"></div><div class="product-info-cont preloader"><div class="preloader preload-title"></div><div class="review-total-cont preloader"><div class="review-total-empty preloader"></div><div class="review-total-text preloader"></div></div><div class="product-pricer preloader"></div><div class="product-short-desc preloader"></div><div class="buttons-addtocart preloader"></div></div></div><div class="product-data-tabs preloader"><div class="render-tab preloader"></div></div></div>
+</div>
+      );
     if (isClicked === false && addedToCart === false) {
 
         let tempCart = function() {
@@ -1210,7 +1215,7 @@ const renderDelivery = () => {
   <div class='you-might-like-cont'>
   <h4>Related Products</h4>
   <div onClick={changePage} data-idlink={`${slugify(relatedFull[0].node.productCategories.nodes[0].name)}/${slugify(relatedFull[0].node.name)}`} className='mini-product-cont'>
-    <img src={relatedFull[1].node.featuredImage.node.sourceUrl}></img>
+    <img src={relatedFull[0].node.featuredImage.node.sourceUrl}></img>
     <div className='mini-title'>{relatedFull[0].node.name}</div>
     <div className='mini-price'>{relatedFull[0].node.price}</div>
   </div>

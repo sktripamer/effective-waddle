@@ -37,7 +37,7 @@ const getCustomerID = async (uID) => {
         }
       };
      const responser = await axios.get('https://portal.revrevdev.xyz/wp-json/wp/v2/users/' + uID, axiosConfig).then(resp => {    
-       return resp.data.acf.customer_id;
+       return resp;
     });
     return responser;
 }

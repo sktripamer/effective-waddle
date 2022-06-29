@@ -8,9 +8,9 @@ const validateJWT = async (req, res) => {
             jwt.verify(req.body, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
             const customerID = await getCustomerID(decoded.data.user.id);
             console.log(customerID)
-            if (customerID == '' || customerID === null) return res.status(200);
+            if (customerID.data.acf.customer_id === undefined) return res.status(200);
             
-            const paymentMethod = await getPaymentMethods(customerID);
+            const paymentMethod = await getPaymentMethods(customerID.data.acf.customer_id);
             
             // let sublist = {};
             // for (let i=0; i< paymentMethod.data.length; i++) {

@@ -86,6 +86,7 @@ if (type === "SIMPLE") {
             ... on SimpleProduct {
                 name
                 databaseId
+                stockStatus
                 price
                 virtual
                 description
@@ -483,6 +484,12 @@ const variationClick = (e) => {
                }
           }
     })
+      } else {
+        if (data.product.stockStatus === "IN_STOCK") {
+          setVariationNoStock(false)
+         } else {
+          setVariationNoStock(true)
+         }
       }
         } 
       }, [data]);
@@ -639,31 +646,236 @@ const renderDelivery = () => {
             
         {type === "SIMPLE"
         ? (
-            
-          
-            <div>
-            aa
-          <div>{data.product.name}</div>
-          <div>{data.product.price}</div>
+          <div class="product-container">
+              <div class='gallery-info-cont'>
+              
           <div class='gallery-cont'>
           <ImageGallery items={images} showNav={false} showPlayButton={false} showFullscreenButton={false} />
           </div>
-          <div>
-        <div class="count">
-      
-     <input type="tel" value={count} onChange={changeCount}/>
-          <h3>Count:</h3>
-          <h1>{count}</h1>
+          <div className='product-info-cont'>
+          <h2>{data.product.name}</h2>
+      {data.product.reviewCount === 0
+      ? (
+        <div class='review-total-cont'>
+            <div class='review-total-empty'></div>
+            <div class='review-total-text'>No reviews yet!</div>
         </div>
+      ) :
+      <div class='review-total-cont'>
+        {data.product.reviews.averageRating === 0 ?
+        (
+          <div className='rating-cont'>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+          </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 1 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 1.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 2 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 2.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 3 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 3.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 4 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 4.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+        </div>
+        ) : ''
+
+        }
+     {data.product.reviewCount === 1 ?
+     (
+      <div class='review-total-text'>{data.product.reviewCount} review</div>
+     ) : 
+     (
+      <div class='review-total-text'>{data.product.reviewCount} reviews</div>
+     )
+       
+     
+
+     }
+
+  </div>
+      }      
+ <div className='product-pricer'><h3>{data.product.price}</h3></div>
+<div className='product-short-desc'><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p></div>
+<div className='buttons-addtocart'>
         <div class="buttons">
           <button onClick={decrementCount}>-</button>
+          <input type="tel" value={count} onChange={changeCount}/>
           <button onClick={incrementCount}>+</button>
         </div>
-      </div>
-      
-      <button onClick={SimpleCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
+        {variationNoStock===true ? 
+        (
+          <div class='no-stock-text'>This item variation is out of stock! Try selecting a different one.</div>
+        ):''}
+        <button disabled={variationNoStock} className={`addcart-btn added-${addedToCart}`} onClick={SimpleCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
+      </div>    
+         
+
+
+
+          </div>
+          </div>
+
+
+
+          <div className='product-data-tabs'>
+        <div className={`product-tabs-cont idx-${tab}`}>
+         <div onClick={(e) => changeTab()} className='product-tabs-desc'>Description</div>
+         <div onClick={(e) => changeTab1()} className='product-tabs-advanced'>Additional Information</div>
+         <div onClick={(e) => changeTab2()} className='product-tabs-reviews'>Reviews ({data.product.reviewCount})</div>
+         <div onClick={(e) => changeTab3()} className='product-tabs-delivery'>Delivery and Returns</div>
+        </div>
+        <div className='render-tab'>
+            <>
+        {tab === 0 ?
+        (
+            <>
+            {renderDescripton()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+      {tab === 1 ?
+        (
+            <>
+            {renderAddtional()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+      {tab === 2 ?
+        (
+            <>
+            {renderWriteReview()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+      {tab === 3 ?
+        (
+            <>
+            {renderDelivery()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+            </>
+        </div>
+    </div>
         </div>
         
+
+
+
           )
         : 
         

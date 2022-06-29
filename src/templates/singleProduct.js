@@ -1214,12 +1214,12 @@ const renderDelivery = () => {
     <div className='mini-title'>{relatedFull[0].node.name}</div>
     <div className='mini-price'>{relatedFull[0].node.price}</div>
   </div>
-  <div onClick={changePage} data-idlink={`${slugify(relatedFull[1].node.productCategories.nodes[1].name)}/${slugify(relatedFull[1].node.name)}`} className='mini-product-cont'>
+  <div onClick={changePage} data-idlink={`${slugify(relatedFull[1].node.productCategories.nodes[0].name)}/${slugify(relatedFull[1].node.name)}`} className='mini-product-cont'>
     <img src={relatedFull[1].node.featuredImage.node.sourceUrl}></img>
     <div className='mini-title'>{relatedFull[1].node.name}</div>
     <div className='mini-price'>{relatedFull[1].node.price}</div>
   </div>
-  <div onClick={changePage} data-idlink={`${slugify(relatedFull[2].node.productCategories.nodes[2].name)}/${slugify(relatedFull[2].node.name)}`} className='mini-product-cont'>
+  <div onClick={changePage} data-idlink={`${slugify(relatedFull[2].node.productCategories.nodes[0].name)}/${slugify(relatedFull[2].node.name)}`} className='mini-product-cont'>
     <img src={relatedFull[2].node.featuredImage.node.sourceUrl}></img>
     <div className='mini-title'>{relatedFull[2].node.name}</div>
     <div className='mini-price'>{relatedFull[2].node.price}</div>

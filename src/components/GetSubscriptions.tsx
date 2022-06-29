@@ -7,7 +7,7 @@ import useAuth, { User } from "../hooks/useAuth";
 export default function GetSubscriptions() {
   const { user } = useAuth();
   const { jwtAuthToken } = user as User;
-  const [methodProcessing, setMethodProcessing] = useState(true);
+  const [methodProcessing, setMethodProcessing] = useState(1);
   const [arrayTest, setArray] = useState({});
   useEffect(() => {
     async function fetchMyAPI() {
@@ -18,8 +18,11 @@ export default function GetSubscriptions() {
         });
         const intent = (await request.json());
         console.log(intent)
+        if (intent === true) {
+          setMethodProcessing(2)
+        }
         setArray(intent.paymentMethod.data);
-          setMethodProcessing(false)
+          setMethodProcessing(0)
       } catch (error) {
         console.log('Failed to get cID');
         console.log(error);
@@ -41,9 +44,14 @@ export default function GetSubscriptions() {
   return (
     <div className='sub-list'>
 
-       {methodProcessing ? (
-            <div>loading subscriptions...</div>
-          ) : (
+       {methodProcessing === 1 ? (
+            <div class='subloading'>Loading subscriptions...</div>
+          ) : ('')}
+           {methodProcessing === 2 ? (
+            <div class='subloading'>No active subscriptions!</div>
+          ) : ('')}
+          
+          {methodProcessing === 0 ? (
             <div class='subscription-list'>
                {arrayTest && arrayTest.map((el, index) =>
                   <>
@@ -54,7 +62,7 @@ export default function GetSubscriptions() {
                   </>
 )}
 </div>
-            )}
+            ): ('')}
    
     </div>
   );

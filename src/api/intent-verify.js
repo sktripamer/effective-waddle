@@ -85,7 +85,7 @@
       //if new account is not null, and authtoken is null, try to process new account.
       if (params.newAccount !== null && params.token === null) {
           const newUser = await createNewUser(params.newAccount);
-          let subscription1 = params.cart.find(e => e.ID === 105);
+          let subscription1 = params.cart.find(e => e.ID === 1735);
           let course1 = params.cart.find(e => e.ID === 101);
           if (subscription1 != null) await createSubscription(paymentIntent.customer, paymentIntent.payment_method);
           if (course1 != null) await addCourse(newID);
@@ -342,7 +342,7 @@
       const subscription = await stripe.subscriptions.create({
           customer: customerID,
           items: [
-              {price: 'price_1KkQhpEIi9OXKxaBOPNTGrf0'},
+              {price: 'price_1LFzPWEIi9OXKxaBADloi95c'},
             ],
           default_payment_method: paymentID,
           trial_end: Math.round((new Date).setMonth((new Date).getMonth()+1) / 1000)

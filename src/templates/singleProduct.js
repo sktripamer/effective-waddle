@@ -907,7 +907,7 @@ const renderDelivery = () => {
         }
     
 
-        <div class='you-might-like-cont'>
+        {/* <div class='you-might-like-cont'>
         <h4>Related Products</h4>
         <div className='mini-product-cont'>
           <img src={data.product.variations.nodes[0].featuredImage.node.sourceUrl}></img>
@@ -924,7 +924,7 @@ const renderDelivery = () => {
           <div className='mini-title'>{data.product.name}</div>
           <div className='mini-price'>{data.product.price}</div>
         </div>
-        </div>
+        </div> */}
 
     </div>
     </Layout>

@@ -99,6 +99,11 @@ if (type === "SIMPLE") {
                       name
                       ... on SimpleProduct {
                         name
+                        productCategories {
+                          nodes {
+                            name
+                          }
+                        }
                         featuredImage {
                           node {
                             sourceUrl
@@ -108,6 +113,11 @@ if (type === "SIMPLE") {
                       }
                       ... on VariableProduct {
                         name
+                        productCategories {
+                          nodes {
+                            name
+                          }
+                        }
                         featuredImage {
                           node {
                             sourceUrl
@@ -1200,7 +1210,7 @@ const renderDelivery = () => {
   <div class='you-might-like-cont'>
   <h4>Related Products</h4>
   <div onClick={changePage} data-idlink={`${slugify(relatedFull[0].node.productCategories.nodes[0].name)}/${slugify(relatedFull[0].node.name)}`} className='mini-product-cont'>
-    <img src={relatedFull[1].featuredImage.node.sourceUrl}></img>
+    <img src={relatedFull[1].node.featuredImage.node.sourceUrl}></img>
     <div className='mini-title'>{relatedFull[0].node.name}</div>
     <div className='mini-price'>{relatedFull[0].node.price}</div>
   </div>

@@ -585,7 +585,7 @@ const variationClick = (e) => {
         <div>
           
         
-        <div class="product-container preloader"><div class="gallery-info-cont preloader"><div class="gallery-cont preloader"></div><div class="product-info-cont preloader"><div class="preloader preload-title"></div><div class="review-total-cont preloader"><div class="review-total-empty preloader"></div><div class="review-total-text preloader"></div></div><div class="product-pricer preloader"></div><div class="product-short-desc preloader"></div><div class="buttons-addtocart preloader"></div></div></div><div class="product-data-tabs preloader"><div class="render-tab preloader"></div></div></div>
+        <div class="product-preload"></div>
 </div>
 </Layout>
       );

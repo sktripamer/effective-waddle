@@ -582,10 +582,10 @@ const variationClick = (e) => {
       if (loading) return (
         <Layout>
           <Navbar />
-        <div>
+        <div class="product-preload">
           
         
-        <div class="product-preload"></div>
+       
 </div>
 </Layout>
       );

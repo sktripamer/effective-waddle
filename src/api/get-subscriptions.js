@@ -8,6 +8,7 @@ const validateJWT = async (req, res) => {
             jwt.verify(req.body, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
             const customerID = await getCustomerID(decoded.data.user.id);
             console.log(customerID)
+            console.log(customerID.acf.customer_id)
             if (customerID.acf.customer_id === undefined || customerID.acf.customer_id === '') {
               return res.status(200).json(true);
             } 

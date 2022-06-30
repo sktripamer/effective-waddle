@@ -1,7 +1,7 @@
 
 import jwt from 'jsonwebtoken'
 import axios from 'axios'
-
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 let params;
 const validateJWT = async (req, res) => {

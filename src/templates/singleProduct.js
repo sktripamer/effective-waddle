@@ -47,7 +47,7 @@ const singleProduct = ( props ) => {
     useEffect(() => {
         
         if (typeof data !== 'undefined' && data !== null) {
-            console.log(data.product.variations.nodes[clickedItem].databaseId)
+           // console.log(data.product.variations.nodes[clickedItem].databaseId)
         } 
       }, [clickedItem]);
 

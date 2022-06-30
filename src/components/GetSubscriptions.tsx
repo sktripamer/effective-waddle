@@ -11,7 +11,8 @@ export default function GetSubscriptions() {
   const [arrayTest, setArray] = useState({});
   const [loadSearch, setLoadSearch] = useState(false)
   const [loadingPaymentData, setLoadingPaymentData] = useState(true)
-  
+  const [defaultPayment, setDefaultPayment] = useState({})
+  const [allPayments, setAllPayments] = useState([])
   useEffect(() => {
     async function fetchMyAPI() {
       try {
@@ -51,8 +52,16 @@ export default function GetSubscriptions() {
       body: jwtAuthToken,
     });
     const intent = (await request.json());
-    console.log(intent)
-    setLoadingPaymentData(false)
+    console.log(intent);
+    setLoadingPaymentData(false);
+    setAllPayments(intent.paymentMethod.data)
+    for (let i=0; i < intent.paymentMethod.data.length; i++) {   
+      if (intent.paymentMethod.data[i].id === e.target.dataset.paymentid) {
+        setDefaultPayment(intent.paymentMethod.data[i])
+        break;
+      }
+      
+    }
     //loop through and match one with dataset one (this is the one currently used), store in array.
     //store them all in usestate array
     //display default one on first modal box.
@@ -96,7 +105,10 @@ export default function GetSubscriptions() {
                     )
                     : (
                      <div class='more-payment-info'>
-                        
+                          <div class='previous-payment is-checked'>
+                          <div className={`prev-brand ${defaultPayment.card.brand}`}></div>
+                    <div className="prev-last4">{defaultPayment.card.last4}</div>
+                          </div>
 
                      </div>
                     )}

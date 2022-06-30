@@ -23,7 +23,7 @@ const singleProduct = ( props ) => {
     const [variationNoStock, setVariationNoStock] = useState(false)
     const [previousRating, setPreviousRating] = useState('')
     const [previousContent, setPreviousContent] = useState('')
-
+    const [openCart, setOpenCart] = useState(false)
     let [relatedFull, setRelatedFull] = useState([])
     const sanitizedData = (sendData) => ({
       __html: DOMPurify.sanitize(sendData)
@@ -94,6 +94,11 @@ if (type === "SIMPLE") {
         product(id: $id, idType: DATABASE_ID) {
             ... on SimpleProduct {
                 name
+                productCategories {
+                  nodes {
+                    slug
+                  }
+                }
                 related {
                   edges {
                     node {
@@ -199,6 +204,11 @@ if (type === "SIMPLE") {
             }
           }
           price
+          productCategories {
+            nodes {
+              slug
+            }
+          }
           related {
             edges {
               node {
@@ -582,7 +592,7 @@ const variationClick = (e) => {
       }, [data]);
       if (loading) return (
         <Layout htmlClassName={"scroll"}>
-          <Navbar />
+          <Navbar  />
         <div class="product-preload">
           
         
@@ -737,7 +747,7 @@ const renderDelivery = () => {
 
     return (
         <Layout htmlClassName={"scroll"}>
-        <Navbar />
+        <Navbar viewCart={openCart} />
         <div>
             
         {type === "SIMPLE"
@@ -902,8 +912,13 @@ const renderDelivery = () => {
         </div>
         {variationNoStock===true ? 
         (
-          <div class='no-stock-text'>This item variation is out of stock! Try selecting a different one.</div>
+        <div class='no-stock-text'>This item variation is out of stock! Try selecting a different one.</div>
         ):''}
+        {addedToCart === true ? (
+         <div class='added-cart-cont'> <div class='added-to-cart-text'>Product added to cart!</div><button onClick={setOpenCart(true)} class='viewcart'>View Cart</button></div>
+        ): (
+        <></>
+        )}
         <button disabled={variationNoStock} className={`addcart-btn added-${addedToCart}`} onClick={SimpleCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
       </div>    
          

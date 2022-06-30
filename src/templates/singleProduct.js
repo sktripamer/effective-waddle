@@ -29,6 +29,7 @@ const singleProduct = ( props ) => {
       __html: DOMPurify.sanitize(sendData)
     })
 
+
     const changePage = (e) => {
 
       navigate(`/shop/${e.target.dataset.idlink}`)
@@ -747,7 +748,7 @@ const renderDelivery = () => {
 
     return (
         <Layout htmlClassName={"scroll"}>
-        <Navbar viewCart={openCart} />
+        <Navbar changeCart={openCart => setOpenCart(openCart)} viewCart={openCart} />
         <div>
             
         {type === "SIMPLE"

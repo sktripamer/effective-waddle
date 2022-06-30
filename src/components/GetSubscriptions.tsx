@@ -43,7 +43,7 @@ let defaultPayment;
   });
   console.log(arrayTest)
 
-  const getButtonId = async (e) => {
+  const getButtonId = (e) => {
     setLoadingPaymentData(true)
     setLoadSearch(true)
     console.log(e.target.dataset.id)

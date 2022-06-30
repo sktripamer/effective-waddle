@@ -1,487 +1,1262 @@
-import * as React from "react";
-import { Link } from "gatsby";
-import { useState, useEffect } from "react";
-import useAuth from "../hooks/useAuth";
-import SearchSystem from '../components/SearchSystem';
-import { navigate } from 'gatsby';
-
-export default function Navbar(props) {
-  const { loggedIn, loading } = useAuth();
-  const [cartRender, setCartRender] = useState(true);
-  const [hamburger, setHamburger] = useState(false)
-  const [loadSearch, setLoadSearch] = useState(false)
-  const [loadCart, setLoadCart] = useState(false)
-  const [getStarted, setGetStarted] = useState(0)
-  const [shop, setShop] = useState(0)
-  const [enroll, setEnroll] = useState(0)
-  const [resources, setResources] = useState(0)
-  const [navbarWidth, setNavbarWidth] = useState(0)
-  const [viewOffer, setViewOffer] = useState(false)
-  const [cartText, setCartText] = useState('Cart')
-  const enterCart = () => {
-    setViewOffer(false)
-    setCartText('Cart')
-    setLoadCart(true)
-  }
-  const offers = [
-    {
-      "ID": 1509,
-      "name": "Entrepreneurial Espresso Denim T-Shirt - Black, L",
-      "url": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/unisex-denim-t-shirt-black-front-62758f6f2e306.jpg",
-      "quantity": 1,
-      "price": 30,
-      "total": 30
-  },
-  {
-    "ID": 1184,
-    "name": "REVREV Men's Premium Polo - Black, 2XL",
-    "url": "https://portal.revrevdev.xyz/wp-content/uploads/2022/05/premium-polo-shirt-black-front-62754ae533556.jpg",
-    "quantity": 1,
-    "price": 30,
-    "total": 30
-}
-  ]
-
-    const setLocally = function(key, value) {
-        
-      localStorage.setItem(key, value);
-      const event = new Event('itemInserted');
-    
-      document.dispatchEvent(event);
-   
-    };
-
-
-  const localStorageSetHandler = () => {
-    let offerIndex = 0;
-    const switchViews = () => {
-      setLoadCart(false)
-      setViewOffer(true)
-    }
-    let tempCart = function() {
-      try {
-      return JSON.parse(localStorage.cart)
-      } catch {return []}
-    }
-    let subtotal = 0;
-    let finalsub = ''
-    tempCart().forEach((tempitem, index) => {
-      subtotal += tempitem.total
+import React from 'react';
+import { useQuery, gql } from "@apollo/client";
+import { useState , useEffect } from "react";
+import DOMPurify from 'dompurify';
+import Layout from "../components/Layout";
+import Navbar from "../components/Navbar";
+import ImageGallery from 'react-image-gallery';
+import AuthContent from "../components/AuthContent";
+import WriteReview from "../components/WriteReview";
+import navigate from "gatsby";
+const singleProduct = ( props ) => {
+    const [varSelect, varSelector] = useState();
+    const [tab, setTab] = useState(0)
+    const [clickedItem, setClickedItem] = useState(0);
+    const [clickedItem2, setClickedItem2] = useState(0);
+    const [count, setCount] = useState(1);
+    const [isClicked, setClicked] = useState(false)
+    const [addedToCart, setAddedToCart] = useState(false)
+    const { pageContext: { id, slug, name, description, cat, type } } = props;
+    const [hasBought, setBought] = useState(false)
+    const [reviewID, setReviewID] = useState('0')
+    const [variationPrice, setVariationPrice] = useState('0')
+    const [variationNoStock, setVariationNoStock] = useState(false)
+    const [previousRating, setPreviousRating] = useState('')
+    const [previousContent, setPreviousContent] = useState('')
+    const [openCart, setOpenCart] = useState(false)
+    let [relatedFull, setRelatedFull] = useState([])
+    const sanitizedData = (sendData) => ({
+      __html: DOMPurify.sanitize(sendData)
     })
-    if (!subtotal.toString().includes('.')) {
-      finalsub = subtotal.toString() + '.00'
-    } else {
-      finalsub = subtotal.toString()
+
+    const changePage = (e) => {
+
+      navigate(`/shop/${e.target.dataset.idlink}`)
+  }
+
+
+    const email = function() {
+        try {
+          return JSON.parse(localStorage.auth).authToken;
+        } catch {
+          return null;
+        }
+      }
+    useEffect(() => {
+        
+        if (typeof data !== 'undefined' && data !== null) {
+            console.log(data.product.variations.nodes[clickedItem].databaseId)
+        } 
+      }, [clickedItem]);
+
+      useEffect(() => {
+        async function fetchMyAPI() {
+          try {
+            if (email() === null) {
+              console.log('nothing')
+              return;
+            }
+           let sendBody = {
+                token: email(),
+                product: id,
+            }
+
+            const request = await fetch('/api/has-bought', {
+              method: 'POST',
+              body: JSON.stringify(sendBody),
+            });
+            const intent = (await request.json());
+            console.log(intent)
+            if (intent.customerID.success === 1) {
+                setBought(true)
+            }
+            if (intent.customerID.success === 1 && typeof intent.customerID.message === 'object') {
+                setReviewID(btoa('comment:' + intent.customerID.message.ID))
+                setPreviousRating(intent.customerID.message.rating)
+                setPreviousContent(intent.customerID.message.content)
+            }
+          } catch (error) {
+            console.log('Failed to get cID');
+            console.log(error);
+            return null;
+          }
+        
+        }
+        fetchMyAPI()
+
+      }, []);
+
+let query;
+
+if (type === "SIMPLE") {
+    query = gql`
+    query SingleProductQuery($id: ID!) {
+        product(id: $id, idType: DATABASE_ID) {
+            ... on SimpleProduct {
+                name
+                productCategories {
+                  nodes {
+                    slug
+                  }
+                }
+                related {
+                  edges {
+                    node {
+                      name
+                      ... on SimpleProduct {
+                        name
+                        productCategories {
+                          nodes {
+                            name
+                          }
+                        }
+                        featuredImage {
+                          node {
+                            sourceUrl
+                          }
+                        }
+                        price
+                      }
+                      ... on VariableProduct {
+                        name
+                        productCategories {
+                          nodes {
+                            name
+                          }
+                        }
+                        featuredImage {
+                          node {
+                            sourceUrl
+                          }
+                        }
+                        price
+                      }
+                    }
+                  }
+                }
+                databaseId
+                stockStatus
+                price
+                virtual
+                description
+                shortDescription
+                galleryImages {
+                  nodes {
+                    sourceUrl
+                  }
+                }
+                featuredImage {
+                  node {
+                    sourceUrl
+                  }
+                }
+                reviews {
+                    edges {
+                      node {
+                        approved
+                        author {
+                          node {
+                            ... on User {
+                              firstName
+                            }
+                          }
+                        }
+                        dateGmt
+                        content
+                      }
+                      rating
+                    }
+                    averageRating
+                  }
+                  reviewCount
+              }
+          }
     }
-    console.log(localStorage.getItem('cart'))
-    let newA = tempCart();
-    const addOffer = (whatToAdd) => {
-      offerIndex = 0; 
-      newA.push(whatToAdd)
-      setLocally('cart', JSON.stringify(newA))
-      navigate('/checkout')
+    `
+} else {
+    query = gql`
+    query SingleProductQuery($id: ID!) {
+      product(id: $id, idType: DATABASE_ID) {
+        ... on VariableProduct {
+          variations(first: 100) {
+            nodes {
+              databaseId
+              virtual
+              attributes {
+                nodes {
+                  value
+                }
+              }
+              name
+              featuredImage {
+                node {
+                  sourceUrl
+                }
+              }
+              stockStatus
+              price
+            }
+          }
+          attributes {
+            nodes {
+              name
+              options
+            }
+          }
+          price
+          productCategories {
+            nodes {
+              slug
+            }
+          }
+          related {
+            edges {
+              node {
+                name
+                ... on SimpleProduct {
+                  name
+                  featuredImage {
+                    node {
+                      sourceUrl
+                    }
+                  }
+                  price
+                  productCategories {
+                    nodes {
+                      name
+                    }
+                  }
+                }
+                ... on VariableProduct {
+                  name
+                  featuredImage {
+                    node {
+                      sourceUrl
+                    }
+                  }
+                  price
+                  productCategories {
+                    nodes {
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
+          name
+          description
+          shortDescription
+          galleryImages {
+            nodes {
+              sourceUrl
+            }
+          }
+          reviews {
+            edges {
+              node {
+                approved
+                author {
+                  node {
+                    ... on User {
+                      firstName
+                    }
+                  }
+                }
+                dateGmt
+                content
+              }
+              rating
+            }
+            averageRating
+          }
+          reviewCount
+        }
+      }
     }
-    const removeFromCart = (e) => {
-      let tempCart = function() {
+    
+    `
+}
+function slugify(text) {
+  return text
+    .toString()                           // Cast to string (optional)
+    .normalize('NFKD')            // The normalize() using NFKD method returns the Unicode Normalization Form of a given string.
+    .toLowerCase()                  // Convert the string to lowercase letters
+    .trim()    
+      .replace('×', 'x')
+      .replace(/\./g, '-')
+    .replace(/\//ig, '-') 
+    .replace(/\s+/g, '-')            // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')     // Remove all non-word chars
+    .replace(/\-\-+/g, '-');        // Replace multiple - with single -
+}
+
+const SimpleCart = (e) => {
+    let dbID;
+     let varName;
+     let varImage;
+     let varPrice;
+     let virt;
+        dbID =  data.product.databaseId
+        varName =  data.product.name
+        varImage =  data.product.featuredImage.node.sourceUrl
+        varPrice = Number(data.product.price.replace(/[^0-9.-]+/g,""));
+        virt = data.product.virtual
+    let tempCart = function() {
+     try {
+     return JSON.parse(localStorage.cart)
+     } catch {return []}      
+ }
+ 
+   let cartObj = {
+     ID: dbID,
+     name: varName,
+     url: varImage,
+     quantity: count,
+     price: varPrice,
+     total: count * varPrice,
+     v: virt
+    }
+    console.log(cartObj)
+    let cartModifier = tempCart();
+    let cartItemFound = false;
+ 
+ 
+    //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
+    tempCart().forEach((cartitem, index) => {
+     if (cartitem.ID === cartObj.ID) {
+        if (cartObj.quantity === 0) {
+         cartModifier.splice(index, 1)
+         cartItemFound = true;
+         setAddedToCart(false)
+        } else {
+         cartModifier[index].quantity = cartObj.quantity
+         cartModifier[index].total = cartObj.total
+         cartItemFound = true;
+        }
+ 
+ 
+     }
+  
+    });
+ 
+ 
+    //if no duplicate cart item is found to already exist in localstorage cart array, simply add it to the array.
+    if (cartItemFound === false && cartObj.quantity !== 0) {
+        cartModifier.push(cartObj)
+        setAddedToCart(true)
+    }
+   const setLocal = function(key, value) {
+        
+     localStorage.setItem(key, value);
+     const event = new Event('itemInserted');
+   
+     document.dispatchEvent(event);
+  
+   };
+   setLocal('cart', JSON.stringify(cartModifier))
+ 
+ }
+
+const VariationCart = (e) => {
+   let dbID;
+    let varName;
+    let varImage;
+    let varPrice;
+    let virt;
+    let attr1 = data.product.attributes.nodes[0].options[clickedItem]
+    let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
+    let selectedItem;
+
+    data.product.variations.nodes.forEach(el => {
+      if (slugify(el.attributes.nodes[0].value) === attr1) {
+           if (slugify(el.attributes.nodes[1].value) === attr2) {
+                   selectedItem = el;
+           }
+      }
+})
+       virt = selectedItem.virtual
+       dbID = selectedItem.databaseId
+       varName =  selectedItem.name
+       varImage =  selectedItem.featuredImage.node.sourceUrl
+       varPrice = Number(selectedItem.price.replace(/[^0-9.-]+/g,""));
+
+   let tempCart = function() {
+    try {
+    return JSON.parse(localStorage.cart)
+    } catch {return []}      
+}
+
+  let cartObj = {
+    ID: dbID,
+    name: varName,
+    url: varImage,
+    quantity: count,
+    price: varPrice,
+    total: count * varPrice,
+    v: virt
+   }
+   console.log(cartObj)
+   let cartModifier = tempCart();
+   let cartItemFound = false;
+
+
+   //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
+   tempCart().forEach((cartitem, index) => {
+    if (cartitem.ID === cartObj.ID) {
+       if (cartObj.quantity === 0) {
+        cartModifier.splice(index, 1)
+        cartItemFound = true;
+        setAddedToCart(false)
+       } else {
+        cartModifier[index].quantity = cartObj.quantity
+        cartModifier[index].total = cartObj.total
+        cartItemFound = true;
+       }
+
+
+    }
+ 
+   });
+
+
+   //if no duplicate cart item is found to already exist in localstorage cart array, simply add it to the array.
+   if (cartItemFound === false && cartObj.quantity !== 0) {
+       cartModifier.push(cartObj)
+       setAddedToCart(true)
+   }
+  const setLocal = function(key, value) {
+       
+    localStorage.setItem(key, value);
+    const event = new Event('itemInserted');
+  
+    document.dispatchEvent(event);
+ 
+  };
+  setLocal('cart', JSON.stringify(cartModifier))
+
+}
+
+
+
+const variationClick = (e) => {
+    console.log(e.target.dataset.id)
+    setClicked(true)
+    //find variation and set it
+    setClickedItem(parseInt(e.target.dataset.idindex));
+
+    let attr1 = data.product.attributes.nodes[0].options[parseInt(e.target.dataset.idindex)]
+    let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
+    let selectedItem;
+
+    data.product.variations.nodes.forEach(el => {
+      if (slugify(el.attributes.nodes[0].value) === attr1) {
+           if (slugify(el.attributes.nodes[1].value) === attr2) {
+                   selectedItem = el.databaseId
+                   setVariationPrice(el.price);
+                         if (el.stockStatus === "IN_STOCK") {
+                          setVariationNoStock(false)
+                         } else {
+                          setVariationNoStock(true)
+                         }
+           }
+      }
+})
+
+
+    varSelector(data.product.variations.nodes[e.target.dataset.idindex].databaseId)
+
+    let tempCart = function() {
         try {
         return JSON.parse(localStorage.cart)
-        } catch {return []}
-      }
-    
-      let cartModifier = tempCart();
-       
-      cartModifier.splice(e.target.dataset.index, 1)
-
-      const setLocal = function(key, value) {
-       
-        localStorage.setItem(key, value);
-        const event = new Event('itemInserted');
-      
-        document.dispatchEvent(event);
-     
-      };
-
-      setLocal('cart', JSON.stringify(cartModifier))
-      if (cartRender===true) {
-        setCartRender(false)
-      } else {
-        setCartRender(true)
-      }
+        } catch {return []}      
     }
     
-    if (viewOffer === true) {
-      console.log(viewOffer)
-      let removeThese = [];
-      if (cartText !== 'Limited Time Offer')  setCartText('Limited Time Offer')
+       let cartModifier = tempCart();
+        let alreadyInCart = false;
     
-      offers.forEach((offerItem, index) => {
-        tempCart().forEach((cartitem, index2) => {
-          
-          if (cartitem.ID === offerItem.ID) {
-            //cart contains this offer item. dont use.
-           removeThese.push(index)
-          }
-
-        })
-
-     
-       });
-       let tempOffers = offers;
-       for (var i = removeThese.length -1; i >= 0; i--)
-        tempOffers.splice(removeThese[i],1);
-
-       if (tempOffers.length === 0) {
-         navigate('/checkout');
-        return
+       //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
+       tempCart().forEach((cartitem, index) => {
+        if (cartitem.ID === selectedItem) {
+           setCount(cartModifier[index].quantity)
+           alreadyInCart = true;
+            
         }
-       console.log(offerIndex)
-       let newSubtotal = 0;
-       let finalnewsub = '';
-       tempCart().forEach((tempitem, index) => {
-        newSubtotal += tempitem.total
-       })
-       newSubtotal += tempOffers[0].price
-       if (!newSubtotal.toString().includes('.')) {
-        finalnewsub = newSubtotal.toString() + '.00'
-    } else {
-      finalnewsub = newSubtotal.toString()
-    }
-    let offerPrice = tempOffers[0].price;
-    let newOfferPrice = '';
-    if (!offerPrice.toString().includes('.')) {
-      newOfferPrice = offerPrice.toString() + '.00'
-  } else {
-    newOfferPrice = offerPrice.toString()
-  }
-      return (
         
-          <>
-          <div class="cart-cont upsell"><img class="cart-img" height="82" width="82" src={tempOffers[0].url}/><div class="name-total-cart-cont"><div class="cart-name">{tempOffers[0].name}</div></div><div class='offer-price'>${newOfferPrice}</div></div>
-          <div class='cart-divider'></div>
-          <div class='cart-subtotal-cont'>
-          <div class='cart-subtotal-text'>Shipping & taxes calculated at checkout</div>
-          <div class='cart-subtotal-amount'>New Subtotal ${finalnewsub}</div>
-        </div>
-          <div class="cart-btn-cont">
-          <button onClick={() => navigate('/checkout')}>No, I'll Pass</button>
-          <button onClick={() => addOffer(tempOffers[0])}>Include In Cart</button>
-        </div>
-          </>
+       });
+
+       if (alreadyInCart === true) {
+           setAddedToCart(true)
+       } else {
+           setAddedToCart(false)
+           setCount(1)
+       }
+
+  }
+
+  const variationClick2 = (e) => {
+    console.log(e.target.dataset.id)
+    setClicked(true)
+    //find variation and set it
+    setClickedItem2(parseInt(e.target.dataset.idindex));
+
+
+    let attr1 = data.product.attributes.nodes[0].options[clickedItem]
+    let attr2 = data.product.attributes.nodes[1].options[parseInt(e.target.dataset.idindex)]
+    let selectedItem;
+
+    data.product.variations.nodes.forEach(el => {
+      if (slugify(el.attributes.nodes[0].value) === attr1) {
+           if (slugify(el.attributes.nodes[1].value) === attr2) {
+                   selectedItem = el.databaseId
+                   setVariationPrice(el.price);
+                         if (el.stockStatus === "IN_STOCK") {
+                          setVariationNoStock(false)
+                         } else {
+                          setVariationNoStock(true)
+                         }
+           }
+      }
+})
+
+    varSelector(data.product.variations.nodes[e.target.dataset.idindex].databaseId)
+
+    let tempCart = function() {
+        try {
+        return JSON.parse(localStorage.cart)
+        } catch {return []}      
+    }
+    
+       let cartModifier = tempCart();
+        let alreadyInCart = false;
+    
+       //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
+       tempCart().forEach((cartitem, index) => {
+        if (cartitem.ID === selectedItem) {
+           setCount(cartModifier[index].quantity)
+           alreadyInCart = true;
+            
+        }
+        
+       });
+
+       if (alreadyInCart === true) {
+           setAddedToCart(true)
+       } else {
+           setAddedToCart(false)
+           setCount(1)
+       }
+
+  }
+      const { loading, error, data } = useQuery(query, {
+        variables: { id: id },
+      });
+
+      useEffect(() => {
+        
+        if (typeof data !== 'undefined' && data !== null) {
+          let relatedData = [];
+          console.log(data)
+          data.product.related.edges.forEach((el, index) => {
+            if (el.node.productCategories.nodes[0].name !== 'Uncategorized') {
+                relatedData.push(el)
+            }
+        })
+        setRelatedFull(relatedData);
+
+      if (type !== "SIMPLE"){
+        let attr1 = data.product.attributes.nodes[0].options[clickedItem]
+        let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
+        let selectedItem;
+    
+        data.product.variations.nodes.forEach(el => {
+          if (slugify(el.attributes.nodes[0].value) === attr1) {
+               if (slugify(el.attributes.nodes[1].value) === attr2) {
+                       setVariationPrice(el.price);
+                       if (el.stockStatus === "IN_STOCK") {
+                        setVariationNoStock(false)
+                       } else {
+                        setVariationNoStock(true)
+                       }
+               }
+          }
+    })
+      } else {
+        if (data.product.stockStatus === "IN_STOCK") {
+          setVariationNoStock(false)
+         } else {
+          setVariationNoStock(true)
+         }
+      }
+        } 
+      }, [data]);
+      if (loading) return (
+        <Layout htmlClassName={"scroll"}>
+          <Navbar  />
+        <div class="product-preload">
+          
         
        
-      )
-    }
+</div>
+</Layout>
+      );
+    if (isClicked === false && addedToCart === false) {
+
+        let tempCart = function() {
+            try {
+            return JSON.parse(localStorage.cart)
+            } catch {return []}      
+        }
+        
+           let cartModifier = tempCart();
+        
+        
+           //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
+           tempCart().forEach((cartitem, index) => {
+            if (type === "SIMPLE") {
+                if (cartitem.ID === data.product.databaseId) {
+                    setCount(cartModifier[index].quantity)
+                    setAddedToCart(true)
+                 }
+            } else {
+                if (cartitem.ID === data.product.variations.nodes[0].databaseId) {
+                    setCount(cartModifier[index].quantity)
+                    setAddedToCart(true)
+                 }
+            }
+
+         
+           });
+    } 
+    let images = [];
+      data.product.galleryImages.nodes.forEach((galleryImage) => {
+        images.push({"original": galleryImage.sourceUrl, "thumbnail": galleryImage.sourceUrl})
+      })
 
 
-    if (newA.length === 0) {
-      // if (cartText !== "Cart") {
-      //   setCartText('Cart')
-      // }
-      
-      return (
-        <>
-        <div class="cart-cont-empty">
-          <p>Your cart is empty!</p>
-        </div>
-        <button>Go to Shop</button>
-        </>
-      )
-    } else {
-      // if (cartText !== "Cart") {
-      //   setCartText('Cart')
-      // }
-      return (
-        <>
-        <div class='cart-all-items'>
-        {newA && newA.map((el, index) => 
-        <div class="cart-cont"><img class="cart-img" height="82" width="82" src={el.url}/><div class="name-total-cart-cont"><div class="cart-name">{el.name}</div><div class="cart-item-total">{el.quantity} × {(el.price).toLocaleString('en-US', {style: 'currency', currency: 'USD',})}</div></div> <div data-index={index} onClick={removeFromCart} class="remove-cart-item">X</div></div>
-        )}
-        </div>
-        <div class='cart-divider'></div>
-        <div class='cart-subtotal-cont'>
-          <div class='cart-subtotal-text'>Shipping & taxes calculated at checkout</div>
-          <div class='cart-subtotal-amount'>Subtotal ${finalsub}</div>
-        </div>
-        <div class="cart-btn-cont">
-          <button onClick={() => setLoadCart(false)}>Keep Shopping</button>
-          <button onClick={() => setViewOffer(true)}>Checkout</button>
-        </div>
-        </>
-      )
-    }
+let incrementCount = () => {
+    setCount(count + 1);
+  };
 
+  let decrementCount = () => {
+      if (count >= 1) {
+        setCount(count - 1);
+      }
 
+  };
+
+  const changeTab = () => {
+      setTab(0)
   }
-  
-  const sideNav = () => {
- 
+  const changeTab1 = () => {
+    setTab(1)
+}
+const changeTab2 = () => {
+    setTab(2)
+}
+const changeTab3 = () => {
+    setTab(3)
+}
+const renderDescripton = () => {
+    console.log('render')
     return (
-      <>
-     {loading ? (
-      <nav className={`navLoading hm-${hamburger}`}></nav>
-     ) : (
-      <navmain className={`navloaded main-nav hm-${hamburger}`}>
-      <ul className={`nav`}>
+        <div dangerouslySetInnerHTML={sanitizedData(data.product.description)} ></div>
+    )
+}
+const renderAddtional = () => {
+    return (
+      <div dangerouslySetInnerHTML={sanitizedData(data.product.shortDescription)} ></div>
+    )
+}
+const renderWriteReview = () => {
+    
+    return (
+    <>
+    {hasBought === true
+      ? (
+      <AuthContent>
+        <WriteReview commentOn={id} previous={previousRating} updateComment={reviewID} previousContent={previousContent} />
+      </AuthContent>
+      ) 
+      :
+      ''
+    }
+    {data.product.reviews.edges.length !== 0
+     ? (
+         <div class='all-review-container'>
+         {renderReviews()}
+         </div>
+     ) : 
+     (
+         <p class='no-reviews'>
+             Be the first to review! After you purchase this product, you'll be able to review.
+        </p>
+     )
 
-        {!loggedIn ? (
-          <>
-       <a class='dropdown'>Home
-      <div class="link-dropdown active2">
-    </div></a>
-            <a class='dropdown'>All Products
-      <div class="link-dropdown active2">
-      <label>View All Products</label>
-      <label>Hats</label>
-      <label>Other categories</label>
-    </div></a>
-    <a class='dropdown'>All Products
-      <div class="link-dropdown active2">
-      <label>Coming Soon!</label>
-    </div></a>
-          <div class='nav-content-section'>
-            placeholder
-
-          </div>
-
-          <div class='nav-button-cont'>
-           <button>cart</button>
-           <button>checkout</button>
-          </div>
-          </>
-        ) : (
-          <>
-            <a class='dropdown'>Home
-      <div class="link-dropdown active2">
-    </div></a>
-            <a class='dropdown'>All Products
-      <div class="link-dropdown active2">
-      <label>View All Products</label>
-      <label>Hats</label>
-      <label>Other categories</label>
-    </div></a>
-    <a class='dropdown'>All Products
-      <div class="link-dropdown active2">
-      <label>Coming Soon!</label>
-    </div></a>
-          <div class='nav-content-section'>
-            placeholder
-
-          </div>
-
-          <div class='nav-button-cont'>
-           <button>cart</button>
-           <button>checkout</button>
-          </div>
-          </>
-        )}
-      </ul>
-    </navmain>
-     )}
-
-
-
-
+     }
     </>
     )
-
-  }
-  let offsetY = 100;
-
-
-  const handleScroller = () => {
-    if (window.pageYOffset > offsetY) {
-      document.querySelector('navbar').classList.remove('active')
-    } else {
-      document.querySelector('navbar').classList.add('active')
-      
-    }
-    
-    offsetY = window.pageYOffset > 100 ? window.pageYOffset : 100
-  }
-
-const resizeHandler = () => {
-  setNavbarWidth(document.querySelector('.navbar-holder').getBoundingClientRect().width)
-  const navWidth = document.querySelector('.navbar-holder').getBoundingClientRect().width;
-  setGetStarted(document.getElementsByClassName('down-get-started')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-  setShop(document.getElementsByClassName('down-shop')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-  setEnroll(document.getElementsByClassName('down-enroll')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-  setResources(document.getElementsByClassName('down-resources')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
 }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroller, { passive: true });
-    window.addEventListener('resize', resizeHandler);
-      return () => {
-       window.removeEventListener('scroll', handleScroller);
-       window.removeEventListener('resize', resizeHandler);
-      };
-  }, []);
-  const handleChange = (e) => {
-    setHamburger(e.target.checked)
-    // do whatever you want with isChecked value
-  }
-  useEffect(() => {
-    // const localStorageSetHandler = function(e) {
-    //   console.log(localStorage.getItem('cart'))
-    // };
-    setNavbarWidth(document.querySelector('navbar').getBoundingClientRect().width)
-    const navWidth = document.querySelector('navbar').getBoundingClientRect().width;
-  setGetStarted(document.getElementsByClassName('down-get-started')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-  setShop(document.getElementsByClassName('down-shop')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-  setEnroll(document.getElementsByClassName('down-enroll')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-  setResources(document.getElementsByClassName('down-resources')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-    document.addEventListener("itemInserted", localStorageSetHandler, false);
-  }, []);
-  return (
+const renderReviews = () => {
+    const reviewEdges = data.product.reviews.edges;
+    return (
+        <>
+        
+    {reviewEdges && reviewEdges.map((el) =>
     <>
-    <div className={`search-btn-container search-${loadSearch}`}>
-    {true == loadSearch
-                ? (
-                 <div className='search-outer-cont'>
-                   <div className="search-bar-title">
-                      <div className="search-bar-text">Search</div>
-                      <div onClick={() => setLoadSearch(false)} className='search-bar-close'>X</div>
-                   </div>
-                    <SearchSystem/>
-                   </div>
-                  )
-                : ""}
-    </div>
-    <div className={`cart-btn-container cart-${loadCart}`}>
-    {true == loadCart
-                ? (
-                 <div className='cart-outer-cont'>
-                   <div className="cart-bar-title">
-                      <div className="cart-bar-text">{cartText}</div>
-                      <div onClick={() => setLoadCart(false)} className='search-bar-close'>X</div>
-                   </div>
-                   {localStorageSetHandler()}
-                   </div>
-                  )
-                : ""}
-    </div>
-     {loading ? (
-     <navbar class="active"> 
-     <div><input onChange={e => handleChange(e)} type="checkbox" />
-     <span class='hm-1'></span>
-     <span class='hm-2'></span>
-     <span class='hm-2'></span></div>
-     <div className="navbar-title">
-     <ul>
-     <li>REVIVAL<em>OF</em><em>REVENUE</em></li>
-        </ul>
-     </div>
-
-     <div className="navbar-holder">
-      <ul>
-        <li onClick={() =>navigate('/')}>Home</li>
-        <a class='dropdown down-get-started'>Get Started
-      <div style={Object.assign({'left': `-${getStarted}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-get-started">
-      <div>aa</div>
-    </div></a>
-    <a class='dropdown down-shop'>Shop
-      <div class="link-dropdown active2 drop-shop">
-      <div>aa</div>
-    </div></a>
-    <a class='dropdown down-enroll'>Enroll
-      <div class="link-dropdown active2 drop-enroll">
-      <div>aa</div>
-    </div></a>
-    <a class='dropdown down-resources'>Resources
-      <div class="link-dropdown active2 drop-resources">
-      <div>aa</div>
-    </div></a>
-    <li onClick={() =>navigate('/account')}>A</li>
-        <li onClick={() => setLoadSearch(true)}>S</li>
-    <a class='dropdown'>C
-      <div class="link-dropdown active2 cart-drop">
-      <div></div>
-    </div></a>
-
-
-      </ul>
-      </div>
-     </navbar>
-     ) : (
-      <navbar onMouseEnter={resizeHandler} class="active">
-        {sideNav()}
-        <div><input onChange={e => handleChange(e)} type="checkbox" />
-     <span class='hm-1'></span>
-     <span class='hm-2'></span>
-     <span class='hm-3'></span></div>
-     <div className="navbar-title">
-     <ul>
-     <li>REVIVAL<em>OF</em><em>REVENUE</em></li>
-        </ul>
-     </div>
-
-     <div className="navbar-holder">
-      <ul>
-        <li className="navbar-home" onClick={() =>navigate('/')}>Home</li>
-        <a class='dropdown down-get-started'>Get Started
-      <div style={Object.assign({'left': `-${getStarted}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-get-started">
-      <div class='navcont-cont'>
-        <div class='navcont-50'>
-          <div class='navitem-50'>
-            <div class='navitemind'>
-            <div class='navitem-text'><span>RevRev </span><span>Starter </span><span>Kit</span></div>
-            <img src={'/place.jpg'}/>
+    {console.log(el)}
+    {el.node.approved === true 
+        ? (
+        <div className='review-cont'>
+        <div class='review-header-cont'>
+            <div class='review-profile'></div>
+            <div class='review-name-date'>
+                <div class='review-name'>{el.node.author.node.firstName}</div>
+                <div class='review-date'>{el.node.dateGmt}</div>
+                <div class={`review-rating rating-${parseInt(el.rating) * 10}`}>{el.rating}</div>
             </div>
-          </div>
-          <div class='navitem-50'>
-          <div class='navitemind'>
-            <div class='navitem-text'><span>The </span><span>TM5 </span><span>Matrix </span><span>Course</span></div>
-            <img src={'/place.jpg'}/>
-            </div>
-          </div>
-          <div class='navitem-50'>
-          <div class='navitemind'>
-            <div class='navitem-text'><span>The </span><span>Exodus </span><span>Workshop</span></div>
-            <img src={'/place.jpg'}/>
-            </div>
-          </div>
-          <div class='navitem-50'>
-          <div class='navitemind'>
-            <div class='navitem-text'><span>Ask </span><span>PK </span><span>Consultation</span></div>
-            <img src={'/place.jpg'}/>
-            </div>
-          </div>
         </div>
-        <div class='navcont-50'>
-        <div class='navitem-100'>
-        <div class='navitemind'>
-            <div class='navitem-text'><span>Entrepreneurial </span><span>Espresso </span><span>Challenge</span></div>
-            <img src={'/place.jpg'}/>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div></a>
-    <a class='dropdown down-shop'>Shop
-      <div style={Object.assign({'left': `-${shop}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-shop">
-      <div>aa</div>
-    </div></a>
-    <a class='dropdown down-enroll'>Enroll
-      <div style={Object.assign({'left': `-${enroll}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-enroll">
-      <div>aa</div>
-    </div></a>
-    <a class='dropdown down-resources'>Resources
-      <div style={Object.assign({'left': `-${resources}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-resources">
-      <div>aa</div>
-    </div></a>
-    <li onClick={() =>navigate('/account')}>A</li>
-        <li class='search-icon' onClick={() => setLoadSearch(true)}></li>
-        <li onClick={enterCart}>C</li>
-
-
-      </ul>
-      </div>
-    </navbar>
-     )}
-
-
-
-
+        <div dangerouslySetInnerHTML={sanitizedData(el.node.content)} class='review-content'></div>
+    </div>
+    ) :
+    (
+    ''
+    )}
+   
+   </>
+   )}
     </>
-  );
+    )
 }
+
+const renderDelivery = () => {
+    return (
+        <div className='delivery-section'>
+            <h5>Delivery Time</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h5>Delivery Cost</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h5>Return Contact Information</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    )
+}
+  const changeCount = (e) => {
+      setCount(parseInt(e.target.value.replace(/\D/,'')))
+  }
+
+    return (
+        <Layout htmlClassName={"scroll"}>
+        <Navbar viewCart={openCart} />
+        <div>
+            
+        {type === "SIMPLE"
+        ? (
+          <div class="product-container">
+              <div class='gallery-info-cont'>
+              
+          <div class='gallery-cont'>
+          <ImageGallery items={images} showNav={false} showPlayButton={false} showFullscreenButton={false} />
+          </div>
+          <div className='product-info-cont'>
+          <h2>{data.product.name}</h2>
+      {data.product.reviewCount === 0
+      ? (
+        <div class='review-total-cont'>
+            <div class='review-total-empty'></div>
+            <div class='review-total-text'>No reviews yet!</div>
+        </div>
+      ) :
+      <div class='review-total-cont'>
+        {data.product.reviews.averageRating === 0 ?
+        (
+          <div className='rating-cont'>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+          </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 1 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 1.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 2 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 2.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 3 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 3.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 4 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 4.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+        </div>
+        ) : ''
+
+        }
+     {data.product.reviewCount === 1 ?
+     (
+      <div class='review-total-text'>{data.product.reviewCount} review</div>
+     ) : 
+     (
+      <div class='review-total-text'>{data.product.reviewCount} reviews</div>
+     )
+       
+     
+
+     }
+
+  </div>
+      }      
+ <div className='product-pricer'><h3>{data.product.price}</h3></div>
+<div className='product-short-desc'><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p></div>
+<div className='buttons-addtocart'>
+        <div class="buttons">
+          <button onClick={decrementCount}>-</button>
+          <input type="tel" value={count} onChange={changeCount}/>
+          <button onClick={incrementCount}>+</button>
+        </div>
+        {variationNoStock===true ? 
+        (
+        <div class='no-stock-text'>This item variation is out of stock! Try selecting a different one.</div>
+        ):''}
+        {addedToCart === true ? (
+         <div class='added-cart-cont'> <div class='added-to-cart-text'>Product added to cart!</div><button onClick={setOpenCart(true)} class='viewcart'>View Cart</button></div>
+        ): (
+        <></>
+        )}
+        <button disabled={variationNoStock} className={`addcart-btn added-${addedToCart}`} onClick={SimpleCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
+      </div>    
+         
+
+
+
+          </div>
+          </div>
+
+
+
+          <div className='product-data-tabs'>
+        <div className={`product-tabs-cont idx-${tab}`}>
+         <div onClick={(e) => changeTab()} className='product-tabs-desc'>Description</div>
+         <div onClick={(e) => changeTab1()} className='product-tabs-advanced'>Additional Information</div>
+         <div onClick={(e) => changeTab2()} className='product-tabs-reviews'>Reviews ({data.product.reviewCount})</div>
+         <div onClick={(e) => changeTab3()} className='product-tabs-delivery'>Delivery and Returns</div>
+        </div>
+        <div className='render-tab'>
+            <>
+        {tab === 0 ?
+        (
+            <>
+            {renderDescripton()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+      {tab === 1 ?
+        (
+            <>
+            {renderAddtional()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+      {tab === 2 ?
+        (
+            <>
+            {renderWriteReview()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+      {tab === 3 ?
+        (
+            <>
+            {renderDelivery()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+            </>
+        </div>
+    </div>
+        </div>
+        
+
+
+
+          )
+        : 
+        
+        <div class="product-container">
+          <div class='gallery-info-cont'>
+          <div class='gallery-cont'>
+          <ImageGallery items={images} showNav={false} showPlayButton={false} showFullscreenButton={false} />
+          </div>
+          <div className='product-info-cont'>
+      <h2>{data.product.name}</h2>
+      {data.product.reviewCount === 0
+      ? (
+        <div class='review-total-cont'>
+            <div class='review-total-empty'></div>
+            <div class='review-total-text'>No reviews yet!</div>
+        </div>
+      ) :
+      <div class='review-total-cont'>
+        {data.product.reviews.averageRating === 0 ?
+        (
+          <div className='rating-cont'>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+          </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 1 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 1.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 2 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 2.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 3 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 3.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 4 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 4.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+        </div>
+        ) : ''
+
+        }
+     {data.product.reviewCount === 1 ?
+     (
+      <div class='review-total-text'>{data.product.reviewCount} review</div>
+     ) : 
+     (
+      <div class='review-total-text'>{data.product.reviewCount} reviews</div>
+     )
+       
+     
+
+     }
+
+  </div>
+      }      
+      <div className='product-pricer'><h3>{variationPrice}</h3></div>
+      <div className='product-short-desc'><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p></div>
+      <div className='attr-cont'>
+      <div class='node-attr-cont'>
+      <div className='node-name'>{data.product.attributes.nodes[0].name}:</div>
+      {data.product.attributes.nodes[0].options && data.product.attributes.nodes[0].options.map((el, index) =><div className={index === clickedItem ? `attr-option is-checked attr-` + el: "attr-option attr-" + el} onClick={variationClick} data-idindex={index} data-id={el}></div>)}
+     </div>
+     {data.product.attributes.nodes.length > 1 ? 
+      (
+<>
+<div class='node-attr-cont'>
+      <div className='node-name'>{data.product.attributes.nodes[1].name}:</div>
+      {data.product.attributes.nodes[1].options && data.product.attributes.nodes[1].options.map((el, index) =><div className={index === clickedItem2 ? `attr-option is-checked attr-` + el: "attr-option attr-" + el} onClick={variationClick2} data-idindex={index} data-id={el}></div>)}
+     </div>
+</>
+      ) :('')
+    }
+      </div>
+      <div className='buttons-addtocart'>
+        <div class="buttons">
+          <button onClick={decrementCount}>-</button>
+          <input type="tel" value={count} onChange={changeCount}/>
+          <button onClick={incrementCount}>+</button>
+        </div>
+        {variationNoStock===true ? 
+        (
+          <div class='no-stock-text'>This item variation is out of stock! Try selecting a different one.</div>
+        ):''}
+        <button disabled={variationNoStock} className={`addcart-btn added-${addedToCart}`} onClick={VariationCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
+      </div>
+      </div>
+     </div>
+      
+    <div className='product-data-tabs'>
+        <div className={`product-tabs-cont idx-${tab}`}>
+         <div onClick={(e) => changeTab()} className='product-tabs-desc'>Description</div>
+         <div onClick={(e) => changeTab1()} className='product-tabs-advanced'>Additional Information</div>
+         <div onClick={(e) => changeTab2()} className='product-tabs-reviews'>Reviews ({data.product.reviewCount})</div>
+         <div onClick={(e) => changeTab3()} className='product-tabs-delivery'>Delivery and Returns</div>
+        </div>
+        <div className='render-tab'>
+            <>
+        {tab === 0 ?
+        (
+            <>
+            {renderDescripton()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+      {tab === 1 ?
+        (
+            <>
+            {renderAddtional()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+      {tab === 2 ?
+        (
+            <>
+            {renderWriteReview()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+      {tab === 3 ?
+        (
+            <>
+            {renderDelivery()}
+            </>
+        ) : 
+        (
+            ''
+        )
+      }
+            </>
+        </div>
+    </div>
+
+    </div>
+        
+        }
+    
+{relatedFull.length > 2 ?
+
+(
+  <div class='you-might-like-cont'>
+  <h4>Related Products</h4>
+  <div onClick={changePage} data-idlink={`${slugify(relatedFull[0].node.productCategories.nodes[0].name)}/${slugify(relatedFull[0].node.name)}`} className='mini-product-cont'>
+    <img src={relatedFull[0].node.featuredImage.node.sourceUrl}></img>
+    <div className='mini-title'>{relatedFull[0].node.name}</div>
+    <div className='mini-price'>{relatedFull[0].node.price}</div>
+  </div>
+  <div onClick={changePage} data-idlink={`${slugify(relatedFull[1].node.productCategories.nodes[0].name)}/${slugify(relatedFull[1].node.name)}`} className='mini-product-cont'>
+    <img src={relatedFull[1].node.featuredImage.node.sourceUrl}></img>
+    <div className='mini-title'>{relatedFull[1].node.name}</div>
+    <div className='mini-price'>{relatedFull[1].node.price}</div>
+  </div>
+  <div onClick={changePage} data-idlink={`${slugify(relatedFull[2].node.productCategories.nodes[0].name)}/${slugify(relatedFull[2].node.name)}`} className='mini-product-cont'>
+    <img src={relatedFull[2].node.featuredImage.node.sourceUrl}></img>
+    <div className='mini-title'>{relatedFull[2].node.name}</div>
+    <div className='mini-price'>{relatedFull[2].node.price}</div>
+  </div>
+  </div>
+): ('')}
+
+
+    </div>
+    </Layout>
+    );
+}
+
+export default singleProduct;
+

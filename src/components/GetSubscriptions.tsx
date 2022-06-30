@@ -44,7 +44,7 @@ export default function GetSubscriptions() {
     setLoadingPaymentData(true)
     setLoadSearch(true)
     console.log(e.target.dataset.id)
-    const request = await fetch('/api/get-subscriptions', {
+    const request = await fetch('/api/payment-info', {
       method: 'POST',
       body: e.target.dataset.paymentid,
     });
@@ -96,10 +96,13 @@ export default function GetSubscriptions() {
                {arrayTest && arrayTest.map((el, index) =>
                   <>
                   <div data-paymentid={el.default_payment_method} data-id={el.id} onClick={getButtonId} className={'sub-item'}>
+                    <div class='planactive-subname'>
+                     <div className='planactive'>{el.plan.active === true ? 'ACTIVE' : 'INACTIVE'}</div>
+                     <div className='sub-name'>{el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''}</div>
+                    </div>
                     <div className="next-payment-date">{new Date((el.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-                    <div className='sub-name'>{el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''}</div>
-                    <div className='planactive'>{el.plan.active === true ? 'ACTIVE' : 'INACTIVE'}</div>
                     <div className='plancost'>{`$${el.plan.amount.toString().substring(0,el.plan.amount.toString().length-2)+"."+el.plan.amount.toString().substring(el.plan.amount.toString().length-2)}`}</div>
+                    <div className='more-sub-dets'>More Details</div>
                   </div>
                   </>
 )}

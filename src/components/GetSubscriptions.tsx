@@ -11,7 +11,7 @@ export default function GetSubscriptions() {
   const [arrayTest, setArray] = useState({});
   const [loadSearch, setLoadSearch] = useState(false)
   const [loadingPaymentData, setLoadingPaymentData] = useState(true)
-  const [defaultPayment, setDefaultPayment] = useState({})
+let defaultPayment;
   const [allPayments, setAllPayments] = useState([])
   useEffect(() => {
     async function fetchMyAPI() {
@@ -56,7 +56,7 @@ export default function GetSubscriptions() {
     setAllPayments(intent.paymentMethod.data)
     for (let i=0; i < intent.paymentMethod.data.length; i++) {   
       if (intent.paymentMethod.data[i].id === e.target.dataset.paymentid) {
-        setDefaultPayment(intent.paymentMethod.data[i])
+        defaultPayment = intent.paymentMethod.data[i]
         break;
       }
       

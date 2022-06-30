@@ -61,6 +61,7 @@ let defaultPayment;
       }
       
     }
+    {console.log(defaultPayment)}
     setLoadingPaymentData(false);
 
     //loop through and match one with dataset one (this is the one currently used), store in array.
@@ -107,6 +108,7 @@ let defaultPayment;
                     : (
                      <div class='more-payment-info'>
                           <div class='previous-payment is-checked'>
+                        
                           <div className={`prev-brand ${defaultPayment.card.brand}`}></div>
                     <div className="prev-last4">{defaultPayment.card.last4}</div>
                           </div>

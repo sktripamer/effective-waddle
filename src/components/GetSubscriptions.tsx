@@ -53,7 +53,6 @@ export default function GetSubscriptions() {
     });
     const intent = (await request.json());
     console.log(intent);
-    setLoadingPaymentData(false);
     setAllPayments(intent.paymentMethod.data)
     for (let i=0; i < intent.paymentMethod.data.length; i++) {   
       if (intent.paymentMethod.data[i].id === e.target.dataset.paymentid) {
@@ -62,6 +61,8 @@ export default function GetSubscriptions() {
       }
       
     }
+    setLoadingPaymentData(false);
+
     //loop through and match one with dataset one (this is the one currently used), store in array.
     //store them all in usestate array
     //display default one on first modal box.

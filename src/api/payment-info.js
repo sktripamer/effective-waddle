@@ -6,7 +6,14 @@ const validateJWT = async (req, res) => {
 //validates JWT and gets user ID from payload data. then passes to the next function to get customerID and paymentID from stripe.
     try {
             const paymentMethod = await getPaymentMethod(req.body);
-            return res.status(200).json({paymentMethod})
+
+            let ex = {
+              brand: paymentMethod.card.brand,
+              month: paymentMethod.card.exp_month,
+              year: paymentMethod.card.exp_year,
+              last: paymentMethod.card.last4,
+            }
+            return res.status(200).json({ex})
         
       } catch (e) {
         res.json({body: 'error ' + e})

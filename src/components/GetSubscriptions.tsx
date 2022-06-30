@@ -43,36 +43,29 @@ let defaultPayment;
   });
   console.log(arrayTest)
 
-  const getButtonId = (e) => {
+  const getButtonId = async (e) => {
     setLoadingPaymentData(true)
     setLoadSearch(true)
     console.log(e.target.dataset.id)
-    async function fetchMyAPI() {
-      try {
-        const request = await fetch('/api/get-payment', {
-          method: 'POST',
-          body: jwtAuthToken,
-        });
-        const intent = (await request.json());
-        console.log(intent);
-        setAllPayments(intent.paymentMethod.data)
-        for (let i=0; i < intent.paymentMethod.data.length; i++) {   
-          if (intent.paymentMethod.data[i].id === e.target.dataset.paymentid) {
-            defaultPayment = intent.paymentMethod.data[i]
-            break;
-          }
-          
-        }
-      } catch (error) {
-        console.log('Failed to get cID');
-        console.log(error);
-        return null;
-      }
-    
-    }
-    fetchMyAPI();
-    console.log(defaultPayment.card.brand)
+    const request = await fetch('/api/get-payment', {
+      method: 'POST',
+      body: jwtAuthToken,
+    });
+    const intent = (await request.json());
+    console.log(intent);
+    if (intent.paymentMethod.data > 0) {
+    setAllPayments(intent.paymentMethod.data)
     setLoadingPaymentData(false);
+    }
+
+    for (let i=0; i < intent.paymentMethod.data.length; i++) {   
+      if (intent.paymentMethod.data[i].id === e.target.dataset.paymentid) {
+        defaultPayment = intent.paymentMethod.data[i]
+        break;
+      }
+      
+    }
+
 
     //loop through and match one with dataset one (this is the one currently used), store in array.
     //store them all in usestate array
@@ -118,6 +111,7 @@ let defaultPayment;
                     : (
                      <div class='more-payment-info'>
                           <div class='previous-payment is-checked'>
+                        {    console.log(defaultPayment.card.brand)}
                           <div className={`prev-brand ${defaultPayment.card.brand}`}></div>
                     <div className="prev-last4">{defaultPayment.card.last4}</div>
                           </div>

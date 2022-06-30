@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import ImageGallery from 'react-image-gallery';
 import AuthContent from "../components/AuthContent";
 import WriteReview from "../components/WriteReview";
-import navigate from "gatsby";
+import {Link, navigate } from "gatsby";
 const singleProduct = ( props ) => {
     const [varSelect, varSelector] = useState();
     const [tab, setTab] = useState(0)

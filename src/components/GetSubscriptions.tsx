@@ -11,6 +11,7 @@ export default function GetSubscriptions() {
   const [arrayTest, setArray] = useState({});
   const [loadSearch, setLoadSearch] = useState(false)
   const [loadingPaymentData, setLoadingPaymentData] = useState(true)
+  
   useEffect(() => {
     async function fetchMyAPI() {
       try {
@@ -40,18 +41,28 @@ export default function GetSubscriptions() {
     }
   });
   console.log(arrayTest)
+
   const getButtonId = async (e) => {
     setLoadingPaymentData(true)
     setLoadSearch(true)
     console.log(e.target.dataset.id)
-    const request = await fetch('/api/payment-info', {
+    const request = await fetch('/api/get-payment', {
       method: 'POST',
-      body: e.target.dataset.paymentid,
+      body: jwtAuthToken,
     });
     const intent = (await request.json());
     console.log(intent)
     setLoadingPaymentData(false)
+    //loop through and match one with dataset one (this is the one currently used), store in array.
+    //store them all in usestate array
+    //display default one on first modal box.
+    //have button to "change subscription"
+    //this button pops up the select payment method, pretty much from checkout page.
+    //can select one, and save it. it will use  stripe.subscriptions.update sub id default_payment_method with the one selected (new api file)
+    //another button to cancel subscription
+    //this will confirm it. subscription will be canceled.
   }
+
   return (
     <div className='sub-list'>
 
@@ -84,7 +95,10 @@ export default function GetSubscriptions() {
                       <div class='loading-bought'></div>
                     )
                     : (
-                     'loaded'
+                     <div class='more-payment-info'>
+                        
+
+                     </div>
                     )}
                    </div>
                   )
@@ -95,14 +109,14 @@ export default function GetSubscriptions() {
             <div class='subscription-list'>
                {arrayTest && arrayTest.map((el, index) =>
                   <>
-                  <div data-paymentid={el.default_payment_method} data-id={el.id} onClick={getButtonId} className={'sub-item'}>
+                  <div data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} data-paymentid={el.default_payment_method} data-id={el.id} onClick={getButtonId} className={'sub-item'}>
                     <div class='planactive-subname'>
                      <div className='planactive'>{el.plan.active === true ? 'ACTIVE' : 'INACTIVE'}</div>
                      <div className='sub-name'>{el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''}</div>
                     </div>
                     <div className="next-payment-date">{new Date((el.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
                     <div className='plancost'>{`$${el.plan.amount.toString().substring(0,el.plan.amount.toString().length-2)+"."+el.plan.amount.toString().substring(el.plan.amount.toString().length-2)}`}</div>
-                    <div className='more-sub-dets'>More Details</div>
+                    <div data-id={el.id} data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} onClick={getButtonId} data-paymentid={el.default_payment_method} className='more-sub-dets'>More Details</div>
                   </div>
                   </>
 )}

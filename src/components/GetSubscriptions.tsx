@@ -47,20 +47,30 @@ let defaultPayment;
     setLoadingPaymentData(true)
     setLoadSearch(true)
     console.log(e.target.dataset.id)
-    const request = await fetch('/api/get-payment', {
-      method: 'POST',
-      body: jwtAuthToken,
-    });
-    const intent = (await request.json());
-    console.log(intent);
-    setAllPayments(intent.paymentMethod.data)
-    for (let i=0; i < intent.paymentMethod.data.length; i++) {   
-      if (intent.paymentMethod.data[i].id === e.target.dataset.paymentid) {
-        defaultPayment = intent.paymentMethod.data[i]
-        break;
+    async function fetchMyAPI() {
+      try {
+        const request = await fetch('/api/get-payment', {
+          method: 'POST',
+          body: jwtAuthToken,
+        });
+        const intent = (await request.json());
+        console.log(intent);
+        setAllPayments(intent.paymentMethod.data)
+        for (let i=0; i < intent.paymentMethod.data.length; i++) {   
+          if (intent.paymentMethod.data[i].id === e.target.dataset.paymentid) {
+            defaultPayment = intent.paymentMethod.data[i]
+            break;
+          }
+          
+        }
+      } catch (error) {
+        console.log('Failed to get cID');
+        console.log(error);
+        return null;
       }
-      
+    
     }
+    fetchMyAPI();
     console.log(defaultPayment.card.brand)
     setLoadingPaymentData(false);
 
@@ -108,7 +118,6 @@ let defaultPayment;
                     : (
                      <div class='more-payment-info'>
                           <div class='previous-payment is-checked'>
-                        {    console.log(defaultPayment.card.brand)}
                           <div className={`prev-brand ${defaultPayment.card.brand}`}></div>
                     <div className="prev-last4">{defaultPayment.card.last4}</div>
                           </div>

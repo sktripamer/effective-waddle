@@ -11,7 +11,7 @@ export default function GetSubscriptions() {
   const [arrayTest, setArray] = useState({});
   const [loadSearch, setLoadSearch] = useState(false)
   const [loadingPaymentData, setLoadingPaymentData] = useState(true)
-let defaultPayment;
+  const [defaultPayment, setDefaultPayment] = useState({})
   const [allPayments, setAllPayments] = useState([])
   useEffect(() => {
     async function fetchMyAPI() {
@@ -57,7 +57,7 @@ let defaultPayment;
 
     for (let i=0; i < intent.paymentMethod.data.length; i++) {   
       if (intent.paymentMethod.data[i].id === e.target.dataset.paymentid) {
-        defaultPayment = intent.paymentMethod.data[i]
+        setDefaultPayment(intent.paymentMethod.data[i])
         break;
       }
       
@@ -110,14 +110,17 @@ let defaultPayment;
                     )
                     : (
                      <div class='more-payment-info'>
-                       {defaultPayment !== undefined ? (
+                       {defaultPayment.card !== undefined ? (
                           <div class='previous-payment is-checked'>
-
+                    {console.log(defaultPayment)}
                           <div className={`prev-brand ${defaultPayment.card.brand}`}></div>
                     <div className="prev-last4">{defaultPayment.card.last4}</div>
                           </div>
 ): (
+  <>
+  {console.log(defaultPayment)}
   ''
+  </>
 )}
 
 

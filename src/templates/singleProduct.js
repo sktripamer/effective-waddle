@@ -915,7 +915,7 @@ const renderDelivery = () => {
         <div class='no-stock-text'>This item variation is out of stock! Try selecting a different one.</div>
         ):''}
         {addedToCart === true ? (
-         <div class='added-cart-cont'> <div class='added-to-cart-text'>Product added to cart!</div><button onClick={setOpenCart(true)} class='viewcart'>View Cart</button></div>
+         <div class='added-cart-cont'> <div class='added-to-cart-text'>Product added to cart!</div><button onClick={() => setOpenCart(true)} class='viewcart'>View Cart</button></div>
         ): (
         <></>
         )}

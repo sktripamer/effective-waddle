@@ -53,7 +53,7 @@ let defaultPayment;
     });
     const intent = (await request.json());
     console.log(intent);
-    if (intent.paymentMethod.data > 0) {
+    if (intent.paymentMethod.data.length > 0) {
     setAllPayments(intent.paymentMethod.data)
     setLoadingPaymentData(false);
     }

@@ -53,10 +53,7 @@ let defaultPayment;
     });
     const intent = (await request.json());
     console.log(intent);
-    if (intent.paymentMethod.data.length > 0) {
-    setAllPayments(intent.paymentMethod.data)
-    setLoadingPaymentData(false);
-    }
+
 
     for (let i=0; i < intent.paymentMethod.data.length; i++) {   
       if (intent.paymentMethod.data[i].id === e.target.dataset.paymentid) {
@@ -65,7 +62,10 @@ let defaultPayment;
       }
       
     }
-
+    if (intent.paymentMethod.data.length > 0) {
+      setAllPayments(intent.paymentMethod.data)
+      setLoadingPaymentData(false);
+      }
 
     //loop through and match one with dataset one (this is the one currently used), store in array.
     //store them all in usestate array

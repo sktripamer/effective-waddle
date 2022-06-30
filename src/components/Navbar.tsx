@@ -53,7 +53,10 @@ export default function Navbar(props) {
       document.dispatchEvent(event);
    
     };
-
+    const propCartChange = () => {
+      props.changeCart(false);
+      setLoadCart(false)
+    }
 
   const localStorageSetHandler = () => {
     let offerIndex = 0;
@@ -206,7 +209,7 @@ export default function Navbar(props) {
           <div class='cart-subtotal-amount'>Subtotal ${finalsub}</div>
         </div>
         <div class="cart-btn-cont">
-          <button onClick={() => setLoadCart(false)}>Keep Shopping</button>
+          <button onClick={() => propCartChange()}>Keep Shopping</button>
           <button onClick={() => setViewOffer(true)}>Checkout</button>
         </div>
         </>
@@ -363,7 +366,7 @@ useEffect(() => {
                  <div className='cart-outer-cont'>
                    <div className="cart-bar-title">
                       <div className="cart-bar-text">{cartText}</div>
-                      <div onClick={() => setLoadCart(false)} className='search-bar-close'>X</div>
+                      <div onClick={() => propCartChange()} className='search-bar-close'>X</div>
                    </div>
                    {localStorageSetHandler()}
                    </div>

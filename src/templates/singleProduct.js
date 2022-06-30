@@ -908,7 +908,7 @@ const renderDelivery = () => {
   </div>
       }      
  <div className='product-pricer'><h3>{data.product.price}</h3></div>
-<div className='product-short-desc'><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p></div>
+<div dangerouslySetInnerHTML={sanitizedData(data.product.description)} className='product-short-desc'></div>
 {addedToCart === true ? (
          <div class='added-cart-cont'> <div class='added-to-cart-text'>Product added to cart!</div><button onClick={() => setOpenCart(true)} class='viewcart'>View Cart</button></div>
         ): (
@@ -937,9 +937,13 @@ const renderDelivery = () => {
         {data.product.productCategories.nodes[0].slug === 'courses' && hasBought === true ?
               (<>
         {data.product.databaseId === 1735 ? (
-              <div>subscription status is already active. manage your subscription at the account page.</div>
+              <div class='acc-page-link'>This subscription is already active. Manage it at your <Link to="/dashboard" className="account-page-link">
+              Account page.
+            </Link></div>
         ):(
-            <div>you've already bought this course! view your courses here.</div>
+            <div class='acc-page-link'>You've already purchased this course. See your courses at your <Link to="/dashboard" className="account-page-link">
+            Account page.
+          </Link></div>
         )}
               </>):
               (<>
@@ -1184,7 +1188,7 @@ const renderDelivery = () => {
   </div>
       }      
       <div className='product-pricer'><h3>{variationPrice}</h3></div>
-      <div className='product-short-desc'><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p></div>
+      <div dangerouslySetInnerHTML={sanitizedData(data.product.description)} className='product-short-desc'></div>
       <div className='attr-cont'>
       <div class='node-attr-cont'>
       <div className='node-name'>{data.product.attributes.nodes[0].name}:</div>

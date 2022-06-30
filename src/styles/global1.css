@@ -4348,6 +4348,17 @@ button.verify-user-button:after {
 
   /* spinner/processing state, errors */
 
+
+  .sub-list {
+    height: 100vh;
+    margin-left: calc(70px + 2em);
+    width: 100%;
+}
+
+.card-info, .next-payment-date, .sub-name, .planactive, .plancost {
+    pointer-events: none;
+}
+
   .yes button.ml-auto.btn.btn-success {
     color: #fff0;
     background-repeat: no-repeat;

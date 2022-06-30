@@ -18,6 +18,7 @@ const singleProduct = ( props ) => {
     const [addedToCart, setAddedToCart] = useState(false)
     const { pageContext: { id, slug, name, description, cat, type } } = props;
     const [hasBought, setBought] = useState(false)
+    const [loadingBought, setLoadingBought] = useState(true)
     const [reviewID, setReviewID] = useState('0')
     const [variationPrice, setVariationPrice] = useState('0')
     const [variationNoStock, setVariationNoStock] = useState(false)
@@ -55,6 +56,7 @@ const singleProduct = ( props ) => {
           try {
             if (email() === null) {
               console.log('nothing')
+              setLoadingBought(false)
               return;
             }
            let sendBody = {
@@ -70,12 +72,14 @@ const singleProduct = ( props ) => {
             console.log(intent)
             if (intent.customerID.success === 1) {
                 setBought(true)
+                setLoadingBought(false)
             }
             if (intent.customerID.success === 1 && typeof intent.customerID.message === 'object') {
                 setReviewID(btoa('comment:' + intent.customerID.message.ID))
                 setPreviousRating(intent.customerID.message.rating)
                 setPreviousContent(intent.customerID.message.content)
             }
+            setLoadingBought(false)
           } catch (error) {
             console.log('Failed to get cID');
             console.log(error);
@@ -939,9 +943,20 @@ const renderDelivery = () => {
         )}
               </>):
               (<>
-{data.product.productCategories.nodes[0].slug === 'courses' ? (
-          <button disabled={addedToCart} className={`addcart-btn added-${addedToCart}`} onClick={SimpleCart}>{addedToCart === false ? 'Add to cart' : 'Added to cart'}</button>
-        ): (
+        {data.product.productCategories.nodes[0].slug === 'courses' ? (
+          <>
+          {loadingBought === false ? (
+            <>
+            <button disabled={addedToCart} className={`addcart-btn added-${addedToCart}`} onClick={SimpleCart}>{addedToCart === false ? 'Add to cart' : 'Added to cart'}</button>
+            </>
+          ): (
+            <>
+            <div class='loading-bought'></div>
+            </>
+          )}
+          
+          </>
+          ): (
         <button disabled={variationNoStock} className={`addcart-btn added-${addedToCart}`} onClick={SimpleCart}>{addedToCart === false ? 'Add to cart' : 'Change item'}</button>
      
         )}   

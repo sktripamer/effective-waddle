@@ -110,11 +110,16 @@ let defaultPayment;
                     )
                     : (
                      <div class='more-payment-info'>
+                       {defaultPayment !== undefined ? (
                           <div class='previous-payment is-checked'>
-                        {    console.log(defaultPayment.card.brand)}
+
                           <div className={`prev-brand ${defaultPayment.card.brand}`}></div>
                     <div className="prev-last4">{defaultPayment.card.last4}</div>
                           </div>
+): (
+  ''
+)}
+
 
                      </div>
                     )}

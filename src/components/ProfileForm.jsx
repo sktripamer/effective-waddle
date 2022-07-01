@@ -6,12 +6,6 @@ import InputField2 from './inputfield';
 import Select from "react-dropdown-select";
 export default function ProfileForm() {
 
-
-  useEffect(() => {
-    if (window.location.href.indexOf("profile") === -1) {
-      window.location.reload();
-    }
-  });
   const [processing, setProcessing] = useState(false)
   const [parsedShippingData, setParsedShippingData] = useState([])
   const [shippingData, setShippingData] = useState('');
@@ -311,6 +305,12 @@ const customNoDataRenderer = () => (
     fetchMyAPI()
   }, []);
 
+
+  useEffect(() => {
+    if (window.location.href.indexOf("profile") === -1) {
+      window.location.reload();
+    }
+  });
   const addressClick = (e) => {
  
     setClickedAddress(parseInt(e.target.dataset.idindex));

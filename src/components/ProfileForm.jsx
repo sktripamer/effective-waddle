@@ -82,7 +82,7 @@ export default function ProfileForm() {
     setAddressDisabled(true)
   }
 
-  const addAddress = () => {
+  const addAddress = async () => {
     setProcessing(true)
     let ex = {};
     ex.token = jwtAuthToken;
@@ -108,7 +108,7 @@ export default function ProfileForm() {
 
   }
 
-  const removeAddress = () => {
+  const removeAddress = async () => {
     setProcessing(true)
     let tempdata = JSON.parse(shippingData)
     tempdata.splice(clickedAddress,1)

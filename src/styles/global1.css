@@ -4348,6 +4348,41 @@ button.verify-user-button:after {
 
   /* spinner/processing state, errors */
 
+  .using-card {
+    text-align: center;
+    font-family: 'Nunito Bold';
+    color:#fff;
+}
+.changer-sub .new-payment {
+  margin-bottom: .4em;
+}
+
+.changesub-true .using-card {
+display:none;
+}
+
+.changesub-true .defaultm {
+display:none;
+}
+.changer-sub .pay-btn {
+  width: 100%;
+}
+button.cancel-sub-button {
+  font-family: 'Nunito Regular';
+  background: none;
+  margin-left: auto;
+  color: #d81b5a;
+  margin-top: 3em;
+}
+
+.changer-sub .selection-section {
+  flex-wrap: wrap;
+}
+
+.changer-sub .previous-payment {
+  margin-bottom: .4em;
+}
+
 
   .sub-list {
     height: 100vh;
@@ -4376,6 +4411,7 @@ button.verify-user-button:after {
   font-family: 'Nunito Bold';
   padding-top: 1em;
   margin-bottom: 1em;
+  color: #fff;
 }
 
 .subscription-section-modal {
@@ -9494,8 +9530,14 @@ button.addcart-btn:disabled {
   margin-bottom: 4px;
   padding: 0 10px;
   }
+
+  .sub-list .search-bar-title {
+    background: linear-gradient(183deg,#42276c,#18026c);
+}
+
+
   .search-bar-text {
-  margin-left: 20px;
+
   font-size: 24px;
   font-family: "Nunito Bold";
   margin-top: 6px;

@@ -249,6 +249,7 @@ const RenderStripe = (props) => {
       setPrevName(props.allPayments[0].billing_details.name);
       setPrevEmail(props.allPayments[0].billing_details.email);
       setPrevBrand(props.allPayments[0].card.brand);
+      setDisabled(false)
     } else {
       radioHandler(1)
     }

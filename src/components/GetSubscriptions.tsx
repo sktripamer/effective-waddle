@@ -309,8 +309,10 @@ console.log(payload)
   const stripe = useStripe();
   const elements = useElements();
   return (
+
     <div class='changer-sub'>
                           <div class='change-sub-selection'>
+                          <div className={`payment register-form col-md-6 status-${status} load-true success-${succeeded}`}>
                           <div class={`selection-section`}>
            {props.allPayments && props.allPayments.map((el, index) =>
                   <React.Fragment key={index}>
@@ -374,9 +376,13 @@ console.log(payload)
     </form>
                           
                           </div>
+                          </div>
 
                           <button class='cancel-sub-button'>Cancel Subscription</button>
                         </div>
+
+
+
   )
 }
 

@@ -26,6 +26,7 @@ export default function GetSubscriptions() {
   const [allPayments, setAllPayments] = useState([])
   const [nameOfSubscription, setNameOfSubscription] = useState(null)
   const [changeSubscription, setChangeSubscription] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
   const [subID, setSubID] = useState(null)
   
 
@@ -69,6 +70,8 @@ const openChange = () => {
   const closeModal = () => {
     setLoadSearch(false)
     setDefaultPayment([])
+    showSuccess(false)
+    setSubID(null)
     setNameOfSubscription(null)
     setChangeSubscription(false)
     setAllPayments([])
@@ -149,8 +152,13 @@ const openChange = () => {
                     : (
                      <div class='more-payment-info'>
                        {defaultPayment.card !== undefined ? (
-                        <div class={`subscription-section-modal changesub-${changeSubscription}`}> 
+                        <div class={`subscription-section-modal successchange-${showSuccess} changesub-${changeSubscription}`}> 
                           <div class='subscription-modal-head'>{nameOfSubscription}</div>
+                          {showSuccess === false ? (
+                            <></>
+                          ) : (
+                            <div class='using-card'>Successfully changed payment!</div>
+                          )}
                           <div class='using-card'>Using Card:</div>
                          <div class='selection-section'>
                           <div class='previous-payment is-checked'>
@@ -162,7 +170,7 @@ const openChange = () => {
                           <button onClick={() => setChangeSubscription(true)} class='change-sub-button'>Edit Subscription</button>
                         ): (
                           <Elements stripe={stripePromise}>
-                            <RenderStripe allPayments={allPayments} subID={subID} />
+                            <RenderStripe allPayments={allPayments} subID={subID} changeSub={sub => setChangeSubscription(sub)} changeSuccess={succ => setShowSuccess(succ)} />
                           </Elements>
                         )}
                        
@@ -224,6 +232,7 @@ const RenderStripe = (props) => {
   const [prevLast4, setLast4] = useState("");
   const [clickedItem, setClickedItem] = useState(0);
   const [firstDisabled, setFirstDisabled] = useState(false);
+  const [unableToSet, setUnableToSet] = useState(false);
   const nameForm = useRef(null);
   const radioHandler = (status) => {
     setStatus(status);
@@ -245,7 +254,7 @@ const RenderStripe = (props) => {
     const email = form['email'].value 
     ev.preventDefault();
     setProcessing(true);
-
+    let newmethod;
     let payload;
     //status 0 = using old card
     if (status===0) {
@@ -261,6 +270,8 @@ const RenderStripe = (props) => {
         method: 'POST',
         body: JSON.stringify(ex),
       });
+
+      newmethod = prevPaymentID;
      payload = (await request3.json());
     } else {
       //new card
@@ -279,16 +290,17 @@ const RenderStripe = (props) => {
           }
         },
       });
-      const intent2 = (await request2.json());
-      if (intent2.setupIntent.status === 'succeeded') {
+    
+      if (request2.setupIntent.status === 'succeeded') {
         let ex = {
           sub: props.subID,
-          pid:intent2.setupIntent.payment_method
+          pid:request2.setupIntent.payment_method
         }
         const request3 = await fetch('/api/change-sub', {
           method: 'POST',
           body: JSON.stringify(ex),
         });
+        newmethod = request2.setupIntent.payment_method;
        payload = (await request3.json());
       }
 
@@ -296,7 +308,13 @@ const RenderStripe = (props) => {
     }
 
 console.log(payload)
-
+console.log(newmethod)
+    if (payload.paymentIntent.default_payment_method === newmethod) {
+      props.changeSuccess(true)
+      props.changeSub(false)
+    } else {
+      setUnableToSet(true)
+    }
   }
 
 
@@ -408,13 +426,20 @@ console.log(payload)
 </div>
       </>
       <div className='powered-by-stripe-small'></div>
+      {unableToSet === true ? (
+   <div className="card-error" role="alert">
+   Unable to change method. Please try again.
+ </div>
+      ): (
+        <></>
+      )}
       {error && (
         <div className="card-error" role="alert">
           {error}
         </div>
       )}
     <div className={"result-message"}>
-     <div className='result-message-success'>Payment succeeded!</div>
+     <div className='result-message-success'>Succeeded!</div>
     </div>
       
     </form>

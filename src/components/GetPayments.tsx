@@ -47,7 +47,8 @@ export default function GetPayments() {
   }, []);
 
   useEffect(() => {
-    window.location.reload();
+    if (showSuccess===true)  window.location.reload();
+  
   }, [showSuccess]);
 
   useEffect(() => {

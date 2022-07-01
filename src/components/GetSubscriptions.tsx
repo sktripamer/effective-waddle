@@ -70,7 +70,7 @@ const openChange = () => {
   const closeModal = () => {
     setLoadSearch(false)
     setDefaultPayment([])
-    showSuccess(false)
+    setShowSuccess(false)
     setSubID(null)
     setNameOfSubscription(null)
     setChangeSubscription(false)

@@ -22,7 +22,7 @@ params = JSON.parse(req.body)
                 return res.status(200).json({exists:true});
               }
             }
-            const deleter = await deleteMethod(customerID.acf.customer_id, params.pid)
+            const deleter = await deleteMethod(params.pid)
             return res.status(200).json({deleter})
          
        });
@@ -46,9 +46,8 @@ const getCustomerID = async (uID) => {
 }
 
 
-async function deleteMethod(cID, pID) {
-  const deleted = await stripe.customers.deleteSource(
-    cID,
+async function deleteMethod(pID) {
+  const deleted = await stripe.paymentMethods.detach(
     pID
   );
   return deleted;

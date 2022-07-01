@@ -26,7 +26,7 @@ export default function GetSubscriptions() {
   const [allPayments, setAllPayments] = useState([])
   const [nameOfSubscription, setNameOfSubscription] = useState(null)
   const [changeSubscription, setChangeSubscription] = useState(false)
-
+  const [subID, setSubID] = useState(null)
   
 
 
@@ -61,6 +61,11 @@ export default function GetSubscriptions() {
   });
   console.log(arrayTest)
 
+const openChange = () => {
+
+}
+
+
   const closeModal = () => {
     setLoadSearch(false)
     setDefaultPayment([])
@@ -92,6 +97,7 @@ export default function GetSubscriptions() {
       
     }
     if (intent.paymentMethod.data.length > 0) {
+      setSubID(e.target.dataset.id)
       setNameOfSubscription(e.target.dataset.nameof)
       setAllPayments(intent.paymentMethod.data)
       setLoadingPaymentData(false);
@@ -156,7 +162,7 @@ export default function GetSubscriptions() {
                           <button onClick={() => setChangeSubscription(true)} class='change-sub-button'>Edit Subscription</button>
                         ): (
                           <Elements stripe={stripePromise}>
-                            <RenderStripe allPayments={allPayments} />
+                            <RenderStripe allPayments={allPayments} subID={subID} />
                           </Elements>
                         )}
                        
@@ -222,6 +228,18 @@ const RenderStripe = (props) => {
   const radioHandler = (status) => {
     setStatus(status);
   };
+          
+
+  useEffect(() => {
+    setPrevID(props.allPayments[0].id);
+    setLast4(props.allPayments[0].card.last4);
+    setPrevExpY((props.allPayments[0].card.exp_year).toString().slice(-2));
+    setPrevExpM(('0' + props.allPayments[0].card.exp_month.toString()).toString().slice(-2));
+    setPrevName(props.allPayments[0].card.billing_details.name);
+    setPrevEmail(props.allPayments[0].card.billing_details.email);
+    setPrevBrand(props.allPayments[0].card.brand);
+  }, []);
+
   const handleSubmit = async (ev) => {
     const form = nameForm.current
     const email = form['email'].value 
@@ -235,6 +253,15 @@ const RenderStripe = (props) => {
       //   payment_method: prevPaymentID,
       //});
       //save prevPaymentID to this sub.
+      let ex = {
+        sub: props.subID,
+        pid: prevPaymentID
+      }
+      const request3 = await fetch('/api/change-sub', {
+        method: 'POST',
+        body: JSON.stringify(ex),
+      });
+     payload = (await request3.json());
     } else {
       //new card
     const request = await fetch('/api/setup-init', {
@@ -242,7 +269,7 @@ const RenderStripe = (props) => {
       body: JSON.parse(localStorage.auth).authToken,
     });
     const intent = (await request.json());
-       payload = await stripe.confirmCardSetup(intent.paymentIntent.client_secret, {
+       const request2 = await stripe.confirmCardSetup(intent.paymentIntent.client_secret, {
        
         payment_method: {
           card: elements.getElement(CardElement),
@@ -252,12 +279,28 @@ const RenderStripe = (props) => {
           }
         },
       });
+      const intent2 = (await request2.json());
+      if (intent2.setupIntent.status === 'succeeded') {
+        let ex = {
+          sub: props.subID,
+          pid:intent2.setupIntent.payment_method
+        }
+        const request3 = await fetch('/api/change-sub', {
+          method: 'POST',
+          body: JSON.stringify(ex),
+        });
+       payload = (await request3.json());
+      }
+
+
     }
 
 console.log(payload)
 
   }
 
+
+  
 
   const newCardButton = () => {
     radioHandler(1)
@@ -311,9 +354,10 @@ console.log(payload)
   return (
 
     <div class='changer-sub'>
+        <div class='choose-new-card'>Choose a new card for the subscription:</div>
                           <div class='change-sub-selection'>
                           <div className={`payment register-form col-md-6 status-${status} load-true success-${succeeded}`}>
-                          <div class={`selection-section`}>
+                          <div class={`selection-section defaultm`}>
            {props.allPayments && props.allPayments.map((el, index) =>
                   <React.Fragment key={index}>
                   <div data-id={el.id} data-month={el.card.exp_month} data-year={el.card.exp_year} data-brand={el.card.brand} data-last4={el.card.last4} data-prevname={el.billing_details.name} data-prevemail={el.billing_details.email} onClick={getOldCard} data-idindex={index} className={index === clickedItem ? "previous-payment is-checked" : "previous-payment"}>

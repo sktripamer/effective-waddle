@@ -4408,6 +4408,7 @@ button.cancel-sub-button {
 
 .dashboard main {
   background: linear-gradient(202deg,#d30b1b,hsl(327deg 66% 30%));
+  height: 100vh;
 }
 .sub-subheader, .subloading {
   text-align: center;
@@ -4471,7 +4472,36 @@ button.cancel-sub-button {
   padding: 0.1em 0.4em;
   cursor: pointer;
 }
+.sub-list .search-btn-container.search-true:after {
+  width:100%;
+}
+.order-page .next-payment-date:before {
+  content: 'Order Date:';
 
+}
+.order-page .plancost:after {
+  content: '  total';
+}
+.next-payment-date:before {
+  content: 'Next Payment:';
+  position: absolute;
+  white-space: nowrap;
+  font-size: .6em;
+  width: 100%;
+  margin-top: -1.1em;
+  text-align: center;
+}
+
+.plancost:after {
+  content: ' / month';
+  font-size: .7em;
+}
+
+.next-payment-date, .planactive, .planactive-subname, .plancost, .sub-name {
+
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
   .sub-list {
     overflow: hidden;
     height: 100vh;
@@ -4482,6 +4512,7 @@ button.cancel-sub-button {
 }
 .sub-list .search-outer-cont {
   padding-left: 70px;
+  width: 90%;
 }
 
 .choose-new-card {
@@ -4493,7 +4524,7 @@ button.cancel-sub-button {
 .sub-list .search-btn-container.search-true {
   margin-left: calc(-70px - 2em);
   width: calc(100% + 70px + 2em);
-  padding-left: 140px;
+  padding-left: 100px;
   overflow-y: hidden;
   height: calc(100% + 20px);
 }

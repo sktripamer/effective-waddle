@@ -4414,8 +4414,23 @@ button.cancel-sub-button {
   color: #fff;
 }
 
+.successchange-true .using-card {
+    display: none;
+}
+.successchange-true .using-card.successer {
+    display: block;
+}
+
+.successchange-true .defaultm {
+    display:none;
+}
+.successchange-true .change-sub-button {
+    display:none;
+}
+
+
 .subscription-section-modal {
-  background: #e7e7e7;
+  background: #3F177D;
   padding-bottom: 1em;
 }
 

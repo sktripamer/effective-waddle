@@ -193,7 +193,7 @@ const openChange = () => {
                 : ""}
     </div>
             <h2>Subscriptions</h2>
-            <h3>View and manage your subscriptions</h3>
+            <div class='sub-subheader'>View and manage your subscriptions</div>
             <div class='subscription-list'>
                {arrayTest && arrayTest.map((el, index) =>
                   <>

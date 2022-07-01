@@ -250,6 +250,7 @@ console.log(payload)
                         {changeSubscription === false ? (
                           <button class='change-sub-button'>Edit Subscription</button>
                         ): (
+                          <Elements stripe={stripePromise}>
                           <div class='changer-sub'>
                             <div class='change-sub-selection'>
                             <div class={`selection-section`}>
@@ -318,6 +319,7 @@ console.log(payload)
 
                             <button class='cancel-sub-button'>Cancel Subscription</button>
                           </div>
+                          </Elements>
                         )}
                        
 

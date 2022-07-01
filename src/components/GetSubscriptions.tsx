@@ -122,14 +122,14 @@ const openChange = () => {
        {methodProcessing === 1 ? (
          <>
            <h2>Subscriptions</h2>
-           <h3>View and manage your subscriptions</h3>
+           <div class='sub-subheader'>View and manage your subscriptions</div>
             <div class='subloading'>Loading subscriptions...</div>
             </>
           ) : ('')}
            {methodProcessing === 2 ? (
          <>
          <h2>Subscriptions</h2>
-         <h3>View and manage your subscriptions</h3>
+         <div class='sub-subheader'>View and manage your subscriptions</div>
           <div class='subloading'>No subscriptions found!</div>
           </>
           ) : ('')}
@@ -199,7 +199,7 @@ const openChange = () => {
                   <>
                   <div data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} data-paymentid={el.default_payment_method} data-id={el.id} onClick={getButtonId} className={'sub-item'}>
                     <div class='planactive-subname'>
-                     <div className='planactive'>{el.plan.active === true ? 'ACTIVE' : 'INACTIVE'}</div>
+                     <div className={`planactive plan-${el.plan.active === true ? 'true' : 'false'}`}>{el.plan.active === true ? 'ACTIVE' : 'INACTIVE'}</div>
                      <div className='sub-name'>{el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''}</div>
                     </div>
                     <div className="next-payment-date">{new Date((el.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>

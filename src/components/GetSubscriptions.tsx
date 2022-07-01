@@ -291,7 +291,10 @@ const RenderStripe = (props) => {
           }
         },
       });
-    
+      if (request2.setupIntent.stats === undefined) {
+        setProcessing('')
+        return;
+      }
       if (request2.setupIntent.status === 'succeeded') {
         let ex = {
           sub: props.subID,
@@ -303,6 +306,9 @@ const RenderStripe = (props) => {
         });
         newmethod = request2.setupIntent.payment_method;
        payload = (await request3.json());
+      } else {
+        setProcessing('')
+        return;
       }
 
 
@@ -314,6 +320,7 @@ console.log(newmethod)
       props.changeSuccess(true)
       props.changeSub(false)
     } else {
+      setProcessing('')
       setUnableToSet(true)
     }
   }

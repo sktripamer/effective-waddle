@@ -153,7 +153,7 @@ export default function GetSubscriptions() {
                           </div>
                         </div>
                         {changeSubscription === false ? (
-                          <button class='change-sub-button'>Edit Subscription</button>
+                          <button onClick={() => setChangeSubscription(true)} class='change-sub-button'>Edit Subscription</button>
                         ): (
                           <Elements stripe={stripePromise}>
                             <RenderStripe allPayments={allPayments} />

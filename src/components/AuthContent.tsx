@@ -35,5 +35,5 @@ export default function AuthContent({ children }: { children: ReactNode }) {
 
   }
 
-  return <p>Loading...</p>;
+  return  <div class='loading-bought'></div>;
 }

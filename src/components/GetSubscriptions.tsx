@@ -13,6 +13,7 @@ export default function GetSubscriptions() {
   const [loadingPaymentData, setLoadingPaymentData] = useState(true)
   const [defaultPayment, setDefaultPayment] = useState({})
   const [allPayments, setAllPayments] = useState([])
+  const [nameOfSubscription, setNameOfSubscription] = useState(null)
   useEffect(() => {
     async function fetchMyAPI() {
       try {
@@ -63,6 +64,7 @@ export default function GetSubscriptions() {
       
     }
     if (intent.paymentMethod.data.length > 0) {
+      setNameOfSubscription(e.target.dataset.nameof)
       setAllPayments(intent.paymentMethod.data)
       setLoadingPaymentData(false);
       }
@@ -111,17 +113,23 @@ export default function GetSubscriptions() {
                     : (
                      <div class='more-payment-info'>
                        {defaultPayment.card !== undefined ? (
+                        <div class='subscription-section-modal'> 
+                          <div class='subscription-modal-head'>{nameOfSubscription}</div>
+                         <div class='selection-section'>
                           <div class='previous-payment is-checked'>
-                    {console.log(defaultPayment)}
-                          <div className={`prev-brand ${defaultPayment.card.brand}`}></div>
-                    <div className="prev-last4">{defaultPayment.card.last4}</div>
+                            <div className={`prev-brand ${defaultPayment.card.brand}`}></div>
+                            <div className="prev-last4">{defaultPayment.card.last4}</div>
                           </div>
-): (
-  <>
-  {console.log(defaultPayment)}
-  ''
-  </>
-)}
+                        </div>
+                        <button class='change-sub-button'>Edit Subscription</button>
+
+
+                        </div>
+                      ): (
+                        <>
+                        <div class='loading-bought'></div>
+                        </>
+                      )}
 
 
                      </div>

@@ -19,7 +19,11 @@ params = JSON.parse(req.body)
 
 
   const saveUser = async(userID) => {
-    let data;
+    let data = {
+      "acf": {
+          
+            }
+    }
 
         let tempship;
         if (params.previousShippingData !== '') {

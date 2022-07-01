@@ -194,6 +194,12 @@ const openChange = () => {
     </div>
             <h2>Subscriptions</h2>
             <div class='sub-subheader'>View and manage your subscriptions</div>
+            <div class='sub-table-head'>
+                        <div class='sub-table-item'>Name</div>
+                        <div class='sub-table-item'>Next Payment</div>
+                        <div class='sub-table-item'>Charge / Month</div>
+                        <div class='sub-table-item'>View Settings</div>
+            </div>
             <div class='subscription-list'>
                {arrayTest && arrayTest.map((el, index) =>
                   <>

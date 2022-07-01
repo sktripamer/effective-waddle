@@ -241,13 +241,17 @@ const RenderStripe = (props) => {
           
 
   useEffect(() => {
-    setPrevID(props.allPayments[0].id);
-    setLast4(props.allPayments[0].card.last4);
-    setPrevExpY((props.allPayments[0].card.exp_year).toString().slice(-2));
-    setPrevExpM(('0' + props.allPayments[0].card.exp_month.toString()).toString().slice(-2));
-    setPrevName(props.allPayments[0].billing_details.name);
-    setPrevEmail(props.allPayments[0].billing_details.email);
-    setPrevBrand(props.allPayments[0].card.brand);
+    if (props.allPayments.length > 0) {
+      setPrevID(props.allPayments[0].id);
+      setLast4(props.allPayments[0].card.last4);
+      setPrevExpY((props.allPayments[0].card.exp_year).toString().slice(-2));
+      setPrevExpM(('0' + props.allPayments[0].card.exp_month.toString()).toString().slice(-2));
+      setPrevName(props.allPayments[0].billing_details.name);
+      setPrevEmail(props.allPayments[0].billing_details.email);
+      setPrevBrand(props.allPayments[0].card.brand);
+    } else {
+      radioHandler(1)
+    }
   }, []);
 
   const handleSubmit = async (ev) => {
@@ -291,7 +295,7 @@ const RenderStripe = (props) => {
           }
         },
       });
-      if (request2.setupIntent.stats === undefined) {
+      if (request2.setupIntent.status === undefined) {
         setProcessing('')
         return;
       }

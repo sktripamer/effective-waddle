@@ -79,7 +79,7 @@ export default function GetOrders() {
   });
 
   if (loading) return (
-    <div className='sub-list'>
+    <div className='sub-list order-page'>
       <h2>Orders</h2>
            <div class='sub-subheader'>View and manage your orders</div>
             <div class='subloading'>Loading orders...</div>
@@ -101,7 +101,7 @@ for (let i=0; i < data.orders.edges.length; i++) {
                 ? (
                  <div className='search-outer-cont'>
                    <div className="search-bar-title">
-                      <div className="search-bar-text">Subscription</div>
+                      <div className="search-bar-text">Order</div>
                       <div onClick={closeModal} className='search-bar-close'>X</div>
                    </div>
                    
@@ -110,7 +110,7 @@ for (let i=0; i < data.orders.edges.length; i++) {
                           <div class='loading-bought'></div>
                       ): (
                         <>
-                        <div class='subscription-modal-head'>Order #{selectedOrder.node.id}</div>
+                        <div class='subscription-modal-head'>Order #{selectedOrder.node.databaseId}</div>
                         <div class='cart-all-items'>
                         {selectedOrder.node.lineItems.nodes.map((el, index) =>
                         <>
@@ -118,6 +118,23 @@ for (let i=0; i < data.orders.edges.length; i++) {
                         </>
                         )}
                         </div>
+                        {selectedOrder.node.hasShippingAddress === false ? (
+                          <></>
+                        ): (
+                          <>
+                          <div class='subscription-modal-head'>Shipping Info:</div>
+                          <div class='show-shipping'>
+                          <div class='show-shipping-item'>{selectedOrder.node.shipping.firstName}</div>
+                          <div class='show-shipping-item'>{selectedOrder.node.shipping.address1}</div>
+                          <div class='show-shipping-item'>{selectedOrder.node.shipping.address2}</div>
+                          <div class='show-shipping-cont'>
+                          <div class='show-shipping-item'>{selectedOrder.node.shipping.city}</div>
+                          <div class='show-shipping-item'>{selectedOrder.node.shipping.state}</div>
+                          <div class='show-shipping-item'>{selectedOrder.node.shipping.postcode}</div>
+                          </div>
+                          </div>
+                          </>
+                        )}
                         </>
                       )}
 

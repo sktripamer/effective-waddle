@@ -235,8 +235,8 @@ const RenderStripe = (props) => {
     setLast4(props.allPayments[0].card.last4);
     setPrevExpY((props.allPayments[0].card.exp_year).toString().slice(-2));
     setPrevExpM(('0' + props.allPayments[0].card.exp_month.toString()).toString().slice(-2));
-    setPrevName(props.allPayments[0].card.billing_details.name);
-    setPrevEmail(props.allPayments[0].card.billing_details.email);
+    setPrevName(props.allPayments[0].billing_details.name);
+    setPrevEmail(props.allPayments[0].billing_details.email);
     setPrevBrand(props.allPayments[0].card.brand);
   }, []);
 
@@ -356,7 +356,7 @@ console.log(payload)
     <div class='changer-sub'>
         <div class='choose-new-card'>Choose a new card for the subscription:</div>
                           <div class='change-sub-selection'>
-                          <div className={`payment register-form col-md-6 status-${status} load-true success-${succeeded}`}>
+                          <div className={`payment register-form col-md-6 status-${status} load-true success-${succeeded} process-${processing}`}>
                           <div class={`selection-section defaultm`}>
            {props.allPayments && props.allPayments.map((el, index) =>
                   <React.Fragment key={index}>

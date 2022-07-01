@@ -4395,6 +4395,7 @@ button.cancel-sub-button {
   padding: .5em;
   background: #ededed;
   border-radius: 10px;
+  max-width: 1300px;
 }
 
 .dashboard h2 {
@@ -4408,7 +4409,7 @@ button.cancel-sub-button {
 .dashboard main {
   background: linear-gradient(202deg,#d30b1b,hsl(327deg 66% 30%));
 }
-.sub-subheader {
+.sub-subheader, .subloading {
   text-align: center;
   margin-top: 1.2em;
   font-family: 'Nunito Bold';
@@ -4468,23 +4469,33 @@ button.cancel-sub-button {
   border: 2px solid #e00927;
   border-radius: 5px;
   padding: 0.1em 0.4em;
+  cursor: pointer;
 }
 
   .sub-list {
+    overflow: hidden;
     height: 100vh;
     padding-left: calc(70px + 2em);
     width: 100%;
-    max-width: 1300px;
+
     margin: 0 auto;
 }
 .sub-list .search-outer-cont {
   padding-left: 70px;
 }
+
+.choose-new-card {
+  font-family: 'Nunito Regular';
+  color: #fff;
+  text-align: center;
+  padding: .5em;
+}
 .sub-list .search-btn-container.search-true {
   margin-left: calc(-70px - 2em);
   width: calc(100% + 70px + 2em);
+  padding-left: 140px;
   overflow-y: hidden;
-  height: 100%;
+  height: calc(100% + 20px);
 }
 
 .sub-list .search-btn-container {

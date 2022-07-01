@@ -58,8 +58,26 @@ export default function LogInForm() {
       console.error(error);
     });
   }
+  function handleSubmitAlt(email, password) {
+    event.preventDefault();
+    setLoadingUser(true)
+
+    logIn({
+      variables: {
+        login: email,
+        password,
+      }
+    }).catch(error => {
+      setLoadingUser(false)
+      console.error(error);
+    });
+  }
 
 async function handleVerify() {
+  if (loginStep === 1) {
+    handleSubmitAlt(((document.getElementById('log-in-email') as HTMLInputElement)).value, ((document.getElementById('log-in-password') as HTMLInputElement)).value)
+    return;
+  }
   setEmailValidError(false)
   let emailvalue = ((document.getElementById('log-in-email') as HTMLInputElement)).value
   setEmailText(emailvalue)
@@ -168,12 +186,12 @@ async function handleVerify() {
           </div>
 
         {!isEmailValid ? (
-          <p className="error-message">Invalid email or username. Please try again.</p>
+          <p className="error-message">Invalid email or password. Please try again.</p>
         ) : null}
         {!isPasswordValid ? (
-          <p className="error-message">Invalid email or username. Please try again.</p>
+          <p className="error-message">Invalid email or password. Please try again.</p>
         ) : null}
-        <button class="verify-user-button" type="submit" disabled={loading}>
+        <button id="submit-login" class="verify-user-button" type="submit" disabled={loading}>
          Log In
         </button>
 

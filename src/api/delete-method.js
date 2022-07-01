@@ -11,15 +11,15 @@ params = JSON.parse(req.body)
             const customerID = await getCustomerID(decoded.data.user.id);
 
             if (customerID.acf.customer_id === undefined || customerID.acf.customer_id === '') {
-              return res.status(200).json(true);
+              return res.status(200).json({failed:true});
             } 
             
             const paymentMethod = await getPaymentMethods(customerID.acf.customer_id);
-            if (paymentMethod.data.length === 0)  return res.status(200).json(true);
+            if (paymentMethod.data.length === 0)  return res.status(200).json({failed:true});
 
             for (let i=0; i< paymentMethod.data.length; i++) {
               if (paymentMethod.data[i].default_payment_method === params.pid) {
-                return res.status(200).json(false);
+                return res.status(200).json({exists:true});
               }
             }
             const deleter = await deleteMethod(customerID.acf.customer_id, params.pid)

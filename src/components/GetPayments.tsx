@@ -23,7 +23,7 @@ export default function GetPayments() {
   useEffect(() => {
     async function fetchMyAPI() {
       try {
-        const request = await fetch('/api/get-payment', {
+        const request = await fetch('/api/get-address', {
           method: 'POST',
           body: jwtAuthToken,
         });

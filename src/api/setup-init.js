@@ -44,8 +44,7 @@ const createIntent = async (cID) => {
 
     try {
     const paymentIntent = await stripe.setupIntents.create({
-        customer: cID,
-        setup_future_usage: "off_session",
+        customer: cID
       });
      
       return paymentIntent;

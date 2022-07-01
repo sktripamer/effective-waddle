@@ -3673,6 +3673,9 @@ button.verify-user-button:after {
   }
   }
   @media (max-width: 1100px) {
+    div.sub-item {
+      flex-direction: column;
+    }
     div.product-preload {
       max-width: 800px;
     }
@@ -4384,10 +4387,95 @@ button.cancel-sub-button {
 }
 
 
+.subscription-list {
+  max-height: 400px;
+  overflow-y: overlay;
+  width: 90%;
+  margin: 0 auto;
+  padding: .5em;
+  background: #ededed;
+  border-radius: 10px;
+}
+
+.dashboard h2 {
+  text-align: center;
+  margin-top: 2em;
+  font-family: 'Josefin Sans';
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.dashboard main {
+  background: linear-gradient(202deg,#d30b1b,hsl(327deg 66% 30%));
+}
+.sub-subheader {
+  text-align: center;
+  margin-top: 1.2em;
+  font-family: 'Nunito Bold';
+  font-size: 1.4em;
+  color: #fff;
+
+}
+.sub-item {
+  display: flex;
+  font-family: 'Nunito Bold';
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: .4em;
+  margin-top: .4em;
+  flex-direction: row;
+  padding: 0.7em 0.1em;
+  border: 1px solid #d3d3d3;
+}
+
+.planactive-subname {
+  display: flex;
+}
+
+.planactive {
+  margin-right: .4em;
+}
+
+.planactive {}
+
+.planactive.plan-true {
+  font-size: .9em;
+  color: #00d100;
+  border: 2px solid #00d100;
+  border-radius: 5px;
+  padding: .1em .4em;
+}
+
+.sub-name {
+  color: #e00927;
+  font-size: 1.1em;
+}
+
+.next-payment-date {
+  color: #e00927;
+  font-size: 1.1em;
+}
+
+.plancost {
+  color: #e00927;
+  font-size: 1.1em;
+}
+
+
+.more-sub-dets {
+  color: #e00927;
+  font-size: 1.1em;
+  border: 2px solid #e00927;
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+}
+
   .sub-list {
     height: 100vh;
-    margin-left: calc(70px + 2em);
+    padding-left: calc(70px + 2em);
     width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 .sub-list .search-outer-cont {
   padding-left: 70px;

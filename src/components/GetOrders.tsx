@@ -94,7 +94,7 @@ for (let i=0; i < data.orders.edges.length; i++) {
 
 
   return (
-    <div className='sub-list'>
+    <div className='sub-list order-page'>
 
 <div className={`search-btn-container search-${loadSearch}`}>
               {true == loadSearch

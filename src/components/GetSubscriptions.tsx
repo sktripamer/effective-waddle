@@ -157,10 +157,10 @@ const openChange = () => {
                           {showSuccess === false ? (
                             <></>
                           ) : (
-                            <div class='using-card'>Successfully changed payment!</div>
+                            <div class='using-card successer'>Successfully changed payment!</div>
                           )}
                           <div class='using-card'>Using Card:</div>
-                         <div class='selection-section'>
+                         <div class='selection-section defaultm'>
                           <div class='previous-payment is-checked'>
                             <div className={`prev-brand ${defaultPayment.card.brand}`}></div>
                             <div className="prev-last4">{defaultPayment.card.last4}</div>
@@ -375,7 +375,7 @@ console.log(newmethod)
         <div class='choose-new-card'>Choose a new card for the subscription:</div>
                           <div class='change-sub-selection'>
                           <div className={`payment register-form col-md-6 status-${status} load-true success-${succeeded} process-${processing}`}>
-                          <div class={`selection-section defaultm`}>
+                          <div class={`selection-section`}>
            {props.allPayments && props.allPayments.map((el, index) =>
                   <React.Fragment key={index}>
                   <div data-id={el.id} data-month={el.card.exp_month} data-year={el.card.exp_year} data-brand={el.card.brand} data-last4={el.card.last4} data-prevname={el.billing_details.name} data-prevemail={el.billing_details.email} onClick={getOldCard} data-idindex={index} className={index === clickedItem ? "previous-payment is-checked" : "previous-payment"}>

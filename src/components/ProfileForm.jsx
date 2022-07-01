@@ -452,9 +452,9 @@ const customNoDataRenderer = () => (
     </div>
 
 {clickedAddress < 0 ? (
-<button disabled={processing} onClick={addAddress} class='pay-btn'>Save Address</button>
+<button disabled={processing} onClick={() => addAddress} class='pay-btn'>Save Address</button>
 ) : (
-<button onClick={removeAddress} class='delete-address-btn'>Remove Address</button>
+<button onClick={() => removeAddress} class='delete-address-btn'>Remove Address</button>
 )}
     
     </div>

@@ -139,14 +139,17 @@ const RenderStripe = (props) => {
         body: JSON.stringify(ex),
       });
       const intent = (await request3.json());
+      payload = true;
       if (intent.failed === true) {
-        setMethodExists(true)
+        setGenericError(true)
+        payload = false
       }
       if (intent.exists === true) {
-        setGenericError(true)
+        payload = false
+        setMethodExists(true)
       }
   
-     payload = true;
+    
     } else {
       //new card
     const request = await fetch('/api/setup-init', {
@@ -243,7 +246,8 @@ console.log(payload)
   return (
 
     <div class='changer-sub'>
-        <div class='choose-new-card'>Choose a new card for the subscription:</div>
+       <div class='sub-subheader'>View and manage your payment methods</div>
+        <div class='choose-new-card'>Add and delete cards</div>
                           <div class='change-sub-selection'>
                           <div className={`payment register-form col-md-6 status-${status} load-true success-${succeeded} process-${processing}`}>
                           <div class={`selection-section`}>

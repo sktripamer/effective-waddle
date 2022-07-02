@@ -432,7 +432,7 @@ const openChange = () => {
     <label>Zip Code / Country</label>
     <div className="ship-zipcountry">
     <input disabled={addressDisabled} id="ship-zip" required className={'form-control form-control'} placeholder="Zip / Postal Code" autocomplete="shipping postal-code" name={'ship-zip'}/>
-    {/* <Select
+    <Select
     options={optionsC} 
     labelField="name"
     valueField="code"
@@ -446,7 +446,7 @@ const openChange = () => {
     values={country}
     noDataRenderer={customNoDataRenderer}
     onChange={values => setCountry(values)}
-  /> */}
+  />
 
   </div>
     </div>

@@ -27,7 +27,7 @@ export default function GetSubscriptions() {
           </div>
           
         ): (
-          <button class='address-form-button closer' onClick={() => setHideAddress(false)}></button>
+          <button class='address-form-button closer' onClick={() => setHideAddress(false)}>View Addresses</button>
         )}
         <h2>View and change account details</h2>
         {hideAcc === false ? (
@@ -37,7 +37,7 @@ export default function GetSubscriptions() {
           </div>
           
         ): (
-          <button class='address-form-button closer' onClick={() => setHideAcc(false)}></button>
+          <button class='address-form-button closer' onClick={() => setHideAcc(false)}>View Account</button>
         )}
       </div>
   )
@@ -435,7 +435,16 @@ ex.previousShippingData = ''
         setParsedShippingData(tempdata)
       }
       //setsuccess
-
+      document.getElementById("ship-name").value = '';
+      document.getElementById("ship-address1").value ='';
+      document.getElementById("ship-address2").value = '';
+      document.getElementById("ship-city").value = '';
+      document.getElementById("ship-state").value = '';
+      document.getElementById("ship-zip").value = '';
+      setCountry([{
+        name: 'United States of America',
+        code: 'US'
+      }])
   }
 
   const removeAddress = async () => {
@@ -468,6 +477,18 @@ ex.previousShippingData = ''
       setParsedShippingData(tempdata)
       setShippingData(JSON.stringify(tempdata))
       setClickedAddress(-1)
+      document.getElementById("ship-name").value = '';
+      document.getElementById("ship-address1").value ='';
+      document.getElementById("ship-address2").value = '';
+      document.getElementById("ship-city").value = '';
+      document.getElementById("ship-state").value = '';
+      document.getElementById("ship-zip").value = '';
+      setCountry([{
+        name: 'United States of America',
+        code: 'US'
+      }])
+      setAddressCheckHidden('')
+      setAddressDisabled(false)
   }
   const customNoDataRenderer = () => (
     <div className='no-country'>No country found</div>

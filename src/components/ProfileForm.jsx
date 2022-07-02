@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useMutation, gql } from "@apollo/client";
 import { useEffect, useState } from "react";
-import useAuth, { User } from "../hooks/useAuth";
 import InputField2 from './inputfield';
 import Select from "react-dropdown-select";
 export default function ProfileForm() {
@@ -263,15 +262,20 @@ const customNoDataRenderer = () => (
   <div className='no-country'>No country found</div>
 );
   const [clickedAddress, setClickedAddress] = useState(-1);
-  const { user } = useAuth();
-  const { jwtAuthToken } = user;
+  const email = function() {
+    try {
+      return JSON.parse(localStorage.auth).authToken;
+    } catch {
+      return null;
+    }
+  }
 
   useEffect(() => {
     async function fetchMyAPI() {
       try {
         const request = await fetch('/api/get-address', {
           method: 'POST',
-          body: jwtAuthToken,
+          body: email(),
         });
         const intent = (await request.json());
         console.log(intent)

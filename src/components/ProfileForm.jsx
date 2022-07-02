@@ -9,6 +9,7 @@ import useAuth, { User } from "../hooks/useAuth";
 
 export default function GetSubscriptions() {
   const [hideAddress, setHideAddress] = useState(true)
+  const [hideAcc, setHideAcc] = useState(true)
   useEffect(() => {
     if (window.location.href.indexOf("profile") === -1) {
       window.location.reload();
@@ -17,21 +18,33 @@ export default function GetSubscriptions() {
 
 
   return (
-      <div>
-    
+      <div class='sub-list order-page'>
+        <h2>Add and remove addresses</h2>
         {hideAddress === false ? (
-          <>
-          <button onClick={() => setHideAddress(true)}>hide</button>
+          <div class='address-form-cont'>
+          <button class='address-form-button' onClick={() => setHideAddress(true)}>View Addresses</button>
           <DrawForm/>
-          </>
+          </div>
           
         ): (
-          <button onClick={() => setHideAddress(false)}>show</button>
+          <button class='address-form-button closer' onClick={() => setHideAddress(false)}></button>
         )}
-       
-
+        <h2>View and change account details</h2>
+        {hideAcc === false ? (
+          <div class='address-form-cont'>
+          <button class='address-form-button' onClick={() => setHideAcc(true)}>View Account</button>
+          
+          </div>
+          
+        ): (
+          <button class='address-form-button closer' onClick={() => setHideAcc(false)}></button>
+        )}
       </div>
   )
+
+}
+
+const AccForm = () => {
 
 }
 
@@ -356,6 +369,16 @@ const openChange = () => {
 
   const addAddress = async () => {
     setProcessing(true)
+    
+    let tempdata;
+    if (shippingData === '') {
+      tempdata = ''
+    } else {
+      tempdata = JSON.parse(shippingData)
+    }
+
+
+
     let ex = {};
     ex.token = jwtAuthToken;
     if (shippingData === '') {
@@ -373,6 +396,9 @@ ex.previousShippingData = ''
       shippingzip: document.getElementById("ship-zip").value,
       shippingcountry: country[0].code,
     }
+
+
+
     const request = await fetch('/api/add-address', {
       method: 'POST',
       body: JSON.stringify(ex),
@@ -380,7 +406,34 @@ ex.previousShippingData = ''
     const intent = (await request.json());
     console.log(intent)
       setProcessing(false)
-      window.location.reload()
+      if (tempdata === '') {
+        let tempship = [{
+          "first_name": document.getElementById("ship-name").value,
+          "last_name": '',
+          "address_1": document.getElementById("ship-address1").value,
+          "address_2": document.getElementById("ship-address2").value,
+          "city": document.getElementById("ship-city").value,
+          "state": document.getElementById("ship-state").value,
+          "postcode": document.getElementById("ship-zip").value,
+          "country":country[0].code
+        }]
+        setShippingData(JSON.parse(tempship))
+        setParsedShippingData(tempship)
+      } else {
+        let tempship = {
+          "first_name": document.getElementById("ship-name").value,
+          "last_name": '',
+          "address_1": document.getElementById("ship-address1").value,
+          "address_2": document.getElementById("ship-address2").value,
+          "city": document.getElementById("ship-city").value,
+          "state": document.getElementById("ship-state").value,
+          "postcode": document.getElementById("ship-zip").value,
+          "country":country[0].code
+        }
+        tempdata.push(tempship)
+        setShippingData(JSON.parse(tempdata))
+        setParsedShippingData(tempdata)
+      }
       //setsuccess
 
   }
@@ -399,7 +452,9 @@ ex.previousShippingData = ''
     const intent = (await request.json());
     console.log(intent)
       setProcessing(false)
-      window.location.reload()
+      setParsedShippingData(tempdata)
+      setShippingData(JSON.stringify(tempdata))
+      setClickedAddress(-1)
   }
   const customNoDataRenderer = () => (
     <div className='no-country'>No country found</div>
@@ -443,7 +498,7 @@ ex.previousShippingData = ''
   
 
   return (
-    <div className='profile-page'>
+    <div id="payment-form">
     <div className='shipping-form-data'>
 <div class='shipping-info'>Shipping Info</div>
     {parsedShippingData.length === 0 ? (

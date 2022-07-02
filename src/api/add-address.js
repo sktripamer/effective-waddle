@@ -7,9 +7,9 @@ const validateJWT = async (req, res) => {
 params = JSON.parse(req.body)
     try {
             jwt.verify(params.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
-            const customerID = await saveUser(decoded.data.user.id);
+            await saveUser(decoded.data.user.id);
 
-            return res.status(200).json({customerID})
+            return res.status(200).json(true)
          
        });
       } catch (e) {

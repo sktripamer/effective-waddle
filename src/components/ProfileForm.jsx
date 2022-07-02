@@ -417,7 +417,7 @@ ex.previousShippingData = ''
           "postcode": document.getElementById("ship-zip").value,
           "country":country[0].code
         }]
-        setShippingData(JSON.parse(tempship))
+        setShippingData(JSON.stringify(tempship))
         setParsedShippingData(tempship)
       } else {
         let tempship = {
@@ -431,7 +431,7 @@ ex.previousShippingData = ''
           "country":country[0].code
         }
         tempdata.push(tempship)
-        setShippingData(JSON.parse(tempdata))
+        setShippingData(JSON.stringify(tempdata))
         setParsedShippingData(tempdata)
       }
       //setsuccess

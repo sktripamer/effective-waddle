@@ -284,7 +284,7 @@ export default function GetSubscriptions() {
       try {
         const request = await fetch('/api/get-address', {
           method: 'POST',
-          body: email(),
+          body: jwtAuthToken,
         });
         const intent = (await request.json());
         console.log(intent)

@@ -26,34 +26,44 @@ params = JSON.parse(req.body)
     }
 
         let tempship;
-        if (params.previousShippingData !== '') {
-          let tempdata = JSON.parse(params.previousShippingData)
-          let newtempdata = {
-            "first_name": params.shippingData.shippingname,
-            "last_name": '',
-            "address_1": params.shippingData.shippingaddress1,
-            "address_2": params.shippingData.shippingaddress2,
-            "city": params.shippingData.shippingcity,
-            "state": params.shippingData.shippingstate,
-            "postcode": params.shippingData.shippingzip,
-            "country": params.shippingData.shippingcountry
-                }
-          tempdata.push(newtempdata)
-          tempship = tempdata
-        } else {
+      if (params.previousShippingData === undefined) {
+        tempship = [{
+          "first_name": params.shippingData.shippingname,
+          "last_name": '',
+          "address_1": params.shippingData.shippingaddress1,
+          "address_2": params.shippingData.shippingaddress2,
+          "city": params.shippingData.shippingcity,
+          "state": params.shippingData.shippingstate,
+          "postcode": params.shippingData.shippingzip,
+          "country": params.shippingData.shippingcountry
+        }]
+      } else if (params.previousShippingData !== '') {
+        let tempdata = JSON.parse(params.previousShippingData)
+        let newtempdata = {
+          "first_name": params.shippingData.shippingname,
+          "last_name": '',
+          "address_1": params.shippingData.shippingaddress1,
+          "address_2": params.shippingData.shippingaddress2,
+          "city": params.shippingData.shippingcity,
+          "state": params.shippingData.shippingstate,
+          "postcode": params.shippingData.shippingzip,
+          "country": params.shippingData.shippingcountry
+              }
+        tempdata.push(newtempdata)
+        tempship = tempdata
+      } else {
+        tempship = [{
+          "first_name": params.shippingData.shippingname,
+          "last_name": '',
+          "address_1": params.shippingData.shippingaddress1,
+          "address_2": params.shippingData.shippingaddress2,
+          "city": params.shippingData.shippingcity,
+          "state": params.shippingData.shippingstate,
+          "postcode": params.shippingData.shippingzip,
+          "country": params.shippingData.shippingcountry
+        }]
+      }
 
-          tempship = [{
-            "first_name": params.shippingData.shippingname,
-            "last_name": '',
-            "address_1": params.shippingData.shippingaddress1,
-            "address_2": params.shippingData.shippingaddress2,
-            "city": params.shippingData.shippingcity,
-            "state": params.shippingData.shippingstate,
-            "postcode": params.shippingData.shippingzip,
-            "country": params.shippingData.shippingcountry
-          }]
-
-        }
         
           data.acf['shippingaddress1'] = JSON.stringify(tempship)
         

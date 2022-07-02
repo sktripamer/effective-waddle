@@ -2,15 +2,32 @@ import * as React from "react";
 import {useState, useEffect, useRef } from "react";
 
 import useAuth, { User } from "../hooks/useAuth";
-import {loadStripe} from '@stripe/stripe-js/pure';
 
   import InputField2 from '../components/inputfield';
 
   import Select from "react-dropdown-select";
 
 export default function GetSubscriptions() {
-  const [stripePromise, setStripePromise] = useState(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
+ 
+  useEffect(() => {
+    if (window.location.href.indexOf("profile") === -1) {
+      window.location.reload();
+    }
+  });
 
+
+  return (
+      <div>
+        <DrawForm/>
+
+      </div>
+  )
+
+}
+
+
+const DrawForm = () => {
+  
   const { user } = useAuth();
   const { jwtAuthToken } = user;
   const [methodProcessing, setMethodProcessing] = useState(1);
@@ -319,11 +336,6 @@ export default function GetSubscriptions() {
   }, []);
 
 
-  useEffect(() => {
-    if (window.location.href.indexOf("profile") === -1) {
-      window.location.reload();
-    }
-  });
   console.log(arrayTest)
 
 const openChange = () => {
@@ -372,9 +384,9 @@ const openChange = () => {
       setProcessing(false)
       window.location.reload()
   }
-  // const customNoDataRenderer = () => (
-  //   <div className='no-country'>No country found</div>
-  // );
+  const customNoDataRenderer = () => (
+    <div className='no-country'>No country found</div>
+  );
   const newAddressButton = () => {
     setClickedAddress(-1)
     document.getElementById("ship-name").value = '';
@@ -446,7 +458,7 @@ const openChange = () => {
     disabled={addressDisabled}
     closeOnSelect={true}
     values={country}
-    // noDataRenderer={customNoDataRenderer}
+    noDataRenderer={customNoDataRenderer}
     onChange={values => setCountry(values)}
   />
 
@@ -461,5 +473,4 @@ const openChange = () => {
     
     </div>
   );
-
 }

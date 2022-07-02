@@ -7,7 +7,9 @@ const validateJWT = async (req, res) => {
         try {
                 jwt.verify(params.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
                     const exists =  await verifyUser(decoded.data.user.user_email, params.new, params.code);
+                    console.log(exists)
                     if (exists.message === true) {
+                        console.log('wehere')
                         var newJWT = jwt.sign({  data: {
                             user: {
                               id: decoded.data.user.id,
@@ -27,7 +29,8 @@ const validateJWT = async (req, res) => {
     }
 
 const verifyUser = async (uID, newemail, code) => {
-
+    console.log('aa')
+    console.log(uID, newemail, code)
     const exists = await axios.get('https://portal.revrevdev.xyz/?better_ld_api=d74dd1094863071982578684bc13be64&better_ld_api_method=verify_mail&useremail=' + uID + '&newemail=' + newemail + '&code=' + code).then(resp => {    
         return resp.data;
     });

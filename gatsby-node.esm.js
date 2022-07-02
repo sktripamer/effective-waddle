@@ -84,24 +84,42 @@
     const hey = await client.query({
             query: gql`query GET_POSTS {
                 products(first: 100) {
-                    edges {
+                  edges {
                     node {
-                        databaseId
-                        slug
-                        name
-                        description(format: RAW)
-                        type
-                        featured
-                        productCategories {
+                      databaseId
+                      slug
+                      name
+                      description(format: RAW)
+                      type
+                      featured
+                      productCategories {
                         nodes {
-                            name
-                            slug
+                          name
+                          slug
                         }
+                      }
+                      ... on VariableProduct {
+                        id
+                        name
+                        featuredImage {
+                          node {
+                            sourceUrl
+                          }
                         }
+                      }
+                      ... on SimpleProduct {
+                        id
+                        name
+                        featuredImage {
+                          node {
+                            sourceUrl
+                          }
+                        }
+                      }
                     }
-                    }
+                  }
                 }
-            }`
+              }`
         })
             .then(result =>{ return result});
         return hey;
@@ -198,7 +216,7 @@
                 actions.createPage({
                     path: `shop/${edge.node.productCategories.nodes[0].slug}/${edge.node.slug}`,
                     component: slash( singleProductPageTemplate ),
-                    context: { id: edge.node.databaseId, slug: edge.node.slug, name: edge.node.name, type: edge.node.type, description: edge.node.description, featured: edge.node.featured, cat: edge.node.productCategories.nodes[0].name},
+                    context: { image: edge.node.featuredImage.node.sourceUrl, id: edge.node.databaseId, slug: edge.node.slug, name: edge.node.name, type: edge.node.type, description: edge.node.description, featured: edge.node.featured, cat: edge.node.productCategories.nodes[0].name},
                 })
                 
             })

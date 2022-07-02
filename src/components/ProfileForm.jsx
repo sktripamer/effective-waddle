@@ -402,6 +402,26 @@ ex.previousShippingData = ''
   const customNoDataRenderer = () => (
     <div className='no-country'>No country found</div>
   );
+
+  const addressClick = (e) => {
+ 
+    setClickedAddress(parseInt(e.target.dataset.idindex));
+    document.getElementById("ship-name").value = e.target.dataset.first_name;
+    document.getElementById("ship-address1").value = e.target.dataset.address_1;
+    document.getElementById("ship-address2").value = e.target.dataset.address_2;
+    document.getElementById("ship-city").value = e.target.dataset.city;
+    document.getElementById("ship-state").value = e.target.dataset.state;
+    document.getElementById("ship-zip").value = e.target.dataset.postcode;
+    setCountry([{
+      name: 'United States of America',
+      code: e.target.dataset.country
+    }])
+    setAddressCheckHidden('-hide')
+    console.log('dd')
+  
+    setAddressDisabled(true)
+  }
+
   const newAddressButton = () => {
     setClickedAddress(-1)
     document.getElementById("ship-name").value = '';

@@ -31,7 +31,7 @@ const verifyUser = async (uID, newemail, code) => {
     const exists = await axios.get('https://portal.revrevdev.xyz/?better_ld_api=d74dd1094863071982578684bc13be64&better_ld_api_method=verify_mail&useremail=' + uID + '&newemail=' + newemail + '&code=' + code).then(resp => {    
         return resp.data;
     });
-    return res.status(200).json({exists})
+    return exists;
 
 }
 

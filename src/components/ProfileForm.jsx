@@ -18,7 +18,7 @@ export default function GetSubscriptions() {
 
   return (
       <div>
-        <button onClick={() => setHideAddress(false)}>show</button>
+    
         {hideAddress === false ? (
           <>
           <button onClick={() => setHideAddress(true)}>hide</button>
@@ -422,7 +422,7 @@ const openChange = () => {
     {parsedShippingData.length === 0 ? (
       <></>
     ) : (
-      <div class={`selection-address-form`}>
+      <div class={`selection-address-form addr-proccessing-${processing}`}>
       {parsedShippingData.map((el, index) =>
             <React.Fragment key={index}>
             <div data-address_1={el.address_1} data-address_2={el.address_2} data-city={el.city} data-country={el.country} data-first_name={el.first_name} data-postcode={el.postcode} data-state={el.state} onClick={addressClick} data-idindex={index} className={index === clickedAddress ? "previous-address is-checked" : "previous-address"}>
@@ -476,9 +476,9 @@ const openChange = () => {
     </div>
 
  {clickedAddress < 0 ? (
-<button disabled={processing} onClick={() => addAddress} class='pay-btn'>Save Address</button>
+<button disabled={processing} onClick={addAddress} class='pay-btn'>Save Address</button>
 ) : (
-<button onClick={() => removeAddress} class='delete-address-btn'>Remove Address</button>
+<button onClick={removeAddress} class='delete-address-btn'>Remove Address</button>
 )} 
     
     </div>

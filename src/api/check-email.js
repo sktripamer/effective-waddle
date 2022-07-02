@@ -1,6 +1,6 @@
 import axios from 'axios'
 import jwt from 'jsonwebtoken'
-
+let params;
 const validateJWT = async (req, res) => {
     //validates JWT and gets user ID from payload data. then passes to the next function to get customerID and paymentID from stripe.
     params = JSON.parse(req.body)

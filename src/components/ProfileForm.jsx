@@ -369,7 +369,7 @@ const openChange = () => {
 
   const addAddress = async () => {
     setProcessing(true)
-    
+    console.log(shippingData)
     let tempdata;
     if (shippingData === '') {
       tempdata = ''

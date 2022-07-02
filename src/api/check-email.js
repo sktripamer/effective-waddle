@@ -11,14 +11,14 @@ const validateJWT = async (req, res) => {
                         var newJWT = jwt.sign({  data: {
                             user: {
                               id: decoded.data.user.id,
-                              user_email:decoded.data.user.user_email
+                              user_email:params.new
                             }
                           } }, process.env.JWT_SECRET);
                           res.status(200).json({message: newJWT})
                     } else {
                         res.status(200).json({message: false})
                     }
-                return res.status(200).json({exists})
+                
              
            });
           } catch (e) {

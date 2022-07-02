@@ -451,11 +451,11 @@ const customNoDataRenderer = () => (
   </div>
     </div>
 
-{clickedAddress < 0 ? (
+{/* {clickedAddress < 0 ? (
 <button disabled={processing} onClick={() => addAddress} class='pay-btn'>Save Address</button>
 ) : (
 <button onClick={() => removeAddress} class='delete-address-btn'>Remove Address</button>
-)}
+)} */}
     
     </div>
   );

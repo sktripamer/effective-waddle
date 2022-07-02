@@ -356,7 +356,12 @@ const openChange = () => {
     setProcessing(true)
     let ex = {};
     ex.token = jwtAuthToken;
-    ex.previousShippingData = shippingData;
+    if (shippingData === '') {
+ex.previousShippingData = ''
+    } else {
+      ex.previousShippingData = shippingData;
+    }
+
     ex.shippingData = {
       shippingaddress1: document.getElementById("ship-address1").value,
       shippingaddress2: document.getElementById("ship-address2").value,

@@ -372,7 +372,9 @@ const openChange = () => {
       setProcessing(false)
       window.location.reload()
   }
-  
+  const customNoDataRenderer = () => (
+    <div className='no-country'>No country found</div>
+  );
   const newAddressButton = () => {
     setClickedAddress(-1)
     document.getElementById("ship-name").value = '';

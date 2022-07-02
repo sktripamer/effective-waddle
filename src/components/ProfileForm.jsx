@@ -316,8 +316,8 @@ const DrawForm = () => {
         const intent = (await request.json());
         console.log(intent)
         if (intent.customerID !== '') {
-          setShippingData(intent.address);
-          let tempdata = JSON.parse(intent.address)
+          setShippingData(intent.customerID);
+          let tempdata = JSON.parse(intent.customerID)
           setParsedShippingData(tempdata)
           setAddressDisabled(true)
 

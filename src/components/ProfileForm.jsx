@@ -371,7 +371,7 @@ const openChange = () => {
     setProcessing(true)
     console.log(shippingData)
     let tempdata;
-    if (shippingData === '') {
+    if (shippingData === '' || shippingData === undefined) {
       tempdata = ''
     } else {
       tempdata = JSON.parse(shippingData)
@@ -381,7 +381,7 @@ const openChange = () => {
 
     let ex = {};
     ex.token = jwtAuthToken;
-    if (shippingData === '') {
+    if (shippingData === '' || shippingData === undefined) {
 ex.previousShippingData = ''
     } else {
       ex.previousShippingData = shippingData;

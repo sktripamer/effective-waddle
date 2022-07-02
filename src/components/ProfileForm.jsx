@@ -310,11 +310,11 @@ const customNoDataRenderer = () => (
   // }, []);
 
 
-  useEffect(() => {
-    if (window.location.href.indexOf("profile") === -1) {
-      window.location.reload();
-    }
-  });
+  // useEffect(() => {
+  //   if (window.location.href.indexOf("profile") === -1) {
+  //     window.location.reload();
+  //   }
+  // });
   const addressClick = (e) => {
  
     setClickedAddress(parseInt(e.target.dataset.idindex));

@@ -5,16 +5,21 @@ import Header from "./Header";
 
 interface IProps {
   htmlClassName: string
+  seoImage: string
+  seoTitle: string
+  seoTitleTemplate: string
+  seoDescription: string
   children: ReactNode
 }
 
 
-export default function Layout({ htmlClassName, children }: IProps) {
-  console.log(htmlClassName)
+export default function Layout({ seoTitleTemplate, seoTitle, seoImage, seoDescription, htmlClassName, children }: IProps) {
   return (
     <>
-          <Helmet>
+          <Helmet  title={seoTitle} titleTemplate={seoTitleTemplate}>
         <html className={htmlClassName} lang="en" />
+        <meta name="description" content={seoDescription} />
+      <meta name="image" content={seoImage} />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
@@ -23,7 +28,6 @@ export default function Layout({ htmlClassName, children }: IProps) {
 <meta name="msapplication-TileColor" content="#da532c"/>
 <meta name="theme-color" content="#ffffff"/>
       </Helmet>
-      <title>revrevdev</title>
 
       <main>{children}</main>
     </>

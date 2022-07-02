@@ -148,100 +148,71 @@ const openChange = () => {
   
 
   return (
-    <div className='sub-list'>
-
-       {methodProcessing === 1 ? (
-         <>
-           <h2>Subscriptions</h2>
-           <div class='sub-subheader'>View and manage your subscriptions</div>
-            <div class='subloading'>Loading subscriptions...</div>
-            </>
-          ) : ('')}
-           {methodProcessing === 2 ? (
-         <>
-         <h2>Subscriptions</h2>
-         <div class='sub-subheader'>View and manage your subscriptions</div>
-          <div class='subloading'>No subscriptions found!</div>
-          </>
-          ) : ('')}
-          
-          {methodProcessing === 0 ? (
-            <>
-                <div className={`search-btn-container search-${loadSearch}`}>
-              {true == loadSearch
-                ? (
-                 <div className='search-outer-cont'>
-                   <div className="search-bar-title">
-                      <div className="search-bar-text">Subscription</div>
-                      <div onClick={closeModal} className='search-bar-close'>X</div>
-                   </div>
-                    {loadingPaymentData === true ? (
-                      <div class='subscription-section-modal'> 
-                      <div class='loading-bought'></div>
-                      </div>
-                    )
-                    : (
-                     <div class='more-payment-info'>
-                       {defaultPayment.card !== undefined ? (
-                        <div class={`subscription-section-modal successchange-${showSuccess} changesub-${changeSubscription}`}> 
-                          <div class='subscription-modal-head'>{nameOfSubscription}</div>
-                          {showSuccess === false ? (
-                            <></>
-                          ) : (
-                            <div class='using-card successer'>Successfully changed payment!</div>
-                          )}
-                          <div class='using-card'>Using Card:</div>
-                         <div class='selection-section defaultm'>
-                          <div class='previous-payment is-checked'>
-                            <div className={`prev-brand ${defaultPayment.card.brand}`}></div>
-                            <div className="prev-last4">{defaultPayment.card.last4}</div>
-                          </div>
-                        </div>
-                        {changeSubscription === false ? (
-                          <button onClick={() => setChangeSubscription(true)} class='change-sub-button'>Edit Subscription</button>
-                        ): (
-                        <></>
-                        )}
-                       
+    <div className='profile-page'>
+    <div className='shipping-form-data'>
+<div class='shipping-info'>Shipping Info</div>
+    {parsedShippingData.length === 0 ? (
+      <></>
+    ) : (
+      <div class={`selection-address-form`}>
+      {parsedShippingData.map((el, index) =>
+            <React.Fragment key={index}>
+            <div data-address_1={el.address_1} data-address_2={el.address_2} data-city={el.city} data-country={el.country} data-first_name={el.first_name} data-postcode={el.postcode} data-state={el.state} onClick={addressClick} data-idindex={index} className={index === clickedAddress ? "previous-address is-checked" : "previous-address"}>
+            <div className="prev-address-1">{el.address_1}</div>
+  
+            </div>
+          </React.Fragment>
+    )}
+    <div onClick={newAddressButton} className={`new-address${addressCheckHidden}`}>+ New Address</div>
+      </div>
+    )}
 
 
-                        </div>
-                      ): (
-                        <>
-                      <div class='subscription-section-modal'> 
-                      <div class='loading-bought'></div>
-                      </div>
-                        </>
-                      )}
 
+    <div className="ship-name">
 
-                     </div>
-                    )}
-                   </div>
-                  )
-                : ""}
+    <input disabled={addressDisabled} id="ship-name" required className={'form-control form-control'} placeholder="First and last name" autocomplete="shipping name" name={'name'}/>
     </div>
-            <h2>Subscriptions</h2>
-            <div class='sub-subheader'>View and manage your subscriptions</div>
+    <label>Street Address</label>
+    <div className="ship-street">
 
-            <div class='subscription-list'>
-               {arrayTest && arrayTest.map((el, index) =>
-                  <>
-                  <div data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} data-paymentid={el.default_payment_method} data-id={el.id} onClick={getButtonId} className={'sub-item'}>
-                    <div class='planactive-subname'>
-                     <div className={`planactive plan-${el.plan.active === true ? 'true' : 'false'}`}>{el.plan.active === true ? 'ACTIVE' : 'INACTIVE'}</div>
-                     <div className='sub-name'>{el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''}</div>
-                    </div>
-                    <div className="next-payment-date">{new Date((el.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-                    <div className='plancost'>{`$${el.plan.amount.toString().substring(0,el.plan.amount.toString().length-2)+"."+el.plan.amount.toString().substring(el.plan.amount.toString().length-2)}`}</div>
-                    <div data-id={el.id} data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} onClick={getButtonId} data-paymentid={el.default_payment_method} className='more-sub-dets'>More Details</div>
-                  </div>
-                  </>
-)}
-</div>
-</>
-            ): ('')}
-   
+    <input disabled={addressDisabled} id="ship-address1" required className={'form-control form-control'} placeholder="Street and number" autocomplete="shipping address-line1" name={'ship-address1'}/>
+    <input disabled={addressDisabled} id="ship-address2" className={'form-control form-control'} placeholder="Apartment, suite, unit, etc (optional)" autocomplete="shipping address-line2" name={'ship-address2'}/>
+    </div>
+    <label>City / State</label>
+    <div  className="ship-citystate">
+
+    <input disabled={addressDisabled} id="ship-city" required className={'form-control form-control'} placeholder="City" name="ship-city" autocomplete="shipping address-level2"/>
+    <input disabled={addressDisabled} id="ship-state" required className={'form-control form-control'} placeholder="State / Province" name="ship-state" autocomplete="shipping address-level1"/>
+    </div>
+    <label>Zip Code / Country</label>
+    <div className="ship-zipcountry">
+    <input disabled={addressDisabled} id="ship-zip" required className={'form-control form-control'} placeholder="Zip / Postal Code" autocomplete="shipping postal-code" name={'ship-zip'}/>
+    {/* <Select
+    options={optionsC} 
+    labelField="name"
+    valueField="code"
+    name="ship-country"
+    id="ship-country" 
+    dropdownPosition="top"
+    searchBy="name"
+    required
+    disabled={addressDisabled}
+    closeOnSelect={true}
+    values={country}
+    noDataRenderer={customNoDataRenderer}
+    onChange={values => setCountry(values)}
+  /> */}
+
+  </div>
+    </div>
+
+ {clickedAddress < 0 ? (
+<button disabled={processing} onClick={() => addAddress} class='pay-btn'>Save Address</button>
+) : (
+<button onClick={() => removeAddress} class='delete-address-btn'>Remove Address</button>
+)} 
+    
     </div>
   );
 

@@ -2492,7 +2492,7 @@ useEffect(() => {
           require('../styles/global1.css');
 
           return (
-            <Dashboard>
+            <Dashboard seoTitle="Revival of Revenue" seoTitleTemplate="Start building your business income today!" seoDescription="Pre-order PK's book today to learn how you can start maximizing your time and earning more money!" seoImage="https://portal.revrevdev.xyz/wp-content/uploads/2022/06/course.jpg">
                   <div className={`preorder-btn-container ${loadPreorder}`}>
     {true == loadPreorder
                 ? (

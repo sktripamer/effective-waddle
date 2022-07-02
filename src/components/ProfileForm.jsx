@@ -442,9 +442,15 @@ ex.previousShippingData = ''
     setProcessing(true)
     let tempdata = JSON.parse(shippingData)
     tempdata.splice(clickedAddress,1)
+  
     let ex = {};
     ex.token = jwtAuthToken;
-    ex.previousShippingData = JSON.stringify(tempdata);
+    if (tempdata.length === 0) {
+      ex.previousShippingData = ''
+    } else {
+      ex.previousShippingData = JSON.stringify(tempdata);
+    }
+  
     const request = await fetch('/api/remove-address', {
       method: 'POST',
       body: JSON.stringify(ex),
@@ -452,6 +458,13 @@ ex.previousShippingData = ''
     const intent = (await request.json());
     console.log(intent)
       setProcessing(false)
+      if (tempdata.length === 0) {
+        setParsedShippingData([])
+        setShippingData('')
+      } else {
+        setParsedShippingData(tempdata)
+        setShippingData(JSON.stringify(tempdata))
+      }
       setParsedShippingData(tempdata)
       setShippingData(JSON.stringify(tempdata))
       setClickedAddress(-1)

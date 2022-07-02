@@ -309,13 +309,7 @@ const customNoDataRenderer = () => (
     fetchMyAPI()
   }, []);
 
-  useEffect(() => {
-    console.log(window.location.href.indexOf("profile"))
-    if (window.location.href.indexOf("profile") === -1) {
-      console.log('here')
-      window.location.reload();
-    }
-  });
+
   // useEffect(() => {
   //   if (window.location.href.indexOf("profile") === -1) {
   //     window.location.reload();
@@ -399,7 +393,13 @@ const customNoDataRenderer = () => (
     setAddressDisabled(false)
   
   }
-
+  useEffect(() => {
+    console.log(window.location.href.indexOf("profile"))
+    if (window.location.href.indexOf("profile") === -1) {
+      console.log('here')
+      window.location.reload();
+    }
+  });
 
   return (
     <div className='profile-page'>

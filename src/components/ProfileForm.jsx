@@ -8,7 +8,7 @@ import useAuth, { User } from "../hooks/useAuth";
   import Select from "react-dropdown-select";
 
 export default function GetSubscriptions() {
- 
+  const [hideAddress, setHideAddress] = useState(true)
   useEffect(() => {
     if (window.location.href.indexOf("profile") === -1) {
       window.location.reload();
@@ -18,7 +18,17 @@ export default function GetSubscriptions() {
 
   return (
       <div>
-        <DrawForm/>
+        <button onClick={() => setHideAddress(false)}>show</button>
+        {hideAddress === false ? (
+          <>
+          <button onClick={() => setHideAddress(true)}>hide</button>
+          <DrawForm/>
+          </>
+          
+        ): (
+          <button onClick={() => setHideAddress(false)}>show</button>
+        )}
+       
 
       </div>
   )

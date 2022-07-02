@@ -16,7 +16,7 @@ export default function GetSubscriptions() {
   const [methodProcessing, setMethodProcessing] = useState(1);
   const [arrayTest, setArray] = useState({});
   const [loadSearch, setLoadSearch] = useState(false)
-  
+  const [clickedAddress, setClickedAddress] = useState(-1);
   const [loadingPaymentData, setLoadingPaymentData] = useState(true)
   const [defaultPayment, setDefaultPayment] = useState({})
   const [allPayments, setAllPayments] = useState([])

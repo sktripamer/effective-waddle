@@ -359,7 +359,7 @@ const openChange = () => {
     ex.previousShippingData = shippingData;
     ex.shippingData = {
       shippingaddress1: document.getElementById("ship-address1").value,
-      shippingaddress2: ocument.getElementById("ship-address2").value,
+      shippingaddress2: document.getElementById("ship-address2").value,
       shippingname: document.getElementById("ship-name").value,
       shippingcity: document.getElementById("ship-city").value,
       shippingstate: document.getElementById("ship-state").value,

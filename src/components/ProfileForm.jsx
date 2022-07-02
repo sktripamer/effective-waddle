@@ -11,6 +11,7 @@ import {
   } from '@stripe/react-stripe-js'; 
   import InputField2 from '../components/inputfield';
 
+  import Select from "react-dropdown-select";
 
 export default function GetSubscriptions() {
   const [stripePromise, setStripePromise] = useState(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
@@ -28,24 +29,46 @@ export default function GetSubscriptions() {
   const [changeSubscription, setChangeSubscription] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [subID, setSubID] = useState(null)
-  
+  const [processing, setProcessing] = useState(false)
+  const [parsedShippingData, setParsedShippingData] = useState([])
+  const [shippingData, setShippingData] = useState('');
+  const [addressDisabled, setAddressDisabled] = useState(false)
+  const [country, setCountry] = useState([{
+    name: 'United States of America',
+    code: 'US'
+  }]); 
 
 
 
   useEffect(() => {
     async function fetchMyAPI() {
       try {
-        const request = await fetch('/api/get-subscriptions', {
+        const request = await fetch('/api/get-address', {
           method: 'POST',
-          body: jwtAuthToken,
+          body: email(),
         });
         const intent = (await request.json());
         console.log(intent)
-        if (intent === true) {
-          setMethodProcessing(2)
-        }
-        setArray(intent.paymentMethod.data);
-          setMethodProcessing(0)
+        if (intent.customerID !== '') {
+          setShippingData(intent.address);
+          let tempdata = JSON.parse(intent.address)
+          setParsedShippingData(tempdata)
+          setAddressDisabled(true)
+
+          // document.getElementById("ship-name").value = tempdata[0].first_name;
+          // document.getElementById("ship-address1").value = tempdata[0].address_1;
+          // document.getElementById("ship-address2").value = tempdata[0].address_2;
+          // document.getElementById("ship-city").value = tempdata[0].city;
+          // document.getElementById("ship-state").value = tempdata[0].state;
+          // document.getElementById("ship-zip").value = tempdata[0].postcode;
+          setCountry([{
+            name: 'United States of America',
+            code: tempdata[0].country
+          }])
+          setClickedAddress(0)
+          } else {
+          }
+    
       } catch (error) {
         console.log('Failed to get cID');
         console.log(error);
@@ -55,6 +78,8 @@ export default function GetSubscriptions() {
     }
     fetchMyAPI()
   }, []);
+
+
   useEffect(() => {
     if (window.location.href.indexOf("profile") === -1) {
       window.location.reload();

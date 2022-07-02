@@ -25,9 +25,13 @@ params = JSON.parse(req.body)
             }
     }
 
-     
+     if(params.previousShippingData === '' || params.previousShippingData === undefined) {
+      data.acf['shippingaddress1'] = ''
+     } else {
+      data.acf['shippingaddress1'] = JSON.stringify(params.previousShippingData)
+     }
         
-          data.acf['shippingaddress1'] = JSON.stringify(params.previousShippingData)
+          
         
    
     

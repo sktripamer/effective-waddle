@@ -55,6 +55,7 @@ const DrawForm = () => {
   const [parsedShippingData, setParsedShippingData] = useState([])
   const [shippingData, setShippingData] = useState('');
   const [addressDisabled, setAddressDisabled] = useState(false)
+  const [addressCheckHidden, setAddressCheckHidden] = useState('');
   const [country, setCountry] = useState([{
     name: 'United States of America',
     code: 'US'
@@ -332,6 +333,7 @@ const DrawForm = () => {
             code: tempdata[0].country
           }])
           setClickedAddress(0)
+          setAddressCheckHidden('-hide')
           } else {
           }
     
@@ -416,7 +418,7 @@ ex.previousShippingData = ''
       name: 'United States of America',
       code: e.target.dataset.country
     }])
-
+    setAddressCheckHidden('-hide')
     console.log('dd')
   
     setAddressDisabled(true)
@@ -434,7 +436,7 @@ ex.previousShippingData = ''
       name: 'United States of America',
       code: 'US'
     }])
-  
+    setAddressCheckHidden('')
     setAddressDisabled(false)
 
   }
@@ -456,7 +458,7 @@ ex.previousShippingData = ''
             </div>
           </React.Fragment>
     )}
-    <div onClick={newAddressButton} className={`new-address`}>+ New Address</div>
+    <div onClick={newAddressButton} className={`new-address${addressCheckHidden}`}>+ New Address</div>
       </div>
     )}
 

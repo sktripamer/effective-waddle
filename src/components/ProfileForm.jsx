@@ -416,7 +416,7 @@ ex.previousShippingData = ''
       name: 'United States of America',
       code: e.target.dataset.country
     }])
-    setAddressCheckHidden('-hide')
+
     console.log('dd')
   
     setAddressDisabled(true)
@@ -456,7 +456,7 @@ ex.previousShippingData = ''
             </div>
           </React.Fragment>
     )}
-    <div onClick={newAddressButton} className={`new-address${addressCheckHidden}`}>+ New Address</div>
+    <div onClick={newAddressButton} className={`new-address`}>+ New Address</div>
       </div>
     )}
 

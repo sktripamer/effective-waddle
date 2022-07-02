@@ -270,46 +270,52 @@ const customNoDataRenderer = () => (
     }
   }
 
-  // useEffect(() => {
-  //   async function fetchMyAPI() {
-  //     try {
-  //       const request = await fetch('/api/get-address', {
-  //         method: 'POST',
-  //         body: email(),
-  //       });
-  //       const intent = (await request.json());
-  //       console.log(intent)
-  //       if (intent.customerID !== '') {
-  //         setShippingData(intent.address);
-  //         let tempdata = JSON.parse(intent.address)
-  //         setParsedShippingData(tempdata)
-  //         setAddressDisabled(true)
+  useEffect(() => {
+    async function fetchMyAPI() {
+      try {
+        const request = await fetch('/api/get-address', {
+          method: 'POST',
+          body: email(),
+        });
+        const intent = (await request.json());
+        console.log(intent)
+        if (intent.customerID !== '') {
+          setShippingData(intent.address);
+          let tempdata = JSON.parse(intent.address)
+          setParsedShippingData(tempdata)
+          setAddressDisabled(true)
 
-  //         document.getElementById("ship-name").value = tempdata[0].first_name;
-  //         document.getElementById("ship-address1").value = tempdata[0].address_1;
-  //         document.getElementById("ship-address2").value = tempdata[0].address_2;
-  //         document.getElementById("ship-city").value = tempdata[0].city;
-  //         document.getElementById("ship-state").value = tempdata[0].state;
-  //         document.getElementById("ship-zip").value = tempdata[0].postcode;
-  //         setCountry([{
-  //           name: 'United States of America',
-  //           code: tempdata[0].country
-  //         }])
-  //         setClickedAddress(0)
-  //         } else {
-  //         }
+          document.getElementById("ship-name").value = tempdata[0].first_name;
+          document.getElementById("ship-address1").value = tempdata[0].address_1;
+          document.getElementById("ship-address2").value = tempdata[0].address_2;
+          document.getElementById("ship-city").value = tempdata[0].city;
+          document.getElementById("ship-state").value = tempdata[0].state;
+          document.getElementById("ship-zip").value = tempdata[0].postcode;
+          setCountry([{
+            name: 'United States of America',
+            code: tempdata[0].country
+          }])
+          setClickedAddress(0)
+          } else {
+          }
     
-  //     } catch (error) {
-  //       console.log('Failed to get cID');
-  //       console.log(error);
-  //       return null;
-  //     }
+      } catch (error) {
+        console.log('Failed to get cID');
+        console.log(error);
+        return null;
+      }
     
-  //   }
-  //   fetchMyAPI()
-  // }, []);
+    }
+    fetchMyAPI()
+  }, []);
 
-
+  useEffect(() => {
+    console.log(window.location.href.indexOf("profile"))
+    if (window.location.href.indexOf("profile") === -1) {
+      console.log('here')
+      window.location.reload();
+    }
+  });
   // useEffect(() => {
   //   if (window.location.href.indexOf("profile") === -1) {
   //     window.location.reload();
@@ -455,11 +461,11 @@ const customNoDataRenderer = () => (
   </div>
     </div>
 
-{/* {clickedAddress < 0 ? (
+ {clickedAddress < 0 ? (
 <button disabled={processing} onClick={() => addAddress} class='pay-btn'>Save Address</button>
 ) : (
 <button onClick={() => removeAddress} class='delete-address-btn'>Remove Address</button>
-)} */}
+)} 
     
     </div>
   );

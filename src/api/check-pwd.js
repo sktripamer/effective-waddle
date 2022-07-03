@@ -19,7 +19,7 @@ const validateJWT = async (req, res) => {
 
 const verifyUser = async (uID, newpwd, code) => {
     console.log('aa')
-    console.log(uID, newemail, code)
+    console.log(uID, newpwd, code)
     const exists = await axios.get('https://portal.revrevdev.xyz/?better_ld_api=d74dd1094863071982578684bc13be64&better_ld_api_method=verifychange_pwd&useremail=' + uID + '&userpass=' + newpwd + '&code=' + code).then(resp => {    
         return resp.data;
     });

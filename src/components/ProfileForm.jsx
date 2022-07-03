@@ -356,6 +356,7 @@ const DrawForm = () => {
   const [clickedAddress, setClickedAddress] = useState(-1);
   const [loadingPaymentData, setLoadingPaymentData] = useState(true)
   const [defaultPayment, setDefaultPayment] = useState({})
+  const [loaded, setLoaded] = useState(false)
   const [allPayments, setAllPayments] = useState([])
   const [nameOfSubscription, setNameOfSubscription] = useState(null)
   const [changeSubscription, setChangeSubscription] = useState(false)
@@ -626,6 +627,7 @@ const DrawForm = () => {
         });
         const intent = (await request.json());
         console.log(intent)
+        setLoaded(true)
         if (intent.customerID !== '') {
           setShippingData(intent.customerID);
           let tempdata = JSON.parse(intent.customerID)
@@ -829,13 +831,13 @@ ex.previousShippingData = ''
   
 
   return (
-    <div id="payment-form">
-    <div className='shipping-form-data'>
+    <div class={`formload-${loaded} addr-proccessing-${processing}`} id={`payment-form`}>
+    <div className={`shipping-form-data`}>
 <div class='shipping-info'>Shipping Info</div>
     {parsedShippingData.length === 0 ? (
       <></>
     ) : (
-      <div class={`selection-address-form addr-proccessing-${processing}`}>
+      <div class={`selection-address-form`}>
       {parsedShippingData.map((el, index) =>
             <React.Fragment key={index}>
             <div data-address_1={el.address_1} data-address_2={el.address_2} data-city={el.city} data-country={el.country} data-first_name={el.first_name} data-postcode={el.postcode} data-state={el.state} onClick={addressClick} data-idindex={index} className={index === clickedAddress ? "previous-address is-checked" : "previous-address"}>

@@ -31,6 +31,7 @@ export default function LogInForm() {
   const [loginStep, setLoginStep] = useState(0);
   const [loadingUser, setLoadingUser] = useState(false);
   const [emailValidError, setEmailValidError] = useState(false)
+  const [passwordChanged, setPasswordChanged] = useState(false)
   const [goToEmail, setGoToEmail] = useState('')
   const [emailText, setEmailText] = useState('')
   const errorMessage = error?.message || '';
@@ -51,6 +52,7 @@ export default function LogInForm() {
       if (name !== null) {
         ((document.getElementById('log-in-email') as HTMLInputElement)).value = name;
         setEmailText(name)
+        setPasswordChanged(true)
         setLoginStep(1)
       
       }
@@ -160,7 +162,10 @@ async function handleVerify() {
      <h1 onClick={() => navigate('/')}>Revival of Revenue</h1>             
     <form className={`login-form`} method="post" onSubmit={handleSubmit}>
       <fieldset aria-busy={loading}>
-      <h2>Login</h2>      
+      <h2>Login</h2> 
+      {passwordChanged === true ? (
+          <p className="successer-message">Password changed! Login with your new password to continue.</p>
+        ) : null}          
         <div className="login-email">
         <div class="inputwrap emailer">
         <input

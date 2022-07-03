@@ -2877,7 +2877,16 @@ to    { opacity:0; }
       padding: 4px;
       background: linear-gradient(294deg,#ff22a7,#ff1b65);
   }
+  .pay-btn.deleter {
+    background: none;
+}
 
+.successer-message {
+  color: #bb1524;
+  font-family: 'Nunito Bold';
+  font-size: 1.1em;
+  padding: 1em;
+}
   .new-address-hide {
           align-items: center;
       border: 2px solid #ff005e;
@@ -4625,6 +4634,153 @@ button.change-sub-button {
       transform: rotate(360deg);
     }
   }
+
+
+  button.address-form-button {
+    width: 90%;
+    max-width: 800px;
+    color: #fff;
+    margin: 0 auto;
+    background: linear-gradient(183deg,#42276c,#18026c);
+    font-family: 'Nunito Bold';
+    font-size: 1.3em;
+    padding: .5em;
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    margin-top: 1em;
+    border-bottom-right-radius: 0;
+}
+
+button.address-form-button.closer:after {
+    content: '';
+    width: 0;
+    position: absolute;
+    margin-right: 8px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 12px solid #fff;
+    border-bottom:0;
+}
+
+button.address-form-button:after {
+    content: '';
+    width: 0;
+    position: absolute;
+    margin-right: 8px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid #fff;
+}
+
+.order-page #payment-form {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1em;
+    background: #3F177D;
+    padding-bottom: 5em;
+}
+
+button.address-form-button.closer {
+    border-radius: 8px;
+}
+
+.address-form-cont label {
+    display: none;
+}
+
+.order-page input.form-control.form-control:disabled {
+    opacity: .5;
+}
+
+div.react-dropdown-select[disabled] {
+    opacity: .5;
+}
+
+button.delete-address-btn {
+    background: none;
+    border: 2px solid #ff005e;
+    border-radius: 3px;
+    color: #fff;
+    float: left;
+    font-weight: 700;
+    margin-top: 0;
+    opacity: 1;
+    padding: 6px 32px;
+}
+
+
+
+div.shipping-form-data input.form-control.form-control {
+    transition: none;
+}
+
+.addr-proccessing-true .shipping-form-data {
+    opacity: .5;
+    pointer-events:none;
+}
+
+.addr-proccessing-true .pay-btn {
+    opacity: .5;
+        pointer-events:none;
+}
+.formload-false .shipping-form-data {
+    opacity: 0;
+    pointer-events:none;
+}
+
+.formload-false .pay-btn {
+    opacity: 0;
+        pointer-events:none;
+}
+
+.addr-proccessing-true:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    left: 0;
+    background-image: url("data:image/svg+xml, %3Csvg version='1.1' id='loader-1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='24px' height='24px' viewBox='0 0 50 50' style='enable-background:new 0 0 50 50;' xml:space='preserve'%3E%3Cpath fill='%23E9183C' d='M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z'%3E%3CanimateTransform attributeType='xml' attributeName='transform' type='rotate' from='0 25 25' to='360 25 25' dur='0.6s' repeatCount='indefinite'/%3E%3C/path%3E%3C/svg%3E");
+    color: #fff0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;width:100%;
+    height: 120px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.formload-false:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    left: 0;
+    background-image: url("data:image/svg+xml, %3Csvg version='1.1' id='loader-1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='24px' height='24px' viewBox='0 0 50 50' style='enable-background:new 0 0 50 50;' xml:space='preserve'%3E%3Cpath fill='%23E9183C' d='M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z'%3E%3CanimateTransform attributeType='xml' attributeName='transform' type='rotate' from='0 25 25' to='360 25 25' dur='0.6s' repeatCount='indefinite'/%3E%3C/path%3E%3C/svg%3E");
+    color: #fff0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;width:100%;
+    height: 120px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.shipping-form-data {
+    opacity: 1;
+    transition: all .2s;
+}
+
 
 
   /*

@@ -273,7 +273,7 @@ const PwdForm = () => {
     }
 
     if (intent.exists.message === true) {
-      let eml = email()
+      let eml = JSON.parse(localStorage.getItem("auth")).user.email
       localStorage.removeItem('auth');
       window.location = '/log-in?success=' + eml
    //setsuccess

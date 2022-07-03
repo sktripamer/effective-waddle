@@ -174,10 +174,9 @@ return (
       ): (
         <button class='edit-email-btn' onClick={engage2fa}>Change</button>
       )}
-  </div>
-  {emailCodeStep === true ? (
-    <>
-    <div class='enter-code-text'>Enter the code we sent to your old email (${JSON.parse(localStorage.getItem("auth")).user.email}) to confirm changes.</div>
+       {emailCodeStep === true ? (
+   <div class='code-verify-overlay'>
+    <div class='enter-code-text'>Enter the code we sent to your old email ({JSON.parse(localStorage.getItem("auth")).user.email}) to confirm changes.</div>
     <div class={`enter-code-cont codeproc-${emailCodeProcessing}`}>
     <input
     className='verify-code'
@@ -186,13 +185,15 @@ return (
         />
         <button onClick={check2fa} class='change-email-btn'>Confirm</button>
     </div>
-    {emailCodeError === true ? (
+   
+    </div>
+  ):('')}
+  </div>
+  {emailCodeError === true ? (
       <div class='email-code-error'>Error with the code or changing your email. Try again later.</div>
     ): (
       ''
     )}
-    </>
-  ):('')}
   </>
 )
 
@@ -272,8 +273,9 @@ const PwdForm = () => {
     }
 
     if (intent.exists.message === true) {
+      let eml = email()
       localStorage.removeItem('auth');
-      navigate(`/login?success=${email()}`)
+      navigate('/login?success=' + eml)
    //setsuccess
    setEmailCodeProcessing(false)
    setEmailProcessing(false)
@@ -318,10 +320,9 @@ return (
       ): (
         <button class='edit-email-btn' onClick={engage2fa}>Change</button>
       )}
-  </div>
-  {emailCodeStep === true ? (
-    <>
-    <div class='enter-code-text'>Enter the code we sent to your old email (${JSON.parse(localStorage.getItem("auth")).user.email}) to confirm changes.</div>
+       {emailCodeStep === true ? (
+    <div class='code-verify-overlay'>
+    <div class='enter-code-text'>Enter the code we sent to your email to confirm changes.</div>
     <div class={`enter-code-cont codeproc-${emailCodeProcessing}`}>
     <input
     className='verify-code'
@@ -330,13 +331,15 @@ return (
         />
         <button onClick={check2fa} class='change-email-btn'>Confirm</button>
     </div>
-    {emailCodeError === true ? (
+   
+    </div>
+  ):('')}
+  </div>
+  {emailCodeError === true ? (
       <div class='email-code-error'>Error with the code or changing your password. Try again later.</div>
     ): (
       ''
     )}
-    </>
-  ):('')}
   </>
 )
 

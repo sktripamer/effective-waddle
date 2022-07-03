@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link, navigate } from "gatsby";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMutation, gql } from "@apollo/client";
 
 import { GET_USER } from "../hooks/useAuth";
@@ -42,6 +42,20 @@ export default function LogInForm() {
   const isPasswordValid =
     !errorMessage.includes('empty_password') &&
     !errorMessage.includes('incorrect_password');
+
+
+    useEffect(() => {
+      let params = new URLSearchParams(document.location.search);
+      let name = params.get("success");
+
+      if (name !== null) {
+        ((document.getElementById('log-in-email') as HTMLInputElement)).value = name;
+        setEmailText(name)
+        setLoginStep(1)
+      
+      }
+
+    },[]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();

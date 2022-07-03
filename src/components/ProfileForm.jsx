@@ -33,8 +33,10 @@ export default function GetSubscriptions() {
         {hideAcc === false ? (
           <div class='address-form-cont'>
           <button class='address-form-button' onClick={() => setHideAcc(true)}>View Account</button>
+          <div class='account-section-cont'>
           <AccForm/>
           <PwdForm/>
+          </div>
           </div>
           
         ): (
@@ -148,7 +150,7 @@ const AccForm = () => {
 return (
   <>
 
-  <div class={`account-email-section $emlprocess-${emailProcessing}`}>
+  <div class={`account-email-section emlprocess-${emailProcessing}`}>
   {emailSuccess === true ? (
       <div class='email-code-success'>Email Successfully changed!</div>
     ): (

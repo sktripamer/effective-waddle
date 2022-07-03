@@ -237,7 +237,7 @@ async function handleSubmit(e) {
         <Elements stripe={stripePromise}>
             
                
-                <StepSix setStep={setStep} button={'Pay'} header={'checkout'} subheader={""} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
+                <StepSix totalSteps={totalSteps} setStep={setStep} button={'Pay'} header={'checkout'} subheader={""} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} /> 
             
         </Elements>
         </div>
@@ -616,7 +616,7 @@ const customNoDataRenderer = () => (
           }
           setArray(intent.paymentMethod.data);
           setShippingData(intent.address);
-
+          if (props.totalSteps === 2) {
           if (intent.address !== '') {
             console.log('here22')
           let tempdata = JSON.parse(intent.address)
@@ -636,7 +636,7 @@ const customNoDataRenderer = () => (
             setClickedAddress(0)
             setAddressCheckHidden('-hide')
           } 
-        
+          }
        
     
           console.log(intent)

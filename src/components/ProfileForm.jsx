@@ -19,6 +19,7 @@ export default function GetSubscriptions() {
 
   return (
       <div class='sub-list order-page'>
+        <div class='account-settings-cont'>
         <h2>Add and remove addresses</h2>
         {hideAddress === false ? (
           <div class='address-form-cont'>
@@ -42,6 +43,7 @@ export default function GetSubscriptions() {
         ): (
           <button class='address-form-button closer' onClick={() => setHideAcc(false)}>View Account</button>
         )}
+        </div>
       </div>
   )
 
@@ -149,7 +151,7 @@ const AccForm = () => {
 //both go through a 2fa form where you have to enter the code (like notregistered check)
 return (
   <>
-
+ <div class='subscription-modal-head'>Change Email</div>
   <div class={`account-email-section emlprocess-${emailProcessing}`}>
   {emailSuccess === true ? (
       <div class='email-code-success'>Email Successfully changed!</div>
@@ -162,6 +164,7 @@ return (
         type="text"
         name="email"
         autoComplete="email"
+        disabled={lockedEmail}
         required
       />
       <div class="label">Email</div>
@@ -184,6 +187,7 @@ return (
     className='verify-code'
         id="verify-emailcode"
         type="text"
+        placeholder="CODE"
         />
         <button onClick={check2fa} class='change-email-btn'>Confirm</button>
     </div>
@@ -296,8 +300,9 @@ const PwdForm = () => {
 //both go through a 2fa form where you have to enter the code (like notregistered check)
 return (
   <>
-
-  <div class={`account-email-section $emlprocess-${emailProcessing}`}>
+  <div class='subscription-modal-head'>Change Password</div>
+  <div class={`account-email-section emlprocess-${emailProcessing}`}>
+    
   {emailSuccess === true ? (
       <div class='email-code-success'>Password Successfully changed!</div>
     ): (
@@ -308,6 +313,7 @@ return (
         id="log-in-password"
         type="password"
         name="password"
+        disabled={lockedEmail}
         required
       />
       <div class="label">Password</div>
@@ -329,6 +335,7 @@ return (
     <input
     className='verify-code'
         id="verify-pwdcode"
+        placeholder="CODE"
         type="text"
         />
         <button onClick={check2fa} class='change-email-btn'>Confirm</button>

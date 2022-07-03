@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useState, useEffect, useRef } from "react";
-
+import navigate from "gatsby";
 import useAuth, { User } from "../hooks/useAuth";
 
   import InputField2 from '../components/inputfield';
@@ -34,6 +34,7 @@ export default function GetSubscriptions() {
           <div class='address-form-cont'>
           <button class='address-form-button' onClick={() => setHideAcc(true)}>View Account</button>
           <AccForm/>
+          <PwdForm/>
           </div>
           
         ): (
@@ -187,6 +188,150 @@ return (
     </div>
     {emailCodeError === true ? (
       <div class='email-code-error'>Error with the code or changing your email. Try again later.</div>
+    ): (
+      ''
+    )}
+    </>
+  ):('')}
+  </>
+)
+
+}
+
+const PwdForm = () => {
+
+  const [lockedEmail, setLockedEmail] = useState(true)
+  const [emailProcessing, setEmailProcessing] = useState(false)
+  const [emailCodeStep, setEmailCodeStep] = useState(false)
+  const [emailCodeProcessing, setEmailCodeProcessing] = useState(false)
+  const [unexpectedError, setUnexpectedError] = useState(false)
+  const [emailCodeError, setEmailCodeError] =  useState(false)
+  const [emailSuccess, setEmailSuccess] = useState(false)
+
+
+  const setAuth = (authData) => {
+    localStorage.setItem("auth", JSON.stringify(authData));
+  };
+
+
+  const email = function() {
+    try {
+      return JSON.parse(localStorage.auth).authToken;
+    } catch {
+      return null;
+    }
+  }
+
+  const unlockEmail = () => {
+    setEmailSuccess(false)
+    document.getElementById('log-in-password').value = ''
+    setLockedEmail(false)
+    document.getElementById('log-in-password').focus()
+  }
+
+  const engage2fa = async () => {
+    setUnexpectedError(false)
+    setEmailProcessing(true)
+
+
+    const request = await fetch('/api/change-pwd', {
+      method: 'POST',
+      body: email(),
+    });
+    const intent = (await request.json());
+    console.log(intent)
+    if (intent.exists.message === true) {
+      setEmailCodeStep(true)
+    } else {
+      //set error
+      setUnexpectedError(true)
+      setEmailProcessing(false)
+    }
+  }
+  const check2fa = async () => {
+    setEmailCodeError(false)
+   setEmailCodeProcessing(true)
+    let ex = {
+      token: email(),
+      new: document.getElementById('log-in-password').value,
+      code: document.getElementById('verify-pwdcode').value
+    }
+
+    const request = await fetch('/api/check-pwd', {
+      method: 'POST',
+      body: JSON.stringify(ex),
+    });
+    const intent = (await request.json());
+    console.log(intent)
+    if (intent.exists.message === false) {
+        //set error
+        setEmailCodeProcessing(false)
+        setEmailProcessing(false)
+        setEmailCodeError(true)
+        return;
+    }
+
+    if (intent.exists.message === true) {
+      localStorage.removeItem('auth');
+      navigate(`/login?success=${email()}`)
+   //setsuccess
+   setEmailCodeProcessing(false)
+   setEmailProcessing(false)
+   setEmailCodeStep(false)
+   setLockedEmail(false)
+   setEmailSuccess(true)
+    } else {
+      //set error
+      setEmailCodeProcessing(false)
+      setEmailProcessing(false)
+      setEmailCodeError(true)
+    }
+  }
+
+//change password, change email
+//both go through a 2fa form where you have to enter the code (like notregistered check)
+return (
+  <>
+
+  <div class={`account-email-section $emlprocess-${emailProcessing}`}>
+  {emailSuccess === true ? (
+      <div class='email-code-success'>Password Successfully changed!</div>
+    ): (
+      ''
+    )}
+      <div class={`inputwrap passworder locked-${lockedEmail}`}>
+      <input
+        id="log-in-password"
+        type="password"
+        name="password"
+        required
+      />
+      <div class="label">Password</div>
+      </div>
+      {unexpectedError === true ? (
+      <div class='email-code-error'>Error when trying to change. Try again later.</div>
+    ): (
+      ''
+    )}
+      {lockedEmail === true ? (
+   <button class='edit-email-btn' onClick={unlockEmail}>Edit</button>
+      ): (
+        <button class='edit-email-btn' onClick={engage2fa}>Change</button>
+      )}
+  </div>
+  {emailCodeStep === true ? (
+    <>
+    <div class='enter-code-text'>Enter the code we sent to your old email (${JSON.parse(localStorage.getItem("auth")).user.email}) to confirm changes.</div>
+    <div class={`enter-code-cont codeproc-${emailCodeProcessing}`}>
+    <input
+    className='verify-code'
+        id="verify-pwdcode"
+        type="text"
+        />
+        <button onClick={check2fa} class='change-email-btn'>Confirm</button>
+    </div>
+    {emailCodeError === true ? (
+      <div class='email-code-error'>Error with the code or changing your password. Try again later.</div>
     ): (
       ''
     )}

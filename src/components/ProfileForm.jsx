@@ -191,15 +191,15 @@ return (
         />
         <button onClick={check2fa} class='change-email-btn'>Confirm</button>
     </div>
-   
-    </div>
-  ):('')}
-  </div>
-  {emailCodeError === true ? (
+    {emailCodeError === true ? (
       <div class='email-code-error'>Error with the code or changing your email. Try again later.</div>
     ): (
       ''
     )}
+    </div>
+  ):('')}
+  </div>
+  
   </>
 )
 
@@ -340,15 +340,15 @@ return (
         />
         <button onClick={check2fa} class='change-email-btn'>Confirm</button>
     </div>
-   
-    </div>
-  ):('')}
-  </div>
-  {emailCodeError === true ? (
+    {emailCodeError === true ? (
       <div class='email-code-error'>Error with the code or changing your password. Try again later.</div>
     ): (
       ''
     )}
+    </div>
+  ):('')}
+  </div>
+ 
   </>
 )
 

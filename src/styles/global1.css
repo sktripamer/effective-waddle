@@ -4758,7 +4758,10 @@ div.shipping-form-data input.form-control.form-control {
     top: 50%;
     transform: translateY(-50%);
 }
-
+.order-page .shipping-info {
+  text-align: center;
+  font-size: 1.4em;
+}
 .formload-false:after {
     content: '';
     position: absolute;
@@ -4781,7 +4784,92 @@ div.shipping-form-data input.form-control.form-control {
     transition: all .2s;
 }
 
+.account-section-cont {
+  background: #3f177d;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 1em 1em 5em;
+  width: 90%;
+}
 
+
+
+button.edit-email-btn {
+  background: none;
+  padding: 0;
+  color: #cf0b1d;
+  font-family: 'Nunito Bold';
+  width: 80px;
+  height: 52px;
+  border: 2px solid #cf0b1d;
+  margin: 0em 0em 0.2em 4px;
+  border-radius: 0;
+}
+
+.account-email-section {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 600px;
+  align-items: flex-end;
+  margin-bottom: 2em;
+}
+
+.order-page .inputwrap {
+  margin: 1em 0.2em 0.2em calc(20px + 2em);
+}
+
+.code-verify-overlay {
+  position: absolute;
+  background: #070110e3;
+  width: 105%;
+  right: -2.5%;
+  top: -1em;
+  padding: 1em;
+  backdrop-filter: blur(2px);
+}
+
+.enter-code-text {
+  color: #fff;
+  font-family: 'Nunito Bold';
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.enter-code-cont {
+  display: flex;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  justify-content: center;
+}
+
+button.change-email-btn {
+  background: none;
+  padding: 0;
+  color: #cf0b1d;
+  font-family: 'Nunito Bold';
+  width: 80px;
+  height: 52px;
+  border: 2px solid #cf0b1d;
+  margin: 0em 0em 0.2em 4px;
+  border-radius: 0;
+}
+
+input.verify-code {
+  height: 52px;
+  border-radius: 10px;
+  background: #02032c2e;
+  font-size: 2em;
+  width: 200px;
+  color: #fff;
+  border: 3px solid #cf0b1d;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+
+input.verify-code:focus {
+  outline: 1px solid #cf0b1d;
+}
 
   /*
   navbar start

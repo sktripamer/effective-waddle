@@ -4625,11 +4625,33 @@ button.change-sub-button {
     height: 50px;
     position: absolute;
 }
+.inputwrap.locked-true input {pointer-events: none;opacity: .3;}
+
+.inputwrap.locked-true:after {
+    opacity: .3;
+}
+.show-shipping {
+  color: #fff;
+  font-family: 'Nunito Regular';
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.show-shipping-cont {
+  display: flex;
+  gap: 6px;
+}
+
+
+.show-shipping-cont .show-shipping-item:first-child:after {
+  content: ',';
+}
 
 .email-code-error {
   text-align: center;
   color: #db0e0e;
   font-family: 'Nunito Regular';
+  font-size: .9em;
 }
 .codeproc-true .verify-code {
     opacity: 0;
@@ -4813,7 +4835,7 @@ div.shipping-form-data input.form-control.form-control {
   background: #3f177d;
   margin: 0 auto;
   max-width: 800px;
-  padding: 1em 1em 5em;
+  padding: 1em 1em 9em;
   width: 90%;
 }
 
@@ -4879,23 +4901,34 @@ button.change-email-btn {
   margin: 0em 0em 0.2em 4px;
   border-radius: 0;
 }
-
+.account-settings-cont {
+  max-height: 90%;
+  overflow-y: overlay;
+  margin: 1em auto 0;
+  max-width: 800px;
+  padding: 0.5em;
+  width: 90%;
+}
 input.verify-code {
   height: 52px;
   border-radius: 10px;
   background: #02032c2e;
   font-size: 2em;
-  width: 200px;
+  width: 170px;
   color: #fff;
-  border: 3px solid #cf0b1d;
-  letter-spacing: 0.4em;
+  border: 3px solid #bfbfbf;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 input.verify-code:focus {
-  outline: 1px solid #cf0b1d;
+  outline: none;
+  border: 3px solid #cf0b1d;
 }
-
+input.verify-code::placeholder {
+  letter-spacing:0;
+  color: #bfbfbf;
+}
   /*
   navbar start
   */

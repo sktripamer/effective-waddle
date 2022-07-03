@@ -164,7 +164,6 @@ return (
         type="text"
         name="email"
         autoComplete="email"
-        disabled={lockedEmail}
         required
       />
       <div class="label">Email</div>
@@ -313,7 +312,7 @@ return (
         id="log-in-password"
         type="password"
         name="password"
-        disabled={lockedEmail}
+
         required
       />
       <div class="label">Password</div>

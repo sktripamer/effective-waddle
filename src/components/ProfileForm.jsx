@@ -275,7 +275,7 @@ const PwdForm = () => {
     if (intent.exists.message === true) {
       let eml = email()
       localStorage.removeItem('auth');
-      navigate('/log-in')
+      window.location = '/log-in?success=' + eml
    //setsuccess
    setEmailCodeProcessing(false)
    setEmailProcessing(false)

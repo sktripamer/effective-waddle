@@ -9,7 +9,7 @@ const validateJWT = async (req, res) => {
     //validates JWT and gets user ID from payload data. then passes to the next function to get customerID and paymentID from stripe.
         try {
                 jwt.verify(params.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
-                  if (params.product === 1735) {
+                 
                     //entrepreneurial espresso sub
                     let customerID = await getCustomerID(decoded.data.user.id);
                     if (customerID.acf.customer_id === undefined || customerID.acf.customer_id === '') {
@@ -30,7 +30,7 @@ const validateJWT = async (req, res) => {
                       return res.status(200).json({customerID})
                     }
                     return res.status(200).json(false);
-                  }
+                  
              
            });
           } catch (e) {

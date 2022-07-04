@@ -91,14 +91,14 @@ export default function GetCourses() {
                      <a class='course-btn btn-continue' href={`https://portal.revrevdev.xyz/courses/${slugify(el.title)}`} target="_blank" rel="noreferrer noopener">Continue Course</a>
                     ) : ('')}
                       {el.data.status === 'completed' ? (
-                     <a class='course-btn btn-finished' href={`https://portal.revrevdev.xyz/courses/${slugify(el.title)}`} target="_blank" rel="noreferrer noopener">Review Course</a>
+                     <a class='course-btn btn-finished' href={`https://portal.revrevdev.xyz/courses/${slugify(el.title)}`} target="_blank" rel="noreferrer noopener">Start Course</a>
                     ) : ('')}
                  </div>
                   </>
 )}
 </div>
             )}
-   <button onClick={navigate('/shop/courses')} class='view-all-courses'>View All Courses</button>
+<a class='view-all-courses-btn' href={`/shop/courses`} rel="noreferrer noopener">View All Courses</a>
     </div>
   );
 

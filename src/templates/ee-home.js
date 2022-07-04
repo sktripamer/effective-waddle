@@ -28,9 +28,10 @@ const hatsCat = ( props ) => {
             }
            let sendBody = {
                 token: email(),
+                product: 1735
             }
 
-            const request = await fetch('/api/check-ee', {
+            const request = await fetch('/api/has-bought', {
               method: 'POST',
               body: JSON.stringify(sendBody),
             });

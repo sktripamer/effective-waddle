@@ -8,7 +8,7 @@ import { navigate } from 'gatsby';
 const hatsCat = ( props ) => {
 
     const { pageContext: { pagedata } } = props;
-    const [loadingBought, setLoadingBought] = useState(true)
+    const [loadingBought, setLoadingBought] = useState(false)
     const [bought, setBought] = useState('')
 
     const email = function() {
@@ -40,10 +40,10 @@ const hatsCat = ( props ) => {
 
             if (intent.customerID.success === 1) {
                 setBought(true)
-                setLoadingBought(false)
+                setLoadingBought(true)
             } else {
                 setBought(false)
-                setLoadingBought(false)
+                setLoadingBought(true)
             }
 
            

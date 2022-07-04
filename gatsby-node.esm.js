@@ -3,6 +3,7 @@
     const { slash }         = require( `gatsby-core-utils` );
     const singleProductPageTemplate = require.resolve( `./src/templates/singleProduct.js` );
     const hatsPageTemplate = require.resolve( `./src/templates/hatsCat.js` );
+    const shirtsPageTemplate = require.resolve( `./src/templates/shirtsCat.js` );
     // const path = require(`path`);
 
     const productQuery = gql`
@@ -182,6 +183,60 @@
     const shirtData = async () =>  await shirts();
 
 
+
+
+    
+    const hats = async () => {
+        const hey = await client.query({
+                query: gql`query GET_HATS {
+                    products(first: 100, where: {categoryId: 108}) {
+                      edges {
+                        node {
+                          databaseId
+                          slug
+                          name
+                          featured
+                          productCategories {
+                            nodes {
+                              slug
+                            }
+                          }
+                          reviewCount
+                          averageRating
+                          ... on VariableProduct {
+                            price
+                            featuredImage {
+                              node {
+                                sourceUrl
+                              }
+                            }
+                          }
+                          ... on SimpleProduct {
+                            price
+                            featuredImage {
+                              node {
+                                sourceUrl
+                              }
+                            }
+                          }
+                          productTags {
+                            edges {
+                              node {
+                                name
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  `
+            })
+                .then(result =>{ return result});
+            return hey;
+        }
+
+
         // actions.createPage({
         //     path: `shop/shirts`,
         //     component: slash( hatsPageTemplate ),
@@ -202,13 +257,22 @@
         exports.createPages = async function({actions, gql}) {
             const { data } = await cool()
             console.log('here123')
+
+
             const finalShirtData = await shirts()
-            console.log(finalShirtData)
                 console.log('inside')
                 actions.createPage({
                     path: `shop/shirts`,
                     component: slash( hatsPageTemplate ),
                     context: { pagedata: finalShirtData},
+                })
+
+                const finalHatData = await hats()
+                console.log('inside')
+                actions.createPage({
+                    path: `shop/hats`,
+                    component: slash( shirtsPageTemplate ),
+                    context: { pagedata: finalHatData},
                 })
             
             data.products.edges.forEach(edge => {

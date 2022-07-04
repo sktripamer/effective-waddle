@@ -6,7 +6,7 @@
     const shirtsPageTemplate = require.resolve( `./src/templates/shirtsCat.js` );
     const accsPageTemplate = require.resolve( `./src/templates/accsCat.js` );
     const eePageTemplate = require.resolve( `./src/templates/ee-home.js` );
-    //const singleEETemplate = require.resolve( `./src/templates/ee-post.js` );
+    const singleEETemplate = require.resolve( `./src/templates/ee-post.js` );
     // const path = require(`path`);
 
     const productQuery = gql`
@@ -247,7 +247,7 @@
           const ee = async () => {
             const hey = await client.query({
                     query: gql`query GET_EE {
-                        posts(where: {categoryId: 1178}, last: 1000) {
+                        posts(where: {categoryId: 1178, password: "o5hUyXW4rYe0877m68"}, last: 1000) {
                           edges {
                             node {
                               databaseId
@@ -263,6 +263,7 @@
                           }
                         }
                       }
+                      
                       `
                 })
                     .then(result =>{ return result});
@@ -376,13 +377,13 @@
                     context: { pagedata: finalEEData},
                 })
             
-                // finalEEData.data.posts.edges.forEach(edge => {
-                //     actions.createPage({
-                //         path: `entrepreneurial-espresso/${edge.node.slug}`,
-                //         component: slash( singleEETemplate ),
-                //         context: { id: edge.node.databaseId, title: edge.node.title },
-                //     })
-                // })
+                finalEEData.data.posts.edges.forEach(edge => {
+                    actions.createPage({
+                        path: `entrepreneurial-espresso/${edge.node.slug}`,
+                        component: slash( singleEETemplate ),
+                        context: { id: edge.node.databaseId, title: edge.node.title },
+                    })
+                })
                 
             data.products.edges.forEach(edge => {
 

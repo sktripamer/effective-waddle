@@ -4,6 +4,7 @@
     const singleProductPageTemplate = require.resolve( `./src/templates/singleProduct.js` );
     const hatsPageTemplate = require.resolve( `./src/templates/hatsCat.js` );
     const shirtsPageTemplate = require.resolve( `./src/templates/shirtsCat.js` );
+    const accsPageTemplate = require.resolve( `./src/templates/accsCat.js` );
     // const path = require(`path`);
 
     const productQuery = gql`
@@ -236,6 +237,56 @@
             return hey;
         }
 
+        const accs = async () => {
+            const hey = await client.query({
+                    query: gql`query GET_ACCS {
+                        products(first: 100, where: {categoryId: 274}) {
+                          edges {
+                            node {
+                              databaseId
+                              slug
+                              name
+                              featured
+                              productCategories {
+                                nodes {
+                                  slug
+                                }
+                              }
+                              reviewCount
+                              averageRating
+                              ... on VariableProduct {
+                                price
+                                featuredImage {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                              }
+                              ... on SimpleProduct {
+                                price
+                                featuredImage {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                              }
+                              productTags {
+                                edges {
+                                  node {
+                                    name
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                      `
+                })
+                    .then(result =>{ return result});
+                return hey;
+            }
+
 
         // actions.createPage({
         //     path: `shop/shirts`,
@@ -273,6 +324,14 @@
                     path: `shop/hats`,
                     component: slash( shirtsPageTemplate ),
                     context: { pagedata: finalHatData},
+                })
+
+                const finalAccData = await accs()
+                console.log('inside')
+                actions.createPage({
+                    path: `shop/accessories`,
+                    component: slash( accsPageTemplate ),
+                    context: { pagedata: finalAccData},
                 })
             
             data.products.edges.forEach(edge => {

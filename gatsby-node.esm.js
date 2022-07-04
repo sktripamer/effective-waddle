@@ -253,12 +253,6 @@
                               databaseId
                               title
                               slug
-                              featuredImage {
-                                node {
-                                  sourceUrl
-                                }
-                              }
-                              excerpt(format: RAW)
                             }
                           }
                         }

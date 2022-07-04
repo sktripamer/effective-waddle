@@ -22,17 +22,22 @@ const validateJWT = async (req, res) => {
                       console.log('hereb')
                       return res.status(200).json(false);
                     } 
-                    
+                    let found = false;
                     paymentMethod.data.forEach((sub, index) => {
                       if (sub.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' && sub.plan.id === true){
-                        let customerID = await getContent(params.post);
-                        return res.status(200).json({customerID})
+                          found = true;
+                          console.log('found')
                       } else {
-                        onsole.log('herec')
-                        return res.status(200).json(false);
+                       
                       }
                   })
-                   
+                   if (found === true) {
+                    let customerID = await getContent(params.post);
+                    return res.status(200).json({customerID})
+                   } else {
+                    console.log('herec')
+                    return res.status(200).json(false);
+                   }
                      
                     
                   

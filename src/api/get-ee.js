@@ -11,25 +11,30 @@ const validateJWT = async (req, res) => {
                 jwt.verify(params.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
                   if (params.product === 1735) {
                     //entrepreneurial espresso sub
-                    let customerID = await getCustomerID(decoded.data.user.id);
-                    if (customerID.acf.customer_id === undefined || customerID.acf.customer_id === '') {
+                    
+                    let cool = await getCustomerID(decoded.data.user.id);
+                    if (cool.acf.customer_id === undefined || cool.acf.customer_id === '') {
+                      console.log('herea')
                       return res.status(200).json(false);
                     } 
-                    const paymentMethod = await getPaymentMethods(customerID.acf.customer_id);
-                    if (paymentMethod.data.length === 0)  return res.status(200).json(false);
-                    let activeto1735 = false;
+                    const paymentMethod = await getPaymentMethods(cool.acf.customer_id);
+                    if (paymentMethod.data.length === 0) {
+                      console.log('hereb')
+                      return res.status(200).json(false);
+                    } 
+                    
                     paymentMethod.data.forEach((sub, index) => {
                       if (sub.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' && sub.plan.id === true){
-                        activeto1735 = true;
+                        let customerID = await getContent(params.post);
+                        return res.status(200).json({customerID})
+                      } else {
+                        onsole.log('herec')
+                        return res.status(200).json(false);
                       }
                   })
-                    if (activeto1735 === true) {
-                      const customerID = await getContent(params.post);
-                      return res.status(200).json({customerID})
-                      
-                    } else {
-                      return res.status(200).json(false);
-                    }
+                   
+                     
+                    
                   
                   }
              

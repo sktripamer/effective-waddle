@@ -5,6 +5,7 @@
     const hatsPageTemplate = require.resolve( `./src/templates/hatsCat.js` );
     const shirtsPageTemplate = require.resolve( `./src/templates/shirtsCat.js` );
     const accsPageTemplate = require.resolve( `./src/templates/accsCat.js` );
+    const eePageTemplate = require.resolve( `./src/templates/ee-home.js` );
     // const path = require(`path`);
 
     const productQuery = gql`
@@ -237,6 +238,37 @@
             return hey;
         }
 
+
+        
+
+
+
+          const ee = async () => {
+            const hey = await client.query({
+                    query: gql`query GET_EE {
+                        posts(where: {categoryId: 1178}, last: 1000) {
+                          edges {
+                            node {
+                              databaseId
+                              title
+                              slug
+                              featuredImage {
+                                node {
+                                  sourceUrl
+                                }
+                              }
+                              excerpt(format: RAW)
+                            }
+                          }
+                        }
+                      }
+                      `
+                })
+                    .then(result =>{ return result});
+                return hey;
+            }
+
+
         const accs = async () => {
             const hey = await client.query({
                     query: gql`query GET_ACCS {
@@ -333,7 +365,17 @@
                     component: slash( accsPageTemplate ),
                     context: { pagedata: finalAccData},
                 })
+
+                const finalEEData = await ee()
+                console.log('inside')
+                actions.createPage({
+                    path: `entrepreneurial-espresso`,
+                    component: slash( eePageTemplate ),
+                    context: { pagedata: finalEEData},
+                })
             
+
+                
             data.products.edges.forEach(edge => {
 
                 actions.createPage({

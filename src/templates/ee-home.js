@@ -77,7 +77,7 @@ const hatsCat = ( props ) => {
                 {bought === false ? (
                     <>
                     <div class='ee-optin'>Get access to this exclusive content!</div>
-                    <div onClick={preReveal} class="y-preorderbtn">Get Access</div>
+                    <div onClick={() => preReveal} class="y-preorderbtn">Get Access</div>
                     </>
                 ): (
                     <>
@@ -86,7 +86,7 @@ const hatsCat = ( props ) => {
 
                     <div class={`all-products-cont ee-${bought}`}>
                     {pagedata.data.posts.edges.map(item =>
-                        <div onClick={changePage(item.node.slug)} class={`mini-product-cont`}>
+                        <div onClick={() => changePage(item.node.slug)} class={`mini-product-cont`}>
                             <img src={item.node.featuredImage.node.sourceUrl}/>
                             <div class='mini-title'>{item.node.title}</div>
                             <div class='mini-text'>{item.node.excerpt}</div>

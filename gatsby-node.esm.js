@@ -6,6 +6,7 @@
     const shirtsPageTemplate = require.resolve( `./src/templates/shirtsCat.js` );
     const accsPageTemplate = require.resolve( `./src/templates/accsCat.js` );
     const eePageTemplate = require.resolve( `./src/templates/ee-home.js` );
+    const singleEETemplate = require.resolve( `./src/templates/ee-post.js` );
     // const path = require(`path`);
 
     const productQuery = gql`
@@ -367,14 +368,21 @@
                 })
 
                 const finalEEData = await ee()
-                console.log('inside')
+                console.log('insideww')
+                console.log(finalEEData)
                 actions.createPage({
                     path: `entrepreneurial-espresso`,
                     component: slash( eePageTemplate ),
                     context: { pagedata: finalEEData},
                 })
             
-
+                // finalEEData.data.posts.edges.forEach(edge => {
+                //     actions.createPage({
+                //         path: `entrepreneurial-espresso/${edge.node.slug}`,
+                //         component: slash( singleEETemplate ),
+                //         context: { id: edge.node.databaseId, title: edge.node.title },
+                //     })
+                // })
                 
             data.products.edges.forEach(edge => {
 

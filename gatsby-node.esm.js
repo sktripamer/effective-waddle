@@ -6,7 +6,7 @@
     const shirtsPageTemplate = require.resolve( `./src/templates/shirtsCat.js` );
     const accsPageTemplate = require.resolve( `./src/templates/accsCat.js` );
     const eePageTemplate = require.resolve( `./src/templates/ee-home.js` );
-    const singleEETemplate = require.resolve( `./src/templates/ee-post.js` );
+    //const singleEETemplate = require.resolve( `./src/templates/ee-post.js` );
     // const path = require(`path`);
 
     const productQuery = gql`

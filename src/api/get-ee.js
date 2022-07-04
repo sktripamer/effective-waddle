@@ -27,8 +27,10 @@ const validateJWT = async (req, res) => {
                       const customerID = await getContent(params.post);
                       return res.status(200).json({customerID})
                       
+                    } else {
+                      return res.status(200).json(false);
                     }
-                    return res.status(200).json(false);
+                  
                   }
              
            });

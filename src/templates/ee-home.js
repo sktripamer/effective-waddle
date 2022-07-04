@@ -91,9 +91,8 @@ const hatsCat = ( props ) => {
                     <div class={`all-products-cont ee-${bought}`}>
                     {pagedata.data.posts.edges.map(item =>
                         <div onClick={() => changePage(item.node.slug)} class={`mini-product-cont`}>
-                            <img src={item.node.featuredImage.node.sourceUrl}/>
+                            <img src={`https://portal.revrevdev.xyz/wp-content/uploads/2022/06/course.jpg`}/>
                             <div class='mini-title'>{item.node.title}</div>
-                            <div class='mini-text'>{item.node.excerpt}</div>
                         </div>
                     )}
                 </div>   

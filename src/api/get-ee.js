@@ -24,7 +24,8 @@ const validateJWT = async (req, res) => {
                     } 
                     let found = false;
                     paymentMethod.data.forEach((sub, index) => {
-                      if (sub.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' && sub.plan.id === true){
+                      console.log(sub.plan.id)
+                      if (sub.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' && sub.plan.active === true){
                           found = true;
                           console.log('found')
                       } else {

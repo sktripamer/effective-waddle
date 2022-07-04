@@ -5,8 +5,11 @@
     const hatsPageTemplate = require.resolve( `./src/templates/hatsCat.js` );
     const shirtsPageTemplate = require.resolve( `./src/templates/shirtsCat.js` );
     const accsPageTemplate = require.resolve( `./src/templates/accsCat.js` );
+    const coursesPageTemplate = require.resolve( `./src/templates/coursesCat.js` );
     const eePageTemplate = require.resolve( `./src/templates/ee-home.js` );
     const singleEETemplate = require.resolve( `./src/templates/ee-post.js` );
+    const ShopPageTemplate = require.resolve( `./src/templates/shopPage.js` );
+    
     // const path = require(`path`);
 
     const productQuery = gql`
@@ -105,6 +108,7 @@
                       ... on VariableProduct {
                         id
                         name
+                        price
                         featuredImage {
                           node {
                             sourceUrl
@@ -114,6 +118,7 @@
                       ... on SimpleProduct {
                         id
                         name
+                        price
                         featuredImage {
                           node {
                             sourceUrl
@@ -316,6 +321,56 @@
             }
 
 
+            const courses = async () => {
+                const hey = await client.query({
+                        query: gql`query GET_ACCS {
+                            products(first: 100, where: {categoryId: 1129}) {
+                              edges {
+                                node {
+                                  databaseId
+                                  slug
+                                  name
+                                  featured
+                                  productCategories {
+                                    nodes {
+                                      slug
+                                    }
+                                  }
+                                  reviewCount
+                                  averageRating
+                                  ... on VariableProduct {
+                                    price
+                                    featuredImage {
+                                      node {
+                                        sourceUrl
+                                      }
+                                    }
+                                  }
+                                  ... on SimpleProduct {
+                                    price
+                                    featuredImage {
+                                      node {
+                                        sourceUrl
+                                      }
+                                    }
+                                  }
+                                  productTags {
+                                    edges {
+                                      node {
+                                        name
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                          `
+                    })
+                        .then(result =>{ return result});
+                    return hey;
+                }
+
         // actions.createPage({
         //     path: `shop/shirts`,
         //     component: slash( hatsPageTemplate ),
@@ -362,6 +417,14 @@
                     context: { pagedata: finalAccData},
                 })
 
+                const finalCourseData = await courses()
+                console.log('inside')
+                actions.createPage({
+                    path: `shop/courses`,
+                    component: slash( coursesPageTemplate ),
+                    context: { pagedata: finalCourseData},
+                })
+
                 const finalEEData = await ee()
                 console.log('insideww')
                 console.log(finalEEData)
@@ -371,6 +434,13 @@
                     context: { pagedata: finalEEData},
                 })
             
+                actions.createPage({
+                    path: `shop`,
+                    component: slash( ShopPageTemplate ),
+                    context: { pagedata: data},
+                })
+
+
                 finalEEData.data.posts.edges.forEach(edge => {
                     actions.createPage({
                         path: `entrepreneurial-espresso/${edge.node.slug}`,

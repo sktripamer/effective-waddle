@@ -9,7 +9,7 @@ const hatsCat = ( props ) => {
 
     const { pageContext: { pagedata } } = props;
     const [loadingBought, setLoadingBought] = useState(true)
-    const [bought, setBought] = useState(false)
+    const [bought, setBought] = useState('')
 
     const email = function() {
         try {
@@ -42,6 +42,7 @@ const hatsCat = ( props ) => {
                 setBought(true)
                 setLoadingBought(false)
             } else {
+                setBought(false)
                 setLoadingBought(false)
             }
 

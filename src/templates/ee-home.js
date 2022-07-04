@@ -40,9 +40,12 @@ const hatsCat = ( props ) => {
 
             if (intent.customerID.success === 1) {
                 setBought(true)
+                setLoadingBought(false)
+            } else {
+                setLoadingBought(false)
             }
 
-            setLoadingBought(false)
+           
           } catch (error) {
             console.log('Failed to get cID');
             console.log(error);

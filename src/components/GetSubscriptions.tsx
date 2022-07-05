@@ -26,10 +26,12 @@ export default function GetSubscriptions() {
   const [allPayments, setAllPayments] = useState([])
   const [nameOfSubscription, setNameOfSubscription] = useState(null)
   const [changeSubscription, setChangeSubscription] = useState(false)
+  const [cancelSubscription, setCancelSubscription] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [subID, setSubID] = useState(null)
-  
-
+  const [cancelLoading, setCancelLoading] = useState(false) 
+  const [cancelError, setCancelError] = useState(false) 
+  const [cancelSuccess, setCancelSuccess] = useState(false) 
 
 
   useEffect(() => {
@@ -69,6 +71,7 @@ const openChange = () => {
 
   const closeModal = () => {
     setLoadSearch(false)
+    setCancelSubscription(false)
     setDefaultPayment([])
     setShowSuccess(false)
     setSubID(null)
@@ -76,10 +79,36 @@ const openChange = () => {
     setChangeSubscription(false)
     setAllPayments([])
     setLoadingPaymentData(true)
+    setCancelLoading(false)
+    setCancelError(false)
   }
 
+  const cancelSubButton = () => {
+    setChangeSubscription(false)
+    setCancelSubscription(true)
+  }
 
-
+  const cancelSubAction = async (subber) => {
+    setCancelLoading(true)
+    let ex = {
+      sub: subber
+    }
+    const request3 = await fetch('/api/cancel-sub', {
+      method: 'POST',
+      body: JSON.stringify(ex),
+    });
+   let payload = (await request3.json());
+   if (payload.paymentIntent.cancel_at_period_end === true) {
+     //successflly canceled
+     setCancelLoading(false)
+     setCancelSuccess(true)
+     setShowSuccess(true)
+    } else {
+      setCancelLoading(false)
+      setCancelSuccess(false)
+      setCancelError(true)
+    }
+  }
   const getButtonId = async (e) => {
     setLoadingPaymentData(true)
     setLoadSearch(true)
@@ -157,7 +186,17 @@ const openChange = () => {
                           {showSuccess === false ? (
                             <></>
                           ) : (
-                            <div class='using-card successer'>Successfully changed payment!</div>
+                              <>
+                              {cancelSuccess===true ? (
+                                <div class='using-card successer'>Successfully canceled subscription. Subscription will remain active for the remaining period you've already paid for.</div>
+                              ) : (
+                                <div class='using-card successer'>Successfully changed payment!</div>
+                              )}
+
+                               
+                              </>
+                           
+
                           )}
                           <div class='using-card'>Using Card:</div>
                          <div class='selection-section defaultm'>
@@ -166,13 +205,42 @@ const openChange = () => {
                             <div className="prev-last4">{defaultPayment.card.last4}</div>
                           </div>
                         </div>
-                        {changeSubscription === false ? (
+                        {cancelSubscription === false ? (
+                            <>
+                             {changeSubscription === false ? (
                           <button onClick={() => setChangeSubscription(true)} class='change-sub-button'>Edit Subscription</button>
                         ): (
+                          <>
                           <Elements stripe={stripePromise}>
                             <RenderStripe allPayments={allPayments} subID={subID} changeSub={sub => setChangeSubscription(sub)} changeSuccess={succ => setShowSuccess(succ)} />
                           </Elements>
+                           <button onClick={cancelSubButton} class='cancel-sub-button'>Cancel Subscription</button>
+                           </>
                         )}
+                            
+                            </>
+                        ) : (
+                          <>
+                              <div class='cancel-sub-cont'>
+                                <div class='cancel-sub-text'>Cancel subscription?</div>
+                                <div class='cancel-button-cont'>
+                                  {cancelLoading === true ? (
+    <div class='loading-bought'></div>
+                                  ) : (
+                                    <>
+                                       <button onClick={() => cancelSubAction(subID)} class='change-sub-button sub-cancel'>Cancel</button>
+                                <button onClick={() => closeModal} class='return-btn'>Go back</button>
+                                    </>
+                                  )}
+                               
+
+                                </div>
+                              </div>
+                          </>
+
+                        )}
+
+                       
                        
 
 
@@ -187,6 +255,12 @@ const openChange = () => {
 
 
                      </div>
+
+
+
+
+
+//
                     )}
                    </div>
                   )
@@ -460,7 +534,7 @@ console.log(newmethod)
                           </div>
                           </div>
 
-                          <button class='cancel-sub-button'>Cancel Subscription</button>
+                         
                         </div>
 
 

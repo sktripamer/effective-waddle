@@ -232,60 +232,35 @@ export default function Navbar(props) {
       <nav className={`navLoading hm-${hamburger}`}></nav>
      ) : (
       <navmain className={`navloaded main-nav hm-${hamburger}`}>
-      <ul className={`nav`}>
+		<ul>
+			<li><a href="#">Revival of Revenue</a></li>
+			<li><a href="#">About</a></li>
 
-        {!loggedIn ? (
-          <>
-       <a class='dropdown'>Home
-      <div class="link-dropdown active2">
-    </div></a>
-            <a class='dropdown'>All Products
-      <div class="link-dropdown active2">
-      <label>View All Products</label>
-      <label>Hats</label>
-      <label>Other categories</label>
-    </div></a>
-    <a class='dropdown'>All Products
-      <div class="link-dropdown active2">
-      <label>Coming Soon!</label>
-    </div></a>
-          <div class='nav-content-section'>
-            placeholder
+			<li class="dropdown">
+				<a href="#" class="d-btn">Get Started</a>
+				<ul class="d-menu">
+					<li><a href="#">Menu 1.1</a></li>
+					<li><a href="#">Menu 1.2</a></li>
+					<li><a href="#">Menu 1.3</a></li>
+					<li><a href="#">Menu 1.4</a></li>
 
-          </div>
+			
+				</ul>
+			</li>
 
-          <div class='nav-button-cont'>
-           <button>cart</button>
-           <button>checkout</button>
-          </div>
-          </>
-        ) : (
-          <>
-            <a class='dropdown'>Home
-      <div class="link-dropdown active2">
-    </div></a>
-            <a class='dropdown'>All Products
-      <div class="link-dropdown active2">
-      <label>View All Products</label>
-      <label>Hats</label>
-      <label>Other categories</label>
-    </div></a>
-    <a class='dropdown'>All Products
-      <div class="link-dropdown active2">
-      <label>Coming Soon!</label>
-    </div></a>
-          <div class='nav-content-section'>
-            placeholder
+			<li><a href="#">Contact</a></li>
+			<li class="dropdown">
+				<a href="#" class="d-btn">More</a>
+				<ul class="d-menu">
+					<li><a href="#">Menu 1.1</a></li>
+					<li><a href="#">Menu 1.2</a></li>
+					<li><a href="#">Menu 1.3</a></li>
+					<li><a href="#">Menu 1.4</a></li>
 
-          </div>
 
-          <div class='nav-button-cont'>
-           <button>cart</button>
-           <button>checkout</button>
-          </div>
-          </>
-        )}
-      </ul>
+				</ul>
+			</li>
+		</ul>
     </navmain>
      )}
 

@@ -493,25 +493,25 @@ useEffect(() => {
       <div class='navcont-cont'>
         <div class='navcont-50'>
           <div class='navitem-50'>
-            <div class='navitemind'>
+            <div onClick={() =>navigate('/shop/hats')} class='navitemind'>
             <div class='navitem-text'><span>Hats</span></div>
             <img src={'/place.jpg'}/>
             </div>
           </div>
           <div class='navitem-50'>
-          <div class='navitemind'>
+          <div onClick={() =>navigate('/shop/shirts')} class='navitemind'>
             <div class='navitem-text'><span>Shirts</span></div>
             <img src={'/place.jpg'}/>
             </div>
           </div>
           <div class='navitem-50'>
-          <div class='navitemind'>
+          <div onClick={() =>navigate('/shop/accessories')} class='navitemind'>
             <div class='navitem-text'><span>Accessories</span></div>
             <img src={'/place.jpg'}/>
             </div>
           </div>
           <div class='navitem-50'>
-          <div class='navitemind'>
+          <div onClick={() =>navigate('/shop')} class='navitemind'>
             <div class='navitem-text'><span>All</span> <span>Products</span></div>
             <img src={'/place.jpg'}/>
             </div>
@@ -519,7 +519,7 @@ useEffect(() => {
         </div>
         <div class='navcont-50'>
         <div class='navitem-100'>
-        <div class='navitemind'>
+        <div onClick={() =>navigate('/shop/courses')} class='navitemind'>
             <div class='navitem-text'><span>Courses</span></div>
             <img src={'/place.jpg'}/>
             </div>

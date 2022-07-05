@@ -19,7 +19,7 @@ export default function GetPayments() {
   const [methodProcessing, setMethodProcessing] = useState(true);
   const [arrayTest, setArray] = useState([]);
   const [showSuccess, setShowSuccess] = useState(false)
-
+  const [hasnotbought, sethasnotbought] = useState(false)
   useEffect(() => {
     async function fetchMyAPI() {
       try {
@@ -38,6 +38,7 @@ export default function GetPayments() {
     
       } catch (error) {
         console.log('Failed to get cID');
+        sethasnotbought(true)
         console.log(error);
         return null;
       }
@@ -61,6 +62,7 @@ export default function GetPayments() {
   }
   return (
     <div className="sub-list payment-change-page">
+               <h2>Payment Methods</h2>
       {methodProcessing === false ? (
         <>
               <Elements stripe={stripePromise}>
@@ -68,7 +70,16 @@ export default function GetPayments() {
                           </Elements>
         </>
       ): (
-        <div class='loading-bought'></div>
+        <>
+        {hasnotbought === true ? (
+        <>
+           <div class='sub-subheader'>You'll need to buy something from our store before you can edit your payments here.</div>
+        </>
+        ): (
+          <div class='loading-bought'></div>
+        )}
+        
+        </>
       )}
     </div>
   );
@@ -246,6 +257,7 @@ console.log(payload)
   return (
 
     <div class='changer-sub'>
+      
        <div class='sub-subheader'>View and manage your payment methods</div>
         <div class='choose-new-card'>Add and delete cards</div>
                           <div class='change-sub-selection'>

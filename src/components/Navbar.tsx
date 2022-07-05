@@ -347,26 +347,7 @@ useEffect(() => {
 }, [props.viewCart]);
 
   useEffect(() => {
-    let tempCart = function() {
-      try {
-      return JSON.parse(localStorage.cart)
-      } catch {return []}
-    }
 
-    let cartamt = 0;
-    tempCart().forEach((tempitem, index) => {
-      cartamt += tempitem.quantity
-      if (tempitem.cquantity !== undefined) {
-        cartamt += tempitem.cquantity
-      }
- 
-    })
-    if (cartamt > 9) {
-      document.getElementById('cart-icon').className = 'cart-icon-10'
-    } else {
-      document.getElementById('cart-icon').className = 'cart-icon-' + cartamt.toString()
-
-    }
 
 
     window.addEventListener('scroll', handleScroller, { passive: true });
@@ -397,6 +378,30 @@ useEffect(() => {
   setResources(document.getElementsByClassName('down-resources')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
     document.addEventListener("itemInserted", localStorageSetHandler, false);
   }, []);
+
+
+  let tempCart = function() {
+    try {
+    return JSON.parse(localStorage.cart)
+    } catch {return []}
+  }
+
+  let cartamt = 0;
+  tempCart().forEach((tempitem, index) => {
+    cartamt += tempitem.quantity
+    if (tempitem.cquantity !== undefined) {
+      cartamt += tempitem.cquantity
+    }
+
+  })
+  if (cartamt > 9) {
+    document.getElementById('cart-icon').className = 'cart-icon-10'
+  } else {
+    document.getElementById('cart-icon').className = 'cart-icon-' + cartamt.toString()
+
+  }
+
+
   return (
     <>
     <div className={`search-btn-container search-${loadSearch}`}>

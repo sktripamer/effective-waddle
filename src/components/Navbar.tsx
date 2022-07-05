@@ -87,12 +87,16 @@ export default function Navbar(props) {
       }
  
     })
-    if (cartamt > 9) {
-      document.getElementById('cart-icon').className = 'cart-icon-10'
-    } else {
-      document.getElementById('cart-icon').className = 'cart-icon-' + cartamt.toString()
+    try {
+      if (cartamt > 9) {
+        document.getElementById('cart-icon').className = 'cart-icon-10'
+      } else {
+        document.getElementById('cart-icon').className = 'cart-icon-' + cartamt.toString()
+      }
+    }catch{
 
     }
+
     if (!subtotal.toString().includes('.')) {
       finalsub = subtotal.toString() + '.00'
     } else {

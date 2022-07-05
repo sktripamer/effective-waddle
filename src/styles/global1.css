@@ -3807,6 +3807,22 @@ button.verify-user-button:after {
   position: absolute;
   width: 48px;
   }
+
+  .acc-page-link {
+    font-family: 'Nunito Bold';
+}
+  .denim .mini-product-cont.denim {
+    display: block;
+}
+.hats .mini-product-cont.hats {
+    display: block;
+}
+.beanies .mini-product-cont.beanies {
+    display: block;
+}
+
+
+
   .mockup-more {
     padding-bottom: 61.7%;
     background: url(https://portal.revrevdev.xyz/wp-content/uploads/more-mockup.jpg);
@@ -4902,12 +4918,13 @@ button.change-email-btn {
   border-radius: 0;
 }
 .account-settings-cont {
+  margin: 0 auto;
   max-height: 90%;
-  overflow-y: overlay;
-  margin: 1em auto 0;
   max-width: 800px;
+  overflow-y: overlay;
   padding: 0.5em;
   width: 90%;
+  margin-top: 4%;
 }
 input.verify-code {
   height: 52px;
@@ -5186,7 +5203,12 @@ input.verify-code::placeholder {
   }
   .navbar-title em {font-style: normal;display: table;line-height: 1em;font-size: .5em;margin-left: auto;margin-right: auto;}
 
-  .navbar-title li {text-align: center;font-size: .8em;line-height: 1.2em;margin-left: 46px;}
+  .navbar-title li {text-align: center;font-size: .8em;line-height: 1.2em;margin-left: 46px;    display: block;}
+
+
+  .ee-true .mini-product-cont {
+    display: block;
+}
 
   .navbar-title > ul > li > em:last-child {font-size: .9em;line-height: 1.4em;}
   .login-page h1:before, .verify-page h1:before {

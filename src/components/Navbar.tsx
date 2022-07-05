@@ -262,7 +262,7 @@ export default function Navbar(props) {
 			<li><a href="#">Revival of Revenue</a></li>
 
 			<li class="dropdown">
-				<a href="#" onClick={() => clicker1} class={`d-btn mm1 mc-${mobileMenu}`}>Get Started</a>
+				<a href="#" onClick={clicker1} class={`d-btn mm1 mc-${mobileMenu}`}>Get Started</a>
 				<ul class="d-menu">
 					<li><a href="#">RevRev Starter Kit</a></li>
 					<li><a href="#">The TM5 Matrix Course</a></li>
@@ -273,7 +273,7 @@ export default function Navbar(props) {
 				</ul>
 			</li>
 			<li class="dropdown">
-				<a href="#" onClick={() => clicker2} class={`d-btn mm2 mc-${mobileMenu}`}>Shop</a>
+				<a href="#" onClick={clicker2} class={`d-btn mm2 mc-${mobileMenu}`}>Shop</a>
 				<ul class="d-menu">
 					<li><a href="/shop/courses">Courses</a></li>
 					<li><a href="/shop/hats">Hats</a></li>
@@ -284,7 +284,7 @@ export default function Navbar(props) {
 				</ul>
 			</li>
       <li class="dropdown">
-				<a href="#" onClick={() => clicker3}  class={`d-btn mm3 mc-${mobileMenu}`}>Enroll</a>
+				<a href="#" onClick={clicker3}  class={`d-btn mm3 mc-${mobileMenu}`}>Enroll</a>
 				<ul class="d-menu">
 					<li><a href="#">RevRev Starter Kit</a></li>
 					<li><a href="#">The TM5 Matrix Course</a></li>
@@ -295,7 +295,7 @@ export default function Navbar(props) {
 				</ul>
 			</li>
       <li class="dropdown">
-				<a href="#" onClick={() => clicker4}  class={`d-btn mm4 mc-${mobileMenu}`}>Resources</a>
+				<a href="#" onClick={clicker4}  class={`d-btn mm4 mc-${mobileMenu}`}>Resources</a>
 				<ul class="d-menu">
 					<li><a href="#">RevRev Starter Kit</a></li>
 					<li><a href="#">The TM5 Matrix Course</a></li>

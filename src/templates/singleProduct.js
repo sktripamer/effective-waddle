@@ -807,9 +807,134 @@ const renderReviews = () => {
         <div class='review-header-cont'>
             <div class='review-profile'></div>
             <div class='review-name-date'>
-                <div class='review-name'>{el.node.author.node.firstName}</div>
-                <div class='review-date'>{el.node.dateGmt}</div>
-                <div class={`review-rating rating-${parseInt(el.rating) * 10}`}>{el.rating}</div>
+                <div class='review-name'>Verified Buyer</div>
+                <div class='review-date'> {new Date(el.node.dateGmt).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+               
+                <>
+                <div class='review-total-cont'>
+        {el.rating === 0 ?
+        (
+          <div className='rating-cont'>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+          </div>
+        ) : ''
+
+        }
+              {el.rating === 1 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {el.rating === 1.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {el.rating === 2 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {el.rating === 2.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {el.rating === 3 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {el.rating === 3.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {el.rating === 4 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {el.rating === 4.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {el.rating === 5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+        </div>
+        ) : ''
+
+        }
+
+  </div>
+                </>
             </div>
         </div>
         <div dangerouslySetInnerHTML={sanitizedData(el.node.content)} class='review-content'></div>

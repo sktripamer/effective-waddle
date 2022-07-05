@@ -34,6 +34,7 @@ export default function LogInForm() {
   const [passwordChanged, setPasswordChanged] = useState(false)
   const [goToEmail, setGoToEmail] = useState('')
   const [emailText, setEmailText] = useState('')
+  const [verifyText, setVerifyText] = useState('')
   const errorMessage = error?.message || '';
   const isEmailValid =
     !errorMessage.includes('empty_email') &&
@@ -116,9 +117,34 @@ async function handleVerify() {
     setGoToEmail(splitEmail[splitEmail.length - 1])
     //trigger email
     setLoginStep(2)
+    setVerifyText('to confirm your account.')
   } else {
     setLoginStep(1)
   }
+}
+
+
+async function setResetPW() {
+  let emailvalue = ((document.getElementById('log-in-email') as HTMLInputElement)).value
+  setEmailText(emailvalue)
+  setLoadingUser(true)
+  const request = await fetch('/api/verify-emailpw', {
+    method: 'POST',
+    body: emailvalue,
+  });
+  const intent = (await request.json());
+  setLoadingUser(false)
+  console.log(intent)
+  if (intent.exists.message === true) {
+    let splitEmail = emailvalue.split('@');
+    setGoToEmail(splitEmail[splitEmail.length - 1])
+    //trigger email
+    setLoginStep(2)
+    setVerifyText('to change your password.')
+  } else {
+    setEmailValidError(true)
+  }
+
 }
 
   
@@ -133,7 +159,7 @@ async function handleVerify() {
                       <div onClick={() =>  setLoginStep(0)} className='search-bar-close'>X</div>
                    </div>
                    <div class='email-sent'>
-                     <div class="verify-email-text">{`Please click the link that we sent to ${emailText} to confirm your account.`}</div>
+                     <div class="verify-email-text">{`Please click the link that we sent to ${emailText} ${verifyText}`}</div>
                    <div id="anim-wrapper">
   <div id="anim-bg">
     <div id="env-wrapper">
@@ -199,9 +225,9 @@ async function handleVerify() {
           <div class='password-clickables'>
           <div onClick={() =>setLoginStep(0)} class='return-to-email'>Go Back</div>
 
-          <Link to="/forgot-password" className="forgot-password-link">
+          <div onClick={() => setResetPW} className="forgot-password-link">
           Forgot password?
-        </Link>
+        </div>
           </div>
 
         {!isEmailValid ? (

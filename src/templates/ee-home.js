@@ -50,6 +50,8 @@ const hatsCat = ( props ) => {
 
            
           } catch (error) {
+            setBought(false)
+            setLoadingBought(false)
             console.log('Failed to get cID');
             console.log(error);
             return null;

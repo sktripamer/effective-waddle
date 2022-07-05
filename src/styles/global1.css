@@ -1920,6 +1920,23 @@ a.goto-email:hover {
 
 
   @media (max-width: 666px) {
+
+    li.account-icon {
+      margin-left: .05em;
+      margin-right: .05em;
+  }
+  
+  li.search-icon {
+      margin-left:.05em;
+      margin-right:.05em;
+  }
+  
+  li#cart-icon {
+      margin-left: .05em;
+      margin-right: .05em;
+  }
+
+
     div.login-page h2, div.verify-page h2 {
       font-size: 1.6em;
     margin-bottom: .4em;
@@ -3712,9 +3729,8 @@ navmain .dropdown .d-btn {
   display: flex;
   font-size: 1.2rem;
   list-style-type: none;
-  margin: 0;
   padding: 0;
-  margin-right: 1em;
+  margin: 0 0.5em 0 0;
   }
   .navbar-holder li {
     font-family: 'Nunito Bold';
@@ -3805,6 +3821,33 @@ navmain .dropdown .d-btn {
 
   }
   @media (max-width: 800px) {
+    div.gallery-cont {
+      width: 80%;
+  }
+    div.product-info-cont {
+      width: 80%;
+      margin: 1em;
+  }
+.mobile-cont h2 {
+    text-align: center;
+}
+
+.mobile-cont .review-total-cont {display: flex;justify-content: center;}
+
+.mobile-cont .product-pricer {display: block;text-align: center;}
+    .desktop-cont {
+      display: none;
+  }
+
+  div.mobile-cont {
+    display: block;
+    padding: 2em;
+  }
+  div.gallery-info-cont {
+    flex-direction: column;
+    align-items: center;
+}
+
     main .navbar-home {display: none;}
     main a.down-get-started {display: none;}
 
@@ -5371,8 +5414,20 @@ input.verify-code::placeholder {
   .navbar-title em {font-style: normal;display: table;line-height: 1em;font-size: .5em;margin-left: auto;margin-right: auto;}
 
   .navbar-title li {text-align: center;font-size: .8em;line-height: 1.2em;margin-left: 46px;    display: block;}
+.account-icon {
+    margin-left: .4em;
+    margin-right: .4em;
+}
 
+.search-icon {
+    margin-left:.4em;
+    margin-right:.4em;
+}
 
+#cart-icon {
+    margin-left: .4em;
+    margin-right: .4em;
+}
   .ee-true .mini-product-cont {
     display: block;
 }
@@ -9931,6 +9986,7 @@ a.y-preorderbtn {
 
   .render-tab {
   font-family: 'Nunito Regular';
+  padding: 1em;
   }
   .success-true button#submit {
     display: none;
@@ -10258,10 +10314,13 @@ button.addcart-btn:disabled {
   border-radius: 0;
   margin-left: 1em;
   }
+  .mobile-cont {
+    display: none;
+}
 
   .gallery-info-cont {
   display: flex;
-  margin-top: 7em;
+  margin-top: 2em;
   }
   .product-info-cont h2 {
   font-size: 2.3rem;

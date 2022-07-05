@@ -8,7 +8,7 @@ import DOMPurify from 'dompurify';
 const hatsCat = ( props ) => {
 
   const { pageContext: { id,title } } = props;
-    const [loadingBought, setLoadingBought] = useState(true)
+    const [loadingBought, setLoadingBought] = useState(false)
     const [bought, setBought] = useState(false)
     const [postBody, setPostBody] = useState(null)
     const sanitizedData = (sendData) => ({
@@ -48,7 +48,7 @@ const hatsCat = ( props ) => {
                 setBought(true)
             }
 
-            setLoadingBought(false)
+            setLoadingBought(true)
           } catch (error) {
             navigate('/log-in')
             return null;

@@ -10,7 +10,7 @@ const validateJWT = async (req, res) => {
         try {
                 jwt.verify(params.token, process.env.JWT_SECRET,{ ignoreExpiration: true}, async function(err, decoded) {
                   if (params.product === 1735) {
-                    //entrepreneurial espresso sub
+                  //entrepreneurial espresso sub
                     let customerID = await getCustomerID(decoded.data.user.id);
                     if (customerID.acf.customer_id === undefined || customerID.acf.customer_id === '') {
                       return res.status(200).json(false);
@@ -19,14 +19,12 @@ const validateJWT = async (req, res) => {
                     if (paymentMethod.data.length === 0)  return res.status(200).json(false);
                     let activeto1735 = false;
                     paymentMethod.data.forEach((sub, index) => {
-                      if (sub.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c'){
+                      if (sub.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' && sub.plan.active === true){
                         activeto1735 = true;
                       }
                   })
                     if (activeto1735 === true) {
-                      let customerID = {
-                        success: 1
-                      }
+                      const customerID = await addCourse(decoded.data.user.id, params.product);
                       return res.status(200).json({customerID})
                     }
                     return res.status(200).json(false);

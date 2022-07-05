@@ -3346,15 +3346,76 @@ button.verify-user-button:after {
   .you-might-like-cont .mini-product-cont {
     display: block;
 }
-  navmain {
-  top: 0;
-  background-color: #380369;
-  height: 100vh;
-  max-width: 200px;
-  position: absolute;
-  transition: all .2s;
+navmain {
+	position: absolute;
+	top: 0;
   z-index: 99;
-  }
+	left: 0;
+	height: 100%;
+  width: 100%;
+	background-color: #222;
+	font-family: 'Roboto Condensed', sans-serif;
+	overflow-x: auto;
+}
+navmain ul {
+	margin: 0;
+	padding: 0;
+}
+navmain ul li {
+	list-style: none;
+}
+navmain ul li a {
+	text-decoration: none;
+	color: #fff;
+	display: block;
+	text-transform: uppercase;
+	position: relative;
+}
+navmain > ul > li > a {
+	padding: 10px 15px;
+
+}
+
+navmain .d-btn {
+	position: relative;
+}
+navmain .d-btn:before {
+	content:"";
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 40px;
+	background-color: #333;
+}
+navmain .d-btn:after {
+	content:"s";
+	position: absolute;
+	top: 50%;
+	right: 0;
+	-webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+	width: 40px;
+	text-align: center;
+}
+navmain .dropdown {
+	background-color: #333;
+}
+navmain .d-btn {
+	background-color: #222;
+}
+navmain .dropdown ul.d-menu li a {
+	padding: 10px 25px;
+	font-size: 12px;
+}
+navmain .dropdown .d-btn {
+	border-top: 1px solid #222;
+}
+
+
   navmain .link-dropdown {
   background: #fff;
   box-shadow: 0 10px 15px 0 rgb(0 0 0 / 5%);
@@ -9995,13 +10056,16 @@ button.addcart-btn:disabled {
     width: 40%;
     margin: 20px auto;
   }
-  .mini-title {font-size: 24px;font-family: 'Nunito Bold';pointer-events: none;color: #512e8a;}
+  .mini-review {
+    margin-left: 5%;
+}
+  .mini-title {font-size: 24px;font-family: 'Nunito Bold';pointer-events: none;color: #512e8a;    margin-left: 5%;}
   .cart-btn-cont {display: flex;justify-content: space-evenly;margin: 20px 0;}
   .mini-product-cont > div {
     pointer-events: none;
   }
   .cart-btn-cont > button {background: linear-gradient(206deg,#ff1d2d,#c41ab8);color: #fff;width: 40%;border-radius: 0;}
-  .mini-price {font-family: Nunito Regular;font-size: 18px;}
+  .mini-price {font-family: Nunito Regular;font-size: 18px;    margin-left: 5%;}
   .star-select {width: 24px;
   height: 24px;
   margin-top: auto;

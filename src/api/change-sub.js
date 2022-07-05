@@ -18,7 +18,6 @@ const createIntent = async (subID, methodID, cancel) => {
         const subscription = await stripe.subscriptions.update(
             subID,
             {default_payment_method: methodID},
-            {cancel_at_period_end: !cancel}
           );
      
       return subscription;

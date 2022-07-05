@@ -433,11 +433,11 @@
                     component: slash( eePageTemplate ),
                     context: { pagedata: finalEEData},
                 })
-            
+                const shopData = await cool()
                 actions.createPage({
                     path: `shop`,
                     component: slash( ShopPageTemplate ),
-                    context: { pagedata: data},
+                    context: { pagedata: shopData},
                 })
 
 

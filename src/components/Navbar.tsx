@@ -394,12 +394,16 @@ useEffect(() => {
     }
 
   })
-  if (cartamt > 9) {
-    document.getElementById('cart-icon').className = 'cart-icon-10'
-  } else {
-    document.getElementById('cart-icon').className = 'cart-icon-' + cartamt.toString()
 
+  if (typeof window !== "undefined") {
+    if (cartamt > 9) {
+      document.getElementById('cart-icon').className = 'cart-icon-10'
+    } else {
+      document.getElementById('cart-icon').className = 'cart-icon-' + cartamt.toString()
+  
+    }
   }
+
 
 
   return (

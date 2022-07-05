@@ -83,6 +83,7 @@ const singleProduct = ( props ) => {
             }
             setLoadingBought(false)
           } catch (error) {
+            setLoadingBought(false)
             console.log('Failed to get cID');
             console.log(error);
             return null;

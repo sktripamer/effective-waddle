@@ -388,7 +388,8 @@ const RenderStripe = (props) => {
       if (request2.setupIntent.status === 'succeeded') {
         let ex = {
           sub: props.subID,
-          pid:request2.setupIntent.payment_method
+          pid:request2.setupIntent.payment_method,
+          restart: props.canceled
         }
         const request3 = await fetch('/api/change-sub', {
           method: 'POST',

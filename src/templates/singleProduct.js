@@ -4,6 +4,7 @@ import { useState , useEffect } from "react";
 import DOMPurify from 'dompurify';
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import ImageGallery from 'react-image-gallery';
 import AuthContent from "../components/AuthContent";
 import WriteReview from "../components/WriteReview";
@@ -1697,6 +1698,7 @@ const renderDelivery = () => {
 
 
     </div>
+    <Footer/>
     </Layout>
     );
 }

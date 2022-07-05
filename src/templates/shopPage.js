@@ -31,7 +31,7 @@ function slugify(text) {
 const hatsCat = ( props ) => {
     const { pageContext: { pagedata } } = props;
     const [activeTag, setActiveTag] = useState("courses")
-console.log(pagedata)
+    
 const restartAnimation = () => {
     for (const animation of document.getElementsByClassName('all-products-cont')[0].getAnimations()) {
         if (document.getElementsByClassName('all-products-cont')[0].contains((animation.effect).target)) {
@@ -92,7 +92,7 @@ const restartAnimation = () => {
                     <div onClick={onClick1} class='ind-tag tag-courses'>Courses</div><div onClick={onClick2} class='ind-tag tag-shirts'>Shirts</div><div onClick={onClick3} class='ind-tag tag-hats'>Hats</div><div onClick={onClick4} class='ind-tag tag-accessories'>Accessories</div>
                 </div>
                 <div class='all-products-cont'>
-                    {pagedata.products.edges.map(item =>
+                    {pagedata.data.products.edges.map(item =>
         <div onClick={changePage} data-idlink={item.node.slug} class={`mini-product-cont ${item.node.productTags.edges.map(tags => slugify(tags.node.name) ).join('')}`}>
         <img src={item.node.featuredImage.node.sourceUrl}/>
         <div class='mini-title'>{item.node.name}</div>

@@ -12,12 +12,11 @@ export default function UnAuthContent({ children }: { children: ReactNode }) {
     if (!loading && loggedIn) {
       if (isBrowser) {
         const authData = {
-          authToken: user.jwtAuthToken,
-          user: user,
+          authToken: user.jwtAuthToken
         };
         localStorage.setItem("auth", JSON.stringify(authData));
       }
-      navigate('/members');
+      navigate('/dashboard');
     }
   }, [loggedIn, loading, navigate]);
 

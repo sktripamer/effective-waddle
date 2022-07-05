@@ -259,7 +259,7 @@ export default function Navbar(props) {
      ) : (
       <navmain className={`navloaded main-nav hm-${hamburger}`}>
 		<ul>
-			<li><a href="#">Revival of Revenue</a></li>
+			<li><a class='mobile-header-text' href="#">Revival of Revenue</a></li>
 
 			<li class="dropdown">
 				<a href="#" onClick={clicker1} class={`d-btn mm1 mc-${mobileMenu}`}>Get Started</a>
@@ -467,7 +467,7 @@ useEffect(() => {
     </div></a>
     <li onClick={() =>navigate('/account')}>A</li>
         <li  class='search-icon' onClick={() => setLoadSearch(true)}></li>
-        <li class='cart-loading' onClick={enterCart}></li>
+        <li class='cart-icon-load' onClick={enterCart}></li>
 
 
       </ul>
@@ -647,7 +647,7 @@ useEffect(() => {
     </div></a>
     <li onClick={() =>navigate('/account')}>A</li>
         <li class='search-icon' onClick={() => setLoadSearch(true)}></li>
-        <li id='cart-icon' onClick={enterCart}>C</li>
+        <li id='cart-icon' class='cart-icon-load' onClick={enterCart}></li>
 
 
       </ul>

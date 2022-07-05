@@ -225,7 +225,7 @@ async function setResetPW() {
           <div class='password-clickables'>
           <div onClick={() =>setLoginStep(0)} class='return-to-email'>Go Back</div>
 
-          <div onClick={() => setResetPW} className="forgot-password-link">
+          <div onClick={setResetPW} className="forgot-password-link">
           Forgot password?
         </div>
           </div>

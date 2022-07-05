@@ -115,7 +115,7 @@ const openChange = () => {
   const getButtonId = async (e) => {
     setLoadingPaymentData(true)
     setLoadSearch(true)
-    console.log(e.target.dataset.id)
+    console.log(e.target.dataset.canceled)
     const request = await fetch('/api/get-payment', {
       method: 'POST',
       body: jwtAuthToken,
@@ -289,7 +289,7 @@ const openChange = () => {
                     </div>
                     <div className={`next-payment-date expires-${el.cancel_at_period_end}`}>{new Date((el.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
                     <div className='plancost'>{`$${el.plan.amount.toString().substring(0,el.plan.amount.toString().length-2)+"."+el.plan.amount.toString().substring(el.plan.amount.toString().length-2)}`}</div>
-                    <div data-id={el.id} data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} onClick={getButtonId} id-canceled={el.cancel_at_period_end}  data-paymentid={el.default_payment_method} className='more-sub-dets'>More Details</div>
+                    <div data-id={el.id} data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} onClick={getButtonId} data-canceled={el.cancel_at_period_end}  data-paymentid={el.default_payment_method} className='more-sub-dets'>More Details</div>
                   </div>
                   </>
 )}

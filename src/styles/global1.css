@@ -6963,6 +6963,99 @@ input.verify-code::placeholder {
     margin: 25px auto 0;
     max-width: 1300px;
   }
+
+
+  .course-list {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.course-img.monopolize-mini-course {
+    padding-top: 100%;background-image: url(https://portal.revrevdev.xyz/wp-content/uploads/2022/06/course.jpg);;
+;;;;background-size: contain;;;;;
+;;background-repeat: no-repeat;;;
+;;;margin-bottom: 1em;;;;
+;;;;;;;;;;;;;;;;;;
+}
+
+.course-item {
+    width: 292px;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    background: #13022e4d;
+}
+
+.in-progress {
+    color: #120a9b;
+}
+
+.course-status {
+    border: 2px solid;
+    display: inline;
+    border-radius: 5px;
+    padding: 0 .2em;
+    font-family: 'Nunito Bold';
+    text-align: center;
+    margin-bottom: .2em;
+}
+
+.not-started {
+    color: red;
+}
+
+.complete {
+    color: green;
+}
+
+.course-info {
+    font-family: 'Josefin Sans';
+    font-size: 1.4em;
+    color: #fff;
+    text-align: center;
+}
+
+.course-lessons {
+    color: #fff;
+    font-size: 1.2em;
+    font-family: 'Nunito Bold';
+    margin-top: .3em;
+    text-align: center;
+}
+html.scroll.noover {
+  overflow-y: hidden;
+  overflow: hidden;
+}
+a.course-btn {
+    background: linear-gradient(206deg,#ff1d2d,#c41ab8);
+    text-align: center;
+    padding: .6em;
+    color: #fff;
+    font-family: 'Nunito Bold';
+    font-size: 1.3em;
+    border-radius: 10px;
+    margin-top: .2em;
+}
+
+a.course-btn:hover {
+    text-decoration: none;
+}
+
+a.y-preorderbtn:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+a.y-preorderbtn {
+    display: block;
+    margin-top: 2em;
+}
+
   .y-signature {
     height: 108px;
     background-size: contain;

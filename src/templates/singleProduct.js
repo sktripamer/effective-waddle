@@ -17,7 +17,7 @@ const singleProduct = ( props ) => {
     const [count, setCount] = useState(1);
     const [isClicked, setClicked] = useState(false)
     const [addedToCart, setAddedToCart] = useState(false)
-    const { pageContext: { id, slug, name, description, cat, type } } = props;
+    const { pageContext: { id, slug, name, description, cat, type, image } } = props;
     const [hasBought, setBought] = useState(false)
     const [loadingBought, setLoadingBought] = useState(true)
     const [reviewID, setReviewID] = useState('0')
@@ -675,7 +675,7 @@ const variationClick = (e) => {
         } 
       }, [data]);
       if (loading) return (
-        <Layout htmlClassName={"scroll"}>
+        <Layout htmlClassName={"scroll"} seoTitle={name} seoTitleTemplate="Amazing Courses to give you a Revival of Revenue" seoDescription="Pre-order PK's book today to learn how you can start maximizing your time and earning more money!" seoImage={image}>
           <Navbar  />
         <div class="product-preload">
           
@@ -830,7 +830,7 @@ const renderDelivery = () => {
   }
 
     return (
-        <Layout htmlClassName={"scroll"}>
+        <Layout htmlClassName={"scroll"} seoTitle={name} seoTitleTemplate="Amazing Courses to give you a Revival of Revenue" seoDescription="Pre-order PK's book today to learn how you can start maximizing your time and earning more money!" seoImage={image}>
         <Navbar changeCart={openCart => setOpenCart(openCart)} viewCart={openCart} />
         <div>
             

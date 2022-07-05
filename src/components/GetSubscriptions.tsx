@@ -29,6 +29,7 @@ export default function GetSubscriptions() {
   const [cancelSubscription, setCancelSubscription] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [subID, setSubID] = useState(null)
+  const [canceled, setCanceled] = useState(false)
   const [cancelLoading, setCancelLoading] = useState(false) 
   const [cancelError, setCancelError] = useState(false) 
   const [cancelSuccess, setCancelSuccess] = useState(false) 
@@ -81,6 +82,7 @@ const openChange = () => {
     setLoadingPaymentData(true)
     setCancelLoading(false)
     setCancelError(false)
+    setCanceled(false)
   }
 
   const cancelSubButton = () => {
@@ -130,6 +132,13 @@ const openChange = () => {
       
     }
     if (intent.paymentMethod.data.length > 0) {
+
+
+      if (e.target.dataset.canceled == true) {
+        setCanceled(true)
+      }
+
+
       setSubID(e.target.dataset.id)
       setNameOfSubscription(e.target.dataset.nameof)
       setAllPayments(intent.paymentMethod.data)
@@ -213,7 +222,7 @@ const openChange = () => {
                         ): (
                           <>
                           <Elements stripe={stripePromise}>
-                            <RenderStripe allPayments={allPayments} subID={subID} changeSub={sub => setChangeSubscription(sub)} changeSuccess={succ => setShowSuccess(succ)} />
+                            <RenderStripe allPayments={allPayments} subID={subID} canceled={canceled} changeSub={sub => setChangeSubscription(sub)} changeSuccess={succ => setShowSuccess(succ)} />
                           </Elements>
                            <button onClick={cancelSubButton} class='cancel-sub-button'>Cancel Subscription</button>
                            </>
@@ -273,14 +282,14 @@ const openChange = () => {
             <div class='subscription-list'>
                {arrayTest && arrayTest.map((el, index) =>
                   <>
-                  <div data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} data-paymentid={el.default_payment_method} data-id={el.id} onClick={getButtonId} className={'sub-item'}>
+                  <div data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} id-canceled={el.cancel_at_period_end} data-paymentid={el.default_payment_method} data-id={el.id} onClick={getButtonId} className={'sub-item'}>
                     <div class='planactive-subname'>
                      <div className={`planactive plan-${el.plan.active === true ? 'true' : 'false'}`}>{el.plan.active === true ? 'ACTIVE' : 'INACTIVE'}</div>
                      <div className='sub-name'>{el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''}</div>
                     </div>
                     <div className="next-payment-date">{new Date((el.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
                     <div className='plancost'>{`$${el.plan.amount.toString().substring(0,el.plan.amount.toString().length-2)+"."+el.plan.amount.toString().substring(el.plan.amount.toString().length-2)}`}</div>
-                    <div data-id={el.id} data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} onClick={getButtonId} data-paymentid={el.default_payment_method} className='more-sub-dets'>More Details</div>
+                    <div data-id={el.id} data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} onClick={getButtonId} id-canceled={el.cancel_at_period_end}  data-paymentid={el.default_payment_method} className='more-sub-dets'>More Details</div>
                   </div>
                   </>
 )}
@@ -345,7 +354,8 @@ const RenderStripe = (props) => {
       //save prevPaymentID to this sub.
       let ex = {
         sub: props.subID,
-        pid: prevPaymentID
+        pid: prevPaymentID,
+        restart: props.canceled
       }
       const request3 = await fetch('/api/change-sub', {
         method: 'POST',
@@ -460,6 +470,7 @@ console.log(newmethod)
   return (
 
     <div class='changer-sub'>
+      {props.canceled === true ? <div class="subscription-modal-head">Restart your subscription</div> :''}
         <div class='choose-new-card'>Choose a new card for the subscription:</div>
                           <div class='change-sub-selection'>
                           <div className={`payment register-form col-md-6 status-${status} load-true success-${succeeded} process-${processing}`}>

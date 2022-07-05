@@ -18,8 +18,12 @@ params = JSON.parse(req.body)
             if (paymentMethod.data.length === 0)  return res.status(200).json({failed:true});
 
             for (let i=0; i< paymentMethod.data.length; i++) {
+              if (paymentMethod.data[i].plan.active === false) continue; //plan isnt active, so we can ignore regardless
               if (paymentMethod.data[i].default_payment_method === params.pid) {
-                return res.status(200).json({exists:true});
+                if (paymentMethod.data[i].cancel_at_period_end === false) {
+                  return res.status(200).json({exists:true}); //if the sub has this payment method as its default, and it hasn't been canceled, return no, we cant delete
+                }
+                
               }
             }
             const deleter = await deleteMethod(params.pid)

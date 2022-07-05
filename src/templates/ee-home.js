@@ -43,7 +43,7 @@ const hatsCat = ( props ) => {
                 setLoadingBought(true)
             } else {
                 setBought(false)
-                setLoadingBought(true)
+                setLoadingBought(false)
             }
 
            

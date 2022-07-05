@@ -7,7 +7,9 @@
     const accsPageTemplate = require.resolve( `./src/templates/accsCat.js` );
     const coursesPageTemplate = require.resolve( `./src/templates/coursesCat.js` );
     const eePageTemplate = require.resolve( `./src/templates/ee-home.js` );
+    const freePageTemplate = require.resolve( `./src/templates/free-home.js` );
     const singleEETemplate = require.resolve( `./src/templates/ee-post.js` );
+    const singlefreeTemplate = require.resolve( `./src/templates/free-post.js` );
     const ShopPageTemplate = require.resolve( `./src/templates/shopPage.js` );
     
     // const path = require(`path`);
@@ -254,7 +256,29 @@
 
 
         
-
+        const free = async () => {
+            const hey = await client.query({
+                    query: gql`posts(where: {categoryId: 1201}, last: 1000) {
+                        edges {
+                          node {
+                            databaseId
+                            title
+                            slug
+                            content
+                            featuredImage {
+                              node {
+                                sourceUrl
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                    `
+                })
+                    .then(result =>{ return result});
+                return hey;
+            }
 
 
           const ee = async () => {
@@ -432,7 +456,14 @@
                     component: slash( coursesPageTemplate ),
                     context: { pagedata: finalCourseData},
                 })
-
+                const finalfreeData = await free()
+                console.log('insideww')
+                console.log(finalEEData)
+                actions.createPage({
+                    path: `everything-entrepreneurial`,
+                    component: slash( freePageTemplate ),
+                    context: { pagedata: finalfreeData},
+                })
                 const finalEEData = await ee()
                 console.log('insideww')
                 console.log(finalEEData)
@@ -447,13 +478,19 @@
                     component: slash( ShopPageTemplate ),
                     context: { pagedata: shopData},
                 })
-
-
                 finalEEData.data.posts.edges.forEach(edge => {
                     actions.createPage({
                         path: `entrepreneurial-espresso/${edge.node.slug}`,
                         component: slash( singleEETemplate ),
                         context: { id: edge.node.databaseId, title: edge.node.title },
+                    })
+                })
+
+                finalfreeData.data.posts.edges.forEach(edge => {
+                    actions.createPage({
+                        path: `everything-entrepreneurial/${edge.node.slug}`,
+                        component: slash( singlefreeTemplate ),
+                        context: { id: edge.node.databaseId, title: edge.node.title, image: edge.node.featuredImage.node.sourceUrl, content: edge.node.content  },
                     })
                 })
                 

@@ -92,7 +92,7 @@ const restartAnimation = () => {
                     <div onClick={onClick1} class='ind-tag tag-courses'>Courses</div><div onClick={onClick2} class='ind-tag tag-shirts'>Shirts</div><div onClick={onClick3} class='ind-tag tag-hats'>Hats</div><div onClick={onClick4} class='ind-tag tag-accessories'>Accessories</div>
                 </div>
                 <div class='all-products-cont'>
-                    {pagedata.data.products.edges.map(item =>
+                    {pagedata.products.edges.map(item =>
         <div onClick={changePage} data-idlink={item.node.slug} class={`mini-product-cont ${item.node.productTags.edges.map(tags => slugify(tags.node.name) ).join('')}`}>
         <img src={item.node.featuredImage.node.sourceUrl}/>
         <div class='mini-title'>{item.node.name}</div>

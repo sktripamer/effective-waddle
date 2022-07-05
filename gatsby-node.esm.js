@@ -95,9 +95,17 @@
                     node {
                       databaseId
                       slug
+                      averageRating
                       name
                       description(format: RAW)
                       type
+                      productTags {
+                        edges {
+                          node {
+                            name
+                          }
+                        }
+                      }
                       featured
                       productCategories {
                         nodes {

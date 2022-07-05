@@ -102,6 +102,7 @@ const openChange = () => {
      //successflly canceled
      setCancelLoading(false)
      setCancelSuccess(true)
+     setCancelSubscription(false)
      setShowSuccess(true)
     } else {
       setCancelLoading(false)
@@ -229,7 +230,7 @@ const openChange = () => {
                                   ) : (
                                     <>
                                        <button onClick={() => cancelSubAction(subID)} class='change-sub-button sub-cancel'>Cancel</button>
-                                <button onClick={() => closeModal} class='return-btn'>Go back</button>
+                                <button onClick={closeModal} class='return-btn'>Go back</button>
                                     </>
                                   )}
                                

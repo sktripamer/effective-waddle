@@ -282,6 +282,18 @@ if (type === "SIMPLE") {
     
     `
 }
+
+const goToShop = () => {
+  navigate('/shop')
+}
+const goToHome = () => {
+  navigate('/')
+}
+
+const goToCat = (e) => {
+  navigate('/shop/' + e.target.dataset.idindex)
+}
+
 function slugify(text) {
   return text
     .toString()                           // Cast to string (optional)
@@ -824,12 +836,15 @@ const renderDelivery = () => {
         {type === "SIMPLE"
         ? (
           <div class="product-container">
-              <div class='gallery-info-cont'>
-              
-          <div class='gallery-cont'>
-          <ImageGallery items={images} showNav={false} showPlayButton={false} showFullscreenButton={false} />
-          </div>
-          <div className='product-info-cont'>
+
+                <div class='breadcrumbs-cont'>
+                    <div onClick={goToHome} class='bread-item bread-home'>Home</div>
+                    <div onClick={goToShop} class='bread-item'>Shop</div>
+                    <div onClick={goToCat} data-idindex={data.product.productCategories.nodes[0].slug} class='bread-item'>{data.product.productCategories.nodes[0].name}</div>
+                    <div class='bread-item bread-active'>Shirts</div>
+                </div>
+
+                <div class='mobile-cont'>
           <h2>{data.product.name}</h2>
       {data.product.reviewCount === 0
       ? (
@@ -974,6 +989,161 @@ const renderDelivery = () => {
   </div>
       }      
  <div className='product-pricer'><h3>{data.product.price}</h3></div>
+ </div>
+
+
+              <div class='gallery-info-cont'>
+              
+          <div class='gallery-cont'>
+          <ImageGallery items={images} showNav={false} showPlayButton={false} showFullscreenButton={false} />
+          </div>
+          <div className='product-info-cont'>
+            <div class='desktop-cont'>
+          <h2>{data.product.name}</h2>
+      {data.product.reviewCount === 0
+      ? (
+        <div class='review-total-cont'>
+            <div class='review-total-empty'></div>
+            <div class='review-total-text'>No reviews yet!</div>
+        </div>
+      ) :
+      <div class='review-total-cont'>
+        {data.product.reviews.averageRating === 0 ?
+        (
+          <div className='rating-cont'>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+          </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 1 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 1.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 2 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 2.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 3 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 3.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 4 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 4.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+        </div>
+        ) : ''
+
+        }
+     {data.product.reviewCount === 1 ?
+     (
+      <div class='review-total-text'>{data.product.reviewCount} review</div>
+     ) : 
+     (
+      <div class='review-total-text'>{data.product.reviewCount} reviews</div>
+     )
+       
+     
+
+     }
+
+  </div>
+      }      
+ <div className='product-pricer'><h3>{data.product.price}</h3></div>
+ </div>
 <div dangerouslySetInnerHTML={sanitizedData(data.product.description)} className='product-short-desc'></div>
 {addedToCart === true ? (
          <div class='added-cart-cont'> <div class='added-to-cart-text'>Product added to cart!</div><button onClick={() => setOpenCart(true)} class='viewcart'>View Cart</button></div>
@@ -1105,11 +1275,13 @@ const renderDelivery = () => {
         : 
         
         <div class="product-container">
-          <div class='gallery-info-cont'>
-          <div class='gallery-cont'>
-          <ImageGallery items={images} showNav={false} showPlayButton={false} showFullscreenButton={false} />
-          </div>
-          <div className='product-info-cont'>
+                    <div class='breadcrumbs-cont'>
+                    <div onClick={goToHome} class='bread-item bread-home'>Home</div>
+                    <div onClick={goToShop} class='bread-item'>Shop</div>
+                    <div onClick={goToCat} data-idindex={data.product.productCategories.nodes[0].slug} class='bread-item'>{data.product.productCategories.nodes[0].name}</div>
+                    <div class='bread-item bread-active'>Shirts</div>
+                </div>
+                <div class='mobile-cont'>
       <h2>{data.product.name}</h2>
       {data.product.reviewCount === 0
       ? (
@@ -1254,6 +1426,158 @@ const renderDelivery = () => {
   </div>
       }      
       <div className='product-pricer'><h3>{variationPrice}</h3></div>
+      </div>
+          <div class='gallery-info-cont'>
+          <div class='gallery-cont'>
+          <ImageGallery items={images} showNav={false} showPlayButton={false} showFullscreenButton={false} />
+          </div>
+          <div className='product-info-cont'>
+        <div class='desktop-cont'>
+      <h2>{data.product.name}</h2>
+      {data.product.reviewCount === 0
+      ? (
+        <div class='review-total-cont'>
+            <div class='review-total-empty'></div>
+            <div class='review-total-text'>No reviews yet!</div>
+        </div>
+      ) :
+      <div class='review-total-cont'>
+        {data.product.reviews.averageRating === 0 ?
+        (
+          <div className='rating-cont'>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+            <div className='star-no-select'></div>
+          </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 1 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 1.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 2 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 2.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 3 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 3.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 4 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-no-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 4.5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-half-select'></div>
+        </div>
+        ) : ''
+
+        }
+              {data.product.reviews.averageRating === 5 ?
+        (
+          <div className='rating-cont'>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+          <div className='star-select'></div>
+        </div>
+        ) : ''
+
+        }
+     {data.product.reviewCount === 1 ?
+     (
+      <div class='review-total-text'>{data.product.reviewCount} review</div>
+     ) : 
+     (
+      <div class='review-total-text'>{data.product.reviewCount} reviews</div>
+     )
+       
+     
+
+     }
+
+  </div>
+      }      
+      <div className='product-pricer'><h3>{variationPrice}</h3></div>
+      </div>
       <div dangerouslySetInnerHTML={sanitizedData(data.product.description)} className='product-short-desc'></div>
       <div className='attr-cont'>
       <div class='node-attr-cont'>

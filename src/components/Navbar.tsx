@@ -465,7 +465,7 @@ useEffect(() => {
       <div class="link-dropdown active2 drop-resources">
       <div>aa</div>
     </div></a>
-    <li onClick={() =>navigate('/account')}>A</li>
+    <li class='accocunt-icon' onClick={() =>navigate('/dashboard')}></li>
         <li  class='search-icon' onClick={() => setLoadSearch(true)}></li>
         <li class='cart-icon-load' onClick={enterCart}></li>
 
@@ -645,7 +645,7 @@ useEffect(() => {
         </div>
       </div>
     </div></a>
-    <li onClick={() =>navigate('/account')}>A</li>
+    <li class='account-icon' onClick={() =>navigate('/dashboard')}></li>
         <li class='search-icon' onClick={() => setLoadSearch(true)}></li>
         <li id='cart-icon' class='cart-icon-load' onClick={enterCart}></li>
 

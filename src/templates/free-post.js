@@ -14,13 +14,11 @@ const hatsCat = ( props ) => {
     const sanitizedData = (sendData) => ({
       __html: DOMPurify.sanitize(sendData)
     })
-    const email = function() {
-        try {
-          return JSON.parse(localStorage.auth).authToken;
-        } catch {
-          return null;
-        }
-      }
+    useEffect(() => {
+     setPostBody(content)
+           
+
+    }, []);
 
 
 
@@ -34,9 +32,11 @@ const hatsCat = ( props ) => {
                     <>
 
                     <div class='content-cont-cont'>
-                     
-                        <div dangerouslySetInnerHTML={sanitizedData(content)} class='content-to-set'></div>
-                    
+                    {postBody === null ? (
+                        <></>
+                      ): (
+                        <div dangerouslySetInnerHTML={sanitizedData(postBody)} class='content-to-set'></div>
+                      )}
                      
         
                     </div>

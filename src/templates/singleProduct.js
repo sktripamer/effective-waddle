@@ -841,8 +841,8 @@ const renderDelivery = () => {
                 <div class='breadcrumbs-cont'>
                     <div onClick={goToHome} class='bread-item bread-home'>Home</div>
                     <div onClick={goToShop} class='bread-item'>Shop</div>
-                    <div onClick={goToCat} data-idindex={data.product.productCategories.nodes[0].slug} class='bread-item'>{data.product.productCategories.nodes[0].name}</div>
-                    <div class='bread-item bread-active'>Shirts</div>
+                    <div onClick={goToCat} data-idindex={data.product.productCategories.nodes[0].slug} class='bread-item'>{data.product.productCategories.nodes[0].slug}</div>
+                    <div class='bread-item bread-active'>{data.product.name}</div>
                 </div>
 
                 <div class='mobile-cont'>

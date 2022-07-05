@@ -282,12 +282,12 @@ const openChange = () => {
             <div class='subscription-list'>
                {arrayTest && arrayTest.map((el, index) =>
                   <>
-                  <div data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} id-canceled={el.cancel_at_period_end} data-paymentid={el.default_payment_method} data-id={el.id} onClick={getButtonId} className={'sub-item'}>
+                  <div data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} data-canceled={el.cancel_at_period_end} data-paymentid={el.default_payment_method} data-id={el.id} onClick={getButtonId} className={'sub-item'}>
                     <div class='planactive-subname'>
                      <div className={`planactive plan-${el.plan.active === true ? 'true' : 'false'}`}>{el.plan.active === true ? 'ACTIVE' : 'INACTIVE'}</div>
                      <div className='sub-name'>{el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''}</div>
                     </div>
-                    <div className={`next-payment-date expires-${canceled}`}>{new Date((el.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                    <div className={`next-payment-date expires-${el.cancel_at_period_end}`}>{new Date((el.billing_cycle_anchor * 1000)).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</div>
                     <div className='plancost'>{`$${el.plan.amount.toString().substring(0,el.plan.amount.toString().length-2)+"."+el.plan.amount.toString().substring(el.plan.amount.toString().length-2)}`}</div>
                     <div data-id={el.id} data-nameof={el.plan.id === 'price_1LFzPWEIi9OXKxaBADloi95c' ? 'Entrepreneurial Espresso' : ''} onClick={getButtonId} id-canceled={el.cancel_at_period_end}  data-paymentid={el.default_payment_method} className='more-sub-dets'>More Details</div>
                   </div>

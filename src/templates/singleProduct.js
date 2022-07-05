@@ -1696,9 +1696,9 @@ const renderDelivery = () => {
   </div>
 ): ('')}
 
-
+<Footer/>
     </div>
-    <Footer/>
+   
     </Layout>
     );
 }

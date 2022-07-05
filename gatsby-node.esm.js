@@ -459,7 +459,6 @@
                 })
                 const finalfreeData = await free()
                 console.log('insideww')
-                console.log(finalEEData)
                 actions.createPage({
                     path: `everything-entrepreneurial`,
                     component: slash( freePageTemplate ),
@@ -467,7 +466,7 @@
                 })
                 const finalEEData = await ee()
                 console.log('insideww')
-                console.log(finalEEData)
+
                 actions.createPage({
                     path: `entrepreneurial-espresso`,
                     component: slash( eePageTemplate ),

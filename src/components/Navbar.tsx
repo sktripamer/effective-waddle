@@ -54,7 +54,12 @@ export default function Navbar(props) {
    
     };
     const propCartChange = () => {
-      props.changeCart(false);
+      try {
+        props.changeCart(false);
+      } catch {
+
+      }
+     
       setLoadCart(false)
     }
 
@@ -331,6 +336,11 @@ useEffect(() => {
   }, []);
   const handleChange = (e) => {
     setHamburger(e.target.checked)
+    if (e.target.checked === true) {
+      document.getElementsByTagName( 'html' )[0].classList.add('noover')
+    } else {
+      document.getElementsByTagName( 'html' )[0].classList.remove('noover')
+    }
     // do whatever you want with isChecked value
   }
   useEffect(() => {
@@ -472,15 +482,120 @@ useEffect(() => {
     </div></a>
     <a class='dropdown down-shop'>Shop
       <div style={Object.assign({'left': `-${shop}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-shop">
-      <div>aa</div>
+      <div class='navcont-cont'>
+        <div class='navcont-50'>
+          <div class='navitem-50'>
+            <div class='navitemind'>
+            <div class='navitem-text'><span>Hats</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+          <div class='navitem-50'>
+          <div class='navitemind'>
+            <div class='navitem-text'><span>Shirts</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+          <div class='navitem-50'>
+          <div class='navitemind'>
+            <div class='navitem-text'><span>Accessories</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+          <div class='navitem-50'>
+          <div class='navitemind'>
+            <div class='navitem-text'><span>All Products</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+        </div>
+        <div class='navcont-50'>
+        <div class='navitem-100'>
+        <div class='navitemind'>
+            <div class='navitem-text'><span>Courses</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+        </div>
+      </div>
     </div></a>
     <a class='dropdown down-enroll'>Enroll
       <div style={Object.assign({'left': `-${enroll}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-enroll">
-      <div>aa</div>
+      <div class='navcont-cont'>
+        <div class='navcont-50'>
+          <div class='navitem-50'>
+            <div class='navitemind'>
+            <div class='navitem-text'><span>RevRev </span><span>Starter </span><span>Kit</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+          <div class='navitem-50'>
+          <div class='navitemind'>
+            <div class='navitem-text'><span>The </span><span>TM5 </span><span>Matrix </span><span>Course</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+          <div class='navitem-50'>
+          <div class='navitemind'>
+            <div class='navitem-text'><span>The </span><span>Exodus </span><span>Workshop</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+          <div class='navitem-50'>
+          <div class='navitemind'>
+            <div class='navitem-text'><span>Ask </span><span>PK </span><span>Consultation</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+        </div>
+        <div class='navcont-50'>
+        <div class='navitem-100'>
+        <div class='navitemind'>
+            <div class='navitem-text'><span>Entrepreneurial </span><span>Espresso </span><span>Challenge</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+        </div>
+      </div>
     </div></a>
     <a class='dropdown down-resources'>Resources
       <div style={Object.assign({'left': `-${resources}px` }, {'width': `${navbarWidth}px`})} class="link-dropdown active2 drop-resources">
-      <div>aa</div>
+      <div class='navcont-cont'>
+        <div class='navcont-50'>
+          <div class='navitem-50'>
+            <div class='navitemind'>
+            <div class='navitem-text'><span>RevRev </span><span>Starter </span><span>Kit</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+          <div class='navitem-50'>
+          <div class='navitemind'>
+            <div class='navitem-text'><span>The </span><span>TM5 </span><span>Matrix </span><span>Course</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+          <div class='navitem-50'>
+          <div class='navitemind'>
+            <div class='navitem-text'><span>The </span><span>Exodus </span><span>Workshop</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+          <div class='navitem-50'>
+          <div class='navitemind'>
+            <div class='navitem-text'><span>Ask </span><span>PK </span><span>Consultation</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+        </div>
+        <div class='navcont-50'>
+        <div class='navitem-100'>
+        <div class='navitemind'>
+            <div class='navitem-text'><span>Entrepreneurial </span><span>Espresso </span><span>Challenge</span></div>
+            <img src={'/place.jpg'}/>
+            </div>
+          </div>
+        </div>
+      </div>
     </div></a>
     <li onClick={() =>navigate('/account')}>A</li>
         <li class='search-icon' onClick={() => setLoadSearch(true)}></li>

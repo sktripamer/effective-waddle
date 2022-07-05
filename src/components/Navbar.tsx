@@ -18,6 +18,7 @@ export default function Navbar(props) {
   const [navbarWidth, setNavbarWidth] = useState(0)
   const [viewOffer, setViewOffer] = useState(false)
   const [cartText, setCartText] = useState('Cart')
+  const [mobileMenu, setMobileMenu] = useState(0)
   const enterCart = () => {
     setViewOffer(false)
     setCartText('Cart')
@@ -224,6 +225,19 @@ export default function Navbar(props) {
 
   }
   
+  const clicker1 = () => {
+    setMobileMenu(1)
+  }
+  const clicker2 = () => {
+    setMobileMenu(2)
+  }
+  const clicker3 = () => {
+    setMobileMenu(3)
+  }
+  const clicker4 = () => {
+    setMobileMenu(4)
+  }
+
   const sideNav = () => {
  
     return (
@@ -234,30 +248,49 @@ export default function Navbar(props) {
       <navmain className={`navloaded main-nav hm-${hamburger}`}>
 		<ul>
 			<li><a href="#">Revival of Revenue</a></li>
-			<li><a href="#">About</a></li>
 
 			<li class="dropdown">
-				<a href="#" class="d-btn">Get Started</a>
+				<a href="#" onClick={() => clicker1} class={`d-btn mm1 mc-${mobileMenu}`}>Get Started</a>
 				<ul class="d-menu">
-					<li><a href="#">Menu 1.1</a></li>
-					<li><a href="#">Menu 1.2</a></li>
-					<li><a href="#">Menu 1.3</a></li>
-					<li><a href="#">Menu 1.4</a></li>
-
+					<li><a href="#">RevRev Starter Kit</a></li>
+					<li><a href="#">The TM5 Matrix Course</a></li>
+					<li><a href="#">The Exodus Workshop</a></li>
+					<li><a href="#">Ask PK Consultation</a></li>
+          <li><a href="#">Entrepreneurial Espresso Challenge</a></li>
 			
 				</ul>
 			</li>
-
-			<li><a href="#">Contact</a></li>
 			<li class="dropdown">
-				<a href="#" class="d-btn">More</a>
+				<a href="#" onClick={() => clicker2} class={`d-btn mm2 mc-${mobileMenu}`}>Shop</a>
 				<ul class="d-menu">
-					<li><a href="#">Menu 1.1</a></li>
-					<li><a href="#">Menu 1.2</a></li>
-					<li><a href="#">Menu 1.3</a></li>
-					<li><a href="#">Menu 1.4</a></li>
+					<li><a href="/shop/courses">Courses</a></li>
+					<li><a href="/shop/hats">Hats</a></li>
+					<li><a href="/shop/shirts">Shirts</a></li>
+					<li><a href="/shop/accessories">Accessories</a></li>
+					<li><a href="/shop">All Products</a></li>
 
-
+				</ul>
+			</li>
+      <li class="dropdown">
+				<a href="#" onClick={() => clicker3}  class={`d-btn mm3 mc-${mobileMenu}`}>Enroll</a>
+				<ul class="d-menu">
+					<li><a href="#">RevRev Starter Kit</a></li>
+					<li><a href="#">The TM5 Matrix Course</a></li>
+					<li><a href="#">The Exodus Workshop</a></li>
+					<li><a href="#">Ask PK Consultation</a></li>
+          <li><a href="#">Entrepreneurial Espresso Challenge</a></li>
+			
+				</ul>
+			</li>
+      <li class="dropdown">
+				<a href="#" onClick={() => clicker4}  class={`d-btn mm4 mc-${mobileMenu}`}>Resources</a>
+				<ul class="d-menu">
+					<li><a href="#">RevRev Starter Kit</a></li>
+					<li><a href="#">The TM5 Matrix Course</a></li>
+					<li><a href="#">The Exodus Workshop</a></li>
+					<li><a href="#">Ask PK Consultation</a></li>
+          <li><a href="#">Entrepreneurial Espresso Challenge</a></li>
+			
 				</ul>
 			</li>
 		</ul>
@@ -479,7 +512,7 @@ useEffect(() => {
           </div>
           <div class='navitem-50'>
           <div class='navitemind'>
-            <div class='navitem-text'><span>All Products</span></div>
+            <div class='navitem-text'><span>All</span> <span>Products</span></div>
             <img src={'/place.jpg'}/>
             </div>
           </div>

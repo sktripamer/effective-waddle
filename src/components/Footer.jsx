@@ -5,7 +5,7 @@ export default function Footer() {
     return (
     <footer>
         <div class='footer-cont'>
-
+            <div class='footer-logo-holder'></div>
             <div class="footer-items">
                 <p class='footer-title'>Get Started</p>
                 <a href='#'>RevRev Starter Kit</a>
@@ -45,7 +45,7 @@ export default function Footer() {
 
         </div>
 
-
+        <p class='closing-footer'>© Revival of Revenue 2022</p>
 
     </footer>
 

@@ -3690,7 +3690,21 @@ navmain .dropdown .d-btn {
 .attr-option.attr-mauve {
   background: #ae6e65;
 }
+.courses .mini-product-cont.courses {
+  display: block;
+}
 
+.shirts .mini-product-cont.shirts {
+  display: block;
+}
+
+.hats .mini-product-cont.hats {
+  display: block;
+}
+
+.accessories .mini-product-cont.accessories {
+  display: block;
+}
 .attr-option.attr-white {
   background: #f5f5f5;
 }

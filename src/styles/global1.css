@@ -4794,6 +4794,7 @@ button.cancel-sub-button {
 }
 .successchange-true .using-card.successer {
     display: block;
+    padding: 1em;
 }
 
 .successchange-true .defaultm {
@@ -5424,9 +5425,26 @@ input.verify-code::placeholder {
     margin-right:.4em;
 }
 
+.more-payment-info {
+  max-height: 500px;
+  overflow-y: overlay;
+}
+.changer-sub .subscription-modal-head {
+  margin-bottom: 0.2em;
+  margin-top: 0.2em;
+  font-size: 1.3em;
+}
+.ee-home h2 {
+  font-family: 'Josefin Sans';
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2em;
+  color: #ca0a44;
+}
 #cart-icon {
     margin-left: .4em;
     margin-right: .4em;
+    background-repeat: no-repeat;
 }
   .ee-true .mini-product-cont {
     display: block;
@@ -8754,12 +8772,27 @@ a.y-preorderbtn {
     font-size: 28px;
     margin-top: 8px;
   }
-
+  .render-tab button {
+    background: linear-gradient(206deg,#ff1d2d,#c41ab8);
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 700;
+    letter-spacing: -.015em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    line-height: 2rem;
+    padding: 0.5em 2em;
+    text-align: center;
+    text-transform: uppercase;
+}
 
   .rating {
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: flex-end;
     overflow: hidden;
     flex-direction: row-reverse;
     height: 50px;
@@ -8807,7 +8840,35 @@ a.y-preorderbtn {
   }
   
   
+  .cancel-sub-text {
+    text-align: center;
+    color: #fff;
+    font-family: 'Nunito Regular';
+    margin-bottom: 1em;
+}
 
+.cancel-button-cont {
+    display: flex;
+    justify-content: space-around;
+}
+
+.next-payment-date.expires-true:before {
+  content: 'Expires On:';
+}
+
+button.change-sub-button.sub-cancel {
+    margin-left: 1em;
+    margin-right: auto;
+}
+
+
+
+button.return-btn {
+    background: linear-gradient(294deg,#ff22a7,#ff1b65);
+    color: #fff;
+    padding: 8px 12px;
+    margin-right: 1em;
+}
   .mb-title {
     color: #cfcfcf;
     font-family: 'Josefin Sans';
@@ -9663,7 +9724,38 @@ a.y-preorderbtn {
     width: 50%;
     font-family: 'Nunito Bold';
   }
+  .review-name {
+    font-family: 'Nunito Bold';
+    margin-left: 20px;
+    margin-bottom: .4em;
+}
 
+.review-name:before {
+    content: "";
+    height: 16px;
+    margin-left: -20px;
+    margin-top: 3px;
+    position: absolute;
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id='Layer_1' x='0px' y='0px' viewBox='0 0 32 32' style='enable-background:new 0 0 32 32;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23fb1d38;%7D .st1%7Bfill:%23FFFFFF;%7D %3C/style%3E%3Ccircle class='st0' cx='16' cy='15.9' r='15.8'%3E%3C/circle%3E%3Cpolygon class='st1' points='23,9 13.2,18.8 9,14.5 6.4,17 10.7,21.3 13.2,23.8 15.8,21.3 25.6,11.5 '%3E%3C/polygon%3E%3C/svg%3E ");
+    width: 16px;
+}
+
+.review-date {
+    font-family: 'Nunito Regular';
+}
+
+p {}
+
+.review-content {
+    font-family: 'Nunito Regular';
+}
+
+.review-cont {
+    padding: 1em;
+    background: #ebebeb;
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
   .show-me-item:before {
   content: '';
   background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id='Layer_1' x='0px' y='0px' viewBox='0 0 32 32' style='enable-background:new 0 0 32 32;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23fb1d38;%7D .st1%7Bfill:%23FFFFFF;%7D %3C/style%3E%3Ccircle class='st0' cx='16' cy='15.9' r='15.8'%3E%3C/circle%3E%3Cpolygon class='st1' points='23,9 13.2,18.8 9,14.5 6.4,17 10.7,21.3 13.2,23.8 15.8,21.3 25.6,11.5 '%3E%3C/polygon%3E%3C/svg%3E ");

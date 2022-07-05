@@ -63,7 +63,7 @@ export default function GetCourses() {
   }
   return (
     <div className='sub-list'>
-        <h2>Subscriptions</h2>
+        <h2>Courses</h2>
        {methodProcessing ? (
             <div class='subloading'>Loading courses...</div>
           ) : (
@@ -98,7 +98,7 @@ export default function GetCourses() {
 )}
 </div>
             )}
-<a class='view-all-courses-btn' href={`/shop/courses`} rel="noreferrer noopener">View All Courses</a>
+<a class='y-preorderbtn' href={`/shop/courses`} rel="noreferrer noopener">View All Courses</a>
     </div>
   );
 

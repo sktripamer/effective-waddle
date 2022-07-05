@@ -9,6 +9,7 @@ export default function GetCourses() {
   const { jwtAuthToken } = user as User;
   const [methodProcessing, setMethodProcessing] = useState(true);
   const [arrayTest, setArray] = useState({});
+  const [noCourses, setNoCourses] = useState(false)
   function slugify(text) {
     return text
       .toString()                           // Cast to string (optional)
@@ -33,8 +34,14 @@ export default function GetCourses() {
         });
         const intent = (await request.json());
         console.log(intent)
-        setArray(intent.customerID.message);
+        if (intent.customerID.success === 0) {
+          setNoCourses(true)
           setMethodProcessing(false)
+        } else {
+          setArray(intent.customerID.message);
+          setMethodProcessing(false)
+        }
+       
       } catch (error) {
         setArray([
           {
@@ -67,7 +74,11 @@ export default function GetCourses() {
        {methodProcessing ? (
             <div class='subloading'>Loading courses...</div>
           ) : (
-            <div class='course-list'>
+            <>
+            {noCourses === true ? (
+            <div class='subloading'>You have no courses yet. Start your Revival of Revenue journey today!</div>
+            ): (
+<div class='course-list'>
                {arrayTest && arrayTest.map((el, index) =>
                   <>
                   <div className={'course-item'}>
@@ -97,6 +108,10 @@ export default function GetCourses() {
                   </>
 )}
 </div>
+            )}
+            
+
+            </>
             )}
 <a class='y-preorderbtn' href={`/shop/courses`} rel="noreferrer noopener">View All Courses</a>
     </div>

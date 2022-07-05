@@ -72,8 +72,7 @@ const restartAnimation = () => {
     return (
         <Layout htmlClassName={"scroll"}>
         <Navbar />
-        {console.log(pagedata)}
-        {/* <div>
+        <div>
         <div class='breadcrumbs-cont'>
                     <div onClick={goToHome} class='bread-item bread-home'>Home</div>
                     <div class='bread-item bread-active'>Shop</div>
@@ -105,7 +104,7 @@ const restartAnimation = () => {
 
             </div>
 
-        </div> */}
+        </div>
 
 
         </Layout>

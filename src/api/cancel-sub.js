@@ -4,7 +4,7 @@ let params;
 
 const getIntent = async (req, res) => {
     params = JSON.parse(req.body);
-    const paymentIntent = await createIntent(params.sub);
+    const paymentIntent = await createIntent(params.sub, params.pid, params.restart);
     return res.status(200).json({paymentIntent});
 
 }
@@ -12,12 +12,13 @@ const getIntent = async (req, res) => {
 
 
 
-const createIntent = async (subID) => {
+const createIntent = async (subID, methodID, cancel) => {
 
     try {
         const subscription = await stripe.subscriptions.update(
             subID,
-            {cancel_at_period_end: true}
+            {default_payment_method: methodID},
+            {cancel_at_period_end: !cancel}
           );
      
       return subscription;

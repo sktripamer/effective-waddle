@@ -134,7 +134,7 @@ const openChange = () => {
     if (intent.paymentMethod.data.length > 0) {
 
 
-      if (e.target.dataset.canceled == true) {
+      if (e.target.dataset.canceled === 'true') {
         setCanceled(true)
       }
 

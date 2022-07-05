@@ -26,6 +26,7 @@ const singleProduct = ( props ) => {
     const [previousRating, setPreviousRating] = useState('')
     const [previousContent, setPreviousContent] = useState('')
     const [openCart, setOpenCart] = useState(false)
+    const [editReview, setEditReview] = useState(false)
     let [relatedFull, setRelatedFull] = useState([])
     const sanitizedData = (sendData) => ({
       __html: DOMPurify.sanitize(sendData)
@@ -758,9 +759,20 @@ const renderWriteReview = () => {
     <>
     {hasBought === true
       ? (
+      <>
+      
+      {editReview === true ? (
+        <>
+         <button class='change-sub-button sub-cancel' onClick={() => setEditReview(false)}>Hide Review</button>
       <AuthContent>
-        <WriteReview commentOn={id} previous={previousRating} updateComment={reviewID} previousContent={previousContent} />
-      </AuthContent>
+      <WriteReview commentOn={id} previous={previousRating} updateComment={reviewID} previousContent={previousContent} />
+    </AuthContent>
+    </>
+      ) : (
+        <button class='change-sub-button sub-cancel' onClick={() => setEditReview(true)}>Edit My Review</button>
+      )}
+
+        </>
       ) 
       :
       ''

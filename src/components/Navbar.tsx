@@ -19,7 +19,7 @@ export default function Navbar(props) {
   const [viewOffer, setViewOffer] = useState(false)
   const [cartText, setCartText] = useState('Cart')
   const [mobileMenu, setMobileMenu] = useState(0)
-  const [cartAmount, setCartAmount] = useState(0)
+
   const enterCart = () => {
     setViewOffer(false)
     setCartText('Cart')
@@ -88,16 +88,16 @@ export default function Navbar(props) {
  
     })
     if (cartamt > 9) {
-      setCartAmount(10)
+      document.getElementById('cart-icon').className = 'cart-icon-10'
     } else {
-      setCartAmount(cartamt)
+      document.getElementById('cart-icon').className = 'cart-icon-' + cartamt.toString()
+
     }
     if (!subtotal.toString().includes('.')) {
       finalsub = subtotal.toString() + '.00'
     } else {
       finalsub = subtotal.toString()
     }
-    console.log(localStorage.getItem('cart'))
     let newA = tempCart();
     const addOffer = (whatToAdd) => {
       offerIndex = 0; 
@@ -347,6 +347,28 @@ useEffect(() => {
 }, [props.viewCart]);
 
   useEffect(() => {
+    let tempCart = function() {
+      try {
+      return JSON.parse(localStorage.cart)
+      } catch {return []}
+    }
+
+    let cartamt = 0;
+    tempCart().forEach((tempitem, index) => {
+      cartamt += tempitem.quantity
+      if (tempitem.cquantity !== undefined) {
+        cartamt += tempitem.cquantity
+      }
+ 
+    })
+    if (cartamt > 9) {
+      document.getElementById('cart-icon').className = 'cart-icon-10'
+    } else {
+      document.getElementById('cart-icon').className = 'cart-icon-' + cartamt.toString()
+
+    }
+
+
     window.addEventListener('scroll', handleScroller, { passive: true });
     window.addEventListener('resize', resizeHandler);
       return () => {
@@ -436,7 +458,7 @@ useEffect(() => {
     </div></a>
     <li onClick={() =>navigate('/account')}>A</li>
         <li  class='search-icon' onClick={() => setLoadSearch(true)}></li>
-        <li onClick={enterCart}>C</li>
+        <li class='cart-loading' onClick={enterCart}></li>
 
 
       </ul>
@@ -616,7 +638,7 @@ useEffect(() => {
     </div></a>
     <li onClick={() =>navigate('/account')}>A</li>
         <li class='search-icon' onClick={() => setLoadSearch(true)}></li>
-        <li onClick={enterCart}>{cartAmount}</li>
+        <li id='cart-icon' onClick={enterCart}>C</li>
 
 
       </ul>

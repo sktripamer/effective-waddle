@@ -723,6 +723,7 @@ const customNoDataRenderer = () => (
         setError(null);
         setProcessing(false);
         setSucceeded(true);
+        navigate('/success')
         props.changeStatus('succeeded')
       }
 
@@ -731,6 +732,7 @@ const customNoDataRenderer = () => (
         setError(null);
         setProcessing(false);
         setSucceeded(true);
+        navigate('/success')
         props.changeStatus('succeeded')
 
       } 
@@ -1067,6 +1069,9 @@ console.log(parsedShippingData)
     return (
       <div className={`payment register-form col-md-6 status-${status} load-${doneLoading} step-${currentStep} success-${succeeded}`}>
           <h2>{props.header}</h2>
+          {email() === null ? (
+            <div class='login-msg'>Already have a account? <a href={'/log-in'}>Log In.</a></div>
+          ):''}
           <h3>{props.subheader}</h3>
           <div class={props.content == '' ? 'payment-area-cont no-content': 'payment-area-cont'}>
        

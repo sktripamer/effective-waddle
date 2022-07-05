@@ -24,6 +24,8 @@ const hatsCat = ( props ) => {
           try {
             if (email() === null) {
               console.log('nothing')
+              setBought(false)
+              setLoadingBought(false)
               return;
             }
            let sendBody = {

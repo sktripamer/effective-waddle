@@ -4,7 +4,7 @@ let params;
 
 const getIntent = async (req, res) => {
     params = JSON.parse(req.body);
-    const paymentIntent = await createIntent(params.sub, params.pid, params.canceled);
+    const paymentIntent = await createIntent(params.sub, params.pid, params.restart);
     return res.status(200).json({paymentIntent});
 
 }

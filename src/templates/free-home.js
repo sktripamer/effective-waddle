@@ -3,6 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 import { useState , useEffect } from "react";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { navigate } from 'gatsby';
 
 const hatsCat = ( props ) => {
@@ -36,7 +37,7 @@ const hatsCat = ( props ) => {
                     )}
                 </div>   
                 </>
-
+                      <Footer/>
             </div>
 
 

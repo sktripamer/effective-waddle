@@ -399,6 +399,8 @@ useEffect(() => {
 
   })
 
+try {
+
   if (typeof window !== "undefined") {
     if (cartamt > 9) {
       document.getElementById('cart-icon').className = 'cart-icon-10'
@@ -407,6 +409,12 @@ useEffect(() => {
   
     }
   }
+} catch {
+
+}
+
+
+
 
 
 

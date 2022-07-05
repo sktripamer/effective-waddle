@@ -258,7 +258,8 @@
         
         const free = async () => {
             const hey = await client.query({
-                    query: gql`posts(where: {categoryId: 1201}, last: 1000) {
+                    query: gql`query GET_FREE {
+                    posts(where: {categoryId: 1201}, last: 1000) {
                         edges {
                           node {
                             databaseId

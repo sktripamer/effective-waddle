@@ -31,7 +31,7 @@ function slugify(text) {
 const hatsCat = ( props ) => {
     const { pageContext: { pagedata } } = props;
     const [activeTag, setActiveTag] = useState("courses")
-
+console.log(pagedata)
 const restartAnimation = () => {
     for (const animation of document.getElementsByClassName('all-products-cont')[0].getAnimations()) {
         if (document.getElementsByClassName('all-products-cont')[0].contains((animation.effect).target)) {

@@ -4809,11 +4809,34 @@ button.cancel-sub-button {
   background: #3F177D;
   padding-bottom: 1em;
 }
+.cart-btn-cont>button:first-of-type {
+  background: none;
+  color: #ec1c59;
+  border: 2px solid #ec1c59;
+}
+.cart-btn-cont>button:last-of-type:after {
+border: solid;
+  border-width: 0 0.2em 0.2em 0;
+  content: "";
+  display: inline-block;
+  margin-left: 5px;
+  padding: 0.24em;
+  transform: rotate(-45deg);
+}
+
 
 button.change-sub-button {
   background: none;
   margin-left: auto;
   margin-right: 1em;
+  font-family: 'Nunito Bold';
+  color: #dd1b54;
+}
+
+.render-tab button.change-sub-button {
+  background: none;
+  margin-left: 0em;
+  margin-right: auto;
   font-family: 'Nunito Bold';
   color: #dd1b54;
 }
@@ -10495,6 +10518,36 @@ button.addcart-btn:disabled {
   .search-bar-title {
   background: linear-gradient(183deg,#ff1d2d,#c41a72);
   }
+
+  button.addcart-btn.added-false:after {
+    width: 32px;
+    background-repeat: no-repeat;
+    height: 28px;
+    margin-left: .5em;
+    position: absolute;
+    background-image: url("data:image/svg+xml,%3Csvg id='svg2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2728.5 2355.2'%3E%3Cg id='g10'%3E%3Cg id='g12'%3E%3Cg id='g122'%3E%3Cpath id='path124' d='M624.8,1195.7H913.5L859.9,867.5,523.6,847.2l101.2,348.5m127.8,440.1H985.3l-56-343H653l99.6,343m617.2-440.1V898.2L964.2,873.7l52.5,322h353.1m-281.2,440.1h281.2v-343H1032.6l56,343m383.3-440.1h352.2l32.8-268.2-385-23.2v291.4m0,440.1h298.4l41.9-343H1471.9v343m645.3,0,51-343H1915l-42,343h244.2m102.1-686.5-260.4-15.7-32.1,262.1h255.9l36.6-246.4M708.9,2328.1c0,30.2,25.8,54.8,57.5,54.8s57.6-24.6,57.6-54.8-25.8-54.7-57.6-54.7-57.5,24.6-57.5,54.7m1432.7,54.8c31.7,0,57.6-24.6,57.6-54.8s-25.9-54.7-57.6-54.7-57.6,24.6-57.6,54.7,25.9,54.8,57.6,54.8M119.3,442.8H278.1c76.5,0,142.7,50.7,164.6,126.1l52.1,179.3,1786,107.5a52.4,52.4,0,0,1,36.3,17.8,46.9,46.9,0,0,1,11,37.5l-50.6,340-65.4,440.1c-3.6,23.8-25.3,41.7-50.6,41.7H760.5l-66.3,319.5H2260.5c28.1,0,51,21.8,51,48.6s-22.9,48.5-51,48.5h-67.9v34.9a161.5,161.5,0,0,1,73.6,49.1,147.2,147.2,0,0,1,35,94.7c0,83.7-71.6,151.9-159.6,151.9S1982,2411.8,1982,2328.1a147.2,147.2,0,0,1,35-94.7,160.9,160.9,0,0,1,73.6-49.1v-34.9H817.4v34.9a160.9,160.9,0,0,1,73.6,49.1,147.2,147.2,0,0,1,35,94.7c0,83.7-71.6,151.9-159.6,151.9s-159.6-68.2-159.6-151.9a147.2,147.2,0,0,1,35-94.7,161.5,161.5,0,0,1,73.6-49.1v-34.9H632.1a52.3,52.3,0,0,1-39.5-17.7,46.6,46.6,0,0,1-10.6-40.2l82.2-395.6L406.1,807.4a2.9,2.9,0,0,1-.2-.9L344.3,594.7c-9.5-32.8-36.1-54.8-66.2-54.8H119.3c-28.1,0-51-21.8-51-48.6s22.9-48.5,51-48.5' transform='translate(-68.3 -124.8)' style='fill:%23fff'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    content: '';
+}
+
+button.addcart-btn.added-false {
+    padding-right: 3.7em;
+}
+
+button.addcart-btn.added-true:after {
+    box-shadow: inset 1em 1em #fff;
+    clip-path: polygon(14% 44%,0 65%,50% 100%,100% 16%,80% 0,43% 62%);
+    content: "";
+    height: 0.65em;
+    margin-left: .6em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.65em;
+}
+
+button.addcart-btn.added-true {
+    padding-right: 2.5em;
+}
 
   .cart-icon-load {
     width: 46px;

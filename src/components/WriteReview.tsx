@@ -75,7 +75,15 @@ if (props.updateComment === '0') {
         </p>
       ) : null}
       <fieldset disabled={loading} aria-busy={loading}>
-      <div class="rating">
+
+        <label class='review-content-label' htmlFor="profile-last-name">Review Content</label>
+        <textarea
+          id="profile-last-name"
+          type="textarea"
+          name="content"
+          defaultValue={previousContent}
+        />
+              <div class="rating">
       <input type="radio"  defaultChecked={checked} onChange={() => setChecked(!checked)} name="rating" id="rating-5"/>
       <label for="rating-5"></label>
       <input type="radio" name="rating" id="rating-4"/>
@@ -87,13 +95,6 @@ if (props.updateComment === '0') {
       <input type="radio" name="rating" id="rating-1"/>
       <label for="rating-1"></label>
   </div>
-        <label class='review-content-label' htmlFor="profile-last-name">Review Content</label>
-        <input
-          id="profile-last-name"
-          type="textarea"
-          name="content"
-          defaultValue={previousContent}
-        />
         {error ? (
           <p className="error-message">{error.message}</p>
         ) : null}

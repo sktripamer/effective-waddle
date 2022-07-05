@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import ProductLister from "../components/ProductLister";
 
-import HeroRender from "../components/HeroRender";
+import HeroRender from "../components/HeroRenderShop";
 import StarRating from '../components/StarRating';
 import ImageGallery from 'react-image-gallery';
 import AuthContent from "../components/AuthContent";

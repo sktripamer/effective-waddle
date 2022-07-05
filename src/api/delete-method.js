@@ -15,7 +15,10 @@ params = JSON.parse(req.body)
             } 
             
             const paymentMethod = await getPaymentMethods(customerID.acf.customer_id);
-            if (paymentMethod.data.length === 0)  return res.status(200).json({failed:true});
+            if (paymentMethod.data.length === 0) {
+              const deleter = await deleteMethod(params.pid)
+              return res.status(200).json({deleter})
+            } 
 
             for (let i=0; i< paymentMethod.data.length; i++) {
               if (paymentMethod.data[i].plan.active === false) continue; //plan isnt active, so we can ignore regardless

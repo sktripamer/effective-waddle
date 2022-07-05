@@ -4,14 +4,16 @@ import { useState , useEffect } from "react";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import { navigate } from 'gatsby';
-
+import DOMPurify from 'dompurify';
 const hatsCat = ( props ) => {
 
   const { pageContext: { id,title } } = props;
     const [loadingBought, setLoadingBought] = useState(true)
     const [bought, setBought] = useState(false)
     const [postBody, setPostBody] = useState(null)
-
+    const sanitizedData = (sendData) => ({
+      __html: DOMPurify.sanitize(sendData)
+    })
     const email = function() {
         try {
           return JSON.parse(localStorage.auth).authToken;
@@ -88,7 +90,7 @@ const hatsCat = ( props ) => {
                       {postBody === null ? (
                         <></>
                       ): (
-                        <div dangerouslySetInnerHTML={postBody} class='content-to-set'></div>
+                        <div dangerouslySetInnerHTML={sanitizedData(postBody)} class='content-to-set'></div>
                       )}
                      
                         

@@ -368,18 +368,28 @@ const VariationCart = (e) => {
     let varName;
     let varImage;
     let varPrice;
+    let selectedItem;
     let virt;
     let attr1 = data.product.attributes.nodes[0].options[clickedItem]
-    let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
-    let selectedItem;
 
+   if (data.product.attributes.nodes[1] === undefined) {
+    data.product.variations.nodes.forEach(el => {
+      if (slugify(el.attributes.nodes[0].value) === attr1) {
+                   selectedItem = el;
+      }
+    })
+   } else {
+    let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
     data.product.variations.nodes.forEach(el => {
       if (slugify(el.attributes.nodes[0].value) === attr1) {
            if (slugify(el.attributes.nodes[1].value) === attr2) {
                    selectedItem = el;
            }
       }
-})
+    })
+   }
+  
+
        virt = selectedItem.virtual
        dbID = selectedItem.databaseId
        varName =  selectedItem.name
@@ -451,22 +461,43 @@ const variationClick = (e) => {
     setClickedItem(parseInt(e.target.dataset.idindex));
 
     let attr1 = data.product.attributes.nodes[0].options[parseInt(e.target.dataset.idindex)]
-    let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
     let selectedItem;
+    if (data.product.attributes.nodes[1] === undefined) {
+      data.product.variations.nodes.forEach(el => {
+        if (slugify(el.attributes.nodes[0].value) === attr1) {
 
-    data.product.variations.nodes.forEach(el => {
-      if (slugify(el.attributes.nodes[0].value) === attr1) {
-           if (slugify(el.attributes.nodes[1].value) === attr2) {
-                   selectedItem = el.databaseId
-                   setVariationPrice(el.price);
-                         if (el.stockStatus === "IN_STOCK") {
-                          setVariationNoStock(false)
-                         } else {
-                          setVariationNoStock(true)
-                         }
-           }
-      }
-})
+                     selectedItem = el.databaseId
+                     setVariationPrice(el.price);
+                           if (el.stockStatus === "IN_STOCK") {
+                            setVariationNoStock(false)
+                           } else {
+                            setVariationNoStock(true)
+                           }
+             
+        }
+      })
+
+    } else {
+      let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
+      data.product.variations.nodes.forEach(el => {
+        if (slugify(el.attributes.nodes[0].value) === attr1) {
+             if (slugify(el.attributes.nodes[1].value) === attr2) {
+                     selectedItem = el.databaseId
+                     setVariationPrice(el.price);
+                           if (el.stockStatus === "IN_STOCK") {
+                            setVariationNoStock(false)
+                           } else {
+                            setVariationNoStock(true)
+                           }
+             }
+        }
+      })
+    }
+
+   
+
+
+
 
 
     varSelector(data.product.variations.nodes[e.target.dataset.idindex].databaseId)
@@ -507,22 +538,42 @@ const variationClick = (e) => {
 
 
     let attr1 = data.product.attributes.nodes[0].options[clickedItem]
-    let attr2 = data.product.attributes.nodes[1].options[parseInt(e.target.dataset.idindex)]
     let selectedItem;
 
-    data.product.variations.nodes.forEach(el => {
-      if (slugify(el.attributes.nodes[0].value) === attr1) {
-           if (slugify(el.attributes.nodes[1].value) === attr2) {
-                   selectedItem = el.databaseId
-                   setVariationPrice(el.price);
-                         if (el.stockStatus === "IN_STOCK") {
-                          setVariationNoStock(false)
-                         } else {
-                          setVariationNoStock(true)
-                         }
-           }
-      }
-})
+    if (data.product.attributes.nodes[1] === undefined) {
+      data.product.variations.nodes.forEach(el => {
+        if (slugify(el.attributes.nodes[0].value) === attr1) {
+                     selectedItem = el.databaseId
+                     setVariationPrice(el.price);
+                           if (el.stockStatus === "IN_STOCK") {
+                            setVariationNoStock(false)
+                           } else {
+                            setVariationNoStock(true)
+                           }
+             
+        }
+      })
+
+    } else {
+      let attr2 = data.product.attributes.nodes[1].options[parseInt(e.target.dataset.idindex)]
+      data.product.variations.nodes.forEach(el => {
+        if (slugify(el.attributes.nodes[0].value) === attr1) {
+             if (slugify(el.attributes.nodes[1].value) === attr2) {
+                     selectedItem = el.databaseId
+                     setVariationPrice(el.price);
+                           if (el.stockStatus === "IN_STOCK") {
+                            setVariationNoStock(false)
+                           } else {
+                            setVariationNoStock(true)
+                           }
+             }
+        }
+      })
+    }
+   
+    
+
+
 
     varSelector(data.product.variations.nodes[e.target.dataset.idindex].databaseId)
 
@@ -571,21 +622,36 @@ const variationClick = (e) => {
 
       if (type !== "SIMPLE"){
         let attr1 = data.product.attributes.nodes[0].options[clickedItem]
-        let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
-        let selectedItem;
-    
+        if (data.product.attributes.nodes[1] === undefined) {
         data.product.variations.nodes.forEach(el => {
           if (slugify(el.attributes.nodes[0].value) === attr1) {
-               if (slugify(el.attributes.nodes[1].value) === attr2) {
                        setVariationPrice(el.price);
                        if (el.stockStatus === "IN_STOCK") {
                         setVariationNoStock(false)
                        } else {
                         setVariationNoStock(true)
                        }
-               }
+               
           }
     })
+        } else {
+          let attr2 = data.product.attributes.nodes[1].options[clickedItem2]
+          let selectedItem;
+      
+          data.product.variations.nodes.forEach(el => {
+            if (slugify(el.attributes.nodes[0].value) === attr1) {
+                 if (slugify(el.attributes.nodes[1].value) === attr2) {
+                         setVariationPrice(el.price);
+                         if (el.stockStatus === "IN_STOCK") {
+                          setVariationNoStock(false)
+                         } else {
+                          setVariationNoStock(true)
+                         }
+                 }
+            }
+      })
+        }
+
       } else {
         if (data.product.stockStatus === "IN_STOCK") {
           setVariationNoStock(false)

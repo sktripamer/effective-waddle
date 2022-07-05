@@ -19,6 +19,7 @@ export default function Navbar(props) {
   const [viewOffer, setViewOffer] = useState(false)
   const [cartText, setCartText] = useState('Cart')
   const [mobileMenu, setMobileMenu] = useState(0)
+  const [cartAmount, setCartAmount] = useState(0)
   const enterCart = () => {
     setViewOffer(false)
     setCartText('Cart')
@@ -76,10 +77,21 @@ export default function Navbar(props) {
       } catch {return []}
     }
     let subtotal = 0;
+    let cartamt = 0;
     let finalsub = ''
     tempCart().forEach((tempitem, index) => {
       subtotal += tempitem.total
+      cartamt += tempitem.quantity
+      if (tempitem.cquantity !== undefined) {
+        cartamt += tempitem.cquantity
+      }
+ 
     })
+    if (cartamt > 9) {
+      setCartAmount(10)
+    } else {
+      setCartAmount(cartamt)
+    }
     if (!subtotal.toString().includes('.')) {
       finalsub = subtotal.toString() + '.00'
     } else {
@@ -423,11 +435,8 @@ useEffect(() => {
       <div>aa</div>
     </div></a>
     <li onClick={() =>navigate('/account')}>A</li>
-        <li onClick={() => setLoadSearch(true)}>S</li>
-    <a class='dropdown'>C
-      <div class="link-dropdown active2 cart-drop">
-      <div></div>
-    </div></a>
+        <li  class='search-icon' onClick={() => setLoadSearch(true)}></li>
+        <li onClick={enterCart}>C</li>
 
 
       </ul>
@@ -607,7 +616,7 @@ useEffect(() => {
     </div></a>
     <li onClick={() =>navigate('/account')}>A</li>
         <li class='search-icon' onClick={() => setLoadSearch(true)}></li>
-        <li onClick={enterCart}>C</li>
+        <li onClick={enterCart}>{cartAmount}</li>
 
 
       </ul>

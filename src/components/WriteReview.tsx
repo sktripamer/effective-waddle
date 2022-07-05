@@ -36,13 +36,18 @@ if (props.updateComment === '0') {
     const previousContent = props.previousContent;
   const [updateProfile, { data, loading, error }] = useMutation(UPDATE_PROFILE);
   const wasProfileUpdated = Boolean(data?.writeReview?.rating);
-
+  const [checked, setChecked] = useState(true)
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const values = Object.fromEntries(data);
-    const rating = parseInt(values.rating);
-    const content = values.content;
+   let rating = 5;
+   if (((document.getElementById('rating-5') as HTMLInputElement)).checked === true) rating = 5;
+   if (((document.getElementById('rating-4') as HTMLInputElement)).checked === true) rating = 4;
+   if (((document.getElementById('rating-3') as HTMLInputElement)).checked === true) rating = 3;
+   if (((document.getElementById('rating-2') as HTMLInputElement)).checked === true) rating = 2;
+   if (((document.getElementById('rating-1') as HTMLInputElement)).checked === true) rating = 1;
+  const content = values.content;
    console.log(data)
    console.log(values)
    if (props.updateComment === '0') {
@@ -70,21 +75,24 @@ if (props.updateComment === '0') {
         </p>
       ) : null}
       <fieldset disabled={loading} aria-busy={loading}>
-        <label htmlFor="profile-first-name">Review 1-10</label>
-        <input
-          id="profile-first-name"
-          type="text"
-          name="rating"
-          defaultValue={previous}
-          autoComplete="given-name"
-        />
-        <label htmlFor="profile-last-name">review content</label>
+      <div class="rating">
+      <input type="radio"  defaultChecked={checked} onChange={() => setChecked(!checked)} name="rating" id="rating-5"/>
+      <label for="rating-5"></label>
+      <input type="radio" name="rating" id="rating-4"/>
+      <label for="rating-4"></label>
+      <input type="radio" name="rating" id="rating-3"/>
+      <label for="rating-3"></label>
+      <input type="radio" name="rating" id="rating-2"/>
+      <label for="rating-2"></label>
+      <input type="radio" name="rating" id="rating-1"/>
+      <label for="rating-1"></label>
+  </div>
+        <label class='review-content-label' htmlFor="profile-last-name">Review Content</label>
         <input
           id="profile-last-name"
-          type="text"
+          type="textarea"
           name="content"
           defaultValue={previousContent}
-          autoComplete="family-name"
         />
         {error ? (
           <p className="error-message">{error.message}</p>

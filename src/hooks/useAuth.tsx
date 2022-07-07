@@ -10,6 +10,12 @@ export interface User {
   capabilities: string[];
   jwtAuthToken: string;
   url: string;
+  stripe: Stripe;
+}
+
+interface Stripe {
+  customerID: string;
+  shippingaddress1: string;
 }
 
 interface AuthData {
@@ -39,6 +45,10 @@ export const GET_USER = gql`
       capabilities
       jwtAuthToken
       url
+      stripe {
+        customerId
+        shippingaddress1
+      }
     }
   }
 `;

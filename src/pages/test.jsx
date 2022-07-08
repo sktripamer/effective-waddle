@@ -42,8 +42,8 @@
         const [createNewOrder, { data, loading, error }] = useMutation(CREATE_ORDER);
 
         const newOrder = () => {
-            updateProfile({
-                variables: { id, ...values, },
+            createNewOrder({
+                variables: { databaseId },
             }).catch(error => {
                 console.error(error);
             });

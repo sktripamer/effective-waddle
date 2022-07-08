@@ -13,7 +13,7 @@
     } from '@stripe/react-stripe-js'; 
 
     const CREATE_ORDER = gql` 
-    mutation createNewOrder($databaseId: Integer) {
+    mutation createNewOrder($databaseId: Int) {
         createOrder(input: {customerId: $databaseId}) {
             order {
             databaseId

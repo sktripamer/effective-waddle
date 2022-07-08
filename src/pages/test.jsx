@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import AuthContent from "../components/AuthContent";
 import Layout from "../components/Layout";
 import { navigate } from 'gatsby';
 import { useQuery, gql } from "@apollo/client";
@@ -36,6 +37,7 @@ export default function Test() {
 
 
     return (
+        <AuthContent>
         <>
         <button onClick={newOrder}>new order</button>
         {loading === true ? <div>loading...</div> : ''}
@@ -46,5 +48,6 @@ export default function Test() {
             </>
         ):''}
         </>
+        </AuthContent>
     )
 }

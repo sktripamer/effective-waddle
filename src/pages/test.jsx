@@ -1,0 +1,50 @@
+import React, { useState, useRef, useEffect } from 'react';
+import Layout from "../components/Layout";
+import { navigate } from 'gatsby';
+import { useQuery, gql } from "@apollo/client";
+    import {loadStripe} from '@stripe/stripe-js/pure';
+    import useAuth, { User } from "../hooks/useAuth";
+import {
+    CardElement,
+    Elements,
+    useStripe,
+    useElements,
+  } from '@stripe/react-stripe-js'; 
+
+  const CREATE_ORDER = gql` 
+  mutation createNewOrder($databaseId: Integer) {
+    createOrder(input: {customerId: $databaseId}) {
+        order {
+          databaseId
+        }
+    }
+  }
+`;
+
+
+export default function Test() {
+  
+    const { user } = useAuth();
+    const { databaseId } = user;
+    const [createNewOrder, { data, loading, error }] = useMutation(CREATE_ORDER);
+
+    createNewOrder({
+        variables: { databaseId },
+      }).catch(error => {
+        console.error(error);
+      });
+
+
+    return (
+        <>
+        <button onClick={newOrder}>new order</button>
+        {loading === true ? <div>loading...</div> : ''}
+        {data ? (
+            <>
+            {console.log(data)}
+            loaded data
+            </>
+        ):''}
+        </>
+    )
+}

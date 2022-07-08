@@ -25,6 +25,18 @@ import {
 
 export default function Test() {
   
+   
+
+   
+
+    return (
+        <AuthContent>
+            <Cool/>
+        </AuthContent>
+    )
+}
+
+const Cool = () => {
     const { user } = useAuth();
     const { databaseId } = user;
     const [createNewOrder, { data, loading, error }] = useMutation(CREATE_ORDER);
@@ -34,10 +46,7 @@ export default function Test() {
       }).catch(error => {
         console.error(error);
       });
-
-
-    return (
-        <AuthContent>
+      return (
         <>
         <button onClick={newOrder}>new order</button>
         {loading === true ? <div>loading...</div> : ''}
@@ -48,6 +57,6 @@ export default function Test() {
             </>
         ):''}
         </>
-        </AuthContent>
-    )
+      )
+
 }

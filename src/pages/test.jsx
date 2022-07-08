@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import AuthContent from "../components/AuthContent";
 import Layout from "../components/Layout";
 import { navigate } from 'gatsby';
-import { useQuery, gql } from "@apollo/client";
+import { useQuery, gql, useMutation } from "@apollo/client";
     import {loadStripe} from '@stripe/stripe-js/pure';
     import useAuth, { User } from "../hooks/useAuth";
 import {

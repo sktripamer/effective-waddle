@@ -778,7 +778,7 @@ const customNoDataRenderer = () => (
           //token: tokenGet(),
           //cart: JSON.parse(localStorage.cart),
           'cart': metacart,
-          'newAccount': newEmail,
+          'email': newEmail,
         }
         localStorage.setItem('verify', newEmail)
         const request = await fetch('https://portal.revrevdev.xyz/wp-json/rev-process/new', {

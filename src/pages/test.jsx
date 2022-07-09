@@ -687,12 +687,12 @@ const customNoDataRenderer = () => (
     console.log(intent)
     let payload;
     if (status===0) {
-       payload = await stripe.confirmCardPayment(intent.paymentIntent.client_secret, {
+       payload = await stripe.confirmCardPayment(intent.client_secret, {
         payment_method: prevPaymentID,
       
       });
     } else {
-       payload = await stripe.confirmCardPayment(intent.paymentIntent.client_secret, {
+       payload = await stripe.confirmCardPayment(intent.client_secret, {
        
         payment_method: {
           card: elements.getElement(CardElement),

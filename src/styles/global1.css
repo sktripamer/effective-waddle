@@ -216,11 +216,14 @@
 }
 
 .course-popup {
-  display: none;
-  position: absolute;
+  display: flex;
   height: 350px;
+  position: absolute;
+  top: 350px;
   width: 260px;
-  top: 0;
+  transition: top .25s;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .courseboxall-cont {
@@ -241,12 +244,65 @@
   font-size: 1.2em;
   /* margin-top: auto; */
 }
+.course-popup:hover {
+  display: flex;
+  top: 0px;
+}
 
+.course-popup {
+  background: linear-gradient(#1b0636e0, #330968e0);
+  border-radius: 19px;
+}
+
+.top-partpop {
+  font-family: 'Nunito Bold';
+  color: #fff;
+  padding: .5em;
+  margin-top: 1em;
+}
+
+
+.courseboxbuy-cont {
+  overflow: hidden;
+}
+
+button.popup-quickadd {
+  border-radius: 0;
+  width: calc(100% - 3px);
+  margin-left: 3px;
+  color: #fff;
+  font-family: 'Nunito Bold';
+  font-size: 1.1em;
+  border: 2px solid #2364a3;
+  background: #f51d4600;
+}
+
+
+
+button.popup-buynow {
+  background: linear-gradient(206deg,#ff1d2d,#c41ab8);
+  color: #fff;
+  display: block;
+  font-family: Nunito Bold;
+  font-size: 1.3em;
+  padding: 0.6em;
+  text-align: center;
+  width: 100%;
+  border-radius: 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.popup-price {
+  text-align: center;
+  margin-top: 1em;
+  font-size: 1.3em;
+}
 .courseboxall-cont:hover + .course-popup {
   display: block;
 }
 
-.courseboxall-cont:hover {
+.course-popup:hover {
   display: block;
 }
 

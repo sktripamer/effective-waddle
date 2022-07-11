@@ -29,8 +29,8 @@ const DashPage = () => {
       setPage('subscriptions')
       return;
     }
-    if (window.location.href.indexOf("home") > -1) {
-      setPage('home')
+    if (window.location.href.indexOf("dashboard") > -1) {
+      setPage('dashboard')
       return;
     }
     if (window.location.href.indexOf("payments") > -1) {
@@ -45,7 +45,7 @@ const DashPage = () => {
       setPage('courses')
       return;
     }
-    navigate("#home")
+    navigate("#dashboard")
 
   }, []);
 

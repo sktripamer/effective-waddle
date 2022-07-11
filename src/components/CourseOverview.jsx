@@ -58,7 +58,7 @@ export default function CourseOverview() {
         <>
           {courseData.length > 0 ? (
               <>
-              {console.log(aa, courseData)}
+              {console.log('aa', courseData)}
               <p>plenty of data here</p>
               </>
           ):('no course data')}

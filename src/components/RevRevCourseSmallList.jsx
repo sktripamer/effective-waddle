@@ -31,7 +31,7 @@ export default function RevRevCourseSmallList(props) {
          url: varImage,
          quantity: 1,
          price: varPrice,
-         total: count * varPrice,
+         total: varPrice,
          v: virt
         }
         console.log(cartObj)

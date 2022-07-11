@@ -299,12 +299,12 @@ button.popup-buynow {
   font-size: 1.3em;
 }
 .courseboxall-cont:hover + .course-popup {
-  display: block;
+  display: flex;
   top: 0px;
 }
 
 .course-popup:hover {
-  display: block;
+  display: flex;
   top: 0px;
 }
 

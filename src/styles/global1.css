@@ -300,10 +300,12 @@ button.popup-buynow {
 }
 .courseboxall-cont:hover + .course-popup {
   display: block;
+  top: 0px;
 }
 
 .course-popup:hover {
   display: block;
+  top: 0px;
 }
 
 .course-infobuy {

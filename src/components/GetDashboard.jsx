@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { navigate } from 'gatsby';
 import CourseOverview from '../components/CourseOverview';
 import RevRevCourseSmallList from '../components/RevRevCourseSmallList';
-import { navigate } from 'gatsby';
+
 import { useQuery, gql } from "@apollo/client";
     import {loadStripe} from '@stripe/stripe-js/pure';
 import {

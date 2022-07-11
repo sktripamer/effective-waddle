@@ -14,10 +14,10 @@ export default function RevRevCourseSmallList(props) {
          let varImage;
          let varPrice;
          let virt;
-            dbID = e.target.dataset.cart
-            varName =  e.target.dataset.title
+            dbID = e.target.dataset.cartid
+            varName =  e.target.dataset.name
             varImage =  e.target.dataset.img
-            varPrice = Number(e.target.dataset.idindex);
+            varPrice = parseInt(e.target.dataset.idindex);
             virt = true
         let tempCart = function() {
          try {

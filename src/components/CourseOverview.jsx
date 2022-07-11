@@ -97,6 +97,7 @@ export default function CourseOverview() {
           </div>
           {courseData.length > 0 ? (
               <>
+              <div class='course-slider-cont-cont'>
               <div class='course-slider-cont'>
                 {courseData.map((el) => 
                   <>
@@ -125,6 +126,7 @@ export default function CourseOverview() {
                   </div>
                   </>
                 )}
+              </div>
               </div>
               </>
           ):('no course data')}

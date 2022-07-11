@@ -25,12 +25,13 @@ export default function CourseOverview() {
         });
         const courses = (await request.json());
         console.log(courses)
-        if (intent !== false) {
+        if (courses !== false) {
           setNoCourses(false)
           setCourseData(courses)
         }
        setLoadingCourses(false)
       } catch (error) {
+        console.log(error)
         setGenericError(true)
         setLoadingCourses(false)
       }

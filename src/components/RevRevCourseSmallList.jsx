@@ -29,7 +29,7 @@ export default function RevRevCourseSmallList(props) {
          ID: dbID,
          name: varName,
          url: varImage,
-         quantity: count,
+         quantity: 1,
          price: varPrice,
          total: count * varPrice,
          v: virt
@@ -109,7 +109,7 @@ export default function RevRevCourseSmallList(props) {
                     <div class='course-popup'>
                                 <div class='top-partpop'>
                                     <div class='popup-description'>{el.description}</div>
-                                    <div class='popup-price'>{el.price}</div>
+                                    <div class='popup-price'>${el.price}</div>
                                 </div>
                                 <div class='popup-buttons'>
                                     <button onClick={SimpleCart} data-idx={index} data-img={el.image} data-cartid={el.cart} data-price={el.price} data-name={el.title} class='popup-quickadd'>Quick Add</button>

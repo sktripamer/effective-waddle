@@ -1,9 +1,13 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import Layout from "../components/Layout";
+
+
 
 export default function RevRevCourseSmallList(props) {
-    const [addedToCarts, setAddedToCarts] = useState([])
 
+    const [addedToCarts, setAddedToCarts] = useState([])
+    //useeffect that adds product to carts array on first run
     const SimpleCart = (e) => {
         let dbID;
          let varName;
@@ -78,6 +82,7 @@ export default function RevRevCourseSmallList(props) {
 
     return (
         <>
+            <div class='course-display-cont'>
             {props.courseData.map((el, index) =>
             <>
                {el.cat === "RevRev Course" ? (<>
@@ -98,18 +103,19 @@ export default function RevRevCourseSmallList(props) {
                                 <div className='course-infopopup'>Get Access</div>
                             )}
                           
-                            <div class='course-popup'>
+                           
+                        </div>
+                    </div>
+                    <div class='course-popup'>
                                 <div class='top-partpop'>
                                     <div class='popup-description'>{el.description}</div>
                                     <div class='popup-price'>{el.price}</div>
                                 </div>
                                 <div class='popup-buttons'>
                                     <button onClick={SimpleCart} data-idx={index} data-img={el.image} data-cartid={el.cart} data-price={el.price} data-name={el.title} class='popup-quickadd'>Quick Add</button>
-                                    <button class='popup-buynow'>Buy Me!</button>
+                                    <button onClick={() => props.changeCart(el.cart)} class='popup-buynow'>Buy Me!</button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
                 </div>
                
                </>)
@@ -118,8 +124,9 @@ export default function RevRevCourseSmallList(props) {
             </>
             )}
         
-        
+        </div>
         </>
     )
 
 }
+

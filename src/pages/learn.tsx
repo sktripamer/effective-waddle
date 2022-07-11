@@ -17,7 +17,7 @@ import GetCourses from "../components/GetCourses"
 
 // markup
 const DashPage = () => {
-  const [page, setPage] = useState('home');
+  const [page, setPage] = useState('dashboard');
 
   useEffect(() => {
 

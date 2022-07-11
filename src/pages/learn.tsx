@@ -51,7 +51,7 @@ const DashPage = () => {
 
 
   return (
-    <Layout htmlClassName={"dashboard"}>
+    <Layout htmlClassName={"learndash"}>
       <Nav changePage={page => setPage(page)} classPass={page}/>
       {page === 'orders' && (
         <AuthContent>

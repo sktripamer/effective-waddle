@@ -65,7 +65,7 @@ const [cartItem, setCartItem] = useState(0);
     document.getElementsByTagName( 'html' )[0].classList.remove('noover')
     document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
 
-    setPreorder(false)
+    setLoadPreorder(false)
     // document.getElementsByClassName('preorder-btn-container')[0].removeEventListener('pointermove',  preventDefault)
     // document.getElementsByClassName('preorder-btn-container')[0].removeEventListener('touchmove',  preventDefault)
 }
@@ -75,7 +75,7 @@ function preReveal() {
   document.getElementsByTagName( 'main' )[0].classList.add('modalup')
   document.getElementsByTagName( 'html' )[0].style.cssText = `height:${windowHeight}px`;
   document.getElementsByTagName( 'body' )[0].style.cssText = `height:${windowHeight}px`;
-  setPreorder(true)
+  setLoadPreorder(true)
   // document.getElementsByClassName('preorder-btn-container')[0].addEventListener('pointermove',  preventDefault)
   // document.getElementsByClassName('preorder-btn-container')[0].addEventListener('touchmove',  preventDefault)
 }

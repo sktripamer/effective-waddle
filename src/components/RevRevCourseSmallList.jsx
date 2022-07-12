@@ -19,10 +19,10 @@ export default function RevRevCourseSmallList(props) {
                 if (cartitem.ID === propitem.cart) {
                     addedToCart.push(index2)
                 }
-
             })
 
         })
+        console.log(addedToCart)
         setAddedToCarts(addedToCart);
 
     }, []);
@@ -34,7 +34,7 @@ export default function RevRevCourseSmallList(props) {
          let varImage;
          let varPrice;
          let virt;
-            dbID = e.target.dataset.cartid
+            dbID = parseInt(e.target.dataset.cartid)
             varName =  e.target.dataset.name
             varImage =  e.target.dataset.img
             varPrice = parseInt(e.target.dataset.price);
@@ -108,7 +108,7 @@ export default function RevRevCourseSmallList(props) {
                {el.cat === "RevRev Course" ? (<>
 
                 <div class={`courseboxbuy-cont ind-${index}`}>
-                    <div class='courseboxall-cont'>
+                    <div class={addedToCarts.includes(index) === true ? "courseboxall-cont filled" : 'courseboxall-cont' }>
                         <div class='coursebox-top'>
                             <div class='coursebox-image-cont'>
                                 <div style={Object.assign({'background-image': `url(${el.image})` })} class='courseboximg'></div>

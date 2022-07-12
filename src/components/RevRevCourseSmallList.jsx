@@ -17,7 +17,7 @@ export default function RevRevCourseSmallList(props) {
             dbID = e.target.dataset.cartid
             varName =  e.target.dataset.name
             varImage =  e.target.dataset.img
-            varPrice = parseInt(e.target.dataset.idindex);
+            varPrice = parseInt(e.target.dataset.price);
             virt = true
         let tempCart = function() {
          try {
@@ -64,7 +64,7 @@ export default function RevRevCourseSmallList(props) {
             const newCart = e.target.dataset.idx
               
               const updatedCartsArray = [...addedToCarts, newCart];
-              
+                console.log(updatedCartsArray)
               setAddedToCarts(updatedCartsArray);
         }
        const setLocal = function(key, value) {

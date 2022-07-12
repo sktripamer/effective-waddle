@@ -7,7 +7,27 @@ import Layout from "../components/Layout";
 export default function RevRevCourseSmallList(props) {
 
     const [addedToCarts, setAddedToCarts] = useState([])
-    //useeffect that adds product to carts array on first run
+    useEffect(() => {
+        let tempCart = function() {
+            try {
+            return JSON.parse(localStorage.cart)
+            } catch {return []}      
+        }
+        let addedToCart = []
+        tempCart().forEach((cartitem, index) => {
+            props.courseData.forEach((propitem, index2) => {
+                if (cartitem.ID === propitem.cart) {
+                    addedToCart.push(index2)
+                }
+
+            })
+
+        })
+        setAddedToCarts(addedToCart);
+
+    }, []);
+
+
     const SimpleCart = (e) => {
         let dbID;
          let varName;

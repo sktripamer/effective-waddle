@@ -27,8 +27,8 @@ export default function RevRevCourseSmallList(props) {
 
     }, []);
 
-    const buyNow = () => {
-        props.changeCart(el.cart)
+    const buyNow = (cart) => {
+        props.changeCart(cart)
         props.preReveal
     }
     const SimpleCart = (e) => {
@@ -136,7 +136,7 @@ export default function RevRevCourseSmallList(props) {
                                 </div>
                                 <div class='popup-buttons'>
                                     <button onClick={SimpleCart} data-idx={index} data-img={el.image} data-cartid={el.cart} data-price={el.price} data-name={el.title} class='popup-quickadd'>Quick Add</button>
-                                    <button onClick={buyNow} class='popup-buynow'>Buy Me!</button>
+                                    <button onClick={buyNow(el.cart)} class='popup-buynow'>Buy Me!</button>
                                 </div>
                             </div>
                 </div>

@@ -96,7 +96,7 @@ function preReveal() {
         
         {courseData.length > 0 ? (
           <>
-            <RevRevCourseSmallList changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
+            <RevRevCourseSmallList preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
           </>
         ):null}
     </div>

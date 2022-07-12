@@ -201,11 +201,13 @@
     transform: perspective(1px) scale(1.05);
     -webkit-font-smoothing: subpixel-antialiased;
 }
-
+.courseboxbuy-cont .courseboximg {
+  border-radius: 0;
+}
 .courseboxbuy-cont {
   animation: newput .5s;
   background: linear-gradient(#13022e4d,#13022e70);
-  border-radius: 20px;
+
   box-shadow: 0.1em 0.1em 0.65rem #18181847;
   display: flex;
   flex-direction: column;
@@ -219,7 +221,7 @@
   display: flex;
   height: 350px;
   position: absolute;
-  top: 350px;
+  top: 352px;
   width: 260px;
   transition: top .25s;
   flex-direction: column;
@@ -234,11 +236,12 @@
 .courseboxall-cont.filled:hover + .course-popup {
   display: none;
 }
-
+.courseboxall-cont.filled + .course-popup:hover {
+  top: 352px;
+}
 .course-addedtocart {
   width: 100%;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+
   color: #fff;
   font-family: 'Nunito Bold';
   background: linear-gradient(206deg,#0af151,#307c60);
@@ -248,8 +251,7 @@
 }
 .course-infopopup {
   width: 100%;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+
   color: #fff;
   font-family: 'Nunito Bold';
   background: linear-gradient(206deg,#0a9ef1,#30487c);
@@ -303,8 +305,7 @@ button.popup-buynow {
   text-align: center;
   width: 100%;
   border-radius: 0;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+
 }
 
 .popup-price {
@@ -382,8 +383,7 @@ button.popup-buynow {
     display: flex;
     gap: 18px;
     overflow-x: overlay;
-    padding: 2em 1em;
-    padding-right: 6em;
+    padding: 2em 3em 2em 1em;
 }
 
 div.coursebox-cont.not_started .bar-filler {

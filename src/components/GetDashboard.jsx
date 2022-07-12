@@ -69,7 +69,8 @@ const [cartItem, setCartItem] = useState(0);
     // document.getElementsByClassName('preorder-btn-container')[0].removeEventListener('pointermove',  preventDefault)
     // document.getElementsByClassName('preorder-btn-container')[0].removeEventListener('touchmove',  preventDefault)
 }
-function preReveal() {
+const preReveal = () => {
+  console.log('aaa')
   setPrevScroll(window.scrollY)
   document.getElementsByTagName( 'html' )[0].classList.add('noover')
   document.getElementsByTagName( 'main' )[0].classList.add('modalup')
@@ -86,7 +87,7 @@ function preReveal() {
                           ? (
                             <Elements stripe={stripePromise}>
                               <div onClick={preHide} class='close-preorder'>X</div>
-                            <StepSix button={'Pay'} header={'checkout'} subheader={""} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
+                            <StepSix button={'Pay'} cart={cartItem} header={'checkout'} subheader={""} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
                             </Elements>
                           
                             )
@@ -554,9 +555,6 @@ const customNoDataRenderer = () => (
 
     async function createIntent(newEmail) {
       try {
-
-        
-
 
         let ex = {
           //token: tokenGet(),

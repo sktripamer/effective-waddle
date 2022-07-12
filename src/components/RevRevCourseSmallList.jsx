@@ -109,8 +109,10 @@ export default function RevRevCourseSmallList(props) {
             {props.courseData.map((el, index) =>
             <>
                {el.cat === "RevRev Course" ? (<>
-
+                <div class='courseboxfullcont-cont'>
+                {el.tag === 'new' ? <div class='selltag-new'></div> : ''}
                 <div class={`courseboxbuy-cont ind-${index}`}>
+                   
                     <div class={addedToCarts.includes(index) === true ? "courseboxall-cont filled" : 'courseboxall-cont' }>
                         <div class='coursebox-top'>
                             <div class='coursebox-image-cont'>
@@ -139,6 +141,7 @@ export default function RevRevCourseSmallList(props) {
                                     <button onClick={buyNow(el.cart)} class='popup-buynow'>Buy Me!</button>
                                 </div>
                             </div>
+                </div>
                 </div>
                
                </>)

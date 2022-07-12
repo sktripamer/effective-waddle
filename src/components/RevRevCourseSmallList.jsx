@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 
 
 
-export default function RevRevCourseSmallList(props) {
+export default function RevRevCourseSmallList({preReveal, changeCart, courseData}) {
 
     const [addedToCarts, setAddedToCarts] = useState([])
     useEffect(() => {
@@ -15,7 +15,7 @@ export default function RevRevCourseSmallList(props) {
         }
         let addedToCart = []
         tempCart().forEach((cartitem, index) => {
-            props.courseData.forEach((propitem, index2) => {
+           courseData.forEach((propitem, index2) => {
                 if (cartitem.ID === propitem.cart) {
                     addedToCart.push(index2)
                 }
@@ -28,8 +28,9 @@ export default function RevRevCourseSmallList(props) {
     }, []);
 
     const buyNow = (cart) => {
-        props.changeCart(cart)
-        props.preReveal
+        console.log('herea')
+       changeCart(cart)
+        preReveal
     }
     const SimpleCart = (e) => {
         let dbID;
@@ -106,7 +107,7 @@ export default function RevRevCourseSmallList(props) {
     return (
         <>
             <div class='course-display-cont'>
-            {props.courseData.map((el, index) =>
+            {courseData.map((el, index) =>
             <>
                {el.cat === "RevRev Course" ? (<>
                 <div class='courseboxfullcont-cont'>

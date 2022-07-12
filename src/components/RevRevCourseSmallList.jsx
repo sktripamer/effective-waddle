@@ -61,7 +61,7 @@ export default function RevRevCourseSmallList(props) {
         //if no duplicate cart item is found to already exist in localstorage cart array, simply add it to the array.
         if (cartItemFound === false && cartObj.quantity !== 0) {
             cartModifier.push(cartObj)
-            const newCart = e.target.dataset.idx
+            const newCart = parseInt(e.target.dataset.idx)
               
               const updatedCartsArray = [...addedToCarts, newCart];
                 console.log(updatedCartsArray)

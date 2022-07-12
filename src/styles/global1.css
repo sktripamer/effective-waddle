@@ -231,7 +231,21 @@
   flex-direction: column;
   height: 100%;
 }
+.courseboxall-cont.filled:hover + .course-popup {
+  display: none;
+}
 
+.course-addedtocart {
+  width: 100%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  color: #fff;
+  font-family: 'Nunito Bold';
+  background: linear-gradient(206deg,#0af151,#307c60);
+  text-align: center;
+  padding: .7em;
+  font-size: 1.2em;
+}
 .course-infopopup {
   width: 100%;
   border-bottom-left-radius: 20px;
@@ -296,7 +310,7 @@ button.popup-buynow {
 .popup-price {
   text-align: center;
   margin-top: 1em;
-  font-size: 1.3em;
+  font-size: 1.5em;
 }
 .courseboxall-cont:hover + .course-popup {
   display: flex;
@@ -330,6 +344,7 @@ button.popup-buynow {
     box-shadow: 0.1em 0.1em 0.65rem #18181847;
     animation: .5s newput;
     transform: perspective(1px) scale(1.01);
+    transition: transform .25s;
 }
 
 .courseboximg {

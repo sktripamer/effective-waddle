@@ -26,6 +26,7 @@ const [loadingCourses, setLoadingCourses] = useState(true)
 const [loadPreorder, setLoadPreorder] = useState(false)
 const [genericError, setGenericError] = useState(false)
 const [courseData, setCourseData] = useState([])
+
 const [cartItem, setCartItem] = useState(0);
   useEffect(() => {
     if (window.location.href.indexOf("dashboard") === -1) {
@@ -74,8 +75,8 @@ const preReveal = () => {
   setPrevScroll(window.scrollY)
   document.getElementsByTagName( 'html' )[0].classList.add('noover')
   document.getElementsByTagName( 'main' )[0].classList.add('modalup')
-  document.getElementsByTagName( 'html' )[0].style.cssText = `height:${windowHeight}px`;
-  document.getElementsByTagName( 'body' )[0].style.cssText = `height:${windowHeight}px`;
+  document.getElementsByTagName( 'html' )[0].style.cssText = `height:${window.innerHeight - 1}px`;
+  document.getElementsByTagName( 'body' )[0].style.cssText = `height:${window.innerHeight - 1}px`;
   setLoadPreorder(true)
   // document.getElementsByClassName('preorder-btn-container')[0].addEventListener('pointermove',  preventDefault)
   // document.getElementsByClassName('preorder-btn-container')[0].addEventListener('touchmove',  preventDefault)

@@ -29,7 +29,7 @@ export default function RevRevCourseSmallList({preReveal, changeCart, courseData
 
     const buyNow = (cart) => {
         console.log('herea')
-       changeCart(cart)
+       changeCart([cart])
         preReveal()
     }
     const SimpleCart = (e) => {
@@ -139,7 +139,7 @@ export default function RevRevCourseSmallList({preReveal, changeCart, courseData
                                 </div>
                                 <div class='popup-buttons'>
                                     <button onClick={SimpleCart} data-idx={index} data-img={el.image} data-cartid={el.cart} data-price={el.price} data-name={el.title} class='popup-quickadd'>Quick Add</button>
-                                    <button onClick={() => buyNow(el.cart)} class='popup-buynow'>Buy Me!</button>
+                                    <button onClick={() => buyNow({i: el.cart, q: 1, p: el.price, t: el.price})} class='popup-buynow'>Buy Me!</button>
                                 </div>
                             </div>
                 </div>

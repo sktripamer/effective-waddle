@@ -267,7 +267,6 @@
 
 .course-popup {
   background: linear-gradient(#1b0636e0, #330968e0);
-  border-radius: 19px;
 }
 
 .top-partpop {
@@ -284,8 +283,8 @@
 
 button.popup-quickadd {
   border-radius: 0;
-  width: calc(100% - 3px);
-  margin-left: 3px;
+  margin-bottom: 1px;
+  width: 100%;
   color: #fff;
   font-family: 'Nunito Bold';
   font-size: 1.1em;
@@ -344,7 +343,7 @@ button.popup-buynow {
     background: linear-gradient(#13022e4d, #13022e70);
     box-shadow: 0.1em 0.1em 0.65rem #18181847;
     animation: .5s newput;
-    transform: perspective(1px) scale(1.01);
+    transform: perspective(1px) scale(.99);
     transition: transform .25s;
 }
 
@@ -356,6 +355,18 @@ button.popup-buynow {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+
+
+.course-display-cont {
+  display: grid; /* 1 */
+  grid-template-columns: repeat(auto-fill, 260px); /* 2 */
+  grid-gap: 18px; /* 3 */
+  justify-content: center; /* 4 */
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 1em;
+}
+
 
 .learndash main {
     height: 100vh;
@@ -380,10 +391,12 @@ button.popup-buynow {
 }
 
 .course-slider-cont {
-    display: flex;
-    gap: 18px;
-    overflow-x: overlay;
-    padding: 2em 3em 2em 1em;
+  display: flex;
+  gap: 18px;
+  overflow-x: overlay;
+  padding: 2em 1em;
+  max-width: 850px;
+  margin: 0 auto;
 }
 
 div.coursebox-cont.not_started .bar-filler {

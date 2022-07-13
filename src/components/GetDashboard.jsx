@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { navigate } from 'gatsby';
 import CourseOverview from '../components/CourseOverview';

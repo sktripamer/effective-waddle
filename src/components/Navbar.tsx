@@ -477,7 +477,7 @@ try {
       <div class="link-dropdown active2 drop-resources">
       <div>aa</div>
     </div></a>
-    <li class='accocunt-icon' onClick={() =>navigate('/dashboard')}></li>
+    <li class='account-icon' onClick={() =>navigate('/dashboard')}></li>
         <li  class='search-icon' onClick={() => setLoadSearch(true)}></li>
         <li class='cart-icon-load' onClick={enterCart}></li>
 

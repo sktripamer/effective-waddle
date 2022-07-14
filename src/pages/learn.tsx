@@ -45,7 +45,7 @@ const DashPage = () => {
       setPage('courses')
       return;
     }
-    navigate("#dashboard")
+    //navigate("#dashboard")
 
   }, []);
 

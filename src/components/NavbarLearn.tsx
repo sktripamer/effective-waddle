@@ -327,12 +327,7 @@ export default function Navbar(props) {
   }
 
 const resizeHandler = () => {
-  setNavbarWidth(document.querySelector('.navbar-holder').getBoundingClientRect().width)
-  const navWidth = document.querySelector('.navbar-holder').getBoundingClientRect().width;
-  setGetStarted(document.getElementsByClassName('down-get-started')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-  setShop(document.getElementsByClassName('down-shop')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-  setEnroll(document.getElementsByClassName('down-enroll')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-  setResources(document.getElementsByClassName('down-resources')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
+
 }
 
 
@@ -366,12 +361,7 @@ useEffect(() => {
     // const localStorageSetHandler = function(e) {
     //   console.log(localStorage.getItem('cart'))
     // };
-    setNavbarWidth(document.querySelector('navbar').getBoundingClientRect().width)
-    const navWidth = document.querySelector('navbar').getBoundingClientRect().width;
-  setGetStarted(document.getElementsByClassName('down-get-started')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-  setShop(document.getElementsByClassName('down-shop')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-  setEnroll(document.getElementsByClassName('down-enroll')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
-  setResources(document.getElementsByClassName('down-resources')[0].getBoundingClientRect().left - (window.innerWidth - navWidth) / 2)
+
     document.addEventListener("itemInserted", localStorageSetHandler, false);
   }, []);
 

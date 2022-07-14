@@ -6128,6 +6128,9 @@ input.verify-code::placeholder {
   .ee-true .mini-product-cont {
     display: block;
 }
+html.learndash navbar {
+  left: 0;
+}
 .account-icon {
   width: 32px;
     height: 32px;

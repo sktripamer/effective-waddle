@@ -4,7 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import { navigate } from 'gatsby';
 import CourseOverview from '../components/CourseOverview';
 import RevRevCourseSmallList from '../components/RevRevCourseSmallList';
-
+import Layout from "../components/Layout";
+import Navbar from "../components/NavbarLearn";
 import { useQuery, gql } from "@apollo/client";
     import {loadStripe} from '@stripe/stripe-js/pure';
 import {
@@ -26,7 +27,7 @@ const [loadingCourses, setLoadingCourses] = useState(true)
 const [loadPreorder, setLoadPreorder] = useState(false)
 const [genericError, setGenericError] = useState(false)
 const [courseData, setCourseData] = useState([])
-
+const [openCart, setOpenCart] = useState(false)
 const [cartItem, setCartItem] = useState(0);
   useEffect(() => {
     if (window.location.href.indexOf("dashboard") === -1) {
@@ -82,7 +83,9 @@ const preReveal = () => {
   // document.getElementsByClassName('preorder-btn-container')[0].addEventListener('touchmove',  preventDefault)
 }
   return (
+    <Layout seoTitle={"Learn With PK"} seoTitleTemplate="Amazing Courses to give you a Revival of Revenue" seoDescription="Pre-order PK's book today to learn how you can start maximizing your time and earning more money!" seoImage={'https://portal.revrevdev.xyz/wp-content/uploads/2022/07/online-education-1920x1080-1.jpg'}>
     <div className='sub-list'>
+      <Navbar changeCart={openCart => setOpenCart(openCart)} viewCart={openCart} />
                         <div className={`preorder-btn-container ${loadPreorder}`}>
               {true == loadPreorder
                           ? (
@@ -98,11 +101,13 @@ const preReveal = () => {
         
         {courseData.length > 0 ? (
           <>
-            <RevRevCourseSmallList preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
+            <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
           </>
         ):null}
     </div>
+    </Layout>
   );
+
 }
 
 

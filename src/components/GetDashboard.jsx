@@ -4,6 +4,7 @@
   import { navigate } from 'gatsby';
   import CourseOverview from '../components/CourseOverview';
   import RevRevCourseSmallList from '../components/RevRevCourseSmallList';
+  import RevMapCourseSmallList from '../components/RevMapCourseSmallList';
   import Layout from "../components/Layout";
   import Navbar from "../components/NavbarLearn";
   import { useQuery, gql } from "@apollo/client";
@@ -102,6 +103,7 @@
           {courseData.length > 0 ? (
             <>
               <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
+              <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
             </>
           ):null}
       </div>

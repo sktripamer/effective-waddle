@@ -439,7 +439,7 @@ try {
      <div className="navbar-holder">
       <ul>
 
-    <li  class='home-icon' onClick={() => navigate('/')}></li>
+      <li onClick={() =>navigate('/')}>Home</li>
     <li class='accocunt-icon' onClick={() =>navigate('/dashboard')}></li>
         <li class='cart-icon-load' onClick={enterCart}></li>
 
@@ -460,9 +460,8 @@ try {
       <ul>
 
       <li  class='home-icon' onClick={() => navigate('/')}></li>
-    <li class='accocunt-icon' onClick={() =>navigate('/dashboard')}></li>
-        <li class='cart-icon-load' onClick={enterCart}></li>
-
+        <li class='account-icon' onClick={() =>navigate('/dashboard')}></li>
+        <li id='cart-icon' class='cart-icon-load' onClick={enterCart}></li>
 
       </ul>
       </div>

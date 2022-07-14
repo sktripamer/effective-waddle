@@ -17,7 +17,7 @@ import GetCourses from "../components/GetCourses"
 
 // markup
 const DashPage = () => {
-  const [page, setPage] = useState('dashboard');
+  const [page, setPage] = useState('');
 
   useEffect(() => {
 
@@ -29,10 +29,10 @@ const DashPage = () => {
       setPage('subscriptions')
       return;
     }
-    if (window.location.href.indexOf("dashboard") > -1) {
-      setPage('dashboard')
-      return;
-    }
+    // if (window.location.href.indexOf("dashboard") > -1) {
+    //   setPage('dashboard')
+    //   return;
+    // }
     if (window.location.href.indexOf("payments") > -1) {
       setPage('payments')
       return;
@@ -71,7 +71,7 @@ const DashPage = () => {
        </AuthContent>
       )}
 
-      {page === 'dashboard' && (
+      {page === '' && (
          <GetHome/>
       )}
        {page === 'profile' && (

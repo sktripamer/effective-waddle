@@ -369,10 +369,14 @@ button.popup-buynow {
   padding: 1em;
 }
 
-
+html.learndash .payment.register-form {
+  padding-left: 90px;
+}
 .learndash main {
     height: 100vh;
     background: #3f177d;
+    width: 100vw;
+    overflow: hidden;
 }
 
 .course-desc {

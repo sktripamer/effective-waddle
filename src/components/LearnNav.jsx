@@ -15,10 +15,10 @@ export default function Nav(props) {
       <ul className={`nav  ${props.classPass}`}>
           <>
           <li onClick={() => props.changePage('dashboard')} className='nav-logo'>
-          <Link to="#dashboard"></Link>
+          <Link to="/learn"></Link>
         </li>
           <li onClick={() => props.changePage('dashboard')} className='nav-home'>
-          <Link to="#dashboard">
+          <Link to="/learn">
             Home
           </Link>
         </li>

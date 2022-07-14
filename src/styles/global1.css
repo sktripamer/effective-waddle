@@ -292,7 +292,9 @@ button.popup-quickadd {
   background: #f51d4600;
 }
 
-
+.learndash .sub-list {
+  overflow-y: overlay;
+}
 
 button.popup-buynow {
   background: linear-gradient(206deg,#ff1d2d,#c41ab8);

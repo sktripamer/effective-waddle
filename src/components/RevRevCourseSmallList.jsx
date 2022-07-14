@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 
 
 
-export default function RevRevCourseSmallList({preReveal, changeCart, courseData}) {
+export default function RevRevCourseSmallList({preReveal, changeCart, courseData, changeCartVis}) {
 
     const [addedToCarts, setAddedToCarts] = useState([])
     useEffect(() => {
@@ -124,7 +124,7 @@ export default function RevRevCourseSmallList({preReveal, changeCart, courseData
                             <div className='course-infobuy'>{el.title}</div>
                             
                             {addedToCarts.includes(index) === true ? (
-                                <div className='course-addedtocart'>View Cart</div>
+                                <div onClick={() => changeCartVis(true)} className='course-addedtocart'>View Cart</div>
                             ): (
                                 <div className='course-infopopup'>Get Access</div>
                             )}

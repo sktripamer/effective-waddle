@@ -300,6 +300,27 @@
   position: absolute;
   background-size: contain;
 }
+.learndash .payment-area-pay-checkout {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+.learndash .prev-name-on-card {
+  color: #4a4a4a;
+}
+
+.learndash .prev-email {
+  color: #4a4a4a;
+}
+.learndash .prev-name-on-card {
+  color: #4a4a4a;
+}
+
+.learndash .prev-last-box {
+ color: #4a4a4a;
+}
 
 button.popup-quickadd:after {
  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' style='enable-background:new 0 0 512 512;' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cpolygon fill='%23fff' points='289.391,222.609 289.391,0 222.609,0 222.609,222.609 0,222.609 0,289.391 222.609,289.391 222.609,512 289.391,512 289.391,289.391 512,289.391 512,222.609 '/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");

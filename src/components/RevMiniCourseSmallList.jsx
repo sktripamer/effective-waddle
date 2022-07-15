@@ -118,11 +118,15 @@ export default function RevMiniCourseSmallList({preReveal, changeCart, courseDat
 
     return (
         <>
-            
+              {courseData.length > 0 ? (
+             <div class='smallcourse-head'>Mini Courses</div>
+         ): (
+            <></>
+         )}
             {courseData.map((el, index) =>
             <>
             
-               {el.cat === "Mini Map" ? (<>
+               {el.cat === "Mini Course" ? (<>
                 {parseInt(el.featured) === highestVal ? (
                     <>
                     <div className='course-subhead'>{el.sub}</div>
@@ -169,7 +173,7 @@ export default function RevMiniCourseSmallList({preReveal, changeCart, courseDat
             {courseData.map((el, index) =>
             <>
             
-               {el.cat === "Mini Map" ? (<>
+               {el.cat === "Mini Course" ? (<>
                 {parseInt(el.featured) === highestVal ? (
                   <></>
                 ):(

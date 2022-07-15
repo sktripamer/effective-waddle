@@ -118,11 +118,7 @@ export default function RevMapCourseSmallList({preReveal, changeCart, courseData
 
     return (
         <>
-              {courseData.length > 0 ? (
-             <div class='smallcourse-head'>Revenue Maps</div>
-         ): (
-            <></>
-         )}
+             
             {courseData.map((el, index) =>
             <>
             
@@ -166,7 +162,7 @@ export default function RevMapCourseSmallList({preReveal, changeCart, courseData
             
             )}
 
-            
+<div class='smallcourse-head'>Revenue Maps</div>
             <div class='course-display-cont'>
             {courseData.map((el, index) =>
             <>

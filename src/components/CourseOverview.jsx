@@ -79,7 +79,7 @@ export default function CourseOverview() {
   return (
   <>
   {loadingCourses === true ? (
-    'loading'
+      <div class='load-false coursesection'></div>
   ): (
     <>
 

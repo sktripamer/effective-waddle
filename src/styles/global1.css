@@ -358,7 +358,13 @@ button.popup-buynow {
     border-top-right-radius: 20px;
 }
 
+.revmini .course-singledisplay-left {
+  width: 42%;
+}
 
+.revmini .course-singledisplay-right {
+  width: 58%;
+}
 .course-display-cont {
   display: grid; /* 1 */
   grid-template-columns: repeat(auto-fill, 260px); /* 2 */
@@ -403,14 +409,20 @@ html.learndash .payment.register-form {
 }
 
 .course-subhead {
-  font-family: 'Nunito Bold';
-  font-size: 1.1em;
   color: #fff;
+  font-family: Nunito Bold;
+  font-size: 1.1em;
+  margin: 0 auto;
+  max-width: 850px;
+  padding-left: 1em;
 }
 
 .course-infobuy.singledisplay {
   text-align: left;
   font-size: 1.7em;
+  margin: 0 auto;
+  max-width: 850px;
+  padding-left: 0.6em;
 }
 
 .course-infocontent {
@@ -426,6 +438,9 @@ html.learndash .payment.register-form {
 }
 
 .course-singledisplay-cont .popup-buttons {
+  max-width: 280px;
+}
+.course-singledisplay-cont .course-addedtocart {
   max-width: 280px;
 }
 

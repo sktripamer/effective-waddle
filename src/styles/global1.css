@@ -427,6 +427,65 @@ html.learndash .payment.register-form {
   max-width: 600px;
 }
 
+
+.unlockedcourses-page-header span {
+  animation: none;
+  font-family: Nunito Bold;
+  font-size: 1.8rem;
+  margin: 0;
+  max-width: 700px;
+  padding-top: 1em;
+  text-transform: none;
+}
+
+h1.unlockedcourses-page-header {
+  background-image: linear-gradient(90deg,rgba(238,9,28,.7),rgba(194,10,81,.7)),url(https://portal.revrevdev.xyz/wp-content/uploads/2022/06/shirtbg.jpg);
+  background-position: 50%;
+  background-size: cover;
+  color: #fff;
+  font-family: Josefin Sans;
+  font-size: 2.8em;
+  margin-top: 1.4em;
+ padding-top: 1em;
+  text-transform: uppercase;
+padding-bottom: 1em;
+padding-left: 1em;
+}
+
+
+.course-slider-cont .coursebox-bot {margin-top: 0;}
+
+.ownedcourse-slider {
+  margin-bottom: 6em;
+  background: #2f115e;
+  padding-top: 1.5em;
+}
+
+h1.challenge-page-header {
+
+  background-image: linear-gradient(90deg,rgba(238,9,28,.7),rgba(194,10,81,.7)),url(https://portal.revrevdev.xyz/wp-content/uploads/2022/06/shirtbg.jpg);
+  background-position: 50%;
+  background-size: cover;
+  color: #fff;
+  font-family: Josefin Sans;
+  font-size: 2.8em;
+  ;;;;;;;;margin-top: .2em;;;;;;;;;
+ padding-top: 1em;
+  text-transform: uppercase;
+padding-bottom: 1em;
+padding-left: 1em;;;;;;;;margin-bottom: 3.5em;;;;;;;;}
+
+.smallcourse-head {
+  max-width: 1200px;
+  font-size: 2em;
+  color: #fff;
+  font-family: 'Josefin Sans';
+  text-transform: uppercase;
+  margin: 0 auto;
+  margin-top: 1.5em;
+  padding: .5em;
+}
+
 .course-display-cont .courseboxfullcont-cont:only-child {    max-width: 574px;width: 100%;min-width: 260px;}
 .course-singledisplay-cont {
   margin: 0 auto;

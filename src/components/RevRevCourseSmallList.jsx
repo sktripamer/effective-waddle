@@ -106,6 +106,11 @@ export default function RevRevCourseSmallList({preReveal, changeCart, courseData
 
     return (
         <>
+         {courseData.length > 0 ? (
+             <div class='smallcourse-head'>RevRev Courses</div>
+         ): (
+            <></>
+         )}
             <div class='course-display-cont'>
             {courseData.map((el, index) =>
             <>

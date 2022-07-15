@@ -99,17 +99,17 @@
                             : ""}
       </div>
       <div className='sub-list'>
-        <div class='mycourse-header'>
+       
+        {loadingCourses === true ? (
+          <div class='load-false coursesection'></div>
+        ): (
+          <>
+           <div class='mycourse-header'>
         <div class='unlockedcourse-header'>
           <h1 class="unlockedcourses-page-header">My Courses<span>Continue where you left off on your unlocked courses</span></h1> 
           </div>
           </div>
           <CourseOverview/>
-        {loadingCourses === true ? (
-          <div class='load-false coursesection'></div>
-        ): (
-          <>
-          
           {courseData.length > 0 ? (
             <>
               <div className='course-subhead'>PK Daily</div>

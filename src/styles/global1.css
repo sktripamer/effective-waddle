@@ -201,6 +201,18 @@
     transform: perspective(1px) scale(1.05);
     -webkit-font-smoothing: subpixel-antialiased;
 }
+
+.unlockedcourse-header {
+  max-width: 1166px;
+  margin: 0 auto;
+  margin-top: 3em;
+  padding: 1em;
+
+  padding-bottom: 2em;
+}
+.mycourse-header {
+  background: #2f115e;
+}
 .courseboxbuy-cont .courseboximg {
   border-radius: 0;
 }
@@ -212,9 +224,9 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  height: 350px;
+  height: 100%;
   justify-content: space-between;
-  width: 260px;
+  min-width: 260px;
 }
 
 .course-popup {
@@ -240,6 +252,12 @@
 .courseboxall-cont.filled + .course-popup:hover {
   top: 352px;
 }
+.revmini .course-addedtocart {
+  margin-top: auto;
+  margin-bottom: auto;
+  max-width: 280px;
+}
+
 .course-addedtocart {
   width: 100%;
   cursor: pointer;
@@ -409,7 +427,7 @@ html.learndash .payment.register-form {
   max-width: 600px;
 }
 
-.course-display-cont .courseboxfullcont-cont:only-child {max-width: 600px;margin: 0 auto;width: 100%;min-width: 260px;}
+.course-display-cont .courseboxfullcont-cont:only-child {    max-width: 574px;width: 100%;min-width: 260px;}
 .course-singledisplay-cont {
   margin: 0 auto;
   max-width: 1200px;
@@ -440,6 +458,7 @@ html.learndash .payment.register-form {
   margin: 0 auto;
   max-width: 1200px;
   padding-left: 1em;
+  margin-top: 6em;
 }
 
 .course-infobuy.singledisplay {
@@ -535,16 +554,21 @@ div.coursebox-cont.not_started .bar-filler {
     -webkit-mask: var(--mask);
 }
 
+.tag-cont-cont-owned {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
 .learndash .ind-tag {
     border: none;
     color: #cfcfcf;
     margin: 0;
     padding: .6em 1em;
+    display: inline-block;
 }
 
 .learndash .tag-cont {
-    width: fit-content;
+
     border: 1px solid #fff;
     margin-left: 1em;
     flex-wrap: nowrap;

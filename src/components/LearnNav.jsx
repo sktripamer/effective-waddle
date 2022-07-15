@@ -14,37 +14,37 @@ export default function Nav(props) {
       <nav classname='navloaded'>
       <ul className={`nav  ${props.classPass}`}>
           <>
-          <li onClick={() => props.changePage('dashboard')} className='nav-logo'>
+          <li onClick={() => props.changePage('')} className='nav-logo'>
           <Link to="/learn"></Link>
         </li>
-          <li onClick={() => props.changePage('dashboard')} className='nav-home'>
+          <li onClick={() => props.changePage('')} className='nav-home'>
           <Link to="/learn">
             Home
           </Link>
         </li>
-            <li onClick={() => props.changePage('orders')} className='nav-orders'>
-              <Link to="#orders">
-                Orders
+            <li onClick={() => props.changePage('revrev-courses')} className='nav-orders'>
+              <Link to="#revrev-courses">
+                RevRev Courses
               </Link>
             </li>
-            <li onClick={() => props.changePage('subscriptions')} className='nav-subscriptions'>
-              <Link to="#subscriptions">
-                Subscriptions
+            <li onClick={() => props.changePage('mini-courses')} className='nav-subscriptions'>
+              <Link to="#mini-courses">
+                Mini Courses
               </Link>
             </li>
-            <li onClick={() => props.changePage('payments')} className='nav-payments'>
-              <Link to="#payments">
-                Payments
+            <li onClick={() => props.changePage('revenue-maps')} className='nav-payments'>
+              <Link to="#revenue-maps">
+                Revenue Maps
               </Link>
             </li>
             <li  onClick={() => props.changePage('profile')} className='nav-profile'>
               <Link to="#profile">
-                Profile
+                Challenges
               </Link>
             </li>
             <li onClick={() => props.changePage('courses')} className='nav-courses'>
               <Link to="#courses">
-                Courses
+                Workshops
               </Link>
             </li>
           </>

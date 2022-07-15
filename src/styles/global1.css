@@ -219,11 +219,12 @@
 
 .course-popup {
   display: flex;
-  height: 350px;
+  height: 100%;
   position: absolute;
-  top: 352px;
-  width: 260px;
-  transition: top .25s;
+  top: calc(-100% - 2px);
+  transition: top .35s cubic-bezier(0.26, 0.1, 0.02, 1);
+  width: 100%;
+
   flex-direction: column;
   justify-content: space-between;
 }
@@ -241,7 +242,7 @@
 }
 .course-addedtocart {
   width: 100%;
-
+  cursor: pointer;
   color: #fff;
   font-family: 'Nunito Bold';
   background: linear-gradient(206deg,#0af151,#307c60);
@@ -270,10 +271,14 @@
 }
 
 .top-partpop {
-  font-family: 'Nunito Bold';
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   color: #fff;
-  padding: .5em;
+  font-family: Nunito Bold;
   margin-top: 1em;
+  padding: 0.5em;
 }
 
 
@@ -310,9 +315,10 @@ button.popup-buynow {
 }
 
 .popup-price {
-  text-align: center;
+  font-size: 1.9em;
   margin-top: 1em;
-  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 0.5em;
 }
 .courseboxall-cont:hover + .course-popup {
   display: flex;
@@ -323,16 +329,18 @@ button.popup-buynow {
   display: flex;
   top: 0px;
 }
-
+.popup-price:before {
+  content: "Only ";
+}
 .course-infobuy {
   font-size: 1.5em;
   font-family: 'Josefin Sans';
   color: #fff;
   text-align: center;
-
+  margin-bottom: 1em;
 }
 
-.coursebox-bot {height: 100%;display: flex;flex-direction: column;justify-content: space-between;}
+.coursebox-bot {height: 100%;display: flex;flex-direction: column;justify-content: space-between;    margin-top: 2em;}
 
   .coursebox-cont {
     display: flex;
@@ -364,17 +372,28 @@ button.popup-buynow {
 
 .revmini .course-singledisplay-right {
   width: 58%;
+  display: flex;
+    flex-direction: column;
 }
 .course-display-cont {
-  display: grid; /* 1 */
-  grid-template-columns: repeat(auto-fill, 260px); /* 2 */
-  grid-gap: 18px; /* 3 */
-  justify-content: center; /* 4 */
-  max-width: 850px;
+  grid-gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  justify-content: center;
   margin: 0 auto;
+  max-width: 1200px;
   padding: 1em;
 }
+.revmap .course-singledisplay-left {
+  display: flex;
+  flex-direction: column;
+}
 
+.revmap .course-addedtocart {
+  margin-top: auto;
+  margin-bottom: auto;
+  max-width: 280px;
+}
 html.learndash .payment.register-form {
   padding-left: 90px;
 }
@@ -384,10 +403,16 @@ html.learndash .payment.register-form {
     width: 100vw;
     overflow: hidden;
 }
+.courseboxfullcont-cont {
+  min-height: 350px;
+  max-height: 650px;
+  max-width: 600px;
+}
 
+.course-display-cont .courseboxfullcont-cont:only-child {max-width: 600px;margin: 0 auto;width: 100%;min-width: 260px;}
 .course-singledisplay-cont {
   margin: 0 auto;
-  max-width: 850px;
+  max-width: 1200px;
   padding: 1em;
   display: flex;
   gap: 20px;
@@ -413,7 +438,7 @@ html.learndash .payment.register-form {
   font-family: Nunito Bold;
   font-size: 1.1em;
   margin: 0 auto;
-  max-width: 850px;
+  max-width: 1200px;
   padding-left: 1em;
 }
 
@@ -421,8 +446,9 @@ html.learndash .payment.register-form {
   text-align: left;
   font-size: 1.7em;
   margin: 0 auto;
-  max-width: 850px;
+  max-width: 1200px;
   padding-left: 0.6em;
+  
 }
 
 .course-infocontent {
@@ -439,9 +465,13 @@ html.learndash .payment.register-form {
 
 .course-singledisplay-cont .popup-buttons {
   max-width: 280px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .course-singledisplay-cont .course-addedtocart {
   max-width: 280px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 
@@ -467,7 +497,7 @@ html.learndash .payment.register-form {
   gap: 18px;
   overflow-x: overlay;
   padding: 2em 1em;
-  max-width: 850px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 

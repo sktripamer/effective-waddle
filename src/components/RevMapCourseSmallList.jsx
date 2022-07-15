@@ -126,7 +126,26 @@ export default function RevMapCourseSmallList({preReveal, changeCart, courseData
                             <div class='aahfgh'>amazing point here</div>
                     </div>
                 ) :(
-                    <div class='course-display-cont'>
+                  <></>
+                )}
+               </>)
+               
+               :(<></>)}
+                  
+            </>
+            
+            )}
+
+
+            <div class='course-display-cont'>
+            {courseData.map((el, index) =>
+            <>
+            
+               {el.cat === "Revenue Map" ? (<>
+                {parseInt(el.featured) === highestVal ? (
+                  <></>
+                ) :(
+                   
                     <div class='courseboxfullcont-cont'>
                     {el.tag === 'new' ? <div class='selltag-new'></div> : ''}
                     <div class={`courseboxbuy-cont ind-${index}`}>
@@ -161,7 +180,7 @@ export default function RevMapCourseSmallList({preReveal, changeCart, courseData
                                 </div>
                     </div>
                     </div>
-                    </div>
+                   
                 )}
 
 
@@ -175,7 +194,7 @@ export default function RevMapCourseSmallList({preReveal, changeCart, courseData
             </>
             
             )}
-        
+        </div>
      
         </>
     )

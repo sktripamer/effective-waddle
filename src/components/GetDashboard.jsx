@@ -85,8 +85,7 @@
   }
     return (
       <Layout htmlClassName={"learndash"} seoTitle={"Learn With PK"} seoTitleTemplate="Amazing Courses to give you a Revival of Revenue" seoDescription="Pre-order PK's book today to learn how you can start maximizing your time and earning more money!" seoImage={'https://portal.revrevdev.xyz/wp-content/uploads/2022/07/online-education-1920x1080-1.jpg'}>
-      <div className='sub-list'>
-        <Navbar changeCart={openCart => setOpenCart(openCart)} viewCart={openCart} />
+         <Navbar changeCart={openCart => setOpenCart(openCart)} viewCart={openCart} />
                           <div className={`preorder-btn-container ${loadPreorder}`}>
                 {true == loadPreorder
                             ? (
@@ -98,6 +97,8 @@
                               )
                             : ""}
       </div>
+      <div className='sub-list'>
+       
           <CourseOverview/>
           
           {courseData.length > 0 ? (

@@ -110,11 +110,7 @@
           <div class='load-false coursesection'></div>
         ): (
           <>
-                    <div class='mycourse-header'>
-        <div class='unlockedcourse-header'>
-          <h1 class="unlockedcourses-page-header">My Courses<span>Continue where you left off on your unlocked courses</span></h1> 
-          </div>
-          </div>
+                   
           <CourseOverview/>
           {courseData.length > 0 ? (
             <>

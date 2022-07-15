@@ -90,6 +90,12 @@ export default function CourseOverview() {
       {noCourses === true ? (
         'no courses'
       ): (
+        <>
+        <div class='mycourse-header'>
+        <div class='unlockedcourse-header'>
+          <h1 class="unlockedcourses-page-header">My Courses<span>Continue where you left off on your unlocked courses</span></h1> 
+          </div>
+          </div>
         <div class={`ownedcourse-slider ${activeTag}`}>
           <div class='tag-cont-cont-owned'>
           <div class={`tag-cont ${activeTag.replace("'", '').replace(' ', '')}`}>
@@ -133,6 +139,7 @@ export default function CourseOverview() {
           ):('no course data')}
 
         </div>
+        </>
       )}
 
 

@@ -37,6 +37,11 @@
     //   }
     // });
     useEffect(() => {
+      if (window.location.href.indexOf("revrev-courses") === -1) {
+        window.location.reload();
+      }
+    });
+    useEffect(() => {
       async function fetchMyAPI() {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 15000); 

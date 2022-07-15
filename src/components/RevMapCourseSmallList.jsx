@@ -124,10 +124,12 @@ export default function RevMapCourseSmallList({preReveal, changeCart, courseData
             
                {el.cat === "Revenue Map" ? (<>
                 {parseInt(el.featured) === highestVal ? (
+                    <>
+                    <div className='course-subhead'>{el.sub}</div>
+                    <div className='course-infobuy singledisplay'>{el.title}</div>
                     <div class='course-singledisplay-cont revmap'>
                         <div class='course-singledisplay-left'>
-                            <div className='course-subhead'>{el.sub}</div>
-                            <div className='course-infobuy'>{el.title}</div>
+
                             <div dangerouslySetInnerHTML={sanitizedData(el.long)} className='course-infocontent'></div>
                             {addedToCarts.includes(index) === true ? (
                                     <div onClick={() => changeCartVis(true)} className='course-addedtocart'>View Cart</div>
@@ -148,6 +150,7 @@ export default function RevMapCourseSmallList({preReveal, changeCart, courseData
                           
                            
                     </div>
+                    </>
                 ) :(
                   <></>
                 )}

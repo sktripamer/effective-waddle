@@ -99,7 +99,11 @@
                             : ""}
       </div>
       <div className='sub-list'>
-          <h1 class="unlockedcourses-page-header">My Courses<span>Continue where you left off on your unlocked courses</span></h1>                   
+        <div class='mycourse-header'>
+        <div class='unlockedcourse-header'>
+          <h1 class="unlockedcourses-page-header">My Courses<span>Continue where you left off on your unlocked courses</span></h1> 
+          </div>
+          </div>
           <CourseOverview/>
         {loadingCourses === true ? (
           <div class='load-false coursesection'></div>
@@ -111,7 +115,9 @@
               <div className='course-subhead'>PK Daily</div>
                     <div className='course-infobuy singledisplay'>Entrepreneurial Challenge</div>
                     <div class='challenge-cont'>
+                    <div class='unlockedcourse-header'>
                       <h1 class="challenge-page-header">Unlock access to exclusive challenges<span><button>Get Access</button></span></h1>
+                    </div>
                     </div>
               <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
               <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />

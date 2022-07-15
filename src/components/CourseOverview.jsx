@@ -91,9 +91,10 @@ export default function CourseOverview() {
         'no courses'
       ): (
         <div class={`ownedcourse-slider ${activeTag}`}>
-
+          <div class='tag-cont-cont-owned'>
           <div class={`tag-cont ${activeTag.replace("'", '').replace(' ', '')}`}>
               <div onClick={onClick1} class='ind-tag tag-in-progress'>In Progress</div><div onClick={onClick2} class='ind-tag tag-completed'>Completed</div><div onClick={onClick3} class='ind-tag tag-all'>All Courses</div>
+          </div>
           </div>
           {courseData.length > 0 ? (
               <>

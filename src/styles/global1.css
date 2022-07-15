@@ -203,7 +203,7 @@
 }
 
 .unlockedcourse-header {
-  max-width: 1166px;
+  max-width: 1200px;
   margin: 0 auto;
   margin-top: 3em;
   padding: 1em;
@@ -270,7 +270,7 @@
 }
 .course-infopopup {
   width: 100%;
-
+  cursor: pointer;
   color: #fff;
   font-family: 'Nunito Bold';
   background: linear-gradient(206deg,#0a9ef1,#30487c);
@@ -279,6 +279,18 @@
   font-size: 1.2em;
   /* margin-top: auto; */
 }
+.challenge-cont .unlockedcourse-header {padding-left: 1em;padding-right: 1em;max-width: 1200px;margin-top: .4em;}
+.challenge-page-header button {
+  background: linear-gradient(206deg,#0a9ef1,#30487c);
+  color: #fff;
+  font-family: Nunito Bold;
+  font-size: 1em;
+  padding: .2em .4em;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+}
+
 .course-popup:hover {
   display: flex;
   top: 0px;
@@ -468,12 +480,13 @@ h1.challenge-page-header {
   background-size: cover;
   color: #fff;
   font-family: Josefin Sans;
-  font-size: 2.8em;
-  ;;;;;;;;margin-top: .2em;;;;;;;;;
+  font-size: 2.8em;margin-top: .2em;
  padding-top: 1em;
   text-transform: uppercase;
 padding-bottom: 1em;
-padding-left: 1em;;;;;;;;margin-bottom: 3.5em;;;;;;;;}
+text-align: center;
+padding-right: 1em;
+padding-left: 1em;margin-bottom: 3.5em;}
 
 .smallcourse-head {
   max-width: 1200px;
@@ -627,7 +640,7 @@ div.coursebox-cont.not_started .bar-filler {
 }
 
 .learndash .tag-cont {
-
+  max-width: fit-content;
     border: 1px solid #fff;
     margin-left: 1em;
     flex-wrap: nowrap;

@@ -99,16 +99,28 @@
                             : ""}
       </div>
       <div className='sub-list'>
-       
+          <h1 class="unlockedcourses-page-header">My Courses<span>Continue where you left off on your unlocked courses</span></h1>                   
           <CourseOverview/>
+        {loadingCourses === true ? (
+          <div class='load-false coursesection'></div>
+        ): (
+          <>
           
           {courseData.length > 0 ? (
             <>
+              <div className='course-subhead'>PK Daily</div>
+                    <div className='course-infobuy singledisplay'>Entrepreneurial Challenge</div>
+                    <div class='challenge-cont'>
+                      <h1 class="challenge-page-header">Unlock access to exclusive challenges<span><button>Get Access</button></span></h1>
+                    </div>
               <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
               <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
               <RevMiniCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
             </>
-          ):null}
+          ):<div class='empty-courses'>No more courses available at this time. Check back soon!</div>}
+          </>
+        )}
+         
       </div>
       </Layout>
     );

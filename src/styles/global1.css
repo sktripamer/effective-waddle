@@ -379,6 +379,57 @@ html.learndash .payment.register-form {
     overflow: hidden;
 }
 
+.course-singledisplay-cont {
+  margin: 0 auto;
+  max-width: 850px;
+  padding: 1em;
+  display: flex;
+  gap: 20px;
+}
+
+.courseboximgsquare {
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 1em;
+  padding-top: 100%;
+}
+
+.course-singledisplay-left {
+  width: 58%;
+}
+
+.course-singledisplay-right {
+  width: 42%;
+}
+
+.course-subhead {
+  font-family: 'Nunito Bold';
+  font-size: 1.1em;
+  color: #fff;
+}
+
+.course-infobuy.singledisplay {
+  text-align: left;
+  font-size: 1.7em;
+}
+
+.course-infocontent {
+  color: #fff;
+  font-family: 'Nunito Regular';
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.course-infocontent li {
+  font-family: 'Nunito Bold';
+  font-size: 1.1em;
+}
+
+.course-singledisplay-cont .popup-buttons {
+  max-width: 280px;
+}
+
+
 .course-desc {
     font-family: 'Nunito Bold';
     color: #fff;

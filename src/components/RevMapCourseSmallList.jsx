@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import DOMPurify from 'dompurify';
 import Layout from "../components/Layout";
 
 
@@ -8,6 +9,9 @@ export default function RevMapCourseSmallList({preReveal, changeCart, courseData
 
     const [addedToCarts, setAddedToCarts] = useState([])
     const [highestVal, setHighestVal] = useState(null)
+    const sanitizedData = (sendData) => ({
+        __html: DOMPurify.sanitize(sendData)
+      })
     useEffect(() => {
         let tempCart = function() {
             try {
@@ -120,10 +124,29 @@ export default function RevMapCourseSmallList({preReveal, changeCart, courseData
             
                {el.cat === "Revenue Map" ? (<>
                 {parseInt(el.featured) === highestVal ? (
-                    <div class='course-singledisplay-cont'>
-
+                    <div class='course-singledisplay-cont revmap'>
+                        <div class='course-singledisplay-left'>
+                            <div className='course-subhead'>{el.sub}</div>
                             <div className='course-infobuy'>{el.title}</div>
-                            <div class='aahfgh'>amazing point here</div>
+                            <div dangerouslySetInnerHTML={sanitizedData(el.long)} className='course-infocontent'></div>
+                            {addedToCarts.includes(index) === true ? (
+                                    <div onClick={() => changeCartVis(true)} className='course-addedtocart'>View Cart</div>
+                                ): (
+                                    <div class='popup-buttons'>
+                                    <button onClick={SimpleCart} data-idx={index} data-img={el.image} data-cartid={el.cart} data-price={el.price} data-name={el.title} class='popup-quickadd'>Quick Add</button>
+                                    <button onClick={() => buyNow({i: el.cart, q: 1, p: el.price, t: el.price})} class='popup-buynow'>Buy Me!</button>
+                        </div>
+                                )}
+                            
+                        </div>
+                        <div class='course-singledisplay-right'>
+                        <div class='coursebox-imagesqaure-cont'>
+                                    <div style={Object.assign({'background-image': `url(${el.square})` })} class='courseboximgsquare'></div>
+                                </div>
+                            
+                        </div>
+                          
+                           
                     </div>
                 ) :(
                   <></>
@@ -136,7 +159,7 @@ export default function RevMapCourseSmallList({preReveal, changeCart, courseData
             
             )}
 
-
+            
             <div class='course-display-cont'>
             {courseData.map((el, index) =>
             <>
@@ -144,7 +167,7 @@ export default function RevMapCourseSmallList({preReveal, changeCart, courseData
                {el.cat === "Revenue Map" ? (<>
                 {parseInt(el.featured) === highestVal ? (
                   <></>
-                ) :(
+                ):(
                    
                     <div class='courseboxfullcont-cont'>
                     {el.tag === 'new' ? <div class='selltag-new'></div> : ''}

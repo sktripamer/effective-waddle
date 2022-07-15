@@ -7,6 +7,9 @@ import GetOrders from "../components/GetOrders";
 import GetSubscriptions from "../components/GetSubscriptions";
 import AuthContent from "../components/AuthContent";
 import GetHome from "../components/GetDashboard"
+import GetRevRev from "../components/GetRevRev"
+import GetRevMap from "../components/GetRevMap"
+import GetMini from "../components/GetMini"
 import GetPayments from "../components/GetPayments"
 import ProfileForm from "../components/ProfileForm";
 import GetCourses from "../components/GetCourses"
@@ -53,22 +56,16 @@ const DashPage = () => {
   return (
     <Layout htmlClassName={"learndash"}>
       <Nav changePage={page => setPage(page)} classPass={page}/>
-      {page === 'orders' && (
-        <AuthContent>
-          <GetOrders/>
-        </AuthContent>
+      {page === 'revrev-courses' && (
+          <GetRevRev/>
       )}
       
-      {page === 'subscriptions' && (
-        <AuthContent>
-          <GetSubscriptions/>
-        </AuthContent>
+      {page === 'mini-courses' && (
+       <GetMini/>
       )}
 
-      {page === 'payments' && (
-         <AuthContent>
-         <GetPayments/>
-       </AuthContent>
+      {page === 'revenue-maps' && (
+      <GetRevMap/>
       )}
 
       {page === '' && (

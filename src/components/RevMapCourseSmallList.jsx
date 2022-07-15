@@ -31,7 +31,7 @@ export default function RevMapCourseSmallList({preReveal, changeCart, courseData
         setAddedToCarts(addedToCart);
         let highest = -1;
         courseData.forEach((propitem, index) => {
-            if (parseInt(propitem.featured) > highest ) {
+            if (propitem.cat === 'Revenue Map' && parseInt(propitem.featured) > highest ) {
                 highest = parseInt(propitem.featured)
             }
         })

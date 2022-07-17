@@ -15,7 +15,7 @@ export default function RevRevCourseSmallList({preReveal, changeCart, courseData
         }
         let addedToCart = []
         tempCart().forEach((cartitem, index) => {
-           courseData.available.forEach((propitem, index2) => {
+           courseData?.available?.forEach((propitem, index2) => {
                 if (cartitem.ID === propitem.cart) {
                     addedToCart.push(index2)
                 }
@@ -112,13 +112,13 @@ export default function RevRevCourseSmallList({preReveal, changeCart, courseData
          ) :
           ( null)}
 
-         {courseData.availble.length > 0 ? (
+         {courseData?.availble?.length > 0 ? (
              <div class='smallcourse-head'>RevRev Courses</div>
          ): (
             <></>
          )}
             <div class='course-display-cont'>
-            {courseData.available.map((el, index) =>
+            {courseData?.available?.map((el, index) =>
             <>
                {el.cat === "RevRev Course" ? (<>
                 <div class='courseboxfullcont-cont'>

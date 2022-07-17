@@ -149,7 +149,7 @@ export default function RevRevCourseSmallList({preReveal, prePreReveal, changeCa
                     <div class='course-popup'>
                                 <div class='top-partpop'>
                                     <div class='popup-description'>{el.description}</div>
-                                    <button onClick={viewMore({sub: el.sub, img: el.square, desc: el.long, price:el.price, title: el.title, cart: {i: el.cart, q: 1, p: el.price, t: el.price}})} class='learn-more-btn'>Learn More</button>
+                                    <button onClick={() => viewMore({sub: el.sub, img: el.square, desc: el.long, price:el.price, title: el.title, cart: {i: el.cart, q: 1, p: el.price, t: el.price}})} class='learn-more-btn'>Learn More</button>
                                     <div class='popup-price'>${el.price}</div>
                                 </div>
                                 <div class='popup-buttons'>

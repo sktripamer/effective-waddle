@@ -102,7 +102,7 @@ export default function RevRevCourseSmallList({preReveal, changeCart, courseData
        setLocal('cart', JSON.stringify(cartModifier))
      
      }
-    
+    console.log(courseData)
 
     return (
         <>

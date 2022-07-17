@@ -8,6 +8,7 @@ export default function RevRevCourseSmallList({preReveal, prePreReveal, changeCa
 
     const [addedToCarts, setAddedToCarts] = useState([])
     useEffect(() => {
+        document.addEventListener("itemInserted", localStorageSetHandler, false);
         let tempCart = function() {
             try {
             return JSON.parse(localStorage.cart)
@@ -15,17 +16,28 @@ export default function RevRevCourseSmallList({preReveal, prePreReveal, changeCa
         }
         let addedToCart = []
         tempCart().forEach((cartitem, index) => {
-           courseData?.available?.forEach((propitem, index2) => {
-                if (cartitem.ID === propitem.cart) {
-                    addedToCart.push(index2)
-                }
-            })
+                    addedToCart.push(cartitem.ID)
 
         })
         console.log(addedToCart)
         setAddedToCarts(addedToCart);
 
     }, []);
+
+    const localStorageSetHandler = () => {
+        let tempCart = function() {
+            try {
+            return JSON.parse(localStorage.cart)
+            } catch {return []}      
+        }
+        let addedToCart = []
+        tempCart().forEach((cartitem, index) => {
+                    addedToCart.push(cartitem.ID)
+
+        })
+        console.log(addedToCart)
+        setAddedToCarts(addedToCart);
+    }
 
     const buyNow = (cart) => {
         console.log('herea')
@@ -92,7 +104,7 @@ export default function RevRevCourseSmallList({preReveal, prePreReveal, changeCa
         //if no duplicate cart item is found to already exist in localstorage cart array, simply add it to the array.
         if (cartItemFound === false && cartObj.quantity !== 0) {
             cartModifier.push(cartObj)
-            const newCart = parseInt(e.target.dataset.idx)
+            const newCart = parseInt(e.target.dataset.cartid)
               
               const updatedCartsArray = [...addedToCarts, newCart];
                 console.log(updatedCartsArray)
@@ -137,7 +149,7 @@ export default function RevRevCourseSmallList({preReveal, prePreReveal, changeCa
                         <div class='coursebox-bot'>
                             <div className='course-infobuy'>{el.title}</div>
                             
-                            {addedToCarts.includes(index) === true ? (
+                            {addedToCarts.includes(el.cart) === true ? (
                                 <div onClick={() => changeCartVis(true)} className='course-addedtocart'>View Cart</div>
                             ): (
                                 <div className='course-infopopup'>Get Access</div>

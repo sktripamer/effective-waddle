@@ -106,7 +106,7 @@
           <>
         
           <CourseOverview cat='all' courseData={courseData.owned} />
-          {courseData.available.length > 0 ? (
+          {courseData?.available?.length > 0 ? (
             <>
               <div className='course-subhead'>PK Daily</div>
                     <div className='course-infobuy singledisplay'>Entrepreneurial Challenge</div>

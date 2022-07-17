@@ -94,7 +94,7 @@
       window.scrollTo(0, prevScroll)
       document.getElementsByTagName( 'html' )[0].classList.remove('noover')
       document.getElementsByTagName( 'main' )[0].classList.remove('modalup')
-
+      setLoadDetails(false)
       setLoadPreorder(false)
       // document.getElementsByClassName('preorder-btn-container')[0].removeEventListener('pointermove',  preventDefault)
       // document.getElementsByClassName('preorder-btn-container')[0].removeEventListener('touchmove',  preventDefault)
@@ -202,7 +202,7 @@
    const buyNow = (cart) => {
     console.log('hereaa')
    setCartItem([cart])
-   loadDetails(false)
+   setLoadDetails(false)
 }
 
     return (
@@ -218,12 +218,13 @@
                                 <>
                                     {"sub" in details ? (
                                       <>
+                                       <div onClick={preHide} class='close-preorder'>X</div>
                                        <div className='course-subhead'>{details.sub}</div>
                                        <div className='course-infobuy singledisplay'>{details.title}</div>
                                        <div class='course-singledisplay-cont revmap'>
                                            <div class='course-singledisplay-left'>
                    
-                                               <div dangerouslySetInnerHTML={sanitizedData(details.long)} className='course-infocontent'></div>
+                                               <div dangerouslySetInnerHTML={sanitizedData(details.desc)} className='course-infocontent'></div>
                                                {addedToCarts.includes(details.cart.i) === true ? (
                                                        <div onClick={closePreviewOpenCart} className='course-addedtocart'>Checkout</div>
                                                    ): (

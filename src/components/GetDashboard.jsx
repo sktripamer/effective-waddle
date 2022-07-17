@@ -126,8 +126,8 @@
   }
     const closePreviewOpenCart = () => {
       setOpenCart(true)
-      loadDetails(false)
-      loadPreorder(false)
+      setLoadDetails(false)
+      setLoadPreorder(false)
     }
     const SimpleCart = (e) => {
       let dbID;

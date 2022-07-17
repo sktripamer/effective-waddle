@@ -5,41 +5,13 @@ import { navigate } from 'gatsby';
 
 
 
-export default function CourseOverview() {
+export default function CourseOverview({ courseData, cat}) {
   const [loadingCourses, setLoadingCourses] = useState(true)
   const [genericError, setGenericError] = useState(false)
   const [courseData, setCourseData] = useState([])
   const [noCourses, setNoCourses] = useState(true)
   const [activeTag, setActiveTag] = useState("in-progress")
-  useEffect(() => {
-    async function fetchMyAPI() {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 15000); 
-      try {
-        const request = await fetch('https://portal.revrevdev.xyz/wp-json/rev-process/learn', {
-          method: 'POST',
-          signal: controller.signal,
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        const courses = (await request.json());
-        console.log(courses)
-        if (courses !== false) {
-          setNoCourses(false)
-          setCourseData(courses)
-        }
-       setLoadingCourses(false)
-      } catch (error) {
-        console.log(error)
-        setGenericError(true)
-        setLoadingCourses(false)
-      }
-      clearTimeout(timeoutId);
-    }
-    fetchMyAPI()
-  }, []);
+
 
 
   function slugify(text) {
@@ -108,6 +80,12 @@ export default function CourseOverview() {
               <div class='course-slider-cont'>
                 {courseData.map((el) => 
                   <>
+
+                  {cat === 'all' ? (
+                    <>
+                      {el.cat !== 'Espresso' ? (
+                      <>
+                      
                   <div class={`coursebox-cont ${el.data.status}`}>
                     <div class='coursebox-top'>
                       <div class='coursebox-image-cont'>
@@ -131,6 +109,53 @@ export default function CourseOverview() {
                       </div>
                     </div>
                   </div>
+                      </>
+                      ): (
+                      <>
+                      </>
+                      )}
+                    </>
+                  ): (
+                    <>
+                     {el.cat === cat ? (
+                    <>
+                    
+                  <div class={`coursebox-cont ${el.data.status}`}>
+                    <div class='coursebox-top'>
+                      <div class='coursebox-image-cont'>
+                        <div style={Object.assign({'background-image': `url(${el.image})` })} class='courseboximg'></div>
+                      </div>
+                      <div className='course-info'>{el.title}</div>
+                      <div className='course-desc'>{el.description}</div>
+                    </div>
+                    <div class='coursebox-bot'>
+                      {el.data.status === 'not_started' ? (
+                          <a class='course-btn btn-start' href={`https://portal.revrevdev.xyz/courses/${slugify(el.title)}`} target="_blank" rel="noreferrer noopener">Start Course</a>
+                      ) : ('')}
+                          {el.data.status === 'in_progress' ? (
+                          <a class='course-btn btn-continue' href={`https://portal.revrevdev.xyz/courses/${slugify(el.title)}`} target="_blank" rel="noreferrer noopener">Continue Course</a>
+                      ) : ('')}
+                          {el.data.status === 'completed' ? (
+                          <a class='course-btn btn-finished' href={`https://portal.revrevdev.xyz/courses/${slugify(el.title)}`} target="_blank" rel="noreferrer noopener">Review Course</a>
+                      ) : ('')}
+                      <div class="progressbar">
+                        <div style={Object.assign({width: `${Math.round((el.data.completed / el.data.total) * 100)}%` })} class="bar-filler">{`${Math.round((el.data.completed / el.data.total) * 100)}%`}</div>
+                      </div>
+                    </div>
+                  </div>
+                    </>
+                  ): (
+                    <>
+                    </>
+                  )}
+                    </>
+                  )}
+                  
+                 
+
+
+
+
                   </>
                 )}
               </div>

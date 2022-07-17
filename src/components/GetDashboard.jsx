@@ -104,8 +104,11 @@
           <div class='load-false coursesection'></div>
         ): (
           <>
-        
+         {courseData?.owned?.length > 0 ? (
           <CourseOverview cat='all' courseData={courseData.owned} />
+         ) :
+          ( null)}
+         
           {courseData?.available?.length > 0 ? (
             <>
               <div className='course-subhead'>PK Daily</div>

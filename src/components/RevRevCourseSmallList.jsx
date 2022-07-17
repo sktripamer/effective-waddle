@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
-
+import CourseOverview from '../components/CourseOverview';
 
 
 export default function RevRevCourseSmallList({preReveal, changeCart, courseData, changeCartVis}) {
@@ -15,7 +15,7 @@ export default function RevRevCourseSmallList({preReveal, changeCart, courseData
         }
         let addedToCart = []
         tempCart().forEach((cartitem, index) => {
-           courseData.forEach((propitem, index2) => {
+           courseData.available.forEach((propitem, index2) => {
                 if (cartitem.ID === propitem.cart) {
                     addedToCart.push(index2)
                 }
@@ -106,13 +106,19 @@ export default function RevRevCourseSmallList({preReveal, changeCart, courseData
 
     return (
         <>
-         {courseData.length > 0 ? (
+
+        {courseData?.owned?.length > 0 ? (
+          <CourseOverview sectionImg={'revrevcourseimg'} sectionTitle={'All My RevRev Courses'} sectionDescription={'Continue where you left off on your unlocked RevRev Courses'} cat='RevRev Course' courseData={courseData.owned} />
+         ) :
+          ( null)}
+
+         {courseData.availble.length > 0 ? (
              <div class='smallcourse-head'>RevRev Courses</div>
          ): (
             <></>
          )}
             <div class='course-display-cont'>
-            {courseData.map((el, index) =>
+            {courseData.available.map((el, index) =>
             <>
                {el.cat === "RevRev Course" ? (<>
                 <div class='courseboxfullcont-cont'>

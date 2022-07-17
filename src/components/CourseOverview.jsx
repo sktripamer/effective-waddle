@@ -5,7 +5,7 @@ import { navigate } from 'gatsby';
 
 
 
-export default function CourseOverview({ courseData, cat}) {
+export default function CourseOverview({ courseData, cat, sectionTitle, sectionDescription, sectionImg}) {
   const [loadingCourses, setLoadingCourses] = useState(false)
   const [genericError, setGenericError] = useState(false)
   const [noCourses, setNoCourses] = useState(false)
@@ -64,7 +64,7 @@ export default function CourseOverview({ courseData, cat}) {
         <>
         <div class='mycourse-header'>
         <div class='unlockedcourse-header'>
-          <h1 class="unlockedcourses-page-header">My Courses<span>Continue where you left off on your unlocked courses</span></h1> 
+          <h1 class={`unlockedcourses-page-header ${sectionImg}`}>{sectionTitle}<span>{sectionDescription}</span></h1> 
           </div>
           </div>
         <div class={`ownedcourse-slider ${activeTag}`}>

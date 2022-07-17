@@ -105,7 +105,7 @@
         ): (
           <>
          {courseData?.owned?.length > 0 ? (
-          <CourseOverview cat='all' courseData={courseData.owned} />
+          <CourseOverview sectionImg={''} sectionTitle={'All My Courses'} sectionDescription={'Continue where you left off on your unlocked courses'} cat='all' courseData={courseData.owned} />
          ) :
           ( null)}
          
@@ -118,8 +118,8 @@
                       <h1 class="challenge-page-header">Unlock access to exclusive challenges<span><button>Get Access</button></span></h1>
                     </div>
                     </div>
-              {/* <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
-              <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
+              <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
+              {/* <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
               <RevMiniCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} /> */}
             </>
           ):<div class='empty-courses'>No more courses available at this time. Check back soon!</div>}

@@ -6,10 +6,9 @@ import { navigate } from 'gatsby';
 
 
 export default function CourseOverview({ courseData, cat}) {
-  const [loadingCourses, setLoadingCourses] = useState(true)
+  const [loadingCourses, setLoadingCourses] = useState(false)
   const [genericError, setGenericError] = useState(false)
-
-  const [noCourses, setNoCourses] = useState(true)
+  const [noCourses, setNoCourses] = useState(false)
   const [activeTag, setActiveTag] = useState("in-progress")
 
 

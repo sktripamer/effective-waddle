@@ -7,6 +7,7 @@
   import RevMapCourseSmallList from '../components/RevMapCourseSmallList';
   import RevMiniCourseSmallList from '../components/RevMiniCourseSmallList';
   import Layout from "../components/Layout";
+  import DOMPurify from 'dompurify';
   import Navbar from "../components/NavbarLearn";
   import { useQuery, gql } from "@apollo/client";
       import {loadStripe} from '@stripe/stripe-js/pure';
@@ -26,11 +27,17 @@
     const [stripePromise, setStripePromise] = useState(() => loadStripe('pk_test_51Jr6IuEIi9OXKxaBdi4aBOlRU6DgoMcQQNgDCOLo1p8TZDy29xR5tKWHP5C02bF7kKHpkWKq9DI9OCzClVtj8zi500XedIOBD3'))
     const [prevScroll, setPrevScroll] = useState(0)
   const [loadingCourses, setLoadingCourses] = useState(true)
+  const [details, setDetails] = useState({})
   const [loadPreorder, setLoadPreorder] = useState(false)
+  const [loadDetails, setLoadDetails] = useState(false)
   const [genericError, setGenericError] = useState(false)
   const [courseData, setCourseData] = useState([])
   const [openCart, setOpenCart] = useState(false)
   const [cartItem, setCartItem] = useState(0);
+  const [addedToCarts, setAddedToCarts] = useState([])
+  const sanitizedData = (sendData) => ({
+    __html: DOMPurify.sanitize(sendData)
+  })
     // useEffect(() => {
     //   if (window.location.href.indexOf("dashboard") === -1) {
     //     window.location.reload();
@@ -62,6 +69,25 @@
       }
       fetchMyAPI()
     }, []);
+
+    useEffect(() => {
+      let tempCart = function() {
+          try {
+          return JSON.parse(localStorage.cart)
+          } catch {return []}      
+      }
+      let addedToCart = []
+      tempCart().forEach((cartitem, index) => {
+   
+                  addedToCart.push(cartitem.ID)
+              
+
+      })
+      console.log(addedToCart)
+      setAddedToCarts(addedToCart);
+      
+  }, []);
+
     function preHide() {
       document.getElementsByTagName( 'html' )[0].style.cssText = ``;
       document.getElementsByTagName( 'body' )[0].style.cssText = ``;
@@ -80,21 +106,163 @@
     document.getElementsByTagName( 'main' )[0].classList.add('modalup')
     document.getElementsByTagName( 'html' )[0].style.cssText = `height:${window.innerHeight - 1}px`;
     document.getElementsByTagName( 'body' )[0].style.cssText = `height:${window.innerHeight - 1}px`;
+    setLoadDetails(false)
     setLoadPreorder(true)
     // document.getElementsByClassName('preorder-btn-container')[0].addEventListener('pointermove',  preventDefault)
     // document.getElementsByClassName('preorder-btn-container')[0].addEventListener('touchmove',  preventDefault)
   }
+  const prePreReveal = () => {
+    console.log('aba')
+    setPrevScroll(window.scrollY)
+    document.getElementsByTagName( 'html' )[0].classList.add('noover')
+    document.getElementsByTagName( 'main' )[0].classList.add('modalup')
+    document.getElementsByTagName( 'html' )[0].style.cssText = `height:${window.innerHeight - 1}px`;
+    document.getElementsByTagName( 'body' )[0].style.cssText = `height:${window.innerHeight - 1}px`;
+    setLoadDetails(true)
+    setLoadPreorder(true)
+    // document.getElementsByClassName('preorder-btn-container')[0].addEventListener('pointermove',  preventDefault)
+    // document.getElementsByClassName('preorder-btn-container')[0].addEventListener('touchmove',  preventDefault)
+
+  }
+    const closePreviewOpenCart = () => {
+      setOpenCart(true)
+      loadDetails(false)
+      loadPreorder(false)
+    }
+    const SimpleCart = (e) => {
+      let dbID;
+       let varName;
+       let varImage;
+       let varPrice;
+       let virt;
+          dbID = parseInt(e.target.dataset.cartid)
+          varName =  e.target.dataset.name
+          varImage =  e.target.dataset.img
+          varPrice = parseInt(e.target.dataset.price);
+          virt = true
+      let tempCart = function() {
+       try {
+       return JSON.parse(localStorage.cart)
+       } catch {return []}      
+   }
+   
+     let cartObj = {
+       ID: dbID,
+       name: varName,
+       url: varImage,
+       quantity: 1,
+       price: varPrice,
+       total: varPrice,
+       v: virt
+      }
+      console.log(cartObj)
+      let cartModifier = tempCart();
+      let cartItemFound = false;
+   
+   
+      //search through the localstorage cart array to find if this item youre adding already exists in it. if it does, modify it's quantity.
+      tempCart().forEach((cartitem, index) => {
+       if (cartitem.ID === cartObj.ID) {
+          if (cartObj.quantity === 0) {
+           cartModifier.splice(index, 1)
+           cartItemFound = true;
+           setAddedToCart(false)
+          } else {
+           cartModifier[index].quantity = cartObj.quantity
+           cartModifier[index].total = cartObj.total
+           cartItemFound = true;
+          }
+   
+   
+       }
+    
+      });
+   
+   
+      //if no duplicate cart item is found to already exist in localstorage cart array, simply add it to the array.
+      if (cartItemFound === false && cartObj.quantity !== 0) {
+          cartModifier.push(cartObj)
+          const newCart = parseInt(e.target.dataset.cartid)
+            
+            const updatedCartsArray = [...addedToCarts, newCart];
+              console.log(updatedCartsArray)
+            setAddedToCarts(updatedCartsArray);
+      }
+     const setLocal = function(key, value) {
+          
+       localStorage.setItem(key, value);
+       const event = new Event('itemInserted');
+     
+       document.dispatchEvent(event);
+    
+     };
+     setLocal('cart', JSON.stringify(cartModifier))
+   
+   }
+   const buyNow = (cart) => {
+    console.log('hereaa')
+   setCartItem([cart])
+   loadDetails(false)
+}
+
     return (
       <Layout htmlClassName={"learndash"} seoTitle={"Learn With PK"} seoTitleTemplate="Amazing Courses to give you a Revival of Revenue" seoDescription="Pre-order PK's book today to learn how you can start maximizing your time and earning more money!" seoImage={'https://portal.revrevdev.xyz/wp-content/uploads/2022/07/online-education-1920x1080-1.jpg'}>
          <Navbar changeCart={openCart => setOpenCart(openCart)} viewCart={openCart} />
                           <div className={`preorder-btn-container ${loadPreorder}`}>
                 {true == loadPreorder
                             ? (
-                              <Elements stripe={stripePromise}>
+                              <>
+                              {loadDetails === true ? (
+
+
+                                <>
+                                    {"sub" in details ? (
+                                      <>
+                                       <div className='course-subhead'>{details.sub}</div>
+                                       <div className='course-infobuy singledisplay'>{details.title}</div>
+                                       <div class='course-singledisplay-cont revmap'>
+                                           <div class='course-singledisplay-left'>
+                   
+                                               <div dangerouslySetInnerHTML={sanitizedData(details.long)} className='course-infocontent'></div>
+                                               {addedToCarts.includes(details.cart.i) === true ? (
+                                                       <div onClick={closePreviewOpenCart} className='course-addedtocart'>Checkout</div>
+                                                   ): (
+                                                       <div class='popup-buttons'>
+                                                       <button onClick={SimpleCart} data-img={details.img} data-cartid={details.cart.i} data-price={details.price} data-name={details.title} class='popup-quickadd'>Quick Add</button>
+                                                       <button onClick={() => buyNow({i: details.cart.i, q: 1, p: details.price, t: details.price})} class='popup-buynow'>Buy Me!</button>
+                                           </div>
+                                                   )}
+                                               
+                                           </div>
+                                           <div class='course-singledisplay-right'>
+                                           <div class='coursebox-imagesqaure-cont'>
+                                                       <div style={Object.assign({'background-image': `url(${details.img})` })} class='courseboximgsquare'></div>
+                                                   </div>
+                                               
+                                           </div>
+                                             
+                                              
+                                       </div>
+                                          </>         
+                                    ):(
+                                      <><div class='loading-bought'></div></>
+                                    )}
+
+                                                     
+
+
+                                </>
+                              ) : (
+                                <Elements stripe={stripePromise}>
                                 <div onClick={preHide} class='close-preorder'>X</div>
                               <StepSix button={'Pay'} cart={cartItem} header={'checkout'} subheader={""} success={["1. Please check your email for more details on your order. Go to your ", <a href={'/orders'}>Order Page</a>, " to see your orders."]} />  
                               </Elements>
-                            
+                              )}
+
+
+
+
+                              </>
                               )
                             : ""}
       </div>
@@ -118,7 +286,7 @@
                       <h1 class="challenge-page-header">Unlock access to exclusive challenges<span><button>Get Access</button></span></h1>
                     </div>
                     </div>
-              <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
+              <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} prePreReveal={prePreReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} changeDetails={detailItem => setDetails(detailItem)} />
               {/* <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
               <RevMiniCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} /> */}
             </>

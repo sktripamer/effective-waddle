@@ -205,14 +205,12 @@
 .unlockedcourse-header {
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 3em;
+  margin-top: 0em;
   padding: 1em;
 
   padding-bottom: 2em;
 }
-.mycourse-header {
-  background: #2f115e;
-}
+
 .courseboxbuy-cont .courseboximg {
   border-radius: 0;
 }
@@ -462,6 +460,7 @@ button.popup-buynow {
   font-size: 1.9em;
   text-align: center;
   margin-bottom: 0.5em;
+  margin-top: 0.4em;
 }
 .courseboxall-cont:hover + .course-popup {
   display: flex;
@@ -493,7 +492,7 @@ button.popup-buynow {
     height: 385px;
     justify-content: space-between;
     border-radius: 20px;
-    background: linear-gradient(#13022e4d, #13022e70);
+    background: linear-gradient(#3e147e,#180852);
     box-shadow: 0.1em 0.1em 0.65rem #18181847;
     animation: .5s newput;
     transform: perspective(1px) scale(.99);
@@ -577,12 +576,20 @@ padding-bottom: 1em;
 padding-left: 1em;
 }
 
+.ld-section {
+  background: #f3f3f3;
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
 
+.ld-section:nth-child(odd) {
+  background: #F9F9FC;
+}
 .course-slider-cont .coursebox-bot {margin-top: 0;}
 
 .ownedcourse-slider {
-  margin-bottom: 6em;
-  background: #2f115e;
+  margin-bottom: 0em;
+  padding-bottom: 2em;
   padding-top: 1.5em;
 }
 
@@ -643,7 +650,7 @@ padding-left: 1em;margin-bottom: 3.5em;}
   color: #bc0a54;
   font-family: Nunito Bold;
   font-size: 1.1em;
-  margin: 10em auto 0;
+  margin: 0em auto 0;
   max-width: 1200px;
   padding-left: 1em;
 }
@@ -742,6 +749,7 @@ div.coursebox-cont.not_started .bar-filler {
     linear-gradient(to right, black 93%, transparent 99%);
     mask: var(--mask);
     -webkit-mask: var(--mask);
+    min-height: 449px;
 }
 
 .tag-cont-cont-owned {
@@ -751,7 +759,7 @@ div.coursebox-cont.not_started .bar-filler {
 
 .learndash .ind-tag {
     border: none;
-    color: #cfcfcf;
+    color: #424ebb;
     margin: 0;
     padding: .6em 1em;
     display: inline-block;
@@ -759,28 +767,29 @@ div.coursebox-cont.not_started .bar-filler {
 
 .learndash .tag-cont {
   max-width: fit-content;
-    border: 1px solid #fff;
+    border: 1px solid #19216a;
     margin-left: 1em;
     flex-wrap: nowrap;
+    border-radius: 5px;
 }
 
 .in-progress .ind-tag.tag-in-progress {
-  background: #490ea359;
-    color: #fff;
-    border-right: 1px solid #fff;
+  background: #19216a;
+  color: #fff;
+    border-right: 1px solid #19216a;
 }
 
 .completed .ind-tag.tag-completed {
-  background: #490ea359;
-    color: #fff;
-    border-right: 1px solid #fff;
-    border-left: 1px solid #fff;
+  background: #19216a;
+  color: #fff;
+    border-right: 1px solid #19216a;
+    border-left: 1px solid #19216a;
 }
 
 .learndash .all .ind-tag.tag-all {
-  background: #490ea359;
-    color: #fff;
-    border-left: 1px solid #fff;
+  background: #19216a;
+  color: #fff;
+    border-left: 1px solid #19216a;
     font-weight: normal;
 }
 

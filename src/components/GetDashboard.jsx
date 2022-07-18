@@ -332,7 +332,7 @@
               <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} prePreReveal={prePreReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} changeDetails={detailItem => setDetails(detailItem)} />
               {/* <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} /> */}
               
-              <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} prePreReveal={prePreReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} changeDetails={detailItem => setDetails(detailItem)} />
+              <RevMiniCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} prePreReveal={prePreReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} changeDetails={detailItem => setDetails(detailItem)} />
                     <div className='course-subhead'>PK Daily</div> 
                     <div className='course-infobuy singledisplay'>Entrepreneurial Challenge</div>
                     <div class='challenge-cont'>

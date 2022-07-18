@@ -289,12 +289,15 @@
         ): (
           <>
          {courseData?.owned?.length > 0 ? (
+          <div class='ld-section'>
           <CourseOverview sectionImg={''} sectionTitle={'All My Courses'} sectionDescription={'Continue where you left off on your unlocked courses'} cat='all' courseData={courseData.owned} />
-         ) :
+          </div>
+          ) :
           ( null)}
          
           {"espresso" in courseData ? (
             <>
+             <div class='ld-section'>
                <div className='course-subhead'>Daily Content</div>
                     <div className='course-infobuy singledisplay'>Entrepreneurial Espresso</div>
                     <div className={`espresso-cont espresso-${loggedIn}`}>
@@ -319,6 +322,9 @@
                       <a target="_blank" rel="noreferrer noopener" href={'/log-in'} className="course-btn">Login</a>
                     </>
                   )}
+
+
+               </div>   
             </>
           ): (
             <></>
@@ -328,11 +334,16 @@
             <>
 
 
-
+              <div class='ld-section'>
               <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} prePreReveal={prePreReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} changeDetails={detailItem => setDetails(detailItem)} />
-              {/* <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} /> */}
-              
+              </div>
+              <div class='ld-section'>
+              <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
+              </div>
+              <div class='ld-section'>
               <RevMiniCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} prePreReveal={prePreReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} changeDetails={detailItem => setDetails(detailItem)} />
+              </div>
+              <div class='ld-section'>
                     <div className='course-subhead'>PK Daily</div> 
                     <div className='course-infobuy singledisplay'>Entrepreneurial Challenge</div>
                     <div class='challenge-cont'>
@@ -340,6 +351,7 @@
                       <h1 class="challenge-page-header">Unlock access to exclusive challenges<span><button>Get Access</button></span></h1>
                     </div>
                     </div>
+              </div>
             </>
           ):<div class='empty-courses'>No more courses available at this time. Check back soon!</div>}
           </>

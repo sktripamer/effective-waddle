@@ -298,17 +298,17 @@
                <div className='course-subhead'>Daily Content</div>
                     <div className='course-infobuy singledisplay'>Entrepreneurial Challenge</div>
                     <div className={`espresso-cont espresso-${loggedIn}`}>
-                      <a target="_blank" rel="noreferrer noopener" href={courseData.esspresso.pos1u} className="esspresso-item-cont">
-                          <img src={courseData.esspresso.pos1i}  class='espresso-img-item'></img>
-                          <h4 className="espresso-item-title">{courseData.esspresso.pos1t}</h4>
+                      <a target="_blank" rel="noreferrer noopener" href={courseData.espresso.pos1u} className="esspresso-item-cont">
+                          <img src={courseData.espresso.pos1i}  class='espresso-img-item'></img>
+                          <h4 className="espresso-item-title">{courseData.espresso.pos1t}</h4>
                       </a>      
-                      <a target="_blank" rel="noreferrer noopener" href={courseData.esspresso.pos2u} className="esspresso-item-cont">
-                          <img src={courseData.esspresso.pos2i}  class='espresso-img-item'></img>
-                          <h4 className="espresso-item-title">{courseData.esspresso.pos2t}</h4>
+                      <a target="_blank" rel="noreferrer noopener" href={courseData.espresso.pos2u} className="esspresso-item-cont">
+                          <img src={courseData.espresso.pos2i}  class='espresso-img-item'></img>
+                          <h4 className="espresso-item-title">{courseData.espresso.pos2t}</h4>
                       </a>      
-                      <a target="_blank" rel="noreferrer noopener" href={courseData.esspresso.pos3u} className="esspresso-item-cont">
-                          <img src={courseData.esspresso.pos3i}  class='espresso-img-item'></img>
-                          <h4 className="espresso-item-title">{courseData.esspresso.pos3t}</h4>
+                      <a target="_blank" rel="noreferrer noopener" href={courseData.espresso.pos3u} className="esspresso-item-cont">
+                          <img src={courseData.espresso.pos3i}  class='espresso-img-item'></img>
+                          <h4 className="espresso-item-title">{courseData.espresso.pos3t}</h4>
                       </a>      
                   </div>
                   {loggedIn === true ? (

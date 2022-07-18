@@ -27,6 +27,33 @@ export default function CourseOverview({ courseData, cat, sectionTitle, sectionD
       .replace(/\-\-+/g, '-');        // Replace multiple - with single -
   }
 
+
+  useEffect(() => {
+    let hasdata = false
+    if (courseData.length > 0) {
+      if (cat === 'all') {
+        courseData.forEach(item => {
+          if (item.cat !== 'Espresso') {
+            hasdata = true;
+          }
+        })
+      }
+
+      if (cat !== 'all') {
+        courseData.forEach(item => {
+          if (item.cat === cat) {
+            hasdata = true;
+          }
+        })
+      }
+    }
+
+    if (hasdata === true) setNoCourses(true)
+
+
+  }, []);
+
+
   const restartAnimation = () => {
     for (const animation of document.getElementsByClassName('course-slider-cont')[0].getAnimations()) {
         if (document.getElementsByClassName('course-slider-cont')[0].contains((animation.effect).target)) {
@@ -59,7 +86,7 @@ export default function CourseOverview({ courseData, cat, sectionTitle, sectionD
       ):null}
 
       {noCourses === true ? (
-        'no courses'
+        <></>
       ): (
         <>
         <div class='mycourse-header'>
@@ -124,8 +151,10 @@ export default function CourseOverview({ courseData, cat, sectionTitle, sectionD
                       <div class='coursebox-image-cont'>
                         <div style={Object.assign({'background-image': `url(${el.image})` })} class='courseboximg'></div>
                       </div>
+                      <div className="course-info-cont">
                       <div className='course-info'>{el.title}</div>
                       <div className='course-desc'>{el.description}</div>
+                      </div>
                     </div>
                     <div class='coursebox-bot'>
                       {el.data.status === 'not_started' ? (

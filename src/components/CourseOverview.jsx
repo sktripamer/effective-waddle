@@ -48,7 +48,7 @@ export default function CourseOverview({ courseData, cat, sectionTitle, sectionD
       }
     }
 
-    if (hasdata === true) setNoCourses(true)
+    if (hasdata === false) setNoCourses(true)
 
 
   }, []);

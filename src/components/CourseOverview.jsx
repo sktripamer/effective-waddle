@@ -117,8 +117,10 @@ export default function CourseOverview({ courseData, cat, sectionTitle, sectionD
                       <div class='coursebox-image-cont'>
                         <div style={Object.assign({'background-image': `url(${el.image})` })} class='courseboximg'></div>
                       </div>
+                      <div className="course-info-cont">
                       <div className='course-info'>{el.title}</div>
                       <div className='course-desc'>{el.description}</div>
+                      </div>
                     </div>
                     <div class='coursebox-bot'>
                       {el.data.status === 'not_started' ? (

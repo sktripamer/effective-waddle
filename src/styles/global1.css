@@ -234,7 +234,7 @@
   top: calc(-100% - 2px);
   transition: top .35s cubic-bezier(0.26, 0.1, 0.02, 1);
   width: 100%;
-
+  z-index: 3;
   flex-direction: column;
   justify-content: space-between;
 }

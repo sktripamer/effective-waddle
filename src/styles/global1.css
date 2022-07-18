@@ -389,7 +389,29 @@ color:#fff;
   position: absolute;
   background-size: contain;
 }
+.selltag-new {
+  position: absolute;
+  z-index: 2;
+}
 
+.selltag-new:after {
+  content: "NEW";
+  position: absolute;
+  height: 38px;
+  width: 70px;
+  z-index: 999;
+  margin-top: 20px;
+  text-align: center;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-family: 'Nunito Bold';
+  color: #fff;
+  font-size: 1.1em;
+  background: linear-gradient(206deg,#ff1d2d,#c41ab8);
+}
 
 .course-info-cont {
   height: 100px;

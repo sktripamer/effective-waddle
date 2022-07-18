@@ -152,7 +152,7 @@ export default function RevRevCourseSmallList({preReveal, prePreReveal, changeCa
                             {addedToCarts.includes(el.cart) === true ? (
                                 <div onClick={() => changeCartVis(true)} className='course-addedtocart'>View Cart</div>
                             ): (
-                                <div className='course-infopopup'>Get Access</div>
+                                <div className='course-infopopup'></div>
                             )}
                           
                            
@@ -161,8 +161,10 @@ export default function RevRevCourseSmallList({preReveal, prePreReveal, changeCa
                     <div class='course-popup'>
                                 <div class='top-partpop'>
                                     <div class='popup-description'>{el.description}</div>
+                                    <div className="combiner">
                                     <button onClick={() => viewMore({sub: el.sub, img: el.square, desc: el.long, price:el.price, title: el.title, cart: {i: el.cart, q: 1, p: el.price, t: el.price}})} class='learn-more-btn'>Learn More</button>
                                     <div class='popup-price'>${el.price}</div>
+                                    </div>
                                 </div>
                                 <div class='popup-buttons'>
                                     <button onClick={SimpleCart} data-idx={index} data-img={el.image} data-cartid={el.cart} data-price={el.price} data-name={el.title} class='popup-quickadd'>Quick Add</button>

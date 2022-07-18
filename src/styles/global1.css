@@ -542,7 +542,7 @@ html.learndash .payment.register-form {
 }
 .learndash main {
     height: 100vh;
-    background: #3f177d;
+    background: #fff;
     width: 100vw;
     overflow: hidden;
 }

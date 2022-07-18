@@ -250,7 +250,7 @@
   display: none;
 }
 .courseboxall-cont.filled + .course-popup:hover {
-  top: 352px;
+  top: calc(-100% - 2px);
 }
 .revmini .course-addedtocart {
   margin-top: auto;
@@ -273,7 +273,7 @@
   cursor: pointer;
   color: #fff;
   font-family: 'Nunito Bold';
-  background: linear-gradient(206deg,#0a9ef1,#30487c);
+  background: linear-gradient(206deg,#ff1d2d,#c41ab8);
   text-align: center;
   padding: .7em;
   font-size: 1.2em;
@@ -359,7 +359,7 @@ button.popup-quickadd:after {
 }
 
 .course-popup {
-  background: linear-gradient(#1b0636e0, #330968e0);
+  background: linear-gradient(1deg, #1b0636,#330968de);
 }
 
 .top-partpop {
@@ -8243,6 +8243,72 @@ html.scroll.noover {
   overflow-y: hidden;
   overflow: hidden;
 }
+
+.espresso-cont {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+  gap: 16px;
+  padding: 1em;
+}
+
+a.esspresso-item-cont:hover {text-decoration: none;transform: scale(1.05);}
+
+img.espresso-img-item {
+  width: 100%;
+}
+
+h4.espresso-item-title {
+  font-family: 'Nunito Bold';
+  text-align: center;
+  color: #fff;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  background: #2e0f5d;
+  margin: 0;
+}
+
+a.esspresso-item-cont {
+  transition: .25s transform;
+  box-shadow: 0.1em 0.1em 0.65rem #18181847;
+  margin:0;
+}
+
+a.esspresso-item-cont:after {
+
+  opacity:0;
+content:'';
+transition:.25s opacity;
+
+  
+}
+a.esspresso-item-cont:hover:after {
+ content: '';
+ background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath fill='%23fff' d='m3,9v11h14V9M4,9V6c0-3.3 2.7-6 6-6c3.3,0 6,2.7 6,6v3H14V6c0-2.2-1.8-4-4-4-2.2,0-4,1.8-4,4v3'/%3E%3C/svg%3E"), linear-gradient(1deg, #1b0636de,#330968de);
+ width:100%;
+    height:100%;
+  background-size:40%, 100%;
+  top:0;
+  left:0;
+ position: absolute;
+ background-repeat:
+ no-repeat;
+ background-position: center;
+      opacity:1;
+ }
+
+
+
+.espresso-cta {
+  font-family: 'Nunito Bold';
+  font-size: 1.7em;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1em;
+}
+
 a.course-btn {
   background: linear-gradient(206deg,#ff1d2d,#c41ab8);
   color: #fff;
@@ -8253,6 +8319,7 @@ a.course-btn {
   width: 90%;
   margin: 0.2em auto;
   text-align: center;
+  max-width: 300px;
 }
 
 a.course-btn:hover {

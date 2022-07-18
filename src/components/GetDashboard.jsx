@@ -71,6 +71,7 @@
     }, []);
 
     useEffect(() => {
+      document.addEventListener("itemInserted", localStorageSetHandler, false);
       let tempCart = function() {
           try {
           return JSON.parse(localStorage.cart)
@@ -87,7 +88,20 @@
       setAddedToCarts(addedToCart);
       
   }, []);
+  const localStorageSetHandler = () => {
+    let tempCart = function() {
+        try {
+        return JSON.parse(localStorage.cart)
+        } catch {return []}      
+    }
+    let addedToCart = []
+    tempCart().forEach((cartitem, index) => {
+                addedToCart.push(cartitem.ID)
 
+    })
+    console.log(addedToCart)
+    setAddedToCarts(addedToCart);
+}
     function preHide() {
       document.getElementsByTagName( 'html' )[0].style.cssText = ``;
       document.getElementsByTagName( 'body' )[0].style.cssText = ``;

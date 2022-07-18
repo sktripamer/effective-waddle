@@ -338,7 +338,7 @@
               <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} prePreReveal={prePreReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} changeDetails={detailItem => setDetails(detailItem)} />
               </div>
               <div class='ld-section'>
-              <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
+              <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} prePreReveal={prePreReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} changeDetails={detailItem => setDetails(detailItem)} />
               </div>
               <div class='ld-section'>
               <RevMiniCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} prePreReveal={prePreReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} changeDetails={detailItem => setDetails(detailItem)} />

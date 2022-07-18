@@ -140,7 +140,7 @@ export default function RevRevCourseSmallList({preReveal, prePreReveal, changeCa
                 {el.tag === 'new' ? <div class='selltag-new'></div> : ''}
                 <div class={`courseboxbuy-cont ind-${index}`}>
                    
-                    <div class={addedToCarts.includes(index) === true ? "courseboxall-cont filled" : 'courseboxall-cont' }>
+                    <div class={addedToCarts.includes(el.cart) === true ? "courseboxall-cont filled" : 'courseboxall-cont' }>
                         <div class='coursebox-top'>
                             <div class='coursebox-image-cont'>
                                 <div style={Object.assign({'background-image': `url(${el.image})` })} class='courseboximg'></div>

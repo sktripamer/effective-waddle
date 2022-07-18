@@ -18,7 +18,7 @@
       useElements,
     } from '@stripe/react-stripe-js'; 
     import { isEmpty } from 'lodash';
-  
+    import useAuth from "../hooks/useAuth";
     import InputField2 from '../components/inputfield';
     import Select from "react-dropdown-select";
 
@@ -34,6 +34,7 @@
   const [courseData, setCourseData] = useState([])
   const [openCart, setOpenCart] = useState(false)
   const [cartItem, setCartItem] = useState(0);
+  const { loggedIn } = useAuth();
   const [addedToCarts, setAddedToCarts] = useState([])
   const sanitizedData = (sendData) => ({
     __html: DOMPurify.sanitize(sendData)
@@ -292,18 +293,53 @@
          ) :
           ( null)}
          
+          {"espresso" in courseData ? (
+            <>
+               <div className='course-subhead'>Daily Content</div>
+                    <div className='course-infobuy singledisplay'>Entrepreneurial Challenge</div>
+                    <div className={`espresso-cont espresso-${loggedIn}`}>
+                      <a target="_blank" rel="noreferrer noopener" href={courseData.esspresso.pos1u} className="esspresso-item-cont">
+                          <img src={courseData.esspresso.pos1i}  class='espresso-img-item'></img>
+                          <h4 className="espresso-item-title">{courseData.esspresso.pos1t}</h4>
+                      </a>      
+                      <a target="_blank" rel="noreferrer noopener" href={courseData.esspresso.pos2u} className="esspresso-item-cont">
+                          <img src={courseData.esspresso.pos2i}  class='espresso-img-item'></img>
+                          <h4 className="espresso-item-title">{courseData.esspresso.pos2t}</h4>
+                      </a>      
+                      <a target="_blank" rel="noreferrer noopener" href={courseData.esspresso.pos3u} className="esspresso-item-cont">
+                          <img src={courseData.esspresso.pos3i}  class='espresso-img-item'></img>
+                          <h4 className="espresso-item-title">{courseData.esspresso.pos3t}</h4>
+                      </a>      
+                  </div>
+                  {loggedIn === true ? (
+                      <></>
+                  ): (
+                    <>
+                      <div class='espresso-cta'>Log in to access this exclusive FREE Entrepreneurial Espresso content</div>
+                      <a target="_blank" rel="noreferrer noopener" href={'/log-in'} className="course-btn">Login</a>
+                    </>
+                  )}
+            </>
+          ): (
+            <></>
+          )}
+
           {courseData?.available?.length > 0 ? (
             <>
-              <div className='course-subhead'>PK Daily</div>
+
+
+
+              <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} prePreReveal={prePreReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} changeDetails={detailItem => setDetails(detailItem)} />
+              {/* <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
+              
+              <RevMiniCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} /> */}
+                    <div className='course-subhead'>PK Daily</div>
                     <div className='course-infobuy singledisplay'>Entrepreneurial Challenge</div>
                     <div class='challenge-cont'>
                     <div class='unlockedcourse-header'>
                       <h1 class="challenge-page-header">Unlock access to exclusive challenges<span><button>Get Access</button></span></h1>
                     </div>
                     </div>
-              <RevRevCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} prePreReveal={prePreReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} changeDetails={detailItem => setDetails(detailItem)} />
-              {/* <RevMapCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} />
-              <RevMiniCourseSmallList changeCartVis={openCart => setOpenCart(openCart)} preReveal={preReveal} changeCart={cartItem => setCartItem(cartItem)} courseData={courseData} /> */}
             </>
           ):<div class='empty-courses'>No more courses available at this time. Check back soon!</div>}
           </>

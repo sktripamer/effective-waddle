@@ -1,12 +1,16 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
+import DOMPurify from 'dompurify';
 import CourseOverview from '../components/CourseOverview';
 
 
 export default function RevMiniCourseSmallList({preReveal, prePreReveal, changeCart, courseData, changeCartVis, changeDetails}) {
     const [highestVal, setHighestVal] = useState(null)
     const [addedToCarts, setAddedToCarts] = useState([])
+    const sanitizedData = (sendData) => ({
+        __html: DOMPurify.sanitize(sendData)
+      })
     useEffect(() => {
         document.addEventListener("itemInserted", localStorageSetHandler, false);
         let tempCart = function() {

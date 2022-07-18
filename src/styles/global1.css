@@ -218,7 +218,7 @@
 }
 .courseboxbuy-cont {
   animation: newput .5s;
-  background: linear-gradient(#13022e4d,#13022e70);
+  background: linear-gradient(#2e0f5d,#0e2c72);
 
   box-shadow: 0.1em 0.1em 0.65rem #18181847;
   display: flex;
@@ -268,12 +268,21 @@
   padding: .7em;
   font-size: 1.2em;
 }
+
+.popup-description {
+  text-align: center;
+}
+
+
+button.learn-more-btn {margin: 0 auto;background: none;border: 2px solid white;color: #fff;padding: .5em 2em;}
+
 .course-infopopup {
   width: 100%;
   cursor: pointer;
   color: #fff;
   font-family: 'Nunito Bold';
   background: linear-gradient(206deg,#ff1d2d,#c41ab8);
+  height: 55px;
   text-align: center;
   padding: .7em;
   font-size: 1.2em;
@@ -281,22 +290,28 @@
 }
 .challenge-cont .unlockedcourse-header {padding-left: 1em;padding-right: 1em;max-width: 1200px;margin-top: .4em;}
 .challenge-page-header button {
-  background: linear-gradient(206deg,#3f177d,#30487c);
+  background: none;
+  border: 3px solid #3f177d;
+  text-transform: uppercase;
   color: #fff;
+  cursor: pointer;
   font-family: Nunito Bold;
-  font-size: 1em;
-  padding: .2em .4em;
+  font-size: .9em;
+  padding: 0.2em 0.4em;
   text-align: center;
   width: 100%;
-  cursor: pointer;
 }
+.course-singledisplay-cont .course-infocontent {color: #512e8a;}
 
+.course-singledisplay-cont button.popup-quickadd {
+    color: #512e8a;
+}
 .course-infopopup:after {
   content: '';
   background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath fill='%23fff' d='m3,9v11h14V9M4,9V6c0-3.3 2.7-6 6-6c3.3,0 6,2.7 6,6v3H14V6c0-2.2-1.8-4-4-4-2.2,0-4,1.8-4,4v3'/%3E%3C/svg%3E");
   width: 26px;
   height: 26px;
-  margin-left: 6px;
+  margin-left: -13px;
   position: absolute;
   background-size: contain;
 }
@@ -322,7 +337,40 @@
  color: #4a4a4a;
 }
 
-button.popup-quickadd:after {
+.preorder-btn-container div.course-infobuy.singledisplay {
+  background-image: unset;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+}
+
+.preorder-btn-container div.course-subhead {
+color:#fff;
+}
+
+
+
+.preorder-btn-container div.course-infocontent {
+  color: #fff;
+}
+
+
+
+
+.course-singledisplay-cont button.popup-quickadd:after {
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' style='enable-background:new 0 0 512 512;' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cpolygon fill='%23512e8a' points='289.391,222.609 289.391,0 222.609,0 222.609,222.609 0,222.609 0,289.391 222.609,289.391 222.609,512 289.391,512 289.391,289.391 512,289.391 512,222.609 '/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+   width: 22px;
+   height: 22px;
+   margin-left: 8px;
+   margin-top:2px;
+   position: absolute;
+   background-size: contain;
+   content:'';
+ }
+ div.preorder-btn-container button.popup-quickadd {
+  color: #fff;
+}
+
+ div.preorder-btn-container button.popup-quickadd:after, button.popup-quickadd:after {
  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' style='enable-background:new 0 0 512 512;' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cpolygon fill='%23fff' points='289.391,222.609 289.391,0 222.609,0 222.609,222.609 0,222.609 0,289.391 222.609,289.391 222.609,512 289.391,512 289.391,289.391 512,289.391 512,222.609 '/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
   width: 22px;
   height: 22px;
@@ -380,7 +428,7 @@ button.popup-quickadd:after {
 
 button.popup-quickadd {
   border-radius: 0;
-  margin-bottom: 1px;
+
   width: 100%;
   color: #fff;
   font-family: 'Nunito Bold';
@@ -406,9 +454,12 @@ button.popup-buynow {
 
 }
 
+.espresso-false a.esspresso-item-cont {
+  cursor: default;
+}
+
 .popup-price {
   font-size: 1.9em;
-  margin-top: 1em;
   text-align: center;
   margin-bottom: 0.5em;
 }
@@ -451,7 +502,7 @@ button.popup-buynow {
 
 .courseboximg {
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     margin-bottom: 1em;
     padding-top: 56.25%;
     border-top-left-radius: 20px;
@@ -553,7 +604,10 @@ padding-left: 1em;margin-bottom: 3.5em;}
 .smallcourse-head {
   max-width: 1200px;
   font-size: 2em;
-  color: #fff;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(#ee091c,#850b90);
+  font-style: normal;
   font-family: 'Josefin Sans';
   text-transform: uppercase;
   margin: 0 auto;
@@ -586,7 +640,7 @@ padding-left: 1em;margin-bottom: 3.5em;}
 }
 
 .course-subhead {
-  color: #fff;
+  color: #bc0a54;
   font-family: Nunito Bold;
   font-size: 1.1em;
   margin: 10em auto 0;
@@ -600,7 +654,10 @@ padding-left: 1em;margin-bottom: 3.5em;}
   max-width: 1200px;
   padding-left: 0.4em;
   text-align: left; 
-  
+  -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(#ee091c,#850b90);
+    font-style: normal;
 }
 
 .course-infocontent {
@@ -8264,7 +8321,7 @@ h4.espresso-item-title {
   color: #fff;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
-  background: #2e0f5d;
+  background: linear-gradient(#2e0f5d,#0e2c72);
   margin: 0;
 }
 
@@ -8302,7 +8359,7 @@ a.esspresso-item-cont:hover:after {
 .espresso-cta {
   font-family: 'Nunito Bold';
   font-size: 1.7em;
-  color: #fff;
+  color: #512e8a;
   text-align: center;
   margin: 0 auto;
   max-width: 1200px;
@@ -10077,6 +10134,8 @@ button.return-btn {
     color: #fff;
     margin-bottom: 1em;
     font-family: 'Nunito Regular';
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .login-msg a {

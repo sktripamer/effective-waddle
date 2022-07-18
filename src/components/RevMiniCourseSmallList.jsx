@@ -195,9 +195,9 @@ export default function RevMiniCourseSmallList({preReveal, prePreReveal, changeC
             <>
                {el.cat === "Mini Course" ? (<>
                 <div class='courseboxfullcont-cont'>
-                {el.tag === 'new' ? <div class='selltag-new'></div> : ''}
+             
                 <div class={`courseboxbuy-cont ind-${index}`}>
-                   
+                {el.tag === 'new' ? <div class='selltag-new'></div> : ''}
                     <div class={addedToCarts.includes(el.cart) === true ? "courseboxall-cont filled" : 'courseboxall-cont' }>
                         <div class='coursebox-top'>
                             <div class='coursebox-image-cont'>

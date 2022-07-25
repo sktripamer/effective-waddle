@@ -10605,7 +10605,7 @@ button.return-btn {
   font-family: 'Josefin Sans';
   filter: drop-shadow(0 0 0.75rem #00000080);
   }
-  .payment h3 {    margin-bottom: 20px;font-family: 'Nunito Bold';padding-left: 1em;padding-right: 1em;color: #f1f1f1;margin: 0 auto;max-width: 1200px;font-size: 1.3em;}
+  .payment h3 {  -webkit-text-fill-color: unset;  margin-bottom: 20px;font-family: 'Nunito Bold';padding-left: 1em;padding-right: 1em;color: #f1f1f1;margin: 0 auto;max-width: 1200px;font-size: 1.3em;}
 
   .payment-area-cont {    padding-bottom: 2.5em;display: flex;width: 100%;margin: 0 auto;max-width: 1300px;align-items: center;     margin-bottom: auto;}
 
